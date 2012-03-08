@@ -5470,9 +5470,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/EchoLTPA.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/EchoSAML.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/context/ExceptionUtils.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/context/RequestContextSetter.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/context/StelvioContextData.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/context/StelvioContextHandler.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/service/EchoServiceBi.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/resources/stelvio/example/echo/provider/EchoHandler.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/META-INF/policyAttachments.xml -text
