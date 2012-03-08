@@ -16,7 +16,7 @@
 	<name>POM for CI deployments</name>
 
 	<properties>
-		<wpsdeployVersion>0.0.0</wpsdeployVersion>
+		<wpsdeployVersion>4.0.0</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
