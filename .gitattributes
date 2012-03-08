@@ -1173,6 +1173,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Brukerprofil_C
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Dineutbetalinger_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Eresept_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Fullmakt_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Gosys-3.0.0_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Institusjonsopphold_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Journal_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Medlemskapsunntak_CI/config.xml -text

@@ -114,6 +114,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>SoapUI-U2-Ekstern-Pensjon-Beregning_CI</string>
         <string>SoapUI-U2-Ekstern-Pensjon-TPTILB_CI</string>
+        <string>SoapUI-U2-layers-Gosys-3.0.0_CI</string>
         <string>SoapUI-U2-layers-Samordning_CI</string>
         <string>SoapUI-U2-NAV-ArbeidOgAktivitet_CI</string>
         <string>SoapUI-U2-NAV-Arkiv_CI</string>
