@@ -18,14 +18,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
- * Handler for the ConsumerContext.
+ * Handler for the ConsumerContext when working with JAX-RPC. For JAX-WS, see JaxWsConsumerContextHandler.
  * 
  * @author lschnell
  */
 public class ConsumerContextHandler extends GenericHandler {
-
-	// private static SimpleDateFormat zulu =
-	// new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
 	/** Logger for this class. */
 	protected final Log log = LogFactory.getLog(this.getClass());
@@ -51,8 +48,7 @@ public class ConsumerContextHandler extends GenericHandler {
 	/**
 	 * Sets then handler info for the object.
 	 * 
-	 * @param arg
-	 *            the HandlerInfo
+	 * @param arg the HandlerInfo
 	 */
 	public void init(HandlerInfo arg) {
 		info = arg;
@@ -70,11 +66,9 @@ public class ConsumerContextHandler extends GenericHandler {
 	 *     &lt;sc:languageId&gt;myLanguageId&lt;/sc:languageId&gt;
 	 *     &lt;sc:applicationId&gt;myApplicationId&lt;/sc:applicationId&gt;
 	 * &lt;/sc:StelvioContext&gt;
-	 * 
 	 * </pre>
 	 * 
-	 * @param context
-	 *            the MessageContext
+	 * @param context the MessageContext
 	 * @return true Always returns true
 	 */
 	public boolean handleRequest(MessageContext context) {
