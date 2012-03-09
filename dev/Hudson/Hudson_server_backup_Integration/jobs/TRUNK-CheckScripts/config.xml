@@ -282,7 +282,8 @@ esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
 esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py sysdok Tilgangsstyring\ \(HL4\)
 esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
 esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
-esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</command>
+esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157
+esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py /home/ci/bin/</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
