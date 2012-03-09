@@ -581,7 +581,10 @@ app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/ConsumerContextHa
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/ConsumerFacadeBase.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/FaultRecoverableException.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/FaultUnrecoverableException.java -text
+app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/JaxWsConsumerContextHandler.java -text
+app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/StelvioContextData.java -text
 app/stelvio-consumer-java/src/test/.copyarea.db -text
+app/stelvio-consumer-java/src/test/java/no/stelvio/consumer/ws/JaxWsConsumerContextHandlerTest.java -text
 app/stelvio-domain-java/.copyarea.db -text
 app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
