@@ -27,6 +27,7 @@
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:stop-clusters,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-artifact,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-resources,
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:set-environment-variables,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-rolemapping,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-wsendpoints,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,
