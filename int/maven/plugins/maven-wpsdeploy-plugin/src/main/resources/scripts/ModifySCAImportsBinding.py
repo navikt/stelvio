@@ -15,6 +15,7 @@ import sys, os, re
 import time
 import lib.logUtil as log
 from lib.Utils import wsadminToDict
+from lib.saveUtil import save
 
 l = log.getLogger(__name__)
 EARFilesToDeployFolder  = sys.argv[1]
@@ -58,7 +59,8 @@ def main():
 				for sca_import in sca_imports:
 					if scaModule.scaImports.has_key(sca_import):
 						modifySCAImportBinding(scaModule.moduleNameLong, sca_import, scaModule.scaImports[sca_import].endpoint)
-						AdminConfig.save()
+						
+		save()
 
 		stop = time.clock()
 

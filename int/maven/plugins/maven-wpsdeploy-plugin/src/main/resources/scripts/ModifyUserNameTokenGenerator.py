@@ -1,7 +1,7 @@
 import sys
 from lib.saveUtil import save
 import lib.Utils as Utils
-import lib.logUtils as log
+import lib.logUtil as log
 l = log.getLogger(__name__)
 
 enviromentPropertyFile = sys.argv[1]
