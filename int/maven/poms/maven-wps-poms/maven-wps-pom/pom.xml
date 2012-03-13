@@ -63,6 +63,9 @@
 					<include>**/*.subflow</include>
 					<include>**/*.subflowex</include>
 					<include>**/*.cal</include>
+					<include>**/*.rel</include>
+					<include>**/*.ri</include>
+					<include>**/*.rol</include>
 				</includes>
 			</resource>
 		</resources>
