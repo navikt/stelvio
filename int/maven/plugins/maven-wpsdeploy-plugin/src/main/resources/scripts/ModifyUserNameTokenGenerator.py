@@ -16,7 +16,7 @@ if not (len(policySetBindingsList) == len(policySetBindingsUsersList) == len(pol
 	l.exit('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with equal number or values!')
 
 def main():
-	for i in range(policySetBindingsList):
+	for i in range(len(policySetBindingsList)):
 		setBindingAuth(policySetBindingsList[i],
 			policySetBindingsUsersList[i],
 			policySetBindingsPasswordsList[i]
