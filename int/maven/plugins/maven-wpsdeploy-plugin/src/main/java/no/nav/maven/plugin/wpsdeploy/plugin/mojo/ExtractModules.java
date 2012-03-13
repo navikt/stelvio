@@ -150,7 +150,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 			String mvnLocalRepo = localRepository.getUrl();
 			String mvnSnapshotRepo = ((Repository)repositories.get(0)).getUrl();
 			String mvnRepo = mvnSnapshotRepo.replace("-snapshots", "");
-			downloadEARFiles(wsadminCommandLine, ArgumentUtil.arrayListToDelimitedString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
+			downloadEARFiles(wsadminCommandLine, ArgumentUtil.listToDelimitedString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
 			
 		} catch (ProjectBuildingException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
