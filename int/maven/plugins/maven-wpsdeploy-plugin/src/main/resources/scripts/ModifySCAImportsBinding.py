@@ -58,79 +58,15 @@ def main():
 				for sca_import in sca_imports:
 					if scaModule.scaImports.has_key(sca_import):
 						modifySCAImportBinding(scaModule.moduleNameLong, sca_import, scaModule.scaImports[sca_import].endpoint)
-						modified = 1
-						
-			if modified:
-				deletePolicySetAttachment(scaModule.applicationName)
-				createPolicySetAttachment(scaModule.applicationName)
-				
-		AdminConfig.save()
+						AdminConfig.save()
 
 		stop = time.clock()
 
 		l.info("Time elapsed: " + str(round(stop - start, 2)) + " seconds.")
 
-def deletePolicySetAttachment(applicationName): 
-		delete_psa = AdminTask.getPolicySetAttachments('[-applicationName '+applicationName+' -attachmentType client]').splitlines()
-		for psa in delete_psa:
-				if (len(psa) > 0):
-						id = wsadminToDict(psa)['id']
-						if (id > 0):
-								AdminTask.deletePolicySetAttachment('[-applicationName '+applicationName+' -attachmentType client -attachmentId '+id+']')
-								l.info("Delete policy set attachment for application "+applicationName+" with attachment id "+id+".")
-						#endIf
-				#endIf
-		#endFor
-#endDef
-
-def createPolicySetAttachment(applicationName):
-		psa = AdminTask.getPolicySetAttachments('[-applicationName '+applicationName+' -attachmentType client -expandResources *]').splitlines()
-
-		for a in psa:
-				# Checks if psa contains { which denotes a webservice
-				if (a.count("}") > 0):
-						# Splits a into list.
-						b = a.split("}")
-						# Checks if b[1] contains /, if not that denotes a Service
-						if (b[1].count("/") == 0):
-								# Splits on "[resource", retrieves index 1:
-								# i.e. WebService:/nav-prod-sak-arenaWeb.war:{http://arena.nav.no/services/oppgaveservice}ArenaOppgaveService] [attachmentId 1368] [directAttachment true] [binding [NAV ESB Arena WSImport Binding]] [bindingScope domain] ]
-								# Splits on "]" and retrieves index 0
-								# i.e. WebService:/nav-prod-sak-arenaWeb.war:{http://arena.nav.no/services/oppgaveservice}ArenaOppgaveService
-								resource = a.split("[resource ")[1].split("]")[0]
-								
-								if (applicationName == "nav-prod-sak-arenaApp"): 
-										attachmentId = AdminTask.createPolicySetAttachment('[-applicationName '+applicationName+' -attachmentType client -policySet "NAV ESB Arena WSImport" -resources '+resource+' ]]')
-										l.info("Attached policy set NAV ESB Arena WSImport to "+resource+".")
-										AdminTask.setBinding('[-bindingScope domain -bindingName "NAV ESB Arena WSImport Binding" -attachmentType client -bindingLocation [ [application '+applicationName+'] [attachmentId '+attachmentId+'] ]]')
-										l.info("Set binding NAV ESB Arena WSImport Binding for "+resource+".")
-								elif (re.search('nav-tjeneste-arbeidOgAktivitet_v\d+App', applicationName)):
-										attachmentId = AdminTask.createPolicySetAttachment('[-applicationName '+applicationName+' -attachmentType client -policySet "NAV ESB Arena WSImport" -resources '+resource+' ]]')
-										l.info("Attached policy set NAV ESB Arena WSImport to "+resource+".")
-										AdminTask.setBinding('[-bindingScope domain -bindingName "NAV ESB Arena WSImport Binding" -attachmentType client -bindingLocation [ [application '+applicationName+'] [attachmentId '+attachmentId+'] ]]')
-										l.info("Set binding NAV ESB Arena WSImport Binding for "+resource+".")
-								elif (re.search('nav-tjeneste-arbeidOgAktivitetYtelse_v\d+App', applicationName)):
-										attachmentId = AdminTask.createPolicySetAttachment('[-applicationName '+applicationName+' -attachmentType client -policySet "NAV ESB Arena WSImport" -resources '+resource+' ]]')
-										l.info("Attached policy set NAV ESB Arena WSImport to "+resource+".")
-										AdminTask.setBinding('[-bindingScope domain -bindingName "NAV ESB Arena WSImport Binding" -attachmentType client -bindingLocation [ [application '+applicationName+'] [attachmentId '+attachmentId+'] ]]')
-										l.info("Set binding NAV ESB Arena WSImport Binding for "+resource+".")
-								elif (applicationName == "nav-prod-sak-infotApp"):
-										attachmentId = AdminTask.createPolicySetAttachment('[-applicationName '+applicationName+' -attachmentType client -policySet "NAV ESB INFOT WSImport" -resources '+resource+' ]]')
-										l.info("Attached policy set NAV ESB INFOT WSImport to "+resource+".")
-										l.info("Using default service client binding for "+resource+".")
-								else:
-										attachmentId = AdminTask.createPolicySetAttachment('[-applicationName '+applicationName+' -attachmentType client -policySet "NAV ESB WSImport" -resources '+resource+' ]]')
-										l.info("Attached policy set NAV ESB WSImport to "+resource+".")
-										l.info("Using default service client binding for "+resource+".")
-								#endIf
-						#endIf
-				#endIf
-		#endFor
-#endDef
-
 def listSCAModules():
 		return AdminTask.listSCAModules()
-# end def listSCAModules
+
 
 
 def modifySCAImportBinding(module_name, import_name, endpoint):
@@ -145,7 +81,7 @@ def modifySCAImportBinding(module_name, import_name, endpoint):
 		
 	AdminTask.modifySCAImportWSBinding('[-moduleName ' + module_name + ' -import ' + import_name + ' -endpoint ' + endpoint + ']')
 	l.info("Modified import [" + import_name + "] on module [" + module_name + "] to [" + endpoint + "].")
-# end def modifySCAImportBinding
+
 
 def getEndpointDetails(module_name, import_name):
 	binding = AdminTask.showSCAImportWSBinding('[-moduleName ' + module_name + ' -import ' + import_name + ']')
