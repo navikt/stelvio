@@ -1,7 +1,6 @@
 import sys, re
 from lib.syncUtil import sync
 import lib.logUtil as log
-from lib.timerUtil import Timer
 
 l = log.getLogger(__name__)
 OPERATION = sys.argv[1]
@@ -128,8 +127,6 @@ def doClusterOperation(cellName, clusterName, operation):
 							sleep(10)
 
 def main():
-	myTimer = Timer()
-
 	appTarget = ""
 	messaging = ""
 	support = ""
@@ -200,8 +197,6 @@ def main():
 		sync()
 	else:
 		l.error("Bad operation: [" + OPERATION + "]")
-
-	l.info("Time elapsed:", myTimer)
 
 main()
 

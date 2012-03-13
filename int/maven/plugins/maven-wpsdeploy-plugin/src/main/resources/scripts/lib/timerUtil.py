@@ -16,7 +16,7 @@ class Timer:
 	def __secondsToHMS(self, secondsPased):
 		minutes, seconds = divmod(secondsPased, 60)
 		hours, minutes = divmod(minutes, 60)
-		return "%d:%02d:%02d" % (hours, minutes, seconds)
+		return "%dh %2dm %02ds" % (hours, minutes, seconds)
 
 
 
