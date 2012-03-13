@@ -1,16 +1,16 @@
 import sys
-from lib.saveUtil import save
-import lib.Util as Util
-import lib.logUtil as log
+from lib.saveUtils import save
+import lib.Utils as Utils
+import lib.logUtils as log
 l = log.getLogger(__name__)
 
 enviromentPropertyFile = sys.argv[1]
 
-Util.readProperties(enviromentPropertyFile)
+Utils.readProperties(enviromentPropertyFile)
 
-policySetBindingsList = Util.getProperty('policySetBindings').split(',')
-policySetBindingsUsersList = Util.getProperty('policySetBindingsUsers').split(',')
-policySetBindingsPasswordsList = Util.getProperty('policySetBindingsPasswords').split(',')
+policySetBindingsList = Utils.getProperty('policySetBindings').split(',')
+policySetBindingsUsersList = Utils.getProperty('policySetBindingsUsers').split(',')
+policySetBindingsPasswordsList = Utils.getProperty('policySetBindingsPasswords').split(',')
 
 if not (len(policySetBindingsList) == len(policySetBindingsUsersList) == len(policySetBindingsPasswordsList)):
 	l.exit('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with equal number or values!')
