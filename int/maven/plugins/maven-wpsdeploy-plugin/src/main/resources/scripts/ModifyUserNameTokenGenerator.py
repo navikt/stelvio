@@ -24,6 +24,10 @@ def main():
 
 def setBindingAuth(userid, password, bindingname):
 	l.info("Modifying binding "+bindingname+".")
+	l.debug("AdminTask.setBinding('[-policyType WSSecurity -attachmentType client -bindingScope domain -attributes ",
+		"[ [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.classname com.ibm.websphere.wssecurity.callbackhandler.UNTGenerateCallbackHandler] ",
+		"[application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.basicauth.userid '"+userid+"'] [description '" + bindingname + "'] ",
+		"[domain global] [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.basicauth.password '*********'] ] -bindingName '"+bindingname+"' -bindingLocation ]')")
 	try:
 		result = AdminTask.setBinding('[-policyType WSSecurity -attachmentType client -bindingScope domain -attributes [ [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.classname com.ibm.websphere.wssecurity.callbackhandler.UNTGenerateCallbackHandler] [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.basicauth.userid '+userid+'] [description "' + bindingname + '"] [domain global] [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.basicauth.password '+password+'] ] -bindingName "'+bindingname+'" -bindingLocation ]')
 	except:
