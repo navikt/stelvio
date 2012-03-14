@@ -22,7 +22,7 @@ def main():
 			policySetBindingsPasswordsList[i]
 		)
 
-def setBindingAuth(userid, password, bindingname):
+def setBindingAuth(bindingname, userid, password):
 	l.info("Modifying binding "+bindingname+".")
 	l.debug("AdminTask.setBinding('[-policyType WSSecurity -attachmentType client -bindingScope domain -attributes ",
 		"[ [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.classname com.ibm.websphere.wssecurity.callbackhandler.UNTGenerateCallbackHandler] ",
