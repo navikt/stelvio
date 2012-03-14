@@ -22,8 +22,6 @@ EARFilesToDeployFolder  = sys.argv[1]
 ARG_LIST				= sys.argv[2].split(";")
 
 def main():
-		start = time.clock()
-
 		ears = os.listdir(EARFilesToDeployFolder)
 
 		temp_ears = []
@@ -61,10 +59,6 @@ def main():
 						modifySCAImportBinding(scaModule.moduleNameLong, sca_import, scaModule.scaImports[sca_import].endpoint)
 						
 		save()
-
-		stop = time.clock()
-
-		l.info("Time elapsed: " + str(round(stop - start, 2)) + " seconds.")
 
 def listSCAModules():
 		return AdminTask.listSCAModules()
@@ -172,5 +166,4 @@ class SCAModule:
 		return self.__str__()
 
 		
-main()
-						
+if __name__ == '__main__': main()
