@@ -21,4 +21,4 @@ class Timer:
 		elif minutes > 0:
 			return "%d minutes %d seconds" % (minutes, seconds)
 		else:
-			return "%d seconds" % (hours, minutes, seconds)
+			return "%d seconds" % (seconds)
