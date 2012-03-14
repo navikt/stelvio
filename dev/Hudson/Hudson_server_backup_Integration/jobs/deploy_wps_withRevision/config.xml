@@ -292,6 +292,7 @@ deploy&#xd;
 -Dekstern-pensjon-modules-version=${ESBVersion}&#xd;
 -DinteractiveMode=false&#xd;
 -DenvClass=T&#xd;
+-Dconfig.backup.skip=true&#xd;
 -Dlogging.level=DEBUG</targets>
             <mavenName>Maven</mavenName>
             <usePrivateRepository>false</usePrivateRepository>

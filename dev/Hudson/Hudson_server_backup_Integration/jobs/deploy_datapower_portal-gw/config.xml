@@ -302,7 +302,7 @@
             <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/portal-gw-deployer/pom.xml?op=dl\&amp;rev=${PortalPomRevision}</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Maven>
-            <targets>clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Dbus-configuration-version=${BusConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -X</targets>
+            <targets>clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Dbus-configuration-version=${BusConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</targets>
             <mavenName>Maven</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
