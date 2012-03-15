@@ -7815,7 +7815,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/testUtil
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/timerUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/utils6.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.sh -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/XMLUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/__init__.py -text
 int/maven/plugins/maven-wsdl-plugin/pom.xml -text
