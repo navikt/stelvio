@@ -6,8 +6,8 @@ def assertFalse(case): assert not case
 def assertEqual(case1, case2): assert case1 == case2
 
 def runTests(allTests):
-	numberOfTests = len(allTests)
 	failedTests = 0
+	executedTests = 0
 	
 	for testSetName in allTests.keys():
 		testSet = allTests[testSetName]
@@ -21,9 +21,10 @@ def runTests(allTests):
 			except AssertionError, e:
 				print c.red("Failed!")
 				failedTests += 1
+			executedTests += 1
 	
 	if failedTests:
-		print "%s out of %s tests failed!" % (failedTests, numberOfTests)
+		print "%s out of %s tests failed!" % (failedTests, executedTests)
 		sys.exit(1)
 	else:
-		print "All %s tests asserted OK!" % numberOfTests
+		print "All %s tests asserted OK!" % executedTests
