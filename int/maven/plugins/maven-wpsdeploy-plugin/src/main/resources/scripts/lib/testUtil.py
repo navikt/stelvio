@@ -11,9 +11,10 @@ def runTests(allTests):
 	
 	for testSetName in allTests.keys():
 		testSet = allTests[testSetName]
+		print "\nRunning tests in %s:" % testSetName
 		for testName in testSet.keys():
 			test = testSet[testName]
-			print "Running %s test:" % testName,
+			print "\tRunning %s test:" % testName,
 			try:
 				test()
 				print c.green("OK")
