@@ -1,0 +1,28 @@
+import sys, re
+import lib.color as c
+
+def assertTrue(case): assert case
+def assertFalse(case): assert not case
+def assertEqual(case1, case2): assert case1 == case2
+
+def runTests(allTests):
+	numberOfTests = len(allTests)
+	failedTests = 0
+	
+	for testSetName in allTests.keys():
+		testSet = allTests[testSetName]
+		for testName in testSet.keys():
+			test = testSet[testName]
+			print "Running %s test:" % testName,
+			try:
+				test()
+				print c.green("OK")
+			except AssertionError, e:
+				print c.red("Failed!")
+				failedTests += 1
+	
+	if failedTests:
+		print "%s out of %s tests failed!" % (failedTests, numberOfTests)
+		sys.exit(1)
+	else:
+		print "All %s tests asserted OK!" % numberOfTests

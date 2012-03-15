@@ -13,7 +13,7 @@ policySetBindingsUsersList = Utils.getProperty('policySetBindingsUsers').split('
 policySetBindingsPasswordsList = Utils.getProperty('policySetBindingsPasswords').split(',')
 
 if not (len(policySetBindingsList) == len(policySetBindingsUsersList) == len(policySetBindingsPasswordsList)):
-	l.exit('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with equal number or values!')
+	l.error('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with equal number or values!')
 
 def main():
 	for i in range(len(policySetBindingsList)):
@@ -33,7 +33,6 @@ def setBindingAuth(bindingname, userid, password):
 	except:
 		l.exception("Exception modyfing binding "+bindingname+".")
 
-	l.info("Executed with success.")
 	save()
 	
 	
