@@ -22,6 +22,13 @@ xml = XMLParser('''<configuration xmlns="http://www.nav.no/pensjonsprogrammet/wp
 	<module>pensjon-tjeneste-sak</module>
 	<module>pensjon-tjeneste-tilbakekrevingHendelse</module>
 	<module>pensjon-tjeneste-vedtak</module>
+	<test>
+		<testLevel1>
+			<testLevel2>
+				<textLevel>My text</textLevel>
+			</testLevel2>
+		</testLevel1>
+	</test>
 </configuration>''')
 modules = ['ekstern-pensjon-tjeneste-beregning',
 'ekstern-pensjon-tjeneste-person',
@@ -58,19 +65,34 @@ def firstChildTest():
 def eachTest():
 	customNodeList = [x+"myNode" for x in modules]
 	def p(node):
-		return node+"myNode"
+		if node.getName() == 'module':
+			return node+"myNode"
 	assertEqual(customNodeList, xml.fc().each(p))
 
-def getChildrenFromFullPath():
-	fullPathChildren = [n for n in xml.fc().fc().getChildren('/configuration/module')]
+def getChildrenFromFullPathTest():
+	module = xml.fc().fc()
+	fullPathChildren = [str(n) for n in module.getChildren('/configuration/module')]
 	assertEqual(modules, fullPathChildren)
 
-def getChildrenFromFullWhildcardPath():
-	whildcardChildren = [n for n in xml.fc().fc().getChildren('//module')]
-	assertEqual(modules, whildcardChildren)
+def getChildrenFromFullPathFromChildLevelTest():
+	fullPathChildren = [str(n) for n in xml.fc().fc().getChildren('/configuration/module')]
+	assertEqual(modules, fullPathChildren)
+
+def getChildrenFromRelativePathTest():
+	root = xml
+	fullPathChildren = [str(n) for n in root.getChildren('configuration/module')]
+	assertEqual(modules, fullPathChildren)
+
+def getChildrenFromFullWhildcardPathTest():
+	whildcardChildren = [str(n) for n in xml.fc().fc().getChildren('//test/testLevel1/testLevel2/textLevel')]
+	assertEqual(['My text'], whildcardChildren)
+
+def getChildrenFromRelativeWhildcardPathTest():
+	whildcardChildren = [str(n) for n in xml.fc().getChildren('test/testLevel1/testLevel2/textLevel')]
+	assertEqual(['My text'], whildcardChildren)
 
 def getChildrenTest():
-	children = [str(n) for n in xml.fc().getChildren()]
+	children = [str(n) for n in xml.fc().getChildren() if n.getName() == 'module']
 	assertEqual(modules, children)
 
 def getChildTest():

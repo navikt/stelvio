@@ -10,20 +10,6 @@ import org.w3c.dom.Node as Node
 
 False, True = 0,1 # Define False, True
 
-def getChildNodeValue(element, nodeName):
-	elements = element.getChildNodes()
-	for i in range(elements.getLength()):
-		e = elements.item(i)
-		if e.getNodeName() == nodeName: 
-			return e.getChildNodes().item(0).getNodeValue()
-
-def getElementsByTagName(xml, tagName):
-	tagsObj = xml.getElementsByTagName(tagName)
-	tagList = []
-	for i in range(tagsObj.getLength()): 
-		tagList.append(tagsObj.item(i))
-	return tagList
-
 class XMLParser:
 	def __init__(self, xml, document=None):
 		if isinstance(xml, Node):
@@ -36,10 +22,11 @@ class XMLParser:
 				self.document = self.dom = __parseString(xml)
 
 	def getChild(self, nodeName):
-			for node in self.getChildren():
-					if node.getName() == nodeName:
-							return node
-
+		for node in self.getChildren():
+			if node.getName() == nodeName:
+				return node
+		else:
+			raise NodeNotFoundException('Could not find the "%s" child node you where looking for' % nodeName)
 	def getChildren(self, path=""):
 		'''Get direce descendants or get descendants by path:
 			xml.getChildren('library/books/book') or
@@ -50,21 +37,22 @@ class XMLParser:
 		if not path:
 			return self.__javaToJythonList(self.dom.getChildNodes(), filterOutTextNodes=True)
 		else:
-			traveler = self
-			if path.startswith('/'):
-				xml = self.__makeInstance(self.document)
-			else:
-				xml = self
-				
 			nodePaths = path.split('/')
 			if not nodePaths:
 				return None
+
+			if nodePaths[0] == '':
+				traveler = self.__makeInstance(self.document)
+				nodePaths.pop(0)
+			else:
+				traveler = self
 				
 			for nodePath in nodePaths[:-1]:
 				if not nodePath:
-					traveler = xml.fc()
+					traveler = traveler.fc()
 				else:
-					traveler = xml.findFirst(nodePath)
+					traveler = traveler.getChild(nodePath)
+
 			return traveler.findAll(nodePaths[-1])
 
 	def set(self, data):
@@ -101,7 +89,9 @@ class XMLParser:
 	def each(self, function):
 		out = []
 		for node in self.getChildren():
-			out.append(function(node))
+			result = function(node)
+			if result: 
+				out.append(result)
 		return out
 
 	def getNS(self, id):
@@ -138,3 +128,9 @@ def __parseString(xmlString):
 
 def __parseFile(xmlFile): 
 	return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile)
+	
+class NodeNotFoundException(Exception):
+	def __init__(self, value):
+		self.parameter = value
+	def __str__(self):
+		return repr(self.parameter)
