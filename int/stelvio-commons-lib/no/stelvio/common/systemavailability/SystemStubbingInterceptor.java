@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
@@ -213,7 +214,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		RuntimeException exception = null;
 		Object output = null;
 		validateSupportedInput(operationType, input);
-		String requestId = java.util.UUID.randomUUID().toString();
+		String requestId = UUID.randomUUID().toString();
 		recordStubDataRequest(requestId, operationType, input);
 		try {
 			output = interceptorChain.doIntercept(operationType, input);
