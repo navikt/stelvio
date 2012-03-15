@@ -1,18 +1,26 @@
 import sys, re
+import types
 import lib.color as c
 
 def assertTrue(case): assert case
 def assertFalse(case): assert not case
-def assertEqual(case1, case2): assert case1 == case2
+def assertEqual(case1, case2): 
+	if isinstance(case1, types.StringType) or isinstance(case2, types.StringType):
+		assert str(case1) == str(case2)
+	else:
+		assert case1 == case2
+def assertRegex(regex, text): assert re.match(regex, text)
 
 def runTests(allTests):
 	failedTests = 0
 	executedTests = 0
 	
 	for testSetName in allTests.keys():
-		testSet = allTests[testSetName]
 		print "\nRunning tests in %s:" % testSetName
-		for testName in testSet.keys():
+		testSet = allTests[testSetName]
+		testNames = testSet.keys()
+		testNames.sort()
+		for testName in testNames:
 			test = testSet[testName]
 			print "\tRunning %s test:" % testName,
 			try:

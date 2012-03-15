@@ -45,32 +45,32 @@ modules = ['ekstern-pensjon-tjeneste-beregning',
 'pensjon-tjeneste-vedtak']
 
 def findAllTest():
-	all = [x.get() for x in xml.findAll('module')]
+	all = [str(x) for x in xml.findAll('module')]
 	assertEqual(modules, all)	
 
 def findFirstTest():
-	assertEqual(modules[0], xml.findFirst('module').get())
+	assertEqual(modules[0], xml.findFirst('module'))
 
 
 def firstChildTest():
 	assertEqual(modules[0], xml.fc().fc())
 
 def eachTest():
-	customNodeList = ["myNode"+x for x in modules]
+	customNodeList = [x+"myNode" for x in modules]
 	def p(node):
-		return "myNode" + node.get()
+		return node+"myNode"
 	assertEqual(customNodeList, xml.fc().each(p))
 
 def getChildrenFromFullPath():
-	fullPahtChildren = [n for n in xml.fc().fc().getChildren('/configuration/module')]
-	assertEqual(modules, fullPahtChildren)
+	fullPathChildren = [n for n in xml.fc().fc().getChildren('/configuration/module')]
+	assertEqual(modules, fullPathChildren)
 
 def getChildrenFromFullWhildcardPath():
-	whildcardChildren = [n.get() for n in xml.fc().fc().getChildren('//module')]
+	whildcardChildren = [n for n in xml.fc().fc().getChildren('//module')]
 	assertEqual(modules, whildcardChildren)
 
 def getChildrenTest():
-	children = [n.get() for n in xml.fc().getChildren()]
+	children = [str(n) for n in xml.fc().getChildren()]
 	assertEqual(modules, children)
 
 def getChildTest():

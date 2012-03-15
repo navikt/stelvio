@@ -102,6 +102,7 @@ class XMLParser:
 		out = []
 		for node in self.getChildren():
 			out.append(function(node))
+		return out
 
 	def getNS(self, id):
 		return self.document.getAttributes().getNamedItem('xmlns:'+id)
@@ -118,6 +119,11 @@ class XMLParser:
 					continue
 			smartList.append(self.__makeInstance(node))
 		return smartList
+		
+	def __add__(self, x):
+		return self.__str__() + x
+	def __radd__(self, x):
+		return x + self.__str__()
 		
 	def __str__(self):
 		return self.get()
