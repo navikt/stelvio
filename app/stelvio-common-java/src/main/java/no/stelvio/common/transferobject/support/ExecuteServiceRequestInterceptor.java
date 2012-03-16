@@ -47,6 +47,8 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 	/**
 	 * Method used to intercept service calls, retrieve RequestContext and set it on thread.
 	 * 
+	 * 2012-03-16: IRPORT-1531: call setRequestContext even if requestContext == null 
+	 *
 	 * @param i
 	 *            MethodInvocation
 	 * @return the value returned by the method that is intercepted
@@ -73,24 +75,22 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 				RequestContext requestContext = getRequestContext(arg); // Get requestcontext from servicerequest
 
-				if (requestContext != null) {
-					if (overideComponentId) {
-						if (log.isTraceEnabled()) {
-							log.trace("ComponentId passed by ServiceRequest is set to be overridden if possible");
-						}
-						requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
-					}
-
-					RequestContextSetter.setRequestContext(requestContext); // Set requestContext on thread
-					if (log.isDebugEnabled()) {
-						log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
-					}
-					break; // Should not be more than one service request per call
-				} else {
-					if (log.isDebugEnabled()) {
-						log.debug("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
-					}
+				if (requestContext == null && log.isDebugEnabled()) { // If the context is null we may want to log it
+					log.debug("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
 				}
+
+				if (overideComponentId) {
+					if (log.isTraceEnabled()) {
+						log.trace("ComponentId passed by ServiceRequest is set to be overridden if possible");
+					}
+					requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
+				}
+
+				RequestContextSetter.setRequestContext(requestContext); // Set requestContext on thread
+				if (log.isDebugEnabled()) {
+					log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
+				}
+				break; // Should not be more than one service request per call
 			}
 		}
 		if (log.isDebugEnabled()) {
