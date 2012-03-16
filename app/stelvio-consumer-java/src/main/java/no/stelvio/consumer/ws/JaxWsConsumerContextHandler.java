@@ -15,6 +15,9 @@ import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
 
@@ -22,10 +25,12 @@ import no.stelvio.common.context.RequestContextHolder;
  * SOAPHandler that adds Stelvio Context to the SOAP header, for use by all JAX-WS clients on the Stelvio platform.
  * 
  * @author person727e2beea31f, Visma Sirius
- * @see ConsumerContextHandler for use by JAX-RPC clients.
+ * @author personce50574b42d2, Accenture
  */
 public class JaxWsConsumerContextHandler implements SOAPHandler<SOAPMessageContext> {
 
+	protected final Log log = LogFactory.getLog(this.getClass());
+	
 	protected static final QName STELVIO_CONTEXT_QNAME = new QName("http://www.nav.no/StelvioContextPropagation",
 			"StelvioContext");
 
@@ -55,12 +60,9 @@ public class JaxWsConsumerContextHandler implements SOAPHandler<SOAPMessageConte
 				Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 				jaxbMarshaller.marshal(stelvioContextData, new DOMResult(header));
 			} catch (SOAPException e) {
-				e.printStackTrace();
-				throw new RuntimeException(e);
+				log.error("Errpr with the SOAP envelope/header: ", e);
 			} catch (JAXBException e) {
-				e.printStackTrace();
-				throw new RuntimeException(e);
-			}
+				log.error("Error while marshalling the stelvioContextData element: ", e);			}
 		}
 		return true;
 	}
