@@ -18,7 +18,7 @@ import no.stelvio.example.services.echo.v1.binding.EchoQuackUnsupported;
 import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
 
 @WebServiceClient(name = "EchoService", targetNamespace = "http://stelvio.no/example/services/echo/v1/Binding/")
-@HandlerChain(file = "EchoClientHandler.xml")
+@HandlerChain(file = "/no/stelvio/consumer/ws/ContextHandlerChain.xml")
 public class EchoClient extends Service {
 
 	private static String PROVIDER_ENDPOINT_URI = "http://localhost:9080/stelvio-example-echo-provider/Echo";
