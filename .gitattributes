@@ -583,6 +583,7 @@ app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/FaultRecoverableE
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/FaultUnrecoverableException.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/JaxWsConsumerContextHandler.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/StelvioContextData.java -text
+app/stelvio-consumer-java/src/main/resources/no/stelvio/consumer/ws/ContextHandlerChain.xml -text
 app/stelvio-consumer-java/src/test/.copyarea.db -text
 app/stelvio-consumer-java/src/test/java/no/stelvio/consumer/ws/JaxWsConsumerContextHandlerTest.java -text
 app/stelvio-domain-java/.copyarea.db -text
