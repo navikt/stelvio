@@ -4,7 +4,7 @@ DEFAULT_MVN_REPOSITORY = 'http://maven.adeo.no/m2internal'
 DEFAULT_MVN_SNAPSHOT_REPOSITORY = 'http://maven.adeo.no/nexus/content/repositories/m2snapshot'
 DEFAULT_MVN_LOCAL_REPOSITORY = ''
 
-class MavenRepo:
+class MavenRepository:
 	def __init__(self, repository=None, snapshotRepository=None, localRepository=None):
 		self.repository = repository or DEFAULT_MVN_REPOSITORY
 		self.snapshotRepository = snapshotRepository or DEFAULT_MVN_SNAPSHOT_REPOSITORY
