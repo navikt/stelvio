@@ -59,3 +59,4 @@
 <#include "LogTarget.ftl">
 <#include "AAAPolicyClientSSL2LTPAURLauth.ftl">
 <#include "AAAPolicyUsernameToken2UsernameToken.ftl">
+<#include "AAAPolicyUsernameToken2UsernameTokenLDAPS.ftl">
