@@ -1,6 +1,6 @@
 import sys, os
 from lib.downloadUtil import downloadFile, getPage
-from lib.pomUtil import Module, MavenRepository
+from lib.pomUtil import MavenRepository
 from lib.XmlToUtil import pomXmlDependensiesToPomModules
 import lib.logUtil as log
 l = log.getLogger(__name__)
