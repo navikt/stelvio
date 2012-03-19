@@ -7738,15 +7738,13 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Log.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/WPS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/monitor.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/processUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/reports.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/runTests.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/security.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/serverConfig.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/serverControl.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/serverSetup.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/start.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/tests/test.ApplicationManagement.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/tests/unitest.example.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/troubleshoot.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/versionMBeanInstall.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/wsadminlib.py -text
@@ -7758,6 +7756,8 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyWSEndpoints.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BackupWebsphereConfigMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BounceDeploymentManager.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/CreateBlaGroupsMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeleteBlaGroupsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifact.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifactMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployResourcesMojo.java -text
@@ -7788,6 +7788,8 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/META-INF/plexus/comp
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ApplicationManagement.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterStartStop.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateApplicationArtifacts.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateBLAGroups.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/DeleteBLAGroups.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/DownloadEARFiles.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/Executor.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ModifyMaxConcurrencyAS.py -text
