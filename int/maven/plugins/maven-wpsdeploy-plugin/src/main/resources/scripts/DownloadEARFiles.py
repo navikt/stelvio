@@ -1,6 +1,6 @@
 import sys, os
 from lib.downloadUtil import downloadFile, getPage
-from lib.pomUtil import Module
+from lib.pomUtil import Module, MavenRepository
 import lib.javaXMLUtil as XML
 import lib.logUtil as log
 l = log.getLogger(__name__)
@@ -10,6 +10,8 @@ POMS = sys.argv[2]
 MVN_LOCAL_REPO = sys.argv[3]
 MVN_REPO = sys.argv[4]
 MVN_SNAPSHOT_REPO = sys.argv[5]
+
+repo = MavenRepository(repository=MVN_REPO, snapshotRepository=MVN_SNAPSHOT_REPO, localRepository=MVN_LOCAL_REPO)
 
 def pomDependenciesToModuleList(pom):
 	modules = []
@@ -23,7 +25,7 @@ def pomDependenciesToModuleList(pom):
 		version = XML.getChildNodeValue(d, 'version')
 		type = XML.getChildNodeValue(d, 'type')
 	
-		modules.append(Module(artifactId=artifactId, groupId=groupId, version=version,type=type, localRepo=MVN_LOCAL_REPO, repo=MVN_REPO, snapshotRepo=MVN_SNAPSHOT_REPO))
+		modules.append(Module(artifactId=artifactId, groupId=groupId, version=version, type=type, repository=repo))
 	return modules
 
 def main():
