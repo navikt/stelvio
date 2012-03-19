@@ -22,7 +22,7 @@ def runTests(allTests):
 		testNames.sort()
 		for testName in testNames:
 			test = testSet[testName]
-			print "\tRunning %s test:" % testName,
+			print "\t%s:" % testName,
 			try:
 				test()
 				print c.green("OK")
@@ -32,7 +32,7 @@ def runTests(allTests):
 			executedTests += 1
 	
 	if failedTests:
-		print "%s out of %s tests failed!" % (failedTests, executedTests)
+		print c.red("%s out of %s tests failed!" % (failedTests, executedTests))
 		sys.exit(1)
 	else:
-		print "All %s tests asserted OK!" % executedTests
+		print c.green("All %s tests asserted OK!" % executedTests)

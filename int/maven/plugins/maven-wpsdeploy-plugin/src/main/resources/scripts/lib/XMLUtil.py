@@ -10,17 +10,22 @@ import org.w3c.dom.Node as Node
 
 False, True = 0,1 # Define False, True
 
-class XMLParser:
-	def __init__(self, xml, document=None):
-		if isinstance(xml, Node):
-			self.dom = xml
-			self.document = document
-		elif isinstance(xml, types.StringType):
-			if os.path.exists(xml):
-				self.document = self.dom = __parseFile(xml)
-			else:
-				self.document = self.dom = __parseString(xml)
 
+def parseXML(xml):
+	if isinstance(xml, Node):
+		return XMLNode(xml, xml)
+	elif isinstance(xml, types.StringType):
+		if os.path.exists(xml):
+			dom = __parseFile(xml)
+		else:
+			dom = __parseString(xml)
+		return XMLNode(dom, dom)
+
+class XMLNode:
+	def __init__(self, xml, document):
+		self.dom = xml
+		self.document = document
+		
 	def getChild(self, nodeName):
 		for node in self.getChildren():
 			if node.getName() == nodeName:

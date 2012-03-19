@@ -1,7 +1,8 @@
 from lib.testUtil import assertEqual, assertTrue, assertFalse
-from lib.XMLUtil import XMLParser
+from lib.XMLUtil import parseXML, NodeNotFoundException
+False, True = 0,1 # Define False, True
 
-xml = XMLParser('''<configuration xmlns="http://www.nav.no/pensjonsprogrammet/wpsconfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nav.no/pensjonsprogrammet/wpsconfiguration moduleconfig.xsd">
+xml = parseXML('''<configuration xmlns="http://www.nav.no/pensjonsprogrammet/wpsconfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nav.no/pensjonsprogrammet/wpsconfiguration moduleconfig.xsd">
 	<module>ekstern-pensjon-tjeneste-beregning</module>
 	<module>ekstern-pensjon-tjeneste-person</module>
 	<module>nav-ent-pen-beregning</module>
@@ -68,6 +69,14 @@ def eachTest():
 		if node.getName() == 'module':
 			return node+"myNode"
 	assertEqual(customNodeList, xml.fc().each(p))
+
+def getChildExceptionTest():
+	try:
+		xml.getChild('nonExistingChild')
+	except NodeNotFoundException, e:
+		assert True
+	else:
+		assert False
 
 def getChildrenFromFullPathTest():
 	module = xml.fc().fc()
