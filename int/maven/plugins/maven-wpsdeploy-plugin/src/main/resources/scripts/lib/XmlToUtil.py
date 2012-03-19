@@ -1,5 +1,5 @@
 from lib.XMLUtil import parseXML
-from lib.PomUtil import PomModule
+from lib.pomUtil import PomModule
 def pomXmlDependensiesToPomModules(xml, repository):
 	modules = []
 	
