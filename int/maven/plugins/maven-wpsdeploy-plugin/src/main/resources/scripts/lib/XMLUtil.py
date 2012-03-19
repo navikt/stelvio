@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory as DocumentBuilderFactory
 import org.w3c.dom.Node as Node
 # ELEMENT_NODE, ATTRIBUTE_NODE, TEXT_NODE, CDATA_SECTION_NODE, ENTITY_REFERENCE_NODE, ENTITY_NODE, PROCESSING_INSTRUCTION_NODE, COMMENT_NODE, DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE
 
-False, True = 0,1 # Define False, True
+False, True = 0,1 #Define False, True
 
 
 def parseXML(xml):
