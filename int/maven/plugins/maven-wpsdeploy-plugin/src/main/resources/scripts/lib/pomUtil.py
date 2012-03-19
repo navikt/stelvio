@@ -10,7 +10,7 @@ class MavenRepo:
 		self.snapshotRepository = snapshotRepository or DEFAULT_MVN_SNAPSHOT_REPOSITORY
 		self.localRepository = localRepository or DEFAULT_MVN_LOCAL_REPOSITORY
 
-class Module:
+class PomModule:
 	"""Denne modulen kan bli kalt med:
 		- ikke navngitte arugmenter i denne rekkefolgen ('groupId', 'artifactId', 'type', 'version', 'repository')
 		- navgitte argument i tilfeldig rekkefølge(groupId='', artifactId='', version='', type='', repository='')

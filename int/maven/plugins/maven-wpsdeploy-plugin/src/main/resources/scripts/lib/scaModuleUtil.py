@@ -1,7 +1,7 @@
 import os, re
 from lib.processUtil import run
 
-False, True = 0,1 # Define False, True
+False, True = 0,1 #Define False, True
 appREGEX = re.compile('_v\d+')
 versionedModule = re.compile('.*-tjeneste-')
 parseModuleNameREGEX = re.compile('^((?:.+(-tjeneste-))?.+)-(\d+\.\d+\.\d+.*).ear$')
@@ -26,7 +26,7 @@ def getModulesToBeInstalled(earFolder):
 class ScaModule:
 	''' Example:
 		shortName:       nav-tjeneste-sak
-		version:         1
+		version:         1.0.3
 		moduleName:      nav-tjeneste-sak_v1
 		applicationName: nav-tjeneste-sak_v1App
 	'''
@@ -42,7 +42,8 @@ class ScaModule:
 		
 	def __eq__(self, other):
 		return self.applicationName == str(other)
-	
+	def __hash__(self):
+		return self.applicationName
 	def __str__(self):
 		return self.applicationName
 	def __add__(self, x):

@@ -7799,6 +7799,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/RoleMapping.
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/SetEnvironmentVariableDmgr.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/Utils.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/XMLUtil.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/XmlToUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/businessProcesses.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
