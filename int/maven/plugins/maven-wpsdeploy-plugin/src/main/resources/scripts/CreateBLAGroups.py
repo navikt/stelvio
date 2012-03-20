@@ -27,7 +27,7 @@ def main():
 		
 		l.info('Getting a list of all installed modules.')
 		scaModules = getInstalledModules()
-		l.debug('Got', listToCSV(scaModules))
+		l.debug('Got these modules:', listToCSV(scaModules))
 		
 		toBlaGroup = []		
 		for blaModule in blaModules:
@@ -47,20 +47,20 @@ def main():
 
 def addUnitToGroup(scaModule, blaGroupId):
 	blaName = blaGroupId.replace('WebSphere:blaname=','')
-	cmd = '[-blaID %(blaId)s -cuSourceID %(appId)s -CUOptions [[%(blaId)s %(appId)s %(blaName)s	_%(appName)s "" 1]]]' % {
+	cmd = '[-blaID %(blaId)s -cuSourceID %(appId)s -CUOptions [[%(blaId)s %(appId)s %(blaName)s_%(appName)s "" 1]]]' % {
 			'appId': 'WebSphere:blaname='+scaModule.applicationName,
 			'appName': scaModule.moduleName,
 			'blaId': blaGroupId,
 			'blaName': blaName
 		}
-	l.debug('AdminTask.addCompUnit('+cmd+')')
+	l.debug('AdminTask.addCompUnit("'+cmd+'")')
 	if AdminTask.addCompUnit(cmd):
 		return True
 	else:
 		return False
 
 def createNewBLAGroup(name):
-	id = AdminTask.createEmptyBLA('[-name %(name)s-group -description "Applications that must be restarted when a new version of %(name)s is deployed" ]'% {'name':name})
+	id = AdminTask.createEmptyBLA('[-name %(name)s -description "Applications that must be restarted when a new version of %(name)s is deployed" ]'% {'name':name})
 	return id
 
 def listToCSV(list):

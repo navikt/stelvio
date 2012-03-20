@@ -12,7 +12,7 @@ def main():
 				l.info('Deleted', unitId)
 			else:
 				l.error('Could not delete', unitId)
-		l.info('Deleting BLA group', blaGroupId)
+				
 		if deleteEmptyBlaGroup(blaGroupId):
 			l.info('Deleted', blaGroupId)
 		else:

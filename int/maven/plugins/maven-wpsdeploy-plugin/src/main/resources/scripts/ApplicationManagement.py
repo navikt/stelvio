@@ -6,6 +6,7 @@ from lib.syncUtil import sync
 from lib.saveUtil import save
 from lib.businessProcesses import getUniqueBPList
 from lib.Utils import readDistributionDirectory, parseApplicationNames, intervalToString, getApplicationName, readNumberOfFilesInDistributionDirectory
+import lib.namingConventionLogic as naming
 
 import lib.logUtil as log
 
@@ -28,13 +29,13 @@ def uninstallAll(appNames):
 	appsToDeploy = {}
 	procsToDeploy = {}
 	nameVersionREGEX = re.compile('(.*)-((\d+).\d+.\d+(-alpha\d{3})?(-SNAPSHOT)?)')
-	processREGEX = re.compile('-prosess-|-microflow-|-bproc-|-bsrv-frg-hentinstitusjonsoppholdliste')
-	versionedREGEX = re.compile('-(tjeneste|produsent|konsument)-')
 	for appName in appNames:
 		name, version, majorVersion = nameVersionREGEX.match(appName).groups()[:3]
-		if processREGEX.search(appName): procsToDeploy[name] = version
+		if naming.isProcess(appName): 
+			procsToDeploy[name] = version
 		else:
-			if versionedREGEX.search(name): name = name +'_v'+ majorVersion
+			if naming.isVersioned(name):
+				name = name +'_v'+ majorVersion
 			appsToDeploy[name] = version
 			
 	stop = time.clock()

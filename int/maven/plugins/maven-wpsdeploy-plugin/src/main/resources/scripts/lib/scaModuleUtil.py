@@ -1,15 +1,14 @@
 import os, re
+import lib.namingConventionLogic as naming
 
 False, True = 0,1 #Define False, True
 appREGEX = re.compile('_v\d+')
-versionedModule = re.compile('.*-tjeneste-')
-parseModuleNameREGEX = re.compile('^((?:.+(-tjeneste-))?.+)-(\d+\.\d+\.\d+.*).ear$')
 
 def getInstalledModules():
 	modules = []
 	for line in AdminTask.listSCAModules().splitlines():
-		moduleName, applicationName, version, shortName, cellId, empty = line.split(':')
-		scaModule = ScaModule(shortName, version)
+		moduleName, applicationName, scaVersion, shortName, cellId, empty = line.split(':')
+		scaModule = ScaModule(shortName, scaVersion.strip())
 		modules.append(scaModule)
 	return modules
 	
@@ -17,24 +16,27 @@ def getModulesToBeInstalled(earFolder):
 	earFiles = os.lisdir(earFolder)
 	modules = []
 	for earFile in earFiles:
-		shortName, versioned, version = parseModuleNameREGEX.match(earFile)
-		scaModule = ScaModule(shortName, version, versioned)
+		shortName, version, majorVersion, versioned = naming.parseEarFileName(earFile)
+		if versioned:
+			scaVersion = majorVersion
+		else:
+			scaVersion = None
+		scaModule = ScaModule(shortName, scaVersion)
 		modules.append(scaModule)
 	return modules
 	
 class ScaModule:
 	''' Example:
 		shortName:       nav-tjeneste-sak
-		version:         1.0.3
+		scaVersion:      1
 		moduleName:      nav-tjeneste-sak_v1
 		applicationName: nav-tjeneste-sak_v1App
 	'''
-	def __init__(self, shortName, version, versioned=False):
+	def __init__(self, shortName, scaVersion):
 		self.shortName = shortName
-		self.version = version
-		if versioned:
-			majorVersion = version.split('.', 1)[0]
-			self.moduleName = '%s_v%s' % (shortName, majorVersion)
+		self.scaVersion = scaVersion
+		if scaVersion:
+			self.moduleName = '%s_v%s' % (shortName, scaVersion)
 		else:
 			self.moduleName = shortName
 		self.applicationName = self.moduleName+'App'
