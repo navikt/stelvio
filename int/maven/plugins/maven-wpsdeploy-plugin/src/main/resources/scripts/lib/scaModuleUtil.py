@@ -8,6 +8,8 @@ def getInstalledModules():
 	modules = []
 	for line in AdminTask.listSCAModules().splitlines():
 		moduleName, applicationName, scaVersion, shortName, cellId, empty = line.split(':')
+		if moduleName.endswith('.AppTarget'):
+			continue
 		scaModule = ScaModule(shortName, scaVersion.strip())
 		modules.append(scaModule)
 	return modules
