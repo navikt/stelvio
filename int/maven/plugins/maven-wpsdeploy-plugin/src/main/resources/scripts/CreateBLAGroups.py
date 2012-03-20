@@ -53,7 +53,7 @@ def addUnitToGroup(scaModule, blaGroupId):
 			'blaId': blaGroupId,
 			'blaName': blaName
 		}
-	l.debug('AdminTask.addCompUnit("'+cmd+'")')
+	l.debug('AdminTask.addCompUnit(\''+cmd+'\')')
 	if AdminTask.addCompUnit(cmd):
 		return True
 	else:
