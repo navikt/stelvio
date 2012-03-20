@@ -1,4 +1,5 @@
-import sys, os, re
+import sys, os
+from lib.saveUtil import save
 from lib.XmlToUtil import blaGroupXmlToStringList
 from lib.scaModuleUtil import getInstalledModules
 import lib.logUtil as log
@@ -6,22 +7,27 @@ l = log.getLogger(__name__)
 
 False, True = 0,1 #Define False, True
 BLA_GROUPS_DIR = sys.argv[1]
-BLA_NAME_REGEX = re.compile('WebSphere:blaname=(.*)App')
 
 def main():
 	blaGroupFiles = os.listdir(BLA_GROUPS_DIR)
 	l.debug('Found these BLA group files:', listToCSV(blaGroupFiles))
 	for blaGroupFile in blaGroupFiles:
 		blaGroupName = blaGroupFile.replace('.xml','')
-		l.info('Creating new BLA group:', blaGroupName)
-		blaGroupId = createNewBLAGroup(blaGroupName)
 		
 		l.info('Parsing', blaGroupFile)
-		blaModules = blaGroupXmlToStringList(blaGroupFile)
+		blaModules = blaGroupXmlToStringList(BLA_GROUPS_DIR +'/'+ blaGroupFile)
 		l.debug('Found these modules in %s: %s' % (blaGroupFile, listToCSV(blaModules)))
+		
+		if blaModules:
+			l.info('Creating new BLA group:', blaGroupName)
+			blaGroupId = createNewBLAGroup(blaGroupName)
+		else:
+			l.info('No modules in BLA group file', blaGroupFile)
+			continue
 		
 		l.info('Getting a list of all installed modules.')
 		scaModules = getInstalledModules()
+		l.debug('Got', listToCSV(scaModules))
 		
 		toBlaGroup = []		
 		for blaModule in blaModules:
@@ -36,12 +42,13 @@ def main():
 				l.info('Added', scaModule, 'to', blaGroupId)
 			else:
 				l.error('Could not add', scaModule, 'to', blaGroupId)
-		
+				
+	save()		
 
 def addUnitToGroup(scaModule, blaGroupId):
 	blaName = blaGroupId.replace('WebSphere:blaname=','')
-	cmd = '[-blaID %(blaId)s -cuSourceID %(appId)s -CUOptions [[%(blaId)s %(appId)s %(blaName)_%(appName)s "" 1]]]' % {
-			'appId': scaModule.applicationName,
+	cmd = '[-blaID %(blaId)s -cuSourceID %(appId)s -CUOptions [[%(blaId)s %(appId)s %(blaName)s	_%(appName)s "" 1]]]' % {
+			'appId': 'WebSphere:blaname='+scaModule.applicationName,
 			'appName': scaModule.moduleName,
 			'blaId': blaGroupId,
 			'blaName': blaName
