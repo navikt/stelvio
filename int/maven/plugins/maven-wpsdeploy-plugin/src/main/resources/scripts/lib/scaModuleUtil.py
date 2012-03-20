@@ -1,5 +1,4 @@
 import os, re
-from lib.processUtil import run
 
 False, True = 0,1 #Define False, True
 appREGEX = re.compile('_v\d+')
@@ -9,7 +8,7 @@ parseModuleNameREGEX = re.compile('^((?:.+(-tjeneste-))?.+)-(\d+\.\d+\.\d+.*).ea
 def getInstalledModules():
 	modules = []
 	for line in AdminTask.listSCAModules().splitlines():
-		moduleName, applicationName, version, shortName, cellId = line.split(':')
+		moduleName, applicationName, version, shortName, cellId, empty = line.split(':')
 		scaModule = ScaModule(shortName, version)
 		modules.append(scaModule)
 	return modules

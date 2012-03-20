@@ -1,4 +1,4 @@
-import re, os
+import os
 
 DEFAULT_MVN_REPOSITORY = 'http://maven.adeo.no/m2internal'
 DEFAULT_MVN_SNAPSHOT_REPOSITORY = 'http://maven.adeo.no/nexus/content/repositories/m2snapshot'

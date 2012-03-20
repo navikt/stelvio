@@ -1,14 +1,16 @@
 import types
-import os
+import os, re
 
 import java.io.File as File
 import java.io.StringReader as StringReader
 import org.xml.sax.InputSource as InputSource
 import javax.xml.parsers.DocumentBuilderFactory as DocumentBuilderFactory
 import org.w3c.dom.Node as Node
-# ELEMENT_NODE, ATTRIBUTE_NODE, TEXT_NODE, CDATA_SECTION_NODE, ENTITY_REFERENCE_NODE, ENTITY_NODE, PROCESSING_INSTRUCTION_NODE, COMMENT_NODE, DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
 False, True = 0,1 #Define False, True
+xmlREGEX = re.compile('<.*>')
 
 
 def parseXML(xml):
@@ -17,8 +19,10 @@ def parseXML(xml):
 	elif isinstance(xml, types.StringType):
 		if os.path.exists(xml):
 			dom = __parseFile(xml)
-		else:
+		elif xmlREGEX.search(xml):
 			dom = __parseString(xml)
+		else:
+			l.error('Input is not xml or a filePath to a valid xml file!\nThe input was:', xml)
 		return XMLNode(dom, dom)
 
 class XMLNode:

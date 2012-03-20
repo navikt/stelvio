@@ -1,6 +1,6 @@
 from lib.XMLUtil import parseXML
 from lib.pomUtil import PomModule
-def pomXmlDependensiesToPomModules(xml, repository):
+def pomXmlDependensiesToPomModules(pom, repository):
 	modules = []
 	
 	xml = parseXML(pom)
@@ -14,6 +14,6 @@ def pomXmlDependensiesToPomModules(xml, repository):
 		modules.append(PomModule(artifactId=artifactId, groupId=groupId, version=version, type=type, repository=repository))
 	return modules
 	
-def blaGroupXmlToStringList(xml):
-	xml = parseXML(blaGroupFile)
+def blaGroupXmlToStringList(blaGroupXmlFile):
+	xml = parseXML(blaGroupXmlFile)
 	return [module.get() for module in xml.findAll('module')]

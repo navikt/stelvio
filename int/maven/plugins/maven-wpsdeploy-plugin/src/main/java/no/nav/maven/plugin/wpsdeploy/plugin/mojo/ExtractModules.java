@@ -183,6 +183,6 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Extract ESB release";
+		return "Download EAR files";
 	}
 }
