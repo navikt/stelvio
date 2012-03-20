@@ -35,31 +35,10 @@ from lib.saveUtil import save
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
 from lib.utils6 import readDistributionDirectory, parseApplicationNames
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )
 from lib.environment import createNameSpaceBinding, createSharedLibrary
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/monitor.py" )
-# `->Er ikke i bruk
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/reports.py" )
-# `->Er ikke i bruk
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/resources.py" )
 from lib.resources import installResourceAdapter, createJ2CConnectionFactory, createDataSource, createJDBCProvider, createJMSActivationSpec, createJMSConnectionFactory, createJMSQueue, createJMSTopic, createMQConnectionFactory, createMQDestination, createSharedLibrary
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/security.py" )
-#not in use
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverConfig.py" )
-#not in use
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverControl.py" )
-#not in use
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverSetup.py" )
-# not in use
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serviceIntegration.py" )
 from lib.serviceIntegration import createSIBDestination
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/troubleshoot.py" )
-#NOt in use
-#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/WPS.py" )
-# not in use
-
 
 
 APPLICATIONS_FOLDER 	 = sys.argv[1]
