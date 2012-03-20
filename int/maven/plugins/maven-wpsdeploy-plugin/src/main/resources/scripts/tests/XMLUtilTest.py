@@ -1,6 +1,7 @@
 from lib.testUtil import assertEqual, assertTrue, assertFalse
 from lib.XMLUtil import parseXML, NodeNotFoundException
-False, True = 0,1 # Define False, True
+
+False, True = 0,1 #Define False, True
 
 xml = parseXML('''<configuration xmlns="http://www.nav.no/pensjonsprogrammet/wpsconfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nav.no/pensjonsprogrammet/wpsconfiguration moduleconfig.xsd">
 	<module>ekstern-pensjon-tjeneste-beregning</module>
