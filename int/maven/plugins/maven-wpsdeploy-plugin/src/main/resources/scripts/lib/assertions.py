@@ -2,7 +2,7 @@ import sys, re
 import types
 
 '''Usage:
-from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises
+from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises, assertContains
 '''
 
 False, True = 0,1 #Define False, True
@@ -20,6 +20,13 @@ def assertRaises(exception, function, *args, **kwargs):
 		assert True
 	except:
 		assert False, 'Did not catch the expected exception of type "%s" but got an "%s" instead!' % (exception, sys.exc_info()[0])
+def assertContains(list, item, msg=None):
+	for l in list:
+		if l == item:
+			assert True
+			break
+	else:
+		assert False, msg
 
 def __equal(case1, case2):
 	if isinstance(case1, types.StringType) or isinstance(case2, types.StringType):
