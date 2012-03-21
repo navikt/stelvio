@@ -1,38 +1,30 @@
 import sys, re
 import types
 import lib.color as c
-
-def assertTrue(case): assert case
-def assertFalse(case): assert not case
-def assertEqual(case1, case2): 
-	if isinstance(case1, types.StringType) or isinstance(case2, types.StringType):
-		assert str(case1) == str(case2)
-	else:
-		assert case1 == case2
-def assertRegex(regex, text): assert re.match(regex, text)
+False, True = 0,1 #Define False, True
 
 def runTests(allTests):
 	failedTests = 0
 	executedTests = 0
 	
 	for testSetName in allTests.keys():
-		print "\nRunning tests in %s:" % testSetName
+		print '\nRunning tests in %s:' % testSetName
 		testSet = allTests[testSetName]
 		testNames = testSet.keys()
 		testNames.sort()
 		for testName in testNames:
 			test = testSet[testName]
-			print "\t%s:" % testName,
+			print '\t%s:' % testName,
 			try:
 				test()
-				print c.green("OK")
+				print c.green('OK')
 			except AssertionError, e:
-				print c.red("Failed!")
+				print c.red('Failed with message:', e)
 				failedTests += 1
 			executedTests += 1
 	
 	if failedTests:
-		print c.red("%s out of %s tests failed!" % (failedTests, executedTests))
+		print c.red('%s out of %s tests failed!' % (failedTests, executedTests))
 		sys.exit(1)
 	else:
-		print c.green("All %s tests asserted OK!" % executedTests)
+		print c.green('All %s tests asserted OK!' % executedTests)

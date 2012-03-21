@@ -1,4 +1,4 @@
-from lib.testUtil import assertEqual, assertTrue, assertFalse
+from lib.assertions import assertEqual, assertTrue, assertFalse, assertRaises
 from lib.XMLUtil import parseXML, NodeNotFoundException
 
 False, True = 0,1 #Define False, True
@@ -72,12 +72,7 @@ def eachTest():
 	assertEqual(customNodeList, xml.fc().each(p))
 
 def getChildExceptionTest():
-	try:
-		xml.getChild('nonExistingChild')
-	except NodeNotFoundException, e:
-		assert True
-	else:
-		assert False
+	assertRaises(NodeNotFoundException, xml.getChild, 'nonExistingChild')
 
 def getChildrenFromFullPathTest():
 	module = xml.fc().fc()

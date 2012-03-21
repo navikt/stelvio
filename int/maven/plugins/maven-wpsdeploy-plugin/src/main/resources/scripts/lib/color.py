@@ -5,7 +5,7 @@ Color library version 1.0
 '''
 
 #main method
-def __custom(code=0, *text): return '\033[%sm%s\033[0m' % (code, ' '.join(text))
+def __custom(code=0, *text): return '\033[%sm%s\033[0m' % (code, ' '.join( [str(x) for x in text] ))
 
 #spesial methods
 def underline(*text): return __custom(21, *text)
