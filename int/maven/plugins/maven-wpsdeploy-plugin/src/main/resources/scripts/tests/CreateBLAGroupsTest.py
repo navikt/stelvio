@@ -17,8 +17,9 @@ scaModule1 = ScaModule(DEFAULT_MODULE_NAME, 1)
 scaModule2 = ScaModule(DEFAULT_MODULE_NAME, 2)
 
 def getScaModulesFromBlaModulesTest():
-	assertContains(cbg.getScaModulesFromBlaModules(['ekstern-pensjon-tjeneste-beregning']), scaModule1, 'Could not find v1 of the module in the list')
-	assertContains(cbg.getScaModulesFromBlaModules(['ekstern-pensjon-tjeneste-beregning']), scaModule2, 'Could not find v2 of the module in the list')
+	scaModules = cbg.getScaModulesFromBlaModules(['ekstern-pensjon-tjeneste-beregning'])
+	assertContains(scaModules, scaModule1, 'Could not find v1 of the module in the list')
+	assertContains(scaModules, scaModule2, 'Could not find v2 of the module in the list')
 
 def addUnitToGroupTest():
 	assertTrue(cbg.addUnitToGroup(scaModule1, 'ignored input'))
@@ -28,4 +29,4 @@ def createNewBLAGroupTest():
 	
 def listToCSVTest():
 	assertEqual(cbg.listToCSV(['a','b','c','d','e']), 'a, b, c, d, e', 'Could not convert string array to CSV')
-	assertEqual(cbg.listToCSV([1,2,3,4,5]), '1, 2, 3, 4, 5', 'Could not convert int array to CSV')
+	assertEqual(cbg.listToCSV([1,2,3,4,5]), '1, 2, 3, 4, 5', 'Could not convert integer array to CSV')
