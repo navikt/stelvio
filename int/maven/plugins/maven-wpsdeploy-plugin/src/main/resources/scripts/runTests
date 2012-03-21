@@ -1,3 +1,4 @@
 #! /bin/bash
 cd $(dirname "${BASH_SOURCE[0]}")
-/opt/IBM/WebSphere/ProcServer/bin/wsadmin.sh -host e26apvl037.test.local -port 8879 -user srvPensjon -password Ash5SoxP -lang jython -f Executor.py runTests.py
+javaOld --cp /opt/IBM/WebSphere/ProcServer/optionalLibraries/jython/jython.jar org.python.util.jython runTests.py
+#/opt/IBM/WebSphere/ProcServer/bin/wsadmin.sh -host e26apvl037.test.local -port 8879 -user srvPensjon -password Ash5SoxP -lang jython -f Executor.py runTests.py
