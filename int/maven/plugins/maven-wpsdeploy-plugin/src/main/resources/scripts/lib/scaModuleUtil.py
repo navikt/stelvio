@@ -15,7 +15,7 @@ def getInstalledModules():
 	return modules
 	
 def getModulesToBeInstalled(earFolder):
-	earFiles = os.lisdir(earFolder)
+	earFiles = os.listdir(earFolder)
 	modules = []
 	for earFile in earFiles:
 		shortName, version, majorVersion, versioned = naming.parseEarFileName(earFile)
@@ -42,14 +42,17 @@ class ScaModule:
 		else:
 			self.moduleName = shortName
 		self.applicationName = self.moduleName+'App'
-		
+	def __gt__(self, other):
+		return self.applicationName > str(other)
+	def __lt__(self, other):
+		return self.applicationName < str(other)
 	def __eq__(self, other):
 		return self.applicationName == str(other)
 	def __hash__(self):
-		return self.applicationName
-	def __str__(self):
 		return self.applicationName
 	def __add__(self, x):
 		return self.__str__() + x
 	def __radd__(self, x):
 		return x + self.__str__()
+	def __str__(self):
+		return self.applicationName

@@ -23,5 +23,5 @@ def isProcess(moduleName):
 		return False
 		
 def parseEarFileName(earFileName):
-	shortName, versioned, version, majorVersion = parseModuleNameREGEX.match(earFile)
+	shortName, versioned, version, majorVersion = parseModuleNameREGEX.match(earFileName).groups()
 	return shortName, version, majorVersion, versioned
