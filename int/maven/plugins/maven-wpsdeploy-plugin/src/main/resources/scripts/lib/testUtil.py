@@ -20,7 +20,7 @@ def runTests(allTests):
 				print c.green('OK')
 			except AssertionError, e:
 				if str(e):
-					print c.red('Failed with message:', e)
+					print c.red('Failed:', e)
 				else:
 					print c.red('Failed!')
 				failedTests += 1
