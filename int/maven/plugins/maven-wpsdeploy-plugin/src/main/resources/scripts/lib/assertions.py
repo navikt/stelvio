@@ -1,5 +1,10 @@
 import sys, re
 import types
+
+'''Usage:
+from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises
+'''
+
 False, True = 0,1 #Define False, True
 
 def assertTrue(case, msg=None): assert case, msg
