@@ -28,13 +28,17 @@ def getCompUnitsInGroup(blaGroupId):
 	return AdminTask.listCompUnits('-blaID %s' % blaGroupId).splitlines()
 	
 def deleteCompUnit(blaGroupId, unitId):
-	if AdminTask.deleteCompUnit('[-blaID %s -cuID %s]' % (blaGroupId, unitId)):
+	cmd = '[-blaID %s -cuID %s]' % (blaGroupId, unitId)
+	l.debug('AdminTask.deleteCompUnit("'+cmd+'")')
+	if AdminTask.deleteCompUnit(cmd):
 		return True
 	else:
 		return False
 
 def deleteEmptyBlaGroup(blaGroupId):
-	if AdminTask.deleteBLA('-blaID %s' % blaGroupId):
+	cmd = '-blaID %s' % blaGroupId
+	l.debug('AdminTask.deleteBLA("'+cmd+'")')
+	if AdminTask.deleteBLA(cmd):
 		return True
 	else:
 		return False

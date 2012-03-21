@@ -6,9 +6,9 @@ import lib.logUtil as log
 l = log.getLogger(__name__)
 
 False, True = 0,1 #Define False, True
-BLA_GROUPS_DIR = sys.argv[1]
 
 def main():
+	BLA_GROUPS_DIR = sys.argv[1]
 	blaGroupFiles = os.listdir(BLA_GROUPS_DIR)
 	l.debug('Found these BLA group files:', listToCSV(blaGroupFiles))
 	for blaGroupFile in blaGroupFiles:
@@ -18,32 +18,35 @@ def main():
 		blaModules = blaGroupXmlToStringList(BLA_GROUPS_DIR +'/'+ blaGroupFile)
 		l.debug('Found these modules in %s: %s' % (blaGroupFile, listToCSV(blaModules)))
 		
-		if blaModules:
-			l.info('Creating new BLA group:', blaGroupName)
-			blaGroupId = createNewBLAGroup(blaGroupName)
-		else:
+		if not blaModules:
 			l.info('No modules in BLA group file', blaGroupFile)
 			continue
 		
-		l.info('Getting a list of all installed modules.')
-		scaModules = getInstalledModules()
-		l.debug('Got these modules:', listToCSV(scaModules))
+		l.info('Creating new BLA group:', blaGroupName)
+		blaGroupId = createNewBLAGroup(blaGroupName)
 		
-		toBlaGroup = []		
-		for blaModule in blaModules:
-			for scaModule in scaModules:
-				#blaModule will match both v1 and v2 of a module
-				if blaModule == scaModule.shortName:
-					toBlaGroup.append(scaModule)
-					
+		scaModules = getScaModulesFromBlaModules(blaModules)
 		
-		for scaModule in toBlaGroup:
+		for scaModule in scaModules:
 			if addUnitToGroup(scaModule, blaGroupId):
-				l.info('Added', scaModule, 'to', blaGroupId)
+				l.info('Added', scaModule, 'to', blaGroupName)
 			else:
-				l.error('Could not add', scaModule, 'to', blaGroupId)
-				
-	save()		
+				l.error('Could not add', scaModule, 'to', blaGroupName)
+	
+	save()
+
+def getScaModulesFromBlaModules(blaModules):
+	l.info('Getting a list of all installed modules.')
+	installedModules = getInstalledModules()
+	l.debug('Got these modules:', listToCSV(installedModules))
+	
+	scaModules = []
+	for blaModule in blaModules:
+		for scaModule in installedModules:
+			#blaModule will match both v1 and v2 of a scaModule's shortName
+			if blaModule == scaModule.shortName:
+				scaModules.append(scaModule)
+	return scaModules
 
 def addUnitToGroup(scaModule, blaGroupId):
 	blaName = blaGroupId.replace('WebSphere:blaname=','')
@@ -60,8 +63,10 @@ def addUnitToGroup(scaModule, blaGroupId):
 		return False
 
 def createNewBLAGroup(name):
-	id = AdminTask.createEmptyBLA('[-name %(name)s -description "Applications that must be restarted when a new version of %(name)s is deployed" ]'% {'name':name})
-	return id
+	cmd = '[-name %(name)s -description "Applications that must be restarted when a new version of %(name)s is deployed" ]'% {'name':name}
+	l.debug('AdminTask.createEmptyBLA("'+cmd+'")')
+	blaId = AdminTask.createEmptyBLA(cmd)
+	return blaId
 
 def listToCSV(list):
 	return ', '.join([str(x) for x in list])

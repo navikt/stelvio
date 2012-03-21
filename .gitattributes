@@ -7840,6 +7840,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminU
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/CreateBLAGroupsTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/DeleteBLAGroupsTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/XMLUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/__init__.py -text
