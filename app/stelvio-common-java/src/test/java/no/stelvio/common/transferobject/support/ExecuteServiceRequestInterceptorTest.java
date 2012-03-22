@@ -42,6 +42,20 @@ public class ExecuteServiceRequestInterceptorTest {
 	}
 
 	/**
+	 * Create test service request.
+	 * 
+	 * @return request
+	 * @throws NoSuchFieldException
+	 *             no field
+	 */
+	private TestServiceRequest createTestServiceRequest() throws NoSuchFieldException {
+		TestServiceRequest servReq = new TestServiceRequest("Jens-Petrus");
+		RequestContext reqCtx = new SimpleRequestContext("screenId123", "moduleId123", "transactionId123", "componentId123");
+		ReflectUtil.setField(TestServiceRequest.class, servReq, "requestContext", reqCtx);
+		return servReq;
+	}
+	
+	/**
 	 * Test that call is intercepted.
 	 */
 	@Test
@@ -64,20 +78,6 @@ public class ExecuteServiceRequestInterceptorTest {
 		assertThat(reqCtxAfterPojoCall.getModuleId(), is(equalTo("moduleId123")));
 		assertThat(reqCtxAfterPojoCall.getComponentId(), is(equalTo("componentId123")));
 
-	}
-
-	/**
-	 * Create test service request.
-	 * 
-	 * @return request
-	 * @throws NoSuchFieldException
-	 *             no field
-	 */
-	private TestServiceRequest createTestServiceRequest() throws NoSuchFieldException {
-		TestServiceRequest servReq = new TestServiceRequest("Jens-Petrus");
-		RequestContext reqCtx = new SimpleRequestContext("screenId123", "moduleId123", "transactionId123", "componentId123");
-		ReflectUtil.setField(TestServiceRequest.class, servReq, "requestContext", reqCtx);
-		return servReq;
 	}
 
 	/**
