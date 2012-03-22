@@ -111,9 +111,6 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected String targetDirectory;
-	
-	protected String busConfigurationExtractDirectory = "/target/bus-config";
-	protected String tmpBusConfigurationExtractDirectory = "/target/tmp";
 
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 

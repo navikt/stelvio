@@ -104,13 +104,15 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String environmentFile;
 	protected String moduleConfigHome;
 	protected String busConfigurationDirectory;
+	protected String tmpBusConfigurationExtractDirectory;
 
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
+		tmpBusConfigurationExtractDirectory = baseDirectory + "/target/tmp";
 		targetDirectory = baseDirectory + "/target";
-		busConfigurationDirectory = baseDirectory + busConfigurationExtractDirectory;
+		busConfigurationDirectory = baseDirectory + "/target/bus-config";
 		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
 		moduleConfigHome = busConfigurationDirectory + "/moduleconfig";
 		environmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
