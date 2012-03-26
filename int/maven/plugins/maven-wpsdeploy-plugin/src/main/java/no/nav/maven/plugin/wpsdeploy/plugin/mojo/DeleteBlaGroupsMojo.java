@@ -20,7 +20,7 @@ public class DeleteBlaGroupsMojo extends WebsphereUpdaterMojo {
 		}
 				
 		Commandline.Argument arg = new Commandline.Argument();;
-		arg.setLine("DeleteBLAGroups.py " + busConfigurationDirectory + "/BLA-groups");
+		arg.setLine("DeleteBLAGroups.py");
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}
