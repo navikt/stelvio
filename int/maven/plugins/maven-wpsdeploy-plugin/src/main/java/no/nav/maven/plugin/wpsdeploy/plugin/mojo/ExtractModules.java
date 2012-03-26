@@ -1,16 +1,12 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.xml.parsers.FactoryConfigurationError;
-import javax.xml.parsers.ParserConfigurationException;
-
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.ArgumentUtil;
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.XMLUtils;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
@@ -21,14 +17,16 @@ import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.execution.MavenSession;
-import org.apache.maven.model.Repository;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectBuilder;
 import org.apache.maven.project.ProjectBuildingException;
 import org.apache.maven.project.ProjectUtils;
+import org.apache.maven.project.artifact.InvalidDependencyVersionException;
+import org.apache.maven.project.artifact.MavenMetadataSource;
+import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.cli.Commandline;
-import org.xml.sax.SAXException;
 
 /**
  * Goal that extracts the defined DeployArtifacts
@@ -101,20 +99,6 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 
 	private Set<Artifact> allArtifacts; 
 
-	/**
-	 * Takes a comma separated string of pom files and downloads the dependencies to the EARFilesToDeploy folder
-	 * @param wsadminCommandLine
-	 * @param poms
-	 * @param mvnSnapshotRepo 
-	 * @param mvnSnapshotRepo 
-	 */
-	private void downloadEARFiles(Commandline wsadminCommandLine, String poms, String mvnLocalRepo, String mvnRepo, String mvnSnapshotRepo){
-		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("DownloadEARFiles.py " + deployableArtifactsHome + " " +poms + " " + mvnLocalRepo + " " + mvnRepo + " " + mvnSnapshotRepo);
-		wsadminCommandLine.addArg(arg);
-		executeCommand(wsadminCommandLine);
-	}	
-
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
@@ -122,7 +106,6 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 			allArtifacts = new HashSet<Artifact>();
 
 			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
-			ArrayList<String> poms = new ArrayList<String>();
 			
 			for (DeployArtifact da : artifacts){
 
@@ -132,53 +115,36 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 				}
 
 				Artifact pomArtifact = artifactFactory.createArtifact(da.getGroupId(), da.getArtifactId(), da.getVersion(), null, "pom");
-				mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
-				poms.add(pomArtifact.getFile().toString());
-				
-				HashSet<Artifact> artifacts = XMLUtils.parsePomDependencies(pomArtifact.getFile(), artifactFactory);
-				allArtifacts.addAll(artifacts);
+				MavenProject p = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
+				Set<Artifact> artifacts = MavenMetadataSource.createArtifacts(artifactFactory, p.getOriginalModel().getDependencies(), null, null, p);
+				for (Artifact a : artifacts) {
+					artifactResolver.resolve(a, remoteRepos, localRepository);
+					allArtifacts.add(a);
+					File src = new File(a.getFile().getAbsolutePath());
+					FileUtils.copyFileToDirectory(src, new File(deployableArtifactsHome));
+				}
 				
 				getLog().info("Successfully extracted "+ artifacts.size() +" dependency artifacts of " + da.toString() + " into \"allArtifacts\" list.");
 			}
-			
-			for (Repository r : (List<Repository>) repositories)
-				getLog().info("Available repository: "+ r.getUrl()); 
-					
+		
 			project.setArtifacts(allArtifacts);
 			project.setDependencyArtifacts(allArtifacts);
 
-			String mvnLocalRepo = localRepository.getUrl();
-			String mvnSnapshotRepo = ((Repository)repositories.get(0)).getUrl();
-			String mvnRepo = mvnSnapshotRepo.replace("-snapshots", "");
-			downloadEARFiles(wsadminCommandLine, ArgumentUtil.listToDelimitedString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
-			
 		} catch (ProjectBuildingException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (InvalidRepositoryException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
-		} catch (SAXException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
-		} catch (ParserConfigurationException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (FactoryConfigurationError e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (IOException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
-		}
-	}
-
-	// Resolves the artifact using the given repositories
-	public Artifact resolveRemoteArtifact(List<?> remoteRepos, Artifact artifact) throws MojoExecutionException {
-
-		try {
-			artifactResolver.resolve(artifact, remoteRepos, localRepository);
+		} catch (InvalidDependencyVersionException e) {
+			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (ArtifactResolutionException e) {
 			throw new MojoExecutionException("[ERROR] Error downloading artifact.", e);
 		} catch (ArtifactNotFoundException e) {
 			throw new MojoExecutionException("[ERROR] Resource can not be found.", e);
 		}
-
-		return artifact;
 	}
 
 	@Override
