@@ -279,7 +279,7 @@ find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindi
 esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
 esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py sysdok Tilgangsstyring
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
 esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157
