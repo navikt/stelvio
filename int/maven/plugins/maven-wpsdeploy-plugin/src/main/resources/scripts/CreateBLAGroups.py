@@ -9,8 +9,14 @@ False, True = 0,1 #Define False, True
 
 def main():
 	BLA_GROUPS_DIR = sys.argv[1]
-	blaGroupFiles = os.listdir(BLA_GROUPS_DIR)
+	allFiles = os.listdir(BLA_GROUPS_DIR)
+	blaGroupFiles = filterOutNonGroupXmlFiles(allFiles)
 	l.debug('Found these BLA group files:', listToCSV(blaGroupFiles))
+	
+	l.info('Getting a list of all installed modules.')
+	installedModules = getInstalledModules()
+	l.debug('Got these modules:', listToCSV(installedModules))
+	
 	for blaGroupFile in blaGroupFiles:
 		blaGroupName = blaGroupFile.replace('.xml','')
 		
@@ -25,7 +31,7 @@ def main():
 		l.info('Creating new BLA group:', blaGroupName)
 		blaGroupId = createNewBLAGroup(blaGroupName)
 		
-		scaModules = getScaModulesFromBlaModules(blaModules)
+		scaModules = getIntersection(blaModules, installedModules)
 		
 		for scaModule in scaModules:
 			if addUnitToGroup(scaModule, blaGroupId):
@@ -34,12 +40,11 @@ def main():
 				l.error('Could not add', scaModule, 'to', blaGroupName)
 	
 	save()
-
-def getScaModulesFromBlaModules(blaModules):
-	l.info('Getting a list of all installed modules.')
-	installedModules = getInstalledModules()
-	l.debug('Got these modules:', listToCSV(installedModules))
 	
+def filterOutNonGroupXmlFiles(list):
+	return [x for x in list if x.endswith('-group.xml')]
+
+def getIntersection(blaModules, installedModules):
 	scaModules = []
 	for blaModule in blaModules:
 		for scaModule in installedModules:
