@@ -200,7 +200,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
-					getLog().info(line);
+					System.out.println(line);
 				}
 			};
 			StreamConsumer systemErr = new StreamConsumer() {
