@@ -64,7 +64,7 @@
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
           <daysToKeep>-1</daysToKeep>
-          <numToKeep>3</numToKeep>
+          <numToKeep>4</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -129,6 +129,11 @@
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
+        <originalValue class="hudson.tasks.Mailer">
+          <recipients>test@example.com</recipients>
+          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+          <sendToIndividuals>true</sendToIndividuals>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -150,8 +155,13 @@
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
+        <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
+          <testResults>pensjon-test-iverksettVedtak/reports/TEST-*.xml</testResults>
+          <keepLongStdio>false</keepLongStdio>
+          <testDataPublishers/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -205,44 +215,6 @@
     <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
-        <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com</recipientList>
-          <configuredTriggers>
-            <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-          </configuredTriggers>
-          <contentType>default</contentType>
-          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
-          <defaultContent>$DEFAULT_CONTENT</defaultContent>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -263,14 +235,6 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
-        <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>TRUNK_nav-model-doc-chmod</childProjects>
-          <threshold>
-            <name>SUCCESS</name>
-            <ordinal>0</ordinal>
-            <color>BLUE</color>
-          </threshold>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -285,9 +249,11 @@
       <string>builders</string>
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
-          <hudson.tasks.Shell>
-            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog</command>
-          </hudson.tasks.Shell>
+          <hudson.tasks.Maven>
+            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=IverksettVedtak-test-soapui-project.xml -Dsoapui.endpoint=http://e26apvl036.test.local:9080/pensjon-microflow-iverksettVedtakProxyWeb/sca/IverksettVedtakWSEXP</targets>
+            <mavenName>(Default)</mavenName>
+            <usePrivateRepository>false</usePrivateRepository>
+          </hudson.tasks.Maven>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
@@ -363,7 +329,24 @@
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/pensjon/IverksettVedtak/pensjon-test-iverksettVedtak</remote>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <browser class="hudson.scm.browsers.ViewSVN">
+            <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
+          </browser>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -389,7 +372,8 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>l135479</createdBy>
+  <creationTime>1332849528727</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -397,7 +381,24 @@
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.NullSCM"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-soap-tests</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <browser class="hudson.scm.browsers.ViewSVN">
+      <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
+    </browser>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>

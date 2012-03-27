@@ -140,6 +140,7 @@
         <string>SoapUI-U2-Pensjon-Grunnlag_CI</string>
         <string>SoapUI-U2-Pensjon-Iverksetting_CI</string>
         <string>SoapUI-U2-Pensjon-Simulering_CI</string>
+        <string>SoapUI-U2-ProsessIverksettVedtak_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>
