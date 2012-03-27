@@ -7737,6 +7737,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DeleteApplicationA
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Log.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/WPS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjects.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjectsWrapper.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminWrapper.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/monitor.py -text
