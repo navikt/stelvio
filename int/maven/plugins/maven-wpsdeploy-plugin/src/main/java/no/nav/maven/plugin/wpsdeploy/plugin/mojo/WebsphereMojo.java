@@ -3,6 +3,7 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import no.nav.maven.commons.managers.ArchiveManager;
@@ -15,6 +16,8 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.PluginManager;
+import org.apache.maven.plugin.descriptor.MojoDescriptor;
+import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.UnArchiver;
@@ -111,7 +114,13 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected String targetDirectory;
-
+	
+	/**
+	 * @parameter expression="${skip}"
+	 */
+	private String skipCSV;
+	
+	
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 
 	protected abstract String getGoalPrettyPrint();
@@ -119,8 +128,48 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	protected IArchiveManager earArchiveManager;
 	protected IArchiveManager jarArchiveManager;
 
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
+		if(skipGoalProperty() || skipGoalManualy()){
+			getLog().info(String.format("Skipping step: %s (%s)", getGoalPrettyPrint(), getGoalName()));
+			return;
+		}
+
+		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
+		doExecute();
+	}
+	
+	private boolean skipGoalProperty(){		
+		if(skipCSV == null)
+			return false;
+		String[] goalsToSkip = skipCSV.split(",");
+		
+		String goalName = getGoalName();
+		
+		for(String skipGoalName : goalsToSkip){
+			if(skipGoalName.equals(goalName)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public String getGoalName() { 
+		String mojoClassName = getClass().getName();
+		PluginDescriptor pluginDescriptor = pluginManager.getPluginDescriptorForPrefix("wpsdeploy");
+		
+		@SuppressWarnings("unchecked")
+		List<MojoDescriptor> mojoDescriptorList = pluginDescriptor.getMojos(); 
+		for (MojoDescriptor mojoDescriptor : mojoDescriptorList) { 
+			if (mojoDescriptor.getImplementation().equals(mojoClassName)) { 
+				return mojoDescriptor.getGoal(); 
+			} 
+		} 
+		return null;
+	} 
+	
+	private boolean skipGoalManualy() throws MojoFailureException{
 		if (interactiveMode == true) {
 			String answer = null;
 			try {
@@ -130,18 +179,15 @@ public abstract class WebsphereMojo extends AbstractMojo {
 						"An error occured during prompt input");
 			}
 			if ("n".equalsIgnoreCase(answer)) {
-				getLog().info("Skipping step: " + getGoalPrettyPrint());
-				return;
+				return true;
 			}
 		}
-
-		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
-		doExecute();
+		return false;
 	}
 
 	protected final void executeCommand(Commandline command) throws MySOAPException {
 		try {
-			
+
 			// If a password is sent as a parameter, we hide it from the output
 			if (command.toString().contains("-password")) {
 				String cmd = command.toString().replaceFirst("-password\\s[\\w]+", "-password *****");
@@ -150,7 +196,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 			else {
 				getLog().info("Executing the following command: " + command.toString());
 			}
-			
+
 
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
@@ -166,7 +212,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 			int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
-			
+
 			if( retval == 105){
 				throw new MySOAPException();
 			}
@@ -188,11 +234,11 @@ public abstract class WebsphereMojo extends AbstractMojo {
 					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 				}
 			}
-			
+
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
 		}
-		
+
 	}
 
 	private static class StreamConsumerChain implements StreamConsumer {
