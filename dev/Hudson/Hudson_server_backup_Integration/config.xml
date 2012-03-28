@@ -114,33 +114,8 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>SoapUI-U2-Ekstern-Pensjon-Beregning_CI</string>
-        <string>SoapUI-U2-Ekstern-Pensjon-TPTILB_CI</string>
-        <string>SoapUI-U2-layers-Gosys-3.0.0_CI</string>
-        <string>SoapUI-U2-layers-Samordning_CI</string>
-        <string>SoapUI-U2-NAV-ArbeidOgAktivitet_CI</string>
-        <string>SoapUI-U2-NAV-Arkiv_CI</string>
-        <string>SoapUI-U2-NAV-BehandleMedlemskap_CI</string>
-        <string>SoapUI-U2-NAV-BehandlePerson_CI</string>
-        <string>SoapUI-U2-NAV-BehandleTrekk_CI</string>
-        <string>SoapUI-U2-NAV-Familieforhold_CI</string>
-        <string>SoapUI-U2-NAV-Fullmakt_CI</string>
-        <string>SoapUI-U2-NAV-Institusjonsopphold_CI</string>
-        <string>SoapUI-U2-NAV-Medlemskap_CI</string>
-        <string>SoapUI-U2-NAV-PensjonBeregning_CI</string>
-        <string>SoapUI-U2-NAV-PensjonSak_CI</string>
-        <string>SoapUI-U2-NAV-Person_CI</string>
-        <string>SoapUI-U2-NAV-Personsok_CI</string>
-        <string>SoapUI-U2-NAV-Sak_CI</string>
-        <string>SoapUI-U2-NAV-Samhandler_CI</string>
-        <string>SoapUI-U2-NAV-Statistikk_CI</string>
-        <string>SoapUI-U2-NAV-Tjenestepensjon_CI</string>
-        <string>SoapUI-U2-NAV-Trekk_CI</string>
-        <string>SoapUI-U2-Pensjon-Beregning_CI</string>
-        <string>SoapUI-U2-Pensjon-Grunnlag_CI</string>
-        <string>SoapUI-U2-Pensjon-Iverksetting_CI</string>
-        <string>SoapUI-U2-Pensjon-Simulering_CI</string>
-        <string>SoapUI-U2-ProsessIverksettVedtak_CI</string>
+        <string>SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI</string>
+        <string>SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>

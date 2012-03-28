@@ -1167,7 +1167,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Samordning_CI
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Simulering_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-TilbakekrevingHendelse_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Vedtak_CI/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-ProsessIverksettVedtak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-StartStubbing_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-StoppStubbing-kl6.45_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-StoppStubbing_CI/config.xml -text
@@ -1193,6 +1192,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Tjenestepensjo
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Trekk_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Vedtak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-fkafp-privat_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-sandbox/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-svn-dryRun-release/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-svn/config.xml -text
