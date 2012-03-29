@@ -1192,6 +1192,8 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Tjenestepensjo
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Trekk_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Vedtak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-fkafp-privat_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN004-BehandleEndringAvUttaksgrad_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-sandbox/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-svn-dryRun-release/config.xml -text
@@ -1224,7 +1226,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gateway/config.xm
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gw-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gw-maven-service-registry-plugin/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_portal-gw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery_nightly_q/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery_nightly_t/config.xml -text

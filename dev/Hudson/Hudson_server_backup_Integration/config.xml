@@ -136,6 +136,9 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI</string>
+        <string>SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI</string>
+        <string>SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI</string>
       </jobNames>
       <jobFilters/>
       <columns/>
