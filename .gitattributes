@@ -7821,6 +7821,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/resource
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/saveUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/scaModuleUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/serviceIntegration.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/stringUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/syncUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/testUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/timerUtil.py -text
@@ -7844,6 +7845,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminT
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminUtilitiesMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.bat -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/CreateBLAGroupsTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/DeleteBLAGroupsTest.py -text

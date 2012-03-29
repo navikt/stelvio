@@ -41,7 +41,7 @@ class ScaModule:
 		self.shortName = shortName
 		self.scaVersion = scaVersion
 		if scaVersion:
-			self.moduleName = '%s_v%s' % (shortName, scaVersion.replace('.','_'))
+			self.moduleName = '%s_v%s' % (shortName, str(scaVersion).replace('.','_'))
 		else:
 			self.moduleName = shortName
 		self.applicationName = self.moduleName+'App'

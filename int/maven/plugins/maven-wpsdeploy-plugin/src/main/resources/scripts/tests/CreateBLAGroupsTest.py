@@ -16,11 +16,6 @@ cbg.getInstalledModules = __sca
 scaModule1 = ScaModule(DEFAULT_MODULE_NAME, 1)
 scaModule2 = ScaModule(DEFAULT_MODULE_NAME, 2)
 
-def getScaModulesFromBlaModulesTest():
-	scaModules = cbg.getScaModulesFromBlaModules(['ekstern-pensjon-tjeneste-beregning'])
-	assertContains(scaModules, scaModule1, 'Could not find v1 of the module in the list')
-	assertContains(scaModules, scaModule2, 'Could not find v2 of the module in the list')
-
 def addUnitToGroupTest():
 	assertTrue(cbg.addUnitToGroup(scaModule1, 'ignored input'))
 	

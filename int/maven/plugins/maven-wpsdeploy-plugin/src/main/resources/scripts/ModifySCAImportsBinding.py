@@ -26,7 +26,7 @@ def main():
 			importBindings = modulesImportBindings[shortName]
 			scaImportNames = listSCAImports(scaModuleToDeploy)
 			
-			policySetAttachements = []			
+			policySetAttachements = []
 			for scaImportName in scaImportNames:
 				if importBindings.has_key(scaImportName):
 					importBinding = importBindings[scaImportName]
@@ -39,7 +39,7 @@ def main():
 			createPolicySetAttachements(policySetAttachements)
 	save()
 		
-def parseScriptArguments(argumentsDsv):		
+def parseScriptArguments(argumentsDsv):
 	'''sys.argv[2]
 	nav-prod-sak-arena::sca/import/SakVedtakPortTypeWSIMP::http://e25apfl003.utvikling.local:7334;nav-prod-sak-arena::sca/import/OrganisasjonPortTypeWSIMP::http://d26apfl004.test.local:7224'''
 	argParserREGEX = re.compile('^(.*?)::sca/import/(.*?)::(.*?)$')
