@@ -4,7 +4,8 @@ False, True = 0,1 #Define False, True
 versionedModuleNames = '|'.join([
 	'tjeneste',
 	'produsent',
-	'konsument'
+	'konsument',
+	'prosess'
 ])
 versionedREGEX = re.compile('-(%s)-' % versionedModuleNames)
 processREGEX = re.compile('-prosess-|-microflow-|-bproc-|-bsrv-frg-hentinstitusjonsoppholdliste')

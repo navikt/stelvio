@@ -7809,6 +7809,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/XmlToUti
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/assertions.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/businessProcesses.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/collection.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/downloadUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environment.py -text

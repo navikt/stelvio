@@ -20,7 +20,10 @@ def getModulesToBeInstalled(earFolder):
 	for earFile in earFiles:
 		shortName, version, majorVersion, versioned = naming.parseEarFileName(earFile)
 		if versioned:
-			scaVersion = majorVersion
+			if naming.isProcess(shortName):
+				scaVersion = version
+			else:
+				scaVersion = majorVersion
 		else:
 			scaVersion = None
 		scaModule = ScaModule(shortName, scaVersion)
@@ -38,7 +41,7 @@ class ScaModule:
 		self.shortName = shortName
 		self.scaVersion = scaVersion
 		if scaVersion:
-			self.moduleName = '%s_v%s' % (shortName, scaVersion)
+			self.moduleName = '%s_v%s' % (shortName, scaVersion.replace('.','_'))
 		else:
 			self.moduleName = shortName
 		self.applicationName = self.moduleName+'App'
