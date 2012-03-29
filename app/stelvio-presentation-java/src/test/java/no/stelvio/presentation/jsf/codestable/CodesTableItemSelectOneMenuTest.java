@@ -78,11 +78,43 @@ public class CodesTableItemSelectOneMenuTest {
 			assertTrue(selectMenu.getChildCount() == 1);
 			List selectItemsList = (List) ((UISelectItems) selectMenu.getChildren().get(0)).getValue();
 			assertEquals(createCodesTableItems().size(), selectItemsList.size());
+
+			
 		} catch (IOException e) {
 			assertFalse("No exception should have occured", false);
 		}
 	}
 
+	/*
+	 * IRPORT-1639:
+	 * - Test that buildSelectItems() does not rebuild the list when getChildCount > 0
+	 * - Regardless of the value of DisplayValue
+	 */
+	@Test
+	public void buildSelectItems() {
+		try {
+			selectMenu.setCtiClass("no.stelvio.presentation.jsf.codestable.SimpleTestCti");
+
+			// Build an initial menu with one item
+			assertTrue(selectMenu.getChildCount() == 0);
+			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			assertTrue(selectMenu.getChildCount() == 1);
+		
+			// Verify that menu does not grow if displayValue is true
+			selectMenu.setDisplayValueOnly(true);
+			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			assertTrue(selectMenu.getChildCount() == 1);
+			
+			// Verify that menu does not grow if displayValue is false
+			selectMenu.setDisplayValueOnly(false);
+			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			assertTrue(selectMenu.getChildCount() == 1);
+
+			} catch (Exception e) {
+			assertFalse("No exception should occur here", false);
+		}
+	}
+	
 	/**
 	 * Test selectMenuWithNumericSorting.
 	 */

@@ -231,7 +231,7 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 	 * drop down list. The select items are added as children of this component.
 	 */
 	private void buildSelectItems() {
-		if (this.getChildCount() > 0 && isDisplayValueOnly()) {
+		if (this.getChildCount() > 0) {
 			return;
 		}
 
