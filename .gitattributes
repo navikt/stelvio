@@ -7816,6 +7816,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environm
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/namingConventionLogic.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/policySetAttachmentUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/pomUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/resources.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/saveUtil.py -text
