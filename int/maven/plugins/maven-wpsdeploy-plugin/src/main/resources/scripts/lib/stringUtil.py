@@ -1,5 +1,5 @@
 False, True = 0,1 #Define False, True
-def strip(string, charsToBeRemoved):
+def strip(string, charsToBeRemoved=' '):
 	removedChar = True
 	while removedChar:
 		removedChar = False

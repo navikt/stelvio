@@ -9,8 +9,8 @@ False, True = 0,1 #Define False, True
 
 def assertTrue(case, msg=None): assert case, msg
 def assertFalse(case, msg=None): assert not case, msg
-def assertEqual(case1, case2, msg=None): assert __equal(str(case1), str(case2)), msg
-def assertNotEqual(case1, case2, msg=None): assert not __equal(str(case1), str(case2)), msg
+def assertEqual(case1, case2, msg=None): assert __equal(case1, case2), msg
+def assertNotEqual(case1, case2, msg=None): assert not __equal(case1, case2), msg
 def assertRegex(regex, text, msg=None): assert re.match(regex, text), msg
 def assertRaises(exception, function, *args, **kwargs):
 	try:

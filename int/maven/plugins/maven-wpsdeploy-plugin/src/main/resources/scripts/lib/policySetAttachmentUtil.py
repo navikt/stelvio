@@ -34,6 +34,6 @@ def createPolicySetAttachements(policySetAttachments):
 def deletePolicySetAttachment(policySetAttachments):
 	for policySetAttachment in policySetAttachments:
 		cmd = '[-applicationName %(applicationName)s -attachmentType client -attachmentId %(attachmentId)s]' % policySetAttachment
-		print cmd
+		l.debug("AdminTask.deletePolicySetAttachment('"+ cmd +"')")
 		AdminTask.deletePolicySetAttachment(cmd)
 		l.info("Deleted policy set attachment for application %(applicationName)s with attachment id %s(attachmentId)s.")

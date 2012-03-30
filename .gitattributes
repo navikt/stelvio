@@ -7850,13 +7850,16 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminS
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminTaskMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminUtilitiesMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/__init__.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/osMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.bat -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/CreateBLAGroupsTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/DeleteBLAGroupsTest.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/ModifyScaImportsBindingTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/XMLUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/__init__.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/policySetAttachmentUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/scaModuleUtilTest.py -text
 int/maven/plugins/maven-wsdl-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/AddUsingAddressingMojo.java -text
