@@ -36,7 +36,7 @@ def main():
 					modifySCAImportBinding(moduleName, scaImportName, newEndpoint)
 					l.info("Modified import [" + scaImportName + "] on module [" + moduleName + "] to [" + newEndpoint + "].")
 					
-					policySetAttachements += list(getPolicySetAttachements(applicationName)) #This must be done after each endpoint modification, because if a endpoint in a import has been changed; ONLY that import has policySet and binding.
+					policySetAttachements += list(getPolicySetAttachements(applicationName)) #This must be done after each endpoint modification, because if a endpoint in an import has been changed; ONLY that import has policySet and binding.
 					
 			l.debug('policySetAttachements:', policySetAttachements)
 			createPolicySetAttachements(policySetAttachements)
