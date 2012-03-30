@@ -7805,6 +7805,10 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/RemoveOldBPM
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/RoleMapping.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/SetEnvironmentVariableDmgr.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/Utils.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI-LLW.exe -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI32.dll -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI64.dll -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ansicon.exe -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/XMLUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/XmlToUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/__init__.py -text
@@ -7828,10 +7832,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/syncUtil
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/testUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/timerUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/utils6.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/x64/ANSI-LLW.exe -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/x64/ANSI32.dll -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/x64/ANSI64.dll -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/x64/ansicon.exe -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminAppMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminApplicationMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminAuthorizationsMock.py -text
