@@ -1,4 +1,4 @@
-from lib.assertions import assertEqual, assertTrue, assertFalse, assertRegex
+from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises, assertContains
 import lib.policySetAttachmentUtil as psau
 import mocks.AdminTaskMock as AdminTaskMock
 

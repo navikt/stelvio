@@ -1,4 +1,4 @@
-from lib.assertions import assertEqual, assertTrue, assertFalse, assertRaises
+from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises, assertContains
 from lib.XMLUtil import parseXML, NodeNotFoundException
 
 False, True = 0,1 #Define False, True

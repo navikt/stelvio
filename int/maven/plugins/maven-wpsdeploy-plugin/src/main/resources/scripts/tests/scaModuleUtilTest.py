@@ -1,4 +1,4 @@
-from lib.assertions import assertEqual, assertTrue, assertFalse, assertRegex
+from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises, assertContains
 import lib.scaModuleUtil as smu
 import mocks.AdminTaskMock as AdminTaskMock
 import mocks.osMock as os

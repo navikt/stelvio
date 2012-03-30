@@ -1,4 +1,4 @@
-from lib.assertions import assertEqual, assertTrue, assertFalse, assertRegex
+from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises, assertContains
 import ModifySCAImportsBinding as msib
 import mocks.AdminTaskMock as AdminTaskMock
 
