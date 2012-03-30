@@ -11,6 +11,28 @@
       </boolean-property>
     </entry>
     <entry>
+      <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+      <base-property>
+        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
@@ -23,10 +45,10 @@
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
+      <string>scmCheckoutRetryCount</string>
+      <integer-property>
         <propertyOverridden>false</propertyOverridden>
-      </base-property>
+      </integer-property>
     </entry>
     <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
@@ -50,17 +72,16 @@
       </copy-write-list-property>
     </entry>
     <entry>
+      <string>quietPeriod</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
+    </entry>
+    <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
-    </entry>
-    <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
     </entry>
     <entry>
       <string>jdk</string>
@@ -70,12 +91,26 @@
       </string-property>
     </entry>
     <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
+    </entry>
+    <entry>
+      <string>appointedNode</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>scm</string>
       <scm-property>
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
               <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
+              <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
@@ -84,8 +119,7 @@
           <excludedUsers></excludedUsers>
           <excludedRevprop></excludedRevprop>
           <excludedCommitMessages></excludedCommitMessages>
-          <useUpdate>true</useUpdate>
-          <doRevert>false</doRevert>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
@@ -103,16 +137,28 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <creationTime>0</creationTime>
-  <properties>
-    <hudson.queueSorter.PrioritySorterJobProperty>
-      <priority>100</priority>
-    </hudson.queueSorter.PrioritySorterJobProperty>
-  </properties>
+  <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[10]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -123,8 +169,15 @@
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-wpsdeploy-ci-pom</artifactId>
   </rootModule>
-  <goals>clean deploy -Denvironment=U2 -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-ci-version=7.3.0.0-SNAPSHOT -Dpensjon-modules-ci-version=7.3.0.0-SNAPSHOT -Dekstern-modules-ci-version=7.3.0.0-SNAPSHOT -Desb-modules-ci-version=7.3.0.0-SNAPSHOT -DinteractiveMode=false -Dconfig.backup.skip=true</goals>
-  <mavenName>Maven</mavenName>
+  <goals>clean deploy</goals>
+  <mavenOpts>-Denvironment=U2&#xd;
+-Dbus-configuration-version=0.0.0.1-SNAPSHOT&#xd;
+-Dnav-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Desb-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-DinteractiveMode=false&#xd;
+-Dconfig.backup.skip=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>

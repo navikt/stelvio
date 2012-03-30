@@ -238,8 +238,6 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
         <string>2012HL2_7.3_CheckScripts_Leveransedokumentasjon</string>
-        <string>7.2-CheckScripts</string>
-        <string>7.2-System.out.print</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
         <string>CI-pom_sync</string>
         <string>CI-release-pom_sync</string>
