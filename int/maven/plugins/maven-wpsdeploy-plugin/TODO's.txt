@@ -1,6 +1,0 @@
-# ta ut save() metoden ifra lib/adminUtil og lagre den i lib/saveUtil
-# endre navn på lib/adminUtil til lib/syncUtil
-# endre på alle referansene til lib/adminUtil til henholdsvis lib/syncUtil og lib/saveUtil
-# bytt ut lib.logUtil med lib.logUtil2
-# <Executor: -javaoption -Dlogging.level=debug -f /path/executor.py ApplicationMangement.py arg1 arg2 arg3>
-## sys.argv[0] blir skript navn
