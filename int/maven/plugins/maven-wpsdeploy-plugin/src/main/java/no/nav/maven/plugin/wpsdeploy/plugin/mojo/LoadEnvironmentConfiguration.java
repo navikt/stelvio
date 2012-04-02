@@ -3,6 +3,7 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySOAPException;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
 
 import org.apache.maven.plugin.MojoExecutionException;
@@ -32,16 +33,26 @@ public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
 	protected void exposeEnvironmentProperties() throws FileNotFoundException, IOException {
 		
 		String tmpEnvironmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
-		
+
 		PropertyUtils pf = new PropertyUtils(tmpEnvironmentFile, project);
 
-		pf.exposeProperty("envClass", pf.getProperty("envClass"), false);
-		pf.exposeProperty("dmgrUsername", pf.getProperty("dmgrUsername"), false);
-		pf.exposeProperty("dmgrPassword", pf.getProperty("dmgrPassword"), true);
-		pf.exposeProperty("dmgrHostname", pf.getProperty("dmgrHostname"), false);
-		pf.exposeProperty("dmgrSOAPPort", pf.getProperty("dmgrSOAPPort"), false);
-		pf.exposeProperty("linuxUser",pf.getProperty("linuxUser"), false);
-		pf.exposeProperty("linuxPassword",pf.getProperty("linuxPassword"), true);
+		exposeProperty(pf, "envClass", false);
+		exposeProperty(pf, "dmgrUsername", false);
+		exposeProperty(pf, "dmgrPassword", true);
+		exposeProperty(pf, "dmgrHostname", false);
+		exposeProperty(pf, "dmgrSOAPPort", false);
+		exposeProperty(pf, "linuxUser", false);
+		exposeProperty(pf, "linuxPassword", true);
+	}
+	
+	private void exposeProperty(PropertyUtils pf, String name, boolean password) throws FileNotFoundException, IOException{
+		if(pf.getProperty(name) == null){
+			throw new MySOAPException("The "+ name +" property can't be \"null\"!");
+		} 
+		else if (pf.getProperty(name).contains("$")){
+			throw new MySOAPException("The "+ name +" property can't contain \"$\"!\nWhen this happens it is most likely that there is a property file that can't be found.");
+		}
+		pf.exposeProperty(name, pf.getProperty(name), password);
 	}
 
 	@Override

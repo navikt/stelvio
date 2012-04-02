@@ -214,7 +214,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 					new StreamConsumerChain(systemErr).add(errorChecker));
 
 			if( retval == 105){
-				throw new MySOAPException();
+				throw new MySOAPException("The wsadmin command exited with an error!");
 			}
 
 			if (errorChecker.isError() || retval != 0) {

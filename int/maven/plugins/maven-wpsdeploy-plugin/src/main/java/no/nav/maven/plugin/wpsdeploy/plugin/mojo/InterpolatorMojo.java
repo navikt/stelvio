@@ -3,6 +3,7 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySOAPException;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.MojoLauncher;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
 
@@ -26,6 +27,9 @@ public class InterpolatorMojo extends WebsphereUpdaterMojo {
 		
 		try {
 			PropertyUtils pf = new PropertyUtils(tmpEnvironmentFile, project);
+			if(pf.getProperty("envClass") == null){
+				throw new MySOAPException("The envClass property can't be null!");
+			}
 			pf.exposeProperty("envClass", pf.getProperty("envClass"), false);
 			
 		} catch (FileNotFoundException e) {
