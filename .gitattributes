@@ -7743,6 +7743,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjectsWrappe
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminWrapper.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/monitor.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/pomUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/processUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/reports.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/security.py -text
@@ -7820,7 +7821,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptio
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/namingConventionLogic.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/policySetAttachmentUtil.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/pomUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/resources.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/saveUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/scaModuleUtil.py -text
