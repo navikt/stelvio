@@ -7539,6 +7539,7 @@ int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plug
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractExecutableMojo.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractWSAdminMojo.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureAdaptersMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureJVM.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureSecurity.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ExecuteCommandLineMojo.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ImportCertificates.java -text

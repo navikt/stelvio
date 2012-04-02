@@ -152,6 +152,13 @@
 							<arguments>server1</arguments>
 						</configuration>
 					</execution>
+                    <execution>
+						<id>configure-jvm</id>
+						<phase>install</phase>
+						<goals>
+							<goal>configure-jvm</goal>
+						</goals>
+					</execution>
 					<execution>
 						<id>configure-adapters</id>
 						<phase>install</phase>
