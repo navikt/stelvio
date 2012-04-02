@@ -7735,6 +7735,7 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sc
 int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Applications.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DeleteApplicationArtifacts.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DownloadEARFiles.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Log.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/WPS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjects.py -text
@@ -7793,7 +7794,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterStart
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateApplicationArtifacts.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateBLAGroups.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/DeleteBLAGroups.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/DownloadEARFiles.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/Executor.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ModifyMaxConcurrencyAS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ModifyMaxFailedDeliveries.py -text
