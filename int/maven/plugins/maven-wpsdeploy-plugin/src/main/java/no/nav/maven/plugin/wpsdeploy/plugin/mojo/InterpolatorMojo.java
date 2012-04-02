@@ -30,7 +30,7 @@ public class InterpolatorMojo extends WebsphereUpdaterMojo {
 			if(pf.getProperty("envClass") == null){
 				throw new MySOAPException("The envClass property can't be null!");
 			}
-			pf.exposeProperty("envClass", pf.getProperty("envClass"), false);
+			pf.exposeProperty("envClass", false);
 			
 		} catch (FileNotFoundException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);

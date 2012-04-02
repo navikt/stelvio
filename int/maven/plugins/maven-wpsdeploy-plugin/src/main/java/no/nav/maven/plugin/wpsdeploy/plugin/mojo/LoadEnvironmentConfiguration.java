@@ -3,7 +3,6 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySOAPException;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
 
 import org.apache.maven.plugin.MojoExecutionException;
@@ -36,23 +35,13 @@ public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
 
 		PropertyUtils pf = new PropertyUtils(tmpEnvironmentFile, project);
 
-		exposeProperty(pf, "envClass", false);
-		exposeProperty(pf, "dmgrUsername", false);
-		exposeProperty(pf, "dmgrPassword", true);
-		exposeProperty(pf, "dmgrHostname", false);
-		exposeProperty(pf, "dmgrSOAPPort", false);
-		exposeProperty(pf, "linuxUser", false);
-		exposeProperty(pf, "linuxPassword", true);
-	}
-	
-	private void exposeProperty(PropertyUtils pf, String name, boolean password) throws FileNotFoundException, IOException{
-		if(pf.getProperty(name) == null){
-			throw new MySOAPException("The "+ name +" property can't be \"null\"!");
-		} 
-		else if (pf.getProperty(name).contains("$")){
-			throw new MySOAPException("The "+ name +" property can't contain \"$\"!\nWhen this happens it is most likely that there is a property file that can't be found.");
-		}
-		pf.exposeProperty(name, pf.getProperty(name), password);
+		pf.exposeProperty("envClass", false);
+		pf.exposeProperty("dmgrUsername", false);
+		pf.exposeProperty("dmgrPassword", true);
+		pf.exposeProperty("dmgrHostname", false);
+		pf.exposeProperty("dmgrSOAPPort", false);
+		pf.exposeProperty("linuxUser", false);
+		pf.exposeProperty("linuxPassword", true);
 	}
 
 	@Override

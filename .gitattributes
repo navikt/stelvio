@@ -7755,6 +7755,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/troubleshoot.py -t
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/versionMBeanInstall.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/wsadminlib.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/pom.xml -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/MyConfigurationException.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/MySOAPException.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyActivationSpecs.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyUsernameTokenDetails.java -text

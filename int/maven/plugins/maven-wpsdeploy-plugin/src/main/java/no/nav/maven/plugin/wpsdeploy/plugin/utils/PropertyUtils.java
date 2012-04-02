@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MyConfigurationException;
+
 import org.apache.maven.project.MavenProject;
 
 /**
@@ -28,22 +30,31 @@ public class PropertyUtils {
 		properties.load(new FileInputStream(fileLocation));
 	}
 	
-	public String getProperty(String key) throws FileNotFoundException, IOException{
+	public String getProperty(String key){
 		
 		String fetchedProperty = properties.getProperty(key);
 		
 		if (fetchedProperty != null){
 			return fetchedProperty;
 		} else {
-			System.out.println("[ERROR] Unable to find property, " + key + " in file " + fileLocation);
-			throw new IOException();
+			throw new MyConfigurationException("[ERROR] Unable to find property, " + key + " in file " + fileLocation);
 		}
 	}
 	
-	public void exposeProperty(String key, String value, boolean password){
+	public void exposeProperty(String key, boolean password){
+		Properties projectProperties = project.getProperties();
+		String value = getProperty(key);
 		
-		project.getProperties().put(key, value);
+
+		if(value == null){
+			throw new MyConfigurationException("The "+ key +" property can't be \"null\"!");
+		} 
+		else if (value.contains("$")){
+			throw new MyConfigurationException("The "+ key +" property can't contain \"$\"!\nWhen this happens it is most likely that there is a property file that can't be found.");
+		}
 		
+		projectProperties.put(key, value);
+				
 		if (password)
 			System.out.println("[INFO] Exposed property [" + key + ",*****]");
 		else
