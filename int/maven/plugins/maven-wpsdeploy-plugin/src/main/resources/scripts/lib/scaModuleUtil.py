@@ -10,7 +10,8 @@ def getInstalledModules():
 		moduleName, applicationName, scaVersion, shortName, cellId, empty = line.split(':')
 		if moduleName.endswith('.AppTarget'):
 			continue
-		scaModule = ScaModule(shortName, scaVersion.strip())
+		version = getApplicationVersion(applicationName)
+		scaModule = ScaModule(shortName, version, scaVersion.strip())
 		modules.append(scaModule)
 	return modules
 	
@@ -26,25 +27,39 @@ def getModulesToBeInstalled(earFolder):
 				scaVersion = majorVersion
 		else:
 			scaVersion = None
-		scaModule = ScaModule(shortName, scaVersion)
+		scaModule = ScaModule(shortName, version, scaVersion)
 		modules.append(scaModule)
 	return modules
+	
+def getInstalledScaModule(scaModuleToBeDeployed):
+	pass
+
+def getApplicationVersion(applicationName):
+	versionString = AdminApp.view(applicationName, '-buildVersion').strip()
+	versionNumber = versionString.replace('Application Build ID:  ', '')
+	return versionNumber
 	
 class ScaModule:
 	''' Example:
 		shortName:       nav-tjeneste-sak
 		scaVersion:      1
+		version:         1.1.2
 		moduleName:      nav-tjeneste-sak_v1
 		applicationName: nav-tjeneste-sak_v1App
 	'''
-	def __init__(self, shortName, scaVersion):
+	def __init__(self, shortName, version, scaVersion):
 		self.shortName = shortName
+		self.version = version
+		self.majorVersion = version.split('.')[0]
 		self.scaVersion = scaVersion
+		
 		if scaVersion:
 			self.moduleName = '%s_v%s' % (shortName, str(scaVersion).replace('.','_'))
 		else:
 			self.moduleName = shortName
+			
 		self.applicationName = self.moduleName+'App'
+		
 	def __gt__(self, other):
 		return self.applicationName > str(other)
 	def __lt__(self, other):
