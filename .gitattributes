@@ -7534,18 +7534,6 @@ int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plug
 int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/mojo/ImportCertificates.java -text
 int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/mojo/ImportLTPA.java -text
 int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/utils/Utils.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/pom.xml -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractCommandLineMojo.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractExecutableMojo.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractWSAdminMojo.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureAdaptersMojo.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureJVM.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureSecurity.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ExecuteCommandLineMojo.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ImportCertificates.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ImportLTPA.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/WSAdminMojo.java -text
-int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/utils/Utils.java -text
 int/maven/plugins/maven-confluence-plugin/pom.xml -text
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddCommentMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddDownCommentMojo.java -text svneol=unset#text/plain

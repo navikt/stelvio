@@ -2467,10 +2467,6 @@ int/maven/plugins/maven-artifact-modifier-plugin/.project
 int/maven/plugins/maven-artifact-modifier-plugin/.settings
 int/maven/plugins/maven-artifact-modifier-plugin/bin
 int/maven/plugins/maven-artifact-modifier-plugin/target
-int/maven/plugins/maven-configure-wps-dev-plugin/.classpath
-int/maven/plugins/maven-configure-wps-dev-plugin/.project
-int/maven/plugins/maven-configure-wps-dev-plugin/.settings
-int/maven/plugins/maven-configure-wps-dev-plugin/target
 int/maven/plugins/maven-confluence-plugin/.classpath
 int/maven/plugins/maven-confluence-plugin/.project
 int/maven/plugins/maven-confluence-plugin/.settings
