@@ -17,7 +17,9 @@ public class ConfigureJVM extends AbstractWSAdminMojo {
 		Commandline.Argument arg0 = new Commandline.Argument();
 		arg0.setLine(scriptsHome+"\\configureJVM.py");
 		commandLine.addArg(arg0);
-		
+		Commandline.Argument arg1 = new Commandline.Argument();
+		arg1.setLine(scriptsHome);
+		commandLine.addArg(arg1);
 		executeCommand(commandLine);
 		
 	}
