@@ -17,6 +17,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 
+	//TODO: må fjernes etter at 7.4 har gått prod. Den mer generelle -Dskip=backup-config skal brukes i stede
 	/**
 	 * @parameter expression="${config.backup.skip}"
 	 */
@@ -33,7 +34,7 @@ public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 			if (!checkDiskSpace())
 				throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
 			else getLog().info("There is enough disk space. Proceeding with deployment.");
-			if (skipBackup) getLog().info("Skipping backup of WebSohere configuration");
+			if (skipBackup) getLog().info("Skipping backup of WebSohere configuration"); //TODO: må fjernes etter at 7.4 har gått prod. Den mer generelle -Dskip=backup-config skal brukes i stede
 			else SshUtil.backupConfig(dmgrHostname, linuxUser, linuxPassword);
 			
 		} catch (IOException e) {
