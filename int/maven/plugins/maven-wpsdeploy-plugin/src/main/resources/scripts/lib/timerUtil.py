@@ -4,8 +4,9 @@ class Timer:
 		self.startTime = time.time()
 		
 	def reset(self):
+		returnTime = self.__str__()
 		self.startTime = time.time()
-		return self.__str__()
+		return returnTime
 	
 	def __str__(self):
 		return self.__secondsToHMS(self.seconds())
