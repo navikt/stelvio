@@ -5,8 +5,6 @@ from lib.scaModuleUtil import getInstalledModules
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-False, True = 0,1 #Define False, True
-
 def main():
 	BLA_GROUPS_DIR = sys.argv[1]
 	allFiles = os.listdir(BLA_GROUPS_DIR)

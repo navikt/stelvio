@@ -5,8 +5,6 @@ import types
 from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual, assertRegex, assertRaises, assertContains
 '''
 
-False, True = 0,1 #Define False, True
-
 def assertTrue(case, msg=None): assert case, msg
 def assertFalse(case, msg=None): assert not case, msg
 def assertEqual(case1, case2, msg=None): assert __equal(case1, case2), msg

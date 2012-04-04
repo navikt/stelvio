@@ -2,8 +2,6 @@ from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual,
 import ModifySCAImportsBinding as msib
 import mocks.AdminTaskMock as AdminTaskMock
 
-False, True = 0,1 #Define False, True
-
 msib.AdminTask = AdminTaskMock
 
 def parseScriptArgumentsTest():

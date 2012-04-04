@@ -3,7 +3,6 @@ import java
 import re, sys, os
 import lib.exceptionUtil as exceptionUtil
 
-False,True = 0,1 # Define False, True
 DEBUGGING = "DEBUG"
 INFOMATION = "INFO"
 WARNING = "WARNING"

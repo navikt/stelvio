@@ -4,7 +4,6 @@
 import re, os
 import types
 
-False,True=0,1
 testFunctionREGEX = re.compile('.*Test$')
 allTests = {}
 def main():

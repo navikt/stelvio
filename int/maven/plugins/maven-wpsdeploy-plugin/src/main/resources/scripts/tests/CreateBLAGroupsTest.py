@@ -2,8 +2,6 @@ from lib.assertions import assertTrue, assertFalse, assertEqual, assertNotEqual,
 from lib.scaModuleUtil import ScaModule
 import CreateBLAGroups as cbg
 
-False, True = 0,1 #Define False, True
-
 import mocks.AdminTaskMock as AdminTaskMock
 cbg.AdminTask = AdminTaskMock
 

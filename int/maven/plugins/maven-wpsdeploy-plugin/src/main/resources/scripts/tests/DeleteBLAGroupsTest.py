@@ -4,8 +4,6 @@ import mocks.AdminTaskMock as AdminTaskMock
 
 dbg.AdminTask = AdminTaskMock
 
-False, True = 0,1 #Define False, True
-
 blaGroups = dbg.getBLAGrups()
 def getBLAGrupsTest():
 	assertEqual(blaGroups, ['WebSphere:blaname=PEN-group'])

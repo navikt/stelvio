@@ -9,7 +9,6 @@ import org.w3c.dom.Node as Node
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-False, True = 0,1 #Define False, True
 xmlREGEX = re.compile('<.*>')
 
 

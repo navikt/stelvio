@@ -1,17 +1,38 @@
 import sys, os, re
+from lib.timerUtil import Timer
+import lib.logUtil as log
+import lib.exceptionUtil
 import exceptions
+
+
+# Define False, True for all scripts
+try:
+    True and False
+except NameError:
+    class bool(type(1)):
+        def __init__(self, val = 0):
+            if val:
+                type(1).__init__(self, 1)
+            else:
+                type(1).__init__(self, 0)
+        def __repr__(self):
+            if self:
+                return 'True'
+            else:
+                return 'False'
+
+        __str__ = __repr__
+
+    __builtin__.bool = bool
+    __builtin__.False = bool(0)
+    __builtin__.True = bool(1)
+# End fix #3
 
 glo = globals()
 loc = locals()
-# Define False, True for executed script, imported libs still need to spesify them manually
-glo['False'] = 0
-glo['True'] = 1
 def Executor_main():
 	scriptDir = Executor_getScriptDir()	
-	sys.path.append(scriptDir) #Essential to get the import statement to work as expected
-
 	scriptPath = scriptDir + Executor_getScriptName()
-
 	Executor_executeScript(scriptPath)
 
 def Executor_getScriptDir():
@@ -28,10 +49,6 @@ def Executor_getScriptName():
 	return sys.argv[0]
 
 def Executor_executeScript(scriptPath):
-	from lib.timerUtil import Timer
-	import lib.logUtil as log
-	import lib.exceptionUtil
-	
 	scriptName = Executor_getScriptName()
 	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)

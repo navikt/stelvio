@@ -1,7 +1,6 @@
 import sys, re
 import types
 import lib.color as c
-False, True = 0,1 #Define False, True
 
 def runTests(allTests):
 	failedTests = 0

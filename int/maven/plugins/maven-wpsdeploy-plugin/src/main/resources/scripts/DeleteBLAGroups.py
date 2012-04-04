@@ -2,8 +2,6 @@ from lib.saveUtil import save
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-False, True = 0,1 #Define False, True
-
 def main():
 	for blaGroupId in getBLAGrups():
 		l.info('Deleting CompUnits in', blaGroupId)
