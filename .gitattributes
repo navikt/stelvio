@@ -7729,6 +7729,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/WPS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjects.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjectsWrapper.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminWrapper.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/downloadUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/monitor.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/pomUtil.py -text
@@ -7804,7 +7805,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/assertio
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/businessProcesses.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/collection.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/downloadUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environment.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.py -text
