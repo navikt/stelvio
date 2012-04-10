@@ -34,6 +34,7 @@
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
       <base-property>
+        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -52,6 +53,9 @@
     <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -59,8 +63,8 @@
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>3</daysToKeep>
-          <numToKeep>-1</numToKeep>
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>3</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -181,8 +185,13 @@
     <entry>
       <string>join-JoinTrigger</string>
       <external-property>
+        <originalValue class="join.JoinTrigger">
+          <joinProjects>2012HL3_7.4_nav-model-doc</joinProjects>
+          <joinPublishers/>
+          <evenIfDownstreamUnstable>false</evenIfDownstreamUnstable>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -202,7 +211,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com</recipientList>
+          <recipientList></recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -219,9 +228,9 @@
                 <recipientList></recipientList>
                 <subject>$PROJECT_DEFAULT_SUBJECT</subject>
                 <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
+                <sendToDevelopers>false</sendToDevelopers>
                 <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
+                <sendToRecipientList>false</sendToRecipientList>
               </email>
             </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
             <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
@@ -240,7 +249,7 @@
           <defaultContent>$DEFAULT_CONTENT</defaultContent>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -259,21 +268,16 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
-        <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>2012HL2_7.3_nav-model-doc-diagram, 2012HL3_7.4_nav-model-doc-diagram</childProjects>
-          <threshold>
-            <name>SUCCESS</name>
-            <ordinal>0</ordinal>
-            <color>BLUE</color>
-          </threshold>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>@monthly</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -282,8 +286,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/7.3/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/7.3/&quot; -outputDirPath &quot;/var/www/html/7.3/&quot; -consoleLog
-</command>
+            <command>svn update /home/ci/rsa-models/7.4/design --username svnguest --password Subversion01 --no-auth-cache</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
@@ -360,7 +363,21 @@
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20120327_2012HL3_7_4/spesifikasjon/design</remote>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -386,17 +403,30 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
-  <properties>
-    <hudson.queueSorter.PrioritySorterJobProperty>
-      <priority>100</priority>
-    </hudson.queueSorter.PrioritySorterJobProperty>
-  </properties>
+  <createdBy>l135479</createdBy>
+  <creationTime>1334059343747</creationTime>
+  <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.NullSCM" reference="../project-properties/entry[45]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20120130_2012HL2_7_3/spesifikasjon/design</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>

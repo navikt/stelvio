@@ -45,17 +45,17 @@
       </base-property>
     </entry>
     <entry>
+      <string>scmCheckoutRetryCount</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
+    </entry>
+    <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
-    </entry>
-    <entry>
-      <string>scmCheckoutRetryCount</string>
-      <integer-property>
-        <propertyOverridden>false</propertyOverridden>
-      </integer-property>
     </entry>
     <entry>
       <string>cleanWorkspaceRequired</string>
@@ -67,17 +67,7 @@
     <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList">
-          <hudson.model.ParametersDefinitionProperty>
-            <parameterDefinitions>
-              <hudson.model.StringParameterDefinition>
-                <name>BusConfigVersion</name>
-                <description></description>
-                <defaultValue>7.4.0.0</defaultValue>
-              </hudson.model.StringParameterDefinition>
-            </parameterDefinitions>
-          </hudson.model.ParametersDefinitionProperty>
-        </originalValue>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
     </entry>
@@ -88,20 +78,17 @@
       </integer-property>
     </entry>
     <entry>
-      <string>hudson-triggers-SCMTrigger</string>
-      <trigger-property>
-        <originalValue class="hudson.triggers.SCMTrigger">
-          <spec>@monthly</spec>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </trigger-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>hudson-triggers-SCMTrigger</string>
+      <trigger-property>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
     </entry>
     <entry>
       <string>concurrentBuild</string>
@@ -129,7 +116,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/datapower/cfg/service-gw/service-discovery</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_4_0_D20120410_2012HL3_7_4/layers</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -139,7 +126,7 @@
           <excludedUsers></excludedUsers>
           <excludedRevprop></excludedRevprop>
           <excludedCommitMessages></excludedCommitMessages>
-          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+          <workspaceUpdater class="hudson.scm.subversion.CheckoutUpdater"/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
@@ -147,12 +134,17 @@
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.TimerTrigger">
+          <spec># at 05:00 in the morning
+0 5 * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>l135479</createdBy>
+  <creationTime>1334058439599</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -163,7 +155,7 @@
   <scm class="hudson.scm.SubversionSCM">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/datapower/cfg/service-gw/service-discovery</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_3_0_D20120130_2012HL2_7_3/layers</remote>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
@@ -172,7 +164,7 @@
     <excludedUsers></excludedUsers>
     <excludedRevprop></excludedRevprop>
     <excludedCommitMessages></excludedCommitMessages>
-    <useUpdate>true</useUpdate>
+    <useUpdate>false</useUpdate>
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
@@ -183,50 +175,25 @@
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
     <groupId>no.nav.esb</groupId>
-    <artifactId>service-discovery</artifactId>
+    <artifactId>layers</artifactId>
   </rootModule>
-  <goals>clean install -Dbus-configuration-version=${BusConfigVersion} -Denvclass=t -DenvironmentList=u2 -Ddatapower.username=test -Ddatapower.password=test -Ddatapower.baseurl=test</goals>
+  <goals>clean -e release:clean release:prepare -DdryRun=true</goals>
+  <mavenOpts>-Xmx2560m -Xmx2560m -XX:MaxPermSize=1024m -XX:PermSize=512m</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
-  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>0</mavenValidationLevel>
-  <reporters/>
-  <publishers>
-    <hudson.plugins.chucknorris.CordellWalkerRecorder>
-      <factGenerator/>
-    </hudson.plugins.chucknorris.CordellWalkerRecorder>
-    <hudson.plugins.emailext.ExtendedEmailPublisher>
-      <recipientList></recipientList>
-      <configuredTriggers>
-        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-          <email>
-            <recipientList></recipientList>
-            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-            <body>$PROJECT_DEFAULT_CONTENT</body>
-            <sendToDevelopers>true</sendToDevelopers>
-            <includeCulprits>true</includeCulprits>
-            <sendToRecipientList>true</sendToRecipientList>
-          </email>
-        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-          <email>
-            <recipientList></recipientList>
-            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-            <body>$PROJECT_DEFAULT_CONTENT</body>
-            <sendToDevelopers>true</sendToDevelopers>
-            <includeCulprits>true</includeCulprits>
-            <sendToRecipientList>false</sendToRecipientList>
-          </email>
-        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-      </configuredTriggers>
-      <contentType>default</contentType>
-      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
-      <defaultContent>$DEFAULT_CONTENT</defaultContent>
-    </hudson.plugins.emailext.ExtendedEmailPublisher>
-  </publishers>
+  <reporters>
+    <hudson.maven.reporters.MavenMailer>
+      <recipients>test@example.com</recipients>
+      <dontNotifyEveryUnstableBuild>true</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.maven.reporters.MavenMailer>
+  </reporters>
+  <publishers/>
   <buildWrappers/>
 </maven2-moduleset>

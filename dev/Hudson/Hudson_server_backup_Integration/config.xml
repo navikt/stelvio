@@ -40,7 +40,7 @@
     </hudson.model.AllView>
     <hudson.model.RadiatorView>
       <owner class="hudson" reference="../../.."/>
-      <name>Statusoversikt</name>
+      <name>Status TRUNK</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
@@ -114,6 +114,8 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <string>SoapUI-U3-prosess-PPEN004-BehandleEndringAvUttaksgrad_CI</string>
+        <string>SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI</string>
         <string>SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI</string>
         <string>SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI</string>
       </jobNames>
@@ -136,6 +138,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>SoapUI-U3-prosess-PPEN004-BehandleEndringAvUttaksgrad_CI</string>
         <string>SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI</string>
         <string>SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI</string>
         <string>SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI</string>
@@ -211,32 +214,11 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Statusoversikt 7.2</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <de.fspengler.hudson.pview.ConsoleViewColumn/>
-      </columns>
-      <includeRegex>(HORISONTEN_7\.2_).*</includeRegex>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>Script jobs</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>2012HL2_7.3_CheckScripts_Leveransedokumentasjon</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
         <string>CI-pom_sync</string>
@@ -313,7 +295,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Statusoversikt 7.3</name>
+      <name>Status HL2 (7.3)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
@@ -353,6 +335,27 @@
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>.*[Dd]eploy.*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status HL3 (7.4)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
+      <includeRegex>(2012HL3_7\.4_).*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>

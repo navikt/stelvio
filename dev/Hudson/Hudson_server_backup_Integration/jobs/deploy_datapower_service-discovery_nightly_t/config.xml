@@ -24,12 +24,6 @@
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
-    </entry>
-    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -39,17 +33,23 @@
       </base-property>
     </entry>
     <entry>
-      <string>blockBuildWhenUpstreamBuilding</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
+      <string>logRotator</string>
+      <log-rotator-property>
         <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
+      </log-rotator-property>
     </entry>
     <entry>
       <string>scmCheckoutRetryCount</string>
       <integer-property>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
+    </entry>
+    <entry>
+      <string>blockBuildWhenUpstreamBuilding</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>cleanWorkspaceRequired</string>
@@ -72,12 +72,6 @@
       </integer-property>
     </entry>
     <entry>
-      <string>hudson-triggers-SCMTrigger</string>
-      <trigger-property>
-        <propertyOverridden>false</propertyOverridden>
-      </trigger-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -85,11 +79,10 @@
       </external-property>
     </entry>
     <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
+      <string>hudson-triggers-SCMTrigger</string>
+      <trigger-property>
         <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
+      </trigger-property>
     </entry>
     <entry>
       <string>jdk</string>
@@ -97,6 +90,13 @@
         <originalValue class="string">(Default)</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>appointedNode</string>
@@ -170,7 +170,7 @@
     <groupId>no.nav.esb</groupId>
     <artifactId>service-discovery</artifactId>
   </rootModule>
-  <goals>clean deploy -Dgateway-name=service-gw -Denvclass=t -Dbus-configuration-version=7.4.0.3 -Ddatapower.baseurl=https://dp-tst-13.adeo.no:5550 -DenvironmentList=u2,t4</goals>
+  <goals>clean deploy -Dgateway-name=service-gw -Denvclass=t -Dbus-configuration-version=7.4.0.0 -Ddatapower.baseurl=https://dp-tst-13.adeo.no:5550 -DenvironmentList=u2,t4</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>

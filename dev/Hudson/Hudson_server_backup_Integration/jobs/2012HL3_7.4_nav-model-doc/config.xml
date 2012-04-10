@@ -34,6 +34,7 @@
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
       <base-property>
+        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -52,6 +53,9 @@
     <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -259,16 +263,8 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
-        <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>2012HL2_7.3_nav-model-doc-diagram, 2012HL3_7.4_nav-model-doc-diagram</childProjects>
-          <threshold>
-            <name>SUCCESS</name>
-            <ordinal>0</ordinal>
-            <color>BLUE</color>
-          </threshold>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -282,7 +278,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/7.3/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/7.3/&quot; -outputDirPath &quot;/var/www/html/7.3/&quot; -consoleLog
+            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/7.4/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/7.4/&quot; -outputDirPath &quot;/var/www/html/7.4/&quot; -consoleLog
 </command>
           </hudson.tasks.Shell>
         </originalValue>
@@ -386,17 +382,16 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
-  <properties>
-    <hudson.queueSorter.PrioritySorterJobProperty>
-      <priority>100</priority>
-    </hudson.queueSorter.PrioritySorterJobProperty>
-  </properties>
+  <createdBy>l135479</createdBy>
+  <creationTime>1334059699003</creationTime>
+  <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.NullSCM" reference="../project-properties/entry[45]/scm-property/originalValue"/>
+  <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>

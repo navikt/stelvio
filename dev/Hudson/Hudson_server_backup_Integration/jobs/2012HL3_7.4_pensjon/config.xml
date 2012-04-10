@@ -45,17 +45,17 @@
       </base-property>
     </entry>
     <entry>
+      <string>scmCheckoutRetryCount</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
+    </entry>
+    <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
-    </entry>
-    <entry>
-      <string>scmCheckoutRetryCount</string>
-      <integer-property>
-        <propertyOverridden>false</propertyOverridden>
-      </integer-property>
     </entry>
     <entry>
       <string>cleanWorkspaceRequired</string>
@@ -67,17 +67,7 @@
     <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList">
-          <hudson.model.ParametersDefinitionProperty>
-            <parameterDefinitions>
-              <hudson.model.StringParameterDefinition>
-                <name>BusConfigVersion</name>
-                <description></description>
-                <defaultValue>7.4.0.0</defaultValue>
-              </hudson.model.StringParameterDefinition>
-            </parameterDefinitions>
-          </hudson.model.ParametersDefinitionProperty>
-        </originalValue>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
     </entry>
@@ -95,13 +85,6 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-BuildTrigger</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>concurrentBuild</string>
@@ -129,7 +112,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/datapower/cfg/service-gw/service-discovery</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_4_0_D20120410_2012HL3_7_4/pensjon</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -152,7 +135,8 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>l135479</createdBy>
+  <creationTime>1334058708620</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -163,7 +147,7 @@
   <scm class="hudson.scm.SubversionSCM">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/datapower/cfg/service-gw/service-discovery</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_3_0_D20120130_2012HL2_7_3/pensjon</remote>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
@@ -183,11 +167,11 @@
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
     <groupId>no.nav.esb</groupId>
-    <artifactId>service-discovery</artifactId>
+    <artifactId>pensjon</artifactId>
   </rootModule>
-  <goals>clean install -Dbus-configuration-version=${BusConfigVersion} -Denvclass=t -DenvironmentList=u2 -Ddatapower.username=test -Ddatapower.password=test -Ddatapower.baseurl=test</goals>
+  <goals>clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
-  <incrementalBuild>false</incrementalBuild>
+  <incrementalBuild>true</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
@@ -227,6 +211,7 @@
       <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
       <defaultContent>$DEFAULT_CONTENT</defaultContent>
     </hudson.plugins.emailext.ExtendedEmailPublisher>
+    <hudson.plugins.cigame.GamePublisher/>
   </publishers>
   <buildWrappers/>
 </maven2-moduleset>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Samlejobb som kjører alle skriptjobber vi har for å sjekke koden og dokumentere leveransen.</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
@@ -34,6 +34,7 @@
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
       <base-property>
+        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -52,6 +53,9 @@
     <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -59,8 +63,8 @@
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>3</daysToKeep>
-          <numToKeep>-1</numToKeep>
+          <daysToKeep>1</daysToKeep>
+          <numToKeep>15</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -125,6 +129,11 @@
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
+        <originalValue class="hudson.tasks.Mailer">
+          <recipients>test@example.com test@example.com</recipients>
+          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+          <sendToIndividuals>false</sendToIndividuals>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -201,44 +210,6 @@
     <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
-        <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com</recipientList>
-          <configuredTriggers>
-            <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-          </configuredTriggers>
-          <contentType>default</contentType>
-          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
-          <defaultContent>$DEFAULT_CONTENT</defaultContent>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -252,6 +223,9 @@
     <entry>
       <string>hudson-plugins-chucknorris-CordellWalkerRecorder</string>
       <external-property>
+        <originalValue class="hudson.plugins.chucknorris.CordellWalkerRecorder">
+          <factGenerator/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -259,14 +233,6 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
-        <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>2012HL2_7.3_nav-model-doc-diagram, 2012HL3_7.4_nav-model-doc-diagram</childProjects>
-          <threshold>
-            <name>SUCCESS</name>
-            <ordinal>0</ordinal>
-            <color>BLUE</color>
-          </threshold>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -274,6 +240,9 @@
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>@monthly</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -282,7 +251,15 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/7.3/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/7.3/&quot; -outputDirPath &quot;/var/www/html/7.3/&quot; -consoleLog
+            <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name &quot;*WSIMP.import&quot; -exec R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/System.out.print_Search.py
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 21008366 --path R_7_4_0_D20120410_2012HL3_7_4/
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_7_4_0_D20120410_2012HL3_7_4/ --page 21008373
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_7_4_0_D20120410_2012HL3_7_4/ --page 21008368
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+R_7_4_0_D20120410_2012HL3_7_4/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_7_4_0_D20120410_2012HL3_7_4/ 21008371
 </command>
           </hudson.tasks.Shell>
         </originalValue>
@@ -344,14 +321,15 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
+        <originalValue class="hudson.plugins.cigame.GamePublisher"/>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -360,7 +338,21 @@
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_4_0_D20120410_2012HL3_7_4</remote>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -386,17 +378,30 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
-  <properties>
-    <hudson.queueSorter.PrioritySorterJobProperty>
-      <priority>100</priority>
-    </hudson.queueSorter.PrioritySorterJobProperty>
-  </properties>
+  <createdBy>l135479</createdBy>
+  <creationTime>1334047055262</creationTime>
+  <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.NullSCM" reference="../project-properties/entry[45]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_3_0_D20120130_2012HL2_7_3</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
