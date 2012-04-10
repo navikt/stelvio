@@ -5137,6 +5137,7 @@ incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-context
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/StartExampleJava.wsdl -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/StartExampleJavaWSEXP.export -text
+incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/pom.xml -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/sca.module -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-mediationflow/sca.modulex -text
