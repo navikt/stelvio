@@ -1118,6 +1118,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS/config.xml
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-release-pom_sync/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/EESSI_nav/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_ekstern-pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_esb-busconfiguration/config.xml -text
