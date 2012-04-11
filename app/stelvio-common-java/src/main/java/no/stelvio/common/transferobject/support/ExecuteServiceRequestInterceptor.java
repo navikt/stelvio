@@ -86,7 +86,9 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 					requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
 				}
 
-				RequestContextSetter.setRequestContext(requestContext); // Set requestContext on thread
+				// Set requestContext on thread.
+				// If the requestContext is null, we want to reset the request context to ensure that the context from another thread is _not_ re-used. 
+				RequestContextSetter.setRequestContext(requestContext); 
 				if (log.isDebugEnabled()) {
 					log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
 				}

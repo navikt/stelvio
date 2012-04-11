@@ -25,7 +25,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ExecuteServiceRequestInterceptorTest {
 
 	private TestExecuteServiceRequestInterceptorService pojo;
-	private TestServiceRequest request;
 
 	/**
 	 * Set-up before test.
@@ -37,7 +36,6 @@ public class ExecuteServiceRequestInterceptorTest {
 	public void setUpTest() throws NoSuchFieldException {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("servicerequest-interceptor-test-context.xml");
 		pojo = (TestExecuteServiceRequestInterceptorService) ctx.getBean("test.servicerequest.pojo");
-		request = createTestServiceRequest();
 		RequestContextSetter.setRequestContext(new SimpleRequestContext(null, null, null, null));
 	}
 
@@ -57,10 +55,12 @@ public class ExecuteServiceRequestInterceptorTest {
 	
 	/**
 	 * Test that call is intercepted.
+	 * @throws NoSuchFieldException 
 	 */
 	@Test
-	public void testCallIsIntercepted() {
-
+	public void callIsInterceptedWhenRequestContextIsSet() throws NoSuchFieldException {
+		TestServiceRequest request = createTestServiceRequest();
+		
 		// RequestContext should only contain null values before interception
 		RequestContext reqCtxBeforePojoCall = RequestContextHolder.currentRequestContext();
 		assertThat(reqCtxBeforePojoCall.getScreenId(), not(equalTo("screenId123")));
@@ -80,6 +80,25 @@ public class ExecuteServiceRequestInterceptorTest {
 
 	}
 
+	@Test(expected = IllegalStateException.class)
+	public void interceptorResetsContextWhenContextIsNull() throws NoSuchFieldException {
+
+		TestServiceRequest request = new TestServiceRequest("Jens-Petrus");
+		ReflectUtil.setField(TestServiceRequest.class, request, "requestContext", null);
+		
+		// RequestContext should only contain null values before interception
+		RequestContext reqCtxBeforePojoCall = RequestContextHolder.currentRequestContext();
+		assertThat(reqCtxBeforePojoCall.getScreenId(), not(equalTo("screenId123")));
+
+		// This call should be intercepted
+		String message = pojo.sayHelloTo(request).getMsg();
+
+		assertThat(message, is(equalTo("Hello there, Jens-Petrus")));
+
+		// This method call should throw an exception because the context is no longer set.
+		RequestContextHolder.currentRequestContext();	
+	}
+	
 	/**
 	 * Clean up after test.
 	 */
