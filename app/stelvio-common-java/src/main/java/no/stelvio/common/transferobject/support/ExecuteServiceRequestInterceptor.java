@@ -47,8 +47,6 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 	/**
 	 * Method used to intercept service calls, retrieve RequestContext and set it on thread.
 	 * 
-	 * 2012-03-16: IRPORT-1531: call setRequestContext even if requestContext == null 
-	 *
 	 * @param i
 	 *            MethodInvocation
 	 * @return the value returned by the method that is intercepted
@@ -64,18 +62,18 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 		if (log.isTraceEnabled()) {
 			log.trace("Traversing method parameters");
 		}
-		for (Object arg : args) { // Loop through method arguments
+		for (Object arg : args) {
 			if (log.isTraceEnabled()) {
 				log.trace("Found method argument: " + arg);
 			}
-			if (arg instanceof ServiceRequest) { // Check if argument is of type ServiceRequest
+			if (arg instanceof ServiceRequest) {
 				if (log.isTraceEnabled()) {
 					log.trace("Argument was of type ServiceRequest");
 				}
 
-				RequestContext requestContext = getRequestContext(arg); // Get requestcontext from servicerequest
+				RequestContext requestContext = getRequestContext(arg);
 
-				if (requestContext == null && log.isDebugEnabled()) { // If the context is null we may want to log it
+				if (requestContext == null && log.isDebugEnabled()) {
 					log.debug("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
 				}
 
