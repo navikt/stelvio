@@ -1101,6 +1101,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL2_7.3_pensjon/config.xml 
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_CheckScripts_Leveransedokumentasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_datapower-cfg-secgw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_datapower_cfg_partner-gw/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_ekstern-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_ekstern/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_esb-busconfiguration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_esb-poms/config.xml -text
@@ -1110,8 +1111,10 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav-model-doc-chmod
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav-model-doc-diagram/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav-model-doc/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav-model-update/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav_trunk_int_esb_layers_dryRun/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_pensjon-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hudson[!!-~]configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS/config.xml -text
@@ -1120,14 +1123,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-release-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/EESSI_nav/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_ekstern-pensjon/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_esb-busconfiguration/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_esb-poms/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_esb-release/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_layers/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_nav/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_nav_trunk_int_esb_layers_dryRun/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/HORISONTEN_7.2_pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]Data[!!-~]Source[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]Installed[!!-~]fixpacks[!!-~]overview[!!-~](WPS)[!!-~]to[!!-~]Confluence[!!-~]/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]JVM[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text

@@ -201,17 +201,7 @@
                 <defaultValue></defaultValue>
               </hudson.model.StringParameterDefinition>
               <hudson.model.StringParameterDefinition>
-                <name>SVN user</name>
-                <description>In order to commit the newly created service</description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.PasswordParameterDefinition>
-                <name>SVN password</name>
-                <description></description>
-                <defaultValue>vw2E/I1SPlDQAJl1SesEpQ==</defaultValue>
-              </hudson.model.PasswordParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>Commit message</name>
+                <name>CommitMessage</name>
                 <description></description>
                 <defaultValue></defaultValue>
               </hudson.model.StringParameterDefinition>
@@ -279,7 +269,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>python /home/ci/scripts/maven-archetype/script.py ${ServiceName} ${ReadableServiceName} ${ServiceScope} ${ServiceSpecVersion}</command>
+            <command>python3 /home/ci/scripts/maven-archetype/script.py ${ServiceName} ${ReadableServiceName} ${ServiceScope} ${ServiceSpecVersion} &quot;${CommitMessage}&quot;</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
