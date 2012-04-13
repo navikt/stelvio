@@ -114,10 +114,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>SoapUI-U3-prosess-PPEN004-BehandleEndringAvUttaksgrad_CI</string>
-        <string>SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI</string>
-        <string>SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI</string>
-        <string>SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -129,7 +125,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(SoapUI-U2-).*</includeRegex>
+      <includeRegex>(SoapUI-U\d-).*</includeRegex>
     </listView>
     <hudson.model.RadiatorView>
       <owner class="hudson" reference="../../.."/>
