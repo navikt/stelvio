@@ -14,7 +14,7 @@
 #		7 = jmscf			= Delete JMS Connection Factory
 #		8 = racreate 			= DeInstall Resource adapter
 #		9 = jdbcprovider		= Delete JDBC Provider
-#       	10 = datasource        		= Delete Datasource	
+#       10 = datasource        		= Delete Datasource	
 #		11 = mqcf			= Delete WebSphere MQ Connection Factory
 #		12 = mqqueuedes			= Delete WebSphere MQ queue destinations 
 #		13 = sharedlib			= Delete a shared library and associate it with an application
@@ -32,37 +32,29 @@ from java.io 	import FileInputStream
 import sys, re
 
 from lib.saveUtil import save
+import lib.scaModuleUtil as sca
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-from lib.utils6 import readDistributionDirectory, parseApplicationNames
 from lib.environment import createNameSpaceBinding, createSharedLibrary
 from lib.resources import installResourceAdapter, createJ2CConnectionFactory, createDataSource, createJDBCProvider, createJMSActivationSpec, createJMSConnectionFactory, createJMSQueue, createJMSTopic, createMQConnectionFactory, createMQDestination, createSharedLibrary
 from lib.serviceIntegration import createSIBDestination
 
-
-APPLICATIONS_FOLDER 	 = sys.argv[1]
-ENVIRONMENT 	 	 = sys.argv[2]
-APP_PROPS_HOME 		 = sys.argv[3]
+ENVIRONMENT 	 	 = sys.argv[1]
+APP_PROPS_HOME 		 = sys.argv[2]
 
 
 ############### Main Section ###############################################
 
-global progInfo
-global configInfo
 
 
 configInfo = {}
-
-ears = readDistributionDirectory(APPLICATIONS_FOLDER)
-appNames = parseApplicationNames(ears)	 
 	
-for appName in appNames:
-	pattern = "-" + "(\d+\.)+\d+(-)?[a-zA-Z]*[0-9]*(-SNAPSHOT)?$"
-	match = re.search(pattern, appName)
-	applicationId = appName[:match.start()]
-	
-	APPLICATION_NAME=applicationId
+for scaModule in sca.getModulesToBeInstalled():
+	if not scaModule.deployResources:
+		l.debug('Skipping %s because "deployResources" is false in the scaModule' % scaModule)
+		continue
+	APPLICATION_NAME=scaModule.shortName
 	try:
 		# Use Java to load it, it is a properties file
 		fileprop = Properties()
@@ -76,8 +68,8 @@ for appName in appNames:
 		l.info('Application '+ APPLICATION_NAME + ' contains no resources, since property file was not defined.')
 		continue
 	
-	l.info('============================================================================')
-	l.info('INFO: Deploying resources for ' +  APPLICATION_NAME)
+	l.info('================================================================================')
+	l.info(('INFO: Deploying resources for ' +  APPLICATION_NAME).center(80))
 	l.info('============================================================================')
 	for jidx in range(int(configInfo["app.count"])):
 			whatToCreate	 	= configInfo["app.%d.WHAT" % (jidx)]
