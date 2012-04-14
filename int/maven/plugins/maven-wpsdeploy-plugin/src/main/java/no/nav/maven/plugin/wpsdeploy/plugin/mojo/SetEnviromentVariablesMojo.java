@@ -3,6 +3,7 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.models.DeployArtifact;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.ArgumentUtil;
 
 import org.apache.maven.plugin.MojoExecutionException;
