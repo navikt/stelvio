@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MyConfigurationException;
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.ConfigurationException;
 
 import org.apache.maven.project.MavenProject;
 
@@ -37,7 +37,7 @@ public class PropertyUtils {
 		if (fetchedProperty != null){
 			return fetchedProperty;
 		} else {
-			throw new MyConfigurationException("[ERROR] Unable to find property, " + key + " in file " + fileLocation);
+			throw new ConfigurationException("[ERROR] Unable to find property, " + key + " in file " + fileLocation);
 		}
 	}
 	
@@ -47,10 +47,10 @@ public class PropertyUtils {
 		
 
 		if(value == null){
-			throw new MyConfigurationException("The "+ key +" property can't be \"null\"!");
+			throw new ConfigurationException("The "+ key +" property can't be \"null\"!");
 		} 
 		else if (value.contains("$")){
-			throw new MyConfigurationException("The "+ key +" property can't contain \"$\"!\nWhen this happens it is most likely that there is a property file that can't be found.");
+			throw new ConfigurationException("The "+ key +" property can't contain \"$\"!\nWhen this happens it is most likely that there is a property file that can't be found.");
 		}
 		
 		projectProperties.put(key, value);
