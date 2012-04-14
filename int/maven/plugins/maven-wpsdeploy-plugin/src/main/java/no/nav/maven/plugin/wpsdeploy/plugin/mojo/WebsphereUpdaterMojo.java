@@ -105,6 +105,9 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String moduleConfigHome;
 	protected String busConfigurationDirectory;
 	protected String tmpBusConfigurationExtractDirectory;
+	protected String jythonScriptsDirectory;
+	protected String pathMappingFilePath;
+	protected String deployDependencies;
 
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
 	
@@ -116,6 +119,9 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
 		moduleConfigHome = busConfigurationDirectory + "/moduleconfig";
 		environmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
+		jythonScriptsDirectory = targetDirectory + "/scripts";
+		pathMappingFilePath = targetDirectory + "/pathMappings.csv";
+		deployDependencies = targetDirectory + "/EarFilesToDeploy.csv";
 		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
@@ -127,11 +133,15 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		args.add("-user " + dmgrUsername);
 		args.add("-password " + dmgrPassword);
 		
+		String javaoption = "-Dpython.path="+ jythonScriptsDirectory;
+		
 		if (logLevel != null){
-			args.add("-javaoption -Dlogging.level=" + logLevel);
+			javaoption += " -Dlogging.level="+ logLevel;
 		}
 		
-		args.add("-f " + targetDirectory + "/scripts/Executor.py");
+		args.add("-javaoption '"+ javaoption +"'");
+		
+		args.add("-f " + jythonScriptsDirectory + "/Executor.py");
 
 		for(String arg : args){
 			Commandline.Argument cmdArg = new Commandline.Argument();
