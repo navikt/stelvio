@@ -7831,6 +7831,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/scaModul
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/serviceIntegration.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/stringUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/syncUtil.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/tableUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/testUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/timerUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/utils6.py -text
