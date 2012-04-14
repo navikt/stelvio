@@ -18,7 +18,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal bounce-dmgr
  * @requiresDependencyResolution
  */
-public class BounceDeploymentManager extends WebsphereUpdaterMojo {
+public class BounceDeploymentManagerMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {

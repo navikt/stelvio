@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
  * @goal apply-activationspecs
  * @requiresDependencyResolution
  */
-public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
+public class ApplyActivationSpecsMojo extends WebsphereUpdaterMojo {
 
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 

@@ -14,7 +14,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal extract-scripts
  * @requiresDependencyResolution
  */
-public class ExtractScripts extends WebsphereUpdaterMojo {
+public class ExtractScriptsMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {

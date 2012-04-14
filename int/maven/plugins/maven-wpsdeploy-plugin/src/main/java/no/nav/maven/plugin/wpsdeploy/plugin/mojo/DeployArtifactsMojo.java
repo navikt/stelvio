@@ -10,10 +10,10 @@ import org.codehaus.plexus.util.cli.Commandline;
  * 
  * @author test@example.com
  * 
- * @goal deploy-artifact
+ * @goal deploy-artifacts
  * @requiresDependencyResolution
  */
-public class DeployArtifactMojo extends WebsphereUpdaterMojo {
+public class DeployArtifactsMojo extends WebsphereUpdaterMojo {
 
 	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		if (!isConfigurationLoaded()){
@@ -21,10 +21,7 @@ public class DeployArtifactMojo extends WebsphereUpdaterMojo {
 			return;
 		}
 		
-		deployArtifacts(wsadminCommandLine);
-	}
 
-	private final void deployArtifacts(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("ApplicationManagement.py " + deployableArtifactsHome);
 		wsadminCommandLine.addArg(arg);

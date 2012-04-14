@@ -13,7 +13,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal apply-usernametokendetails
  * @requiresDependencyResolution
  */
-public class ApplyUsernameTokenDetails extends WebsphereUpdaterMojo {
+public class ApplyUsernameTokenDetailsMojo extends WebsphereUpdaterMojo {
 
 	/* (non-Javadoc)
 	 * @see no.nav.maven.plugin.wpsdeploy.plugin.mojo.WebsphereUpdaterMojo#applyToWebSphere(org.codehaus.plexus.util.cli.Commandline)

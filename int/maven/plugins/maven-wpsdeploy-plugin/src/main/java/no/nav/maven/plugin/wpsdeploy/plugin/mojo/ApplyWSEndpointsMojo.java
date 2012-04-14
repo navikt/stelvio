@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
  * @goal apply-wsendpoints
  * @requiresDependencyResolution
  */
-public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
+public class ApplyWSEndpointsMojo extends WebsphereUpdaterMojo {
 
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 

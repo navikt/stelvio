@@ -15,7 +15,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal extract-bus-configuration
  * @requiresDependencyResolution
  */
-public class ExtractBusConfig extends WebsphereUpdaterMojo {
+public class ExtractBusConfigMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {

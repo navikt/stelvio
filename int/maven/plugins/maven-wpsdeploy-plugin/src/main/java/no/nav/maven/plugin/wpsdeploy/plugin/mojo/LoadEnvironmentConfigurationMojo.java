@@ -17,7 +17,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal load-configuration
  * @requiresDependencyResolution
  */
-public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
+public class LoadEnvironmentConfigurationMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {

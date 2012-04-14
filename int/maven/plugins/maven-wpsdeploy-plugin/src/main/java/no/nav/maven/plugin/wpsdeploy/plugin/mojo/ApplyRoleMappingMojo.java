@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
  * @goal apply-rolemapping
  * @requiresDependencyResolution
  */
-public class RoleMappingMojo extends WebsphereUpdaterMojo {
+public class ApplyRoleMappingMojo extends WebsphereUpdaterMojo {
 
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 
