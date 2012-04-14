@@ -7852,6 +7852,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminS
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminTaskMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminUtilitiesMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/__init__.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/openMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/osMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.bat -text

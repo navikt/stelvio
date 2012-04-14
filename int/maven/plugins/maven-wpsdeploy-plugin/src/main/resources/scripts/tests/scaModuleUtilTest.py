@@ -3,25 +3,24 @@ import lib.scaModuleUtil as smu
 import mocks.AdminTaskMock as AdminTaskMock
 import mocks.AdminAppMock as AdminApp
 import mocks.osMock as os
+import mocks.openMock as open
 		
-False, True = 0,1 #Define False, True
-
 smu.os = os
 smu.AdminTask = AdminTaskMock
 smu.AdminApp = AdminApp
+smu.open = open.open
 
+VERSIONED_SHORT_NAME = 'ekstern-pensjon-tjeneste-beregning'
 VERSIONED_MODULE_NAME = 'ekstern-pensjon-tjeneste-beregning_v1'
 VERSIONED_APLICATION_NAME = 'ekstern-pensjon-tjeneste-beregning_v1App'
-VERSIONED_SHORT_NAME = 'ekstern-pensjon-tjeneste-beregning'
-VERSIONED_VERSION = '1.1.3-alpha001'
+VERSIONED_VERSION = '1.1.3'
 VERSIONED_SCA_VERSION = 1
 
+UNVERSIONED_SHORT_NAME = 'nav-bsrv-frg-finntjenestepensjonsforhold'
 UNVERSIONED_MODULE_NAME = 'nav-bsrv-frg-finntjenestepensjonsforhold'
 UNVERSIONED_APLICATION_NAME = 'nav-bsrv-frg-finntjenestepensjonsforholdApp'
-UNVERSIONED_SHORT_NAME = 'nav-bsrv-frg-finntjenestepensjonsforhold'
 UNVERSIONED_VERSION = '7.4.0'
 UNVERSIONED_SCA_VERSION = None
-
 
 def getInstalledModulesTest():
 	scaModules = smu.getInstalledModules()
@@ -35,7 +34,7 @@ def getInstalledModulesTest():
 	
 def getModulesToBeInstalledVersionedTest():
 	scaModules = smu.getModulesToBeInstalled('ignored input')
-	s = scaModules[0]
+	s = scaModules[256]
 	assertEqual(s.moduleName, VERSIONED_MODULE_NAME, 'moduleName %s whas not equal to %s' % (s.moduleName, VERSIONED_MODULE_NAME))
 	assertEqual(s.applicationName, VERSIONED_APLICATION_NAME, 'applicationName %s whas not equal to %s' % (s.applicationName, VERSIONED_APLICATION_NAME))
 	assertEqual(s, VERSIONED_APLICATION_NAME, '__str__() %s whas not equal to %s' % (s, VERSIONED_APLICATION_NAME))
@@ -45,7 +44,7 @@ def getModulesToBeInstalledVersionedTest():
 	
 def getModulesToBeInstalledUnversionedTest():
 	scaModules = smu.getModulesToBeInstalled('ignored input')
-	s = scaModules[6]
+	s = scaModules[136]
 	assertEqual(s.moduleName, UNVERSIONED_MODULE_NAME, 'moduleName %s whas not equal to %s' % (s.moduleName, UNVERSIONED_MODULE_NAME))
 	assertEqual(s.applicationName, UNVERSIONED_APLICATION_NAME, 'applicationName %s whas not equal to %s' % (s.applicationName, UNVERSIONED_APLICATION_NAME))
 	assertEqual(s, UNVERSIONED_APLICATION_NAME, '__str__() %s whas not equal to %s' % (s, UNVERSIONED_APLICATION_NAME))
@@ -60,19 +59,3 @@ def equalVersionedTest():
 def equalUnversionedTest():
 	scaModule = smu.ScaModule(UNVERSIONED_SHORT_NAME, '0.0.0', None)
 	assertTrue(scaModule == UNVERSIONED_APLICATION_NAME)
-	
-def __versionedAttrChecker(scaModule):
-	assertEqual(scaModule.moduleName, VERSIONED_MODULE_NAME, 'moduleName %s whas not equal to %s' % (scaModule.moduleName, VERSIONED_MODULE_NAME))
-	assertEqual(scaModule.applicationName, VERSIONED_APLICATION_NAME, 'applicationName %s whas not equal to %s' % (scaModule.applicationName, VERSIONED_APLICATION_NAME))
-	assertEqual(scaModule, VERSIONED_APLICATION_NAME, '__str__() %s whas not equal to %s' % (scaModule, VERSIONED_APLICATION_NAME))
-	assertEqual(scaModule.shortName, VERSIONED_SHORT_NAME, 'shortName %s whas not equal to %s' % (scaModule.shortName, VERSIONED_SHORT_NAME))
-	assertEqual(scaModule.version, VERSIONED_VERSION, 'version %s whas not equal to %s' % (scaModule.version, VERSIONED_VERSION))
-	assertEqual(scaModule.scaVersion, VERSIONED_SCA_VERSION, 'scaVersion %s whas not equal to %s' % (scaModule.scaVersion, VERSIONED_SCA_VERSION))
-	
-def __unversionedAttrChecker(scaModule):
-	assertEqual(scaModule.moduleName, UNVERSIONED_MODULE_NAME, 'moduleName %s whas not equal to %s' % (scaModule.moduleName, UNVERSIONED_MODULE_NAME))
-	assertEqual(scaModule.applicationName, UNVERSIONED_APLICATION_NAME, 'applicationName %s whas not equal to %s' % (scaModule.applicationName, UNVERSIONED_APLICATION_NAME))
-	assertEqual(scaModule, UNVERSIONED_APLICATION_NAME, '__str__() %s whas not equal to %s' % (scaModule, UNVERSIONED_APLICATION_NAME))
-	assertEqual(scaModule.shortName, UNVERSIONED_SHORT_NAME, 'shortName %s whas not equal to %s' % (scaModule.shortName, UNVERSIONED_SHORT_NAME))
-	assertEqual(scaModule.version, UNVERSIONED_VERSION, 'version %s whas not equal to %s' % (scaModule.version, UNVERSIONED_VERSION))
-	assertEqual(scaModule.scaVersion, UNVERSIONED_SCA_VERSION, 'scaVersion %s whas not equal to %s' % (scaModule.scaVersion, UNVERSIONED_SCA_VERSION))
