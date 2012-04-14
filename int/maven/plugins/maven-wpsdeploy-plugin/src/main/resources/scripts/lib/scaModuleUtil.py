@@ -1,11 +1,11 @@
 import os, re
 import lib.namingConventionLogic as naming
-import lib.fileMap as fileMap
+import lib.fileMapPath as fileMapPath
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
 headlineRow = ""
-APPLICATIONS_INSTALL_CSV_PATH = fileMap.get('deployDependencies')
+APPLICATIONS_INSTALL_CSV_PATH = fileMapPath.getPath()
 
 def getInstalledModules():
 	modules = []
@@ -26,7 +26,7 @@ def getModulesToBeInstalled():
 	
 	modules = []
 	for line in f.readlines():
-		shortName, version, earPath, doInstall, deployResources = line.strip().split(',')
+		shortName, version, earPath, doInstall, deployResources, uninstallOldVersion = line.strip().split(',')
 		if naming.isVersioned(shortName):
 			if naming.isProcess(shortName):
 				scaVersion = version
@@ -35,9 +35,12 @@ def getModulesToBeInstalled():
 		else:
 			scaVersion = None
 		scaModule = ScaModule(shortName, version, scaVersion)
+		
 		scaModule.doInstall = doInstall == "True"
 		scaModule.deployResources = deployResources == "True"
 		scaModule.earPath = earPath
+		scaModule.uninstallOldVersion = uninstallOldVersion == "True"
+		
 		modules.append(scaModule)
 	return modules
 	
@@ -77,18 +80,18 @@ class ScaModule:
 			
 		self.applicationName = self.moduleName+'App'
 		
-	def toCsvLine(self):
-		if self.doInstall:
-			doInstall = "True"
-		else: 
-			doInstall = "False"
-		if self.deployResources:
-			deployResources = "True"
-		else: 
-			deployResources = "False"
-			
-		return ','.join((self.shortName, self.version, self.earPath, doInstall, deployResources))
+	def toCsvLine(self):			
+		return ','.join((
+			self.shortName,
+			self.version, self.earPath,
+			self.__boolToStr(self.doInstall),
+			self.__boolToStr(self.deployResources),
+			self.__boolToStr(self.uninstallOldVersion)
+		))
 		
+	def __boolToStr(self, b):
+		if b: return "True"
+		else: return "False"
 	def __gt__(self, other):
 		return self.applicationName > str(other)
 	def __lt__(self, other):
