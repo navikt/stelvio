@@ -1,20 +1,17 @@
 import sys
 import lib.scaModuleUtil as sca
-import lib.fileMap as fileMap
 import lib.logUtil as log
 from lib.tableUtil import Table
 
 l = log.getLogger(__name__)
 installedModules = []
-modulesToBeInstalled = []
-APPLICATIONS_INSTALL_CSV_PATH = fileMap.get('deployDependencies')
 yes, no = "Yes", "No"
 
 def main():
 	deployAllResources = sys.argv[1] == "deployAllResources=True"
 	myTimer = Timer()
 	
-	global installedModules, modulesToBeInstalled
+	global installedModules
 	
 	l.info('Getting installed modules...')
 	installedModules = sca.getInstalledModules()
@@ -25,31 +22,39 @@ def main():
 	l.info('It took', myTimer.reset(), 'to get', len(modulesToBeInstalled), 'modules.')
 	
 	
-	table = Table(['Module', 'Install', 'Deploy resources', 'Old version', 'New version'])
+	table = Table(['Module', 'Install', 'Uninstall old version', 'Deploy resources', 'Old version', 'New version'])
 	for installModule in modulesToBeInstalled:
-		deployResources = doInstall = False
+		doInstall = doUninstall = deployResources = False
+		
 		existingModule = getExistingScaModule(installModule)
 		if not existingModule:
-			row = [installModule.shortName, yes, yes, 'N/A', installModule.version]
-			deployResources = doInstall = True
+			doInstall = deployResources = True
+			existingModuleVersion = 'N/A'
 			
 		elif installModule.majorVersion == existingModule.majorVersion:
+			existingModuleVersion = existingModule.version
+			
 			if existingModule.version != installModule.version:
-				row = [installModule.shortName, yes, yes, existingModule.version, installModule.version]
-				deployResources = doInstall = True
+				doInstall = deployResources = True
+				if existingModule == installModule:
+					doUninstall = True
 			else:
 				if deployAllResources:
-					deployResources = yes
-				else:
-					deployResources = no
-				row = [installModule.shortName, no, deployResources, existingModule.version, installModule.version]
+					deployResources = True
+					
+		row = [installModule.shortName, boolToYesNo(doInstall), boolToYesNo(doUninstall), boolToYesNo(deployResources), existingModuleVersion, installModule.version]
 		
 		table.addRow(row)
 		installModule.doInstall = doInstall
+		installModule.uninstallOldVersion = doUninstall
 		installModule.deployResources = deployResources
 	table.sort(columb=1, reverse=True)
 	l.println(table)
 	sca.setModulesToBeInstalled(modulesToBeInstalled)
+
+def boolToYesNo(b):
+	if b: return 'Yes'
+	else: return 'No'
 				
 def getExistingScaModule(scaModule):
 	for installed in installedModules:
