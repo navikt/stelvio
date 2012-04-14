@@ -1,8 +1,11 @@
 import os, re
 import lib.namingConventionLogic as naming
+import lib.fileMap as fileMap
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
-False, True = 0,1 #Define False, True
-appREGEX = re.compile('_v\d+')
+headlineRow = ""
+APPLICATIONS_INSTALL_CSV_PATH = fileMap.get('deployDependencies')
 
 def getInstalledModules():
 	modules = []
@@ -15,30 +18,44 @@ def getInstalledModules():
 		modules.append(scaModule)
 	return modules
 	
-def getModulesToBeInstalled(earFolder):
-	earFiles = os.listdir(earFolder)
+def getModulesToBeInstalled():
+	f = open(APPLICATIONS_INSTALL_CSV_PATH)
+	
+	global headlineRow
+	headlineRow = f.readline().strip()
+	
 	modules = []
-	for earFile in earFiles:
-		shortName, version, majorVersion, versioned = naming.parseEarFileName(earFile)
-		if versioned:
+	for line in f.readlines():
+		shortName, version, earPath, doInstall, deployResources = line.strip().split(',')
+		if naming.isVersioned(shortName):
 			if naming.isProcess(shortName):
 				scaVersion = version
 			else:
-				scaVersion = majorVersion
+				scaVersion = getMajorVersion(version)
 		else:
 			scaVersion = None
 		scaModule = ScaModule(shortName, version, scaVersion)
+		scaModule.doInstall = doInstall == "True"
+		scaModule.deployResources = deployResources == "True"
+		scaModule.earPath = earPath
 		modules.append(scaModule)
 	return modules
 	
-def getInstalledScaModule(scaModuleToBeDeployed):
-	pass
+def setModulesToBeInstalled(applicationList):
+	f = open(APPLICATIONS_INSTALL_CSV_PATH, 'w')
+	f.write(headlineRow +'\n')
+	for app in applicationList:
+		f.write(app.toCsvLine() +'\n')
+	f.close()
 
 def getApplicationVersion(applicationName):
 	versionString = AdminApp.view(applicationName, '-buildVersion').strip()
 	versionNumber = versionString.replace('Application Build ID:  ', '')
 	return versionNumber
 	
+def getMajorVersion(version):
+	return version.split('.')[0]
+
 class ScaModule:
 	''' Example:
 		shortName:       nav-tjeneste-sak
@@ -50,7 +67,7 @@ class ScaModule:
 	def __init__(self, shortName, version, scaVersion):
 		self.shortName = shortName
 		self.version = version
-		self.majorVersion = version.split('.')[0]
+		self.majorVersion = getMajorVersion(version)
 		self.scaVersion = scaVersion
 		
 		if scaVersion:
@@ -59,6 +76,18 @@ class ScaModule:
 			self.moduleName = shortName
 			
 		self.applicationName = self.moduleName+'App'
+		
+	def toCsvLine(self):
+		if self.doInstall:
+			doInstall = "True"
+		else: 
+			doInstall = "False"
+		if self.deployResources:
+			deployResources = "True"
+		else: 
+			deployResources = "False"
+			
+		return ','.join((self.shortName, self.version, self.earPath, doInstall, deployResources))
 		
 	def __gt__(self, other):
 		return self.applicationName > str(other)

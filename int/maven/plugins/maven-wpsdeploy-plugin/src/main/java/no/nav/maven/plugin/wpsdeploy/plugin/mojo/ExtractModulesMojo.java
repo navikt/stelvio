@@ -1,12 +1,16 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.xml.parsers.FactoryConfigurationError;
+
+import no.nav.maven.plugin.wpsdeploy.plugin.models.DeployArtifact;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
@@ -31,12 +35,10 @@ import org.codehaus.plexus.util.cli.Commandline;
 /**
  * Goal that extracts the defined DeployArtifacts
  * 
- * @author test@example.com
- * 
  * @goal extract-module-poms
  * @requiresDependencyResolution
  */
-public class ExtractModules extends WebsphereUpdaterMojo {
+public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 
 	/**
 	 * @parameter expression="${session}"
@@ -97,36 +99,47 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 	/** @component */
 	private MavenProjectBuilder mavenProjectBuilder;
 
+	/**
+	 * @parameter expression="${module.groupId}"
+	 */
+	private String moduleGroupId;
+
+	/**
+	 * @parameter expression="${module.artifactId}"
+	 */
+	private String moduleArtifactId;
+
+	/**
+	 * @parameter expression="${module.version}"
+	 */
+	private String moduleVersion;
+
+	/**
+	 * @parameter expression="${module.type}"
+	 */
+	private String moduleType;
+
 	private Set<Artifact> allArtifacts; 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		try {
 			allArtifacts = new HashSet<Artifact>();
 
 			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
-			
-			for (DeployArtifact da : artifacts){
 
-				if (da.getVersion() == null || da.getVersion().startsWith("$")){
-					getLog().info("Skipping " + da.getGroupId() + ":" + da.getArtifactId() + ", no version specified.");
-					continue;
-				}
+			BufferedWriter installationRecepies = new BufferedWriter(new FileWriter(deployDependencies));
+			installationRecepies.write("Name,Version,Path,Install_application,Deploy_resources\n");
 
-				Artifact pomArtifact = artifactFactory.createArtifact(da.getGroupId(), da.getArtifactId(), da.getVersion(), null, "pom");
-				MavenProject p = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
-				Set<Artifact> artifacts = MavenMetadataSource.createArtifacts(artifactFactory, p.getOriginalModel().getDependencies(), null, null, p);
-				for (Artifact a : artifacts) {
-					artifactResolver.resolve(a, remoteRepos, localRepository);
-					allArtifacts.add(a);
-					File src = new File(a.getFile().getAbsolutePath());
-					FileUtils.copyFileToDirectory(src, new File(deployableArtifactsHome));
-				}
-				
-				getLog().info("Successfully extracted "+ artifacts.size() +" dependency artifacts of " + da.toString() + " into \"allArtifacts\" list.");
+			if((moduleGroupId != null) && (moduleArtifactId != null) && (moduleVersion != null) && (moduleType != null)){
+				Artifact artifact = artifactFactory.createArtifact(moduleGroupId, moduleArtifactId, moduleVersion, null, moduleType);
+				addOneArtifact(artifact, remoteRepos, installationRecepies);
+			} else {
+				addAllArtifacts(remoteRepos, installationRecepies);
 			}
-		
+
+			installationRecepies.close();
+
 			project.setArtifacts(allArtifacts);
 			project.setDependencyArtifacts(allArtifacts);
 
@@ -145,6 +158,46 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 		} catch (ArtifactNotFoundException e) {
 			throw new MojoExecutionException("[ERROR] Resource can not be found.", e);
 		}
+	}
+
+	private void addOneArtifact(Artifact artifact, List<?> remoteRepos, BufferedWriter installationRecepies) throws ArtifactResolutionException, ArtifactNotFoundException, IOException{
+		artifactResolver.resolve(artifact, remoteRepos, localRepository);
+		allArtifacts.add(artifact);
+		addArtifactToInstallationRecepies(artifact, installationRecepies);
+		getLog().info(String.format("Successfully added %s-%s to \"allArtifacts\" list.", artifact.getArtifactId(), artifact.getVersion()));
+	}
+
+	@SuppressWarnings("unchecked")
+	private void addAllArtifacts(List<?> remoteRepos,
+			BufferedWriter installationRecepies) throws ProjectBuildingException,
+			InvalidDependencyVersionException, ArtifactResolutionException,
+			ArtifactNotFoundException, IOException {
+		for (DeployArtifact da : artifacts){
+			if (da.getVersion() == null || da.getVersion().startsWith("$")){
+				getLog().info("Skipping " + da.getGroupId() + ":" + da.getArtifactId() + ", no version specified.");
+				continue;
+			}
+
+			Artifact pomArtifact = artifactFactory.createArtifact(da.getGroupId(), da.getArtifactId(), da.getVersion(), null, "pom");
+			MavenProject p = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
+			Set<Artifact> artifacts = MavenMetadataSource.createArtifacts(artifactFactory, p.getOriginalModel().getDependencies(), null, null, p);
+			for (Artifact a : artifacts) {
+
+				artifactResolver.resolve(a, remoteRepos, localRepository);
+				allArtifacts.add(a);
+				File src = new File(a.getFile().getAbsolutePath());
+				FileUtils.copyFileToDirectory(src, new File(deployableArtifactsHome));
+
+				addArtifactToInstallationRecepies(a, installationRecepies);
+			}
+
+			getLog().info("Successfully extracted "+ artifacts.size() +" dependency artifacts of " + da.toString() + " into \"allArtifacts\" list.");
+		}
+	}
+
+	private void addArtifactToInstallationRecepies(Artifact artifact,
+			BufferedWriter installationRecepies) throws IOException {
+		installationRecepies.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False\n");
 	}
 
 	@Override

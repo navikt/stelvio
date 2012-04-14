@@ -20,24 +20,26 @@
 							<compile>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:path-mappings,		<!-- lib/fileMapPath.py (auto generated)-->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:dependency-identifier,	<!-- DependencyIdentifier.py -->
 							</compile>
 							<deploy>
-	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:backup-config,
-	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:remove-bp,
-	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:stop-clusters,
-	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:delete-BLA-groups,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-artifact,
-	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:create-BLA-groups,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-resources,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:set-environment-variables,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-rolemapping,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-wsendpoints,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-activationspecs,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:synchronize-nodes,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:start-clusters,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:modify-max-failed-deliveries,
+	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:backup-config,		<!-- (SSH) -->
+	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:remove-bp,			<!-- RemoveOldBPModule.py -->
+	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:stop-clusters,		<!-- ClusterStartStop.py -->
+	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:delete-BLA-groups,	<!-- DeleteBLAGroups.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-artifacts,	<!-- ApplicationManagement.py -->
+	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:create-BLA-groups,	<!-- CreateBLAGroups.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-resources,	<!-- CreateApplicationArtifacts.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:set-environment-variables,	<!-- SetEnvironmentVariableDmgr.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-rolemapping,	<!-- RoleMapping.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-wsendpoints,	<!-- ModifySCAImportsBinding.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,	<!-- ModifyUserNameTokenGenerator.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-activationspecs,	<!-- ModifyMaxConcurrencyAS.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:synchronize-nodes,	<!-- ClusterStartStop.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,		<!-- (SSH) -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:start-clusters,		<!-- ClusterStartStop.py -->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:modify-max-failed-deliveries,	<!-- ModifyMaxFailedDeliveries.py -->
 							</deploy>
 						</phases>
 					</lifecycle>

@@ -7769,14 +7769,16 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BounceDeploymentManagerMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/CreateBlaGroupsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeleteBlaGroupsMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DependencyIdentifierMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifactsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployResourcesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractBusConfigMojo.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractModules.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractModulesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractScriptsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/InterpolatorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/LoadEnvironmentConfigurationMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ModifyMaxFailedDeliveriesMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/PathMappingsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/RemoteCommandExecutorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/RemoveBPMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/SetEnviromentVariablesMojo.java -text
@@ -7799,6 +7801,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterStart
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateApplicationArtifacts.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateBLAGroups.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/DeleteBLAGroups.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/DependencyIdentifier.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/Executor.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ModifyMaxConcurrencyAS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ModifyMaxFailedDeliveries.py -text
@@ -7821,6 +7824,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/collecti
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environment.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptionUtil.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/fileMap.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/ibmfixes.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/namingConventionLogic.py -text
