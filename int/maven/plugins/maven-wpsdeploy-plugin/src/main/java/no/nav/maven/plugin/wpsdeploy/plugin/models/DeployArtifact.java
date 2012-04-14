@@ -1,4 +1,4 @@
-package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
+package no.nav.maven.plugin.wpsdeploy.plugin.models;
 
 public class DeployArtifact {
 	
