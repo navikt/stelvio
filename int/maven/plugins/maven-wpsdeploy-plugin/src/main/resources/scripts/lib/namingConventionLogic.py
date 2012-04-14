@@ -10,14 +10,14 @@ versionedREGEX = re.compile('-(%s)-' % versionedModuleNames)
 processREGEX = re.compile('-prosess-|-microflow-|-bproc-|-bsrv-frg-hentinstitusjonsoppholdliste')
 parseEarModuleNameREGEX = re.compile('^((?:.+-(%s)-)?.+)-((\d+)\.\d+\.\d+.*).ear$' % versionedModuleNames)
 
-def isVersioned(moduleName):
-	if versionedREGEX.search(moduleName):
+def isVersioned(moduleShortName):
+	if versionedREGEX.search(moduleShortName):
 		return True
 	else:
 		return False
 		
-def isProcess(moduleName):
-	if processREGEX.search(moduleName):
+def isProcess(moduleShortName):
+	if processREGEX.search(moduleShortName):
 		return True
 	else:
 		return False
