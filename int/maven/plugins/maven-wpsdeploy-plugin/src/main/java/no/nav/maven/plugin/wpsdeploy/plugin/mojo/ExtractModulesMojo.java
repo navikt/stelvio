@@ -119,7 +119,8 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 	 */
 	private String moduleType;
 
-	private Set<Artifact> allArtifacts; 
+	private Set<Artifact> allArtifacts;
+	String generatedJythonScriptName = "fileMapPath.py"; 
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
@@ -129,7 +130,7 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
 
 			BufferedWriter installationRecepies = new BufferedWriter(new FileWriter(deployDependencies));
-			installationRecepies.write("Name,Version,Path,Install_application,Deploy_resources\n");
+			installationRecepies.write("Name,Version,Path,Install_application,Deploy_resources,Uninstall_old_version\n");
 
 			if((moduleGroupId != null) && (moduleArtifactId != null) && (moduleVersion != null) && (moduleType != null)){
 				Artifact artifact = artifactFactory.createArtifact(moduleGroupId, moduleArtifactId, moduleVersion, null, moduleType);
@@ -139,6 +140,7 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 			}
 
 			installationRecepies.close();
+			createJythonInstallRecepiesFilePathScript(deployDependencies);
 
 			project.setArtifacts(allArtifacts);
 			project.setDependencyArtifacts(allArtifacts);
@@ -197,7 +199,23 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 
 	private void addArtifactToInstallationRecepies(Artifact artifact,
 			BufferedWriter installationRecepies) throws IOException {
-		installationRecepies.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False\n");
+		installationRecepies.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False,False\n");
+	}
+
+	private void createJythonInstallRecepiesFilePathScript(String pathMappingsFilePath) throws MojoExecutionException {
+		String generatedJythonScriptPath = jythonScriptsDirectory +"/lib/"+ generatedJythonScriptName;
+		String script = "def getPath(): return '"+ pathMappingsFilePath +"'";
+
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(generatedJythonScriptPath));
+			try{
+				bw.write(script);
+			} finally {
+				bw.close();
+			}
+		} catch (IOException e) {
+			throw new MojoExecutionException("[ERROR generating jython script]: " + e);
+		}
 	}
 
 	@Override

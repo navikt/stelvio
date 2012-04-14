@@ -7737,6 +7737,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Applications.py -t
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DeleteApplicationArtifacts.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DownloadEARFiles.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Log.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/PathMappingsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/WPS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjects.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjectsWrapper.py -text
@@ -7779,7 +7780,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/InterpolatorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/LoadEnvironmentConfigurationMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ModifyMaxFailedDeliveriesMojo.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/PathMappingsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/RemoteCommandExecutorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/RemoveBPMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/SetEnviromentVariablesMojo.java -text
