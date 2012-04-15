@@ -21,7 +21,7 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 		
 		Commandline.Argument arg = new Commandline.Argument();
 		String app_props = busConfigurationDirectory + "/app_props/" + environment + "/";
-		arg.setLine("CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + app_props);
+		arg.setLine("CreateApplicationArtifacts.py " + environment + " " + app_props);
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 
