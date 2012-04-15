@@ -8,11 +8,10 @@ import lib.scaModuleUtil as sca
 l = log.getLogger(__name__)
 
 def main():
-	EAR_FILES_TO_DEPLOY_FOLDER = sys.argv[1]
-	ARG_DSV = sys.argv[2]
+	ARG_DSV = sys.argv[1]
 	
 	l.info('Getting a list of all installed modules...')
-	scaModulesToDeploy = sca.getModulesToBeInstalled(EAR_FILES_TO_DEPLOY_FOLDER)
+	scaModulesToDeploy = sca.getModulesToBeInstalled()
 	l.debug('scaModulesToDeploy:', [str(x) for x in scaModulesToDeploy])
 
 	modulesImports = parseScriptArguments(ARG_DSV)
@@ -43,7 +42,7 @@ def main():
 	save()
 		
 def parseScriptArguments(argumentsDsv):
-	'''sys.argv[2]:
+	'''sys.argv[1]:
 	nav-prod-sak-arena::sca/import/SakVedtakPortTypeWSIMP::http://e25apfl003.utvikling.local:7334;nav-prod-sak-arena::sca/import/OrganisasjonPortTypeWSIMP::http://d26apfl004.test.local:7224'''
 	argParserREGEX = re.compile('^(.*?)::sca/import/(.*?)::(.*?)$')
 	modulesImports = {}
