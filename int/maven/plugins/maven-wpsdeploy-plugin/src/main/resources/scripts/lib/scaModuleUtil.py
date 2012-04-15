@@ -27,14 +27,7 @@ def getModulesToBeInstalled():
 	modules = []
 	for line in f.readlines():
 		shortName, version, earPath, doInstall, deployResources, uninstallOldVersion = line.strip().split(',')
-		if naming.isVersioned(shortName):
-			if naming.isProcess(shortName):
-				scaVersion = version
-			else:
-				scaVersion = getMajorVersion(version)
-		else:
-			scaVersion = None
-		scaModule = ScaModule(shortName, version, scaVersion)
+		scaModule = ScaModule(shortName, version)
 		
 		scaModule.doInstall = doInstall == "True"
 		scaModule.deployResources = deployResources == "True"
@@ -67,7 +60,13 @@ class ScaModule:
 		moduleName:      nav-tjeneste-sak_v1
 		applicationName: nav-tjeneste-sak_v1App
 	'''
-	def __init__(self, shortName, version, scaVersion):
+	def __init__(self, shortName, version, scaVersion=None):
+		if not scaVersion:
+			if naming.isVersioned(shortName):
+				if naming.isProcess(shortName):
+					scaVersion = version
+				else:
+					scaVersion = getMajorVersion(version)
 		self.shortName = shortName
 		self.version = version
 		self.majorVersion = getMajorVersion(version)
