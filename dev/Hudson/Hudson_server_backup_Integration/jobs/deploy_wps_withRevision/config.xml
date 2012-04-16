@@ -205,7 +205,9 @@
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
                     <string>INFO</string>
+                    <string></string>
                     <string>DEBUG</string>
+                    <string>INFO</string>
                     <string>WARNING</string>
                     <string>ERROR</string>
                     <string>EXCEPTION</string>
@@ -218,6 +220,7 @@
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
                     <string>deploy</string>
+                    <string>test</string>
                     <string></string>
                     <string>validate</string>
                     <string>initialize</string>

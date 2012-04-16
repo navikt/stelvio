@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>The service will be created in trunk</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
@@ -192,6 +192,8 @@
                   <a class="string-array">
                     <string>pensjon</string>
                     <string>nav</string>
+                    <string>ekstern</string>
+                    <string>ekstern.pensjon</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -204,6 +206,21 @@
                 <name>CommitMessage</name>
                 <description></description>
                 <defaultValue></defaultValue>
+              </hudson.model.StringParameterDefinition>
+              <hudson.model.ChoiceParameterDefinition>
+                <name>Branch</name>
+                <description>Choose the branch you want to commit to</description>
+                <choices class="java.util.Arrays$ArrayList">
+                  <a class="string-array">
+                    <string>trunk</string>
+                    <string>R_7_4_0_D20120410_2012HL3_7_4</string>
+                  </a>
+                </choices>
+              </hudson.model.ChoiceParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>wsdlNamespace</name>
+                <description>Only change this variable from &quot;useAutogenerate&quot; if you want to specify the service specification. Default is to let it be &quot;useAutogenerate&quot;.</description>
+                <defaultValue>useAutogenerate</defaultValue>
               </hudson.model.StringParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
@@ -269,7 +286,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>python3 /home/ci/scripts/maven-archetype/script.py ${ServiceName} ${ReadableServiceName} ${ServiceScope} ${ServiceSpecVersion} &quot;${CommitMessage}&quot;</command>
+            <command>python3 /home/ci/scripts/maven-archetype/script.py ${ServiceName} ${ReadableServiceName} ${ServiceScope} ${ServiceSpecVersion} &quot;${CommitMessage}&quot; ${Branch} ${wsdlNamespace}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
