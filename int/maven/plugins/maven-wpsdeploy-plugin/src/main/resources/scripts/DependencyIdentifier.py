@@ -34,7 +34,7 @@ def main():
 		elif installModule.majorVersion == existingModule.majorVersion:
 			existingModuleVersion = existingModule.version
 			
-			if existingModule.version != installModule.version:
+			if existingModule.version != installModule.version or installModule.version.endswith('-SNAPSHOT'):
 				doInstall = deployResources = True
 				if existingModule == installModule:
 					doUninstall = True

@@ -1,11 +1,11 @@
 import os, re
 import lib.namingConventionLogic as naming
-import lib.fileMapPath as fileMapPath
+import lib.deployDependenciesPath as deployDependenciesPath
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
 headlineRow = ""
-APPLICATIONS_INSTALL_CSV_PATH = fileMapPath.getPath()
+APPLICATIONS_INSTALL_CSV_PATH = deployDependenciesPath.getPath()
 
 def getInstalledModules():
 	modules = []
