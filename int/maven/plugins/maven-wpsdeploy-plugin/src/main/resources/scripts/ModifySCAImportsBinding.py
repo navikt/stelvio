@@ -1,20 +1,19 @@
 import sys, re
 import lib.logUtil as log
 from lib.stringUtil import strip
+from lib.getConfiguration import getEndpoints
 from lib.saveUtil import save
 from lib.policySetAttachmentUtil import getPolicySetAttachements, createPolicySetAttachements
 import lib.scaModuleUtil as sca
 
 l = log.getLogger(__name__)
 
-def main():
-	ARG_DSV = sys.argv[1]
-	
+def main():	
 	l.info('Getting a list of all installed modules...')
 	scaModulesToDeploy = sca.getModulesToBeInstalled()
 	l.debug('scaModulesToDeploy:', [str(x) for x in scaModulesToDeploy])
 
-	modulesImports = parseScriptArguments(ARG_DSV)
+	modulesImports = getEndpoints()
 	l.debug('Parsed arguments to the script and got this:', modulesImports)
 		
 	for scaModuleToDeploy in scaModulesToDeploy:
@@ -40,17 +39,7 @@ def main():
 			l.debug('policySetAttachements:', policySetAttachements)
 			createPolicySetAttachements(policySetAttachements)
 	save()
-		
-def parseScriptArguments(argumentsDsv):
-	'''sys.argv[1]:
-	nav-prod-sak-arena::sca/import/SakVedtakPortTypeWSIMP::http://e25apfl003.utvikling.local:7334;nav-prod-sak-arena::sca/import/OrganisasjonPortTypeWSIMP::http://d26apfl004.test.local:7224'''
-	argParserREGEX = re.compile('^(.*?)::sca/import/(.*?)::(.*?)$')
-	modulesImports = {}
-	for arg in argumentsDsv.split(";"):
-		moduleName, importName, serverAddress = argParserREGEX.search(arg).groups()
-		modulesImports.setdefault(moduleName, {})[importName] = serverAddress
-	return modulesImports
-	
+
 def listSCAImports(scaModule):
 	return AdminTask.listSCAImports('-moduleName ' + scaModule.moduleName).splitlines()
 

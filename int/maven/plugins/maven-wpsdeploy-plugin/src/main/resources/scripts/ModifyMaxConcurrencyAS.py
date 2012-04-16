@@ -1,42 +1,36 @@
 import sys
 from time import strftime
 from lib.saveUtil import save
-from lib.timerUtil import Timer
+from lib.getConfiguration import getActivationspecifications
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-ARG_LIST		= sys.argv[1].split(";")
-
 def main():
-	myTimer = Timer()
-	listen = AdminConfig.list('J2CActivationSpec').split(java.lang.System.getProperty('line.separator'))
+	listenMap = getJ2CActivationSpecs()
 
-
-	listenMap = {}
-
-	for ent in listen:
-		key = ent.split("(")[0]
-		listenMap[key] = ent;
-
-	for arg in ARG_LIST:
-		temp = arg.split("::");
-		ACTIVATION_RECORD = temp[0]
-		MAX_CONCURRENCY = temp[1]
-		ent = listenMap[ACTIVATION_RECORD]
-		identifier = AdminConfig.showAttribute(ent, 'name')
-		res = AdminConfig.showAttribute(ent, 'resourceProperties').split(java.lang.System.getProperty(' '))
-		for r in res:
-			if(r.find('maxConcurrency') >= 0 ):
+	for moduleName, maxConcurrency in getActivationspecifications().items():		
+		J2CActivationSpec = listenMap[moduleName]
+		
+		resourceProperties = AdminConfig.showAttribute(J2CActivationSpec, 'resourceProperties').split()
+		for resourcePropertie in resourceProperties:
+			if resourcePropertie.startswith('maxConcurrency'):
 				try:
-					l.info("Modified max concurrency resource property for " +ACTIVATION_RECORD)
-					modifyResourceProperty(r, "maxConcurrency", MAX_CONCURRENCY, "java.lang.Integer")
+					l.info("Modified max concurrency resource property for " +moduleName)
+					modifyResourceProperty(resourcePropertie, "maxConcurrency", maxConcurrency, "java.lang.Integer")
 					break
 				except:
 					l.exception("Error modifying maxConcurrency resource property for activation record!")
 
-
 	save()
-	l.info("Time elapsed:", myTimer)
+
+def getJ2CActivationSpecs():
+	J2CActivationSpecs = AdminConfig.list('J2CActivationSpec').splitlines()
+	out = {}
+	for J2CActivationSpec in J2CActivationSpecs:
+		moduleName = J2CActivationSpec.split("(")[0]
+		out[moduleName] = J2CActivationSpec
+		
+	return out
 
 
 def modifyResourceProperty (propSet, propName, propValue, propType):
@@ -46,8 +40,8 @@ def modifyResourceProperty (propSet, propName, propValue, propType):
 	attrs.append(["type", propType])
 
 	try:
-		AdminConfig.modify(propSet, attrs )
+		AdminConfig.modify(propSet, attrs)
 	except:
 		l.exception("Caught Exception modifying ResourceProperty!")
 
-main()
+if __name__ == '__main__': main()

@@ -100,7 +100,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	private String logLevel;
 	protected String targetDirectory;
-	protected String deployableArtifactsHome;
 	protected String environmentFile;
 	protected String moduleConfigHome;
 	protected String busConfigurationDirectory;
@@ -116,7 +115,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		tmpBusConfigurationExtractDirectory = baseDirectory + "/target/tmp";
 		targetDirectory = baseDirectory + "/target";
 		busConfigurationDirectory = baseDirectory + "/target/bus-config";
-		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
 		moduleConfigHome = busConfigurationDirectory + "/moduleconfig";
 		environmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
 		jythonScriptsDirectory = targetDirectory + "/scripts";
