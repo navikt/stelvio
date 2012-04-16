@@ -1,7 +1,6 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
@@ -29,7 +28,6 @@ import org.apache.maven.project.ProjectBuildingException;
 import org.apache.maven.project.ProjectUtils;
 import org.apache.maven.project.artifact.InvalidDependencyVersionException;
 import org.apache.maven.project.artifact.MavenMetadataSource;
-import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
@@ -120,7 +118,6 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 	private String moduleType;
 
 	private Set<Artifact> allArtifacts;
-	String generatedJythonScriptName = "fileMapPath.py"; 
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
@@ -140,8 +137,12 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 			}
 
 			installationRecepies.close();
-			createJythonInstallRecepiesFilePathScript(deployDependencies);
+			createJythonDeployDependenciesPathPathScript(deployDependencies);
 
+			if(allArtifacts.isEmpty()){
+				throw new IllegalArgumentException("allArtifacts variabelen kan ikke være tom!\nSjekk at buss versjonen du forsøker å deploye eksisterer.");
+			}
+			
 			project.setArtifacts(allArtifacts);
 			project.setDependencyArtifacts(allArtifacts);
 
@@ -165,13 +166,14 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 	private void addOneArtifact(Artifact artifact, List<?> remoteRepos, BufferedWriter installationRecepies) throws ArtifactResolutionException, ArtifactNotFoundException, IOException{
 		artifactResolver.resolve(artifact, remoteRepos, localRepository);
 		allArtifacts.add(artifact);
+
 		addArtifactToInstallationRecepies(artifact, installationRecepies);
+
 		getLog().info(String.format("Successfully added %s-%s to \"allArtifacts\" list.", artifact.getArtifactId(), artifact.getVersion()));
 	}
 
 	@SuppressWarnings("unchecked")
-	private void addAllArtifacts(List<?> remoteRepos,
-			BufferedWriter installationRecepies) throws ProjectBuildingException,
+	private void addAllArtifacts(List<?> remoteRepos, BufferedWriter installationRecepies) throws ProjectBuildingException,
 			InvalidDependencyVersionException, ArtifactResolutionException,
 			ArtifactNotFoundException, IOException {
 		for (DeployArtifact da : artifacts){
@@ -187,8 +189,6 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 
 				artifactResolver.resolve(a, remoteRepos, localRepository);
 				allArtifacts.add(a);
-				File src = new File(a.getFile().getAbsolutePath());
-				FileUtils.copyFileToDirectory(src, new File(deployableArtifactsHome));
 
 				addArtifactToInstallationRecepies(a, installationRecepies);
 			}
@@ -197,14 +197,14 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 		}
 	}
 
-	private void addArtifactToInstallationRecepies(Artifact artifact,
-			BufferedWriter installationRecepies) throws IOException {
+	private void addArtifactToInstallationRecepies(Artifact artifact, BufferedWriter installationRecepies) throws IOException {
 		installationRecepies.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False,False\n");
 	}
 
-	private void createJythonInstallRecepiesFilePathScript(String pathMappingsFilePath) throws MojoExecutionException {
-		String generatedJythonScriptPath = jythonScriptsDirectory +"/lib/"+ generatedJythonScriptName;
-		String script = "def getPath(): return '"+ pathMappingsFilePath +"'";
+	private void createJythonDeployDependenciesPathPathScript(String installRecepiesScriptPath) throws MojoExecutionException {
+		String generatedJythonScriptPath = jythonScriptsDirectory +"/lib/deployDependenciesPath.py"; //Change the name of the empty placeholder script in the lib folder if you change this name
+		
+		String script = "def getPath(): return '"+ installRecepiesScriptPath +"'";
 
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(generatedJythonScriptPath));
