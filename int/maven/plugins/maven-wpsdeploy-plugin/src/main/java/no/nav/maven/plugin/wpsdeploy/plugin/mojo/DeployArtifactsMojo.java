@@ -23,7 +23,7 @@ public class DeployArtifactsMojo extends WebsphereUpdaterMojo {
 		
 
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("ApplicationManagement.py " + deployableArtifactsHome);
+		arg.setLine("ApplicationManagement.py");
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}
