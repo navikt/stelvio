@@ -35,6 +35,10 @@ class XMLNode:
 				return node
 		else:
 			raise NodeNotFoundException('Could not find the "%s" child node you where looking for' % nodeName)
+			
+	def getChildValue(self, nodeName):
+		return self.getChild(nodeName).get()
+	
 	def getChildren(self, path=""):
 		'''Get direce descendants or get descendants by path:
 			xml.getChildren('library/books/book') or
@@ -137,8 +141,4 @@ def __parseString(xmlString):
 def __parseFile(xmlFile): 
 	return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile)
 	
-class NodeNotFoundException(Exception):
-	def __init__(self, value):
-		self.parameter = value
-	def __str__(self):
-		return repr(self.parameter)
+class NodeNotFoundException(Exception): pass
