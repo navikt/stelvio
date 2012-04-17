@@ -40,6 +40,33 @@
       <label></label>
       <nodeProperties/>
     </slave>
+    <slave>
+      <name>Skjermboksen</name>
+      <description></description>
+      <remoteFS>D:\RemoteHudson\</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.slaves.JNLPLauncher"/>
+      <label></label>
+      <nodeProperties>
+        <hudson.slaves.EnvironmentVariablesNodeProperty>
+          <envVars serialization="custom">
+            <unserializable-parents/>
+            <tree-map>
+              <default>
+                <comparator class="hudson.util.CaseInsensitiveComparator"/>
+              </default>
+              <int>2</int>
+              <string>JAVA_HOME</string>
+              <string>C:\Programfiler\Java\jdk1.6.0_21</string>
+              <string>PATH</string>
+              <string>%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;C:\PROGRA~1\CA\SHARED~1\SCANEN~1;C:\PROGRA~1\CA\ETRUST~1;C:\PROGRA~1\CA\SHARED~1\CAM\bin;C:\apps\Python27;D:\div\qc_v2\classes;D:\div\qc_v2\classes\core;D:\div\qc_v2\;C:\Programfiler\GnuWin32\bin;C:\groovy-1.8.6\bin;c:\curl-7.25.0</string>
+            </tree-map>
+          </envVars>
+        </hudson.slaves.EnvironmentVariablesNodeProperty>
+      </nodeProperties>
+    </slave>
   </slaves>
   <quietPeriod>5</quietPeriod>
   <scmCheckoutRetryCount>0</scmCheckoutRetryCount>

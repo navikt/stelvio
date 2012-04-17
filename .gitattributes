@@ -1123,6 +1123,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-release-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/EESSI_nav/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/MigrateSYSMOD-Step1/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]Data[!!-~]Source[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]Installed[!!-~]fixpacks[!!-~]overview[!!-~](WPS)[!!-~]to[!!-~]Confluence[!!-~]/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]JVM[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
