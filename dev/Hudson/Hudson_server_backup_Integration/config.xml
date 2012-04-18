@@ -38,7 +38,21 @@
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.slaves.JNLPLauncher"/>
       <label></label>
-      <nodeProperties/>
+      <nodeProperties>
+        <hudson.slaves.EnvironmentVariablesNodeProperty>
+          <envVars serialization="custom">
+            <unserializable-parents/>
+            <tree-map>
+              <default>
+                <comparator class="hudson.util.CaseInsensitiveComparator"/>
+              </default>
+              <int>1</int>
+              <string>path</string>
+              <string>C:\csvn\bin\;D:\apps\Python27\;C:\IBM\RationalSDLC\Clearquest\cqcli\bin;C:\Program Files (x86)\CA\SC\CAWIN\;C:\PROGRA~2\CA\SC\CCS\ETPKI\lib;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\CA\CA_APPSW;C:\PROGRA~2\CA\SC\CCS\CAM\bin;C:\PROGRA~2\CA\SC\CCS\PDA;C:\Program Files (x86)\CA\SC\CCS\AT\services\bin;C:\Program Files (x86)\CA\SC\CCS\AT\agents\bin;C:\PROGRA~2\CA\NSM\bin;C:\PROGRA~2\CA\SC\CCS\AT\Agents\bin;C:\Program Files (x86)\CA\DSM\bin;C:\IBM\RationalSDLC\ClearCase\bin;C:\IBM\RationalSDLC\common;%JAVA_HOME%\bin;%JRE_HOME%;%M2_HOME%\bin;C:\oracle;C:\oracle\bin;C:\Program Files\Saxonica\SaxonHE9.4N\bin</string>
+            </tree-map>
+          </envVars>
+        </hudson.slaves.EnvironmentVariablesNodeProperty>
+      </nodeProperties>
     </slave>
     <slave>
       <name>Skjermboksen</name>
@@ -391,6 +405,29 @@
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>(2012HL3_7\.4_).*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>SYSMOD</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>MigrateSYSMOD-Step1</string>
+        <string>MigrateSYSMOD-Step2</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
     </listView>
   </views>
   <primaryView>All</primaryView>
