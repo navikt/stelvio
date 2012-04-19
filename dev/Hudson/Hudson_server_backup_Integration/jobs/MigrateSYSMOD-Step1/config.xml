@@ -245,7 +245,7 @@
             <command>:: net use h: \\A34DRVW005\RemoteHudson integrasjon!1234 /USER:A34DRVW005\srvintegrasjon
 h:
 cd SYSMODWorkspace
-curl -u jira-batch:6ldyGEuf &quot;http://jira.adeo.no/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?jqlQuery=project=%%22System%%20Model%%22&amp;tempMax=4000&quot; &gt; SYSMODUttrekk.xml</command>
+curl --insecure &quot;http://jira.adeo.no/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?jqlQuery=project=%%22System%%20Model%%22&amp;tempMax=4000&quot; &gt; SYSMODUttrekk.xml</command>
           </hudson.tasks.BatchFile>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
