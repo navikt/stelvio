@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>2.1.10-SNAPSHOT</version>
+		<version>2.1.9</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
 	<artifactId>maven-wps-module-pom</artifactId>
-  <version>2.1.9-SNAPSHOT</version>
+  <version>2.1.9</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS Module Master POM</name>
 
@@ -148,8 +148,8 @@ eclipse.preferences.version=1
 	</build>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-2.1.9/maven-wps-module-pom</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-2.1.9/maven-wps-module-pom</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
