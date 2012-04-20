@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>maven-wps-pom</artifactId>
-	<version>2.1.11-SNAPSHOT</version>
+	<version>2.1.10-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>WPS Artifact Master POM</name>
 
