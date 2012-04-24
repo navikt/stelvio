@@ -269,8 +269,8 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>2012HL2_7.3_CheckScripts_Leveransedokumentasjon</string>
+        <string>CI-buss-pom_sync</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
-        <string>CI-pom_sync</string>
         <string>CI-release-pom_sync</string>
         <string>TRUNK-CheckScripts</string>
       </jobNames>

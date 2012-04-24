@@ -170,14 +170,7 @@
     <artifactId>maven-wpsdeploy-ci-pom</artifactId>
   </rootModule>
   <goals>clean deploy</goals>
-  <mavenOpts>-Denvironment=U2&#xd;
--Dbus-configuration-version=0.0.0.1-SNAPSHOT&#xd;
--Dnav-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--Desb-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--DinteractiveMode=false&#xd;
--Dskip=backup-config,create-BLA-groups,bounce-dmgr</mavenOpts>
+  <mavenOpts>-Denvironment=U2 -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-ci-version=0.0.0.1-SNAPSHOT -Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT -Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT -Desb-modules-ci-version=0.0.0.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
