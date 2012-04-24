@@ -1,6 +1,6 @@
 '''http://en.wikipedia.org/wiki/Insertion_sort'''
 
-def dict(sequence, **kwargs):
+def dict(sequence):
 	returnDict = {}
 	for key, value in sequence:
 		returnDict[key] = value
