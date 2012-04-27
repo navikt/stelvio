@@ -16,6 +16,7 @@
 	<name>Stelvio Integration Framework Maven Plugins</name>
 
 	<modules>
+		<module>maven-archetype-wps-module</module>
 		<module>maven-artifact-modifier-plugin</module>
 		<module>maven-confluence-plugin</module>
 		<module>maven-datapower-config-generator-plugin</module>
