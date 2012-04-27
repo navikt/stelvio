@@ -10,12 +10,12 @@
 
 	<groupId>no.stelvio.maven.support</groupId>
 	<artifactId>maven-archetype-wps-module</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>Stelvio Maven WPS Module Archetype</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-archetype-wps-module-1.0.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-archetype-wps-module-1.0.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-archetype-wps-module</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-archetype-wps-module</developerConnection>
 	</scm>
 
 	<properties>
