@@ -143,6 +143,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Stelvio-app-sandbox</string>
+        <string>Stelvio-app-site</string>
         <string>Stelvio-app-svn</string>
         <string>stelvio_trunk_incubator_stelvio_example</string>
         <string>stelvio_trunk_int_stelvio-commons-lib_sonar</string>

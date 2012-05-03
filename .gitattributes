@@ -1211,6 +1211,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN004-Behan
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-sandbox/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-site/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-svn-dryRun-release/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Stelvio-app-svn/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK[!!-~]datapower_cfg_partner-gw/config.xml -text
