@@ -1,13 +1,8 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.File;
-import java.io.IOException;
-import javax.xml.parsers.ParserConfigurationException;
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.XMLUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
-import org.xml.sax.SAXException;
 
 /**
  * @author test@example.com
@@ -27,38 +22,11 @@ public class ApplyRoleMappingMojo extends WebsphereUpdaterMojo {
 			return;
 		}
 		
-		try {
-			
-			String roleMapping;
-			String fileName = "cons.xml";
+		Commandline.Argument arg = new Commandline.Argument();
+		arg.setLine("RoleMapping.py");
+		wsadminCommandLine.addArg(arg);
 
-			File file = getConfigurationFile(environment, fileName, moduleConfigHome);
-			
-			if (file != null){
-				getLog().info("Found configuration file, " + file + ".");
-			}
-
-			roleMapping = XMLUtils.parseRoleMappings(environment, envClass, fileName, moduleConfigHome, file);
-			
-			if (roleMapping.equals("")){
-				getLog().info("No rolemappings found for the remaining modules in the EARSToDeploy folder.");
-				return;
-			}
-			
-			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("RoleMapping.py" + " " + "\"" + roleMapping + "\"");
-			wsadminCommandLine.addArg(arg);
-
-			executeCommand(wsadminCommandLine);
-			
-		} catch (SAXException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
-		} catch (IOException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
-		} catch (ParserConfigurationException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
-		}
-
+		executeCommand(wsadminCommandLine);
 	}
 
 	protected String getGoalPrettyPrint() {
