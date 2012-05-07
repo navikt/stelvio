@@ -35,6 +35,7 @@
 
 	<scm>
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</developerConnection>
 	</scm>
 		
 	<properties>
