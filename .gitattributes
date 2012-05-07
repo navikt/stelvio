@@ -7790,7 +7790,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/TODO.txt -text
 int/maven/plugins/maven-wpsdeploy-plugin/deleteClassFiles.bat -text
 int/maven/plugins/maven-wpsdeploy-plugin/pom.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/ConfigurationException.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/KeyNotFoundException.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/MySOAPException.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/models/DeployArtifact.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyActivationSpecsMojo.java -text
