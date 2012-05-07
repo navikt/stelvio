@@ -7787,6 +7787,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/troubleshoot.py -t
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/versionMBeanInstall.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/wsadminlib.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/TODO.txt -text
+int/maven/plugins/maven-wpsdeploy-plugin/deleteClassFiles.bat -text
 int/maven/plugins/maven-wpsdeploy-plugin/pom.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/ConfigurationException.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/KeyNotFoundException.java -text

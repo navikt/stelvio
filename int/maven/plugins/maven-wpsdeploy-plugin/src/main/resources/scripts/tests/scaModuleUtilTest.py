@@ -5,6 +5,10 @@ import mocks.AdminAppMock as AdminApp
 import mocks.osMock as os
 import mocks.openMock as open
 		
+class DeployDependenciesPath:
+	def getPath(self): return 'ignored output'
+	
+smu.deployDependenciesPath = DeployDependenciesPath()
 smu.os = os
 smu.AdminTask = AdminTaskMock
 smu.AdminApp = AdminApp
@@ -33,7 +37,7 @@ def getInstalledModulesTest():
 	assertEqual(s.scaVersion, VERSIONED_SCA_VERSION, 'scaVersion %s whas not equal to %s' % (s.scaVersion, VERSIONED_SCA_VERSION))
 	
 def getModulesToBeInstalledVersionedTest():
-	scaModules = smu.getModulesToBeInstalled('ignored input')
+	scaModules = smu.getModulesToBeInstalled()
 	s = scaModules[256]
 	assertEqual(s.moduleName, VERSIONED_MODULE_NAME, 'moduleName %s whas not equal to %s' % (s.moduleName, VERSIONED_MODULE_NAME))
 	assertEqual(s.applicationName, VERSIONED_APLICATION_NAME, 'applicationName %s whas not equal to %s' % (s.applicationName, VERSIONED_APLICATION_NAME))
@@ -43,7 +47,7 @@ def getModulesToBeInstalledVersionedTest():
 	assertEqual(s.scaVersion, VERSIONED_SCA_VERSION, 'scaVersion %s whas not equal to %s' % (s.scaVersion, VERSIONED_SCA_VERSION))
 	
 def getModulesToBeInstalledUnversionedTest():
-	scaModules = smu.getModulesToBeInstalled('ignored input')
+	scaModules = smu.getModulesToBeInstalled()
 	s = scaModules[136]
 	assertEqual(s.moduleName, UNVERSIONED_MODULE_NAME, 'moduleName %s whas not equal to %s' % (s.moduleName, UNVERSIONED_MODULE_NAME))
 	assertEqual(s.applicationName, UNVERSIONED_APLICATION_NAME, 'applicationName %s whas not equal to %s' % (s.applicationName, UNVERSIONED_APLICATION_NAME))

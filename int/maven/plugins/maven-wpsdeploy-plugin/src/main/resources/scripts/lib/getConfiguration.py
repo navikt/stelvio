@@ -1,11 +1,41 @@
 import re, os
 import lib.moduleConfigPath as moduleConfigPath
 import lib.deployEnviromentUtil as env
+from lib.collection import dict
 import lib.XMLUtil as XML
+
+def getRoles():
+	consXmlPath = getAllXmlConfigFiles()['cons']
+	xml = XML.parseXML(consXmlPath)
+	
+	rolesNode = xml.findFirst('roles')
+	
+	def getRolesData(node):
+		userNames = groupNames = runas = ""
+	
+		name = node.getChildValue('name')
+		
+		usersNode = node.findFirst('users')
+		if usersNode:
+			userNames = [x.get() for x in usersNode.findAll('name')]
+			
+		groupsNode = node.findFirst('groups')
+		if groupsNode:
+			groupNames = [x.get() for x in groupsNode.findAll('name')]
+			
+		runasNode = node.findFirst('runas')
+		if runasNode:
+			runas = {'username': runasNode.getChildValue('username'), 'password': runasNode.getChildValue('password')}
+	
+		return name, {'users': userNames, 'groups': groupNames, 'runas': runas}
+
+	roles = dict(rolesNode.each(getRolesData))
+	
+	return roles
 	
 def getEndpoints():
 	moduleEndpoints = {}
-	for moduleName, configPath in getAllModulesWithConfig().items():
+	for moduleName, configPath in getAllXmlConfigFiles().items():
 		xml = XML.parseXML(configPath)
 		
 		endpointNodes = xml.findAll('endpoint')
@@ -29,7 +59,7 @@ def getEndpoints():
 
 def getActivationspecifications():
 	moduleActivationspecifications = {}
-	for moduleName, configPath in getAllModulesWithConfig().items():
+	for moduleName, configPath in getAllXmlConfigFiles().items():
 		xml = XML.parseXML(configPath)
 		
 		activationspecifications = xml.findAll('activationspecification')
@@ -43,7 +73,7 @@ def getActivationspecifications():
 			
 	return moduleActivationspecifications
 
-def getAllModulesWithConfig():
+def getAllXmlConfigFiles():
 	modules = {}
 	path = moduleConfigPath.getPath()
 	extractXmlsFilePath(path, modules)
