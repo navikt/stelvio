@@ -5,7 +5,6 @@ import lib.logUtil as log
 l = log.getLogger(__name__)
 
 headlineRow = ""
-APPLICATIONS_INSTALL_CSV_PATH = deployDependenciesPath.getPath()
 
 def getInstalledModules():
 	modules = []
@@ -19,7 +18,7 @@ def getInstalledModules():
 	return modules
 	
 def getModulesToBeInstalled():
-	f = open(APPLICATIONS_INSTALL_CSV_PATH)
+	f = open(deployDependenciesPath.getPath())
 	
 	global headlineRow
 	headlineRow = f.readline().strip()
@@ -38,7 +37,7 @@ def getModulesToBeInstalled():
 	return modules
 	
 def setModulesToBeInstalled(applicationList):
-	f = open(APPLICATIONS_INSTALL_CSV_PATH, 'w')
+	f = open(deployDependenciesPath.getPath(), 'w')
 	f.write(headlineRow +'\n')
 	for app in applicationList:
 		f.write(app.toCsvLine() +'\n')
@@ -82,7 +81,8 @@ class ScaModule:
 	def toCsvLine(self):			
 		return ','.join((
 			self.shortName,
-			self.version, self.earPath,
+			self.version,
+			self.earPath,
 			self.__boolToStr(self.doInstall),
 			self.__boolToStr(self.deployResources),
 			self.__boolToStr(self.uninstallOldVersion)
