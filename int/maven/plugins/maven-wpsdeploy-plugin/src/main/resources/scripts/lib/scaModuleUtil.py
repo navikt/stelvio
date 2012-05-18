@@ -36,7 +36,7 @@ def getModulesToBeInstalled():
 		modules.append(scaModule)
 	return modules
 	
-def setModulesToBeInstalled(applicationList):
+def save(applicationList):
 	f = open(deployDependenciesPath.getPath(), 'w')
 	f.write(headlineRow +'\n')
 	for app in applicationList:

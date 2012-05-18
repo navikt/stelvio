@@ -16,5 +16,5 @@ for scaModule in scaModules:
 		else:
 			l.info('Same version or not installed, continuing without uninstalling.')
 
-sca.setModulesToBeInstalled(scaModules)
+sca.save(scaModules)
 save()

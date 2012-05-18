@@ -50,7 +50,7 @@ def main():
 		installModule.deployResources = deployResources
 	table.sort(columb=1, reverse=True)
 	l.println(table)
-	sca.setModulesToBeInstalled(modulesToBeInstalled)
+	sca.save(modulesToBeInstalled)
 
 def boolToYesNo(b):
 	if b: return 'Yes'
