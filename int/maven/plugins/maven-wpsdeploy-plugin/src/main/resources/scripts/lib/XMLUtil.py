@@ -74,9 +74,12 @@ class XMLNode:
 		if self.dom:
 			return self.dom.item(0).getNodeValue()
 
-	def attr(self, attr): 
+	def attr(self, id, value=None):
 		if self.dom:
-			return self.dom.getAttributes().getNamedItem(attr)
+			if value:
+				self.dom.setAttribute(id, value)
+			else:
+				return self.dom.getAttribute(id)
 
 	def fc(self):
 		for c in self.getChildren():

@@ -102,3 +102,8 @@ def getChildrenTest():
 def getChildTest():
 	child = xml.fc().getChild('module')
 	assertEqual(modules[0], child)
+
+def attrTest():
+	node = xml.fc().fc()
+	node.attr('id', '213')
+	assertEqual(node.attr('id'), '213')
