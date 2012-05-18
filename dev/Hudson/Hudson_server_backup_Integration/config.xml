@@ -10,7 +10,7 @@
     <bindName>srvciIntegrasjon</bindName>
     <bindPassword>Q6j28cmRnJt7aeCp5/xmUjUZdOlp/GRsytwuftGVbnw=</bindPassword>
   </securityRealm>
-  <systemMessage>&lt;h1&gt;&lt;font color=blue&gt;Denne serveren skal brukes nå (22.02.2012)&lt;/font&gt;&lt;/h1&gt;</systemMessage>
+  <systemMessage></systemMessage>
   <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter"/>
   <configuredWorkspaceRoot></configuredWorkspaceRoot>
   <jdks>
@@ -188,14 +188,10 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>SoapUI-U3-prosess-PPEN004-BehandleEndringAvUttaksgrad_CI</string>
-        <string>SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI</string>
-        <string>SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI</string>
-        <string>SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI</string>
       </jobNames>
       <jobFilters/>
       <columns/>
-      <includeRegex>(SoapUI-U2-).*</includeRegex>
+      <includeRegex>(SoapUI-U\d-).*</includeRegex>
       <showStable>true</showStable>
       <showStableDetail>true</showStableDetail>
       <highVis>true</highVis>
