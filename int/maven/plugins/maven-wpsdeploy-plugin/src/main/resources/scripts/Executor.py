@@ -5,6 +5,8 @@ import lib.logUtil as log
 import lib.exceptionUtil
 import lib.ibmfixes
 
+glo = globals()
+loc = locals()
 def Executor_main():
 	scriptDir = Executor_getScriptDir()	
 	scriptPath = scriptDir + Executor_getScriptName()
@@ -30,7 +32,7 @@ def Executor_executeScript(scriptPath):
 	myTimer = Timer()
 	
 	try:
-		execfile(scriptPath)
+		execfile(scriptPath, glo, loc)
 	except:
 		ex = lib.exceptionUtil.getException()
 		if ex.checkInstance(exceptions.SystemExit):

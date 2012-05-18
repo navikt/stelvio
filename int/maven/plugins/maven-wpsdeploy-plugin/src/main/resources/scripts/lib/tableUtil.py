@@ -1,5 +1,4 @@
 from __future__ import nested_scopes
-from lib.collection import sorted
 
 class Table:
 	def __init__(self, headlineList):

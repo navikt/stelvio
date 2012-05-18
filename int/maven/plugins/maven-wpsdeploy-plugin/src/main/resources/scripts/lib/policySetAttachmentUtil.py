@@ -1,6 +1,5 @@
 import sys, os, re
 import lib.logUtil as log
-from lib.collection import dict
 
 l = log.getLogger(__name__)
 

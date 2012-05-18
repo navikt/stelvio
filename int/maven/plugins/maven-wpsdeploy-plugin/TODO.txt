@@ -1,4 +1,4 @@
-- ta i bruk ibmfixes.py i Executor.py
+x ta i bruk ibmfixes.py i Executor.py
 - forsøk å få lib/stringUtil.py inn i ibmfixes.py
-- Flytt lib/collections.py inn i ibmfixes.py
+x Flytt lib/collections.py inn i ibmfixes.py
 - Flytt XmlToUil.blaGroupXmlToStringList() til getConfiguration.py

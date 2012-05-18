@@ -7851,7 +7851,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/__init__
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/applicationUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/assertions.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/businessProcesses.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/collection.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployDependenciesPath.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployEnviromentUtil.py -text

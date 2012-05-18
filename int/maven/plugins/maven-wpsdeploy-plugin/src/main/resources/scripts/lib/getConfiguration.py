@@ -1,7 +1,6 @@
 import re, os
 import lib.moduleConfigPath as moduleConfigPath
 import lib.deployEnviromentUtil as env
-from lib.collection import dict
 import lib.XMLUtil as XML
 
 def getRoles():
