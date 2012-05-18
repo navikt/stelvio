@@ -7860,6 +7860,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptio
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/getConfiguration.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/ibmfixes.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/models.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/moduleConfigPath.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/namingConventionLogic.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/policySetAttachmentUtil.py -text
