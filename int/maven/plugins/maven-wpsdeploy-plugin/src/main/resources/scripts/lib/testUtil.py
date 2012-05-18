@@ -6,9 +6,8 @@ def runTests(allTests):
 	failedTests = 0
 	executedTests = 0
 	
-	for testSetName in allTests.keys():
+	for testSetName, testSet in allTests.items():
 		print '\nRunning tests in %s:' % testSetName
-		testSet = allTests[testSetName]
 		testNames = testSet.keys()
 		testNames.sort()
 		for testName in testNames:
