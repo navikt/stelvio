@@ -21,7 +21,18 @@ l = log.getLogger(__name__)
 def main():
 	roles = getConfiguration.getRoles()
 	l.debug('Got roles:', roles)
-	scaModules = sca.getModulesToBeInstalled()
+	scaModulesToBeInstalled = sca.getModulesToBeInstalled()
+	installedScaModules = sca.getInstalledModules()
+	
+	#Only deploy resources to modules that are of some version of the modules that has already been installed
+	scaModules = []
+	for installed in installedScaModules:
+		for toInstall in scaModulesToBeInstalled:
+			if toInstall.shortName == installed.shortName:
+				installed.deployResources = toInstall.deployResources
+				scaModules.append(installed)
+				break
+	
 	
 	for scaModule in scaModules:
 		if not scaModule.deployResources:
