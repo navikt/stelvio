@@ -1147,6 +1147,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-BehandleTrekk_CI/
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Dokumentbehandling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Dokumentbestilling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-EESSIBlankett_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-EUInstitusjon_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Enhet_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Familieforhold_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Fullmakt_CI/config.xml -text

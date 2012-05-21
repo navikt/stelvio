@@ -168,6 +168,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <string>SoapUI-U2-NAV-EUInstitusjon_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>
