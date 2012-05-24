@@ -123,7 +123,7 @@
 			<MRTAMWebSEALDynURLFile/>
 		</MapResource>
 		<Authorize>
-			<AZMethod>passthrough</AZMethod>
+			<AZMethod>anyauthenticated</AZMethod>
 			<AZCustomURL/>
 			<AZMapURL/>
 			<AZHost/>
