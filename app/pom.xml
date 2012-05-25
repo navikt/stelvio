@@ -83,35 +83,8 @@
 		</dependency>
 	</dependencies>
 	
-<!--	<distributionManagement>
-		<repository>
-			<id>nav-maven2-internal-repo</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
-		</repository>
-		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<name>NAV Maven2 Internal Snapshot Repository</name>
-			<url>scp://10.33.1.53/var/maven2/snapshot</url>
-		</snapshotRepository>
-		<site>
-			<id>website</id>
-			<url>scp://10.33.1.53/var/www/html/project/stelvio_m</url>
-		</site>
-	</distributionManagement> -->
-	
 	<reporting>
 		<plugins>
-			<!--<plugin>
-				<artifactId>
-					maven-project-info-reports-plugin
-				</artifactId>
-				<version>2.1</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -154,37 +127,6 @@
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>2.7.2</version>
 			</plugin>
-			<!--<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<configuration>
-					<targetJdk>1.5</targetJdk>
-					<rulesets>
-						<ruleset>
-							http://confluence.adeo.no/download/attachments/12007/nav_pmd.xml
-						</ruleset>
-					</rulesets>
-					<format>xml</format>
-					<linkXref>true</linkXref>					
-					<minimumTokens>100</minimumTokens>
-				</configuration>
-			</plugin>-->
-
-			<!--<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.1</version>
-				<configuration>
-					<findbugsXmlOutput>true</findbugsXmlOutput>
-					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
-					<xmlOutput>true</xmlOutput>
-					<threshold>Normal</threshold>High|Normal|Low|Exp
-					<effort>Default</effort> Min|Default1Max
-					<excludeFilterFile>
-						http://confluence.adeo.no/download/attachments/107131/nav-stelvio-findbugs-exclude.xml
-					</excludeFilterFile>
-				</configuration>
-			</plugin>-->
 		</plugins>
 	</reporting>
 	<build>
@@ -264,15 +206,6 @@
 						<password>Maven1234</password>
 					</configuration>
 				</plugin>
-				<!--<plugin> 
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<configLocation>
-						http://confluence.adeo.no/download/attachments/12007/nav_checkstyle.xml
-					</configLocation>
-				</configuration>
-			</plugin>-->
 			</plugins>
 		</pluginManagement>
 		<!-- Prevents ClearCase(*.db)-files being copied into target folder-->
