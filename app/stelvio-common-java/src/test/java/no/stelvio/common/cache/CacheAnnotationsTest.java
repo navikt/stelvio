@@ -1,7 +1,5 @@
 package no.stelvio.common.cache;
 
-import net.sf.ehcache.CacheManager;
-
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 /**
@@ -55,4 +53,5 @@ public class CacheAnnotationsTest extends AbstractDependencyInjectionSpringConte
 		cachedString = testCache.getStringCached();
 		assertFalse("String retrieved from cache. Cache was not flushed.", cachedString.equals(INITIAL_STRING));
 	}
+
 }
