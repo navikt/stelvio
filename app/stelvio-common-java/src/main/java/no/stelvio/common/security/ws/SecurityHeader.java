@@ -1,7 +1,6 @@
 package no.stelvio.common.security.ws;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 

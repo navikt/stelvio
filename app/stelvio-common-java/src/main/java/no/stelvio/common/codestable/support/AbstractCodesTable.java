@@ -29,8 +29,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.util.CollectionUtils;
 
-import com.googlecode.ehcache.annotations.Cacheable;
-
 /**
  * Holds common functionality for <code>CodesTable</code> and <code>CodesTablePeriodic</code>.
  * 
