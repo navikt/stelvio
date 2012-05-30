@@ -10,7 +10,6 @@ import java.util.Map;
 import no.stelvio.batch.count.support.CounterEvent.EventType;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**

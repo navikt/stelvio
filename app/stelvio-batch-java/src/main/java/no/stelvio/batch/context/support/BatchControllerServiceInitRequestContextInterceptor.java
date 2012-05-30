@@ -1,6 +1,5 @@
 package no.stelvio.batch.context.support;
 
-import no.stelvio.batch.BatchBi;
 import no.stelvio.batch.controller.support.DefaultBatchControllerService;
 import no.stelvio.batch.exception.BatchFunctionalException;
 import no.stelvio.common.context.support.AbstractInitRequestContextInterceptor;

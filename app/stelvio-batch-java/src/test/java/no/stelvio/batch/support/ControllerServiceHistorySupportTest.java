@@ -2,11 +2,8 @@ package no.stelvio.batch.support;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
-
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,13 +16,12 @@ import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchRepository;
 
-import org.hibernate.SessionFactory;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class ControllerServiceHistorySupportTest {
 

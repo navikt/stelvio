@@ -1,18 +1,10 @@
 package no.stelvio.batch.support;
 
-import java.sql.Clob;
-import java.util.Collection;
-import java.util.Date;
-
 import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
 import no.stelvio.domain.time.ChangeStamp;
-
-import org.apache.commons.lang.NotImplementedException;
-import org.hibernate.SessionFactory;
-import org.springframework.batch.core.BatchStatus;
 
 /**
  * Class for saving and retrieving history on batches that have been run

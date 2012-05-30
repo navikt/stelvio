@@ -1,6 +1,5 @@
 package no.stelvio.batch.repository.support;
 
-import java.util.Collection;
 import java.util.List;
 
 import no.stelvio.batch.domain.BatchDO;

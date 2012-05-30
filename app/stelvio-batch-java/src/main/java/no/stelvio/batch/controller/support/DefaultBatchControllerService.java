@@ -11,12 +11,10 @@ import no.stelvio.common.config.MissingPropertyException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.SessionFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Work controller service for batches. Use the server side batch context configuration which is described in a xml file, for
