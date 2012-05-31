@@ -15,6 +15,15 @@
 	  memoryStoreEvictionPolicy="FIFO"
 	/>
 	
+	<cache name="navAnsattCache"
+	  maxElementsInMemory="20000"
+	  eternal="false"
+	  timeToIdleSeconds="3600" timeToLiveSeconds="43200"
+	  overflowToDisk="false"
+	  diskPersistent="false"
+	  memoryStoreEvictionPolicy="FIFO"
+	/>
+	
 	<cache name="sampleCache2"
 	  maxElementsInMemory="500"
 	  eternal="false"

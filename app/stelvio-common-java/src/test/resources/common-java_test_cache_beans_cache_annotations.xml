@@ -32,6 +32,7 @@
 	    <props>
 	      <prop key="non-persistent">cacheName=sampleCache4</prop>
 	      <prop key="persistent">cacheName=sampleCache5</prop>
+	      <prop key="navAnsattCache">cacheName=navAnsattCache</prop>
 	    </props>
 	  </property>
 	</bean>	
@@ -54,6 +55,8 @@
 <!--	<bean id="flushingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.flush.FlushingAttributeSourceAdvisor">
 	  <constructor-arg ref="flushingInterceptor" />
 	</bean> -->
+  
+  	<bean id="navAnsattService" class="no.stelvio.common.cache.support.DefaultNAVAnsatt" />
   
 	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
 
@@ -89,5 +92,14 @@
 		advice-ref="cachingInterceptor"/>	
 	
 	</aop:config>		
+		<aop:config>
+ 		<aop:pointcut id="navAnsattCache"
+			expression="execution(* no.stelvio.common.cache.support.DefaultNAVAnsatt.*(..))"/>
+
+       <aop:advisor
+		pointcut-ref="navAnsattCache"
+		advice-ref="cachingInterceptor"/>
+
+	</aop:config>	
 	
 </beans>
