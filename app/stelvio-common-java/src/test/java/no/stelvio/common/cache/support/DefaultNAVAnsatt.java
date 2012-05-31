@@ -1,15 +1,15 @@
 package no.stelvio.common.cache.support;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 import no.stelvio.common.cache.NavAnsattServiceBi;
 import no.stelvio.common.cache.TestRequest;
-
-import org.springmodules.cache.annotations.Cacheable;
 
 public class DefaultNAVAnsatt implements NavAnsattServiceBi {
 
 	private int hitCount;
 
-	@Cacheable(modelId = "navAnsattCache")
+	@Cacheable(cacheName = "navAnsattCache")
 	public String hentNAVAnsattFagomradeListe(TestRequest testRequest) {
 		hitCount++;
 		

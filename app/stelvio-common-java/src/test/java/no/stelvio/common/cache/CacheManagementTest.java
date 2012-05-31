@@ -21,7 +21,7 @@ public class CacheManagementTest extends AbstractDependencyInjectionSpringContex
 
 	/** Implementation class to test. */
 	private CacheManagement cacheManagement;
-
+	
 	/**
 	 * Get configuration locations.
 	 * 
