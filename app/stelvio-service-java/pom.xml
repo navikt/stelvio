@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>stelvio</artifactId>
@@ -30,9 +31,26 @@
 			<version>1.0</version>
 		</dependency>
 		<dependency>
+			<!-- Cache provider -->
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<!-- <type>pom</type> -->
+			<version>${ehcache.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-collections</artifactId>
+					<groupId>commons-collections</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
 			<artifactId>ehcache-spring-annotations</artifactId>
 			<groupId>com.googlecode.ehcache-spring-annotations</groupId>
-			<version>1.1.2</version>
+			<version>1.2.0</version>
 		</dependency>
 		<dependency>
 			<artifactId>spring-orm</artifactId>
@@ -40,40 +58,42 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
+			<!-- spring-beans is a Spring core library used for manipulating Java 
+				beans. This is the most basic Spring library. -->
 			<artifactId>spring-beans</artifactId>
 			<groupId>org.springframework</groupId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
+			<!-- spring-context is a Spring core library used for configuration and 
+				dependency injection. Builds on the spring-beans library. -->
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- Test -->
 		<dependency>
-			<groupId>org.slf4j</groupId> 
-			<artifactId>slf4j-log4j12</artifactId> 
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId> 
-			<artifactId>slf4j-api</artifactId> 
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>javassist</groupId> 
-			<artifactId>javassist</artifactId> 
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
 			<version>3.4.GA</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-  			<version>1.8.0.7</version>
+			<version>1.8.0.7</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -83,31 +103,33 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId> 
-			<artifactId>hibernate-annotations</artifactId> 
-			<version>3.4.0.GA</version> 
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.4.0.GA</version>
 			<exclusions>
-				<!--  Hibernate is already included, we do not want to duplicate exclusions defined for hibernate   --> 
+				<!-- Hibernate is already included, we do not want to duplicate exclusions 
+					defined for hibernate -->
 				<exclusion>
-					<groupId>org.hibernate</groupId> 
-					<artifactId>hibernate-core</artifactId> 
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-core</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>org.hibernate</groupId> 
-					<artifactId>hibernate-commons-annotations</artifactId> 
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-commons-annotations</artifactId>
 				</exclusion>
 			</exclusions>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId> 
-			<artifactId>hibernate-commons-annotations</artifactId> 
-			<version>3.1.0.GA</version> 
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.1.0.GA</version>
 			<exclusions>
-				<!--  Hibernate is already included, we do not want to duplicate exclusions defined for hibernate   --> 
+				<!-- Hibernate is already included, we do not want to duplicate exclusions 
+					defined for hibernate -->
 				<exclusion>
-					<groupId>org.hibernate</groupId> 
-					<artifactId>hibernate</artifactId> 
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate</artifactId>
 				</exclusion>
 			</exclusions>
 			<scope>test</scope>
