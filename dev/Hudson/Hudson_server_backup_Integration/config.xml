@@ -266,7 +266,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2012HL2_7.3_CheckScripts_Leveransedokumentasjon</string>
         <string>CI-buss-pom_sync</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
         <string>CI-release-pom_sync</string>
@@ -291,11 +290,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2012HL2_7.3_nav-model-doc</string>
-        <string>2012HL2_7.3_nav-model-doc-chmod</string>
-        <string>2012HL2_7.3_nav-model-doc-diagram</string>
-        <string>2012HL2_7.3_nav-model-doc-test</string>
-        <string>2012HL2_7.3_nav-model-update</string>
         <string>HORISONTEN_7.2_nav-model-doc</string>
         <string>HORISONTEN_7.2_nav-model-doc-chmod</string>
         <string>HORISONTEN_7.2_nav-model-doc-diagram</string>
@@ -339,27 +333,6 @@
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>.*datapower.*</includeRegex>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status HL2 (7.3)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <de.fspengler.hudson.pview.ConsoleViewColumn/>
-      </columns>
-      <includeRegex>(2012HL2_7\.3_).*</includeRegex>
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
