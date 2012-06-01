@@ -397,9 +397,10 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/cache/TestCache.java -te
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/TestRequest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/.copyarea.db -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/CacheStoreCounterCachingListener.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/DefaultNAVAnsatt.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/DefaultTestCache.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/HashCodeCacheKeyGeneratorNAVAnsatt.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/NoAnnotationsTestCache.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/StringCacheKeyGeneratorNavAnsatt.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/.copyarea.db -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableIntegrationTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemTest.java -text

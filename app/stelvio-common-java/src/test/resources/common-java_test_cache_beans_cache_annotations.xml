@@ -23,7 +23,9 @@
 
 	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
 
-  	<bean id="navAnsattService" class="no.stelvio.common.cache.support.DefaultNAVAnsatt" />
+  	<bean id="hashCodeCacheKeyGeneratorNAVAnsatt" class="no.stelvio.common.cache.support.HashCodeCacheKeyGeneratorNAVAnsatt" />
+  	
+  	<bean id="stringCacheKeyGeneratorNavAnsatt" class="no.stelvio.common.cache.support.StringCacheKeyGeneratorNavAnsatt" />
 
 	<bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">
 		<property name="cacheManager" ref="cacheManager" />
