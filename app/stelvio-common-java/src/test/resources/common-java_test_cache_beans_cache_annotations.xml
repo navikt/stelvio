@@ -9,8 +9,12 @@
        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring 
        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
 
-	 <context:annotation-config /> 
+<!-- 	 <context:annotation-config /> --> 
 	 <ehcache:annotation-driven /> 
+
+	<ehcache:config cache-manager="cacheManager">
+		<ehcache:evict-expired-elements interval="60" />
+	</ehcache:config>
 
 		<!-- Do not use autoproxy in combination with aop:config -->
 <!--	<bean id="autoproxy" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->

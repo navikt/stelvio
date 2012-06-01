@@ -2,9 +2,13 @@ package no.stelvio.common.cache;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import net.sf.ehcache.CacheManager;
+
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -14,8 +18,17 @@ public class DefaultEhCacheKeyGeneratorTest {
 
 	@Autowired
 	private NavAnsattServiceBi ansattServiceBi;
+	
+	@Autowired
+	private CacheManager cacheManager;
 
+	@After
+	public void after(){
+		cacheManager.clearAll();
+	}
+	
 	@Test
+	@DirtiesContext
 	public void shouldReturnTheSameNumbersWhenTheCacheIsHit() {
 		TestRequest request = null;
 		String response = null;

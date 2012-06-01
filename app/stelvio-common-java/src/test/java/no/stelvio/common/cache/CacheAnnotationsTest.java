@@ -1,15 +1,14 @@
 package no.stelvio.common.cache;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-
-import net.sf.ehcache.Cache;
+import static org.junit.Assert.assertTrue;
 import net.sf.ehcache.CacheManager;
 
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,23 +24,24 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class CacheAnnotationsTest {
 	private static final String INITIAL_STRING = "This is a cacheable string";
 
-	/** Implementation class to test. */
 	@Autowired
 	private TestCache testCache;
+	
 	@Autowired
-	public CacheManager cacheManager;
-	private Cache cacheInstance;
+	private CacheManager cacheManager;
 	
 	@After
-	public void tearDown(){
-		cacheInstance = cacheManager.getCache("sampleCache2");
-		cacheInstance.removeAll();
+	public void after(){
+		cacheManager.clearAll();
 	}
+	
 	/**
 	 * Test-method that test caching using JDK 1.5 annotations.
 	 */
 	@Test
+	@DirtiesContext
 	public void shuldReturnCorrectStringsWhenChaching() {
+		
 		// Retrieve String for the first time
 		String cachedString = testCache.getStringCached();
 		assertTrue("Retrieved string is not equal to inital String.", cachedString.equals(INITIAL_STRING));
