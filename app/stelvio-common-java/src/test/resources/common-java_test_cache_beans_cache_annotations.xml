@@ -12,23 +12,25 @@
 	 <context:annotation-config /> 
 	 <ehcache:annotation-driven /> 
 
-		<!-- Do ot use autoproxy in combination with aop:config -->
+		<!-- Do not use autoproxy in combination with aop:config -->
 <!--	<bean id="autoproxy" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->
 
 	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
 	  <property name="configLocation" value="/test-ehcache.xml" />
 	  <property name="shared" value="true" />
 	</bean>
-
+<!-- 
 	<bean id="cachingListener" class="no.stelvio.common.cache.CustomCachingListener" />
-	
+	 -->
 	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
+
+  	<bean id="navAnsattService" class="no.stelvio.common.cache.support.DefaultNAVAnsatt" />
 
 	<bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">
 		<property name="cacheManager" ref="cacheManager" />
 	</bean>
 	
-		<bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
+	<bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
 		<property name="objectName" value="bean:name=cacheManagement"/>
 		<property name="proxyInterface" value="no.stelvio.common.cache.CacheManagement"/>
 	</bean>
