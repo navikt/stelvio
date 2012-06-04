@@ -268,7 +268,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>CI-buss-pom_sync</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
-        <string>CI-release-pom_sync</string>
+        <string>CI-wpsdeploy-pom_sync</string>
         <string>TRUNK-CheckScripts</string>
       </jobNames>
       <jobFilters/>
