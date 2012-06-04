@@ -8621,6 +8621,19 @@ int/stelvio-operation-systemavailability/system-availability-config/pom.xml -tex
 int/stelvio-operation-systemavailability/system-availability-config/sca.module -text
 int/stelvio-operation-systemavailability/system-availability-config/sca.modulex -text
 int/stelvio-operation-systemavailability/system-availability-config/system-availability-config_SystemAvailabilityConfigWSEXP.wsdl -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]Arena[!!-~]WSImport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]INFOT[!!-~]WSImport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]NoSec[!!-~]HTTP[!!-~]SSL[!!-~]WSImport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]NoSec[!!-~]WSExport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]UsernameToken[!!-~]WSImport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]WSExport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]WSImport.zip -text
+int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]AAReg[!!-~]WSImport[!!-~]Binding.zip -text
+int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]Arena[!!-~]WSImport[!!-~]Binding.zip -text
+int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]UR[!!-~]WSImport[!!-~]Binding.zip -text
+int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSExport[!!-~]Binding.zip -text
+int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSImport[!!-~]Binding.zip -text
+int/stelvio-policy-sets/readme.txt -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.factorypath -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
