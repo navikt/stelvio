@@ -49,13 +49,13 @@
 			<!-- Framework for AOP (Aspect Oriented Programming), providing method interceptors that for instance is used by Stelvio transfer objects to set service context data behind the scene. Also used in Spring-AOP. -->
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
-			<version>1.0</version>
+			<version>${aopalliance.version}</version>
 		</dependency>
 		<dependency>
 			<!-- JPA, for data access using Java Persistence API -->
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
+			<version>${persistence-api.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -72,7 +72,7 @@
 		<dependency>
 			<artifactId>acegi-security-tiger</artifactId>
 			<groupId>org.acegisecurity</groupId>
-			<version>1.0.7</version>
+			<version>${org.acegisecurity.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>spring-aop</artifactId>
@@ -177,13 +177,13 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
-			<version>2.1_3</version>
+			<version>${cglib-nodep.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>		
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.3</version>
+			<version>${aspectjweaver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -201,19 +201,19 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-api</artifactId>
-			<version>1.0</version>
+			<version>${hamcrest-api.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-integration</artifactId>
-			<version>1.1</version>
+			<version>${hamcrest-integration.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
-			<version>1.0</version>
+			<version>${hamcrest-library.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
