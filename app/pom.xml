@@ -298,23 +298,32 @@
 	</profiles>
 	
 	<properties>
-		<swf.version>2.0.9.RELEASE</swf.version>
-		<spring.version>2.5.6.SEC02</spring.version>
-		<clover.version>2.4.3</clover.version>
-		<ehcache.version>2.5.2</ehcache.version>
-		<ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
-		<spring-batch.version>2.1.3.RELEASE</spring-batch.version>
+		<!-- NB! Listen er sortert alfabetisk for å gi bedre oversikt -->
+		<aopalliance.version>1.0</aopalliance.version>
+		<aspectjweaver.version>1.5.3</aspectjweaver.version>
+		<cglib-nodep.version>2.1_3</cglib-nodep.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
 		<commons-lang.version>2.4</commons-lang.version>
 		<commons-logging.version>1.1.1</commons-logging.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-digester.version>1.8.1</commons-digester.version>
-		<slf4j.version>1.6.1</slf4j.version>
-		<joda-time.version>1.6.2</joda-time.version>
+		<clover.version>2.4.3</clover.version>
 		<dozer.version>5.2.2</dozer.version>
+		<ehcache.version>2.5.2</ehcache.version>
+		<ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
+		<hamcrest-api.version>1.0</hamcrest-api.version>
+		<hamcrest-integration.version>1.1</hamcrest-integration.version>
+		<hamcrest-library.version>1.0</hamcrest-library.version>
 		<jmock.version>2.5.1</jmock.version>
+		<joda-time.version>1.6.2</joda-time.version>
 		<maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>
 		<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
+		<org.acegisecurity.version>1.0.7</org.acegisecurity.version>
+		<persistence-api.version>1.0</persistence-api.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<spring.version>2.5.6.SEC02</spring.version>
+		<spring-batch.version>2.1.3.RELEASE</spring-batch.version>
+		<swf.version>2.0.9.RELEASE</swf.version>
 	</properties>
 	
 </project>
