@@ -58,12 +58,6 @@
 			<version>1.0</version>
 			<scope>compile</scope>
 		</dependency>
-<!-- 		<dependency>
-			<artifactId>ehcache-spring-annotations</artifactId>
-			<groupId>com.googlecode.ehcache-spring-annotations</groupId>
-			<version>1.1.2</version>
-			TODO Oppgrader til 1.2.0 (ligger på Nexus)
-		</dependency> -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -152,148 +146,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		<!-- For configuration of caching -->				
-<!-- 		<dependency>
-			<artifactId>spring-modules-cache</artifactId>
-			<groupId>org.springmodules</groupId>
-			<version>0.7-PATCHED</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>cglib-nodep</artifactId>
-					<groupId>cglib</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>ehcache</artifactId>
-					<groupId>ehcache</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>xpp3_min</artifactId>
-					<groupId>xpp3</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>reggie</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jboss-cache</artifactId>
-					<groupId>jboss</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>gigaspaces-ce</artifactId>
-					<groupId>gigaspaces</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>mahalo</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>webster</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jboss-jmx</artifactId>
-					<groupId>jboss</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>start</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jboss-common</artifactId>
-					<groupId>jboss</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jsk-platform</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jboss-minimal</artifactId>
-					<groupId>jboss</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>boot</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jsk-lib</artifactId>
-					<groupId>jini</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jboss-system</artifactId>
-					<groupId>jboss</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jcs</artifactId>
-					<groupId>jcs</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>concurrent</artifactId>
-					<groupId>concurrent</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>xjavadoc</artifactId>
-					<groupId>xjavadoc</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>xstream</artifactId>
-					<groupId>xstream</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-attributes-compiler</artifactId>
-					<groupId>commons-attributes</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-attributes-api</artifactId>
-					<groupId>commons-attributes</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>geronimo-spec-jta</artifactId>
-					<groupId>geronimo-spec</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jgroups-all</artifactId>
-					<groupId>jgroups</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>oscache</artifactId>
-					<groupId>opensymphony</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-lang</groupId>
-					<artifactId>commons-lang</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-collections</groupId>
-					<artifactId>commons-collections</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
- -->
 		<dependency>
 		  <groupId>com.googlecode.ehcache-spring-annotations</groupId>
 		  <artifactId>ehcache-spring-annotations</artifactId>
 		  <version>1.2.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>1.6.2</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
@@ -306,7 +168,6 @@
 			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
 		<dependency>
 			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
 			<artifactId>spring-context-support</artifactId>
