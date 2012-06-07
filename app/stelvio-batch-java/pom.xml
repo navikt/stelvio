@@ -109,7 +109,7 @@
 			-->
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
-			<version>1.0</version>
+			<version>${aopalliance.version}</version>
 		</dependency>
 		<dependency>
 			<!--
@@ -124,29 +124,29 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.1</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.1</version>
+			<version>${slf4j.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
+			<version>${persistence-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
-			<version>2.1_3</version>
+			<version>${cglib-nodep.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.3</version>
+			<version>${aspectjweaver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -164,7 +164,7 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-api</artifactId>
-			<version>1.0</version>
+			<version>${hamcrest-api.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -176,7 +176,7 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-integration</artifactId>
-			<version>1.1</version>
+			<version>${hamcrest-integration.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring Batch dependencies -->
