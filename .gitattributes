@@ -570,6 +570,7 @@ app/stelvio-common-java/src/test/resources/test-services2.xml -text
 app/stelvio-common-java/src/test/resources/test-services3.xml -text
 app/stelvio-common-java/src/test/resources/tst-log-infologger-context.xml -text
 app/stelvio-consumer-java/.copyarea.db -text
+app/stelvio-consumer-java/.project -text
 app/stelvio-consumer-java/pom.xml -text
 app/stelvio-consumer-java/src/.copyarea.db -text
 app/stelvio-consumer-java/src/main/.copyarea.db -text
@@ -590,6 +591,7 @@ app/stelvio-consumer-java/src/main/resources/no/stelvio/consumer/ws/ContextHandl
 app/stelvio-consumer-java/src/test/.copyarea.db -text
 app/stelvio-consumer-java/src/test/java/no/stelvio/consumer/ws/JaxWsConsumerContextHandlerTest.java -text
 app/stelvio-domain-java/.copyarea.db -text
+app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/.copyarea.db -text
 app/stelvio-domain-java/src/main/.copyarea.db -text
@@ -679,6 +681,7 @@ app/stelvio-model-uml/org-springframework[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/org-springmodules[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/stelvio[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-presentation-java/.copyarea.db -text
+app/stelvio-presentation-java/.project -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/.copyarea.db -text
 app/stelvio-presentation-java/src/main/.copyarea.db -text
@@ -1006,6 +1009,7 @@ app/stelvio-provider-java/src/test/resources/loglevels.properties -text
 app/stelvio-provider-java/src/test/resources/prv-testcodestable-mapping.xml -text
 app/stelvio-provider-java/src/test/resources/test-morphtosdk14-context.xml -text
 app/stelvio-repository-java/.copyarea.db -text
+app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
 app/stelvio-repository-java/src/.copyarea.db -text
 app/stelvio-repository-java/src/main/.copyarea.db -text
