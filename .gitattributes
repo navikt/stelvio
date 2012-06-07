@@ -36,6 +36,7 @@ app/stelvio-batch-client-java/src/test/resources/btc-controllerclient-environmen
 app/stelvio-batch-client-java/src/test/resources/log4j.properties -text
 app/stelvio-batch-java/.checkstyle -text
 app/stelvio-batch-java/.copyarea.db -text
+app/stelvio-batch-java/.project -text
 app/stelvio-batch-java/pom.xml -text
 app/stelvio-batch-java/src/.copyarea.db -text
 app/stelvio-batch-java/src/main/.copyarea.db -text
