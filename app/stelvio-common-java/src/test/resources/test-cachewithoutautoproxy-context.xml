@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
        http://www.springframework.org/schema/aop     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
@@ -9,25 +8,19 @@
        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring 
        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
 
-	 <context:annotation-config /> 
-	 <ehcache:annotation-driven /> 
+	<ehcache:annotation-driven />
 
-	<bean id="cacheManager"
-		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
 		<property name="configLocation" value="/test-ehcache.xml" />
 		<property name="shared" value="true" />
 	</bean>
 
-	<bean id="cacheAnnotationsWithoutAutoProxyTest" class="no.stelvio.common.cache.CacheAnnotationsWithoutAutoProxyTest" />
-	
 	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
 
-	<!-- This cachinglistener will be triggered and provide debug info when 
-		cache is accessed -->
+	<!-- This cachinglistener will be triggered and provide debug info when cache is accessed -->
 	<bean id="cachingListener" class="no.stelvio.common.cache.CustomCachingListener" />
 
-	<bean id="cacheStoreCounter"
-		class="no.stelvio.common.cache.support.CacheStoreCounterCachingListener">
+	<bean id="cacheStoreCounter" class="no.stelvio.common.cache.support.CacheStoreCounterCachingListener">
 		<constructor-arg value="InterceptorKonfigurertFraSpring" />
 	</bean>
 

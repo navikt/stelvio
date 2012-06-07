@@ -43,10 +43,12 @@ public class CacheAnnotationsWithoutAutoProxyTest {
 
 	@Resource(name = "testCache")
 	private TestCache testCache;
+	
 	private ApplicationContext ctx;
 
 	@Autowired
 	public CacheManager cacheManager;
+	
 	@Autowired
 	private CacheStoreCounterCachingListener counter;
 

@@ -1,8 +1,5 @@
 package no.stelvio.common.cache.support;
 
-import java.io.Serializable;
-
-import net.sf.ehcache.statistics.CacheUsageListener;
 import net.sf.ehcache.statistics.sampled.NullSampledCacheStatistics;
 
 import org.apache.commons.logging.Log;
