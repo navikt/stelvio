@@ -4,6 +4,7 @@ app/.copyarea.db -text
 app/changelog.txt -text
 app/pom.xml -text
 app/stelvio-batch-client-java/.copyarea.db -text
+app/stelvio-batch-client-java/.project -text
 app/stelvio-batch-client-java/pom.xml -text
 app/stelvio-batch-client-java/src/.copyarea.db -text
 app/stelvio-batch-client-java/src/main/.copyarea.db -text
