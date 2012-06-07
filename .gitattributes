@@ -158,6 +158,7 @@ app/stelvio-batch-java/src/test/resources/btc-testbatch-context.xml -text
 app/stelvio-batch-java/src/test/resources/log4j.properties -text
 app/stelvio-batch-java/src/test/resources/tst-stopbatch-context.xml -text
 app/stelvio-common-java/.copyarea.db -text
+app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/src/.copyarea.db -text
 app/stelvio-common-java/src/main/.copyarea.db -text
