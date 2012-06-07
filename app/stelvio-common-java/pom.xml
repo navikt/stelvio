@@ -133,7 +133,6 @@
 			<!-- Cache provider -->
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
-			<!--  <type>pom</type> -->
 			<version>${ehcache.version}</version>
 			<exclusions>
 				<exclusion>
@@ -149,7 +148,7 @@
 		<dependency>
 		  <groupId>com.googlecode.ehcache-spring-annotations</groupId>
 		  <artifactId>ehcache-spring-annotations</artifactId>
-		  <version>1.2.0</version>
+		  <version>${ehcache-spring-annotations.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
