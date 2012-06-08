@@ -555,6 +555,7 @@ app/stelvio-common-java/src/test/resources/prepareservicerequest-interceptor-tes
 app/stelvio-common-java/src/test/resources/servicerequest-interceptor-test-context.xml -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.properties -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.xml -text
+app/stelvio-common-java/src/test/resources/test-cachelistener-context.xml -text
 app/stelvio-common-java/src/test/resources/test-cachewithoutautoproxy-context.xml -text
 app/stelvio-common-java/src/test/resources/test-ehcache.xml -text
 app/stelvio-common-java/src/test/resources/test-environmentAwareResource-context.xml -text

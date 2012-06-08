@@ -13,8 +13,6 @@
 	  <property name="shared" value="true" />
 	</bean>
 	
-	<bean id="cachingListener" class="no.stelvio.common.cache.CustomCachingListener" />
-	  
 	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
 	
 	<bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">

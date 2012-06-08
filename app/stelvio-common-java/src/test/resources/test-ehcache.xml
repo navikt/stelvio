@@ -28,6 +28,8 @@
 	  memoryStoreEvictionPolicy="FIFO"
 	/>
 	
+		  <!--  statistics="true" -->
+	
 	<cache name="sampleCache2"
 	  maxElementsInMemory="500"
 	  eternal="false"
@@ -36,9 +38,10 @@
 	  timeToLiveSeconds="600"
 	  diskPersistent="true"
 	  diskExpiryThreadIntervalSeconds="1"
-	  memoryStoreEvictionPolicy="LFU"
-	  statistics="true"
-	/>	  
+	  memoryStoreEvictionPolicy="LFU">
+	
+	<cacheEventListenerFactory class="no.stelvio.common.cache.support.DefaultCacheEventListenerFactory" />
+	</cache>
   
   <cache name="sampleCache3"
 	  maxElementsInMemory="1000"
