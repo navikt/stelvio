@@ -28,8 +28,6 @@
 	  memoryStoreEvictionPolicy="FIFO"
 	/>
 	
-		  <!--  statistics="true" -->
-	
 	<cache name="sampleCache2"
 	  maxElementsInMemory="500"
 	  eternal="false"

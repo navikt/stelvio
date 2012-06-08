@@ -76,12 +76,12 @@ public class CacheListenerTest {
 	private DefaultCacheEventListener getCacheEventListener(Cache cacheInstance){
 		 RegisteredEventListeners cacheEventNotificationService = cacheInstance.getCacheEventNotificationService();
 		 Set<CacheEventListener> cacheEventListeners = cacheEventNotificationService.getCacheEventListeners();
-		 while(cacheEventListeners.iterator().hasNext()){
-			 CacheEventListener cacheEventListener = cacheEventListeners.iterator().next();
-			 if (cacheEventListener instanceof DefaultCacheEventListener ){
-				 return (DefaultCacheEventListener) cacheEventListener;
-			 }
-		 }
+
+		 for (CacheEventListener cacheEventListener : cacheEventListeners) {
+				if (cacheEventListener instanceof DefaultCacheEventListener) {
+					return (DefaultCacheEventListener) cacheEventListener;
+				}
+			}
 		return null;
 	}
 

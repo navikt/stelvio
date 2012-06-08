@@ -35,7 +35,6 @@ public class DefaultCacheEventListener implements CacheEventListener{
 	}
 
 	public void notifyElementPut(Ehcache arg0, Element arg1) throws CacheException {
-		System.out.println("DefaultCacheEventListener intercepted: notifyElementPut()");
 		onCachingCounter++;	
 		LOG.debug("Cache hit, incrementing onChacingCounter");		
 	}
