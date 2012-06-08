@@ -330,7 +330,7 @@ else
 fi</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Maven>
-            <targets>-e -X clean
+            <targets>clean
 ${Lifecycle}
 -Denvironment=${Environment}
 -Dbus-configuration-version=${BusConfigurationVersion}

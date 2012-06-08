@@ -1121,6 +1121,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-NAVYtelsesinf
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-Pensjon-Beregning_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-Pensjon-Person_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-Pensjon-TPTILB_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-Virkemiddelokonomi-Utbetaling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-ArbeidOgAktivitetYtelse_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-ArbeidOgAktivitet_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Arbeidsgiver_CI/config.xml -text

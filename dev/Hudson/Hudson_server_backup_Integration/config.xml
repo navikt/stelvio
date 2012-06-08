@@ -145,6 +145,7 @@
         <string>Stelvio-app-sandbox</string>
         <string>Stelvio-app-site</string>
         <string>Stelvio-app-svn</string>
+        <string>Stelvio-app-svn-dryRun-release</string>
         <string>stelvio_trunk_incubator_stelvio_example</string>
         <string>stelvio_trunk_int_stelvio-commons-lib_sonar</string>
       </jobNames>
@@ -168,6 +169,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <string>SoapUI-U2-Ekstern-Virkemiddelokonomi-Utbetaling_CI</string>
         <string>SoapUI-U2-NAV-EUInstitusjon_CI</string>
       </jobNames>
       <jobFilters/>
