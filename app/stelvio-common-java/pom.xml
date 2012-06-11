@@ -13,221 +13,125 @@
 		<dependency>
 			<artifactId>spring-core</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-aop library is used to provide AOP interfaces used by Spring. Built on AOP Alliance library. -->
 			<artifactId>spring-aop</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Apache commons-beanutils library provides classes that support easy-to-use wrappers for dynamic access of standard JavaBean classes properties. --> 		
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>${commons-beanutils.version}</version>
 		</dependency>	
 		<dependency>
-			<!-- Apache commons-lang library provides a host of helper utilities that extend the standard java.lang API, for example String manipulation methods. -->
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>${commons-lang.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
 			<artifactId>spring-beans</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Framework for AOP (Aspect Oriented Programming), providing method interceptors that for instance is used by Stelvio transfer objects to set service context data behind the scene. Also used in Spring-AOP. -->
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
-			<version>${aopalliance.version}</version>
 		</dependency>
 		<dependency>
-			<!-- JPA, for data access using Java Persistence API -->
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>${persistence-api.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId> 
 			<artifactId>slf4j-log4j12</artifactId> 
-			<version>${slf4j.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<artifactId>acegi-security-tiger</artifactId>
 			<groupId>org.acegisecurity</groupId>
-			<version>${org.acegisecurity.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-aop</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-core</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-remoting</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-jdbc</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-support</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-lang</groupId>
-					<artifactId>commons-lang</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-collections</groupId>
-					<artifactId>commons-collections</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-codec</groupId>
-					<artifactId>commons-codec</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>${commons-collections.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Mapping framework for mapping between different types of data objects  -->
 			<groupId>net.sf.dozer</groupId>
 			<artifactId>dozer</artifactId>
-			<version>${dozer.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-beanutils</groupId>
-					<artifactId>commons-beanutils</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
-			<!-- Cache provider -->
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
-			<version>${ehcache.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-collections</artifactId>
-					<groupId>commons-collections</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 		  <groupId>com.googlecode.ehcache-spring-annotations</groupId>
 		  <artifactId>ehcache-spring-annotations</artifactId>
-		  <version>${ehcache-spring-annotations.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
-			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.runtime</artifactId>
-			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
 			<artifactId>spring-context-support</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
-			<version>${cglib-nodep.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>		
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>${aspectjweaver.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock</artifactId>
-			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-junit4</artifactId>
-			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-api</artifactId>
-			<version>${hamcrest-api.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-integration</artifactId>
-			<version>${hamcrest-integration.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
-			<version>${hamcrest-library.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<!-- Needs spring mock support in order to run tests -->
 			<artifactId>spring-test</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>struts</artifactId>
-					<groupId>struts</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 </project>
