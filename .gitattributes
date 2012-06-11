@@ -7772,6 +7772,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/serverConfig.py -t
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/serverControl.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/serverSetup.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/start.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/startStopApplication.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/troubleshoot.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/versionMBeanInstall.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/wsadminlib.py -text
