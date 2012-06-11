@@ -2,6 +2,8 @@ import re, os
 import lib.moduleConfigPath as moduleConfigPath
 import lib.deployEnviromentUtil as env
 import lib.XMLUtil as XML
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
 def getRoles():
 	consXmlPath = getAllXmlConfigFiles()['cons']
@@ -34,6 +36,7 @@ def getRoles():
 	
 def getEndpoints():
 	moduleEndpoints = {}
+	importNameREGEX = re.compile('(?:/?sca/import/|)([^/]+)$')
 	for moduleName, configPath in getAllXmlConfigFiles().items():
 		xml = XML.parseXML(configPath)
 		
@@ -41,7 +44,6 @@ def getEndpoints():
 		if not endpointNodes:
 			continue
 		
-		importNameREGEX = re.compile('(?:/?sca/import/|)([^/]+)$')
 		endpoints = {}
 		for endpointNode in endpointNodes:
 			fullName = endpointNode.getChildValue('name')
@@ -86,7 +88,10 @@ def extractXmlsFilePath(path, modulesDict):
 	for fileName in os.listdir(path):
 		if fileName.lower().endswith('.xml'):
 			moduleName = stripExtension(fileName)
-			modulesDict[moduleName] = path+'/'+fileName
+			if not modulesDict.has_key(moduleName):
+				modulesDict[moduleName] = path+'/'+fileName
+			else:
+				l.warning(moduleName, 'has multiple entrys in the busconfiguration, and because of that "%s" was ignored!' % path+'/'+fileName)
 	
 fileNameAndExtensionREGEX = re.compile('(.*)\.([^\.]+)$')
 def stripExtension(fileName):
