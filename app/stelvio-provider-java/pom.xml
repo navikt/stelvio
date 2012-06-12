@@ -27,11 +27,6 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<!--
-				Apache commons-lang library provides a host of helper utilities that
-				extend the standard java.lang API, for example String manipulation
-				methods.
-			-->
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
