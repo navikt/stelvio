@@ -209,6 +209,12 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<dependency>			
+				<!-- Hibernate is used for Object Relational Mapping -->
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>3.3.1.GA</version>
+			</dependency>				
 			<dependency>
 				<groupId>hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
@@ -290,9 +296,23 @@
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
-				<artifactId>spring-orm</artifactId>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>asm</groupId>
+						<artifactId>asm</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>asm</groupId>
+						<artifactId>asm-attrs</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>cglib</groupId>
+						<artifactId>cglib</artifactId>
+					</exclusion>
+				</exclusions>				
 			</dependency>
 			<dependency>
 				<!-- Needs spring mock support in order to run tests -->
@@ -316,6 +336,11 @@
 				<groupId>websphere</groupId>
 				<artifactId>com.ibm.ws.runtime</artifactId>
 				<version>7.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>2.4.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
