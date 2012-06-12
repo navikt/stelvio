@@ -64,8 +64,8 @@
 				</executions>
 				<configuration>
 					<includeClassifiers>jaxws</includeClassifiers>
-					<outputDirectory>${basedir}/WebContent/WEB-INF/wsdl</outputDirectory>
-					<includes>**/*.wsdl,**/*.xsd</includes>
+					<outputDirectory>${basedir}/WebContent/WEB-INF</outputDirectory>
+					<includes>wsdl/**/*</includes>
 				</configuration>
 			</plugin>
 			<plugin>
