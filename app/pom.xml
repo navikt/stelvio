@@ -180,6 +180,46 @@
 				<version>${hamcrest-library.version}</version>
 			</dependency>			
 			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>3.4.0.GA</version>
+				<exclusions>
+					<!-- Hibernate is already included, we do not want to duplicate exclusions 
+						defined for hibernate -->
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-commons-annotations</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-commons-annotations</artifactId>
+				<version>3.1.0.GA</version>
+				<exclusions>
+					<!-- Hibernate is already included, we do not want to duplicate exclusions 
+						defined for hibernate -->
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>1.8.0.7</version>
+			</dependency>
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.4.GA</version>
+			</dependency>
+			<dependency>
 				<groupId>org.jmock</groupId>
 				<artifactId>jmock</artifactId>
 				<version>${jmock.version}</version>
@@ -242,6 +282,16 @@
 				<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>spring-orm</artifactId>
+				<groupId>org.springframework</groupId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
