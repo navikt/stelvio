@@ -20,34 +20,16 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<artifactId>spring-orm</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>asm</groupId>
-					<artifactId>asm</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>asm</groupId>
-					<artifactId>asm-attrs</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>cglib</groupId>
-					<artifactId>cglib</artifactId>
-				</exclusion>
-			</exclusions>
+			<artifactId>spring-orm</artifactId>
 		</dependency>
 		<dependency>			
-			<!-- Hibernate is used for Object Relational Mapping -->
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>3.3.1.GA</version>
 		</dependency>			
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
 		</dependency>				
 	</dependencies>
 </project>
