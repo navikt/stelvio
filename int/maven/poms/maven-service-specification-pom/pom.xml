@@ -8,7 +8,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>maven-service-specification-pom</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<build>
@@ -16,15 +16,16 @@
 			<extension>
 				<groupId>no.nav.maven.lifecycles</groupId>
 				<artifactId>service-specification-lifecycle</artifactId>
-				<version>1.0.0</version>
+				<version>1.1.0-SNAPSHOT</version>
 			</extension>
 		</extensions>
 
 		<sourceDirectory>${basedir}/src/main/wsdl</sourceDirectory>
-		<outputDirectory>${project.build.directory}/wsdl</outputDirectory>
+		<outputDirectory>${project.build.directory}/output</outputDirectory>
 		<resources>
 			<resource>
 				<directory>${project.build.sourceDirectory}</directory>
+				<targetPath>wsdl</targetPath>
 			</resource>
 		</resources>
 
@@ -51,7 +52,7 @@
 					<artifactId>jaxws-maven-plugin</artifactId>
 					<version>2.1</version>
 					<configuration>
-						<wsdlDirectory>${project.build.outputDirectory}</wsdlDirectory>
+						<wsdlDirectory>${project.build.outputDirectory}/wsdl</wsdlDirectory>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -59,7 +60,7 @@
 					<artifactId>maven-wsi-plugin</artifactId>
 					<version>1.0.3</version>
 					<configuration>
-						<basedir>${project.build.outputDirectory}</basedir>
+						<basedir>${project.build.outputDirectory}/wsdl</basedir>
 					</configuration>
 				</plugin>
 				<plugin>
