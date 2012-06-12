@@ -10,26 +10,21 @@
 	<name>stelvio - consumer</name>
 	<dependencies>
 		<dependency>
-			<artifactId>stelvio-common-java</artifactId>
 			<groupId>no.stelvio</groupId>
+			<artifactId>stelvio-common-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Apache commons-beanutils library provides classes that support easy-to-use wrappers for dynamic access of standard JavaBean classes properties. --> 		
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>${commons-beanutils.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
-			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
+			<artifactId>spring-context</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
-			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>	
 		
@@ -37,13 +32,11 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId> 
-			<version>1.8.5</version>
 			<scope>test</scope>	
 		</dependency>			
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
-			<version>1.1</version>
 			<scope>test</scope>			
 		</dependency>
 	</dependencies>
