@@ -155,11 +155,30 @@
 				<version>${ehcache-spring-annotations.version}</version>
 			</dependency>
 			<dependency>
-				<!-- JPA, for data access using Java Persistence API -->
-				<groupId>javax.persistence</groupId>
-				<artifactId>persistence-api</artifactId>
-				<version>${persistence-api.version}</version>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>1.1</version>
 			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-api</artifactId>
+				<version>${hamcrest-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-core</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-integration</artifactId>
+				<version>${hamcrest-integration.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-library</artifactId>
+				<version>${hamcrest-library.version}</version>
+			</dependency>			
 			<dependency>
 				<groupId>org.jmock</groupId>
 				<artifactId>jmock</artifactId>
@@ -176,19 +195,15 @@
 				<version>${joda-time.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-api</artifactId>
-				<version>${hamcrest-api.version}</version>
-			</dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId> 
+				<version>1.8.5</version>
+			</dependency>			
 			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-integration</artifactId>
-				<version>${hamcrest-integration.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-library</artifactId>
-				<version>${hamcrest-library.version}</version>
+				<!-- JPA, for data access using Java Persistence API -->
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>${persistence-api.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
