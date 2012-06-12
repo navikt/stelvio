@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson>
-  <version>2.2.0</version>
+  <version>2.2.1</version>
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
@@ -10,7 +10,6 @@
     <bindName>srvciIntegrasjon</bindName>
     <bindPassword>Q6j28cmRnJt7aeCp5/xmUjUZdOlp/GRsytwuftGVbnw=</bindPassword>
   </securityRealm>
-  <systemMessage></systemMessage>
   <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter"/>
   <configuredWorkspaceRoot></configuredWorkspaceRoot>
   <jdks>
