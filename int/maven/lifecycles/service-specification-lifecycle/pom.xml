@@ -10,12 +10,12 @@
 
 	<groupId>no.nav.maven.lifecycles</groupId>
 	<artifactId>service-specification-lifecycle</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<name>Service Specification Lifecycle</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/service-specification-lifecycle-1.1.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/service-specification-lifecycle-1.1.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle</developerConnection>
 	</scm>
 
 	<properties>
