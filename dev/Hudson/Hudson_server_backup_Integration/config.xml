@@ -109,8 +109,9 @@
         <string>TRUNK-ekstern</string>
         <string>TRUNK-ekstern-modules-ci</string>
         <string>TRUNK-ekstern-tjenestespesifikasjon</string>
-        <string>TRUNK-esb</string>
         <string>TRUNK-esb-modules-ci</string>
+        <string>TRUNK-esb-release deploy</string>
+        <string>TRUNK-esb-release verify</string>
         <string>TRUNK-esb_busconfiguration</string>
         <string>TRUNK-nav</string>
         <string>TRUNK-nav-modules-ci</string>
@@ -122,7 +123,6 @@
         <string>TRUNK-pensjon-modules-ci</string>
         <string>TRUNK-pensjon-prosess-modules-ci</string>
         <string>TRUNK-pensjon-tjenestespesifikasjon</string>
-        <string>TRUNK_esb-release</string>
         <string>TRUNK_service-gateway</string>
         <string>TRUNK_service-gw-discovery</string>
         <string>TRUNK_service-gw-maven-service-registry-plugin</string>

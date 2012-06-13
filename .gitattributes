@@ -1210,7 +1210,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-ekstern-modules-ci/config
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-ekstern-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-ekstern/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-esb-modules-ci/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-esb/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-esb_busconfiguration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-nav-modules-ci/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-nav-tjenestespesifikasjon/config.xml -text
@@ -1222,7 +1221,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon-modules-ci/config
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon-prosess-modules-ci/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_esb-release/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-doc-chmod/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-doc-diagram/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-doc/config.xml -text
