@@ -212,6 +212,16 @@
                 <sendToRecipientList>true</sendToRecipientList>
               </email>
             </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
           </configuredTriggers>
           <contentType>default</contentType>
           <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
