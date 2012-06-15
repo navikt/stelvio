@@ -22,7 +22,7 @@ def main():
 	l.info('It took', myTimer.reset(), 'to get', len(modulesToBeInstalled), 'modules.')
 	
 	
-	table = Table(['Module', 'Install', 'Uninstall old version', 'Deploy resources', 'Old version', 'New version'])
+	table = Table(['Module', 'Install', 'Uninstall current', 'Deploy resources', 'Old version', 'New version'])
 	for installModule in modulesToBeInstalled:
 		doInstall = doUninstall = deployResources = False
 		
