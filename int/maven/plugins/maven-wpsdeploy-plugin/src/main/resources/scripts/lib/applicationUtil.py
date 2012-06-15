@@ -5,7 +5,7 @@ l = log.getLogger(__name__)
 clusterName = ""
 
 def uninstall(scaModule):
-	l.info('Uninstalling %s (%s)!' % (scaModule.shortName, scaModule.version))
+	l.info('Uninstalling %s!' % scaModule.shortName)
 	AdminApp.uninstall(scaModule.applicationName)
 	l.debug('Uninstall complete')
 		
@@ -61,3 +61,23 @@ def getAppServer(nodeName):
 	for server in AdminConfig.getid('/Node:'+ nodeName +'/Server:/').splitlines():
 		if re.search('AppTarget', server):
 			return server
+
+def isApplicationRunning(scaModule):
+	status = AdminControl.completeObjectName('type=Application,name=%s,*' % scaModule.applicationName)
+	if status:
+		return True
+	else:
+		return False
+		
+def stopApplication(scaModule):
+	applicationInvoke(scaModule, 'stopApplication')
+
+def startApplication(scaModule):
+	applicationInvoke(scaModule, 'startApplication')
+
+def applicationInvoke(scaModule, command):
+	nodes = [getName(n) for n in getNodes()]
+	for nodeName in nodes:
+		appManager = getApplicationManager(nodeName)
+		l.debug("AdminControl.invoke('"+appManager+"', '"+command+"', '"+scaModule.applicationName+"')")
+		AdminControl.invoke(appManager, command, scaModule.applicationName)
