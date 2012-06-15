@@ -91,7 +91,7 @@ def extractXmlsFilePath(path, modulesDict):
 			if not modulesDict.has_key(moduleName):
 				modulesDict[moduleName] = path+'/'+fileName
 			else:
-				l.warning(moduleName, 'has multiple entrys in the busconfiguration, and because of that "%s" was ignored!' % path+'/'+fileName)
+				l.warning(moduleName, 'has multiple entrys in the busconfiguration, and because of that "%s/%s" was ignored!' % (path, fileName))
 	
 fileNameAndExtensionREGEX = re.compile('(.*)\.([^\.]+)$')
 def stripExtension(fileName):
