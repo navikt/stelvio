@@ -35,3 +35,10 @@ def getAppServer(nodeName):
 	for server in AdminConfig.getid('/Node:'+ nodeName +'/Server:/').splitlines():
 		if re.search('AppTarget', server):
 			return server
+			
+def isApplicationRunning(scaModule):
+	satus = AdminControl.completeObjectName('type=Application,name=%s,*' % scaModule.applicationName)
+	if status:
+		return True
+	else:
+		return False
