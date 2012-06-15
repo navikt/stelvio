@@ -122,6 +122,17 @@
 				<version>${commons-lang.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>commons-digester</groupId>
+				<artifactId>commons-digester</artifactId>
+				<version>${commons-digester.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
 				<!-- Mapping framework for mapping between different types of data objects -->
 				<groupId>net.sf.dozer</groupId>
 				<artifactId>dozer</artifactId>
@@ -133,6 +144,11 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<dependency>
+				<groupId>org.easymock</groupId>
+				<artifactId>easymock</artifactId>
+				<version>2.5.2</version>
+			</dependency>	
 			<dependency>
 				<!-- Cache provider -->
 				<groupId>net.sf.ehcache</groupId>
@@ -199,7 +215,7 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-commons-annotations</artifactId>
-				<version>3.1.0.GA</version>
+				<version>${hibernate-commons-annotations.version}</version>
 				<exclusions>
 					<!-- Hibernate is already included, we do not want to duplicate exclusions 
 						defined for hibernate -->
@@ -213,7 +229,8 @@
 				<!-- Hibernate is used for Object Relational Mapping -->
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
-				<version>3.3.1.GA</version>
+				<!-- Kan se ut som det gir problemer å oppgradere denne -->
+				<version>${hibernate-core.version}</version>
 			</dependency>				
 			<dependency>
 				<groupId>hsqldb</groupId>
@@ -228,7 +245,7 @@
 			<dependency>
 				<groupId>javassist</groupId>
 				<artifactId>javassist</artifactId>
-				<version>3.4.GA</version>
+				<version>3.8.0.GA</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jmock</groupId>
@@ -259,7 +276,29 @@
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId> 
 				<version>1.8.5</version>
-			</dependency>			
+			</dependency>
+			<dependency>
+				<groupId>org.apache.myfaces.core</groupId>
+				<artifactId>myfaces-api</artifactId>
+				<version>1.2.9</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>jstl</artifactId>
+						<groupId>javax.servlet</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>	
+			<dependency>
+				<groupId>org.apache.myfaces.tomahawk</groupId>
+				<artifactId>tomahawk12</artifactId>
+				<version>1.1.10</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>batik-util</artifactId>
+						<groupId>batik</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>				
 			<dependency>
 				<!-- JPA, for data access using Java Persistence API -->
 				<groupId>javax.persistence</groupId>
@@ -292,6 +331,21 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
+			<artifactId>shale-test</artifactId>
+			<groupId>org.apache.shale</groupId>
+			<version>1.0.4</version>
+			<exclusions>
+				<exclusion>
+					<groupId>myfaces</groupId>
+					<artifactId>myfaces-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>myfaces</groupId>
+					<artifactId>myfaces-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
@@ -313,6 +367,51 @@
 				<artifactId>spring-beans</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>${spring-batch.version}</version>
+			<exclusions>
+
+				<exclusion>
+					<groupId>com.thoughtworks.xstream</groupId>
+					<artifactId>xstream</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.jettison</groupId>
+					<artifactId>jettison</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<version>${spring-batch.version}</version>
+		</dependency>
 			<dependency>
 				<groupId>org.springframework.webflow</groupId>
 				<artifactId>spring-binding</artifactId>
@@ -380,6 +479,12 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jdbc</artifactId>
 				<version>${spring.version}</version>
+				<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.webflow</groupId>
@@ -762,6 +867,8 @@
 		<hamcrest-api.version>1.0</hamcrest-api.version>
 		<hamcrest-integration.version>1.1</hamcrest-integration.version>
 		<hamcrest-library.version>1.0</hamcrest-library.version>
+		<hibernate-commons-annotations.version>3.1.0.GA</hibernate-commons-annotations.version>
+		<hibernate-core.version>3.3.2.GA</hibernate-core.version>
 		<jmock.version>2.5.1</jmock.version>
 		<joda-time.version>1.6.2</joda-time.version>
 		<maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>

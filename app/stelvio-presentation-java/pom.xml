@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>no.stelvio</groupId>
@@ -10,6 +11,7 @@
 	<packaging>jar</packaging>
 	<name>stelvio - presentation</name>
 	<dependencies>
+	
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
@@ -83,26 +85,12 @@
 			<artifactId>richfaces-impl</artifactId>
 		</dependency>
 		<dependency>
-			<artifactId>myfaces-api</artifactId>
 			<groupId>org.apache.myfaces.core</groupId>
-			<version>1.2.9</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>jstl</artifactId>
-					<groupId>javax.servlet</groupId>
-				</exclusion>
-			</exclusions>
+			<artifactId>myfaces-api</artifactId>
 		</dependency>
 		<dependency>
-			<artifactId>tomahawk12</artifactId>
 			<groupId>org.apache.myfaces.tomahawk</groupId>
-			<version>1.1.10</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>batik-util</artifactId>
-					<groupId>batik</groupId>
-				</exclusion>
-			</exclusions>
+			<artifactId>tomahawk12</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -111,13 +99,6 @@
 		<dependency>
 			<groupId>commons-digester</groupId>
 			<artifactId>commons-digester</artifactId>
-			<version>${commons-digester.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>xml-apis</groupId>
-					<artifactId>xml-apis</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
@@ -126,66 +107,41 @@
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
-			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<!-- Jmock is a framework for defining mock objects, used during testing -->
-			<artifactId>jmock</artifactId>
+		<dependency> <!-- Mockito is the preferred mocking framework in Stelvio. JMock should be removed -->
 			<groupId>org.jmock</groupId>
-			<version>${jmock.version}</version>
+			<artifactId>jmock</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-junit4</artifactId>
-			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<dependency> <!--  Shale was retired 20.05.2009, should be removed -->
 			<artifactId>shale-test</artifactId>
 			<groupId>org.apache.shale</groupId>
-			<version>1.0.4</version>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>myfaces</groupId>
-					<artifactId>myfaces-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>myfaces</groupId>
-					<artifactId>myfaces-impl</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<artifactId>spring-test</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>struts</artifactId>
-					<groupId>struts</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-api</artifactId>
-			<version>1.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-integration</artifactId>
-			<version>1.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
-			<version>1.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
