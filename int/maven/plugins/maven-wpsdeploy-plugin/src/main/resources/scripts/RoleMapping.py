@@ -13,6 +13,7 @@
 
 import sys, os, re
 from lib.saveUtil import save
+from lib.timerUtil import Timer
 import lib.scaModuleUtil as sca
 import lib.logUtil as log
 import lib.getConfiguration as getConfiguration
@@ -22,7 +23,11 @@ def main():
 	roles = getConfiguration.getRoles()
 	l.debug('Got roles:', roles)
 	scaModulesToBeInstalled = sca.getModulesToBeInstalled()
+	
+	l.info('Getting installed modules...')
+	myTimer = Timer()
 	installedScaModules = sca.getInstalledModules()
+	l.info('It took', myTimer.reset(), 'to get', len(installedScaModules), 'modules.')
 	
 	#Only deploy resources to modules that are of some version of the modules that has already been installed
 	scaModules = []
