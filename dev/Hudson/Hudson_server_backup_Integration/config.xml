@@ -270,6 +270,7 @@
         <string>CI-buss-pom_sync</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
         <string>CI-wpsdeploy-pom_sync</string>
+        <string>Fixpack repo monitor</string>
         <string>TRUNK-CheckScripts</string>
       </jobNames>
       <jobFilters/>

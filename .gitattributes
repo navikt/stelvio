@@ -1108,6 +1108,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS/config.xml
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/EESSI_nav/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/Fixpack[!!-~]repo[!!-~]monitor/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/MigrateSYSMOD-Step1/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/MigrateSYSMOD-Step2/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]Data[!!-~]Source[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
