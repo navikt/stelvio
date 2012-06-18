@@ -62,18 +62,24 @@
     <entry>
       <string>logRotator</string>
       <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>-1</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -100,14 +106,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -124,7 +130,7 @@
       <string>hudson-tasks-Mailer</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -163,18 +169,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>parametersDefinitionProperties</string>
-      <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList"/>
-        <propertyOverridden>false</propertyOverridden>
-      </copy-write-list-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>parametersDefinitionProperties</string>
+      <copy-write-list-property>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
+        <propertyOverridden>false</propertyOverridden>
+      </copy-write-list-property>
     </entry>
     <entry>
       <string>join-JoinTrigger</string>
@@ -191,45 +197,17 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
-      <external-property>
-        <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com</recipientList>
-          <configuredTriggers>
-            <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>false</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>true</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-              <email>
-                <recipientList></recipientList>
-                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-                <body>$PROJECT_DEFAULT_CONTENT</body>
-                <sendToDevelopers>false</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
-                <sendToRecipientList>false</sendToRecipientList>
-              </email>
-            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-          </configuredTriggers>
-          <contentType>default</contentType>
-          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
-          <defaultContent>$DEFAULT_CONTENT</defaultContent>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>customWorkspace</string>
       <string-property>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -240,9 +218,6 @@
     <entry>
       <string>hudson-plugins-chucknorris-CordellWalkerRecorder</string>
       <external-property>
-        <originalValue class="hudson.plugins.chucknorris.CordellWalkerRecorder">
-          <factGenerator/>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -257,6 +232,9 @@
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>@monthly</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -265,21 +243,21 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>./fixpackMonitor.py</command>
+            <command>service dokumentbestilling-stub restart</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -328,7 +306,6 @@
     <entry>
       <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
-        <originalValue class="hudson.plugins.cigame.GamePublisher"/>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -346,9 +323,9 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-tools/esb-scripts/bin</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/dokumentbestilling/nav-dokumentbestilling-test</remote>
               <local>.</local>
-              <depthOption>immediates</depthOption>
+              <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
@@ -372,9 +349,6 @@
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
-        <originalValue class="hudson.triggers.TimerTrigger">
-          <spec>0 7 * * *</spec>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -387,34 +361,24 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>r132736</createdBy>
-  <creationTime>1339851089437</creationTime>
+  <createdBy>g115484</createdBy>
+  <creationTime>1340015034410</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM">
-    <locations>
-      <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb</remote>
-        <ignoreExternalsOption>false</ignoreExternalsOption>
-      </hudson.scm.SubversionSCM_-ModuleLocation>
-    </locations>
-    <excludedRegions></excludedRegions>
-    <includedRegions></includedRegions>
-    <excludedUsers></excludedUsers>
-    <excludedRevprop></excludedRevprop>
-    <excludedCommitMessages></excludedCommitMessages>
-    <useUpdate>true</useUpdate>
-    <doRevert>false</doRevert>
-  </scm>
-  <canRoam>true</canRoam>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
 </project>
