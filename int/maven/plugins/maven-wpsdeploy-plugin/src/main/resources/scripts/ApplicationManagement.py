@@ -36,16 +36,19 @@ def main():
 	sync()
 	
 	if app.isApplicationClusterRunning():
+		myTimer.reset()
 		for scaModule in modulesToBeInstalled:
 			if scaModule.doInstall:
-				l.debug(scaModule, '== running:', app.isApplicationRunning(scaModule))
-				if not app.isApplicationRunning(scaModule):
+				appIsRunning = app.isApplicationRunning(scaModule)
+				l.debug(scaModule, '== running:', appIsRunning)
+				if not appIsRunning:
 					try:
 						l.info('Starting %s!' % scaModule.moduleName)
 						app.startApplication(scaModule)
 					except AdminException, msg:
 						l.warning('Got exception while trying to start', scaModule)
 						l.debug(msg)
+		l.info('It took', myTimer.reset(), 'to check all modules and start those that was not running.')
 					
 	l.info('Finished installing %s applications!' % numberOfappsInstalled)
 	
