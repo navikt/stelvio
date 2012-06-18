@@ -31,7 +31,7 @@ public class SecurityContextSetter {
 	 * @param securityContext
 	 *            the securityContext to set.
 	 */
-	public static void setSecurityContext(SecurityContext securityContext) {
+	public synchronized static void setSecurityContext(SecurityContext securityContext) {
 		if (setSecurityContextMethod == null) {
 			setSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "setSecurityContext",
 					new Class[] { SecurityContext.class });
@@ -63,7 +63,7 @@ public class SecurityContextSetter {
 	/**
 	 * Resets the SecurityContext.
 	 */
-	public static void resetSecurityContext() {
+	public synchronized static void resetSecurityContext() {
 		if (resetSecurityContextMethod == null) {
 			resetSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "resetSecurityContext",
 					new Class[] {});

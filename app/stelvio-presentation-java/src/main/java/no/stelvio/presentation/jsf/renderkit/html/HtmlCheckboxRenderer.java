@@ -55,7 +55,7 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
  */
 @SuppressWarnings("unchecked")
 public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
-	private static final Log log = LogFactory.getLog(HtmlCheckboxRenderer.class);
+	private static final Log LOG = LogFactory.getLog(HtmlCheckboxRenderer.class);
 
 	private static final String PAGE_DIRECTION = "pageDirection";
 
@@ -96,7 +96,7 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 			} else if (layout.equals(LINE_DIRECTION)) {
 				renderCheckboxListHorizontally(facesContext, selectMany, converter);
 			} else {
-				log.error("Wrong layout attribute for component " + selectMany.getClientId(facesContext) + ": " + layout);
+				LOG.error("Wrong layout attribute for component " + selectMany.getClientId(facesContext) + ": " + layout);
 			}
 		}
 	}
@@ -186,13 +186,14 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 		}
 		writer.endElement(HTML.TABLE_ELEM);
 	}
-
+	
+//	@edu.umd.cs.findbugs.annotations.SupressWarnings("BC_UNCONFIRMED_CAST", "This is checked by local variable isSelectItemGroup")
 	protected void renderGroupOrItemCheckbox(FacesContext facesContext, UIComponent uiComponent, SelectItem selectItem,
 			boolean useSubmittedValues, Set lookupSet, Converter converter, boolean pageDirectionLayout) throws IOException {
 		ResponseWriter writer = facesContext.getResponseWriter();
 
 		boolean isSelectItemGroup = (selectItem instanceof SelectItemGroup);
-
+//if (selectItem instanceof SelectItemGroup) {
 		if (isSelectItemGroup) {
 			SelectItemGroup selectItemGroup = (SelectItemGroup) selectItem;
 			renderCheckboxGroup(facesContext, uiComponent, selectItemGroup, useSubmittedValues, lookupSet, converter,
@@ -396,7 +397,7 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 		try {
 			converter = RendererUtils.findUISelectManyConverter(facesContext, selectMany);
 		} catch (FacesException e) {
-			log.error("Error finding Converter for component with id " + selectMany.getClientId(facesContext));
+			LOG.error("Error finding Converter for component with id " + selectMany.getClientId(facesContext));
 			converter = null;
 		}
 		return converter;

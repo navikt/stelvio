@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.stelvio.presentation.jsf.context;
 
 import org.springframework.validation.FieldError;
@@ -95,6 +92,15 @@ public class FieldInListError extends FieldError {
 			return true;
 		}
 		return super.equals(other);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.springframework.validation.FieldError#hashCode(java.lang.Object)
+	 */
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 
 }
