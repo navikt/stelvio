@@ -29,7 +29,7 @@ def main():
 		if scaModule.doInstall:
 			app.install(scaModule)
 			numberOfappsInstalled += 1
-			if (numberOfappsInstalled % 25) == 0:
+			if (numberOfappsInstalled % 15) == 0:
 				save()
 	
 	save()
