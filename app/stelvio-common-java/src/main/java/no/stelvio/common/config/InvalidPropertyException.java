@@ -24,7 +24,7 @@ public class InvalidPropertyException extends ConfigurationException {
 	 */
 	public InvalidPropertyException(String message, Object[] invalidProperties, Throwable cause) {
 		super(message, cause);
-		this.invalidProperties = invalidProperties;
+		this.invalidProperties = invalidProperties.clone();
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class InvalidPropertyException extends ConfigurationException {
 	 */
 	public InvalidPropertyException(String message, Object[] invalidProperties) {
 		super(message);
-		this.invalidProperties = invalidProperties;
+		this.invalidProperties = invalidProperties.clone();
 	}
 
 	/**

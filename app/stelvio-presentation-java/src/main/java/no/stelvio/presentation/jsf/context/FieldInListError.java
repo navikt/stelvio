@@ -87,11 +87,9 @@ public class FieldInListError extends FieldError {
 	 * {@inheritDoc}
 	 * @see org.springframework.validation.FieldError#equals(java.lang.Object)
 	 */
+	@Override
 	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
-		return super.equals(other);
+		return this == other ? true : super.equals(other);
 	}
 
 	/**

@@ -66,7 +66,7 @@ public class MissingPropertyException extends ConfigurationException {
 	 */
 	public MissingPropertyException(String message, String[] missingProperties, Throwable cause) {
 		super(message + ". " + createMissingPropertiesString(missingProperties), cause);
-		this.missingProperties = missingProperties;
+		this.missingProperties = missingProperties.clone();
 	}
 
 	/**
