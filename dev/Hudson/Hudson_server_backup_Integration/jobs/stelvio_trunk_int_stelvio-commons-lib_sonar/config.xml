@@ -78,6 +78,13 @@
       </integer-property>
     </entry>
     <entry>
+      <string>hudson-tasks-BuildTrigger</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.SCMTrigger">
