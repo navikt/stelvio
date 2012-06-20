@@ -12,6 +12,7 @@ class Table:
 		
 	def addRow(self, rowList):
 		for i in range(len(rowList)):
+			rowList[i] = str(rowList[i])
 			maxSize = self.sizesOfLongestCells.setdefault(i,0)
 			cellSize = len(rowList[i])
 			if cellSize > maxSize:
