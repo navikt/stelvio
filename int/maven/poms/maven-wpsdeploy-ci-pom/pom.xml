@@ -24,8 +24,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
-			<artifactId>busconfiguration</artifactId>
-			<version>${bus-configuration-version}</version>
+			<artifactId>esb-authorization-configuration</artifactId>
+			<version>${esb-authorization-configuration}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.nav.maven.support</groupId>
+			<artifactId>esb-nonenviroment-configuration</artifactId>
+			<version>${esb-nonenviroment-configuration}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.nav.maven.support</groupId>
+			<artifactId>esb-enviroment-configuration</artifactId>
+			<version>${esb-enviroment-configuration}</version>
 		</dependency>
 	</dependencies>
 	
