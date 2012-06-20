@@ -5,7 +5,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
- * Goal that sets environment variables on DMGR
+ * Goal that resolves which modules to install and deploy resources for
  * 
  * 
  * @goal dependency-identifier
@@ -27,6 +27,6 @@ public class DependencyIdentifierMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Resolve which modules to install and deploy resources for";
+		return "Resolve which modules to install and deploy resources for?";
 	}
 }
