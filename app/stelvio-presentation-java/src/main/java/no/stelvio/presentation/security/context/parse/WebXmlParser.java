@@ -31,7 +31,6 @@ public class WebXmlParser {
 	 *             from the digester
 	 */
 	public WebXmlParser(URL url) throws IOException, SAXException {
-		if (this.webAppRoles == null) {
 
 			Digester digester = new Digester();
 			// don't validate the XML compared to the schema. This setting
@@ -42,7 +41,6 @@ public class WebXmlParser {
 			digester.setValidating(false);
 			digester.addRuleSet(new DefineSecurityRuleSet());
 			this.webAppRoles = parseWebXml(digester, url);
-		}
 	}
 
 	/**
