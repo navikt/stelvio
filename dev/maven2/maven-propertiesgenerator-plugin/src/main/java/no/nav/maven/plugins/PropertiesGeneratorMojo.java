@@ -2,10 +2,7 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.InputStream;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
@@ -38,6 +35,7 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	 * This is used to decide which subfolder to put the created properties in.
 	 * 
 	 * @parameter
+	 * @required
 	 */
 	private String environmentName;
 
@@ -112,24 +110,25 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException {
 		
-		System.out.println("DEBUG - environment=" + environmentName);
-		System.out.println("DEBUG - templatedir="+ getTemplateDir());
-		System.out.println("DEBUG - outputdir="+ getOutputDir());
-		System.out.println("DEBUG - environmentdir="+ getEnvironmentDir());
-		
-		if (environmentName == null) {
-			getLog().warn("\tEnvironmentName er ikke satt. Dette er ok saa lenge du ikke deployer ressurser");
-			return;
-		}
 		try {
 			Properties p = new Properties();
 			p.setProperty("file.resource.loader.path", templateDir);
 			Velocity.init(p);
 			VelocityContext context = new VelocityContext();
-			java.io.InputStream is = new FileInputStream(environmentDir + "/"
-					+ environmentName + ".properties");
 			Properties props = new Properties();
-			props.load(is);
+			
+			File propertiesDir = new File(environmentDir);
+			
+			String[] propertiesFileNames = propertiesDir.list();
+			for(int i = 0; i < propertiesFileNames.length; i++){
+				String propertiesFileName = propertiesFileNames[i];
+				if (propertiesFileName.toLowerCase().endsWith(".properties")){
+					java.io.InputStream is = new FileInputStream(environmentDir + "/" + propertiesFileName);
+					props.load(is);
+				}
+			}
+			
+			
 			Set keys = props.keySet();
 			String key;
 			for (Iterator iterator = keys.iterator(); iterator.hasNext(); context
