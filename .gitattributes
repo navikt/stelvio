@@ -1229,6 +1229,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-update/config.x
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gateway/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gw-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gw-maven-service-registry-plugin/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_WPS__ny_splittet_buss_konfigurasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_7.4/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_Ny_config/config.xml -text

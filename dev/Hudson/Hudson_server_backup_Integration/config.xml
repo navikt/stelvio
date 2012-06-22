@@ -343,6 +343,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>deploy_WPS__ny_splittet_buss_konfigurasjon</string>
       </jobNames>
       <jobFilters/>
       <columns>
