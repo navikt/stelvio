@@ -1,21 +1,23 @@
 import sys
 from time import strftime
 from lib.saveUtil import save
-from lib.getConfiguration import getActivationspecifications
+from lib.parseConfiguration import parseActivationspecifications
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
 def main():
+	activationspecificationsPath = sys.argv[1]
+	activationspecConfig = parseActivationspecifications(activationspecificationsPath)
 	listenMap = getJ2CActivationSpecs()
 
-	for moduleName, maxConcurrency in getActivationspecifications().items():		
+	for moduleName, maxConcurrency in activationspecConfig.items():		
 		J2CActivationSpec = listenMap[moduleName]
 		
 		resourceProperties = AdminConfig.showAttribute(J2CActivationSpec, 'resourceProperties').split()
 		for resourcePropertie in resourceProperties:
 			if resourcePropertie.startswith('maxConcurrency'):
 				try:
-					l.info("Modified max concurrency resource property for " +moduleName)
+					l.info("Changed the max concurrency resource property for", moduleName, "to", maxConcurrency)
 					modifyResourceProperty(resourcePropertie, "maxConcurrency", maxConcurrency, "java.lang.Integer")
 					break
 				except:

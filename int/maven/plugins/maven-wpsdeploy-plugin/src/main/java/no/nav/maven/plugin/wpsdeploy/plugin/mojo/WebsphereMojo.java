@@ -6,8 +6,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import no.nav.maven.commons.managers.ArchiveManager;
-import no.nav.maven.commons.managers.IArchiveManager;
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySOAPException;
 
 import org.apache.maven.artifact.Artifact;
@@ -125,18 +123,12 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 	protected abstract String getGoalPrettyPrint();
 
-	protected IArchiveManager earArchiveManager;
-	protected IArchiveManager jarArchiveManager;
-
-
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
 		if(skipGoalProperty() || skipGoalManualy()){
 			getLog().info(String.format("Skipping step: %s (%s)", getGoalPrettyPrint(), getGoalName()));
 			return;
 		}
-
-		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
 		doExecute();
 	}
 	

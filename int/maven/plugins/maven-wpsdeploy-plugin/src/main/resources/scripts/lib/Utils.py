@@ -115,24 +115,6 @@ def readNumberOfFilesInDistributionDirectory(distDir):
 	return 0
 #endDef
 
-
-#--------------------------------------------------------------------
-# Procedure:	readProperties
-# Description:	Create a java properties class and init the props 
-#			from the provided file.
-#
-# Parameters:	fileName
-#
-#--------------------------------------------------------------------
-def readProperties ( fileName ):
-	global props
-
-	props = Properties()
-	f = FileInputStream(fileName)
-	props.load(f)
-	return
-#endDef
-
 def intervalToString(intervalSec):
 	hour = 0
 	minute = 0
@@ -148,23 +130,6 @@ def intervalToString(intervalSec):
 	if minute > 0:
 		return "%d Minute(s) %d Second(s)" %(minute, intervalSec)
 	return "%d Second(s)" %(intervalSec)
-
-#------------------------------------------------------------------------
-# Procedure:	getProperty
-# Description:	Get the value of a property and return an empty string
-#				 if it does not exist.  Please note than an empty string
-#			"" inserted in the configuration means a blank value.
-#
-# Parameters:	propertyName
-#------------------------------------------------------------------------
-def getProperty (propertyName):
-	pval = props.getProperty(propertyName)
-	if pval == None:
-		return ""
-	#endIf
-
-	return pval
-#endDef
 
 #******************************************************************************
 # File Name:	   getTimeInterval
@@ -210,11 +175,6 @@ def deleteEarFile(appPath):
 	rval = File(str(appPath)).delete()
 	l.info("Delete "+appPath+" was executed with return value["+str(rval)+"].")
 	return rval
-
-
-def isEmpty(var):
-	retval = (var == "" or var == None or var == "[]")	
-	return retval
 
 def wsadminToDict( text ) :
 	cmdName = 'wsadminToDict'

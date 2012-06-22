@@ -40,10 +40,9 @@
 #
 #			
 #******************************************************************************
-
-from lib.Utils import readProperties, getProperty, isEmpty
-from lib.utils6 import createJAASAuthAlias, findConfigTarget, findConfigTargetWithScope, findDataSourceWithScope, findJDBCProviderWithScope, findScopeEntry, getConfigId, getConfigItemId, getProperty, readProperties, isEmpty
+from lib.utils6 import createJAASAuthAlias, findConfigTarget, findConfigTargetWithScope, findDataSourceWithScope, findJDBCProviderWithScope, findScopeEntry, getConfigId, getConfigItemId
 from lib.environment import createSharedLibrary
+from lib.javaPropertiesUtil import PropertiesReader
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
@@ -107,32 +106,33 @@ def addDataSourceCustomProperties ( scope, scopeName, dataSourceName, propName, 
 # Procedure:  	createCFConnectionPool
 # Description:	Create a new Connection Factory Connection Pool
 #****************************************************************************** 
-def createCFConnectionPool ( cf, type, propertyFileName ):
+def createCFConnectionPool ( cf, type, propertiesPath ):
 
 	# Create Connection Pool
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	cpConnTimeOut =		getProperty("CP_CONN_TIMEOUT")
-	cpMaxConn =		getProperty("CP_MAX_CONN")
-	cpMinConn = 		getProperty("CP_MIN_CONN")
-	cpReapTime =		getProperty("CP_REAP_TIME")
-	cpUnusedTimeOut =	getProperty("CP_UNUSED_TIMEOUT")
-	cpAgedTimeOut =		getProperty("CP_AGED_TIMEOUT")
-	cpPurgePolicy =		getProperty("CP_PURGE_POLICY")
+	cpConnTimeOut =		propReader.get("CP_CONN_TIMEOUT")
+	cpMaxConn =		propReader.get("CP_MAX_CONN")
+	cpMinConn = 		propReader.get("CP_MIN_CONN")
+	cpReapTime =		propReader.get("CP_REAP_TIME")
+	cpUnusedTimeOut =	propReader.get("CP_UNUSED_TIMEOUT")
+	cpAgedTimeOut =		propReader.get("CP_AGED_TIMEOUT")
+	cpPurgePolicy =		propReader.get("CP_PURGE_POLICY")
 	
-	cpSharedParts =		getProperty("CP_SHARED_PARTITIONS")
-	cpFreePoolParts =	getProperty("CP_FREE_POOL_PARTITIONS")
-	cpFreeTableSize =	getProperty("CP_FREE_TABLE_SIZE")
-	cpSurgeThreshold =	getProperty("CP_SURGE_THRESHOLD")
-	cpSurgeInterval =	getProperty("CP_SURGE_INTERVAL")
-	cpStuckTimer =		getProperty("CP_STUCK_TIMER")
-	cpStuckTime = 		getProperty("CP_STUCK_TIME")
-	cpStuckThreshold =	getProperty("CP_STUCK_THRESHOLD")
+	cpSharedParts =		propReader.get("CP_SHARED_PARTITIONS")
+	cpFreePoolParts =	propReader.get("CP_FREE_POOL_PARTITIONS")
+	cpFreeTableSize =	propReader.get("CP_FREE_TABLE_SIZE")
+	cpSurgeThreshold =	propReader.get("CP_SURGE_THRESHOLD")
+	cpSurgeInterval =	propReader.get("CP_SURGE_INTERVAL")
+	cpStuckTimer =		propReader.get("CP_STUCK_TIMER")
+	cpStuckTime = 		propReader.get("CP_STUCK_TIME")
+	cpStuckThreshold =	propReader.get("CP_STUCK_THRESHOLD")
 
 	if (type == "MQ"):
-		cpConnectPool =	getProperty("CP_CONNECT_POOL")
-		cpSessionPool = getProperty("CP_SESSION_POOL")
+		cpConnectPool =	propReader.get("CP_CONNECT_POOL")
+		cpSessionPool = propReader.get("CP_SESSION_POOL")
 
 	attrs = []
 	attrs.append(["connectionTimeout", cpConnTimeOut])
@@ -171,15 +171,16 @@ def createCFConnectionPool ( cf, type, propertyFileName ):
 # Procedure:  	createJ2CConnectionPool
 # Description:	Create a new J2C Connection Pool
 #****************************************************************************** 
-def createJ2CConnectionPool ( cf, type, propertyFileName ):
+def createJ2CConnectionPool ( cf, type, propertiesPath ):
 
 	# Create J2C Connection Pool
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	stuckTimerTime =		getProperty("STUCK_TIMER_TIME")
-	stuckTime = 		getProperty("STUCK_TIME")
-	stuckThreshold =	getProperty("STUCK_THRESHOLD")
+	stuckTimerTime =		propReader.get("STUCK_TIMER_TIME")
+	stuckTime = 		propReader.get("STUCK_TIME")
+	stuckThreshold =	propReader.get("STUCK_THRESHOLD")
 
 	attrs = []
 	attrs.append(["stuckTimerTime", stuckTimerTime])
@@ -198,14 +199,15 @@ def createJ2CConnectionPool ( cf, type, propertyFileName ):
 # Procedure:  	installResourceAdapter
 # Description:	Install a new Resource Adapter
 #****************************************************************************** 
-def installResourceAdapter (propertyFileName):
+def installResourceAdapter (propertiesPath):
 	
-	readProperties(propertyFileName)
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
-	archivePath =		getProperty("ARCHIVE_PATH")
-	name =			getProperty("NAME")
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
+	archivePath =		propReader.get("ARCHIVE_PATH")
+	name =			propReader.get("NAME")
 	l.info('(installResourceAdapter): Install a new Resource Adapter '+name)
 	
 	# Check if Resource Adapter already exists
@@ -227,28 +229,29 @@ def installResourceAdapter (propertyFileName):
 # Procedure:  	createJ2CconnectionFactory
 # Description:	Create a new J2C Resource Adapter Connection Factory
 #****************************************************************************** 
-def createJ2CConnectionFactory ( propertyFileName ):
+def createJ2CConnectionFactory ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 	
-	scope =		getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
-	name 	 =		getProperty("NAME")
-	jndiName =		getProperty("JNDI_NAME")
-	desc  	 =		getProperty("DESCRIPTION")
-	raName =		getProperty("RA_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
+	name 	 =		propReader.get("NAME")
+	jndiName =		propReader.get("JNDI_NAME")
+	desc  	 =		propReader.get("DESCRIPTION")
+	raName =		propReader.get("RA_NAME")
 	
-	connectionUrl 	=	getProperty("CONNECTION_URL")
-	portNumber 		=	getProperty("PORT_NUMBER")
-	serverName  		=	getProperty("SERVER_NAME")
-	socketConnectTimeOut	=	getProperty("SOCKET_CONNECT_TIMEOUT")
-	connectionTimeout	=	getProperty("CONNECTION_TIMEOUT")
-	applIdQualifier      =      getProperty("APPL_ID_QUALIFIER")
-	applId	              = 	getProperty("APPL_ID")
-	tpnName				=		getProperty("TPN_NAME")
-	requestExits	       =      getProperty("REQUEST_EXITS")
-	tranName			=		getProperty("TRAN_NAME")
+	connectionUrl 	=	propReader.get("CONNECTION_URL")
+	portNumber 		=	propReader.get("PORT_NUMBER")
+	serverName  		=	propReader.get("SERVER_NAME")
+	socketConnectTimeOut	=	propReader.get("SOCKET_CONNECT_TIMEOUT")
+	connectionTimeout	=	propReader.get("CONNECTION_TIMEOUT")
+	applIdQualifier      =      propReader.get("APPL_ID_QUALIFIER")
+	applId	              = 	propReader.get("APPL_ID")
+	tpnName				=		propReader.get("TPN_NAME")
+	requestExits	       =      propReader.get("REQUEST_EXITS")
+	tranName			=		propReader.get("TRAN_NAME")
 	
 	l.info('(createJ2CConnectionFactory): Create a new J2C Connection Factory  '+name)
 	if (nodeName == ""):
@@ -319,7 +322,7 @@ def createJ2CConnectionFactory ( propertyFileName ):
 	except:
 		l.exception("(createJ2CConnectionFactory): Caught Exception creating J2C Connection Factory ")
 		
-	createJ2CConnectionPool(result, "J2C", propertyFileName)
+	createJ2CConnectionPool(result, "J2C", propertiesPath)
 	
 	#Setting the connection timeout
 	if(connectionTimeout != None and connectionTimeout != "" ):
@@ -335,21 +338,22 @@ def createJ2CConnectionFactory ( propertyFileName ):
 #    0    Success
 #    1    Failure
 #****************************************************************************** 
-def deleteJ2CConnectionFactory ( propertyFileName ):
+def deleteJ2CConnectionFactory ( propertiesPath ):
 	retval = 1
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 	
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
-	name 	 =		getProperty("NAME")
-	jndiName =		getProperty("JNDI_NAME")
-	desc  	 =		getProperty("DESCRIPTION")
-	raName =		getProperty("RA_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
+	name 	 =		propReader.get("NAME")
+	jndiName =		propReader.get("JNDI_NAME")
+	desc  	 =		propReader.get("DESCRIPTION")
+	raName =		propReader.get("RA_NAME")
 	
-	connectionUrl 	=	getProperty("CONNECTION_URL")
-	portNumber 	=	getProperty("PORT_NUMBER")
-	serverName  	=	getProperty("SERVER_NAME")
+	connectionUrl 	=	propReader.get("CONNECTION_URL")
+	portNumber 	=	propReader.get("PORT_NUMBER")
+	serverName  	=	propReader.get("SERVER_NAME")
 	
 	l.info('(deleteJ2CConnectionFactory): Delete J2C Connection Factory  '+name)
 	if (nodeName == ""):
@@ -383,18 +387,19 @@ def deleteJ2CConnectionFactory ( propertyFileName ):
 # Procedure:  	createCMPConnectionFactory
 # Description:	Create a new CMP Connection Factory 
 #****************************************************************************** 
-def createCMPConnectionFactory ( dsId, propertyFileName ):  
+def createCMPConnectionFactory ( dsId, propertiesPath ):  
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
- 	scope 		=	getProperty("SCOPE")
-	scopeName	=	getProperty("SCOPE_NAME")
-	nodeName 	=	getProperty("NODE_NAME")
+ 	scope 		=	propReader.get("SCOPE")
+	scopeName	=	propReader.get("SCOPE_NAME")
+	nodeName 	=	propReader.get("NODE_NAME")
 
-	dataSourceName 	=	getProperty("DATASOURCE_NAME")
-	dbType 		=	getProperty("DATABASE_TYPE" )
-	providerName 	=	getProperty("PROVIDER_NAME" )
-	authAliasName 	= 	getProperty("ALIAS_NAME" )
+	dataSourceName 	=	propReader.get("DATASOURCE_NAME")
+	dbType 		=	propReader.get("DATABASE_TYPE" )
+	providerName 	=	propReader.get("PROVIDER_NAME" )
+	authAliasName 	= 	propReader.get("ALIAS_NAME" )
 
 	cfName = dataSourceName+"_CF"
 	cfAuthMech = "BASIC_PASSWORD"
@@ -440,44 +445,45 @@ def createCMPConnectionFactory ( dsId, propertyFileName ):
 # Procedure:   	createDataSource
 # Description:	Create Data Source	
 #****************************************************************************** 
-def createDataSource ( propertyFileName ):
+def createDataSource ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName=		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName=		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 
-	datasourceName =	getProperty("DATASOURCE_NAME")
-	dbType =		getProperty("DATABASE_TYPE" )
-	providerName =		getProperty("PROVIDER_NAME" )
-	datasourceDesc = 	getProperty("DATASOURCE_DESC" )
-	dsJNDIName = 		getProperty("JNDI_NAME" )
-	cmPersist =		getProperty("CONTAINER_MANAGED_PERSIST")
-	dataSourceHelper = 	getProperty("DATASOURCE_HELPER_CLASSNAME" )
-	cmpManagedAuthAlias =	getProperty("CMP_MANAGED_AUTH_ALIAS")
-	xaRecAuthAlias =	getProperty("XA_RECOVERY_AUTH_ALIAS")	
-	statementCache = 	getProperty("STATEMENT_CACHE_SIZE" )
-	enableAccess =		getProperty("ENABLE_ACCESS_DETECTION")
-	enableDBReauth =	getProperty("ENABLE_DB_REAUTH")
-	enableJMSOpt =		getProperty("ENABLE_JMS_OPT")
-	manageHandles =		getProperty("MANAGE_CACHED_HANDLES")
-	logContext =		getProperty("LOG_MISSING_CONTEXT")
-	pretestConn =		getProperty("PRETEST_CONNECTIONS")
-	pretestInt =		getProperty("PRETEST_CONN_INTERVAL")
-	pretestSQL =		getProperty("PRETEST_SQL_STRING")
+	datasourceName =	propReader.get("DATASOURCE_NAME")
+	dbType =		propReader.get("DATABASE_TYPE" )
+	providerName =		propReader.get("PROVIDER_NAME" )
+	datasourceDesc = 	propReader.get("DATASOURCE_DESC" )
+	dsJNDIName = 		propReader.get("JNDI_NAME" )
+	cmPersist =		propReader.get("CONTAINER_MANAGED_PERSIST")
+	dataSourceHelper = 	propReader.get("DATASOURCE_HELPER_CLASSNAME" )
+	cmpManagedAuthAlias =	propReader.get("CMP_MANAGED_AUTH_ALIAS")
+	xaRecAuthAlias =	propReader.get("XA_RECOVERY_AUTH_ALIAS")	
+	statementCache = 	propReader.get("STATEMENT_CACHE_SIZE" )
+	enableAccess =		propReader.get("ENABLE_ACCESS_DETECTION")
+	enableDBReauth =	propReader.get("ENABLE_DB_REAUTH")
+	enableJMSOpt =		propReader.get("ENABLE_JMS_OPT")
+	manageHandles =		propReader.get("MANAGE_CACHED_HANDLES")
+	logContext =		propReader.get("LOG_MISSING_CONTEXT")
+	pretestConn =		propReader.get("PRETEST_CONNECTIONS")
+	pretestInt =		propReader.get("PRETEST_CONN_INTERVAL")
+	pretestSQL =		propReader.get("PRETEST_SQL_STRING")
 		
-	connectionTimeout =	getProperty("CONNECTION_TIMEOUT" )
-	maxConnections = 	getProperty("MAX_CONNECTIONS" )
-	minConnections = 	getProperty("MIN_CONNECTIONS" )
-	reapTime = 		getProperty("REAP_TIME" )
-	unusedTimeout = 	getProperty("UNUSED_TIMEOUT" )
-	agedTimeout = 		getProperty("AGED_TIMEOUT" )
-	purgePolicy = 		getProperty("PURGE_POLICY" )
-	authAliasName = 	getProperty("ALIAS_NAME" )
-	user = 			getProperty("USER" )
-	password = 		getProperty("PASSWORD" )
-	desc = 			getProperty("DESCRIPTION" )
+	connectionTimeout =	propReader.get("CONNECTION_TIMEOUT" )
+	maxConnections = 	propReader.get("MAX_CONNECTIONS" )
+	minConnections = 	propReader.get("MIN_CONNECTIONS" )
+	reapTime = 		propReader.get("REAP_TIME" )
+	unusedTimeout = 	propReader.get("UNUSED_TIMEOUT" )
+	agedTimeout = 		propReader.get("AGED_TIMEOUT" )
+	purgePolicy = 		propReader.get("PURGE_POLICY" )
+	authAliasName = 	propReader.get("ALIAS_NAME" )
+	user = 			propReader.get("USER" )
+	password = 		propReader.get("PASSWORD" )
+	desc = 			propReader.get("DESCRIPTION" )
 
 	#---------------------------------------------------------------------------------
 	# Create Data Source 
@@ -488,14 +494,14 @@ def createDataSource ( propertyFileName ):
 	l.info('(createDataSource): Create Data Source '+datasourceName+', if it does not exist')
 
 	# DB2 Only CMMisuraca
-	databaseName =		getProperty("DATABASE_NAME" )
-	driverType =		getProperty("DRIVERTYPE" )	
-	serverName = 		getProperty("SERVERNAME" )
-	portNumber =		getProperty("PORTNUMBER" )
+	databaseName =		propReader.get("DATABASE_NAME" )
+	driverType =		propReader.get("DRIVERTYPE" )	
+	serverName = 		propReader.get("SERVERNAME" )
+	portNumber =		propReader.get("PORTNUMBER" )
 
 	# ORACLE Only
-	oracleDBHost = getProperty("ORACLE_DBHOST" )
-	oracleId = getProperty("ORACLE_ID" )
+	oracleDBHost = propReader.get("ORACLE_DBHOST" )
+	oracleId = propReader.get("ORACLE_ID" )
 	
 	ds1 = findDataSourceWithScope(scope, scopeName, datasourceName )
 	l.info(ds1)
@@ -614,7 +620,7 @@ def createDataSource ( propertyFileName ):
 		# Create CMP Connection Factory if necessary
 		if (cmPersist == "true"):
 			l.info('(createDataSource):  Create CMP Connection Factory '+datasourceName)
-			createCMPConnectionFactory(datasource, propertyFileName)
+			createCMPConnectionFactory(datasource, propertiesPath)
 
 	else:
 		l.info("(createDataSource): "+datasourceName+" already exists on "+scope+" "+scopeName)
@@ -625,12 +631,13 @@ def createDataSource ( propertyFileName ):
 # Procedure:	removeDataSource
 # Description:	Remove a data source
 #****************************************************************************** 
-def removeDataSource ( propertyFileName):
+def removeDataSource ( propertiesPath):
 
-	readProperties(propertyFileName)
-	scope 		=	getProperty("SCOPE")
-	scopeName	=	getProperty("SCOPE_NAME")
-	dsName 		=	getProperty("DATASOURCE_NAME")
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
+	scope 		=	propReader.get("SCOPE")
+	scopeName	=	propReader.get("SCOPE_NAME")
+	dsName 		=	propReader.get("DATASOURCE_NAME")
 	
 	
 	#------------------------------------------------------------------------------
@@ -696,22 +703,23 @@ def createJ2EEResourceProperty (propSet, propName, propValue, propType):
 # Procedure:   createJDBCProvider
 # Description:	Create JDBC provider
 #****************************************************************************** 
-def createJDBCProvider ( propertyFileName ):
+def createJDBCProvider ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName = 		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName = 		propReader.get("NODE_NAME")
 
-	providerName =		getProperty("JDBC_NAME")
-	providerDesc =		getProperty("JDBC_DESC")
-	driverClassPath =	getProperty("JDBC_CLASSPATH")
-	impClassName =		getProperty("JDBC_IMPCLASSNAME")
+	providerName =		propReader.get("JDBC_NAME")
+	providerDesc =		propReader.get("JDBC_DESC")
+	driverClassPath =	propReader.get("JDBC_CLASSPATH")
+	impClassName =		propReader.get("JDBC_IMPCLASSNAME")
 #CMM 03132007
-	nativepath = 		getProperty("JDBC_NATIVEPATH")
-	providerType = 		getProperty("JDBC_PROVIDERTYPE")
-	xa = 			getProperty("JDBC_XA")
+	nativepath = 		propReader.get("JDBC_NATIVEPATH")
+	providerType = 		propReader.get("JDBC_PROVIDERTYPE")
+	xa = 			propReader.get("JDBC_XA")
 
 	#----------------------------------------------------------------------------
 	# Create JDBC Provider
@@ -756,14 +764,15 @@ def createJDBCProvider ( propertyFileName ):
 # Procedure:	 	
 # Description:	
 #****************************************************************************** 
-def removeJDBCProvider ( propertyFileName):
-	readProperties(propertyFileName)
+def removeJDBCProvider ( propertiesPath):
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName = 		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName = 		propReader.get("NODE_NAME")
 
-	providerName =		getProperty("JDBC_NAME")
+	providerName =		propReader.get("JDBC_NAME")
 
 	#------------------------------------------------------------------------------
 	# Remove JDBC Provider if it exists
@@ -789,33 +798,34 @@ def removeJDBCProvider ( propertyFileName):
 # Description:	Create a new J2C Activation Specification
 # History:	
 #****************************************************************************** 
-def createJ2CActivationSpec ( propertyFileName ):
+def createJ2CActivationSpec ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName = 	getProperty("SCOPE_NAME")
-	name = 		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
-	desc = 		getProperty("DESC")
-	authAlias =	getProperty("AUTH_ALIAS")
-	msgListType =	getProperty("MSG_LISTENER_TYPE")
+	scope =		propReader.get("SCOPE")
+	scopeName = 	propReader.get("SCOPE_NAME")
+	name = 		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
+	desc = 		propReader.get("DESC")
+	authAlias =	propReader.get("AUTH_ALIAS")
+	msgListType =	propReader.get("MSG_LISTENER_TYPE")
 
-	busName = 	getProperty("BUS_NAME")
-	maxBatch = 	getProperty("MAX_BATCH")
-	maxEndpts =	getProperty("MAX_ENDPTS")
-	destType =	getProperty("DEST_TYPE")
-	destName =	getProperty("DEST_NAME")
+	busName = 	propReader.get("BUS_NAME")
+	maxBatch = 	propReader.get("MAX_BATCH")
+	maxEndpts =	propReader.get("MAX_ENDPTS")
+	destType =	propReader.get("DEST_TYPE")
+	destName =	propReader.get("DEST_NAME")
 
-	durSubHome =	getProperty("DUR_SUB_HOME")
-	msgSelector = 	getProperty("MSG_SELECTOR")
-	delMode = 	getProperty("MSG_DEL_MODE")
+	durSubHome =	propReader.get("DUR_SUB_HOME")
+	msgSelector = 	propReader.get("MSG_SELECTOR")
+	delMode = 	propReader.get("MSG_DEL_MODE")
 
-	subName =	getProperty("SUB_NAME")
-	shareDurSub =	getProperty("SHARE_DUR_SUB")
-	userName = 	getProperty("USERNAME")
-	password =	getProperty("PASSWORD")
-	discrim  =	getProperty("DISCRIM")
+	subName =	propReader.get("SUB_NAME")
+	shareDurSub =	propReader.get("SHARE_DUR_SUB")
+	userName = 	propReader.get("USERNAME")
+	password =	propReader.get("PASSWORD")
+	discrim  =	propReader.get("DISCRIM")
 
 	#------------------------------------------------------------------------------
 	# Create a J2C Activation Specification
@@ -947,34 +957,35 @@ def createJ2CActivationSpec ( propertyFileName ):
 # Procedure:   	createJMSActivationSpec
 # Description:	Create a new JMS Activation Specification	
 #****************************************************************************** 
-def createJMSActivationSpec ( propertyFileName ):
+def createJMSActivationSpec ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName = 	getProperty("SCOPE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName = 	propReader.get("SCOPE_NAME")
 
-	name = 		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
-	destJndiName=	getProperty("DEST_JNDI_NAME")
-	busName = 	getProperty("BUSNAME")
+	name = 		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
+	destJndiName=	propReader.get("DEST_JNDI_NAME")
+	busName = 	propReader.get("BUSNAME")
 
-	desc = 		getProperty("DESC")
-	ackMode =	getProperty("ACK_MODE")
-	authAlias =	getProperty("AUTH_ALIAS")
-	targetChain =	getProperty("TARGET_TRANS_CHAIN")
-	maxBatch = 	getProperty("MAX_BATCH")
-	maxEndpts =	getProperty("MAX_ENDPTS")
-	clientId =	getProperty("CLIENT_ID")
-	destType =	getProperty("DEST_TYPE")
-	durSubHome =	getProperty("DUR_SUB_HOME")
-	msgSelector = 	getProperty("MSG_SELECTOR")
-	subDur =	getProperty("SUB_DUR")
-	subName =	getProperty("SUB_NAME")
-	shareDurSub =	getProperty("SHARE_DUR_SUB")
-	shareDSCMP =	getProperty("SHARE_DS_CMP")
-	userName = 	getProperty("USERNAME")
-	password =	getProperty("PASSWORD")
+	desc = 		propReader.get("DESC")
+	ackMode =	propReader.get("ACK_MODE")
+	authAlias =	propReader.get("AUTH_ALIAS")
+	targetChain =	propReader.get("TARGET_TRANS_CHAIN")
+	maxBatch = 	propReader.get("MAX_BATCH")
+	maxEndpts =	propReader.get("MAX_ENDPTS")
+	clientId =	propReader.get("CLIENT_ID")
+	destType =	propReader.get("DEST_TYPE")
+	durSubHome =	propReader.get("DUR_SUB_HOME")
+	msgSelector = 	propReader.get("MSG_SELECTOR")
+	subDur =	propReader.get("SUB_DUR")
+	subName =	propReader.get("SUB_NAME")
+	shareDurSub =	propReader.get("SHARE_DUR_SUB")
+	shareDSCMP =	propReader.get("SHARE_DS_CMP")
+	userName = 	propReader.get("USERNAME")
+	password =	propReader.get("PASSWORD")
 
 	#------------------------------------------------------------------------------
 	# Create a JMS Activation Specification
@@ -1027,17 +1038,18 @@ def createJMSActivationSpec ( propertyFileName ):
 # Procedure:   	deleteJMSActivationSpec
 # Description:	Delete JMS Activation Specification	
 #****************************************************************************** 
-def deleteJMSActivationSpec ( propertyFileName ):
+def deleteJMSActivationSpec ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName = 	getProperty("SCOPE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName = 	propReader.get("SCOPE_NAME")
 
-	name = 		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
-	destJndiName=	getProperty("DEST_JNDI_NAME")
-	busName = 	getProperty("BUS_NAME")
+	name = 		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
+	destJndiName=	propReader.get("DEST_JNDI_NAME")
+	busName = 	propReader.get("BUS_NAME")
 
 
 	#------------------------------------------------------------------------------
@@ -1054,7 +1066,7 @@ def deleteJMSActivationSpec ( propertyFileName ):
 	
 	idList  = AdminTask.listSIBJMSActivationSpecs(scopeId)
 	qList = idList.splitlines()
-	if(isEmpty(idList)):
+	if not idList:
 		print("INFO (deleteJMSActivationSpec): No SIB JMSA ctivation Specs defined.")
 		return 0
 	try:
@@ -1075,42 +1087,43 @@ def deleteJMSActivationSpec ( propertyFileName ):
 # Procedure:  	createJMSConnectionFactory
 # Description:	Create a new SIB JMS Connection Factory on the specified SIBus
 #****************************************************************************** 
-def createJMSConnectionFactory ( propertyFileName ):
+def createJMSConnectionFactory ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName = 		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName = 		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	cfName =		getProperty("CF_NAME")
-	cfJndiName = 		getProperty("CF_JNDI_NAME")
-	busName = 		getProperty("SI_BUSNAME")
+	cfName =		propReader.get("CF_NAME")
+	cfJndiName = 		propReader.get("CF_JNDI_NAME")
+	busName = 		propReader.get("SI_BUSNAME")
 
-	cfType =		getProperty("CF_TYPE")
-	cfAuthAlias =		getProperty("CF_AUTH_ALIAS")
-	cfXARecAuthAlias =	getProperty("CF_XA_REC_AUTH_ALIAS")
-	cfCategory =		getProperty("CF_CATEGORY")
-	cfDesc =		getProperty("CF_DESCRIPTION")
-	cfLogMissing =		getProperty("CF_LOG_MISSING")
-	cfManageCached =	getProperty("CF_MANAGE_CACHED")
-	cfClientId =		getProperty("CF_CLIENTID")
-	cfUserName = 		getProperty("CF_USERNAME")
-	cfPassword =		getProperty("CF_PASSWORD")
-	cfDurSubHome =		getProperty("CF_DURABLE_SUB_HOME")
-	cfNonPersistMap =	getProperty("CF_NONPERSIST_MAP")
-	cfPersistMap =		getProperty("CF_PERSIST_MAP")
-	cfReadAhead =		getProperty("CF_READ_AHEAD")
-	cfTarget =		getProperty("CF_TARGET")
-	cfTargetType =		getProperty("CF_TARGET_TYPE")
-	cfTargetSig =		getProperty("CF_TARGET_SIG")
-	cfTargetChain =		getProperty("CF_TARGET_TRANS_CHAIN")
-	cfProviderEndpts =	getProperty("CF_PROVIDER_ENDPTS")
-	cfConnectProx =		getProperty("CF_CONNECT_PROX")
-	cfTempQueuePrefix =	getProperty("CF_TEMP_QUEUENAME_PREFIX")
-	cfTempTopicPrefix =	getProperty("CF_TEMP_TOPICNAME_PREFIX")
-	cfShareDSCmp =		getProperty("CF_SHARE_DS_CMP")
-	cfShareDurSub =		getProperty("CF_SHARE_DUR_SUB")
+	cfType =		propReader.get("CF_TYPE")
+	cfAuthAlias =		propReader.get("CF_AUTH_ALIAS")
+	cfXARecAuthAlias =	propReader.get("CF_XA_REC_AUTH_ALIAS")
+	cfCategory =		propReader.get("CF_CATEGORY")
+	cfDesc =		propReader.get("CF_DESCRIPTION")
+	cfLogMissing =		propReader.get("CF_LOG_MISSING")
+	cfManageCached =	propReader.get("CF_MANAGE_CACHED")
+	cfClientId =		propReader.get("CF_CLIENTID")
+	cfUserName = 		propReader.get("CF_USERNAME")
+	cfPassword =		propReader.get("CF_PASSWORD")
+	cfDurSubHome =		propReader.get("CF_DURABLE_SUB_HOME")
+	cfNonPersistMap =	propReader.get("CF_NONPERSIST_MAP")
+	cfPersistMap =		propReader.get("CF_PERSIST_MAP")
+	cfReadAhead =		propReader.get("CF_READ_AHEAD")
+	cfTarget =		propReader.get("CF_TARGET")
+	cfTargetType =		propReader.get("CF_TARGET_TYPE")
+	cfTargetSig =		propReader.get("CF_TARGET_SIG")
+	cfTargetChain =		propReader.get("CF_TARGET_TRANS_CHAIN")
+	cfProviderEndpts =	propReader.get("CF_PROVIDER_ENDPTS")
+	cfConnectProx =		propReader.get("CF_CONNECT_PROX")
+	cfTempQueuePrefix =	propReader.get("CF_TEMP_QUEUENAME_PREFIX")
+	cfTempTopicPrefix =	propReader.get("CF_TEMP_TOPICNAME_PREFIX")
+	cfShareDSCmp =		propReader.get("CF_SHARE_DS_CMP")
+	cfShareDurSub =		propReader.get("CF_SHARE_DUR_SUB")
 
 
 	#------------------------------------------------------------------------------
@@ -1156,7 +1169,7 @@ def createJMSConnectionFactory ( propertyFileName ):
 	except:
 		l.exception("(createJMSConnectionFactory): ERROR creating JMS Connection Factory")
 
-	createCFConnectionPool(cf, "JMS", propertyFileName)
+	createCFConnectionPool(cf, "JMS", propertiesPath)
 
 	l.info("(createJMSConnectionFactory): SIB JMS Connection Factory successfully created.")
 	
@@ -1166,17 +1179,18 @@ def createJMSConnectionFactory ( propertyFileName ):
 # Procedure:  	deleteJMSConnectionFactory
 # Description:	Delete SIB JMS Connection Factory on the specified SIBus
 #****************************************************************************** 
-def deleteJMSConnectionFactory ( propertyFileName ):
+def deleteJMSConnectionFactory ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName = 		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName = 		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	cfName =		getProperty("CF_NAME")
-	cfJndiName = 		getProperty("CF_JNDI_NAME")
-	busName = 		getProperty("SI_BUSNAME")
+	cfName =		propReader.get("CF_NAME")
+	cfJndiName = 		propReader.get("CF_JNDI_NAME")
+	busName = 		propReader.get("SI_BUSNAME")
 	global AdminTask
 
 	l.info('(deleteJMSConnectionFactory) Delete '+cfName+' on the '+busName+' SIBus')
@@ -1203,19 +1217,20 @@ def deleteJMSConnectionFactory ( propertyFileName ):
 # Description:	Create a Generic JMS Provider
 # 
 #****************************************************************************** 
-def createJMSProvider ( propertyFileName ):
+def createJMSProvider ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")   
-	nodeName = 		getProperty("NODE_NAME")
-	jmsName = 		getProperty("JMS_NAME")
-	icf =			getProperty("INITIAL_CF")
-	url = 			getProperty("URL_EXT")
-	jmsDesc =		getProperty("DESC")
-	jmsClass =		getProperty("CLASSPATH")
-	jmsNative = 		getProperty("NATIVE_LIB_PATH")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")   
+	nodeName = 		propReader.get("NODE_NAME")
+	jmsName = 		propReader.get("JMS_NAME")
+	icf =			propReader.get("INITIAL_CF")
+	url = 			propReader.get("URL_EXT")
+	jmsDesc =		propReader.get("DESC")
+	jmsClass =		propReader.get("CLASSPATH")
+	jmsNative = 		propReader.get("NATIVE_LIB_PATH")
 		
 	#------------------------------------------------------------------------------
 	# Create Generic JMS Provider
@@ -1255,22 +1270,23 @@ def createJMSProvider ( propertyFileName ):
 # Procedure:  	createJMSQueue
 # Description:	Create a new SIB JMS Queue for the default messaging provider
 #****************************************************************************** 
-def createJMSQueue ( propertyFileName ):
+def createJMSQueue ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName =	getProperty("SCOPE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName =	propReader.get("SCOPE_NAME")
 
-	qName =		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
-	cQueue =	getProperty("CONNECT_QUEUE_NAME")
-	desc = 		getProperty("DESC")
-	delMode = 	getProperty("DELIVERY_MODE")
-	time_to_liv =	getProperty("TIME_TO_LIVE")
-	priority = 	getProperty("PRIORITY")
-	readAhead =	getProperty("READ_AHEAD")
-	busName =	getProperty("BUSNAME")
+	qName =		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
+	cQueue =	propReader.get("CONNECT_QUEUE_NAME")
+	desc = 		propReader.get("DESC")
+	delMode = 	propReader.get("DELIVERY_MODE")
+	time_to_liv =	propReader.get("TIME_TO_LIVE")
+	priority = 	propReader.get("PRIORITY")
+	readAhead =	propReader.get("READ_AHEAD")
+	busName =	propReader.get("BUSNAME")
 	
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS Queue on the given SIBus
@@ -1322,22 +1338,23 @@ def createJMSQueue ( propertyFileName ):
 # Procedure:  	deleteJMSQueue
 # Description:	delete SIB JMS Queue for the default messaging provider
 #****************************************************************************** 
-def deleteJMSQueue ( propertyFileName ):
+def deleteJMSQueue ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName =	getProperty("SCOPE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName =	propReader.get("SCOPE_NAME")
 
-	qName =		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
-	cQueue =	getProperty("CONNECT_QUEUE_NAME")
-	desc = 		getProperty("DESC")
-	delMode = 	getProperty("DELIVERY_MODE")
-	time_to_liv =	getProperty("TIME_TO_LIVE")
-	priority = 	getProperty("PRIORITY")
-	readAhead =	getProperty("READ_AHEAD")
-	busName =	getProperty("BUSNAME")
+	qName =		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
+	cQueue =	propReader.get("CONNECT_QUEUE_NAME")
+	desc = 		propReader.get("DESC")
+	delMode = 	propReader.get("DELIVERY_MODE")
+	time_to_liv =	propReader.get("TIME_TO_LIVE")
+	priority = 	propReader.get("PRIORITY")
+	readAhead =	propReader.get("READ_AHEAD")
+	busName =	propReader.get("BUSNAME")
 	
 	global AdminTask
 
@@ -1365,24 +1382,25 @@ def deleteJMSQueue ( propertyFileName ):
 # Proceduree: 	createJMSTopic
 # Description:	Create a new SIB JMS Topic for the default messaging provider
 #****************************************************************************** 
-def createJMSTopic ( propertyFileName ):
+def createJMSTopic ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName = 	getProperty("SCOPE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName = 	propReader.get("SCOPE_NAME")
 
-	name =		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
+	name =		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
 
-	tDesc =		getProperty("DESC")
-	tName =		getProperty("TOPIC_NAME")
-	tSpace = 	getProperty("TOPIC_SPACE")
-	delMode = 	getProperty("DELIVERY_MODE")
-	time =		getProperty("TIME_TO_LIVE")
-	priority =	getProperty("PRIORITY")
-	readAhead =	getProperty("READ_AHEAD")
-	busName =	getProperty("BUS_NAME")
+	tDesc =		propReader.get("DESC")
+	tName =		propReader.get("TOPIC_NAME")
+	tSpace = 	propReader.get("TOPIC_SPACE")
+	delMode = 	propReader.get("DELIVERY_MODE")
+	time =		propReader.get("TIME_TO_LIVE")
+	priority =	propReader.get("PRIORITY")
+	readAhead =	propReader.get("READ_AHEAD")
+	busName =	propReader.get("BUS_NAME")
 	
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS TOPIC 
@@ -1436,24 +1454,25 @@ def createJMSTopic ( propertyFileName ):
 # Proceduree: 	deleteJMSTopic
 # Description:	Create a new SIB JMS Topic for the default messaging provider
 #****************************************************************************** 
-def deleteJMSTopic ( propertyFileName ):
+def deleteJMSTopic ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName = 	getProperty("SCOPE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName = 	propReader.get("SCOPE_NAME")
 
-	name =		getProperty("NAME")
-	jndiName = 	getProperty("JNDI_NAME")
+	name =		propReader.get("NAME")
+	jndiName = 	propReader.get("JNDI_NAME")
 
-	tDesc =		getProperty("DESC")
-	tName =		getProperty("TOPIC_NAME")
-	tSpace = 	getProperty("TOPIC_SPACE")
-	delMode = 	getProperty("DELIVERY_MODE")
-	time =		getProperty("TIME_TO_LIVE")
-	priority =	getProperty("PRIORITY")
-	readAhead =	getProperty("READ_AHEAD")
-	busName =	getProperty("BUS_NAME")
+	tDesc =		propReader.get("DESC")
+	tName =		propReader.get("TOPIC_NAME")
+	tSpace = 	propReader.get("TOPIC_SPACE")
+	delMode = 	propReader.get("DELIVERY_MODE")
+	time =		propReader.get("TIME_TO_LIVE")
+	priority =	propReader.get("PRIORITY")
+	readAhead =	propReader.get("READ_AHEAD")
+	busName =	propReader.get("BUS_NAME")
 	
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS TOPIC 
@@ -1485,25 +1504,26 @@ def deleteJMSTopic ( propertyFileName ):
 # Procedure:  	createMailSession
 # Description:	Create a Mail Session of the Built-in-Mail Provider
 #****************************************************************************** 
-def createMailSession ( propertyFileName):
+def createMailSession ( propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	name =			getProperty("NAME")
-	jndiName =		getProperty("JNDI_NAME")
-	desc =			getProperty("DESC")
-	category =		getProperty("CATEGORY")
-	mailTransHost =		getProperty("MAIL_TRANS_HOST")
-	mailTransProto =	getProperty("MAIL_TRANS_PROTOCOL")
-	mailTransUserId =	getProperty("MAIL_TRANS_USERID")
-	mailTransPasswd = 	getProperty("MAIL_TRANS_PASSWD")
-	enableParse =		getProperty("ENABLE_INET_PARSING")
-	mailFrom =		getProperty("MAIL_FROM")
-	mailStoreHost = 	getProperty("MAIL_STORE_HOST")
-	mailStoreProto =	getProperty("MAIL_STORE_PROTOCOL")
-	mailStoreUserId =	getProperty("MAIL_STORE_USERID")
-	mailStorePasswd =	getProperty("MAIL_STORE_PASSWD")
-	enableDebug =		getProperty("ENABLE_DEBUG_MODE")
+	name =			propReader.get("NAME")
+	jndiName =		propReader.get("JNDI_NAME")
+	desc =			propReader.get("DESC")
+	category =		propReader.get("CATEGORY")
+	mailTransHost =		propReader.get("MAIL_TRANS_HOST")
+	mailTransProto =	propReader.get("MAIL_TRANS_PROTOCOL")
+	mailTransUserId =	propReader.get("MAIL_TRANS_USERID")
+	mailTransPasswd = 	propReader.get("MAIL_TRANS_PASSWD")
+	enableParse =		propReader.get("ENABLE_INET_PARSING")
+	mailFrom =		propReader.get("MAIL_FROM")
+	mailStoreHost = 	propReader.get("MAIL_STORE_HOST")
+	mailStoreProto =	propReader.get("MAIL_STORE_PROTOCOL")
+	mailStoreUserId =	propReader.get("MAIL_STORE_USERID")
+	mailStorePasswd =	propReader.get("MAIL_STORE_PASSWD")
+	enableDebug =		propReader.get("ENABLE_DEBUG_MODE")
 
 	mailSession = findConfigTargetWithScope("cell", cellName, name, "MailSession")
 	if (mailSession != 0):
@@ -1556,58 +1576,59 @@ def createMailSession ( propertyFileName):
 # Description:	Create a MQ connection factory for creating JMS connections
 #		to both queue and topic destinations
 #****************************************************************************** 
-def createMQConnectionFactory ( propertyFileName ):
+def createMQConnectionFactory ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	cfScope =		getProperty("CF_SCOPE")
-	cfScopeName =		getProperty("CF_SCOPE_NAME")
-	cfNodeName =		getProperty("CF_NODE_NAME")
-	cfName =		getProperty("CF_NAME")
-	cfJndiName =		getProperty("CF_JNDI_NAME")
-	cfDesc =		getProperty("CF_DESC")
-	cfCategory =		getProperty("CF_CATEGORY")
-	cfCMPAuthAlias =	getProperty("CF_CMP_AUTH_ALIAS")
-	cfConAuthAlias =	getProperty("CF_CON_AUTH_ALIAS")
-	cfMapAuthAlias =	getProperty("CF_MAP_AUTH_ALIAS")
-	cfQueueMgr =		getProperty("CF_QUEUE_MANAGER")
- 	cfHost =		getProperty("CF_HOST")
- 	cfPort =		getProperty("CF_PORT")
- 	cfChannel = 		getProperty("CF_CHANNEL")
- 	cfTransType =		getProperty("CF_TRANS_TYPE")
- 	cfModelQueueDef =	getProperty("CF_MODEL_QUEUE_DEF")
- 	cfClientId =		getProperty("CF_CLIENT_ID")
- 	cfCCSID =		getProperty("CF_CCSID")
- 	cfEnableMsgRet =	getProperty("CF_ENABLE_MSG_RET")
- 	cfXAEnabled =		getProperty("CF_XA_ENABLED")
- 	cfEnableRetShut =	getProperty("CF_ENABLE_RET_SHUTDOWN")
- 	cfLocalServerAddr =	getProperty("CF_LOCAL_SERVER_ADDR")
- 	cfPollingInt =		getProperty("CF_POLLING_INT")
- 	cfRescanInt =		getProperty("CF_RESCAN_INT")
- 	cfSSLCipher = 		getProperty("CF_SSL_CIPHER")
- 	cfSSLCRL=		getProperty("CF_SSL_CRL")
- 	cfSSLPeerName =		getProperty("CF_SSL_PEER_NAME")
- 	cfTempQueuePre =	getProperty("CF_TEMP_QUEUE_PREFIX")
- 	cfEnableMQCP = 		getProperty("CF_ENABLE_MQ_CONN_POOL")
+	cfScope =		propReader.get("CF_SCOPE")
+	cfScopeName =		propReader.get("CF_SCOPE_NAME")
+	cfNodeName =		propReader.get("CF_NODE_NAME")
+	cfName =		propReader.get("CF_NAME")
+	cfJndiName =		propReader.get("CF_JNDI_NAME")
+	cfDesc =		propReader.get("CF_DESC")
+	cfCategory =		propReader.get("CF_CATEGORY")
+	cfCMPAuthAlias =	propReader.get("CF_CMP_AUTH_ALIAS")
+	cfConAuthAlias =	propReader.get("CF_CON_AUTH_ALIAS")
+	cfMapAuthAlias =	propReader.get("CF_MAP_AUTH_ALIAS")
+	cfQueueMgr =		propReader.get("CF_QUEUE_MANAGER")
+ 	cfHost =		propReader.get("CF_HOST")
+ 	cfPort =		propReader.get("CF_PORT")
+ 	cfChannel = 		propReader.get("CF_CHANNEL")
+ 	cfTransType =		propReader.get("CF_TRANS_TYPE")
+ 	cfModelQueueDef =	propReader.get("CF_MODEL_QUEUE_DEF")
+ 	cfClientId =		propReader.get("CF_CLIENT_ID")
+ 	cfCCSID =		propReader.get("CF_CCSID")
+ 	cfEnableMsgRet =	propReader.get("CF_ENABLE_MSG_RET")
+ 	cfXAEnabled =		propReader.get("CF_XA_ENABLED")
+ 	cfEnableRetShut =	propReader.get("CF_ENABLE_RET_SHUTDOWN")
+ 	cfLocalServerAddr =	propReader.get("CF_LOCAL_SERVER_ADDR")
+ 	cfPollingInt =		propReader.get("CF_POLLING_INT")
+ 	cfRescanInt =		propReader.get("CF_RESCAN_INT")
+ 	cfSSLCipher = 		propReader.get("CF_SSL_CIPHER")
+ 	cfSSLCRL=		propReader.get("CF_SSL_CRL")
+ 	cfSSLPeerName =		propReader.get("CF_SSL_PEER_NAME")
+ 	cfTempQueuePre =	propReader.get("CF_TEMP_QUEUE_PREFIX")
+ 	cfEnableMQCP = 		propReader.get("CF_ENABLE_MQ_CONN_POOL")
 
-	cfBrokerCQ =		getProperty("CF_BROKER_CONTROL_QUEUE")
-	cfBrokerQMgr = 		getProperty("CF_BROKER_QUEUE_MGR")
- 	cfBrokerPubQ =		getProperty("CF_BROKER_PUB_QUEUE")
- 	cfBrokerSubQ =		getProperty("CF_BROKER_SUB_QUEUE")
- 	cfBrokerCCSubQ =	getProperty("CF_BROKER_CC_SUB_QUEUE")
- 	cfBrokerVer =		getProperty("CF_BROKER_VERSION")
- 	cfPubSubCleanLvl =	getProperty("CF_PUBSUB_CLEANUP_LEVEL")
- 	cfPubSubCleanInt =	getProperty("CF_PUBSUB_CLEANUP_INT")
- 	cfBrokerMsgSel =	getProperty("CF_BROKER_MSG_SEL")
- 	cfPubAckInt =		getProperty("CF_PUB_ACK_INT")
- 	cfEnableSpBrokerSubs =	getProperty("CF_ENABLE_SPARSE_BROKER_SUBS")
- 	cfPubSubStatInt =	getProperty("CF_PUBSUB_STAT_INT")
- 	cfPersistSubStore =	getProperty("CF_PERSIST_SUB_STORE")
- 	cfEnableMultiTrans =	getProperty("CF_ENABLE_MULTI_TRANS")
- 	cfEnableCloneSup =	getProperty("CF_ENABLE_CLONE_SUPPORT")
- 	cfDirBrokerAuthType =	getProperty("CF_DIRECT_BROKER_AUTH_TYPE")
- 	#cfProxyHostName =	getProperty("CF_PROXY_HOST_NAME")
- 	#cfProxyPort = 		getProperty("CF_PROXY_PORT")
+	cfBrokerCQ =		propReader.get("CF_BROKER_CONTROL_QUEUE")
+	cfBrokerQMgr = 		propReader.get("CF_BROKER_QUEUE_MGR")
+ 	cfBrokerPubQ =		propReader.get("CF_BROKER_PUB_QUEUE")
+ 	cfBrokerSubQ =		propReader.get("CF_BROKER_SUB_QUEUE")
+ 	cfBrokerCCSubQ =	propReader.get("CF_BROKER_CC_SUB_QUEUE")
+ 	cfBrokerVer =		propReader.get("CF_BROKER_VERSION")
+ 	cfPubSubCleanLvl =	propReader.get("CF_PUBSUB_CLEANUP_LEVEL")
+ 	cfPubSubCleanInt =	propReader.get("CF_PUBSUB_CLEANUP_INT")
+ 	cfBrokerMsgSel =	propReader.get("CF_BROKER_MSG_SEL")
+ 	cfPubAckInt =		propReader.get("CF_PUB_ACK_INT")
+ 	cfEnableSpBrokerSubs =	propReader.get("CF_ENABLE_SPARSE_BROKER_SUBS")
+ 	cfPubSubStatInt =	propReader.get("CF_PUBSUB_STAT_INT")
+ 	cfPersistSubStore =	propReader.get("CF_PERSIST_SUB_STORE")
+ 	cfEnableMultiTrans =	propReader.get("CF_ENABLE_MULTI_TRANS")
+ 	cfEnableCloneSup =	propReader.get("CF_ENABLE_CLONE_SUPPORT")
+ 	cfDirBrokerAuthType =	propReader.get("CF_DIRECT_BROKER_AUTH_TYPE")
+ 	#cfProxyHostName =	propReader.get("CF_PROXY_HOST_NAME")
+ 	#cfProxyPort = 		propReader.get("CF_PROXY_PORT")
 
 	MQJMSProvider = getConfigItemId(cfScope, cfScopeName, cfNodeName, "JMSProvider", "WebSphere MQ JMS Provider")
 	MQCF = getConfigItemId(cfScope, cfScopeName, cfNodeName, "JMSProvider:WebSphere MQ JMS Provider/MQConnectionFactory", cfName)
@@ -1675,7 +1696,7 @@ def createMQConnectionFactory ( propertyFileName ):
 		except:
 			l.exception("(createMQConnectionFactory):Caught Exception modifying MQ Connection Factory")
 
-	createCFConnectionPool(MQCF, "MQ", propertyFileName)
+	createCFConnectionPool(MQCF, "MQ", propertiesPath)
 	createWebSphereMQCFCustomProperty(MQCF)
 	l.info("(createMQConnectionFactory): MQ Connection Factory was successful created/modified")
 	return 0
@@ -1685,14 +1706,15 @@ def createMQConnectionFactory ( propertyFileName ):
 # Procedure:  	deleteMQConnectionFactory
 # Description:	Delete MQ connection factory
 #****************************************************************************** 
-def deleteMQConnectionFactory ( propertyFileName ):
+def deleteMQConnectionFactory ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	cfScope =		getProperty("CF_SCOPE")
-	cfScopeName =		getProperty("CF_SCOPE_NAME")
-	cfNodeName =		getProperty("CF_NODE_NAME")
-	cfName =		getProperty("CF_NAME")
+	cfScope =		propReader.get("CF_SCOPE")
+	cfScopeName =		propReader.get("CF_SCOPE_NAME")
+	cfNodeName =		propReader.get("CF_NODE_NAME")
+	cfName =		propReader.get("CF_NAME")
 
 	MQJMSProvider = getConfigItemId(cfScope, cfScopeName, cfNodeName, "JMSProvider", "WebSphere MQ JMS Provider")
 	MQCF = getConfigItemId(cfScope, cfScopeName, cfNodeName, "JMSProvider:WebSphere MQ JMS Provider/MQConnectionFactory", cfName)
@@ -1753,22 +1775,23 @@ def createWebSphereMQCFCustomProperty (MQCF):
 # Procedure:  	createMQDestination
 # Description:	Create a MQ destination
 #****************************************************************************** 
-def createMQDestination ( propertyFileName ):
+def createMQDestination ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 	
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	name =			getProperty("NAME")
-	jndiName =		getProperty("JNDI_NAME")
-	desc =			getProperty("DESC")
-	category =		getProperty("CATEGORY")
-	baseQueueName  =	getProperty("BASE_QUEUE_NAME")
-	baseQueueManager =  	getProperty("BASE_QUEUE_MANAGER")
-	ccsid =			getProperty("CCSID")
-	targetClient = 		getProperty("TARGET_CLIENT")
+	name =			propReader.get("NAME")
+	jndiName =		propReader.get("JNDI_NAME")
+	desc =			propReader.get("DESC")
+	category =		propReader.get("CATEGORY")
+	baseQueueName  =	propReader.get("BASE_QUEUE_NAME")
+	baseQueueManager =  	propReader.get("BASE_QUEUE_MANAGER")
+	ccsid =			propReader.get("CCSID")
+	targetClient = 		propReader.get("TARGET_CLIENT")
 	
 	attrs = []
 	attrs.append(["name", name])
@@ -1802,15 +1825,16 @@ def createMQDestination ( propertyFileName ):
 # Procedure:  	deleteMQDestination
 # Description:	Delete a MQ destination
 #****************************************************************************** 
-def deleteMQDestination ( propertyFileName ):
+def deleteMQDestination ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 	
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	name =			getProperty("NAME")
+	name =			propReader.get("NAME")
 		
 	MQJMSProvider = getConfigItemId(scope, scopeName, nodeName, "JMSProvider", "WebSphere MQ JMS Provider")
 	MQDES = getConfigItemId(scope, scopeName, nodeName, "JMSProvider:WebSphere MQ JMS Provider/MQQueue", name)
@@ -1832,25 +1856,26 @@ def deleteMQDestination ( propertyFileName ):
 # Procedure:  	createScheduler
 # Description:	Create a Scheduler
 #****************************************************************************** 
-def createScheduler ( propertyFileName ):
+def createScheduler ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName = 		getProperty("NODE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName = 		propReader.get("NODE_NAME")
 
-	sName =		getProperty("NAME")
-	jndiName =		getProperty("JNDI_NAME")
-	dsJndiName =	getProperty("DS_JNDI_NAME")
-	tablePrefix =	getProperty("TABLE_PREFIX")
-	pInterval =		getProperty("POLL_INTERVAL")
-	workMgr =		getProperty("WORK_MGR")
+	sName =		propReader.get("NAME")
+	jndiName =		propReader.get("JNDI_NAME")
+	dsJndiName =	propReader.get("DS_JNDI_NAME")
+	tablePrefix =	propReader.get("TABLE_PREFIX")
+	pInterval =		propReader.get("POLL_INTERVAL")
+	workMgr =		propReader.get("WORK_MGR")
 
-	desc =		getProperty("DESC")
-	category =		getProperty("CATEGORY")
-	dsAlias =		getProperty("DS_ALIAS")
-	useAdminRoles=	getProperty("USE_ADMIN_ROLES")
+	desc =		propReader.get("DESC")
+	category =		propReader.get("CATEGORY")
+	dsAlias =		propReader.get("DS_ALIAS")
+	useAdminRoles=	propReader.get("USE_ADMIN_ROLES")
 
 	#---------------------------------------------------------------------------------
 	# Create a Scheduler
@@ -1907,20 +1932,21 @@ def createScheduler ( propertyFileName ):
 # Procedure:   	createURL
 # Description:	Create URL if it doesn't exist, otherwise modify it.
 #****************************************************************************** 
-def createURL ( propertyFileName ):
+def createURL ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName=		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName=		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 
-	urlName =		getProperty("URL_NAME")
-	providerName =		getProperty("URL_PROVIDER")
-	urlJNDIName = 		getProperty("URL_JNDI_NAME")
-	urlSpec = 		getProperty("URL_SPECIFICATION")
-	urlDesc =		getProperty("URL_DESC")
-	urlCategory =		getProperty("URL_CATEGORY")
+	urlName =		propReader.get("URL_NAME")
+	providerName =		propReader.get("URL_PROVIDER")
+	urlJNDIName = 		propReader.get("URL_JNDI_NAME")
+	urlSpec = 		propReader.get("URL_SPECIFICATION")
+	urlDesc =		propReader.get("URL_DESC")
+	urlCategory =		propReader.get("URL_CATEGORY")
 
 	#---------------------------------------------------------------------------------
 	# Create URL
@@ -1976,20 +2002,21 @@ def createURL ( propertyFileName ):
 # Procedure:   	createURLCustomProperty
 # Description:	Create URL Custom Property if it doesn't exist, otherwise modify it.
 #****************************************************************************** 
-def createURLCustomProperty ( propertyFileName ):
+def createURLCustomProperty ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName=		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName=		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 
-	providerName =	getProperty("URL_PROVIDER")
-	propertyName = 	getProperty("PROP_NAME")
-	propertyValue= 	getProperty("PROP_VALUE")
-	propertyReq = 	getProperty("PROP_REQUIRED")
-	propertyType =	getProperty("PROP_TYPE")
-	propertyDesc =	getProperty("PROP_DESC")
+	providerName =	propReader.get("URL_PROVIDER")
+	propertyName = 	propReader.get("PROP_NAME")
+	propertyValue= 	propReader.get("PROP_VALUE")
+	propertyReq = 	propReader.get("PROP_REQUIRED")
+	propertyType =	propReader.get("PROP_TYPE")
+	propertyDesc =	propReader.get("PROP_DESC")
 
 	#---------------------------------------------------------------------------------
 	# Create URL Custom Property
@@ -2042,19 +2069,20 @@ def createURLCustomProperty ( propertyFileName ):
 # Procedure:   	createURLProvider
 # Description:	Create URL provider
 #****************************************************************************** 
-def createURLProvider ( propertyFileName ):
+def createURLProvider ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =		getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName = 		getProperty("NODE_NAME")
+	scope =		propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName = 		propReader.get("NODE_NAME")
 
-	providerName =	getProperty("URL_NAME")
-	providerDesc =	getProperty("URL_DESC")
-	urlClassPath =	getProperty("URL_CLASSPATH")
-	urlStreamHand =	getProperty("URL_STREAM_HANDLER")
-	urlProtocol =	getProperty("URL_PROTOCOL")
+	providerName =	propReader.get("URL_NAME")
+	providerDesc =	propReader.get("URL_DESC")
+	urlClassPath =	propReader.get("URL_CLASSPATH")
+	urlStreamHand =	propReader.get("URL_STREAM_HANDLER")
+	urlProtocol =	propReader.get("URL_PROTOCOL")
 	#----------------------------------------------------------------------------
 	# Create URL Provider
 	#----------------------------------------------------------------------------
@@ -2093,25 +2121,26 @@ def createURLProvider ( propertyFileName ):
 # Proceduree: 	createWorkManager
 # Description:	Create a WorkManager
 #****************************************************************************** 
-def createWorkManager ( propertyFileName ):
+def createWorkManager ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =				getProperty("SCOPE")
-	scopeName =			getProperty("SCOPE_NAME")
-	nodeName = 			getProperty("NODE_NAME")
+	scope =				propReader.get("SCOPE")
+	scopeName =			propReader.get("SCOPE_NAME")
+	nodeName = 			propReader.get("NODE_NAME")
 
-	wmName =			getProperty("NAME")
-	wmJNDIName =			getProperty("JNDI_NAME")
-	wmMaxThreads =			getProperty("MAX_THREADS")
-	wmMinThreads =			getProperty("MIN_THREADS")  
-	wmNoAlarmThreads=		getProperty("ALARM_THREADS")
-	wmThreadPriority =		getProperty("THREAD_PRIORITY")
+	wmName =			propReader.get("NAME")
+	wmJNDIName =			propReader.get("JNDI_NAME")
+	wmMaxThreads =			propReader.get("MAX_THREADS")
+	wmMinThreads =			propReader.get("MIN_THREADS")  
+	wmNoAlarmThreads=		propReader.get("ALARM_THREADS")
+	wmThreadPriority =		propReader.get("THREAD_PRIORITY")
 
-	wmDescription =			getProperty("DESCRIPTION")
-	wmServiceNames =		getProperty("SVC_NAMES")
-	wmIsGrowable =			getProperty("IS_GROWABLE")
-	wmCategory =			getProperty("CATEGORY")
+	wmDescription =			propReader.get("DESCRIPTION")
+	wmServiceNames =		propReader.get("SVC_NAMES")
+	wmIsGrowable =			propReader.get("IS_GROWABLE")
+	wmCategory =			propReader.get("CATEGORY")
 
 
 	#---------------------------------------------------------------------------------
@@ -2204,18 +2233,19 @@ def setDBPoolMaxConnections ( scope, scopeName, dataSourceName, value ):
 # Procedure:   	createSharedLibrary
 # Description:	Create Shared Library
 #****************************************************************************** 
-def createSharedLibrary ( propertyFileName ):
+def createSharedLibrary ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope 		=	getProperty("SCOPE")
-	scopeName 	=	getProperty("SCOPE_NAME")
-	nodeName 	= 	getProperty("NODE_NAME")
-	server 		=	getProperty("SERVER")
+	scope 		=	propReader.get("SCOPE")
+	scopeName 	=	propReader.get("SCOPE_NAME")
+	nodeName 	= 	propReader.get("NODE_NAME")
+	server 		=	propReader.get("SERVER")
 	
-	name 		= 	getProperty("NAME")
-	classPath	= 	getProperty("CLASS_PATH")
-	description	=	getProperty("DESCRIPTION")
+	name 		= 	propReader.get("NAME")
+	classPath	= 	propReader.get("CLASS_PATH")
+	description	=	propReader.get("DESCRIPTION")
 
 	global AdminApp, AdminConfig
 	l.info("(createSharedLibrary): Creating Shared Library " + name)
@@ -2270,18 +2300,19 @@ def createSharedLibrary ( propertyFileName ):
 # Procedure:   	deleteSharedLibrary
 # Description:	Delete Shared Library
 #****************************************************************************** 
-def deleteSharedLibrary ( propertyFileName ):
+def deleteSharedLibrary ( propertiesPath ):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope 		=	getProperty("SCOPE")
-	scopeName 	=	getProperty("SCOPE_NAME")
-	nodeName 	= 	getProperty("NODE_NAME")
-	server 		=	getProperty("SERVER")
+	scope 		=	propReader.get("SCOPE")
+	scopeName 	=	propReader.get("SCOPE_NAME")
+	nodeName 	= 	propReader.get("NODE_NAME")
+	server 		=	propReader.get("SERVER")
 	
-	name 		= 	getProperty("NAME")
-	classPath	= 	getProperty("CLASS_PATH")
-	description	=	getProperty("DESCRIPTION")
+	name 		= 	propReader.get("NAME")
+	classPath	= 	propReader.get("CLASS_PATH")
+	description	=	propReader.get("DESCRIPTION")
 
 	global AdminApp, AdminConfig
 	l.info("(deleteSharedLibrary): Deleting Shared Library " + name)

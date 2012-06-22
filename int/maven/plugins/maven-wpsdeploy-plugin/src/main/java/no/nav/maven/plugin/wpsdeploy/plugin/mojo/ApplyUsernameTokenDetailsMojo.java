@@ -25,7 +25,7 @@ public class ApplyUsernameTokenDetailsMojo extends WebsphereUpdaterMojo {
 			return;
 		}
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("ModifyUserNameTokenGenerator.py " + environmentFile);
+		arg.setLine("ModifyUserNameTokenGenerator.py " + environmentPropertiesPath);
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}

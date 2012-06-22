@@ -48,7 +48,7 @@ def main():
 					except AdminException, msg:
 						l.warning('Got exception while trying to start', scaModule)
 						l.debug(msg)
-		l.info('It took', myTimer.reset(), 'to check all modules and start those that was not running.')
+		l.info('It took', myTimer.reset(), 'to check what modules were installed, and start those that was not running.')
 					
 	l.info('Finished installing %s applications!' % numberOfappsInstalled)
 	

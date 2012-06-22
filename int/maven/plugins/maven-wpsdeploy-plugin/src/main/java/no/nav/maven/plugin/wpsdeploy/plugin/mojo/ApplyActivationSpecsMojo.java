@@ -19,7 +19,7 @@ public class ApplyActivationSpecsMojo extends WebsphereUpdaterMojo {
 		}
 
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("ModifyMaxConcurrencyAS.py");
+		arg.setLine("ModifyMaxConcurrencyAS.py " + activationspecificationsPath);
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}

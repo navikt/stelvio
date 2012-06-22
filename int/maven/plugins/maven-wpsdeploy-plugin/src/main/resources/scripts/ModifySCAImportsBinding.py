@@ -1,7 +1,7 @@
 import sys, re
 import lib.logUtil as log
 from lib.stringUtil import strip
-from lib.getConfiguration import getEndpoints
+from lib.parseConfiguration import parseEndpoints
 from lib.saveUtil import save
 from lib.policySetAttachmentUtil import getPolicySetAttachements, createPolicySetAttachements
 import lib.scaModuleUtil as sca
@@ -9,11 +9,12 @@ import lib.scaModuleUtil as sca
 l = log.getLogger(__name__)
 
 def main():	
+	moduleConfigFolder = sys.argv[1]
 	l.info('Getting a list of all installed modules...')
 	scaModulesToDeploy = sca.getModulesToBeInstalled()
 	l.debug('scaModulesToDeploy:', [str(x) for x in scaModulesToDeploy])
 
-	modulesImports = getEndpoints()
+	modulesImports = parseEndpoints(moduleConfigFolder)
 	l.debug('Parsed arguments to the script and got this:', modulesImports)
 		
 	for scaModuleToDeploy in scaModulesToDeploy:

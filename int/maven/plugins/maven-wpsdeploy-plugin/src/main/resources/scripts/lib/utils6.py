@@ -42,9 +42,7 @@
 # getConfigObjectScoped
 # getConfigObjectValues
 # getPort
-# getProperty
 # isPMIEnabled
-# readProperties
 # restartClusters
 # restartServers
 # setConfigObjectValues
@@ -84,7 +82,6 @@ def regexpn(pattern, string, flags=0):
         r = re.compile(pattern, flags).subn("", string)
         return r[1]
 #endDef
-props = None
 
 #--------------------------------------------------------------------
 # Procedure:	addHostAlias
@@ -768,22 +765,6 @@ def getPort ( nodeName, serverName ):
 	#endFor
 	return port
 #endDef
-#------------------------------------------------------------------------
-# Procedure:	getProperty
-# Description:	Get the value of a property and return an empty string
-#		     	if it does not exist.  Please note than an empty string
-#			"" inserted in the configuration means a blank value.
-#
-# Parameters:	propertyName
-#------------------------------------------------------------------------
-def getProperty (propertyName):
-	pval = props.getProperty(propertyName)
-	if pval == None:
-		return ""
-	#endIf
-
-	return pval.strip()
-#endDef
 
 #------------------------------------------------------------------------
 # Procedure:	isPMIEnabled
@@ -805,23 +786,6 @@ def isPMIEnabled ( inServerName ):
 
         return rc
 #endDef 
-
-#--------------------------------------------------------------------
-# Procedure:	readProperties
-# Description:	Create a java properties class and init the props 
-#			from the provided file.
-#
-# Parameters:	fileName
-#
-#--------------------------------------------------------------------
-def readProperties ( fileName ):
-	global props
-
-	props = Properties()
-	f = FileInputStream(fileName)
-	props.load(f)
-	return
-#endDef
 
 #--------------------------------------------------------------------
 # Procedure:   	restartClusters
@@ -1640,7 +1604,7 @@ def syncNodesToMaster ( nodeList ):
 
         # Get the ConfigRepository object for the DeploymentManager
         repos = AdminControl.completeObjectName("type=ConfigRepository,process=dmgr,*" )
-	if(isEmpty(repos)):
+	if not repos:
 		print "INFO (syncNodesToMaster): Not DeploymentManager!"
 		return
         # Reset the epoch so nodes are forced to resync
@@ -1781,28 +1745,7 @@ def wsadminToList (inStr):
 		if ( len(item) > 0 ):
 			outList.append(item)
 	return outList
-#endDef  
-
-##########################################################################
-#
-# FUNCTION:
-#    isEmpty: Checks if variable is empty or None
-#
-# SYNTAX:
-#    isEmpty(variable)
-#
-# PARAMETERS:
-#    
-#	variable - Name of variable to validate
-#
-# RETURNS:
-#    	1:	variable = "" or None
-#	0:	variable != "" and != None
-#
-##########################################################################
-def isEmpty(var):
-	retval = (var == "" or var == None or var == "[]")	
-	return retval
+#endDef 
 	
 def deleteEarFile(appPath): 
 	print ("INFO (deleteEarFile): Deleting "+appPath)

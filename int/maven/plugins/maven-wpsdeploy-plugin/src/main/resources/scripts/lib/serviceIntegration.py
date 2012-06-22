@@ -1,4 +1,6 @@
 import sys, re
+from lib.utils6 import toggleService
+from lib.javaPropertiesUtil import PropertiesReader
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
@@ -33,8 +35,6 @@ l = log.getLogger(__name__)
 # Note:  	Even though the documents indicate that description is an option, it 
 #	 	is not available from wsadmin or the console.	
 #****************************************************************************** 
-from lib.utils6 import getProperty, readProperties, toggleService
-from lib.Utils import readProperties, getProperty
 
 
 def removeServerOrClusterToSIB ( busName, serverName, nodeName):
@@ -79,7 +79,7 @@ def removeServerOrClusterToSIB ( busName, serverName, nodeName):
 # Note:  	Even though the documents indicate that description is an option, it 
 #	 	is not available from wsadmin or the console.
 #****************************************************************************** 
-def addServerOrClusterToSIB ( busName, serverName, nodeName, dsName ):
+def addServerOrClusterToSIB(busName, serverName, nodeName, dsName):
 
 	#-----------------------------------------------------------------------------
 	# Add Server/cluster to the SIBus 
@@ -117,7 +117,7 @@ def addServerOrClusterToSIB ( busName, serverName, nodeName, dsName ):
 # Procedure:   	addUserOrGroupToBus
 # Description:	Add users or groups to bus connector roles
 #****************************************************************************** 
-def addUserOrGroupToBus ( busName, userName, groupName ):
+def addUserOrGroupToBus(busName, userName, groupName):
 
 	SIBusList = AdminTask.listSIBuses().splitlines()
 
@@ -153,36 +153,37 @@ def addUserOrGroupToBus ( busName, userName, groupName ):
 # Description:	Create a new SIB Destination on the specified SIBus
 # History:	
 #****************************************************************************** 
-def createSIBDestination( propertyFileName ):
+def createSIBDestination(propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	busName = 	getProperty("BUSNAME")
-	destName = 	getProperty("NAME")
-	type = 		getProperty("TYPE")
+	busName = 	propReader.get("BUSNAME")
+	destName = 	propReader.get("NAME")
+	type = 		propReader.get("TYPE")
 
-	clusterName = 	getProperty("CLUSTER")
-	nodeName = 	getProperty("NODE")
-	serverName =	getProperty("SERVER")
-	aliasBus =	getProperty("ALIAS_BUS")
-	targetBus =	getProperty("TARGET_BUS")
-	targetName=	getProperty("TARGET_NAME")
-	foreignBus =	getProperty("FOREIGN_BUS")
-	desc =		getProperty("DESCRIPTION")
-	reliability =	getProperty("RELIABILITY")
-	maxRel =	getProperty("MAX_RELIABILITY")
-	overRide =	getProperty("OVERRIDE")
-	defPriority =	getProperty("DEFAULT_PRIORITY")
-	maxFailedDel = 	getProperty("MAX_FAILED_DEL")
-	exceptDest =	getProperty("EXCEPT_DEST")
-	sendAllowed =	getProperty("SEND_ALLOWED")
-	recvAllowed =	getProperty("RECV_ALLOWED")
-	recvExcl =	getProperty("RECV_EXCL")
-	topicAccess =	getProperty("TOPIC_ACCESS")
-	replyDest =	getProperty("REPLY_DEST")
-	replyDestBus = 	getProperty("REPLY_DEST_BUS")
-	delAuth =	getProperty("DEL_AUTH")
-	highMessThres =	getProperty("HIGH_MESSAGE_THRESHOLD")
+	clusterName = 	propReader.get("CLUSTER")
+	nodeName = 	propReader.get("NODE")
+	serverName =	propReader.get("SERVER")
+	aliasBus =	propReader.get("ALIAS_BUS")
+	targetBus =	propReader.get("TARGET_BUS")
+	targetName=	propReader.get("TARGET_NAME")
+	foreignBus =	propReader.get("FOREIGN_BUS")
+	desc =		propReader.get("DESCRIPTION")
+	reliability =	propReader.get("RELIABILITY")
+	maxRel =	propReader.get("MAX_RELIABILITY")
+	overRide =	propReader.get("OVERRIDE")
+	defPriority =	propReader.get("DEFAULT_PRIORITY")
+	maxFailedDel = 	propReader.get("MAX_FAILED_DEL")
+	exceptDest =	propReader.get("EXCEPT_DEST")
+	sendAllowed =	propReader.get("SEND_ALLOWED")
+	recvAllowed =	propReader.get("RECV_ALLOWED")
+	recvExcl =	propReader.get("RECV_EXCL")
+	topicAccess =	propReader.get("TOPIC_ACCESS")
+	replyDest =	propReader.get("REPLY_DEST")
+	replyDestBus = 	propReader.get("REPLY_DEST_BUS")
+	delAuth =	propReader.get("DEL_AUTH")
+	highMessThres =	propReader.get("HIGH_MESSAGE_THRESHOLD")
                
 	#-----------------------------------------------------------------------------
 	# Create a SIB Destination on the given SIBus
@@ -268,12 +269,13 @@ def createSIBDestination( propertyFileName ):
 # Description:	Delete SIB Destination on the specified SIBus
 # History:	
 #****************************************************************************** 
-def deleteSIBDestination( propertyFileName ):
+def deleteSIBDestination(propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	busName = 	getProperty("BUSNAME")
-	destName = 	getProperty("NAME")
+	busName = 	propReader.get("BUSNAME")
+	destName = 	propReader.get("NAME")
 	l.info('(deleteSIBDestination): Delete '+destName+' on the '+busName+' SIBus')
 	SIDestList = AdminTask.listSIBDestinations('-bus '+busName).splitlines()
 	# Check for existence of SIB Destination, if yes delete
@@ -296,19 +298,20 @@ def deleteSIBDestination( propertyFileName ):
 #			   enabled, and high message threshold
 #		03/13/06:  Added extra quotes around interAuth
 #****************************************************************************** 
-def createSIBus( propertyFileName ):
+def createSIBus(propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	name = 			getProperty("NAME")
-	desc =			getProperty("DESC")
-	secure = 		getProperty("SECURE")
-	interAuth =		getProperty("IE_AUTH_ALIAS")
-	medAuth =		getProperty("MED_AUTH_ALIAS")
-	protocol =		getProperty("PROTOCOL")
-	discard = 		getProperty("DISCARD_ON_DELETE")
-	confReload =		getProperty("CONFIG_RELOAD")
-	msgThreshold =		getProperty("HIGH_MSG_THRESHOLD")	
+	name = 			propReader.get("NAME")
+	desc =			propReader.get("DESC")
+	secure = 		propReader.get("SECURE")
+	interAuth =		propReader.get("IE_AUTH_ALIAS")
+	medAuth =		propReader.get("MED_AUTH_ALIAS")
+	protocol =		propReader.get("PROTOCOL")
+	discard = 		propReader.get("DISCARD_ON_DELETE")
+	confReload =		propReader.get("CONFIG_RELOAD")
+	msgThreshold =		propReader.get("HIGH_MSG_THRESHOLD")	
 
 	#-------------------------------------------------------------------------
 	# Create service integration bus if it does not exist. 
@@ -345,7 +348,7 @@ def createSIBus( propertyFileName ):
 # Procedure:   	removeUserOrGroupFromBus
 # Description:	Remove users or groups from bus connector roles
 #****************************************************************************** 
-def removeUserOrGroupFromBus ( busName, userName, groupName ):
+def removeUserOrGroupFromBus(busName, userName, groupName):
 
 	SIBusList = AdminTask.listSIBuses().splitlines()
 
@@ -379,7 +382,7 @@ def removeUserOrGroupFromBus ( busName, userName, groupName ):
 # Procedure:  	toggleSIBService
 # Description:	Enable/Disable SIB Service for a server
 #****************************************************************************** 
-def toggleSIBService ( nodeName, serverName, flag ):
+def toggleSIBService(nodeName, serverName, flag):
 
 	#-----------------------------------------------------------------------------
 	# Enable/Disable the SIB Service

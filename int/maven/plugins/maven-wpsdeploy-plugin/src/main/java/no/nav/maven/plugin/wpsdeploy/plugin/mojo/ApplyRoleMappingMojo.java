@@ -23,7 +23,7 @@ public class ApplyRoleMappingMojo extends WebsphereUpdaterMojo {
 		}
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("RoleMapping.py");
+		arg.setLine("RoleMapping.py " + authorizationConsXmlPath);
 		wsadminCommandLine.addArg(arg);
 
 		executeCommand(wsadminCommandLine);

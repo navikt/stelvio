@@ -19,7 +19,9 @@
 							<!-- <generate-resources> phase runs the "load-properties" plugin in the deploy pom.xml -->
 							<compile>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,	<!-- lib/fileMapPath.py (auto generated)-->
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:generate-jython-path-script,	<!-- lib/configurationPaths.py 
+																											& lib/deployEnviromentUtil.py(auto generated) -->
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:dependency-identifier,	<!-- DependencyIdentifier.py -->
 							</compile>
 							<deploy>

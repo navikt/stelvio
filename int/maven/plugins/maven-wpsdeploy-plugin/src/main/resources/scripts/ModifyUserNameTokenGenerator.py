@@ -1,19 +1,20 @@
 import sys
 from lib.saveUtil import save
-import lib.Utils as Utils
+from lib.javaPropertiesUtil import PropertiesReader
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-enviromentPropertyFile = sys.argv[1]
+enviromentPropertyPath = sys.argv[1]
 
-Utils.readProperties(enviromentPropertyFile)
+propReader = PropertiesReader()
+propReader.load(enviromentPropertyPath)
 
-policySetBindingsList = Utils.getProperty('policySetBindings').split(',')
-policySetBindingsUsersList = Utils.getProperty('policySetBindingsUsers').split(',')
-policySetBindingsPasswordsList = Utils.getProperty('policySetBindingsPasswords').split(',')
+policySetBindingsList = propReader.get('policySetBindings').split(',')
+policySetBindingsUsersList = propReader.get('policySetBindingsUsers').split(',')
+policySetBindingsPasswordsList = propReader.get('policySetBindingsPasswords').split(',')
 
 if not (len(policySetBindingsList) == len(policySetBindingsUsersList) == len(policySetBindingsPasswordsList)):
-	l.error('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with equal number or values!')
+	l.error('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with an equal number or values!')
 
 def main():
 	for i in range(len(policySetBindingsList)):

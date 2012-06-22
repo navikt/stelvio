@@ -137,7 +137,6 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 			}
 
 			installationRecepies.close();
-			createJythonDeployDependenciesPathPathScript(deployDependencies);
 
 			if(allArtifacts.isEmpty()){
 				throw new IllegalArgumentException("allArtifacts variabelen kan ikke være tom!\nSjekk at buss versjonen du forsøker å deploye eksisterer.");
@@ -199,23 +198,6 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 
 	private void addArtifactToInstallationRecepies(Artifact artifact, BufferedWriter installationRecepies) throws IOException {
 		installationRecepies.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False,False\n");
-	}
-
-	private void createJythonDeployDependenciesPathPathScript(String installRecepiesScriptPath) throws MojoExecutionException {
-		String generatedJythonScriptPath = jythonScriptsDirectory +"/lib/deployDependenciesPath.py"; //Change the name of the empty placeholder script in the lib folder if you change this name
-		
-		String script = "def getPath(): return '"+ installRecepiesScriptPath +"'";
-
-		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(generatedJythonScriptPath));
-			try{
-				bw.write(script);
-			} finally {
-				bw.close();
-			}
-		} catch (IOException e) {
-			throw new MojoExecutionException("[ERROR generating jython script]: " + e);
-		}
 	}
 
 	@Override

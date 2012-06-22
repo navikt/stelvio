@@ -7797,6 +7797,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractBusConfigMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractModulesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractScriptsMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/GenerateJythonPathScriptsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/InterpolatorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/LoadEnvironmentConfigurationMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ModifyMaxFailedDeliveriesMojo.java -text
@@ -7842,16 +7843,16 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/applicat
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/assertions.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/businessProcesses.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployDependenciesPath.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/configurationPaths.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployEnviromentUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environment.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptionUtil.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/getConfiguration.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/ibmfixes.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/javaPropertiesUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/models.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/moduleConfigPath.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/namingConventionLogic.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/parseConfiguration.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/policySetAttachmentUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/resources.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/saveUtil.py -text

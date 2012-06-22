@@ -1,9 +1,9 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.ConfigurationException;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.MojoLauncher;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
 
@@ -22,23 +22,24 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class InterpolatorMojo extends WebsphereUpdaterMojo {
 
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-		
-		String tmpEnvironmentFile = tmpBusConfigurationExtractDirectory + "/environments/" + environment + ".properties";
-		
+
+		File tmpEnvironmentDir = new File(tmpEnvironmentPropertiesPath);
+System.out.println(tmpEnvironmentPropertiesPath); //TODO: remove!
 		try {
-			PropertyUtils pf = new PropertyUtils(tmpEnvironmentFile, project);
-			if(pf.getProperty("envClass") == null){
-				throw new ConfigurationException("The envClass property can't be null!");
+			PropertyUtils pf = new PropertyUtils(project);
+			for(String propFile : tmpEnvironmentDir.list()){
+				pf.loadFile(tmpEnvironmentDir.getAbsolutePath() + "/" + propFile);
 			}
+
 			pf.exposeProperty("envClass", false);
-			
+
 		} catch (FileNotFoundException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (IOException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		}
-		
-		MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
+
+		MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager, tmpTemplatesPath, tmpApplicationPropertiesPath, tmpEnvironmentPropertiesPath);
 	}
 
 	protected String getGoalPrettyPrint() {

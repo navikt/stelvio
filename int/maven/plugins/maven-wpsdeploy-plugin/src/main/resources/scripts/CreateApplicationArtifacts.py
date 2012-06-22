@@ -33,6 +33,7 @@ import sys, re
 
 from lib.saveUtil import save
 import lib.scaModuleUtil as sca
+from lib.deployEnviromentUtil import getEnviroment
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
@@ -40,9 +41,12 @@ from lib.environment import createNameSpaceBinding, createSharedLibrary
 from lib.resources import installResourceAdapter, createJ2CConnectionFactory, createDataSource, createJDBCProvider, createJMSActivationSpec, createJMSConnectionFactory, createJMSQueue, createJMSTopic, createMQConnectionFactory, createMQDestination, createSharedLibrary
 from lib.serviceIntegration import createSIBDestination
 
-ENVIRONMENT 	 	 = sys.argv[1]
-APP_PROPS_HOME 		 = sys.argv[2]
+ENVIRONMENT 	 	 = getEnviroment()
+APP_PROPS_HOME 		 = sys.argv[1]
 
+l.debug('Got "%s" as the directory containing the application properties' % APP_PROPS_HOME)
+
+APP_PROPS_HOME += "/"
 
 ############### Main Section ###############################################
 
@@ -58,7 +62,7 @@ for scaModule in sca.getModulesToBeInstalled():
 	try:
 		# Use Java to load it, it is a properties file
 		fileprop = Properties()
-		fileStream = FileInputStream(APP_PROPS_HOME+APPLICATION_NAME +".properties")
+		fileStream = FileInputStream(APP_PROPS_HOME + "/" + APPLICATION_NAME + ".properties")
 		
 		fileprop.load(fileStream)
 		configNames = fileprop.propertyNames()

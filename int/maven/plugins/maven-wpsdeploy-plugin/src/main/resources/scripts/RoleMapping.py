@@ -16,11 +16,12 @@ from lib.saveUtil import save
 from lib.timerUtil import Timer
 import lib.scaModuleUtil as sca
 import lib.logUtil as log
-import lib.getConfiguration as getConfiguration
+from lib.parseConfiguration import parseAuthorizationConfiguration
 l = log.getLogger(__name__)
 
 def main():
-	roles = getConfiguration.getRoles()
+	roleMappingFile = sys.argv[1]
+	roles = parseAuthorizationConfiguration(roleMappingFile)
 	l.debug('Got roles:', roles)
 	scaModulesToBeInstalled = sca.getModulesToBeInstalled()
 	

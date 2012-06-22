@@ -3,6 +3,8 @@ package no.nav.maven.plugin.wpsdeploy.plugin.utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.ConfigurationException;
@@ -12,22 +14,19 @@ import org.apache.maven.project.MavenProject;
 /**
  * Utility class for handling properties during the execution
  * 
- * @author test@example.com
  */
 
 public class PropertyUtils {
 	
 	private MavenProject project;
 	private Properties properties; 
-	private String fileLocation;
+	private List<String> fileLocations;
 	
-	public PropertyUtils(String fileLocation, MavenProject project) throws FileNotFoundException, IOException{
-		
+	public PropertyUtils(MavenProject project) throws FileNotFoundException, IOException{
 		this.project = project;
-		this.fileLocation = fileLocation;
+		this.fileLocations = new ArrayList<String>();
 		
 		properties = new Properties();
-		properties.load(new FileInputStream(fileLocation));
 	}
 	
 	public String getProperty(String key){
@@ -37,7 +36,7 @@ public class PropertyUtils {
 		if (fetchedProperty != null){
 			return fetchedProperty;
 		} else {
-			throw new ConfigurationException("[ERROR] Unable to find property, " + key + " in file " + fileLocation);
+			throw new ConfigurationException("[ERROR] Unable to find property, " + key);
 		}
 	}
 	
@@ -59,5 +58,10 @@ public class PropertyUtils {
 			System.out.println("[INFO] Exposed property [" + key + ",*****]");
 		else
 			System.out.println("[INFO] Exposed property [" + key + "," + value + "]");
+	}
+	
+	public void loadFile(String fileLocation) throws FileNotFoundException, IOException{
+		properties.load(new FileInputStream(fileLocation));
+		this.fileLocations.add(fileLocation);
 	}
 }

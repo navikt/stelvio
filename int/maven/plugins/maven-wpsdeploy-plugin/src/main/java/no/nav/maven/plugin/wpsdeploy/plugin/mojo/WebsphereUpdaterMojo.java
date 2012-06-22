@@ -2,6 +2,7 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
@@ -55,10 +56,22 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String environment;
 
 	/**
-	 * @parameter expression="${bus-configuration-version}"
+	 * @parameter expression="${esb-authorization-configuration}"
 	 * @required
 	 */
-	protected String busConfigurationVersion;
+	protected String authorizationConfigurationVersion;
+
+	/**
+	 * @parameter expression="${esb-enviroment-configuration}"
+	 * @required
+	 */
+	protected String enviromentConfigurationVersion;
+
+	/**
+	 * @parameter expression="${esb-enviroment-configuration}"
+	 * @required
+	 */
+	protected String nonenviromentConfigurationVersion;
 	
 	/**
 	 * @parameter expression="${envClass}"
@@ -99,27 +112,72 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @parameter expression="${logging.level}"
 	 */
 	private String logLevel;
-	protected String targetDirectory;
-	protected String environmentFile;
-	protected String moduleConfigHome;
-	protected String busConfigurationDirectory;
-	protected String tmpBusConfigurationExtractDirectory;
-	protected String jythonScriptsDirectory;
+	
+	/* 
+	 * path/dir variables:
+	 * path = full path
+	 * dir = a single directory without path
+	 */
+
+	/* general */
+	protected List<String> configurationParts = new ArrayList<String>();
+	protected String jythonScriptsPath;
 	protected String pathMappingFilePath;
 	protected String deployDependencies;
+	protected String busConfigurationExtractPath;
 
+	/* tmp */
+	protected String tmpTemplatesPath;
+	protected String tmpEnvironmentPropertiesPath;
+	protected String tmpApplicationPropertiesPath;
+	
+	/* after interpolation */
+	protected String blaGroupsPath;
+	protected String moduleConfigPath;
+	protected String environmentPropertiesPath;
+	protected String applicationPropertiesPath;	
+	protected String activationspecificationsPath;
+	protected String authorizationConsXmlPath;
+	
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
 	
+	@SuppressWarnings("unused")
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
-		tmpBusConfigurationExtractDirectory = baseDirectory + "/target/tmp";
-		targetDirectory = baseDirectory + "/target";
-		busConfigurationDirectory = baseDirectory + "/target/bus-config";
-		moduleConfigHome = busConfigurationDirectory + "/moduleconfig";
-		environmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
-		jythonScriptsDirectory = targetDirectory + "/scripts";
-		pathMappingFilePath = targetDirectory + "/pathMappings.csv";
+		/* ESB Configuration parts */
+		String authorizationConfiguration = "esb-authorization-configuration";
+		String enviromentConfiguration = "esb-enviroment-configuration";
+		String nonenviromentConfiguration = "esb-nonenviroment-configuration";
+		
+		configurationParts.add(authorizationConfiguration);
+		configurationParts.add(enviromentConfiguration);
+		configurationParts.add(nonenviromentConfiguration);
+
+		String busConfigurationPath = targetDirectory + "/bus-config";
+		busConfigurationExtractPath = targetDirectory + "/tmp";
+		jythonScriptsPath = targetDirectory + "/scripts";
 		deployDependencies = targetDirectory + "/EarFilesToDeploy.csv";
+		
+		/* tmp bus configuration dirs */
+		String tmpAuthorizationConfigurationPath = busConfigurationExtractPath + "/" + authorizationConfiguration;
+		String tmpEnviromentConfigurationPath = busConfigurationExtractPath + "/" + enviromentConfiguration;
+		String tmpNonenviromentConfigurationPath = busConfigurationExtractPath + "/" + enviromentConfiguration;
+				
+		tmpTemplatesPath = tmpEnviromentConfigurationPath + "/templates";
+		tmpEnvironmentPropertiesPath = tmpEnviromentConfigurationPath + "/properties/" + environment;
+		tmpApplicationPropertiesPath = tmpEnviromentConfigurationPath + "/app_props";
+		
+		/* dirs after interpolation (a plugin in the pom inserts passwords and copys the config to a new dir)*/
+		String authorizationConfigurationPath = busConfigurationPath + "/" + authorizationConfiguration;
+		String enviromentConfigurationPath = busConfigurationPath + "/" + enviromentConfiguration;
+		String nonenviromentConfigurationPath = busConfigurationPath + "/" + nonenviromentConfiguration;
+		
+		environmentPropertiesPath = enviromentConfigurationPath + "/properties/" + environment;
+		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + environment;
+		blaGroupsPath = busConfigurationPath + "/BLA-groups";
+		moduleConfigPath = enviromentConfigurationPath + "/moduleconfig";
+		activationspecificationsPath = nonenviromentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
+		authorizationConsXmlPath = authorizationConfigurationPath + "/" + envClass + ".xml";
 		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
@@ -131,7 +189,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		args.add("-user " + dmgrUsername);
 		args.add("-password " + dmgrPassword);
 		
-		String javaoption = "-Dpython.path="+ jythonScriptsDirectory;
+		String javaoption = "-Dpython.path="+ jythonScriptsPath;
 		
 		if (logLevel != null){
 			javaoption += " -Dlogging.level="+ logLevel;
@@ -139,7 +197,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		
 		args.add("-javaoption '"+ javaoption +"'");
 		
-		args.add("-f " + jythonScriptsDirectory + "/Executor.py");
+		args.add("-f " + jythonScriptsPath + "/Executor.py");
 
 		for(String arg : args){
 			Commandline.Argument cmdArg = new Commandline.Argument();
@@ -148,29 +206,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		}
 		
 		applyToWebSphere(wsadminCommandLine);
-	}
-
-	protected File getConfigurationFile(String env, String fileName, String moduleConfigPath) {
-
-		File file = new File(moduleConfigPath + "/" + envClass + "/" + env + "/" + fileName);
-
-		if (file.exists()) {
-			return file;
-		}
-
-		file = new File(moduleConfigPath + "/" + envClass + "/" + fileName);
-
-		if (file.exists()) {
-			return file;
-		}
-
-		file = new File(moduleConfigPath + "/" + fileName);
-
-		if (file.exists()) {
-			return file;
-		}
-
-		return null;
 	}
 
 	protected boolean isConfigurationLoaded(){

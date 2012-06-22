@@ -11,11 +11,38 @@ import org.apache.maven.project.MavenProject;
  */
 public class MojoLauncher {
 
-	public static final void executePropertiesGeneratorMojo(final MavenProject project, final MavenSession session, final PluginManager pluginManager) throws MojoExecutionException,
-			MojoFailureException {
-		MojoExecutor.executeMojo(MojoExecutor.plugin(MojoExecutor.groupId("no.nav.maven.plugins"), MojoExecutor.artifactId("maven-propertiesgenerator-plugin"), MojoExecutor.version("1.6")), MojoExecutor
-				.goal("generate"), MojoExecutor.configuration(MojoExecutor.element(MojoExecutor.name("templateDir"), "${basedir}/target/tmp/templates"), MojoExecutor.element(MojoExecutor
-				.name("environmentName"), "${environment}"), MojoExecutor.element(MojoExecutor.name("outputDir"), "${basedir}/target/tmp/app_props"), MojoExecutor.element(MojoExecutor
-				.name("environmentDir"), "${basedir}/target/tmp/environments")), MojoExecutor.executionEnvironment(project, session, pluginManager));
+	public static final void executePropertiesGeneratorMojo(final MavenProject project, final MavenSession session, final PluginManager pluginManager, String tmpTemplatesPath, String tmpApplicationPropertiesPath, String tmpEnvironmentPropertiesPath) throws MojoExecutionException,
+	MojoFailureException {
+		MojoExecutor.executeMojo(
+				MojoExecutor.plugin(
+						MojoExecutor.groupId("no.nav.maven.plugins"),
+						MojoExecutor.artifactId("maven-propertiesgenerator-plugin"),
+						MojoExecutor.version("2.0")
+						),
+						MojoExecutor.goal("generate"),
+						MojoExecutor.configuration(
+								MojoExecutor.element(
+										MojoExecutor.name("templateDir"),
+										tmpTemplatesPath
+										),
+										MojoExecutor.element(
+												MojoExecutor.name("environmentName"),
+												"${environment}"
+												),
+												MojoExecutor.element(
+														MojoExecutor.name("outputDir"),
+														tmpApplicationPropertiesPath
+														),
+														MojoExecutor.element(
+																MojoExecutor.name("environmentDir"),
+																tmpEnvironmentPropertiesPath
+																)
+								),
+								MojoExecutor.executionEnvironment(
+										project,
+										session,
+										pluginManager
+										)
+				);
 	}
 }

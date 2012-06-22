@@ -26,36 +26,37 @@
 # Description:	Create a name space binding. If it already exists, modify it.
 #****************************************************************************** 
 import sys
+from lib.javaPropertiesUtil import PropertiesReader
 
-from lib.utils6 import findConfigTargetWithScope, findNode, findScopeEntry, findServer, findServerOnNode, getConfigId, getConfigItemId, getProperty, readProperties, wsadminToList
-from lib.Utils import readProperties, getProperty
+from lib.utils6 import findConfigTargetWithScope, findNode, findScopeEntry, findServer, findServerOnNode, getConfigId, getConfigItemId, wsadminToList
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-def createNameSpaceBinding ( propertyFileName ):
+def createNameSpaceBinding(propertiesPath):
 	
-	readProperties( propertyFileName )
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	bindingType =		getProperty("BINDING_TYPE")
-	bindingId =		getProperty("BINDING_IDENTIFIER")
-	nameSpace =		getProperty("NAME_IN_NAMESPACE")
+	bindingType =		propReader.get("BINDING_TYPE")
+	bindingId =		propReader.get("BINDING_IDENTIFIER")
+	nameSpace =		propReader.get("NAME_IN_NAMESPACE")
 	
-	stringVal =		getProperty("STRING_VALUE")
+	stringVal =		propReader.get("STRING_VALUE")
 
-	jndiName =		getProperty("JNDI_NAME")
-	ejbLocation =		getProperty("EJB_LOCATION")
-	serverName =		getProperty("SERVER_NAME")
-	serverNode =		getProperty("SERVER_NODE")
+	jndiName =		propReader.get("JNDI_NAME")
+	ejbLocation =		propReader.get("EJB_LOCATION")
+	serverName =		propReader.get("SERVER_NAME")
+	serverNode =		propReader.get("SERVER_NODE")
 
-	corbaURL =		getProperty("CORBA_URL")
-	fedContext =		getProperty("FEDERATED_CONTEXT")
+	corbaURL =		propReader.get("CORBA_URL")
+	fedContext =		propReader.get("FEDERATED_CONTEXT")
 
-	providerURL =		getProperty("PROVIDER_URL")
+	providerURL =		propReader.get("PROVIDER_URL")
 
 	global AdminConfig
 
@@ -215,29 +216,30 @@ def createNameSpaceBinding ( propertyFileName ):
 # Procedure:  	deleteNameSpaceBinding
 # Description:	Create a name space binding. If it already exists, modify it.
 #****************************************************************************** 
-def deleteNameSpaceBinding ( propertyFileName ):
+def deleteNameSpaceBinding(propertiesPath):
 	
-	readProperties( propertyFileName )
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	scope =			getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope =			propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	bindingType =		getProperty("BINDING_TYPE")
-	bindingId =		getProperty("BINDING_IDENTIFIER")
-	nameSpace =		getProperty("NAME_IN_NAMESPACE")
+	bindingType =		propReader.get("BINDING_TYPE")
+	bindingId =		propReader.get("BINDING_IDENTIFIER")
+	nameSpace =		propReader.get("NAME_IN_NAMESPACE")
 	
-	stringVal =		getProperty("STRING_VALUE")
+	stringVal =		propReader.get("STRING_VALUE")
 
-	jndiName =		getProperty("JNDI_NAME")
-	ejbLocation =		getProperty("EJB_LOCATION")
-	serverName =		getProperty("SERVER_NAME")
-	serverNode =		getProperty("SERVER_NODE")
+	jndiName =		propReader.get("JNDI_NAME")
+	ejbLocation =		propReader.get("EJB_LOCATION")
+	serverName =		propReader.get("SERVER_NAME")
+	serverNode =		propReader.get("SERVER_NODE")
 
-	corbaURL =		getProperty("CORBA_URL")
-	fedContext =		getProperty("FEDERATED_CONTEXT")
+	corbaURL =		propReader.get("CORBA_URL")
+	fedContext =		propReader.get("FEDERATED_CONTEXT")
 
-	providerURL =		getProperty("PROVIDER_URL")
+	providerURL =		propReader.get("PROVIDER_URL")
 
 	global AdminConfig
 	l.info('(deleteNameSpaceBinding): Delete Name Space Binding '+bindingId)
@@ -341,20 +343,21 @@ def deleteNameSpaceBinding ( propertyFileName ):
 # Procedure:  	createReplicationDomain
 # Description:	Create a Replication Domain
 #****************************************************************************** 
-def createReplicationDomain ( propertyFileName ):
+def createReplicationDomain(propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 	
-	repName =		getProperty("REP_NAME")
-	requestTimeout =	getProperty("REQUEST_TIMEOUT")
-	encryptType =		getProperty("ENCRYPT_TYPE")
-	numReplicas =		getProperty("NO_OF_REPLICAS")
-	drsSize = 		getProperty("DRS_SIZE")
-	drsPartition =		getProperty("DRS_PARTITION_ON_ENTRY")
-	entrySerial =		getProperty("ENTRY_SERIAL_KIND")
-	propertySerial =	getProperty("PROPERTY_SERIAL_KIND")
-	poolConn =		getProperty("POOL_CONNECTIONS")
-	poolSize =		getProperty("POOL_SIZE") 
+	repName =		propReader.get("REP_NAME")
+	requestTimeout =	propReader.get("REQUEST_TIMEOUT")
+	encryptType =		propReader.get("ENCRYPT_TYPE")
+	numReplicas =		propReader.get("NO_OF_REPLICAS")
+	drsSize = 		propReader.get("DRS_SIZE")
+	drsPartition =		propReader.get("DRS_PARTITION_ON_ENTRY")
+	entrySerial =		propReader.get("ENTRY_SERIAL_KIND")
+	propertySerial =	propReader.get("PROPERTY_SERIAL_KIND")
+	poolConn =		propReader.get("POOL_CONNECTIONS")
+	poolSize =		propReader.get("POOL_SIZE") 
 
 	l.info('===== Create Replication Domain '+repName+' if it does not exist  =====')
 
@@ -409,19 +412,20 @@ def createReplicationDomain ( propertyFileName ):
 # Procedure:  	createReplicator
 # Description:	Create a Replicator
 #****************************************************************************** 
-def createReplicator ( propertyFileName ):
+def createReplicator(propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 
-	domainName =	getProperty("REP_DOMAIN_NAME")
-	brokerName =	getProperty("BROKER_NAME")
-	clientHost =	getProperty("CLIENT_HOST")
-	clientPort =	getProperty("CLIENT_PORT")
-	brokerHost =	getProperty("BROKER_HOST")
-	brokerPort =	getProperty("BROKER_PORT")
-	nodeName =		getProperty("NODE_NAME")
-	serverName =	getProperty("SERVER_NAME")
-	enable = 		getProperty("ENABLE")
+	domainName =	propReader.get("REP_DOMAIN_NAME")
+	brokerName =	propReader.get("BROKER_NAME")
+	clientHost =	propReader.get("CLIENT_HOST")
+	clientPort =	propReader.get("CLIENT_PORT")
+	brokerHost =	propReader.get("BROKER_HOST")
+	brokerPort =	propReader.get("BROKER_PORT")
+	nodeName =		propReader.get("NODE_NAME")
+	serverName =	propReader.get("SERVER_NAME")
+	enable = 		propReader.get("ENABLE")
 
 	l.info('===== Create Replicator '+brokerName+' if it does not exist  =====')
 
@@ -497,19 +501,20 @@ def createReplicator ( propertyFileName ):
 # Procedure:  	createSharedLibary
 # Description:	Create a Shared Library, if it exists already, modify it.
 #****************************************************************************** 
-def createSharedLibrary ( propertyFileName ):
+def createSharedLibrary(propertiesPath):
 
-	readProperties(propertyFileName)
+	propReader = PropertiesReader()
+	propReader.load(propertiesPath)
 	
-	scope = 		getProperty("SCOPE")
-	scopeName =		getProperty("SCOPE_NAME")
-	nodeName =		getProperty("NODE_NAME")
+	scope = 		propReader.get("SCOPE")
+	scopeName =		propReader.get("SCOPE_NAME")
+	nodeName =		propReader.get("NODE_NAME")
 	
-	libName =		getProperty("LIB_NAME")
-	libClassPath =	getProperty("LIB_CLASSPATH")
+	libName =		propReader.get("LIB_NAME")
+	libClassPath =	propReader.get("LIB_CLASSPATH")
 
-	libDesc =		getProperty("LIB_DESCRIPTION")
-	nativeLibPath =	getProperty("NATIVE_LIBPATH")
+	libDesc =		propReader.get("LIB_DESCRIPTION")
+	nativeLibPath =	propReader.get("NATIVE_LIBPATH")
 
 	global AdminConfig
 
@@ -595,7 +600,7 @@ def createSharedLibrary ( propertyFileName ):
 # Description:	Create a new variable in the variable map.  If it already 
 #			exists, it will modify the value. 
 #****************************************************************************** 
-def createWebSphereVariable ( scope, scopeName, nodeName, name, value ):
+def createWebSphereVariable(scope, scopeName, nodeName, name, value):
 
 	#------------------------------------------------------------------------------
 	# Create variable if it does not exist.  
@@ -666,7 +671,7 @@ def createWebSphereVariable ( scope, scopeName, nodeName, name, value ):
 # Description:	Remove a variable in the variable map.  If it does not exist, 
 #		      it will report that the value does not exist. 
 #****************************************************************************** 
-def removeWebSphereVariable ( scope, scopeName, nodeName, name ):
+def removeWebSphereVariable(scope, scopeName, nodeName, name):
 
         #------------------------------------------------------------------------------
 	# Remove variable if it exists.  

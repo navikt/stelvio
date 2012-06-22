@@ -1,8 +1,6 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
@@ -22,55 +20,21 @@ public class LoadEnvironmentConfigurationMojo extends WebsphereUpdaterMojo {
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		try {
-			exposeEnvironmentProperties();
+			File tmpEnvironmentPath = new File(environmentPropertiesPath);
+			PropertyUtils pf = new PropertyUtils(project);
+			for(String propFile : tmpEnvironmentPath.list()){
+				pf.loadFile(tmpEnvironmentPath.getAbsolutePath() + "/" + propFile);
+			}
+
+			pf.exposeProperty("envClass", false);
+			pf.exposeProperty("dmgrUsername", false);
+			pf.exposeProperty("dmgrPassword", true);
+			pf.exposeProperty("dmgrHostname", false);
+			pf.exposeProperty("dmgrSOAPPort", false);
+			pf.exposeProperty("linuxUser", false);
+			pf.exposeProperty("linuxPassword", true);
 		} catch (IOException e) {
 			throw new MojoFailureException(e.getMessage() + "\n[INFO]\n[INFO] Tip: Make sure you have extracted the bus configuration.");
-		}
-	}
-
-	// Get the properties from the environment file
-	protected void exposeEnvironmentProperties() throws FileNotFoundException, IOException {
-		
-		String environmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
-
-		PropertyUtils pf = new PropertyUtils(environmentFile, project);
-
-		pf.exposeProperty("envClass", false);
-		pf.exposeProperty("dmgrUsername", false);
-		pf.exposeProperty("dmgrPassword", true);
-		pf.exposeProperty("dmgrHostname", false);
-		pf.exposeProperty("dmgrSOAPPort", false);
-		pf.exposeProperty("linuxUser", false);
-		pf.exposeProperty("linuxPassword", true);
-		
-		createJythonDeployEnviromentUtilScript();
-		createJythonModuleConfigPathScript();
-	}	
-	
-	private void createJythonModuleConfigPathScript() throws IOException  {
-		String generatedJythonScriptPath = jythonScriptsDirectory +"/lib/moduleConfigPath.py"; //Change the name of the empty placeholder script in the lib folder if you change this name
-		
-		String script = "def getPath(): return '"+ moduleConfigHome +"'\n";
-
-		BufferedWriter bw = new BufferedWriter(new FileWriter(generatedJythonScriptPath));
-		try{
-			bw.write(script);
-		} finally {
-			bw.close();
-		}
-	}
-
-	private void createJythonDeployEnviromentUtilScript() throws IOException  {
-		String generatedJythonScriptPath = jythonScriptsDirectory +"/lib/deployEnviromentUtil.py"; //Change the name of the empty placeholder script in the lib folder if you change this name
-		
-		String script = "def getEnviroment(): return '"+ environment +"'\n" +
-				"def getEnvClass(): return '"+ envClass +"'\n";
-
-		BufferedWriter bw = new BufferedWriter(new FileWriter(generatedJythonScriptPath));
-		try{
-			bw.write(script);
-		} finally {
-			bw.close();
 		}
 	}
 

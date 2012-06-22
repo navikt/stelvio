@@ -20,7 +20,7 @@ public class CreateBlaGroupsMojo extends WebsphereUpdaterMojo {
 		}
 				
 		Commandline.Argument arg = new Commandline.Argument();;
-		arg.setLine("CreateBLAGroups.py " + busConfigurationDirectory + "/BLA-groups");
+		arg.setLine("CreateBLAGroups.py " + blaGroupsPath);
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}

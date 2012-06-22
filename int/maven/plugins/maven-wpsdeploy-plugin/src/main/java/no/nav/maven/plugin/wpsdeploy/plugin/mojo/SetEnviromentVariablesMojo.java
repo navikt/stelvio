@@ -42,7 +42,10 @@ public class SetEnviromentVariablesMojo extends WebsphereUpdaterMojo {
 
 			environmentVariables.add(da.getVariableName() + "=" + da.getVersion());
 		}
-		environmentVariables.add("BUS_CONFIGURATION_VERSION="+busConfigurationVersion);
+
+		environmentVariables.add("ESB_AUTHORIZATION_CONFIGURATION_VERSION=" + authorizationConfigurationVersion);
+		environmentVariables.add("ESB_ENVIROMENT_CONFIGURATION_VERSION=" + enviromentConfigurationVersion);
+		environmentVariables.add("ESB_NONENVIROMENT_CONFIGURATION_VERSION=" + nonenviromentConfigurationVersion);
 				
 		Commandline.Argument arg = new Commandline.Argument();
 		String environmentVariablesCSV = ArgumentUtil.listToDelimitedString(environmentVariables, ",");

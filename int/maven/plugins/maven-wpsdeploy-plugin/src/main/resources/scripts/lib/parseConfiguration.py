@@ -1,20 +1,17 @@
 import re, os
-import lib.moduleConfigPath as moduleConfigPath
 import lib.deployEnviromentUtil as env
 import lib.XMLUtil as XML
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-def getRoles():
-	consXmlPath = getAllXmlConfigFiles()['cons']
-	xml = XML.parseXML(consXmlPath)
-	
+def parseAuthorizationConfiguration(roleXmlPath):
+	xml = XML.parseXML(roleXmlPath)
 	rolesNode = xml.findFirst('roles')
 	
 	def getRolesData(node):
 		userNames = groupNames = runas = ""
 	
-		name = node.getChildValue('name')
+		roleName = node.getChildValue('name')
 		
 		usersNode = node.findFirst('users')
 		if usersNode:
@@ -28,16 +25,16 @@ def getRoles():
 		if runasNode:
 			runas = {'username': runasNode.getChildValue('username'), 'password': runasNode.getChildValue('password')}
 	
-		return name, {'users': userNames, 'groups': groupNames, 'runas': runas}
+		return roleName, {'users': userNames, 'groups': groupNames, 'runas': runas}
 
 	roles = dict(rolesNode.each(getRolesData))
 	
 	return roles
 	
-def getEndpoints():
+def parseEndpoints(moduleConfigPath):
 	moduleEndpoints = {}
 	importNameREGEX = re.compile('(?:/?sca/import/|)([^/]+)$')
-	for moduleName, configPath in getAllXmlConfigFiles().items():
+	for moduleName, configPath in getAllModuleConfigFiles(moduleConfigPath).items():
 		xml = XML.parseXML(configPath)
 		
 		endpointNodes = xml.findAll('endpoint')
@@ -58,29 +55,24 @@ def getEndpoints():
 			
 	return moduleEndpoints
 
-def getActivationspecifications():
+def parseActivationspecifications(activationspecificationsPath):
+	xml = XML.parseXML(activationspecificationsPath)
+	
 	moduleActivationspecifications = {}
-	for moduleName, configPath in getAllXmlConfigFiles().items():
-		xml = XML.parseXML(configPath)
-		
-		activationspecifications = xml.findAll('activationspecification')
-		if not activationspecifications:
-			continue
-			
-		for activationspecification in activationspecifications:
-			name = activationspecification.getChildValue('name')
-			maxconcurrency = activationspecification.getChildValue('maxconcurrency')
-			moduleActivationspecifications[name] = maxconcurrency
-			
+	for module in xml.findAll('module'):
+		moduleName = module.get()
+		maxconcurrency = module.attr('maxconcurrency')
+		moduleActivationspecifications[moduleName] = maxconcurrency
+	
 	return moduleActivationspecifications
 
-def getAllXmlConfigFiles():
+def getAllModuleConfigFiles(moduleConfigPath):
 	modules = {}
-	path = moduleConfigPath.getPath()
+	path = moduleConfigPath +'/'+ env.getEnvClass() +'/'+ env.getEnviroment()
 	extractXmlsFilePath(path, modules)
-	path = path +'/'+ env.getEnvClass()
+	path = moduleConfigPath +'/'+ env.getEnvClass()
 	extractXmlsFilePath(path, modules)
-	path = path +'/'+ env.getEnviroment()
+	path = moduleConfigPath
 	extractXmlsFilePath(path, modules)
 	return modules
 			
@@ -91,7 +83,7 @@ def extractXmlsFilePath(path, modulesDict):
 			if not modulesDict.has_key(moduleName):
 				modulesDict[moduleName] = path+'/'+fileName
 			else:
-				l.warning(moduleName, 'has multiple entrys in the busconfiguration, and because of that "%s/%s" was ignored!' % (path, fileName))
+				l.debug(moduleName, 'is also defined on a higner level and therfore will %s/%s be ignored!' % (path, fileName))
 	
 fileNameAndExtensionREGEX = re.compile('(.*)\.([^\.]+)$')
 def stripExtension(fileName):
