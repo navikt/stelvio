@@ -30,18 +30,21 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
-  
-    <distributionManagement>
+	  
+	<distributionManagement>
 		<repository>
-			<id>nav-maven2-internal-repo</id>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
+			<id>m2internal</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
 		</repository>
 		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<url>dav:http://e11apvl002.utv.internsone.local/repo</url>
+			<id>m2snapshot</id>
+			<name>NAV Maven2 Snapshot Repository</name>
+			<url>http://maven.adeo.no/nexus/content/repositories/m2snapshot</url>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
+
 
 	<scm>
 		<connection>
