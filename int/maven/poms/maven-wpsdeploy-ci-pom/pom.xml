@@ -103,9 +103,6 @@
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
 					<version>${wpsdeployVersion}</version> 
 					<configuration>
-						<moduleConfigurationArtifactName>
-							busconfiguration
-						</moduleConfigurationArtifactName>
 						<artifacts>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
@@ -149,21 +146,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
-					<version>1.6</version>
-					<configuration>
-						<templateDir>
-							${tmpExtractDir}/templates
-						</templateDir>
-						<environmentName>
-							${environment}
-						</environmentName>
-						<outputDir>
-							${tmpExtractDir}/app_props
-						</outputDir>
-						<environmentDir>
-							${tmpExtractDir}/environments
-						</environmentDir>
-					</configuration>
+					<version>2.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
