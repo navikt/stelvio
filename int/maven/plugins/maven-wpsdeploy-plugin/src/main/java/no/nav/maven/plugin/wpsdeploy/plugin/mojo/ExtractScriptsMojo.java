@@ -22,7 +22,7 @@ public class ExtractScriptsMojo extends WebsphereUpdaterMojo {
 		cl.setExecutable("unzip");
 		
 		Commandline.Argument cmdArg = new Commandline.Argument();
-		cmdArg.setLine(getJar().getAbsolutePath() + " -d " + targetDirectory + " scripts/*");
+		cmdArg.setLine(getJar().getAbsolutePath() + " -d -o '" + targetDirectory + "' scripts/*");
 		cl.addArg(cmdArg);
 		
 		executeCommand(cl);
