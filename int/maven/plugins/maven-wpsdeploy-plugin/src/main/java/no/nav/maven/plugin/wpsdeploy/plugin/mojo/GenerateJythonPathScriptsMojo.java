@@ -57,6 +57,6 @@ public class GenerateJythonPathScriptsMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Resolve which modules to install and deploy resources for";
+		return "Generate the dynamic jython scripts?";
 	}
 }

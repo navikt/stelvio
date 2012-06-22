@@ -174,7 +174,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		
 		environmentPropertiesPath = enviromentConfigurationPath + "/properties/" + environment;
 		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + environment;
-		blaGroupsPath = busConfigurationPath + "/BLA-groups";
+		blaGroupsPath = nonenviromentConfigurationPath + "/BLA-groups";
 		moduleConfigPath = enviromentConfigurationPath + "/moduleconfig";
 		activationspecificationsPath = nonenviromentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
 		authorizationConsXmlPath = authorizationConfigurationPath + "/" + envClass + ".xml";
