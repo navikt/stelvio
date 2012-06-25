@@ -18,18 +18,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>blockBuildWhenDownstreamBuilding</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-tasks-TasksPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>blockBuildWhenDownstreamBuilding</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
@@ -51,12 +51,6 @@
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
-    </entry>
-    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -66,14 +60,20 @@
       </base-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -106,14 +106,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -139,18 +139,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>cleanWorkspaceRequired</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>cleanWorkspaceRequired</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -174,6 +174,13 @@
       </external-property>
     </entry>
     <entry>
+      <string>hudson-tasks-JavadocArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
         <originalValue class="hudson.util.CopyOnWriteList">
@@ -187,6 +194,7 @@
                     <string>secgw</string>
                     <string>partner-gw</string>
                     <string>portal-gw</string>
+                    <string>tms-gw</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -222,13 +230,6 @@
       </copy-write-list-property>
     </entry>
     <entry>
-      <string>hudson-tasks-JavadocArchiver</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>join-JoinTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -243,17 +244,17 @@
       </external-property>
     </entry>
     <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
-    </entry>
-    <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -292,6 +293,9 @@
             <command>if [ &quot;${Gateway}&quot; == &quot;portal-gw&quot; ]; then
 echo &quot;Using portal-gw POM&quot;
 wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/portal-gw-deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
+elif [ &quot;${Gateway}&quot; == &quot;tms-gw&quot; ]; then
+echo &quot;Using tms-gw POM&quot;
+wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/tms-gw-deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
 else
 echo &quot;Using regular POM&quot;
 wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
@@ -305,14 +309,14 @@ mvn clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -359,6 +363,13 @@ mvn clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv
       </trigger-property>
     </entry>
     <entry>
+      <string>hudson-plugins-cigame-GamePublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -366,7 +377,7 @@ mvn clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -378,13 +389,6 @@ mvn clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv
         <originalValue class="hudson.scm.NullSCM"/>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
