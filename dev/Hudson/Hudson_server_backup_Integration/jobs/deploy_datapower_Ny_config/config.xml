@@ -186,8 +186,8 @@
                 <description></description>
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
-                    <string>secgw</string>
                     <string>partner-gw</string>
+                    <string>secgw</string>
                     <string>portal-gw</string>
                   </a>
                 </choices>
@@ -202,7 +202,12 @@
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
               <hudson.model.StringParameterDefinition>
-                <name>BusConfigVersion</name>
+                <name>EnvironmentConfigVersion</name>
+                <description></description>
+                <defaultValue></defaultValue>
+              </hudson.model.StringParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>NonenvironmentConfigVersion</name>
                 <description></description>
                 <defaultValue></defaultValue>
               </hudson.model.StringParameterDefinition>
@@ -288,11 +293,11 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
+            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pomNy.xml?op=dl\&amp;rev=${DatapowerPomRevision}
 
 EnvironmentClass=${Environment:0:1}
 
-mvn clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Dbus-configuration-version=${BusConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
+mvn clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>

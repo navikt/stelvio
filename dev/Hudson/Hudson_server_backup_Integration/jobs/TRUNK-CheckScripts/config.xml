@@ -420,7 +420,7 @@ esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/e
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
