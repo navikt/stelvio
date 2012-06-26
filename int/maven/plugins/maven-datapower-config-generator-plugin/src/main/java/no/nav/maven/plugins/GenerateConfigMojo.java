@@ -139,7 +139,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * @readonly
 	 * @required
 	 */
-	private String gateway;	
+	private String gatewayName;	
 	
 	/**
 	 * 
@@ -182,7 +182,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		wsdlFilesDirectory.mkdir();
 		unArchiver.setDestDirectory(wsdlFilesDirectory);
 		
-		File propertiesFile = new File(project.getBasedir(), "target/dependency/busconfiguration-jar/datapower/" + gateway+ "/src/main/filters/main.properties");
+		File propertiesFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
 		File tempDir = new File(project.getBasedir(), "target/temp");
@@ -443,7 +443,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
 		// Prepare for fremarker template processing
-		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/busconfiguration-jar/datapower/" + gateway + "/src/main/freemarker-templates"));
+		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/freemarker-templates"));
 		// Open file for writing
 		FileWriter writer = new FileWriter(configFile);
 		// Process main template

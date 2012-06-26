@@ -64,6 +64,12 @@ public class GetVersionsMojo extends AbstractMojo {
 		 * @required
 		 */
 		protected String env;
+		
+		/**
+		 * @parameter expression="${gateway-name}"
+		 * @required
+		 */
+		protected String gatewayName;
 
 		/**
 		 * @parameter expression="${project.build.directory}"
@@ -173,7 +179,7 @@ public class GetVersionsMojo extends AbstractMojo {
 			//Retrieving necessary properties for running wsadmin command on wps dmgr from busconfiguration:  
 			Properties properties = new Properties();
 			try {
-				properties.load(new FileInputStream(project.getBasedir() + "/target/dependency/busconfiguration-jar/environments/" + env.toUpperCase() + ".properties"));
+				properties.load(new FileInputStream(project.getBasedir() + "/target/dependency/" + gatewayName + "-environment-configuration-jar/" + env.toUpperCase() + ".properties"));
 			} catch (IOException e) {
 				throw new MojoExecutionException("[ERROR]: " + "No properties found: " + e);
 			}
