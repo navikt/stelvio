@@ -189,6 +189,7 @@
                     <string>partner-gw</string>
                     <string>secgw</string>
                     <string>portal-gw</string>
+                    <string>tms-gw</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -293,7 +294,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pomNy.xml?op=dl\&amp;rev=${DatapowerPomRevision}
+            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
 
 EnvironmentClass=${Environment:0:1}
 
