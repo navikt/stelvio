@@ -242,7 +242,8 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>cd /mnt/remotehudson/SYSMODWorkspace
+            <command>mount -t cifs //a34drvw005.devillo.no/RemoteHudson -o username=srvintegrasjon,integrasjon1234 /mnt/remotehudson
+cd /mnt/remotehudson/SYSMODWorkspace
 curl -u jira-batch:6ldyGEuf &quot;http://jira.adeo.no/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?jqlQuery=project%3DSYSMOD+and+status+!%3D+Rejected&amp;tempMax=5000&quot; &gt; SYSMODUttrekk.xml</command>
           </hudson.tasks.Shell>
         </originalValue>

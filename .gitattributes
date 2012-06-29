@@ -1139,6 +1139,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-EUInstitusjon_CI/
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Enhet_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Familieforhold_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Fullmakt_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-HPLIVEJournalbehandling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Henvendelse_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Henvendelsebehandling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Informasjonsgrunnlag_CI/config.xml -text
