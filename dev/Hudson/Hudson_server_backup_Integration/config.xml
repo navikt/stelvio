@@ -269,6 +269,9 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>CI-buss-pom_sync</string>
+        <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
+        <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
+        <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
         <string>CI-wpsdeploy-pom_sync</string>
         <string>Fixpack repo monitor</string>
@@ -322,6 +325,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>deploy_datapower_service-gw</string>
+        <string>release_datapower-config</string>
       </jobNames>
       <jobFilters/>
       <columns>

@@ -85,11 +85,11 @@
         <originalValue class="hudson.plugins.descriptionsetter.DescriptionSetterPublisher">
           <regexp></regexp>
           <regexpForFailed></regexpForFailed>
-          <description>Busconfig ${BusConfigVersion} -&gt; ${Gateway}-${Environment}</description>
+          <description>Envconfig ${EnvironmentConfigVersion}, nonenvconfig ${NonenvironmentConfigVersion} -&gt; ${Gateway}-${Environment}</description>
           <setForMatrix>false</setForMatrix>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>

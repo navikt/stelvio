@@ -200,7 +200,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com test@example.com</recipientList>
+          <recipientList>test@example.com,test@example.com</recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -212,6 +212,16 @@
                 <sendToRecipientList>true</sendToRecipientList>
               </email>
             </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>false</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
             <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
               <email>
                 <recipientList></recipientList>
@@ -228,7 +238,7 @@
           <defaultContent>$DEFAULT_CONTENT</defaultContent>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -272,6 +282,7 @@
 find -name ibm-deploy.scaj2ee -print -exec false {} +
 find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
 esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
+esb/esb-tools/esb-scripts/bin/cons_xml_check.py
 esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
 esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
@@ -420,7 +431,7 @@ esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/e
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>

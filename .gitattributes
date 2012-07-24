@@ -1105,6 +1105,9 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_pensjon-tjenestespe
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hudson[!!-~]configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/EESSI_nav/config.xml -text
@@ -1240,6 +1243,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discov
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_wps_withRevision/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/g115484_test_dokumentbestilling-soapui-stub/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/oppkoblingstest/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/release_datapower-config/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_incubator_stelvio_example/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_incubator_stelvio_example_echo/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_incubator_stelvio_example_echo_service_specification/config.xml -text
