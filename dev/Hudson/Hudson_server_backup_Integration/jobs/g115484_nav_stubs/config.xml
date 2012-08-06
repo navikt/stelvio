@@ -243,7 +243,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>service dokumentbestilling-stub restart</command>
+            <command>service nav-stubs restart</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
@@ -323,7 +323,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/dokumentbestilling/nav-dokumentbestilling-test</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav</remote>
               <local>.</local>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
