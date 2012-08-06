@@ -6,7 +6,7 @@
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-wps-library-pom</artifactId>
 		<version>2.1.9</version>
-		<relativePath/>
+		<relativePath>../maven/poms/maven-wps-poms/maven-wps-library-pom</relativePath>
 	</parent>
 
 	<groupId>no.stelvio.int</groupId>
