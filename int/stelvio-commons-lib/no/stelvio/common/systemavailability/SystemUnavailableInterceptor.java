@@ -12,6 +12,7 @@ import java.util.logging.Level;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
+import no.stelvio.common.util.IOUtils;
 
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.ServiceUnavailableException;
@@ -58,8 +59,9 @@ public class SystemUnavailableInterceptor extends GenericInterceptor {
 
 	private Properties getServiceUnavailableProperties() {
 		Properties serviceUnavailableExceptionProperties = new Properties();
+		InputStream is = null;
 		try {
-			InputStream is = getClass().getResourceAsStream(PROPERTIES_FILENAME);
+			is = getClass().getResourceAsStream(PROPERTIES_FILENAME);
 			if (is != null) {
 				serviceUnavailableExceptionProperties.load(is);
 				return serviceUnavailableExceptionProperties;
@@ -72,6 +74,8 @@ public class SystemUnavailableInterceptor extends GenericInterceptor {
 			String logMessage = systemName + ": Problems reading " + PROPERTIES_FILENAME
 					+ " from classpath. Will continue with no automatic resubmit flagging for this component.";
 			logger.logp(Level.WARNING, className, "getServiceUnavailableProperties", logMessage, ioe);
+		} finally{
+			IOUtils.closeQuietly(is);
 		}
 		return serviceUnavailableExceptionProperties;
 	}

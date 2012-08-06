@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import no.stelvio.common.util.IOUtils;
+
 import com.ibm.websphere.bo.BOXMLDocument;
 import com.ibm.websphere.bo.BOXMLSerializer;
 import com.ibm.websphere.sca.ServiceManager;
@@ -80,6 +82,7 @@ public class SystemAvailabilityStorage {
 			return;
 		}
 		
+		FileOutputStream fos = null;
 		try {
 			DataObject obj = boFactory.create("http://stelvio-commons-lib/no/stelvio/common/systemavailability",
 					"SystemAvailabilityRecord");
@@ -109,13 +112,14 @@ public class SystemAvailabilityStorage {
 			// handle
 			// special
 			// characters
-			FileOutputStream fos;
+			
 			fos = new FileOutputStream(f);
 			xmlSerializerService.writeDataObject(obj, "http://no/stelvio/systemavailability/", "SystemAvailabilityRecord", fos);
-			fos.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally{
+			IOUtils.closeQuietly(fos);
 		}
 	}
 
@@ -124,7 +128,7 @@ public class SystemAvailabilityStorage {
 		if (systemName == null) {
 			return null;
 		}
-		
+		FileInputStream fis = null;
 		try {
 			File f = new File(saDirName, systemName + ".xml");
 			if (!f.exists())
@@ -138,7 +142,7 @@ public class SystemAvailabilityStorage {
 				}
 			}
 
-			FileInputStream fis = new FileInputStream(f);
+			fis = new FileInputStream(f);
 			BOXMLDocument doc = xmlSerializerService.readXMLDocument(fis);
 			DataObject obj = doc.getDataObject();
 			AvailabilityRecord rec = new AvailabilityRecord();
@@ -157,7 +161,7 @@ public class SystemAvailabilityStorage {
 				opRec.recordStubData = storedOperation.getBoolean("RecordStubData");
 				rec.operations.add(opRec);
 			}
-			fis.close();
+			
 			AvailabilityCacheEntry newEntry = new AvailabilityCacheEntry(rec, f.lastModified());
 			synchronized (availabilityCache) {
 				availabilityCache.put(systemName, newEntry);
@@ -167,6 +171,8 @@ public class SystemAvailabilityStorage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
+		}finally{
+			IOUtils.closeQuietly(fis);
 		}
 	}
 
@@ -311,7 +317,9 @@ public class SystemAvailabilityStorage {
 		// Finne absolutt-path til denne klassen:
 		String ressursnavn = SystemAvailabilityStorage.class.getName().replace('.', '/') + ".class";
 		ClassLoader cl = SystemAvailabilityStorage.class.getClassLoader();
-		if (cl == null) ClassLoader.getSystemClassLoader();
+		if (cl == null){
+			cl = ClassLoader.getSystemClassLoader();
+		}
 		URL url = cl.getResource(ressursnavn);
 		String urlString = url.toString();
 		File fil = null;
@@ -408,7 +416,7 @@ public class SystemAvailabilityStorage {
 	 * @return
 	 */
 	public String[] readSystemNamesFromNAVModule(File navModule) {
-		String kladd = "";
+		StringBuffer buffer = new StringBuffer();
 		
 		// Lister opp filene som nav-modulen inneholder
 		File[] filer = navModule.listFiles();
@@ -425,11 +433,12 @@ public class SystemAvailabilityStorage {
 					String name = entry.getName();
 					name = name.substring(0, name.indexOf("Avail"));
 					
-					kladd += name + ":";
+					buffer.append(name + ":");
 				}
 				break;
 			}
 		}
+		String kladd = buffer.toString();
 		
 		if (!"".equals(kladd)) {
 			kladd = kladd.substring(0, kladd.length()-1);
@@ -488,13 +497,14 @@ public class SystemAvailabilityStorage {
 	 * @return
 	 */
 	public String[] addSystemNames(String[] systemNamesList) {
-		String kladd = "";
+		StringBuffer buffer = new StringBuffer();
 		for (String systemName : systemNamesList) {
 			// Legger til SystemName
 			findOrCreateSystemRecord(systemName);
-			kladd += systemName + ":";
+			buffer.append(systemName + ":");
 		}
 		
+		String kladd = buffer.toString();
 		if (!"".equals(kladd)) {
 			kladd = kladd.substring(0, kladd.length()-1);
 			return kladd.split(":");
