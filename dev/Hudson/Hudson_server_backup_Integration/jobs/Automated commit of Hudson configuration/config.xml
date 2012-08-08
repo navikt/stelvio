@@ -278,7 +278,9 @@ if svn st |grep -v &apos;^?&apos; ;then
    svn ci --non-interactive -m &quot;$SVN_COMMENT&quot;
 else
    echo &quot;No changes, no commit will be performed!&quot;
-fi</command>
+fi
+
+# Jobben har problemer når Hudson har slettet en jobb, det er fordi Hudson sletter .svn fila så committen av den deleta fila feiler. Løsningen er å manuelt bruke svn delete på de jobbene som skal slettes.</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
