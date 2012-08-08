@@ -1252,7 +1252,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_incubator_stelvio
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_maven/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_oppdragmediation/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_stelvio-commons-lib-test/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_stelvio-commons-lib/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_stelvio-commons-lib_NEW/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_stelvio-commons-lib_sonar/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_systemavailability/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_wpshelpers/config.xml -text

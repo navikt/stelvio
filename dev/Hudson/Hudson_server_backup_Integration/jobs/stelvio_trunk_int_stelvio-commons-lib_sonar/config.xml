@@ -190,15 +190,10 @@
   <reporters/>
   <publishers>
     <hudson.plugins.sonar.SonarPublisher>
-      <branch>sonar.devillo.no</branch>
+      <branch></branch>
       <language></language>
       <mavenOpts></mavenOpts>
       <jobAdditionalProperties></jobAdditionalProperties>
-      <triggers>
-        <skipScmCause>false</skipScmCause>
-        <skipUpstreamCause>false</skipUpstreamCause>
-        <envVar></envVar>
-      </triggers>
     </hudson.plugins.sonar.SonarPublisher>
     <hudson.plugins.cigame.GamePublisher/>
   </publishers>

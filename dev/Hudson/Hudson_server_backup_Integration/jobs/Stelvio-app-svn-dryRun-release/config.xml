@@ -187,7 +187,7 @@
   <mavenValidationLevel>-1</mavenValidationLevel>
   <reporters>
     <hudson.maven.reporters.MavenMailer>
-      <recipients>test@example.com test@example.com</recipients>
+      <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.maven.reporters.MavenMailer>
@@ -196,6 +196,12 @@
     <hudson.plugins.chucknorris.CordellWalkerRecorder>
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
+    <hudson.plugins.sonar.SonarPublisher>
+      <branch></branch>
+      <language></language>
+      <mavenOpts></mavenOpts>
+      <jobAdditionalProperties></jobAdditionalProperties>
+    </hudson.plugins.sonar.SonarPublisher>
     <hudson.plugins.cigame.GamePublisher/>
     <hudson.plugins.emailext.ExtendedEmailPublisher>
       <recipientList></recipientList>
