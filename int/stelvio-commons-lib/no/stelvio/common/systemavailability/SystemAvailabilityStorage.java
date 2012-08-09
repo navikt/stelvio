@@ -433,7 +433,7 @@ public class SystemAvailabilityStorage {
 					String name = entry.getName();
 					name = name.substring(0, name.indexOf("Avail"));
 					
-					buffer.append(name + ":");
+					buffer.append(name).append(":");
 				}
 				break;
 			}
@@ -501,7 +501,7 @@ public class SystemAvailabilityStorage {
 		for (String systemName : systemNamesList) {
 			// Legger til SystemName
 			findOrCreateSystemRecord(systemName);
-			buffer.append(systemName + ":");
+			buffer.append(systemName).append(":");
 		}
 		
 		String kladd = buffer.toString();
