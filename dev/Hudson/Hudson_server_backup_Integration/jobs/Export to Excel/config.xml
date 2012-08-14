@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>This job releases the configuration for one or more gateways&#xd;
-&#xd;
-DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
@@ -85,7 +83,7 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       <string>hudson-plugins-descriptionsetter-DescriptionSetterPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -125,8 +123,13 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
+        <originalValue class="hudson.tasks.Mailer">
+          <recipients>test@example.com</recipients>
+          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+          <sendToIndividuals>false</sendToIndividuals>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -174,43 +177,7 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
     <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList">
-          <hudson.model.ParametersDefinitionProperty>
-            <parameterDefinitions>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>datapowerProject</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>datapower-environment</string>
-                    <string>datapower-nonenvironment</string>
-                    <string>both</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.BooleanParameterDefinition>
-                <name>partner_gw</name>
-                <description></description>
-                <defaultValue>false</defaultValue>
-              </hudson.model.BooleanParameterDefinition>
-              <hudson.model.BooleanParameterDefinition>
-                <name>secgw</name>
-                <description></description>
-                <defaultValue>false</defaultValue>
-              </hudson.model.BooleanParameterDefinition>
-              <hudson.model.BooleanParameterDefinition>
-                <name>portal_gw</name>
-                <description></description>
-                <defaultValue>false</defaultValue>
-              </hudson.model.BooleanParameterDefinition>
-              <hudson.model.BooleanParameterDefinition>
-                <name>tms_gw</name>
-                <description></description>
-                <defaultValue>false</defaultValue>
-              </hudson.model.BooleanParameterDefinition>
-            </parameterDefinitions>
-          </hudson.model.ParametersDefinitionProperty>
-        </originalValue>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
     </entry>
@@ -270,25 +237,7 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
     <entry>
       <string>builders</string>
       <describable-list-property>
-        <originalValue class="hudson.util.DescribableList">
-          <hudson.tasks.Shell>
-            <command>gateways=&quot;&quot;
-if ${partner_gw}; then gateways=$gateways&quot; partner-gw&quot;; fi
-if ${secgw}; then gateways=$gateways&quot; secgw&quot;;fi
-if ${portal_gw}; then gateways=$gateways&quot; portal-gw&quot;;fi
-if ${tms_gw}; then gateways=$gateways&quot; tms-gw&quot;;fi
-
-if [ &quot;${datapowerProject}&quot; == &quot;both&quot; ]; then
-echo &quot;Releasing ${gateways} for both datapower-environment and datapower-nonenvironment&quot;
-/home/ci/scripts/release/release.sh &quot;datapower-environment&quot; $gateways
-/home/ci/scripts/release/release.sh &quot;datapower-nonenvironment&quot; $gateways
-else
-
-echo &quot;Releasing ${gateways} for ${datapowerProject}&quot;
-/home/ci/scripts/release/release.sh ${datapowerProject} $gateways
-fi</command>
-          </hudson.tasks.Shell>
-        </originalValue>
+        <originalValue class="hudson.util.DescribableList"/>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
     </entry>
@@ -316,7 +265,7 @@ fi</command>
     <entry>
       <string>jdk</string>
       <string-property>
-        <originalValue class="string">(Default)</originalValue>
+        <originalValue class="string">Sun JDK 6.0</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
     </entry>
@@ -389,8 +338,8 @@ fi</command>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>f133008</createdBy>
-  <creationTime>1341222121439</creationTime>
+  <createdBy>z124730</createdBy>
+  <creationTime>1344943185497</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">

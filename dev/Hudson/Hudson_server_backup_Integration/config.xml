@@ -243,6 +243,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Export to Excel</string>
         <string>Post Data Source config (WPS) overview to Confluence</string>
         <string>Post installed fixpacks (WPS) on U2, U3 and U4 to Confluence</string>
         <string>Post JVM config (WPS) overview to Confluence</string>
@@ -429,6 +430,27 @@
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>.*sonar.*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status HL4 (7.5)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[10]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2012HL4_7\.5_).*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>
