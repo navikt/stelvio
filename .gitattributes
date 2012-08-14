@@ -3811,8 +3811,6 @@ dev/maven2/nav-artifact-builder-plugin/src/main/java/no/nav/maven/plugins/artifa
 dev/maven2/nav-artifact-builder-plugin/src/main/java/no/nav/maven/plugins/artifactbuilderplugin/Source.java -text
 dev/maven2/nav-artifact-builder-plugin/src/site/apt/index.apt -text
 dev/maven2/nav-artifact-builder-plugin/src/site/site.xml -text
-dev/maven2/nav-batchclient-plugin/.classpath -text
-dev/maven2/nav-batchclient-plugin/.project -text
 dev/maven2/nav-batchclient-plugin/.settings/org.eclipse.jdt.core.prefs -text
 dev/maven2/nav-batchclient-plugin/pom.xml -text
 dev/maven2/nav-batchclient-plugin/src/main/java/no/nav/maven/plugin/batchclientplugin/ArtifactItem.java -text
