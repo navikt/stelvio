@@ -122,8 +122,7 @@
 	</distributionManagement>
 
   <scm>
-    <connection>scm:svn:https://svn.apache.org/repos/asf/maven/plugins/tags/nav-batchclient-plugin-1.0.7</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/plugins/tags/nav-batchclient-plugin-1.0.7</developerConnection>
-    <url>https://svn.apache.org/repos/asf/maven/plugins/tags/nav-batchclient-plugin-1.0.7</url>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/nav-batchclient-plugin-1.0.7</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/nav-batchclient-plugin-1.0.7</developerConnection>
   </scm>
 </project>
