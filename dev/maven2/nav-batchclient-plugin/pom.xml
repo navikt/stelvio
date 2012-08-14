@@ -108,15 +108,16 @@
 	</build>
 	
 	<distributionManagement>
-       	<repository>
-            <id>nav-maven2-internal-repo</id>
-            <name>NAV Maven2 Internal Repository</name>
-            <url>scp://maven.adeo.no/var/maven2/internal</url>
-        </repository>
-        <snapshotRepository>
-            <id>nav-pensjon-maven2-snapshot-repo</id>
-            <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>scp://10.33.1.53/var/maven2/snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
+		<repository>
+			<id>m2internal</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>m2snapshot</id>
+			<name>NAV Maven2 Snapshot Repository</name>
+			<url>http://maven.adeo.no/nexus/content/repositories/m2snapshot</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

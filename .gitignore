@@ -2022,6 +2022,10 @@ dev/maven2/maven-propertiesgenerator-plugin/.classpath
 dev/maven2/maven-propertiesgenerator-plugin/.project
 dev/maven2/maven-propertiesgenerator-plugin/.settings
 dev/maven2/maven-propertiesgenerator-plugin/target
+dev/maven2/nav-batchclient-plugin/.classpath
+dev/maven2/nav-batchclient-plugin/.project
+dev/maven2/nav-batchclient-plugin/.settings
+dev/maven2/nav-batchclient-plugin/target
 dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
