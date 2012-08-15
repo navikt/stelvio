@@ -1,15 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0"?><project>
   <parent>
     <artifactId>maven-plugins</artifactId>
     <groupId>org.apache.maven.plugins</groupId>
-    <version>19</version>
+    <version>7</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>no.nav.maven.plugins</groupId>
   <artifactId>nav-batchclient-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>NAV Maven BatchClient Plugin</name>
-  <version>1.0.8-SNAPSHOT</version>
+  <version>1.0.7-SNAPSHOT</version>
   <prerequisites>
     <maven>2.0.1</maven>
   </prerequisites>
