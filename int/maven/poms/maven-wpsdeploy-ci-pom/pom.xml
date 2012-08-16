@@ -16,7 +16,7 @@
 	<name>POM for CI deployments</name>
 
 	<properties>
-		<wpsdeployVersion>5.1.0-alpha001</wpsdeployVersion>
+		<wpsdeployVersion>6.0.0-alpha004</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
@@ -24,8 +24,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
-			<artifactId>busconfiguration</artifactId>
-			<version>${bus-configuration-version}</version>
+			<artifactId>esb-authorization-configuration</artifactId>
+			<version>${esb-authorization-configuration}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.nav.maven.support</groupId>
+			<artifactId>esb-nonenviroment-configuration</artifactId>
+			<version>${esb-nonenviroment-configuration}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.nav.maven.support</groupId>
+			<artifactId>esb-enviroment-configuration</artifactId>
+			<version>${esb-enviroment-configuration}</version>
 		</dependency>
 	</dependencies>
 	
@@ -93,9 +103,6 @@
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
 					<version>${wpsdeployVersion}</version> 
 					<configuration>
-						<moduleConfigurationArtifactName>
-							busconfiguration
-						</moduleConfigurationArtifactName>
 						<artifacts>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
@@ -139,21 +146,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
-					<version>1.6</version>
-					<configuration>
-						<templateDir>
-							${tmpExtractDir}/templates
-						</templateDir>
-						<environmentName>
-							${environment}
-						</environmentName>
-						<outputDir>
-							${tmpExtractDir}/app_props
-						</outputDir>
-						<environmentDir>
-							${tmpExtractDir}/environments
-						</environmentDir>
-					</configuration>
+					<version>2.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
