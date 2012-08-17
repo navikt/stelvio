@@ -1392,8 +1392,6 @@ dev/Hudson/integration_var_lib_hudson/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hu
 dev/Hudson/integration_var_lib_hudson/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hudson[!!-~]configuration/nextBuildNumber -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-deploy-til-U2-WPS/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-deploy-til-U2-WPS/nextBuildNumber -text
-dev/Hudson/integration_var_lib_hudson/jobs/CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT/nextBuildNumber -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-pom_sync/builds/1 -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-pom_sync/builds/2012-02-22_12-13-53/build.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-pom_sync/builds/2012-02-22_12-13-53/changelog.xml -text
@@ -1404,8 +1402,6 @@ dev/Hudson/integration_var_lib_hudson/jobs/CI-pom_sync/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-pom_sync/nextBuildNumber -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-release-pom_sync/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/CI-release-pom_sync/lastSuccessful -text
-dev/Hudson/integration_var_lib_hudson/jobs/EESSI_nav/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/EESSI_nav/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/HORISONTEN_7.2_datapower-cfg-partner-gw/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/HORISONTEN_7.2_datapower-cfg-partner-gw/nextBuildNumber -text
 dev/Hudson/integration_var_lib_hudson/jobs/HORISONTEN_7.2_datapower-cfg-secgw/config.xml -text
@@ -1614,8 +1610,6 @@ dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-esb-modules-ci/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-esb-modules-ci/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-esb/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-esb/lastSuccessful -text
-dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-esb_busconfiguration/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-esb_busconfiguration/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-nav-modules-ci/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-nav-modules-ci/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK-nav-tjenestespesifikasjon/config.xml -text
