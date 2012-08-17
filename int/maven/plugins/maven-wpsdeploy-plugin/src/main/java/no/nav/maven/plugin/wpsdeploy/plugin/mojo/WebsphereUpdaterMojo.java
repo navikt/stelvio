@@ -68,7 +68,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String enviromentConfigurationVersion;
 
 	/**
-	 * @parameter expression="${esb-enviroment-configuration}"
+	 * @parameter expression="${esb-nonenviroment-configuration}"
 	 * @required
 	 */
 	protected String nonenviromentConfigurationVersion;
