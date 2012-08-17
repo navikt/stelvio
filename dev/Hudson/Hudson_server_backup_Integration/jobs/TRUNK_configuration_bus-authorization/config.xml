@@ -36,8 +36,8 @@
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>3</daysToKeep>
-          <numToKeep>-1</numToKeep>
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>3</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -45,17 +45,17 @@
       </log-rotator-property>
     </entry>
     <entry>
-      <string>scmCheckoutRetryCount</string>
-      <integer-property>
-        <propertyOverridden>false</propertyOverridden>
-      </integer-property>
-    </entry>
-    <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>scmCheckoutRetryCount</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
     </entry>
     <entry>
       <string>cleanWorkspaceRequired</string>
@@ -74,19 +74,30 @@
     <entry>
       <string>quietPeriod</string>
       <integer-property>
+        <originalValue class="int">5</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
     </entry>
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>@monthly</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
     <entry>
+      <string>hudson-tasks-BuildTrigger</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>jdk</string>
       <string-property>
-        <originalValue class="string">Sun JDK 6.0</originalValue>
+        <originalValue class="string">(Default)</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
     </entry>
@@ -109,7 +120,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/configuration/bus-authorization</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -127,16 +138,13 @@
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
-        <originalValue class="hudson.triggers.TimerTrigger">
-          <spec># at 01:00 in the morning
-0 1 * * *</spec>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>n129069</createdBy>
+  <creationTime>1345105007758</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -147,7 +155,7 @@
   <scm class="hudson.scm.SubversionSCM">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_3_0_D20120130_2012HL2_7_3/esb-busconfiguration</remote>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
@@ -166,11 +174,10 @@
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
-    <groupId>no.nav.maven.poms</groupId>
-    <artifactId>maven-wpsdeploy-ci-pom</artifactId>
+    <groupId>no.nav.maven.support</groupId>
+    <artifactId>esb-authorization-configuration</artifactId>
   </rootModule>
   <goals>clean deploy</goals>
-  <mavenOpts>-Denvironment=U2 -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-ci-version=0.0.0.1-SNAPSHOT -Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT -Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT -Desb-modules-ci-version=0.0.0.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.0.1-SNAPSHOT -Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT -Desb-enviroment-configuration=0.0.0.1-SNAPSHOT</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
@@ -181,19 +188,12 @@
   <mavenValidationLevel>0</mavenValidationLevel>
   <reporters/>
   <publishers>
-    <hudson.tasks.BuildTrigger>
-      <childProjects>SoapUI-U2-StartStubbing_CI</childProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-      </threshold>
-    </hudson.tasks.BuildTrigger>
     <hudson.plugins.chucknorris.CordellWalkerRecorder>
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
+    <hudson.plugins.cigame.GamePublisher/>
     <hudson.plugins.emailext.ExtendedEmailPublisher>
-      <recipientList>test@example.com,test@example.com</recipientList>
+      <recipientList></recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
           <email>
@@ -205,26 +205,6 @@
             <sendToRecipientList>true</sendToRecipientList>
           </email>
         </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
-        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-          <email>
-            <recipientList></recipientList>
-            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-            <body>$PROJECT_DEFAULT_CONTENT</body>
-            <sendToDevelopers>true</sendToDevelopers>
-            <includeCulprits>true</includeCulprits>
-            <sendToRecipientList>false</sendToRecipientList>
-          </email>
-        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
-        <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
-          <email>
-            <recipientList></recipientList>
-            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
-            <body>$PROJECT_DEFAULT_CONTENT</body>
-            <sendToDevelopers>true</sendToDevelopers>
-            <includeCulprits>true</includeCulprits>
-            <sendToRecipientList>false</sendToRecipientList>
-          </email>
-        </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
       </configuredTriggers>
       <contentType>default</contentType>
       <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>

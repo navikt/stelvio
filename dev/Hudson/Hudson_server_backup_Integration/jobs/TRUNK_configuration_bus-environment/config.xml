@@ -74,6 +74,7 @@
     <entry>
       <string>quietPeriod</string>
       <integer-property>
+        <originalValue class="int">5</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
     </entry>
@@ -119,7 +120,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_5_0_D20120814_2012HL4_7_5/esb-busconfiguration</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/configuration/bus-enviroment</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -143,7 +144,7 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1345036104266</creationTime>
+  <creationTime>1345105182253</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -167,14 +168,14 @@
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
     <groupId>no.nav.maven.support</groupId>
-    <artifactId>busconfiguration</artifactId>
+    <artifactId>esb-enviroment-configuration</artifactId>
   </rootModule>
   <goals>clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>

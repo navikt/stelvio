@@ -1104,11 +1104,13 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_nav_trunk_int_esb_l
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_pensjon-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL3_7.4_pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_CheckScripts_Leveransedokumentasjon/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_configuration_bus-authorization/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_configuration_bus-enviroment/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_configuration_bus-nonenviroment/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_datapower-cfg-secgw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_datapower_cfg_partner-gw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_ekstern/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_ekstern_tjenestespesifikasjon/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_esb-busconfiguration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_esb-poms/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_esb-release/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL4_7.5_layers/config.xml -text
@@ -1126,11 +1128,8 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS/config.xml
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/EESSI_nav/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Fixpack[!!-~]repo[!!-~]monitor/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/MigrateSYSMOD-Step1/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/MigrateSYSMOD-Step2/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]Data[!!-~]Source[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
@@ -1234,7 +1233,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-ekstern-modules-ci/config
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-ekstern-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-ekstern/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-esb-modules-ci/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-esb_busconfiguration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-nav-modules-ci/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-nav-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-nav/config.xml -text
@@ -1245,6 +1243,9 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon-modules-ci/config
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon-prosess-modules-ci/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon-tjenestespesifikasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK-pensjon/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_configuration_bus-authorization/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_configuration_bus-environment/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_configuration_bus-nonenvironment/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-doc-chmod/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-doc-diagram/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_nav-model-doc/config.xml -text
