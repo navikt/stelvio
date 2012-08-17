@@ -97,11 +97,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>stelvio_trunk_int_maven</string>
-        <string>stelvio_trunk_int_oppdragmediation</string>
-        <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
-        <string>stelvio_trunk_int_systemavailability</string>
-        <string>stelvio_trunk_int_wpshelpers</string>
         <string>TRUNK datapower_cfg_partner-gw</string>
         <string>TRUNK datapower_cfg_secgw</string>
         <string>TRUNK-CheckScripts</string>
@@ -111,7 +106,6 @@
         <string>TRUNK-esb-modules-ci</string>
         <string>TRUNK-esb-release deploy</string>
         <string>TRUNK-esb-release verify</string>
-        <string>TRUNK-esb_busconfiguration</string>
         <string>TRUNK-nav</string>
         <string>TRUNK-nav-modules-ci</string>
         <string>TRUNK-nav-tjenestespesifikasjon</string>
@@ -122,6 +116,13 @@
         <string>TRUNK-pensjon-modules-ci</string>
         <string>TRUNK-pensjon-prosess-modules-ci</string>
         <string>TRUNK-pensjon-tjenestespesifikasjon</string>
+        <string>TRUNK_configuration_bus-authorization</string>
+        <string>TRUNK_configuration_bus-environment</string>
+        <string>TRUNK_configuration_bus-nonenvironment</string>
+        <string>TRUNK_nav-model-doc</string>
+        <string>TRUNK_nav-model-doc-chmod</string>
+        <string>TRUNK_nav-model-doc-diagram</string>
+        <string>TRUNK_nav-model-update</string>
         <string>TRUNK_service-gateway</string>
         <string>TRUNK_service-gw-discovery</string>
         <string>TRUNK_service-gw-maven-service-registry-plugin</string>
@@ -243,7 +244,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>Jira2Excel</string>
+        <string>Jira2Excel-MOD</string>
         <string>Post Data Source config (WPS) overview to Confluence</string>
         <string>Post installed fixpacks (WPS) on U2, U3 and U4 to Confluence</string>
         <string>Post JVM config (WPS) overview to Confluence</string>
@@ -272,7 +273,6 @@
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
-        <string>CI-deploy_busconfiguration-0.0.0.1-SNAPSHOT</string>
         <string>CI-wpsdeploy-pom_sync</string>
         <string>Fixpack repo monitor</string>
         <string>TRUNK-CheckScripts</string>
@@ -452,6 +452,28 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>(2012HL4_7\.5_).*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Jira2Excel</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
+      <includeRegex>Jira.*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>
