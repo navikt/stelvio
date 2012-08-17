@@ -460,6 +460,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Jira2Excel MOD SCM</string>
       </jobNames>
       <jobFilters/>
       <columns>
