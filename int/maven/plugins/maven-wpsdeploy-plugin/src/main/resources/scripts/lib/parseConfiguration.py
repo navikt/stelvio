@@ -4,6 +4,10 @@ import lib.XMLUtil as XML
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
+def blaGroupXmlToStringList(blaGroupXmlFile):
+	xml = parseXML(blaGroupXmlFile)
+	return [module.get() for module in xml.findAll('module')]
+	
 def parseAuthorizationConfiguration(roleXmlPath):
 	xml = XML.parseXML(roleXmlPath)
 	rolesNode = xml.findFirst('roles')

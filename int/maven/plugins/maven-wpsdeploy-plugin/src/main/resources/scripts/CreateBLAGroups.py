@@ -1,6 +1,6 @@
 import sys, os
 from lib.saveUtil import save
-from lib.XmlToUtil import blaGroupXmlToStringList
+from lib.parseConfiguration import blaGroupXmlToStringList
 from lib.scaModuleUtil import getInstalledModules
 import lib.logUtil as log
 l = log.getLogger(__name__)
