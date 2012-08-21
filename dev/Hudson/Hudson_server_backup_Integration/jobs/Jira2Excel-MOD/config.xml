@@ -333,9 +333,6 @@ python addAttachment.py ../builds/$BUILD_ID/ 40147350;</command>
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
-        <originalValue class="hudson.triggers.TimerTrigger">
-          <spec>0 1 * * * </spec>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
