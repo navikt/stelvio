@@ -6,9 +6,9 @@ import mocks.osMock as os
 import mocks.openMock as open
 		
 class DeployDependenciesPath:
-	def getPath(self): return 'ignored output'
+	def getDeployDependenciesPath(self): return 'ignored output'
 	
-smu.deployDependenciesPath = DeployDependenciesPath()
+smu.configurationPaths = DeployDependenciesPath()
 smu.os = os
 smu.AdminTask = AdminTaskMock
 smu.AdminApp = AdminApp

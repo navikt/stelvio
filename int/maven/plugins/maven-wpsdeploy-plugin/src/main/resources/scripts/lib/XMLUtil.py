@@ -9,7 +9,7 @@ import org.w3c.dom.Node as Node
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-xmlREGEX = re.compile('<.*>')
+xmlREGEX = re.compile('<.*?>')
 
 
 def parseXML(xml):
@@ -18,7 +18,7 @@ def parseXML(xml):
 	elif isinstance(xml, types.StringType):
 		if os.path.exists(xml):
 			dom = __parseFile(xml)
-		elif xmlREGEX.search(xml):
+		elif xmlREGEX.match(xml):
 			dom = __parseString(xml)
 		else:
 			l.error('Input is not xml or a filePath to a valid xml file!\nThe input was:', xml)

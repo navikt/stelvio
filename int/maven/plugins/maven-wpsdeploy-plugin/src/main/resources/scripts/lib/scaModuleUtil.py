@@ -1,6 +1,6 @@
 import os, re
 import lib.namingConventionLogic as naming
-from lib.configurationPaths import getDeployDependenciesPath
+import lib.configurationPaths as configurationPaths
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
@@ -18,7 +18,7 @@ def getInstalledModules():
 	return modules
 	
 def getModulesToBeInstalled():
-	f = open(getDeployDependenciesPath())
+	f = open(configurationPaths.getDeployDependenciesPath())
 	
 	global headlineRow
 	headlineRow = f.readline().strip()
@@ -37,7 +37,7 @@ def getModulesToBeInstalled():
 	return modules
 	
 def save(applicationList):
-	f = open(getDeployDependenciesPath(), 'w')
+	f = open(configurationPaths.getDeployDependenciesPath(), 'w')
 	f.write(headlineRow +'\n')
 	for app in applicationList:
 		f.write(app.toCsvLine() +'\n')
