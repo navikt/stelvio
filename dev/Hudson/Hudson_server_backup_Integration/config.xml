@@ -461,6 +461,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Jira2Excel MOD SCM</string>
+        <string>Jira2Excel-AGG</string>
       </jobNames>
       <jobFilters/>
       <columns>
