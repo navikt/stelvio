@@ -15,8 +15,8 @@
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-bus-configuration,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:interpolate-config,
 							</validate>
-							<!-- <process-sources> phase runs the "copy-resources" plugin in the deploy pom.xml -->
-							<!-- <generate-resources> phase runs the "load-properties" plugin in the deploy pom.xml -->
+							<!-- <generate-resources> phase runs the "load-properties" (load passwords) plugin in the deploy pom.xml -->
+							<!-- <process-sources> phase runs the "copy-resources" (interpolate passwords) plugin in the deploy pom.xml -->
 							<compile>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
