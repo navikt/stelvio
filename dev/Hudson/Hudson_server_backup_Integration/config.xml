@@ -463,6 +463,7 @@
         <string>Jira2Excel MOD SCM</string>
         <string>Jira2Excel VKOE SCM</string>
         <string>Jira2Excel-AGG</string>
+        <string>Jira2Excel-MOD-Activity</string>
       </jobNames>
       <jobFilters/>
       <columns>
