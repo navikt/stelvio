@@ -296,7 +296,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
+            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision} --no-check-certificate
 
 EnvironmentClass=${Environment:0:1}
 

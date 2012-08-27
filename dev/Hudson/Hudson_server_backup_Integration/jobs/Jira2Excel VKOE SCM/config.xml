@@ -66,14 +66,14 @@
       </base-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -100,14 +100,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -163,18 +163,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-tasks-JavadocArchiver</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
         <originalValue class="hudson.util.CopyOnWriteList"/>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-JavadocArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>join-JoinTrigger</string>
@@ -191,17 +191,17 @@
       </external-property>
     </entry>
     <entry>
+      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>true</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>customWorkspace</string>
       <string-property>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -220,7 +220,7 @@
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -234,21 +234,27 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>cd /home/ci/scripts/Confluence/compare; python compareFixpacks.py</command>
+            <command></command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>java -jar jira2excel.jar vkoerapport.xlsx ../builds/$BUILD_ID/vkoerapport project=VKOE Grunnlag;</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>python addAttachment.py ../builds/$BUILD_ID/ 40765392;</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -264,7 +270,7 @@
     <entry>
       <string>jdk</string>
       <string-property>
-        <originalValue class="string">(Default)</originalValue>
+        <originalValue class="string">Sun JDK 6.0</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
     </entry>
@@ -295,14 +301,14 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -318,7 +324,22 @@
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/svs/trunk/Jira2Excel/build</remote>
+              <local>.</local>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -326,7 +347,7 @@
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
-          <spec>35 23 * * * </spec>
+          <spec>15 1 * * *</spec>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
@@ -340,19 +361,22 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>v132806</createdBy>
+  <creationTime>1345731758589</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>true</canRoam>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <authToken>justdoit</authToken>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
 </project>

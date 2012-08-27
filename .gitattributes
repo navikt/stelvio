@@ -1131,6 +1131,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-nonenviroment-0.0
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Fixpack[!!-~]repo[!!-~]monitor/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel[!!-~]MOD[!!-~]SCM/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel[!!-~]VKOE[!!-~]SCM/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel-AGG/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel-MOD/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel-VKOE/config.xml -text
