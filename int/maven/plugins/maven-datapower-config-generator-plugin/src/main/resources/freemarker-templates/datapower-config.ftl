@@ -18,6 +18,7 @@
 <#include "FrontsideHandler.ftl">
 <#include "HTTPSourceProtocolHandler.ftl">
 <#include "LDAPSearchParameters.ftl">
+<#include "LoadBalancerGroup.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
 <#include "MatchingRuleXPath.ftl">
@@ -48,11 +49,13 @@
 <#include "StylePolicyActionSign.ftl">
 <#include "StylePolicyActionFetch.ftl">
 <#include "StylePolicyActionConditional.ftl">
+<#include "WSGatewayLoadBalancing.ftl">
 <#include "WSStylePolicy.ftl">
 <#include "WSStylePolicyRuleError.ftl">
 <#include "WSStylePolicyRuleRequest.ftl">
 <#include "WSStylePolicyRuleResponse.ftl">
 <#include "WSProxyStaticBackend.ftl">
+<#include "WSProxyStaticBackendLoadBalancing.ftl">
 <#include "WSProxyStaticBackendMultipleWsdl.ftl">
 <#include "WSProxyWSADynamicBackend.ftl">
 <#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">
@@ -60,3 +63,4 @@
 <#include "AAAPolicyClientSSL2LTPAURLauth.ftl">
 <#include "AAAPolicyUsernameToken2UsernameToken.ftl">
 <#include "AAAPolicyUsernameToken2UsernameTokenLDAPS.ftl">
+<#include "XMLManager.ftl">
