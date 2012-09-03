@@ -47,19 +47,8 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	 */
 	private String environmentProperties;
 
-	public String getEnvironmentDir() {
-		return environmentProperties;
-	}
-
-	public void setEnvironmentDir(String environmentDir) {
-		this.environmentProperties = environmentDir;
-	}
-
-	/**
-	 * @return Returns the outputDir.
-	 */
-	public String getOutputDir() {
-		return outputDir;
+	public void setEnvironmentProperties(String environmentProperties) {
+		this.environmentProperties = environmentProperties;
 	}
 
 	/**
@@ -68,13 +57,6 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	 */
 	public void setOutputDir(String outputDir) {
 		this.outputDir = outputDir;
-	}
-
-	/**
-	 * @return Returns the templateDir.
-	 */
-	public String getTemplateDir() {
-		return templateDir;
 	}
 
 	/**

@@ -3802,6 +3802,7 @@ dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/uti
 dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/utils/ZipUtils.java -text
 dev/maven2/maven-propertiesgenerator-plugin/pom.xml -text
 dev/maven2/maven-propertiesgenerator-plugin/src/main/java/no/nav/maven/plugins/PropertiesGeneratorMojo.java -text
+dev/maven2/maven-propertiesgenerator-plugin/src/main/resources/properties/agregated.properties -text
 dev/maven2/maven-propertiesgenerator-plugin/src/main/resources/properties/div.properties -text
 dev/maven2/maven-propertiesgenerator-plugin/src/main/resources/properties/ejb_endpoints.properties -text
 dev/maven2/maven-propertiesgenerator-plugin/src/main/resources/properties/external_endpoints.properties -text
