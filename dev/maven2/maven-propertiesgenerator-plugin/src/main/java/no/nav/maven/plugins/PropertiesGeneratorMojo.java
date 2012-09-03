@@ -32,14 +32,6 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	private String templateDir;
 
 	/**
-	 * This is used to decide which subfolder to put the created properties in.
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	private String environmentName;
-
-	/**
 	 * 
 	 * The created propertiesfiles are put in outputdir/environmentName
 	 * 
@@ -53,29 +45,14 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	 * @parameter
 	 * @required
 	 */
-	private String environmentDir;
+	private String environmentProperties;
 
 	public String getEnvironmentDir() {
-		return environmentDir;
+		return environmentProperties;
 	}
 
 	public void setEnvironmentDir(String environmentDir) {
-		this.environmentDir = environmentDir;
-	}
-
-	/**
-	 * @return Returns the environmentName.
-	 */
-	public String getEnvironmentName() {
-		return environmentName;
-	}
-
-	/**
-	 * @param environmentName
-	 *            The environmentName to set.
-	 */
-	public void setEnvironmentName(String environmentName) {
-		this.environmentName = environmentName;
+		this.environmentProperties = environmentDir;
 	}
 
 	/**
@@ -109,41 +86,46 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	}
 
 	public void execute() throws MojoExecutionException {
-		
+
+		getLog().info("Taking properties from " +environmentProperties+ "and templates from " +templateDir+ ", combining them in "+ outputDir);
+
 		try {
 			Properties p = new Properties();
 			p.setProperty("file.resource.loader.path", templateDir);
 			Velocity.init(p);
 			VelocityContext context = new VelocityContext();
 			Properties props = new Properties();
-			
-			File propertiesDir = new File(environmentDir);
-			
-			String[] propertiesFileNames = propertiesDir.list();
-			for(int i = 0; i < propertiesFileNames.length; i++){
-				String propertiesFileName = propertiesFileNames[i];
-				if (propertiesFileName.toLowerCase().endsWith(".properties")){
-					java.io.InputStream is = new FileInputStream(environmentDir + "/" + propertiesFileName);
-					props.load(is);
+			File propertiesFileOrFolder = new File(environmentProperties);
+
+
+			if(propertiesFileOrFolder.isDirectory()){			
+				String[] propertiesFileNames = (propertiesFileOrFolder).list();
+				for(int i = 0; i < propertiesFileNames.length; i++){
+					String propertiesFileName = propertiesFileNames[i];
+					if (propertiesFileName.toLowerCase().endsWith(".properties")){
+						java.io.InputStream is = new FileInputStream(environmentProperties + "/" + propertiesFileName);
+						props.load(is);
+					}
 				}
+			} else {
+				props.load(new FileInputStream(propertiesFileOrFolder));
 			}
-			
-			
+
+
 			Set keys = props.keySet();
 			String key;
 			for (Iterator iterator = keys.iterator(); iterator.hasNext(); context
 					.put(key, props.get(key)))
 				key = (String) iterator.next();
 
-			File dir = new File(templateDir);
-			File output = new File(outputDir + "/" + environmentName);
+			File output = new File(outputDir);
 			getLog().info("Target folder: " + output.getAbsolutePath());
 			if (output.exists()) {
 				getLog().info("Deleting " + output.getAbsolutePath());
 				FileUtils.recursiveDelete(output);
 				output.mkdirs();
 			}
-			File tempTemplates[] = dir.listFiles();
+			File tempTemplates[] = (new File(templateDir)).listFiles();
 			File templates[] = new File[tempTemplates.length];
 			ArrayList tempArrayList = new ArrayList();
 			for (int j = 0; j < tempTemplates.length; j++) {
@@ -182,10 +164,10 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 					String newName;
 					if (name.endsWith(".vm"))
 						newName = name.substring(0, name.length() - 3)
-								+ ".properties";
+						+ ".properties";
 					else
 						newName = name;
-					String newOut = outputDir + "/" + environmentName;
+					String newOut = outputDir;
 					File tmp = new File(newOut);
 					tmp.mkdirs();
 					FileWriter fileWriter = new FileWriter(newOut + "/"
