@@ -5,6 +5,7 @@ import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
 import no.stelvio.domain.time.ChangeStamp;
+import org.springframework.jdbc.UncategorizedSQLException;
 
 /**
  * Class for saving and retrieving history on batches that have been run
@@ -117,7 +118,21 @@ public class ControllerServiceHistorySupport {
 	}
 
 	public BatchHistDO fetchBatchHistory(Long batchHistoryID) {
-		return repository.findById(batchHistoryID);
+		int connectionAttempts = 0;
+
+		while (connectionAttempts < 2){
+			try {
+				return repository.findById(batchHistoryID);
+			} catch (UncategorizedSQLException e){
+				connectionAttempts++;
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		throw new RuntimeException("Can not update batch history.  Check connection to DB2. ");
 	}
 
 }
