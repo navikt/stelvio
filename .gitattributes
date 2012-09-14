@@ -1223,6 +1223,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Tjenestepensjo
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Trekk_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-Vedtak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-layers-fkafp-privat_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-NAV-Oppholdsstatus_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN002-BehandleDodsmeldinger_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN003-BehandleFleksibelAPSak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U3-prosess-PPEN004-BehandleEndringAvUttaksgrad_CI/config.xml -text
