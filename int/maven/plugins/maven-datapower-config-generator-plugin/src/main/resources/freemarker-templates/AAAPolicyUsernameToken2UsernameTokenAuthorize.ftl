@@ -125,7 +125,7 @@
 		<Authorize>
 			<AZMethod>xmlfile</AZMethod>
 			<AZCustomURL/>
-			<AZMapURL>"${aaaFileName}"</AZMapURL>
+			<AZMapURL>${aaaFileName}</AZMapURL>
 			<AZHost/>
 			<AZPort/>
 			<AZLDAPGroup/>
