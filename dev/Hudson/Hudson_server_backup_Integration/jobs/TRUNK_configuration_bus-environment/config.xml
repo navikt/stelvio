@@ -74,7 +74,7 @@
     <entry>
       <string>quietPeriod</string>
       <integer-property>
-        <originalValue class="int">5</originalValue>
+        <originalValue class="int">10</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
     </entry>
