@@ -4,10 +4,10 @@
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
-  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
+  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
   <securityRealm class="hudson.plugins.active_directory.ActiveDirectorySecurityRealm">
     <domain>adeo.no</domain>
-    <bindName>srvciIntegrasjon</bindName>
+    <bindName>srvciintegrasjon</bindName>
     <bindPassword>Q6j28cmRnJt7aeCp5/xmUjUZdOlp/GRsytwuftGVbnw=</bindPassword>
   </securityRealm>
   <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter"/>
