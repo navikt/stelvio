@@ -182,7 +182,9 @@ public class GenerateConfigMojo extends AbstractMojo {
 		wsdlFilesDirectory.mkdir();
 		unArchiver.setDestDirectory(wsdlFilesDirectory);
 		
-		File propertiesFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
+		//File propertiesFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
+		File certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/trustCerts.properties");
+		
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
 		File tempDir = new File(project.getBasedir(), "target/temp");
@@ -190,7 +192,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		File configFile = new File(tempDir, "configuration.xml");
 		getLog().debug("ConfigFile=" + configFile);
 
-		properties = loadProperties(propertiesFile.getPath());
+		properties = loadProperties(certFile.getPath());
 		// Create list of trusted partner certificates and add to properties
 		addTrustCerts(properties);
 
