@@ -163,15 +163,11 @@
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>CI Trunk - U2</name>
-      <description>Test-view for kontinuerlig testing</description>
+      <description>&lt;b&gt;Test-view for kontinuerlig testing&lt;/b&gt;</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>SoapUI-U2-Ekstern-Virkemiddelokonomi-Utbetaling_CI</string>
-        <string>SoapUI-U2-NAV-EUInstitusjon_CI</string>
-        <string>SoapUI-U2-NAV-HPLIVEJournalbehandling_CI</string>
-        <string>SoapUI-U2-NAV-Oppholdsstatus_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>
