@@ -236,7 +236,7 @@
           <hudson.tasks.Shell>
             <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/cfg/service-gw/service-discovery/pom.xml?op=dl\&amp;rev=${DatapowerPomRevision}
 
-mvn3 clean deploy -Dgateway-name=service-gw -Denvclass=t -Dbus-configuration-version=7.6.0.5-SNAPSHOT -Ddatapower.baseurl=https://dp-tst-13.adeo.no:5550 -DenvironmentList=t8</command>
+mvn3 -X clean deploy -Dgateway-name=service-gw -Denvclass=t -Dbus-configuration-version=7.6.0.5-SNAPSHOT -Ddatapower.baseurl=https://dp-tst-13.adeo.no:5550 -DenvironmentList=u3</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
