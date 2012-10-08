@@ -142,6 +142,12 @@ public class GenerateConfigMojo extends AbstractMojo {
 	private String gatewayName;	
 	
 	/**
+	 * @parameter expression="${envclass}"
+	 * @required
+	 */
+	protected String envclass;
+	
+	/**
 	 * 
 	 * @parameter
 	 * @required
@@ -183,7 +189,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		unArchiver.setDestDirectory(wsdlFilesDirectory);
 		
 		//File propertiesFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
-		File certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/trustCerts.properties");
+		File certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-environment-configuration-jar/" + envclass + "/trustCerts.properties");
 		
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
