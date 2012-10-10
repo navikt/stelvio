@@ -199,8 +199,25 @@
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
                     <string>u3</string>
+                    <string>t0</string>
                     <string>t1</string>
-                    <string>u</string>
+                    <string>t2</string>
+                    <string>t3</string>
+                    <string>t4</string>
+                    <string>t5</string>
+                    <string>t6</string>
+                    <string>t7</string>
+                    <string>t8</string>
+                    <string>t9</string>
+                    <string>q0</string>
+                    <string>q1</string>
+                    <string>q3</string>
+                    <string>q4</string>
+                    <string>q5</string>
+                    <string>q6</string>
+                    <string>q8</string>
+                    <string>q9</string>
+                    <string>p</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -224,6 +241,7 @@
                 <description></description>
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
+                    <string>testing.test</string>
                     <string>https://dp-tst-01.adeo.no:5550</string>
                     <string>https://dp-tst-02.adeo.no:5550</string>
                   </a>
@@ -301,7 +319,7 @@
 EnvironmentClass=${Environment:0:1}
 EnvironmentClassUpper=`echo &quot;$EnvironmentClass&quot; | tr &apos;[:lower:]&apos; &apos;[:upper:]&apos;`
 
-mvn3 clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -DenvclassUp=${EnvironmentClassUpper} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
+mvn3 clean process-sources -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -DenvclassUp=${EnvironmentClassUpper} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
