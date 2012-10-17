@@ -97,6 +97,12 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>CI-buss-pom_sync</string>
+        <string>CI-deploy-til-U2-WPS</string>
+        <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
+        <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
+        <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
+        <string>CI-wpsdeploy-pom_sync</string>
         <string>TRUNK datapower_cfg_partner-gw</string>
         <string>TRUNK datapower_cfg_secgw</string>
         <string>TRUNK-CheckScripts</string>
@@ -124,7 +130,6 @@
         <string>TRUNK_nav-model-doc-diagram</string>
         <string>TRUNK_nav-model-update</string>
         <string>TRUNK_service-gateway</string>
-        <string>TRUNK_service-gw-discovery</string>
         <string>TRUNK_service-gw-maven-service-registry-plugin</string>
       </jobNames>
       <jobFilters/>
