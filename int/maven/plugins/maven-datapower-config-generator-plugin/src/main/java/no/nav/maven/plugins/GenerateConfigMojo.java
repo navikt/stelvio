@@ -188,8 +188,11 @@ public class GenerateConfigMojo extends AbstractMojo {
 		wsdlFilesDirectory.mkdir();
 		unArchiver.setDestDirectory(wsdlFilesDirectory);
 		
-		//File propertiesFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
-		File certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-environment-configuration-jar/" + envclass + "/trustCerts.properties");
+		File certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
+		// main.properties leses også i pom, så den behoves ikke aa lesses her. For partner-gw derimot maa man lese inn sertifikatinfo.
+		if(gatewayName.equals("partner-gw")){ 
+			certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-environment-configuration-jar/" + envclass + "/trustCerts.properties");
+		}
 		
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
