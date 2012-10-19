@@ -316,9 +316,8 @@
             <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
 
 EnvironmentClass=${Environment:0:1}
-EnvironmentClassUpper=`echo &quot;$EnvironmentClass&quot; | tr &apos;[:lower:]&apos; &apos;[:upper:]&apos;`
 
-mvn3 clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -DenvclassUp=${EnvironmentClassUpper} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
+mvn3 clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
