@@ -14,10 +14,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class DependencyIdentifierMojo extends WebsphereUpdaterMojo {
 
 	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-		if (!isConfigurationLoaded()) {
-			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
-			return;
-		}
+		configurationRequierdToProceed();
 		
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("DependencyIdentifier.py" + " deployAllResources=" + "True");

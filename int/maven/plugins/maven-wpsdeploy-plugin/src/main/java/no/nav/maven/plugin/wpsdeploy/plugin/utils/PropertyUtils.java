@@ -40,24 +40,36 @@ public class PropertyUtils {
 		}
 	}
 	
-	public void exposeProperty(String key, boolean password){
+	public void exposeProperty(String key, boolean password, boolean lowercase){
 		Properties projectProperties = project.getProperties();
-		String value = getProperty(key);
+		String value;
+		if(lowercase){
+			value = getProperty(key).toLowerCase();
+		} else {
+			value = getProperty(key);
+		}
 		
 
 		if(value == null){
 			throw new ConfigurationException("The "+ key +" property can't be \"null\"!");
 		} 
-		else if (value.contains("$")){
-			throw new ConfigurationException("The "+ key +" property can't contain \"$\"!\nWhen this happens it is most likely that there is a property file that can't be found.");
+		else if (value.startsWith("${") && value.endsWith("}")){
+			throw new ConfigurationException("The "+ key +" property can't start with \"${\" and end with \"}\"!\nWhen this happens it is most likely that there is a property file that can't be found. ("+ value +")");
+		} 
+		else if (value.startsWith("@") && value.endsWith("@")){
+			throw new ConfigurationException("The "+ key +" property can't start and end with \"@\"!\nWhen this happens it is most likely that there is a property file that can't be found. ("+ value +")");
 		}
 		
 		projectProperties.put(key, value);
-				
-		if (password)
-			System.out.println("[INFO] Exposed property [" + key + ",*****]");
-		else
-			System.out.println("[INFO] Exposed property [" + key + "," + value + "]");
+		
+		String lowerMsg = ""; 
+		if (password) value = "*****";
+		if (lowercase) lowerMsg = " (forced lower case)";
+		System.out.println("[INFO] Exposed property [" + key + "," + value + "]"+ lowerMsg);
+	}
+	
+	public void exposeProperty(String key, boolean password){
+		exposeProperty(key, password, false);
 	}
 	
 	public void loadFile(String fileLocation) throws FileNotFoundException, IOException{

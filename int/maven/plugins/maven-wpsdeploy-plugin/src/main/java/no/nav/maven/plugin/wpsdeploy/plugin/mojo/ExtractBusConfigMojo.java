@@ -26,7 +26,7 @@ public class ExtractBusConfigMojo extends WebsphereUpdaterMojo {
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		for (Artifact artifact : dependencyArtifacts) {
 			if (configurationParts.contains( artifact.getArtifactId() )) {
-				String artifactDir = busConfigurationExtractPath + "/" + artifact.getArtifactId();	
+				String artifactDir = tmpExtractPath + "/" + artifact.getArtifactId();	
 				extractArtifact(artifact,  new File(artifactDir));
 			}
 		}

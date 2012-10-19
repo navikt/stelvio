@@ -1,6 +1,5 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.File;
 import java.io.IOException;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
@@ -12,21 +11,20 @@ import org.codehaus.plexus.util.cli.Commandline;
 /**
  * Goal that loads the environment configuration
  * 
- * @goal load-configuration
+ * @goal expose-properties
  * @requiresDependencyResolution
  */
-public class LoadEnvironmentConfigurationMojo extends WebsphereUpdaterMojo {
+public class ExposePropertiesMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
+		String path = deployProperties;
+		getLog().info("Loading deploy properties from "+ path);
 		try {
-			File tmpEnvironmentPath = new File(environmentPropertiesPath);
 			PropertyUtils pf = new PropertyUtils(project);
-			for(String propFile : tmpEnvironmentPath.list()){
-				pf.loadFile(tmpEnvironmentPath.getAbsolutePath() + "/" + propFile);
-			}
+			pf.loadFile(path);
 
-			pf.exposeProperty("envClass", false);
+			pf.exposeProperty("envClass", false, true);
 			pf.exposeProperty("dmgrUsername", false);
 			pf.exposeProperty("dmgrPassword", true);
 			pf.exposeProperty("dmgrHostname", false);

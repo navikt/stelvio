@@ -1,15 +1,12 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.MojoLauncher;
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
-
+import org.apache.maven.execution.MavenSession;
+import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.cli.Commandline;
+import org.twdata.maven.mojoexecutor.MojoExecutor;
 
 /**
  * @author test@example.com
@@ -20,26 +17,61 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @requiresDependencyResolution
  */
 public class InterpolatorMojo extends WebsphereUpdaterMojo {
-
+	/**
+	 * The Maven Project Object
+	 * 
+	 * @parameter expression="${project}"
+	 * @required
+	 * @readonly
+	 */
+	protected MavenProject project;
+	
+	/**
+	 * The Maven Session Object
+	 * 
+	 * @parameter expression="${session}"
+	 * @required
+	 * @readonly
+	 */
+	protected MavenSession session;
+	
+	/**
+	 * The Maven BuildPluginManager Object
+	 *  
+	 * @component
+	 * @required
+	 */
+	protected BuildPluginManager buildPluginManager;
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-
-		File tmpEnvironmentDir = new File(tmpEnvironmentPropertiesPath);
-System.out.println(tmpEnvironmentPropertiesPath); //TODO: remove!
-		try {
-			PropertyUtils pf = new PropertyUtils(project);
-			for(String propFile : tmpEnvironmentDir.list()){
-				pf.loadFile(tmpEnvironmentDir.getAbsolutePath() + "/" + propFile);
-			}
-
-			pf.exposeProperty("envClass", false);
-
-		} catch (FileNotFoundException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
-		}
-
-		MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager, tmpTemplatesPath, tmpApplicationPropertiesPath, tmpEnvironmentPropertiesPath);
+		System.out.println("project: "+project);
+		System.out.println("session: "+session);
+		System.out.println("buildPluginManager: "+buildPluginManager);
+		System.out.println("templatesPath: "+templatesPath);
+		System.out.println("applicationPropertiesPath: "+applicationPropertiesPath);
+		System.out.println("propertiesPath: "+propertiesPath);
+		MojoExecutor.executeMojo(
+				MojoExecutor.plugin(
+						MojoExecutor.groupId("no.nav.maven.plugins"),
+						MojoExecutor.artifactId("maven-propertiesgenerator-plugin"),
+						MojoExecutor.version("3.0-SNAPSHOT")
+					),
+					MojoExecutor.goal("generate"),
+					MojoExecutor.configuration(
+						MojoExecutor.element(
+							MojoExecutor.name("templateDir"),
+							templatesPath
+						),
+						MojoExecutor.element(
+							MojoExecutor.name("outputDir"),
+							applicationPropertiesPath
+						),
+						MojoExecutor.element(
+							MojoExecutor.name("environmentProperties"),
+							propertiesPath
+						)
+					),
+					MojoExecutor.executionEnvironment(project, session, buildPluginManager)
+				);
 	}
 
 	protected String getGoalPrettyPrint() {

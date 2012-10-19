@@ -10,25 +10,16 @@ import java.util.Set;
 import javax.xml.parsers.FactoryConfigurationError;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.models.DeployArtifact;
+import no.nav.maven.utils.ArtifactUtils;
 
-import org.apache.maven.artifact.Artifact;
-import org.apache.maven.artifact.InvalidRepositoryException;
-import org.apache.maven.artifact.factory.ArtifactFactory;
-import org.apache.maven.artifact.repository.ArtifactRepository;
-import org.apache.maven.artifact.repository.ArtifactRepositoryFactory;
-import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
-import org.apache.maven.artifact.resolver.ArtifactResolutionException;
-import org.apache.maven.artifact.resolver.ArtifactResolver;
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.project.MavenProjectBuilder;
-import org.apache.maven.project.ProjectBuildingException;
-import org.apache.maven.project.ProjectUtils;
-import org.apache.maven.project.artifact.InvalidDependencyVersionException;
-import org.apache.maven.project.artifact.MavenMetadataSource;
 import org.codehaus.plexus.util.cli.Commandline;
+import org.sonatype.aether.RepositorySystem;
+import org.sonatype.aether.RepositorySystemSession;
+import org.sonatype.aether.artifact.Artifact;
+import org.sonatype.aether.repository.RemoteRepository;
+import org.sonatype.aether.util.artifact.DefaultArtifact;
 
 /**
  * Goal that extracts the defined DeployArtifacts
@@ -38,64 +29,35 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 
-	/**
-	 * @parameter expression="${session}"
-	 * @readonly
-	 * @required
-	 */
-	private MavenSession mavenSession;
-
-	/**
-	 * The remote repositories used as specified in your POM.
-	 * 
-	 * @parameter expression="${project.repositories}"
-	 * @readonly
-	 * @required
-	 */
-	private List<?> repositories;
-
-	/**
-	 * Artifact repository factory component.
-	 * 
-	 * @component
-	 * @readonly
-	 * @required
-	 */
-	private ArtifactRepositoryFactory artifactRepositoryFactory;
-
-	/**
-	 * Artifact factory, needed to create artifacts.
-	 * 
-	 * @component
-	 * @readonly
-	 * @required
-	 */
-	private ArtifactFactory artifactFactory;
-
-	/**
-	 * @component
-	 * @readonly
-	 * @required
-	 */
-	private ArtifactResolver artifactResolver;
-
-	/**
-	 * The local repository taken from Maven's runtime. Typically $HOME/.m2/repository.
-	 * 
-	 * @parameter expression="${localRepository}"
-	 * @readonly
-	 * @required
-	 */
-	private ArtifactRepository localRepository;
-
 	/** 
 	 * @parameter
 	 * @required
 	 */
 	private DeployArtifact[] artifacts;
 
-	/** @component */
-	private MavenProjectBuilder mavenProjectBuilder;
+	/** 
+	 * The entry point to Aether, i.e. the component doing all the work.      
+	 * 
+	 * @required
+	 * @component
+	 */    
+	private RepositorySystem repoSystem;
+
+	/**
+	 * The current repository/network configuration of Maven.
+	 *
+	 * @parameter default-value="${repositorySystemSession}"
+	 * @required
+	 * @readonly
+	 */
+	private RepositorySystemSession repoSession;
+
+	/**     
+	 * The project's remote repositories to use for the resolution of plugins and their dependencies.     
+	 * @parameter default-value="${project.remotePluginRepositories}"
+	 * @readonly     
+	 */    
+	private List<RemoteRepository>  repositories;
 
 	/**
 	 * @parameter expression="${module.groupId}"
@@ -117,87 +79,81 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 	 */
 	private String moduleType;
 
-	private Set<Artifact> allArtifacts;
-
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		try {
-			allArtifacts = new HashSet<Artifact>();
+			Set<Artifact> resolvedArtifacts = new HashSet<Artifact>();
 
-			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
+			BufferedWriter installationRecepie = new BufferedWriter(new FileWriter(deployDependencies));
+			installationRecepie.write("Name,Version,Path,Install_application,Deploy_resources,Uninstall_old_version\n");
 
-			BufferedWriter installationRecepies = new BufferedWriter(new FileWriter(deployDependencies));
-			installationRecepies.write("Name,Version,Path,Install_application,Deploy_resources,Uninstall_old_version\n");
-
-			if((moduleGroupId != null) && (moduleArtifactId != null) && (moduleVersion != null) && (moduleType != null)){
-				Artifact artifact = artifactFactory.createArtifact(moduleGroupId, moduleArtifactId, moduleVersion, null, moduleType);
-				addOneArtifact(artifact, remoteRepos, installationRecepies);
+			if(isOneModuleDeploy()){
+				// Used in case this is a one module deploy (IRPORT-2102)
+				DefaultArtifact unresolvedArtifact = new DefaultArtifact(moduleGroupId, moduleArtifactId, moduleType, moduleVersion);
+				Artifact resolvedArtifact = resolveArtifact(unresolvedArtifact);
+				resolvedArtifacts.add(resolvedArtifact);
 			} else {
-				addAllArtifacts(remoteRepos, installationRecepies);
-			}
-
-			installationRecepies.close();
-
-			if(allArtifacts.isEmpty()){
-				throw new IllegalArgumentException("allArtifacts variabelen kan ikke være tom!\nSjekk at buss versjonen du forsøker å deploye eksisterer.");
+				resolvedArtifacts = getResolvedProjectArtifacts();
 			}
 			
-			project.setArtifacts(allArtifacts);
-			project.setDependencyArtifacts(allArtifacts);
+			writeArtifactsToinstallationRecepie(resolvedArtifacts, installationRecepie);
 
-		} catch (ProjectBuildingException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
-		} catch (InvalidRepositoryException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
+			installationRecepie.close();
+
+			if(resolvedArtifacts.isEmpty()){
+				throw new IllegalArgumentException("resolvedArtifacts variabelen kan ikke være tom!\nSjekk at buss versjonen du forsøker å deploye eksisterer.");
+			} else {
+				getLog().info("Continuing with "+ resolvedArtifacts.size() +" dependency artifacts!");
+			}
+
 		} catch (FactoryConfigurationError e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (IOException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
-		} catch (InvalidDependencyVersionException e) {
-			throw new MojoExecutionException("[ERROR]: " + e);
-		} catch (ArtifactResolutionException e) {
-			throw new MojoExecutionException("[ERROR] Error downloading artifact.", e);
-		} catch (ArtifactNotFoundException e) {
-			throw new MojoExecutionException("[ERROR] Resource can not be found.", e);
 		}
 	}
 
-	private void addOneArtifact(Artifact artifact, List<?> remoteRepos, BufferedWriter installationRecepies) throws ArtifactResolutionException, ArtifactNotFoundException, IOException{
-		artifactResolver.resolve(artifact, remoteRepos, localRepository);
-		allArtifacts.add(artifact);
-
-		addArtifactToInstallationRecepies(artifact, installationRecepies);
-
-		getLog().info(String.format("Successfully added %s-%s to \"allArtifacts\" list.", artifact.getArtifactId(), artifact.getVersion()));
+	private boolean isOneModuleDeploy() {
+		return (moduleGroupId != null) && (moduleArtifactId != null) && (moduleVersion != null) && (moduleType != null);
 	}
 
-	@SuppressWarnings("unchecked")
-	private void addAllArtifacts(List<?> remoteRepos, BufferedWriter installationRecepies) throws ProjectBuildingException,
-			InvalidDependencyVersionException, ArtifactResolutionException,
-			ArtifactNotFoundException, IOException {
+	private Artifact resolveArtifact(DefaultArtifact unresolvedArtifact) throws MojoExecutionException {
+		Artifact resolvedArtifact = ArtifactUtils.resolveArtifact(repositories, repoSystem, repoSession, unresolvedArtifact);
+		return resolvedArtifact;
+	}
+
+	private Set<Artifact> getResolvedProjectArtifacts() throws IOException, MojoExecutionException {
+		Set<Artifact> output = new HashSet<Artifact>();
 		for (DeployArtifact da : artifacts){
-			if (da.getVersion() == null || da.getVersion().startsWith("$")){
-				getLog().info("Skipping " + da.getGroupId() + ":" + da.getArtifactId() + ", no version specified.");
-				continue;
+			Artifact esbBus = deployArtifactToAetherArtifact(da);
+			int originalSize = output.size();
+
+			getLog().info("Resolving "+ esbBus.getArtifactId());
+			for(Artifact artifact : resolveDependencies(esbBus)){
+				if("ear".equals(artifact.getExtension())){
+					output.add(artifact);
+				}
 			}
 
-			Artifact pomArtifact = artifactFactory.createArtifact(da.getGroupId(), da.getArtifactId(), da.getVersion(), null, "pom");
-			MavenProject p = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
-			Set<Artifact> artifacts = MavenMetadataSource.createArtifacts(artifactFactory, p.getOriginalModel().getDependencies(), null, null, p);
-			for (Artifact a : artifacts) {
-
-				artifactResolver.resolve(a, remoteRepos, localRepository);
-				allArtifacts.add(a);
-
-				addArtifactToInstallationRecepies(a, installationRecepies);
-			}
-
-			getLog().info("Successfully extracted "+ artifacts.size() +" dependency artifacts of " + da.toString() + " into \"allArtifacts\" list.");
+			getLog().info("Successfully extracted "+ (output.size() - originalSize) +" dependency artifacts of " + da.toString() + " into \"output\" list.");
 		}
+		return output;
 	}
 
-	private void addArtifactToInstallationRecepies(Artifact artifact, BufferedWriter installationRecepies) throws IOException {
-		installationRecepies.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False,False\n");
+	private Artifact deployArtifactToAetherArtifact(DeployArtifact artifact)
+	{
+		return new DefaultArtifact(artifact.getGroupId(), artifact.getArtifactId(),"pom", artifact.getVersion());
+	}
+
+
+	private List<Artifact> resolveDependencies(Artifact artifact) throws MojoExecutionException{
+		return ArtifactUtils.resolveDependencies(repositories, repoSystem, repoSession, artifact);
+	}
+
+	private void writeArtifactsToinstallationRecepie(Set<Artifact> resolvedArtifacts, BufferedWriter installationRecepie) throws IOException {
+		for(Artifact artifact : resolvedArtifacts){
+			installationRecepie.write(artifact.getArtifactId() +","+ artifact.getVersion() +","+ artifact.getFile().getAbsolutePath() +",False,False,False\n");
+		}
 	}
 
 	@Override

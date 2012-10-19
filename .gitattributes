@@ -7816,6 +7816,8 @@ int/maven/plugins/maven-wps-artifact-plugin/pom.xml -text
 int/maven/plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Applications.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/ConfigurationInheritance.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/ConfigurationInheritanceTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DeleteApplicationArtifacts.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DownloadEARFiles.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Log.py -text
@@ -7847,6 +7849,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/MySOAPException.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/models/DeployArtifact.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyActivationSpecsMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyInheritance.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyRoleMappingMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyUsernameTokenDetailsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyWSEndpointsMojo.java -text
@@ -7857,12 +7860,12 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DependencyIdentifierMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifactsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployResourcesMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExposePropertiesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractBusConfigMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractModulesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractScriptsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/GenerateJythonPathScriptsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/InterpolatorMojo.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/LoadEnvironmentConfigurationMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ModifyMaxFailedDeliveriesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/RemoteCommandExecutorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/RemoveBPMojo.java -text
@@ -7874,8 +7877,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/WebsphereUpdaterMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/ArgumentUtil.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/ExceptionConverter.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/MojoExecutor.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/MojoLauncher.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/PropertyUtils.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/PwdConsole.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/SshUtil.java -text
@@ -7946,12 +7947,15 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminU
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/openMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/osMock.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/policySetBindingsMock.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/propertiesMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.bat -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/runTests.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/CreateBLAGroupsTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/DeleteBLAGroupsTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/ModifyScaImportsBindingTest.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/ModifyUserNameTokenGeneratorTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/XMLUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/policySetAttachmentUtilTest.py -text

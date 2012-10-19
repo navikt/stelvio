@@ -1,28 +1,30 @@
 import sys
 from lib.saveUtil import save
 from lib.javaPropertiesUtil import PropertiesReader
+import lib.XMLUtil as XML
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-enviromentPropertyPath = sys.argv[1]
-
-propReader = PropertiesReader()
-propReader.load(enviromentPropertyPath)
-
-policySetBindingsList = propReader.get('policySetBindings').split(',')
-policySetBindingsUsersList = propReader.get('policySetBindingsUsers').split(',')
-policySetBindingsPasswordsList = propReader.get('policySetBindingsPasswords').split(',')
-
-if not (len(policySetBindingsList) == len(policySetBindingsUsersList) == len(policySetBindingsPasswordsList)):
-	l.error('Wrong number of arguments for either "policySetBindings", "policySetBindingsUsers" or "policySetBindingsPasswords"!\nThe variables should be CSV strings with an equal number or values!')
-
 def main():
-	for i in range(len(policySetBindingsList)):
-		setBindingAuth(policySetBindingsList[i],
-			policySetBindingsUsersList[i],
-			policySetBindingsPasswordsList[i]
-		)
+	configPath = sys.argv[1]
+	
+	configSets = readPolicySetBindingConfig(configPath)
+		
+	for config in configSets:
+		setBindingAuth(*config)
 
+		
+def readPolicySetBindingConfig(xmlPath):
+	xml = XML.parseXML(xmlPath)
+	config = []
+	for policySetBindingXML in xml.findAll('policySetBinding'):
+		name = policySetBindingXML.attr('name')
+		user = policySetBindingXML.getChildValue('user')
+		password = policySetBindingXML.getChildValue('password')
+		config.append([name,user,password])
+		
+	return config
+		
 def setBindingAuth(bindingname, userid, password):
 	l.info("Modifying binding "+bindingname+".")
 	l.debug("AdminTask.setBinding('[-policyType WSSecurity -attachmentType client -bindingScope domain -attributes ",

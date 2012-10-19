@@ -57,8 +57,7 @@ public class SshUtil {
 		int result = ssh.authenticate(pac);
 		
 		if (result != AuthenticationProtocolState.COMPLETE) {
-			System.out.println("[ERROR] The authentication failed for user "+username+" on "+hostname+".");
-			return null;
+			throw new RuntimeException("[ERROR] The authentication failed for user "+username+" on "+hostname+".");
 		}
 		
 		return ssh.openSessionChannel();

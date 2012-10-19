@@ -113,6 +113,21 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	private String logLevel;
 	
+	/**
+	 * @parameter expression="${tmpExtractDir}"
+	 */
+	protected String tmpExtractPath;
+	
+	/**
+	 * @parameter expression="${tmpInterpolationStageOne}"
+	 */
+	protected String tmpInterpolationStageOne;
+
+	/**
+	 * @parameter expression="${busConfigDir}"
+	 */
+	protected String busConfigPath;
+	
 	/* 
 	 * path/dir variables:
 	 * path = full path
@@ -124,26 +139,25 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String jythonScriptsPath;
 	protected String pathMappingFilePath;
 	protected String deployDependencies;
-	protected String busConfigurationExtractPath;
 
 	/* tmp */
-	protected String tmpTemplatesPath;
-	protected String tmpEnvironmentPropertiesPath;
-	protected String tmpApplicationPropertiesPath;
+	protected String deployProperties;
 	
 	/* after interpolation */
+	protected String propertiesTree;
+	protected String propertiesPath;
+	protected String templatesPath;
 	protected String blaGroupsPath;
 	protected String moduleConfigPath;
-	protected String environmentPropertiesPath;
+	protected String deployInfoPropertiesPath;
 	protected String applicationPropertiesPath;	
 	protected String activationspecificationsPath;
 	protected String authorizationConsXmlPath;
+	protected String policySetBindings;
 	
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
 	
-	@SuppressWarnings("unused")
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
-		
 		/* ESB Configuration parts */
 		String authorizationConfiguration = "esb-authorization-configuration";
 		String enviromentConfiguration = "esb-enviroment-configuration";
@@ -153,31 +167,27 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		configurationParts.add(enviromentConfiguration);
 		configurationParts.add(nonenviromentConfiguration);
 
-		String busConfigurationPath = targetDirectory + "/bus-config";
-		busConfigurationExtractPath = targetDirectory + "/tmp";
 		jythonScriptsPath = targetDirectory + "/scripts";
 		deployDependencies = targetDirectory + "/EarFilesToDeploy.csv";
 		
 		/* tmp bus configuration dirs */
-		String tmpAuthorizationConfigurationPath = busConfigurationExtractPath + "/" + authorizationConfiguration;
-		String tmpEnviromentConfigurationPath = busConfigurationExtractPath + "/" + enviromentConfiguration;
-		String tmpNonenviromentConfigurationPath = busConfigurationExtractPath + "/" + enviromentConfiguration;
-				
-		tmpTemplatesPath = tmpEnviromentConfigurationPath + "/templates";
-		tmpEnvironmentPropertiesPath = tmpEnviromentConfigurationPath + "/properties/" + environment;
-		tmpApplicationPropertiesPath = tmpEnviromentConfigurationPath + "/app_props";
-		
+		deployProperties = tmpInterpolationStageOne + "/" + nonenviromentConfiguration +"/properties/deployInfo.properties";
+
 		/* dirs after interpolation (a plugin in the pom inserts passwords and copys the config to a new dir)*/
-		String authorizationConfigurationPath = busConfigurationPath + "/" + authorizationConfiguration;
-		String enviromentConfigurationPath = busConfigurationPath + "/" + enviromentConfiguration;
-		String nonenviromentConfigurationPath = busConfigurationPath + "/" + nonenviromentConfiguration;
+		String authorizationConfigurationPath = busConfigPath + "/" + authorizationConfiguration;
+		String enviromentConfigurationPath = busConfigPath + "/" + enviromentConfiguration;
+		String nonenviromentConfigurationPath = busConfigPath + "/" + nonenviromentConfiguration;
 		
-		environmentPropertiesPath = enviromentConfigurationPath + "/properties/" + environment;
+		templatesPath = enviromentConfigurationPath + "/templates";
+		propertiesPath = enviromentConfigurationPath + "/main.properties";
+		propertiesTree = enviromentConfigurationPath + "/properties";
+		deployInfoPropertiesPath = nonenviromentConfigurationPath + "/properties/deployInfo.properties";
 		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + environment;
 		blaGroupsPath = nonenviromentConfigurationPath + "/BLA-groups";
 		moduleConfigPath = enviromentConfigurationPath + "/moduleconfig";
 		activationspecificationsPath = nonenviromentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
 		authorizationConsXmlPath = authorizationConfigurationPath + "/" + envClass + ".xml";
+		policySetBindings = nonenviromentConfigurationPath + "/policySetBindings/policySetBindings.xml";
 		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
@@ -208,8 +218,15 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		applyToWebSphere(wsadminCommandLine);
 	}
 
+	//Todo: replace the invocations of this method with the configurationRequierdToProceed method
 	protected boolean isConfigurationLoaded(){
 		return envClass != null;
+	}
+	
+	protected void configurationRequierdToProceed() {
+		if ((envClass == null) || (environment == null)){
+			throw new IllegalStateException("You can't run this step before having loaded the environment configuration!\nenvClass("+envClass+")\nenvironment("+environment+")");
+		}
 	}
 
 }

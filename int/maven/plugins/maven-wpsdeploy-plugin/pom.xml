@@ -1,12 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-plugin-pom</artifactId>
-		<version>1.4</version>
-		<relativePath>../../poms/maven-plugin-pom</relativePath>
+		<groupId>no.nav.aura.maven.poms</groupId>
+		<artifactId>nav-testsenter-pom</artifactId>
+		<version>2.0.6</version>
+		<relativePath />
 	</parent>
+
 
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wpsdeploy-plugin</artifactId>
@@ -15,6 +17,11 @@
 	<name>WPS deployment plugin</name>
 
 	<dependencies>
+		<dependency>
+			<groupId>no.nav.maven.utils</groupId>
+			<artifactId>nav-maven-utils</artifactId>
+			<version>2.0.5</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
@@ -41,6 +48,10 @@
 			<artifactId>plexus-utils</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-interactivity-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>httpunit</groupId>
 			<artifactId>httpunit</artifactId>
 			<version>1.6.2</version>
@@ -57,11 +68,11 @@
 			<artifactId>maven-configuration-common</artifactId>
 			<version>1.6</version>
 		</dependency>
-		
+
 		<dependency>
-		  	<groupId>commons-logging</groupId>
-		  	<artifactId>commons-logging</artifactId>
-		  	<version>1.0.4</version>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.4</version>
 		</dependency>
 	</dependencies>
 

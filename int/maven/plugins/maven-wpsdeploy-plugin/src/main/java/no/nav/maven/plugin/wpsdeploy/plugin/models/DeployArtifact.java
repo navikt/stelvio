@@ -4,6 +4,7 @@ public class DeployArtifact {
 	
 	private String groupId;
 	private String artifactId;
+	private String type;
 	private String version;
 	private String variableName;
 	
@@ -18,6 +19,12 @@ public class DeployArtifact {
 	} 	
 	public void setArtifactId(String artifactId) {
 		this.artifactId = artifactId;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getVersion() {
 		return version;

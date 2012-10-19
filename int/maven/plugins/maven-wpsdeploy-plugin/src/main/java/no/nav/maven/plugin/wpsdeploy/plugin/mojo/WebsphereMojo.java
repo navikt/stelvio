@@ -13,7 +13,6 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugin.PluginManager;
 import org.apache.maven.plugin.descriptor.MojoDescriptor;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.project.MavenProject;
@@ -60,14 +59,6 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	protected MavenSession session;
-
-	/**
-	 * The Maven PluginManager Object
-	 * 
-	 * @component
-	 * @required
-	 */
-	protected PluginManager pluginManager;
 
 	/**
 	 * @component roleHint="jar"
@@ -149,16 +140,15 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 	public String getGoalName() { 
 		String mojoClassName = getClass().getName();
-		PluginDescriptor pluginDescriptor = pluginManager.getPluginDescriptorForPrefix("wpsdeploy");
+		PluginDescriptor pluginDescriptor = (PluginDescriptor) getPluginContext().get("pluginDescriptor");
 		
-		@SuppressWarnings("unchecked")
-		List<MojoDescriptor> mojoDescriptorList = pluginDescriptor.getMojos(); 
-		for (MojoDescriptor mojoDescriptor : mojoDescriptorList) { 
+		List<MojoDescriptor> mojoDescriptorList = pluginDescriptor.getMojos();
+		for (MojoDescriptor mojoDescriptor : mojoDescriptorList) {
 			if (mojoDescriptor.getImplementation().equals(mojoClassName)) { 
 				return mojoDescriptor.getGoal(); 
 			} 
 		} 
-		return null;
+		throw new Error("Could not find the Maven goal name!");
 	} 
 	
 	private boolean skipGoalManualy() throws MojoFailureException{
