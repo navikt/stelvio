@@ -8,5 +8,6 @@
 		<CacheSize>20</CacheSize>
 		<ClientCache>on</ClientCache>
 		<ClientAuthOptional>off</ClientAuthOptional>
+		<PermitInsecureServers>on</PermitInsecureServers>
 	</SSLProxyProfile>
 </#macro>
