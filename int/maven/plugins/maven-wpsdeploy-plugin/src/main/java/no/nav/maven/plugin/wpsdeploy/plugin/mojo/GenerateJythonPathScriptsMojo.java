@@ -29,7 +29,7 @@ public class GenerateJythonPathScriptsMojo extends WebsphereUpdaterMojo {
 
 		
 		StringBuilder enviromentUtilScript = new StringBuilder();
-		enviromentUtilScript.append("def getEnviroment(): return '"+ environment +"'\n");
+		enviromentUtilScript.append("def getEnviroment(): return '"+ envName +"'\n");
 		enviromentUtilScript.append("def getEnvClass(): return '"+ envClass +"'\n");
 		String enviromentUtilScriptPath = jythonScriptsPath +"/lib/deployEnviromentUtil.py"; //Change the name of the empty placeholder script in the lib folder if you change this name
 		scripts.put(enviromentUtilScriptPath, enviromentUtilScript);

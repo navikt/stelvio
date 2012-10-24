@@ -19,26 +19,27 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 
-		getLog().info("Turning the properties tree ("+ propertiesTree +") into the properties file: "+ propertiesPath);
+		getLog().info("Turning the properties tree ("+ environmentPropertiesTree +") into the properties file: "+ mainPropertiesFilepath);
 		
 		configurationRequierdToProceed();
 
 		Properties prop = new Properties();
 
 		try {
-			loadDir(propertiesTree + "/" + envClass.toLowerCase() + "/" + environment.toLowerCase(), prop);
-			loadDir(propertiesTree + "/" + envClass.toLowerCase(), prop);
-			loadDir(propertiesTree, prop);
+			loadDir(nonenvironmentProperties, prop);
+			loadDir(environmentPropertiesTree + "/" + envClass + "/" + envName, prop);
+			loadDir(environmentPropertiesTree + "/" + envClass, prop);
+			loadDir(environmentPropertiesTree, prop);
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new MojoExecutionException("Propblemer med å lese properties filer i "+ propertiesTree);
+			throw new MojoExecutionException("Propblemer med å lese properties filer i "+ environmentPropertiesTree);
 		}
 		
 		try{
-			writeProps(prop, propertiesPath);
+			writeProps(prop, mainPropertiesFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new MojoExecutionException("Propblemer med å skrive til properties filen "+ propertiesPath);
+			throw new MojoExecutionException("Propblemer med å skrive til properties filen "+ mainPropertiesFilepath);
 		}
 	}
 

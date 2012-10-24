@@ -128,7 +128,7 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 			Artifact esbBus = deployArtifactToAetherArtifact(da);
 			int originalSize = output.size();
 
-			getLog().info("Resolving "+ esbBus.getArtifactId());
+			getLog().info("Resolving "+ esbBus.getArtifactId() +":");
 			for(Artifact artifact : resolveDependencies(esbBus)){
 				if("ear".equals(artifact.getExtension())){
 					output.add(artifact);

@@ -25,6 +25,7 @@ public class ExposePropertiesMojo extends WebsphereUpdaterMojo {
 			pf.loadFile(path);
 
 			pf.exposeProperty("envClass", false, true);
+			pf.exposeProperty("envName", false, true);
 			pf.exposeProperty("dmgrUsername", false);
 			pf.exposeProperty("dmgrPassword", true);
 			pf.exposeProperty("dmgrHostname", false);

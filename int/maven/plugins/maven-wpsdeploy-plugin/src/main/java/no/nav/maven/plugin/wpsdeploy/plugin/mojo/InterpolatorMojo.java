@@ -43,17 +43,11 @@ public class InterpolatorMojo extends WebsphereUpdaterMojo {
 	 */
 	protected BuildPluginManager buildPluginManager;
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-		System.out.println("project: "+project);
-		System.out.println("session: "+session);
-		System.out.println("buildPluginManager: "+buildPluginManager);
-		System.out.println("templatesPath: "+templatesPath);
-		System.out.println("applicationPropertiesPath: "+applicationPropertiesPath);
-		System.out.println("propertiesPath: "+propertiesPath);
 		MojoExecutor.executeMojo(
 				MojoExecutor.plugin(
 						MojoExecutor.groupId("no.nav.maven.plugins"),
 						MojoExecutor.artifactId("maven-propertiesgenerator-plugin"),
-						MojoExecutor.version("3.0-SNAPSHOT")
+						MojoExecutor.version("2.1")
 					),
 					MojoExecutor.goal("generate"),
 					MojoExecutor.configuration(
@@ -67,7 +61,7 @@ public class InterpolatorMojo extends WebsphereUpdaterMojo {
 						),
 						MojoExecutor.element(
 							MojoExecutor.name("environmentProperties"),
-							propertiesPath
+							mainPropertiesFilepath
 						)
 					),
 					MojoExecutor.executionEnvironment(project, session, buildPluginManager)

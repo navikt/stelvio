@@ -50,12 +50,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String scriptDirectory;
 
 	/**
-	 * @parameter expression="${environment}"
-	 * @required
-	 */
-	protected String environment;
-
-	/**
 	 * @parameter expression="${esb-authorization-configuration}"
 	 * @required
 	 */
@@ -77,6 +71,11 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @parameter expression="${envClass}"
 	 */
 	protected String envClass;
+	
+	/**
+	 * @parameter expression="${envName}"
+	 */
+	protected String envName;
 	
 	/**
 	 * @parameter expression="${dmgrUsername}"
@@ -144,8 +143,9 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String deployProperties;
 	
 	/* after interpolation */
-	protected String propertiesTree;
-	protected String propertiesPath;
+	protected String environmentPropertiesTree;
+	protected String mainPropertiesFilepath;
+	protected String nonenvironmentProperties;
 	protected String templatesPath;
 	protected String blaGroupsPath;
 	protected String moduleConfigPath;
@@ -173,20 +173,21 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		/* tmp bus configuration dirs */
 		deployProperties = tmpInterpolationStageOne + "/" + nonenviromentConfiguration +"/properties/deployInfo.properties";
 
-		/* dirs after interpolation (a plugin in the pom inserts passwords and copys the config to a new dir)*/
+		/* dirs after interpolation (a plugin in the pom inserts passwords and copys the config to a new dir) */
 		String authorizationConfigurationPath = busConfigPath + "/" + authorizationConfiguration;
 		String enviromentConfigurationPath = busConfigPath + "/" + enviromentConfiguration;
 		String nonenviromentConfigurationPath = busConfigPath + "/" + nonenviromentConfiguration;
 		
 		templatesPath = enviromentConfigurationPath + "/templates";
-		propertiesPath = enviromentConfigurationPath + "/main.properties";
-		propertiesTree = enviromentConfigurationPath + "/properties";
-		deployInfoPropertiesPath = nonenviromentConfigurationPath + "/properties/deployInfo.properties";
-		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + environment;
+		mainPropertiesFilepath = targetDirectory + "/main.properties";
+		environmentPropertiesTree = enviromentConfigurationPath + "/properties-tree";
+		nonenvironmentProperties = nonenviromentConfigurationPath + "/properties";
+		deployInfoPropertiesPath = nonenvironmentProperties + "/deployInfo.properties";
+		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + envName;
 		blaGroupsPath = nonenviromentConfigurationPath + "/BLA-groups";
 		moduleConfigPath = enviromentConfigurationPath + "/moduleconfig";
 		activationspecificationsPath = nonenviromentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
-		authorizationConsXmlPath = authorizationConfigurationPath + "/" + envClass + ".xml";
+		authorizationConsXmlPath = authorizationConfigurationPath;
 		policySetBindings = nonenviromentConfigurationPath + "/policySetBindings/policySetBindings.xml";
 		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
@@ -224,8 +225,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	}
 	
 	protected void configurationRequierdToProceed() {
-		if ((envClass == null) || (environment == null)){
-			throw new IllegalStateException("You can't run this step before having loaded the environment configuration!\nenvClass("+envClass+")\nenvironment("+environment+")");
+		if ((envClass == null) || (envName == null)){
+			throw new IllegalStateException("You can't run this step before having loaded the environment configuration!\nenvClass("+envClass+")\nenvName("+envName+")");
 		}
 	}
 
