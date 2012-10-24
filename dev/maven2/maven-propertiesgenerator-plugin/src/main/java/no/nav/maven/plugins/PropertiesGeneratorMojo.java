@@ -51,25 +51,17 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 		this.environmentProperties = environmentProperties;
 	}
 
-	/**
-	 * @param outputDir
-	 *            The outputDir to set.
-	 */
 	public void setOutputDir(String outputDir) {
 		this.outputDir = outputDir;
 	}
 
-	/**
-	 * @param templateDir
-	 *            The templateDir to set.
-	 */
 	public void setTemplateDir(String templateDir) {
 		this.templateDir = templateDir;
 	}
 
 	public void execute() throws MojoExecutionException {
 
-		getLog().info("Taking properties from " +environmentProperties+ "and templates from " +templateDir+ ", combining them in "+ outputDir);
+		getLog().info("Taking properties from " +environmentProperties+ " and templates from " +templateDir+ ", combining them in "+ outputDir);
 
 		try {
 			Properties p = new Properties();
