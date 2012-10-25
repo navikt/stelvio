@@ -108,20 +108,21 @@
         <string>TRUNK-CheckScripts</string>
         <string>TRUNK-ekstern</string>
         <string>TRUNK-ekstern-modules-ci</string>
-        <string>TRUNK-ekstern-tjenestespesifikasjon</string>
         <string>TRUNK-esb-modules-ci</string>
         <string>TRUNK-esb-release deploy</string>
         <string>TRUNK-esb-release verify</string>
         <string>TRUNK-nav</string>
         <string>TRUNK-nav-modules-ci</string>
-        <string>TRUNK-nav-tjenestespesifikasjon</string>
         <string>TRUNK-nav_trunk_int_esb_layers</string>
         <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release</string>
         <string>TRUNK-nav_trunk_int_esb_poms</string>
         <string>TRUNK-pensjon</string>
         <string>TRUNK-pensjon-modules-ci</string>
         <string>TRUNK-pensjon-prosess-modules-ci</string>
-        <string>TRUNK-pensjon-tjenestespesifikasjon</string>
+        <string>TRUNK-tjenestespesifikasjon-ekstern</string>
+        <string>TRUNK-tjenestespesifikasjon-nav</string>
+        <string>TRUNK-tjenestespesifikasjon-pensjon</string>
+        <string>TRUNK-tjenestespesifikasjon-system</string>
         <string>TRUNK_configuration_bus-authorization</string>
         <string>TRUNK_configuration_bus-environment</string>
         <string>TRUNK_configuration_bus-nonenvironment</string>
@@ -370,27 +371,6 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status HL3 (7.4)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <de.fspengler.hudson.pview.ConsoleViewColumn/>
-      </columns>
-      <includeRegex>(2012HL3_7\.4_).*</includeRegex>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>SYSMOD</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -441,7 +421,7 @@
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[10]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[9]/jobNames/comparator"/>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -481,6 +461,27 @@
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>Jira.*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status HL6 (7.6)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2012HL6_7\.6_).*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Testejobb for å teste ny config</description>
+  <description>Samlejobb som kjører alle skriptjobber vi har for å sjekke koden og dokumentere leveransen.</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
@@ -51,6 +51,18 @@
       </base-property>
     </entry>
     <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>1</daysToKeep>
+          <numToKeep>15</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
+    </entry>
+    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -58,12 +70,6 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
-    </entry>
-    <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
     </entry>
     <entry>
       <string>hudson-plugins-violations-ViolationsPublisher</string>
@@ -82,14 +88,8 @@
     <entry>
       <string>hudson-plugins-descriptionsetter-DescriptionSetterPublisher</string>
       <external-property>
-        <originalValue class="hudson.plugins.descriptionsetter.DescriptionSetterPublisher">
-          <regexp></regexp>
-          <regexpForFailed></regexpForFailed>
-          <description>Envconfig ${EnvironmentConfigVersion}, nonenvconfig ${NonenvironmentConfigVersion} -&gt; ${Gateway}-${Environment}</description>
-          <setForMatrix>false</setForMatrix>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -129,6 +129,11 @@
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
+        <originalValue class="hudson.tasks.Mailer">
+          <recipients>test@example.com, test@example.com</recipients>
+          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+          <sendToIndividuals>false</sendToIndividuals>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
@@ -178,77 +183,7 @@
     <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList">
-          <hudson.model.ParametersDefinitionProperty>
-            <parameterDefinitions>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>Gateway</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>partner-gw</string>
-                    <string>secgw</string>
-                    <string>portal-gw</string>
-                    <string>tms-gw</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>Environment</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>u3</string>
-                    <string>t0</string>
-                    <string>t1</string>
-                    <string>t2</string>
-                    <string>t3</string>
-                    <string>t4</string>
-                    <string>t5</string>
-                    <string>t6</string>
-                    <string>t8</string>
-                    <string>t9</string>
-                    <string>q0</string>
-                    <string>q1</string>
-                    <string>q3</string>
-                    <string>q4</string>
-                    <string>q5</string>
-                    <string>q6</string>
-                    <string>q8</string>
-                    <string>q9</string>
-                    <string>p</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>EnvironmentConfigVersion</name>
-                <description></description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>NonenvironmentConfigVersion</name>
-                <description></description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>DeployerPomRevision</name>
-                <description>Datapower deployer pom svn revision number</description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>DataPowerInstance</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>testing.test</string>
-                    <string>https://dp-tst-01.adeo.no:5550</string>
-                    <string>https://dp-tst-02.adeo.no:5550</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-            </parameterDefinitions>
-          </hudson.model.ParametersDefinitionProperty>
-        </originalValue>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
     </entry>
@@ -267,17 +202,17 @@
       </external-property>
     </entry>
     <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -305,6 +240,9 @@
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>@monthly</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -313,11 +251,16 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-
-EnvironmentClass=${Environment:0:1}
-
-mvn3 clean test -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
+            <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name &quot;*WSIMP.import&quot; -exec R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/System.out.print_Search.py
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/cons_xml_check.py R_7_6_0_D20121025_2012HL6
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_7_6_0_D20121025_2012HL6/ --page 45027508
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_7_6_0_D20121025_2012HL6/ 45027622
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_R_7_6_0_D20121025_2012HL6/ --page 45027630
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_7_6_0_D20121025_2012HL6/ --page 45027638</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
@@ -358,18 +301,18 @@ mvn3 clean test -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=$
       </base-property>
     </entry>
     <entry>
-      <string>hudson-tasks-ArtifactArchiver</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>concurrentBuild</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-ArtifactArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyTrigger</string>
@@ -378,17 +321,17 @@ mvn3 clean test -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=$
       </trigger-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -401,7 +344,21 @@ mvn3 clean test -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=$
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_6_0_D20121025_2012HL6</remote>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -420,16 +377,30 @@ mvn3 clean test -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=$
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>i136181</createdBy>
-  <creationTime>1340283309792</creationTime>
+  <createdBy>n129069</createdBy>
+  <creationTime>1351168503444</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.NullSCM"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_3_0_D20120130_2012HL2_7_3</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
