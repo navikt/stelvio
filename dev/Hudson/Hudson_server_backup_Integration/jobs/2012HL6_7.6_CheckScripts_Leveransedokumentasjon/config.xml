@@ -259,7 +259,7 @@ R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
 R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/cons_xml_check.py R_7_6_0_D20121025_2012HL6
 R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_7_6_0_D20121025_2012HL6/ --page 45027508
 R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_7_6_0_D20121025_2012HL6/ 45027622
-R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_R_7_6_0_D20121025_2012HL6/ --page 45027630
+R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_7_6_0_D20121025_2012HL6/ --page 45027630
 R_7_6_0_D20121025_2012HL6/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_7_6_0_D20121025_2012HL6/ --page 45027638</command>
           </hudson.tasks.Shell>
         </originalValue>
