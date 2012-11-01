@@ -146,6 +146,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String environmentPropertiesTree;
 	protected String mainPropertiesFilepath;
 	protected String nonenvironmentProperties;
+	protected String externalEndpointsXml;
+	protected String externalTilkoblingslisteXml;
 	protected String templatesPath;
 	protected String blaGroupsPath;
 	protected String moduleConfigPath;
@@ -181,6 +183,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		templatesPath = enviromentConfigurationPath + "/templates";
 		mainPropertiesFilepath = targetDirectory + "/main.properties";
 		environmentPropertiesTree = enviromentConfigurationPath + "/properties-tree";
+		externalEndpointsXml = nonenviromentConfigurationPath +"/samhandlers/external_endpoints.xml";
+		externalTilkoblingslisteXml = nonenviromentConfigurationPath +"/samhandlers/external_tilkoblingsListe.xml";
 		nonenvironmentProperties = nonenviromentConfigurationPath + "/properties";
 		deployInfoPropertiesPath = nonenvironmentProperties + "/deployInfo.properties";
 		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + envName;

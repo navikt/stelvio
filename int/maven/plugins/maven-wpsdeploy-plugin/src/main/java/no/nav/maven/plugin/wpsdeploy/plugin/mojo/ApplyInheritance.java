@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.utils.SamhandlerParser;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
@@ -26,6 +28,11 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 		Properties prop = new Properties();
 
 		try {
+			getLog().info("Parsing into properties: "+externalEndpointsXml);
+			prop.putAll(SamhandlerParser.parseXml(new File(externalEndpointsXml)));
+			getLog().info("Parsing into properties: "+externalTilkoblingslisteXml);
+			prop.putAll(SamhandlerParser.parseTilkoblingslisteXml(new File(externalTilkoblingslisteXml)));
+			
 			loadDir(nonenvironmentProperties, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass + "/" + envName, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass, prop);
