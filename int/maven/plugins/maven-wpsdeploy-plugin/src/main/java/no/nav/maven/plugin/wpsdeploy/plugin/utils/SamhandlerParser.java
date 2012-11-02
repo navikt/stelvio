@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.maven.plugin.MojoExecutionException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -18,7 +19,7 @@ import org.xml.sax.SAXException;
 
 
 public class SamhandlerParser {
-	public static Map<String, String> parseXml(File xmlFile){
+	public static Map<String, String> parseXml(File xmlFile) throws MojoExecutionException{
 		Map<String, String> output = new HashMap<String, String>();
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
@@ -49,19 +50,16 @@ public class SamhandlerParser {
 			}
 			
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Propblemer med å tolke samhandler endpointene i filen"+ xmlFile.getAbsolutePath(), e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Propblemer med å tolke samhandler endpointene i filen"+ xmlFile.getAbsolutePath(), e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Propblemer med å tolke samhandler endpointene i filen"+ xmlFile.getAbsolutePath(), e);
 		}
 		return output;
 	}
 	
-	public static Map<String, String> parseTilkoblingslisteXml(File xmlFile){
+	public static Map<String, String> parseTilkoblingslisteXml(File xmlFile) throws MojoExecutionException{
 		Map<String, String> output = new HashMap<String, String>();
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
@@ -96,14 +94,11 @@ public class SamhandlerParser {
 			}
 			
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Propblemer med å tolke samhandler endpointene i filen"+ xmlFile.getAbsolutePath(), e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Propblemer med å tolke samhandler endpointene i filen"+ xmlFile.getAbsolutePath(), e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Propblemer med å tolke samhandler endpointene i filen"+ xmlFile.getAbsolutePath(), e);
 		}
 		return output;
 		

@@ -2,8 +2,10 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.Properties;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.SamhandlerParser;
@@ -33,10 +35,11 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 			getLog().info("Parsing into properties: "+externalTilkoblingslisteXml);
 			prop.putAll(SamhandlerParser.parseTilkoblingslisteXml(new File(externalTilkoblingslisteXml)));
 			
-			loadDir(nonenvironmentProperties, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass + "/" + envName, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass, prop);
 			loadDir(environmentPropertiesTree, prop);
+			loadDir(nonenvironmentProperties, prop);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new MojoExecutionException("Propblemer med å lese properties filer i "+ environmentPropertiesTree);
@@ -45,8 +48,7 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 		try{
 			writeProps(prop, mainPropertiesFilepath);
 		} catch (IOException e) {
-			e.printStackTrace();
-			throw new MojoExecutionException("Propblemer med å skrive til properties filen "+ mainPropertiesFilepath);
+			throw new MojoExecutionException("Propblemer med å skrive til properties filen "+ mainPropertiesFilepath, e);
 		}
 	}
 
@@ -72,8 +74,19 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 		if(!fileObj.exists()){
 			fileObj.createNewFile();
 		}
-		props.store(new FileOutputStream(filePath), null);
+		store(props, filePath);
 		getLog().info("Wrote properties into "+filePath);
+	}
+	
+	private void store(Properties props, String propertyFilePath) throws FileNotFoundException {
+
+	    PrintWriter pw = new PrintWriter(propertyFilePath);
+
+	    for (Enumeration<?> e = props.propertyNames(); e.hasMoreElements();) {
+	        String key = (String) e.nextElement();
+	        pw.println(key + "=" + props.getProperty(key));
+	    }
+	    pw.close();
 	}
 
 	protected String getGoalPrettyPrint() {
