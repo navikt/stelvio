@@ -30,11 +30,6 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 		Properties prop = new Properties();
 
 		try {
-			getLog().info("Parsing into properties: "+externalEndpointsXml);
-			prop.putAll(SamhandlerParser.parseXml(new File(externalEndpointsXml)));
-			getLog().info("Parsing into properties: "+externalTilkoblingslisteXml);
-			prop.putAll(SamhandlerParser.parseTilkoblingslisteXml(new File(externalTilkoblingslisteXml)));
-			
 			loadDir(environmentPropertiesTree + "/" + envClass + "/" + envName, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass, prop);
 			loadDir(environmentPropertiesTree, prop);

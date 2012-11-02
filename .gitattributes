@@ -7827,6 +7827,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DeleteApplicationA
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/DownloadEARFiles.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/Log.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/PathMappingsMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/SamhandlerParser.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/WPS.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjects.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminObjectsWrapper.py -text
@@ -7884,7 +7885,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/ExceptionConverter.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/PropertyUtils.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/PwdConsole.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/SamhandlerParser.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/SshUtil.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ApplicationManagement.py -text
