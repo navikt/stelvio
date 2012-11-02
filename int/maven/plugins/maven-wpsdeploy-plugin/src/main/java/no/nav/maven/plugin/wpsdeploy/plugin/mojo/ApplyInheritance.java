@@ -8,8 +8,6 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.SamhandlerParser;
-
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
