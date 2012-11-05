@@ -1,7 +1,6 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +9,7 @@ import java.util.Properties;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.shared.filtering.PropertyUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
@@ -28,10 +28,10 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 		Properties prop = new Properties();
 
 		try {
+			loadDir(nonenvironmentProperties, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass + "/" + envName, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass, prop);
 			loadDir(environmentPropertiesTree, prop);
-			loadDir(nonenvironmentProperties, prop);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 			boolean found = false;
 			for(File propFile : dir.listFiles()){
 				if(propFile.getName().toLowerCase().endsWith(".properties")){
-					props.load(new FileInputStream(propFile));
+					props.putAll(PropertyUtils.loadPropertyFile(propFile, props));
 					found = true;
 				}
 			}
