@@ -178,7 +178,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		String environmentConfigurationPath = busConfigPath + "/" + environmentConfiguration;
 		String nonenvironmentConfigurationPath = busConfigPath + "/" + nonenvironmentConfiguration;
 		
-		templatesPath = environmentConfigurationPath + "/templates";
+		templatesPath = nonenvironmentConfigurationPath + "/templates";
 		mainPropertiesFilepath = targetDirectory + "/main.properties";
 		environmentPropertiesTree = environmentConfigurationPath + "/properties-tree";
 		nonenvironmentProperties = nonenvironmentConfigurationPath + "/properties";
