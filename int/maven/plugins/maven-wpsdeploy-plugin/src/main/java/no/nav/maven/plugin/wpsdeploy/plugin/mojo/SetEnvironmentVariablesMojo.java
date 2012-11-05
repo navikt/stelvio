@@ -44,8 +44,8 @@ public class SetEnviromentVariablesMojo extends WebsphereUpdaterMojo {
 		}
 
 		environmentVariables.add("ESB_AUTHORIZATION_CONFIGURATION_VERSION=" + authorizationConfigurationVersion);
-		environmentVariables.add("ESB_ENVIROMENT_CONFIGURATION_VERSION=" + enviromentConfigurationVersion);
-		environmentVariables.add("ESB_NONENVIROMENT_CONFIGURATION_VERSION=" + nonenviromentConfigurationVersion);
+		environmentVariables.add("ESB_ENVIROMENT_CONFIGURATION_VERSION=" + environmentConfigurationVersion);
+		environmentVariables.add("ESB_NONENVIROMENT_CONFIGURATION_VERSION=" + nonenvironmentConfigurationVersion);
 				
 		Commandline.Argument arg = new Commandline.Argument();
 		String environmentVariablesCSV = ArgumentUtil.listToDelimitedString(environmentVariables, ",");
@@ -57,6 +57,6 @@ public class SetEnviromentVariablesMojo extends WebsphereUpdaterMojo {
 
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Set enviroment variables on DMGR";
+		return "Set environment variables on DMGR";
 	}
 }

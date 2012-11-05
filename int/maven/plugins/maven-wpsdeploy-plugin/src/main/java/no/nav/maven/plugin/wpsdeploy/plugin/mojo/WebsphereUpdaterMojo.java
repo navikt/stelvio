@@ -56,16 +56,16 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String authorizationConfigurationVersion;
 
 	/**
-	 * @parameter expression="${esb-enviroment-configuration}"
+	 * @parameter expression="${esb-environment-configuration}"
 	 * @required
 	 */
-	protected String enviromentConfigurationVersion;
+	protected String environmentConfigurationVersion;
 
 	/**
-	 * @parameter expression="${esb-nonenviroment-configuration}"
+	 * @parameter expression="${esb-nonenvironment-configuration}"
 	 * @required
 	 */
-	protected String nonenviromentConfigurationVersion;
+	protected String nonenvironmentConfigurationVersion;
 	
 	/**
 	 * @parameter expression="${envClass}"
@@ -160,35 +160,35 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		/* ESB Configuration parts */
 		String authorizationConfiguration = "esb-authorization-configuration";
-		String enviromentConfiguration = "esb-enviroment-configuration";
-		String nonenviromentConfiguration = "esb-nonenviroment-configuration";
+		String environmentConfiguration = "esb-enviroment-configuration";
+		String nonenvironmentConfiguration = "esb-nonenviroment-configuration";
 		
 		configurationParts.add(authorizationConfiguration);
-		configurationParts.add(enviromentConfiguration);
-		configurationParts.add(nonenviromentConfiguration);
+		configurationParts.add(environmentConfiguration);
+		configurationParts.add(nonenvironmentConfiguration);
 
 		jythonScriptsPath = targetDirectory + "/scripts";
 		deployDependencies = targetDirectory + "/EarFilesToDeploy.csv";
 		
 		/* tmp bus configuration dirs */
-		deployProperties = tmpInterpolationStageOne + "/" + nonenviromentConfiguration +"/properties/deployInfo.properties";
+		deployProperties = tmpInterpolationStageOne + "/" + nonenvironmentConfiguration +"/properties/deployInfo.properties";
 
 		/* dirs after interpolation (a plugin in the pom inserts passwords and copys the config to a new dir) */
 		String authorizationConfigurationPath = busConfigPath + "/" + authorizationConfiguration;
-		String enviromentConfigurationPath = busConfigPath + "/" + enviromentConfiguration;
-		String nonenviromentConfigurationPath = busConfigPath + "/" + nonenviromentConfiguration;
+		String environmentConfigurationPath = busConfigPath + "/" + environmentConfiguration;
+		String nonenvironmentConfigurationPath = busConfigPath + "/" + nonenvironmentConfiguration;
 		
-		templatesPath = enviromentConfigurationPath + "/templates";
+		templatesPath = environmentConfigurationPath + "/templates";
 		mainPropertiesFilepath = targetDirectory + "/main.properties";
-		environmentPropertiesTree = enviromentConfigurationPath + "/properties-tree";
-		nonenvironmentProperties = nonenviromentConfigurationPath + "/properties";
+		environmentPropertiesTree = environmentConfigurationPath + "/properties-tree";
+		nonenvironmentProperties = nonenvironmentConfigurationPath + "/properties";
 		deployInfoPropertiesPath = nonenvironmentProperties + "/deployInfo.properties";
-		applicationPropertiesPath = enviromentConfigurationPath + "/app_props/" + envName;
-		blaGroupsPath = nonenviromentConfigurationPath + "/BLA-groups";
-		moduleConfigPath = enviromentConfigurationPath + "/moduleconfig";
-		activationspecificationsPath = nonenviromentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
+		applicationPropertiesPath = environmentConfigurationPath + "/app_props/" + envName;
+		blaGroupsPath = nonenvironmentConfigurationPath + "/BLA-groups";
+		moduleConfigPath = environmentConfigurationPath + "/moduleconfig";
+		activationspecificationsPath = nonenvironmentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
 		authorizationConsXmlPath = authorizationConfigurationPath;
-		policySetBindings = nonenviromentConfigurationPath + "/policySetBindings/policySetBindings.xml";
+		policySetBindings = nonenvironmentConfigurationPath + "/policySetBindings/policySetBindings.xml";
 		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
