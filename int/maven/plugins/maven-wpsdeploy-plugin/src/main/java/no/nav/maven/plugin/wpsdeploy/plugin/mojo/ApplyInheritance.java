@@ -28,10 +28,10 @@ public class ApplyInheritance extends WebsphereUpdaterMojo {
 		Properties prop = new Properties();
 
 		try {
-			loadDir(nonenvironmentProperties, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass + "/" + envName, prop);
 			loadDir(environmentPropertiesTree + "/" + envClass, prop);
 			loadDir(environmentPropertiesTree, prop);
+			loadDir(nonenvironmentProperties, prop);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
