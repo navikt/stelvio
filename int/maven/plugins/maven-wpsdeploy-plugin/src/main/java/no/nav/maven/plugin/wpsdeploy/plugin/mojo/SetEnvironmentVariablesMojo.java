@@ -17,7 +17,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal set-environment-variables
  * @requiresDependencyResolution
  */
-public class SetEnviromentVariablesMojo extends WebsphereUpdaterMojo {
+public class SetEnvironmentVariablesMojo extends WebsphereUpdaterMojo {
 
 	/**
 	 * @parameter
