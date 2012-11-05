@@ -35,26 +35,18 @@ def parseAuthorizationConfiguration(roleXmlPath):
 	
 	return roles
 	
-def parseEndpoints(moduleConfigPath):
+def parseEndpoints(applicationEndpointsFolderPath):
 	moduleEndpoints = {}
-	importNameREGEX = re.compile('(?:/?sca/import/|)([^/]+)$')
-	for moduleName, configPath in getAllModuleConfigFiles(moduleConfigPath).items():
-		xml = XML.parseXML(configPath)
-		
-		endpointNodes = xml.findAll('endpoint')
-		if not endpointNodes:
-			continue
+	for xmlFile in getAllXmlFiles(applicationEndpointsFolderPath):
+		xml = XML.parseXML(xmlFile)
 		
 		endpoints = {}
-		for endpointNode in endpointNodes:
-			fullName = endpointNode.getChildValue('name')
-			m = importNameREGEX.match(fullName)
-			if not m:
-				raise ValueError('Ugyldig formatering på import navnet i XMLen!')
-			name = m.group(1)
-			value = endpointNode.getChildValue('value')
-			endpoints[name] = value
-		
+		for module in xml.findAll('module'):
+			moduleName = module.attr('name')
+			for scaImport in module.findAll('scaImport'):
+				scaImportName = scaImport.attr('name')
+				value = scaImport.get()
+				endpoints[scaImportName] = value
 		moduleEndpoints[moduleName] = endpoints
 			
 	return moduleEndpoints
@@ -96,27 +88,14 @@ def parseSamhandlerEndpoints(samhandlerSpesificationPath):
 		
 		for resource in resources:
 			pass
-		
 
-def getAllModuleConfigFiles(moduleConfigPath):
-	modules = {}
-	path = moduleConfigPath +'/'+ env.getEnvClass() +'/'+ env.getEnviroment()
-	extractXmlsFilePath(path, modules)
-	path = moduleConfigPath +'/'+ env.getEnvClass()
-	extractXmlsFilePath(path, modules)
-	path = moduleConfigPath
-	extractXmlsFilePath(path, modules)
-	return modules
-			
-def extractXmlsFilePath(path, modulesDict):
-	for fileName in os.listdir(path):
+def getAllXmlFiles(folder):
+	xmlFiles = []
+	for fileName in os.listdir(folder):
 		if fileName.lower().endswith('.xml'):
-			moduleName = stripExtension(fileName)
-			if not modulesDict.has_key(moduleName):
-				modulesDict[moduleName] = path+'/'+fileName
-			else:
-				l.debug(moduleName, 'is also defined on a higner level and therfore will %s/%s be ignored!' % (path, fileName))
-	
+			xmlFiles.append(folder + '/' + fileName)
+	return xmlFiles
+
 fileNameAndExtensionREGEX = re.compile('(.*)\.([^\.]+)$')
 def stripExtension(fileName):
 	name, extension = fileNameAndExtensionREGEX.match(fileName).groups()
