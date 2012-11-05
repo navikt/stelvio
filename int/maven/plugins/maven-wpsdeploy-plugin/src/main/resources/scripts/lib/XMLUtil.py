@@ -13,6 +13,7 @@ xmlREGEX = re.compile('<.*?>')
 
 
 def parseXML(xml):
+	l.debug('Parsing xml file:', xml)
 	if isinstance(xml, Node):
 		return XMLNode(xml, xml)
 	elif isinstance(xml, types.StringType):
