@@ -32,7 +32,6 @@
 		<module>maven-websphere-plugin</module>
 		<module>maven-wid-plugin</module>
 		<module>maven-wps-artifact-plugin</module>
-		<module>maven-wpsdeploy-plugin</module>
 		<module>maven-wsi-plugin</module>
 		<module>maven-wsdl-plugin</module>
 	</modules>
