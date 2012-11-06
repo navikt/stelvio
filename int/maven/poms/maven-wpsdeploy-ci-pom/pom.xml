@@ -16,11 +16,13 @@
 	<name>POM for CI deployments</name>
 
 	<properties>
-		<wpsdeployVersion>6.0.1</wpsdeployVersion>
+		<wpsdeployVersion>6.0.2-SNAPSHOT</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
-		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
+		<tmpExtractDir>${project.build.directory}/tmpExtractDir</tmpExtractDir>
+		<tmpInterpolationStageOne>${project.build.directory}/tmpInterpolationStageOne</tmpInterpolationStageOne>
+		<busConfigDir>${project.build.directory}/bus-config</busConfigDir>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
@@ -38,7 +40,7 @@
 			<version>${esb-enviroment-configuration}</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -52,28 +54,38 @@
 				</artifactId>
 			</plugin>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
+				<groupId>no.nav.aura.maven.plugins</groupId>
+				<artifactId>nav-envtools-plugin</artifactId>
+				<version>2.0.2</version>
 				<executions>
 					<execution>
-						<phase>generate-resources</phase>
-						<id>interpolate-passwords</id>
+						<id>filter-resources</id>
+						<phase>generate-sources</phase>
 						<goals>
-							<goal>copy-resources</goal>
+							<goal>filter-resources</goal>
 						</goals>
-						<configuration>
-							<!-- Specifies where the property files end up after interpolation -->
-							<outputDirectory>${project.build.directory}/bus-config</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${tmpExtractDir}</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<libVersion>2.0.7-SNAPSHOT</libVersion>
+					<configVersion>2.0.0-SNAPSHOT</configVersion>
+					<vaultDirectoryPath>${passwordVault}</vaultDirectoryPath>
+					<outputDirectory>${tmpInterpolationStageOne}</outputDirectory>
+					<resources>
+						<resource>
+							<targetPath>.</targetPath>
+							<directory>${tmpExtractDir}</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<excludes>
+								<exclude>**/pom.xml</exclude>
+							</excludes>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
-			 <plugin>
+			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-properties-plugin</artifactId>
 				<version>1.1</version>
@@ -81,15 +93,37 @@
 					<!-- Load properties from file -->
 					<execution>
 						<id>load-property-files</id>
-						<phase>process-sources</phase>
+						<phase>process-resources</phase>
 						<goals>
 							<goal>load-properties</goal>
 						</goals>
 						<configuration>
 							<files>
-								<file>${passwordVault}/${envClass}/${environment}-env.properties</file>
-								<file>${passwordVault}/${envClass}/application.properties</file>
+								<file>${passwordVault}/${envClass}/${envName}/application.properties</file>
+								<file>${passwordVault}/${envClass}/${envName}/environment.properties</file>
 							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>interpolate-passwords</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<!-- Specifies where the property files end up after interpolation -->
+							<outputDirectory>${busConfigDir}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${tmpInterpolationStageOne}</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 				</executions>
@@ -146,7 +180,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
-					<version>2.0</version>
+					<version>3.0-SNAPSHOT</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
