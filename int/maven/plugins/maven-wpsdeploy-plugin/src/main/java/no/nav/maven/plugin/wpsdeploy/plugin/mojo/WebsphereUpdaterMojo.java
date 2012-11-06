@@ -148,7 +148,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String nonenvironmentProperties;
 	protected String templatesPath;
 	protected String blaGroupsPath;
-	protected String moduleConfigPath;
+	protected String applicationEndpoints;
 	protected String deployInfoPropertiesPath;
 	protected String applicationPropertiesPath;	
 	protected String activationspecificationsPath;
@@ -185,7 +185,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		deployInfoPropertiesPath = nonenvironmentProperties + "/deployInfo.properties";
 		applicationPropertiesPath = environmentConfigurationPath + "/app_props/" + envName;
 		blaGroupsPath = nonenvironmentConfigurationPath + "/BLA-groups";
-		moduleConfigPath = environmentConfigurationPath + "/moduleconfig";
+		applicationEndpoints = nonenvironmentConfigurationPath + "/applicationEndpoints";
 		activationspecificationsPath = nonenvironmentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
 		authorizationConsXmlPath = authorizationConfigurationPath;
 		policySetBindings = nonenvironmentConfigurationPath + "/policySetBindings/policySetBindings.xml";

@@ -19,7 +19,7 @@ public class ApplyWSEndpointsMojo extends WebsphereUpdaterMojo {
 		}
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("ModifySCAImportsBinding.py " + moduleConfigPath);
+		arg.setLine("ModifySCAImportsBinding.py " + applicationEndpoints);
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}
