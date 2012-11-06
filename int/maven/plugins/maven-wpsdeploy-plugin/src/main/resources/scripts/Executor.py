@@ -7,11 +7,20 @@ import lib.ibmfixes
 
 glo = globals()
 loc = locals()
+l = log.getLogger("Executor")
+	
 def Executor_main():
+	checkConnection()
 	scriptDir = Executor_getScriptDir()	
 	scriptPath = scriptDir + Executor_getScriptName()
 	Executor_executeScript(scriptPath)
 
+def checkConnection():
+	try:
+		AdminTask
+	except NameError:
+		l.error("Your wsadmin session is not connected with the server!\nCheck that the server address, username and password for the environment is correct!")
+	
 def Executor_getScriptDir():
 	IBM_JAVA_COMMAND_LINE = os.environ.get("IBM_JAVA_COMMAND_LINE")
 	match = re.search("-f\s+(/?\S+/)?Executor.py", IBM_JAVA_COMMAND_LINE)
@@ -27,7 +36,6 @@ def Executor_getScriptName():
 
 def Executor_executeScript(scriptPath):
 	scriptName = Executor_getScriptName()
-	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)
 	myTimer = Timer()
 	
