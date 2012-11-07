@@ -34,6 +34,17 @@ def parseAuthorizationConfiguration(roleXmlPath):
 	roles = dict(rolesNode.each(getRolesData))
 	
 	return roles
+		
+def readPolicySetBindingConfig(xmlPath):
+	xml = XML.parseXML(xmlPath)
+	config = []
+	for policySetBindingXML in xml.findAll('policySetBinding'):
+		name = policySetBindingXML.attr('name')
+		user = policySetBindingXML.getChildValue('user')
+		password = policySetBindingXML.getChildValue('password')
+		config.append([name,user,password])
+		
+	return config
 	
 def parseEndpoints(applicationEndpointsFolderPath):
 	moduleEndpoints = {}

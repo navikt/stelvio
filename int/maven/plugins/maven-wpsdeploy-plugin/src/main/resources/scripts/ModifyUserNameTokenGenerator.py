@@ -1,6 +1,7 @@
 import sys
 from lib.saveUtil import save
-from lib.javaPropertiesUtil import PropertiesReader
+from lib.parseConfiguration import readPolicySetBindingConfig
+
 import lib.XMLUtil as XML
 import lib.logUtil as log
 l = log.getLogger(__name__)
@@ -12,18 +13,6 @@ def main():
 		
 	for config in configSets:
 		setBindingAuth(*config)
-
-		
-def readPolicySetBindingConfig(xmlPath):
-	xml = XML.parseXML(xmlPath)
-	config = []
-	for policySetBindingXML in xml.findAll('policySetBinding'):
-		name = policySetBindingXML.attr('name')
-		user = policySetBindingXML.getChildValue('user')
-		password = policySetBindingXML.getChildValue('password')
-		config.append([name,user,password])
-		
-	return config
 		
 def setBindingAuth(bindingname, userid, password):
 	l.info("Modifying binding "+bindingname+".")
