@@ -25,7 +25,7 @@ public class ApplyActivationSpecsMojo extends WebsphereUpdaterMojo {
 	}
 
 	protected String getGoalPrettyPrint() {
-		return "Apply inheritance";
+		return "Apply activationspecs";
 	}
 
 }
