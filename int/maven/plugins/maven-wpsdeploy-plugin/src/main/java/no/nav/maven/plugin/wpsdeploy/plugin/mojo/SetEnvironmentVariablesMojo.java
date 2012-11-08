@@ -44,6 +44,13 @@ public class SetEnvironmentVariablesMojo extends WebsphereUpdaterMojo {
 		}
 
 		environmentVariables.add("ESB_AUTHORIZATION_CONFIGURATION_VERSION=" + authorizationConfigurationVersion);
+				
+		//person21eaa6ad9a5aet rett
+		environmentVariables.add("ESB_ENVIRONMENT_CONFIGURATION_VERSION=" + environmentConfigurationVersion);
+		environmentVariables.add("ESB_NONENVIRONMENT_CONFIGURATION_VERSION=" + nonenvironmentConfigurationVersion);
+		
+
+		//Feilstavet
 		environmentVariables.add("ESB_ENVIROMENT_CONFIGURATION_VERSION=" + environmentConfigurationVersion);
 		environmentVariables.add("ESB_NONENVIROMENT_CONFIGURATION_VERSION=" + nonenvironmentConfigurationVersion);
 				
