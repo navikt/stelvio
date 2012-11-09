@@ -86,7 +86,7 @@
 		              <version>2.2</version>
 		            </dependency>
 		          </dependencies>
-		          <configuration>
+		          <configuration combine.self="override">
 		            <tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
 		            <releaseProfiles>relnotes</releaseProfiles>
 		            <goals>deploy site site-deploy</goals>
