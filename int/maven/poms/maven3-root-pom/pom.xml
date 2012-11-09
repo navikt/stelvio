@@ -264,15 +264,15 @@
 			http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml
 		</eclipse.workspaceCodeStylesURL>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-root-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven3-root-pom
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-root-pom
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven3-root-pom
 		</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-root-pom
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven3-root-pom
 		</developerConnection>
 	</scm>
 </project>
