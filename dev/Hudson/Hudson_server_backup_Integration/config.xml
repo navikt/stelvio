@@ -98,7 +98,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>CI-buss-pom_sync</string>
-        <string>CI-deploy-til-U2-WPS</string>
+        <string>CI-deploy-til-U2-WPS-Maven3</string>
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
