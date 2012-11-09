@@ -12,7 +12,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wpsdeploy-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>7.0.0</version>
+	<version>7.0.0-SNAPSHOT</version>
 	<name>WPS deployment plugin</name>
 
 	<dependencies>
@@ -73,34 +73,43 @@
 		</dependency>
 	</dependencies>
 	
-  <build>
-	  	<pluginManagement>
+	<build>
+		<pluginManagement>
 			<plugins>
-		        <plugin>
-		          <artifactId>maven-site-plugin</artifactId>
-		          <version>3.1</version>
-		          <dependencies>
-		            <dependency>
-		              <groupId>org.apache.maven.wagon</groupId>
-		              <artifactId>wagon-ssh</artifactId>
-		              <version>2.2</version>
-		            </dependency>
-		          </dependencies>
-		          <configuration combine.self="override">
-		            <tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
-		            <releaseProfiles>relnotes</releaseProfiles>
-		            <goals>deploy site site-deploy</goals>
-		          </configuration>
-		        </plugin>
-		    </plugins>
-	    </pluginManagement>
-    </build>
+				<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.1</version>
+				<dependencies>
+					<dependency>
+					<groupId>org.apache.maven.wagon</groupId>
+					<artifactId>wagon-ssh</artifactId>
+					<version>2.2</version>
+					</dependency>
+				</dependencies>
+				<configuration combine.self="override">
+					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
+					<releaseProfiles>relnotes</releaseProfiles>
+					<goals>deploy site site-deploy</goals>
+				</configuration>
+				</plugin>
+				<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration combine.self="override">
+					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
+					<releaseProfiles>relnotes</releaseProfiles>
+					<goals>deploy site site-deploy</goals>
+				</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 	
 	
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/aura/tags/maven-wpsdeploy-plugin-7.0.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/aura/tags/maven-wpsdeploy-plugin-7.0.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wpsdeploy-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wpsdeploy-plugin</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
