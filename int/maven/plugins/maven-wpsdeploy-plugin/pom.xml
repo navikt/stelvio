@@ -105,6 +105,17 @@
 		</pluginManagement>
 	</build>
 	
+	<profiles>
+		<profile>
+		  <id>relnotes</id>
+			  <activation>
+					<file>
+						<exists>StupidMissingFileINeverWantToFind</exists>
+					</file>
+			  </activation>
+		</profile>
+	</profiles>
+	
 	
 
 	<scm>
