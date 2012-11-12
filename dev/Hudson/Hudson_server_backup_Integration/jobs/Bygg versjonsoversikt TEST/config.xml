@@ -217,6 +217,11 @@
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>version</name>
+                <description>Versjonnummer til scriptet som genererer oversikten</description>
+                <defaultValue>0.0.1-SNAPSHOT</defaultValue>
+              </hudson.model.StringParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
         </originalValue>
@@ -281,7 +286,10 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>wget -O elsam_access_overview_main.py https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/esb-tools/esb-scripts/bin/HUDSON_elsam_access_overview/elsam_access_overview_main.py?op=dl
+            <command>wget -O elsam-access-overview-script-${version}.jar http://maven.adeo.no/nexus/content/repositories/m2snapshot/no/nav/maven/support/elsam-access-overview-script/${version}/elsam-access-overview-script-${version}.jar?op=dl
+
+jar -xvf elsam-access-overview-script-${version}.jar
+mv script/* . -f
 
 python2.7 elsam_access_overview_main.py ${env1} ${env2} ${env3}</command>
           </hudson.tasks.Shell>
