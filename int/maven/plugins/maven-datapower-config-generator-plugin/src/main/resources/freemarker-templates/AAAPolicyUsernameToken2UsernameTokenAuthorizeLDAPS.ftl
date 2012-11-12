@@ -1,4 +1,4 @@
-<#macro AAAPolicyUsernameToken2UsernameTokenLDAPS name auLdapHost auLdapPort auLdapBindDN auLdapBindPwd auLdapSearchParameters auSSLProxyProfile>
+<#macro AAAPolicyUsernameToken2UsernameTokenLDAPS name aaaFileName auLdapHost auLdapPort auLdapBindDN auLdapBindPwd auLdapSearchParameters auSSLProxyProfile>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
