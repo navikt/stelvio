@@ -64,4 +64,5 @@
 <#include "AAAPolicyUsernameToken2UsernameToken.ftl">
 <#include "AAAPolicyUsernameToken2UsernameTokenLDAPS.ftl">
 <#include "AAAPolicyUsernameToken2UsernameTokenAuthorize.ftl">
+<#include "AAAPolicyUsernameToken2UsernameTokenAuthorizeLDAPS.ftl">
 <#include "XMLManager.ftl">
