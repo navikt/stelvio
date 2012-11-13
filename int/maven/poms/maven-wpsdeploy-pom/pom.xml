@@ -15,7 +15,7 @@
 	<name>POM for deployments</name>
 
 	<properties>
-		<wpsdeployVersion>6.0.2-SNAPSHOT</wpsdeployVersion>
+		<wpsdeployVersion>7.0.0</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmpExtractDir</tmpExtractDir>
 		<tmpInterpolationStageOne>${project.build.directory}/tmpInterpolationStageOne</tmpInterpolationStageOne>
@@ -66,7 +66,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<libVersion>2.0.7-SNAPSHOT</libVersion>
+					<libVersion>2.0.7</libVersion>
 					<configVersion>2.0.0-SNAPSHOT</configVersion>
 					<vaultDirectoryPath>${passwordVault}</vaultDirectoryPath>
 					<outputDirectory>${tmpInterpolationStageOne}</outputDirectory>
