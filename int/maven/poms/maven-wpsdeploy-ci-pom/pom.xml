@@ -152,12 +152,6 @@
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>pensjon-prosess-modules-ci</artifactId>
-								<version>${pensjon-prosess-modules-ci-version}</version>
-								<variableName>PENSJON_PROCESS_MODULES_VERSION</variableName>
-							</artifact>
-							<artifact>
-								<groupId>no.nav.esb</groupId>
 								<artifactId>esb-modules-ci</artifactId>
 								<version>${esb-modules-ci-version}</version>
 								<variableName>ESB_MODULES_VERSION</variableName>
