@@ -1128,8 +1128,8 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL6_7.6_tjenestespesifikasj
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL6_7.6_tjenestespesifikasjon_system/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hudson[!!-~]configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Bygg[!!-~]versjonsoversikt[!!-~]TEST/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS[!!-~](Kan[!!-~]slettes[!!-~]etter[!!-~]01.01.2013)/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS-Maven3/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy-til-U2-WPS/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT/config.xml -text

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset>
   <actions/>
-  <description></description>
+  <description>Erstattes av CI-deploy-til-U2-WPS-Maven3</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>blockBuildWhenDownstreamBuilding</string>
@@ -27,7 +27,7 @@
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>3</daysToKeep>
+          <daysToKeep>5</daysToKeep>
           <numToKeep>-1</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
@@ -193,7 +193,7 @@
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.plugins.emailext.ExtendedEmailPublisher>
-      <recipientList>test@example.com,test@example.com</recipientList>
+      <recipientList>test@example.com</recipientList>
       <configuredTriggers>
         <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
           <email>

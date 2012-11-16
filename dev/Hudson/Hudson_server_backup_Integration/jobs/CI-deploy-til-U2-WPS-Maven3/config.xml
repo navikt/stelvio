@@ -206,7 +206,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com,test@example.com</recipientList>
+          <recipientList>test@example.com</recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -268,19 +268,7 @@
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean
-deploy
--Denvironment=U2
--Dbus-configuration-version=0.0.0.1-SNAPSHOT
--Dnav-modules-ci-version=0.0.0.1-SNAPSHOT
--Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT
--Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT
--Desb-modules-ci-version=0.0.0.1-SNAPSHOT
--DinteractiveMode=false
--Dskip=backup-config,create-BLA-groups,bounce-dmgr
--Desb-authorization-configuration=0.0.0.1-SNAPSHOT
--Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT
--Desb-enviroment-configuration=0.0.0.1-SNAPSHOT</goals>
+              <goals>clean deploy -Denvironment=U2 -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-ci-version=0.0.0.1-SNAPSHOT -Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT -Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT -Desb-modules-ci-version=0.0.0.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.0.1-SNAPSHOT -Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT -Desb-enviroment-configuration=0.0.0.1-SNAPSHOT</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
               <pomFile>pom.xml</pomFile>
