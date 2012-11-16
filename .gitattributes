@@ -7777,6 +7777,12 @@ int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/deployment/Handler.java -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/deployment/ModuleDeploymentDescriptorEditor.java -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/deployment/ModuleDeploymentMojo.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/.classpath -text
+int/maven/plugins/maven-service-registry-updater-plugin/.project -text
+int/maven/plugins/maven-service-registry-updater-plugin/.settings/org.eclipse.jdt.core.prefs -text
+int/maven/plugins/maven-service-registry-updater-plugin/.settings/org.maven.ide.eclipse.prefs -text
+int/maven/plugins/maven-service-registry-updater-plugin/pom.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceRegistryFileMojo.java -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text

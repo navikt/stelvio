@@ -27,6 +27,7 @@
 		<module>maven-properties-plugin</module>
 		<module>maven-sca-attributes-plugin</module>
 		<module>maven-service-deploy-plugin</module>
+		<module>maven-service-registry-updater-plugin</module>
 		<module>maven-update-ear-plugin</module>
 		<module>maven-wasdeploy-plugin</module>
 		<module>maven-websphere-plugin</module>
