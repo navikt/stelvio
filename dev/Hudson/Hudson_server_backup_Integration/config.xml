@@ -203,43 +203,6 @@
       <highVis>true</highVis>
       <groupByPrefix>false</groupByPrefix>
     </hudson.model.RadiatorView>
-    <hudson.plugins.view.dashboard.Dashboard>
-      <owner class="hudson" reference="../../.."/>
-      <name>dashboard test</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>HORISONTEN_7.2_nav-model-doc</string>
-        <string>HORISONTEN_7.2_nav-model-doc-chmod</string>
-        <string>HORISONTEN_7.2_nav-model-doc-diagram</string>
-        <string>HORISONTEN_7.2_nav-model-update</string>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <de.fspengler.hudson.pview.ConsoleViewColumn/>
-      </columns>
-      <useCssStyle>false</useCssStyle>
-      <includeStdJobList>false</includeStdJobList>
-      <leftPortletWidth>50%</leftPortletWidth>
-      <rightPortletWidth>50%</rightPortletWidth>
-      <leftPortlets/>
-      <rightPortlets/>
-      <topPortlets/>
-      <bottomPortlets>
-        <hudson.plugins.view.dashboard.stats.StatBuilds>
-          <id>dashboard_portlet_2</id>
-          <name>Build statistics</name>
-        </hudson.plugins.view.dashboard.stats.StatBuilds>
-      </bottomPortlets>
-    </hudson.plugins.view.dashboard.Dashboard>
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>Confluence scripts</name>
@@ -482,6 +445,28 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>(2012HL6_7\.6_).*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>IRPORT-3446</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[12]/jobNames/comparator"/>
+        <string>IRPORT-3446_dokumentbehandling</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
     </listView>
   </views>
   <primaryView>All</primaryView>
