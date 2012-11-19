@@ -15,7 +15,7 @@
 	<name>POM for deployments</name>
 
 	<properties>
-		<wpsdeployVersion>7.0.2</wpsdeployVersion>
+		<wpsdeployVersion>7.0.3</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmpExtractDir</tmpExtractDir>
 		<tmpInterpolationStageOne>${project.build.directory}/tmpInterpolationStageOne</tmpInterpolationStageOne>
@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
 			<artifactId>esb-enviroment-configuration</artifactId>
-			<version>${esb-enviroment-configuration}</version>
+			<	>${esb-enviroment-configuration}</version>
 		</dependency>
 	</dependencies>
 
