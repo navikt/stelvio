@@ -58,7 +58,7 @@ def parseEndpoints(applicationEndpointsFolderPath):
 				scaImportName = scaImport.attr('name')
 				value = scaImport.get()
 				endpoints[scaImportName] = value
-		moduleEndpoints[moduleName] = endpoints
+	moduleEndpoints[moduleName] = endpoints
 			
 	return moduleEndpoints
 
