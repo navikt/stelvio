@@ -30,7 +30,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected File buildDirectory;
-	
+
 	/**
 	 * Apps with services to be exposed formatted like "pselv:1.2.3, norg:3.2.1,Joark:2.1.3"
 	 * 
@@ -38,7 +38,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected String apps;
-	
+
 	/**
 	 * Environment
 	 * 
@@ -46,66 +46,64 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected String env;
-	
+
 	/**
 	 * Path to old service-registry.xml
 	 * 
-	 * @parameter
+	 * @parameter expression="${oldServiceRegistryFile}"
 	 * @required
 	 */
-	protected String oldServiceReg;
+	protected File oldServiceRegistryFile;
 
 	protected HashMap<String, String> applications = new HashMap<String, String>();
-	
-	private String endpoint;
-	private String pathToWSDL;
-	
+
+	private String currentEndpoint;
+	private String currentWsdlDir;
+
 	protected File serviceReg;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		
+
 		ServiceRegistry serviceRegistry = new ServiceRegistry();
-		
-		// lag ny service-registry-fil
+
 		try {
+			// les inn gammel service registry-fil (serviceRegistry)
 			buildDirectory.mkdir();
-			serviceReg = new File(buildDirectory,
-			"service-registry.xml");
+			serviceReg = new File(buildDirectory, "service-registry.xml");
 		} catch (Exception e) {
-			throw new MojoExecutionException(
-					"An error occured while trying to write service registry to file",
-					e);
+			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}
-		
+
 		// Parse apps og versjoner (forberede rest-kall mot envconfig)
 		parseApplicationsString();
-		
-		// For hver app:  Gjor rest-sporring for endpoint og wsdl
-		Iterator it = applications.entrySet().iterator();
-		while (it.hasNext()){
-			Map.Entry<String, String> appAndVersion = (Map.Entry<String, String>) it.next();
+
+		for (Map.Entry<String, String> appAndVersion : applications.entrySet()) {
+			String application = appAndVersion.getKey();
+			String version = appAndVersion.getValue();
+
+			
 			
 			// Gjor sporring mot envconfig for a finne wsdls
-			getInfoFromEnvconfig(appAndVersion.getKey(), appAndVersion.getValue());
-			
-			// Generer filblokk
-			try {
-				serviceRegistry.writeToFile(new File(buildDirectory,
-				"service-registry.xml"));
-			} catch (Exception e) {
-				throw new MojoExecutionException(
-						"An error occured while trying to write service registry to file",
-						e);
-			}
+			getInfoFromEnvconfig(application, version);
 
-			it.remove();
+			//serviceRegistry.replaceApplicationBlock(currentWsdlDir, application);
 			
+			// for alle wsdler i pathToWSDL
+			
+			// Generer filblokk i minne
+			
+			// Finn applikasjonsblokk i gammel service-registry.xml, og slett 
+			
+			// Bytt ut med ny og skriv
+			
+			try {
+				serviceRegistry.writeToFile(new File(buildDirectory, "service-registry.xml"));
+			} catch (Exception e) {
+				throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
+			}
 		}
-		
-		
-		
 	}
-	
+
 	private void parseApplicationsString() throws MojoExecutionException {
 		// "pselv:1.2.3, norg:3.2.1,Joark:2.1.3" -> [<pselv, 1.2.3>, <norg, 3.2.1>, <joark, 2.1.3>]
 		for (String applicationString : apps.split(",")) {
@@ -123,10 +121,13 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	}
 
 	private void getInfoFromEnvconfig(String app, String version) throws MojoExecutionException {
+
+		//EnvConfigClient client = new EnvConfigClient... (rest-klient api fra testsenteret/plattformtjenester)
 		
 		// gjor sporring mot envconfig, returner endpoint og wsdl-artifakt
-		endpoint = "";
-		pathToWSDL = "";
+		currentEndpoint = ""; // = client.getHostname(app, env)
+		//groupId = client.getGroupId(app);
+		currentWsdlDir = ""; // = undersøkes.
 	}
 
 }

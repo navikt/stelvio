@@ -40,6 +40,16 @@ public class ServiceRegistry {
 	public Collection<Service> getServices() {
 		return services.values();
 	}
+	
+	public void replaceApplicationBlock(File wsdlDir, String application){
+		
+		Application app = new Application();
+		
+		for (File f: wsdlDir.listFiles()) {
+			Definition definition = DPWsdlUtils.getDefinition(f.toString());
+		}
+		
+	}
 
 	public void addServiceInstance(ServiceInstance endpoint) {
 		Definition definition = DPWsdlUtils.getDefinition(endpoint.getWsdlAddress().toString());

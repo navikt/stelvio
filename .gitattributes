@@ -7784,6 +7784,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/.settings/org.eclipse.jd
 int/maven/plugins/maven-service-registry-updater-plugin/.settings/org.maven.ide.eclipse.prefs -text
 int/maven/plugins/maven-service-registry-updater-plugin/pom.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceRegistryFileMojo.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/Application.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/Service.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/ServiceInstance.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/ServiceOperation.java -text
