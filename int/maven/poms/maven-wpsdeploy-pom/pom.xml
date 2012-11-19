@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
 			<artifactId>esb-enviroment-configuration</artifactId>
-			<	>${esb-enviroment-configuration}</version>
+			<version>${esb-enviroment-configuration}</version>
 		</dependency>
 	</dependencies>
 
