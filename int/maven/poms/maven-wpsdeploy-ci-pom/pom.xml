@@ -16,7 +16,7 @@
 	<name>POM for CI deployments</name>
 
 	<properties>
-		<wpsdeployVersion>7.0.0</wpsdeployVersion>
+		<wpsdeployVersion>7.0.1</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmpExtractDir</tmpExtractDir>
 		<tmpInterpolationStageOne>${project.build.directory}/tmpInterpolationStageOne</tmpInterpolationStageOne>
@@ -150,6 +150,7 @@
 								<version>${nav-modules-ci-version}</version>
 								<variableName>NAV_MODULES_VERSION</variableName>
 							</artifact>
+							
 							<artifact>
 								<groupId>no.nav.esb</groupId>
 								<artifactId>esb-modules-ci</artifactId>
