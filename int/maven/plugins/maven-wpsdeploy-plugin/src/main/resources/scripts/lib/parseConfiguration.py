@@ -51,9 +51,9 @@ def parseEndpoints(applicationEndpointsFolderPath):
 	for xmlFile in getAllXmlFiles(applicationEndpointsFolderPath):
 		xml = XML.parseXML(xmlFile)
 		
-		endpoints = {}
 		for module in xml.findAll('module'):
 			moduleName = module.attr('name')
+			endpoints = {}
 			for scaImport in module.findAll('scaImport'):
 				scaImportName = scaImport.attr('name')
 				value = scaImport.get()
