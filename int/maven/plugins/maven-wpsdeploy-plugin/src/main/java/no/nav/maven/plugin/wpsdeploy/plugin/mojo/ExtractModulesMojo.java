@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.xml.parsers.FactoryConfigurationError;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.models.DeployArtifact;
+import no.nav.maven.plugin.wpsdeploy.plugin.utils.PomParser;
 import no.nav.maven.utils.ArtifactUtils;
 
 import org.apache.maven.plugin.MojoExecutionException;
@@ -117,22 +118,16 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 		return (moduleGroupId != null) && (moduleArtifactId != null) && (moduleVersion != null) && (moduleType != null);
 	}
 
-	private Artifact resolveArtifact(DefaultArtifact unresolvedArtifact) throws MojoExecutionException {
-		Artifact resolvedArtifact = ArtifactUtils.resolveArtifact(repositories, repoSystem, repoSession, unresolvedArtifact);
-		return resolvedArtifact;
-	}
-
 	private Set<Artifact> getResolvedProjectArtifacts() throws IOException, MojoExecutionException {
 		Set<Artifact> output = new HashSet<Artifact>();
 		for (DeployArtifact da : artifacts){
-			Artifact esbBus = deployArtifactToAetherArtifact(da);
+			Artifact logicalBusPom = deployArtifactToResolvedArtifact(da);
 			int originalSize = output.size();
 
-			getLog().info("Resolving "+ esbBus.getArtifactId() +":");
-			for(Artifact artifact : resolveDependencies(esbBus)){
-				if("ear".equals(artifact.getExtension())){
-					output.add(artifact);
-				}
+			getLog().info("Resolving "+ logicalBusPom.getArtifactId() +":");
+			for (DefaultArtifact a : PomParser.getDependencies(logicalBusPom.getFile())){
+					Artifact r = resolveArtifact(a);
+					output.add(r);
 			}
 
 			getLog().info("Successfully extracted "+ (output.size() - originalSize) +" dependency artifacts of " + da.toString() + " into \"output\" list.");
@@ -140,14 +135,13 @@ public class ExtractModulesMojo extends WebsphereUpdaterMojo {
 		return output;
 	}
 
-	private Artifact deployArtifactToAetherArtifact(DeployArtifact artifact)
-	{
-		return new DefaultArtifact(artifact.getGroupId(), artifact.getArtifactId(),"pom", artifact.getVersion());
+	private Artifact deployArtifactToResolvedArtifact(DeployArtifact artifact) throws MojoExecutionException{
+		DefaultArtifact defaultArtifact = new DefaultArtifact(artifact.getGroupId(), artifact.getArtifactId(),"pom", artifact.getVersion());
+		return resolveArtifact(defaultArtifact);
 	}
 
-
-	private List<Artifact> resolveDependencies(Artifact artifact) throws MojoExecutionException{
-		return ArtifactUtils.resolveDependencies(repositories, repoSystem, repoSession, artifact);
+	private Artifact resolveArtifact(DefaultArtifact unresolvedArtifact) throws MojoExecutionException {
+		return ArtifactUtils.resolveArtifact(repositories, repoSystem, repoSession, unresolvedArtifact);
 	}
 
 	private void writeArtifactsToinstallationRecepie(Set<Artifact> resolvedArtifacts, BufferedWriter installationRecepie) throws IOException {
