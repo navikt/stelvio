@@ -8,6 +8,7 @@
 <#include "StylePolicyActionTransform.ftl"/>
 <#include "StylePolicyActionTransformParameterized.ftl"/>
 <#include "StylePolicyActionVerify.ftl"/>
+<#include "StylePolicyActionRouteAction.ftl"/>
 <#macro StylePolicyAction actionNamePrefix action>
 	<#--
 		Execute AAA Policy Action
@@ -26,6 +27,15 @@
 		name="${actionNamePrefix}${action.name}"
 		destination="${action.destination}"
 		output="${action.output}"/>
+	<#--
+		Route Action
+	-->
+	<#elseif action.type == "route">
+	<@StylePolicyActionRouteAction
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		output="${action.output}"
+		transform="${action.transform}"/>
 	<#--
 		Conditional Action
 	-->

@@ -1,8 +1,8 @@
-<#macro MultiProtocolGateway name httpSourceProtocolHandler stylePolicy>
-	<MultiProtocolGateway name="ServiceGateway" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+<#macro MultiProtocolGateway name httpsSourceProtocolHandler stylePolicy>
+	<MultiProtocolGateway name=${name} xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Priority>normal</Priority>
-		<FrontProtocol class="HTTPSourceProtocolHandler">${httpSourceProtocolHandler}</FrontProtocol>
+		<FrontProtocol class="HTTPSourceProtocolHandler">${httpsSourceProtocolHandler}</FrontProtocol>
 		<XMLManager class="XMLManager">default</XMLManager>
 		<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
 		<QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>

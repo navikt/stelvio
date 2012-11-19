@@ -15,6 +15,7 @@
 <#include "AAAPolicyLTPA2None.ftl">
 <#include "AAAPolicyUsernameToken2LTPA.ftl">
 <#include "AAAPolicyUsernameToken2None.ftl">
+<#include "AAAPolicyUsernameToken2NoneAnyAuth.ftl">
 <#include "FrontsideHandler.ftl">
 <#include "HTTPSourceProtocolHandler.ftl">
 <#include "LDAPSearchParameters.ftl">
