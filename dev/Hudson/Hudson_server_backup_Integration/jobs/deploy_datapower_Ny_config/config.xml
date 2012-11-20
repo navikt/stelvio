@@ -190,6 +190,7 @@
                     <string>secgw</string>
                     <string>portal-gw</string>
                     <string>tms-gw</string>
+                    <string>service-gw</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -317,7 +318,7 @@
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
+mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
