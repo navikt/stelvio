@@ -1,5 +1,5 @@
-<#macro HTTPSourceProtocolHandler name localAddress localPort SSLProxy>
-	<HTTPSourceProtocolHandler name="${name}"
+<#macro HTTPSSourceProtocolHandler name localAddress localPort SSLProxy>
+	<HTTPSSourceProtocolHandler name="${name}"
 		xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<LocalAddress>${localAddress}</LocalAddress>
@@ -30,5 +30,5 @@
 		<MaxValueHdrLen>0</MaxValueHdrLen>
 		<MaxQueryStringLen>0</MaxQueryStringLen>
 		<SSLProxy class="SSLProxyProfile">${SSLProxy}</SSLProxy>
-	</HTTPSourceProtocolHandler>
+	</HTTPSSourceProtocolHandler>
 </#macro>

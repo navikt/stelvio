@@ -7680,15 +7680,6 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/LoadBalancerGroup.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/LogTarget.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicy.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyAction.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyActionFetch.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyActionResults.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyActionRouteAction.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyActionTransform.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyActionValidate.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyRuleError.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyRuleRequest.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MPGStylePolicyRuleResponse.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MatchingRuleErrorCode.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MatchingRuleURL.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MatchingRuleXPath.ftl -text
@@ -7710,7 +7701,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionFetch.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionLog.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionResult.ftl -text
-int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionRouteAction.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionRoute.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionSLM.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionSign.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionTransform.ftl -text

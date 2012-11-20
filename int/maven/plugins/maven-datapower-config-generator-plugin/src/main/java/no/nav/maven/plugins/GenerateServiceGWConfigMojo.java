@@ -126,6 +126,14 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 	private List repositories;
 	
 	/**
+	 * 
+	 * @parameter expression="${gateway-name}"
+	 * @readonly
+	 * @required
+	 */
+	private String gatewayName;	
+	
+	/**
 	 * @component roleHint="zip"
 	 * @required
 	 * @readonly
@@ -147,10 +155,13 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 //		File wsdlFilesDirectory = new File(localFilesDirectory, "wsdl");
 //		wsdlFilesDirectory.mkdir();
 //		unArchiver.setDestDirectory(wsdlFilesDirectory);
-		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
-		getLog().info("Generating Datapower config");
+		File propertiesFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
+		
+		getLog().info("Generating Datapower config for " + gatewayName);
 		getLog().debug("ConfigDirectory=" + outputDirectory);
-		File configFile = new File(outputDirectory, "configuration.xml");
+		File tempDir = new File(project.getBasedir(), "target/temp");
+		tempDir.mkdir();
+		File configFile = new File(tempDir, "configuration.xml");
 		getLog().debug("ConfigFile=" + configFile);
 
 		properties = loadProperties(propertiesFile.getPath());
@@ -314,7 +325,7 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
 		// Prepare for fremarker template processing
-		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "src/main/freemarker-templates"));
+		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/freemarker-templates"));
 		// Open file for writing
 		FileWriter writer = new FileWriter(configFile);
 		// Process main template
