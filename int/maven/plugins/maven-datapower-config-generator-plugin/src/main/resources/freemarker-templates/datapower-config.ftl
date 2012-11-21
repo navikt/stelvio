@@ -25,6 +25,7 @@
 <#include "MatchingRuleURL.ftl">
 <#include "MatchingRuleXPath.ftl">
 <#include "MPGStylePolicy.ftl">
+<#include "MPGProcessingRules.ftl">
 <#include "MultiProtocolGateway.ftl">
 <#include "NFSStaticMount.ftl">
 <#include "ProcessingRules.ftl">

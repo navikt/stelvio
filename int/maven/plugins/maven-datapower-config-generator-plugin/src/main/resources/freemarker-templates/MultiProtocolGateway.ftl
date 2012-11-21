@@ -25,6 +25,9 @@
 		<ParserLimitsMaxNodeSize>33554432</ParserLimitsMaxNodeSize>
 		<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
 		<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
+		<ParserLimitsMaxPrefixes>0</ParserLimitsMaxPrefixes>
+		<ParserLimitsMaxNamespaces>0</ParserLimitsMaxNamespaces>
+		<ParserLimitsMaxLocalNames>0</ParserLimitsMaxLocalNames>
 		<ParserLimitsAttachmentByteCount>2000000000</ParserLimitsAttachmentByteCount>
 		<ParserLimitsAttachmentPackageByteCount>0</ParserLimitsAttachmentPackageByteCount>
 		<DebugMode persisted="false">off</DebugMode>
@@ -32,6 +35,7 @@
 		<DebugHistory>25</DebugHistory>
 		<RequestType>soap</RequestType>
 		<ResponseType>soap</ResponseType>
+		<FlowControl>off</FlowControl>
 		<SOAPSchemaURL>store:///schemas/soap-envelope.xsd</SOAPSchemaURL>
 		<FrontTimeout>120</FrontTimeout>
 		<BackTimeout>120</BackTimeout>
@@ -81,6 +85,8 @@
 		<WSRMSourceMaximumQueueLength>30</WSRMSourceMaximumQueueLength>
 		<WSRMSourceRequestAckCount>1</WSRMSourceRequestAckCount>
 		<WSRMSourceInactivityClose>360</WSRMSourceInactivityClose>
+		<ForcePolicyExec>off</ForcePolicyExec>
+		<RewriteErrors>on</RewriteErrors>
 		<StylePolicy class="StylePolicy">${stylePolicy}</StylePolicy>
 		<Type>dynamic-backend</Type>
 	</MultiProtocolGateway>
