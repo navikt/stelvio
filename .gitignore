@@ -2574,6 +2574,7 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/target
 int/maven/plugins/maven-wps-artifact-plugin/src/target
 int/maven/plugins/maven-wps-artifact-plugin/target
 int/maven/plugins/maven-wpsdeploy-plugin/.classpath
+int/maven/plugins/maven-wpsdeploy-plugin/.git
 int/maven/plugins/maven-wpsdeploy-plugin/.project
 int/maven/plugins/maven-wpsdeploy-plugin/.settings
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/*.class
