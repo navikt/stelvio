@@ -1,9 +1,10 @@
-<#macro MultiProtocolGateway name httpsSourceProtocolHandler stylePolicy>
+<#macro MultiProtocolGateway name httpsSourceProtocolHandler SSLProxyProfile stylePolicy>
 	<MultiProtocolGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Priority>normal</Priority>
 		<FrontProtocol class="HTTPSSourceProtocolHandler">${httpsSourceProtocolHandler}</FrontProtocol>
 		<XMLManager class="XMLManager">default</XMLManager>
+		<SSLProxy class="SSLProxyProfile">${SSLProxyProfile}</SSLProxy>
 		<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
 		<QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>
 		<BackendUrl>http://dynamic-backend</BackendUrl>
