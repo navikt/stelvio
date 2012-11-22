@@ -244,6 +244,7 @@
                     <string>testing.test</string>
                     <string>https://dp-tst-01.adeo.no:5550</string>
                     <string>https://dp-tst-02.adeo.no:5550</string>
+                    <string>https://dp-tst-13.adeo.no:5550</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
