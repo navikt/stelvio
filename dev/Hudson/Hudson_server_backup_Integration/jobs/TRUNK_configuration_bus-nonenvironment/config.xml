@@ -24,6 +24,15 @@
       </base-property>
     </entry>
     <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
@@ -36,26 +45,17 @@
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
+      <string>blockBuildWhenUpstreamBuilding</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
-      </base-property>
+      </boolean-property>
     </entry>
     <entry>
       <string>scmCheckoutRetryCount</string>
       <integer-property>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
-    </entry>
-    <entry>
-      <string>blockBuildWhenUpstreamBuilding</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
     </entry>
     <entry>
       <string>cleanWorkspaceRequired</string>
@@ -74,16 +74,9 @@
     <entry>
       <string>quietPeriod</string>
       <integer-property>
-        <originalValue class="int">5</originalValue>
+        <originalValue class="int">10</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-BuildTrigger</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
@@ -95,11 +88,11 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
+      <string>hudson-tasks-BuildTrigger</string>
+      <external-property>
         <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>jdk</string>
@@ -107,6 +100,13 @@
         <originalValue class="string">(Default)</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>appointedNode</string>
