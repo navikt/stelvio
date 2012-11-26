@@ -268,7 +268,20 @@
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean deploy -Denvironment=U2 -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-ci-version=0.0.0.1-SNAPSHOT -Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT -Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT -Desb-modules-ci-version=0.0.0.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.0.1-SNAPSHOT -Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT -Desb-enviroment-configuration=0.0.0.1-SNAPSHOT</goals>
+              <goals>clean&#xd;
+deploy&#xd;
+-Denvironment=U2&#xd;
+-Dbus-configuration-version=0.0.0.1-SNAPSHOT&#xd;
+-Dnav-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Desb-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-DinteractiveMode=false&#xd;
+-Dskip=backup-config,create-BLA-groups,bounce-dmgr&#xd;
+-Desb-authorization-configuration=0.0.0.1-SNAPSHOT&#xd;
+-Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT&#xd;
+-Desb-enviroment-configuration=0.0.0.1-SNAPSHOT&#xd;
+-Dlogging.level=DEBUG</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
               <pomFile>pom.xml</pomFile>
@@ -393,7 +406,7 @@
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
-          <spec># at 01:00 in the morning
+          <spec># at 01:00 in the morning&#xd;
 0 1 * * *</spec>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
