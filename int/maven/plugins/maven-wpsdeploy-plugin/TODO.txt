@@ -1,8 +1,7 @@
 x ta i bruk ibmfixes.py i Executor.py
 - forsøk å få lib/stringUtil.py inn i ibmfixes.py
 x Flytt lib/collections.py inn i ibmfixes.py
-- Flytt XmlToUil.blaGroupXmlToStringList() til getConfiguration.py
+x Flytt XmlToUil.blaGroupXmlToStringList() til getConfiguration.py
 - innfør 36 talls systemet på versjonsnr 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 - gjøre ApplicationManagement.py mer stabil ved å prøve igjen 2 ganger hvis installasjonen av en applikasjon feiler
 - muligheten til å legge inn kolonner i tableUtil. For eks en kolonne med nummerering av modulen blir lagt inn etter at tabellen er sortert.
-
