@@ -1,14 +1,11 @@
 package no.nav.maven.plugins;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
-import javax.xml.bind.JAXBException;
-
 import no.nav.serviceregistry.ServiceRegistry;
+import no.stelvio.serviceregistry.ServiceInstance;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -21,6 +18,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * @phase compile
  * 
  * @author person4fdbf4cece95, Accenture
+ * @author Johnny Horvi, Accenture
  * @author Øystein Gisnås, Accenture
  */
 public class GenerateServiceRegistryFileMojo extends AbstractMojo {
@@ -58,7 +56,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	protected HashMap<String, String> applications = new HashMap<String, String>();
 
 	private String currentEndpoint;
-	private String currentWsdlDir;
+	private File currentWsdlDir;
 
 	protected File serviceReg;
 
@@ -67,7 +65,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		ServiceRegistry serviceRegistry = new ServiceRegistry();
 
 		try {
-			// les inn gammel service registry-fil (serviceRegistry)
+			// les inn gammel service registry-fil (serviceRegistry) (unmarshal)
 			buildDirectory.mkdir();
 			serviceReg = new File(buildDirectory, "service-registry.xml");
 		} catch (Exception e) {
@@ -80,13 +78,11 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		for (Map.Entry<String, String> appAndVersion : applications.entrySet()) {
 			String application = appAndVersion.getKey();
 			String version = appAndVersion.getValue();
-
-			
 			
 			// Gjor sporring mot envconfig for a finne wsdls
 			getInfoFromEnvconfig(application, version);
-
-			//serviceRegistry.replaceApplicationBlock(currentWsdlDir, application);
+						
+			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
 			
 			// for alle wsdler i pathToWSDL
 			
@@ -127,7 +123,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		// gjor sporring mot envconfig, returner endpoint og wsdl-artifakt
 		currentEndpoint = ""; // = client.getHostname(app, env)
 		//groupId = client.getGroupId(app);
-		currentWsdlDir = ""; // = undersøkes.
+		currentWsdlDir = new File(buildDirectory, "/wsdl-" + app); // = undersøkes.
 	}
 
 }

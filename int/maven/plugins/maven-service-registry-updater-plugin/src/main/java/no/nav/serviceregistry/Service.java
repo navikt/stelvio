@@ -12,6 +12,8 @@ public class Service {
 
 	@XmlAttribute
 	private QName name;
+	@XmlAttribute
+	private String application;
 	// List of service versions accessed by binding qualified name
 	private Map<QName, ServiceVersion> serviceVersions = new LinkedHashMap<QName, ServiceVersion>();
 
@@ -19,8 +21,9 @@ public class Service {
 	@SuppressWarnings("unused")
 	private Service() {}
 	
-	public Service(QName serviceName) {
+	public Service(QName serviceName, String application) {
 		this.name = serviceName;
+		this.application = application;
 	}
 
 	@XmlElement
@@ -31,6 +34,7 @@ public class Service {
 	@Override
 	public String toString() {
 		StringBuilder output = new StringBuilder(name.toString() + " {");
+		output.append(application + ",");
 		for (ServiceVersion serviceVersion : serviceVersions.values()) {
 			output.append(serviceVersion + ",");
 		}

@@ -41,13 +41,15 @@ public class ServiceRegistry {
 		return services.values();
 	}
 	
-	public void replaceApplicationBlock(File wsdlDir, String application){
+	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
 		
-		Application app = new Application();
+		String applicationName = application;
 		
-		for (File f: wsdlDir.listFiles()) {
-			Definition definition = DPWsdlUtils.getDefinition(f.toString());
-		}
+//		for (File f: wsdlDir.listFiles()){
+//			Definition definition = DPWsdlUtils.getDefinition(f.toString());
+//			
+//			app.addServiceInstance(new ServiceInstance(environment, esbHostname, esbSOAPPort,esbUseSSL, export.get("module"), export.get("export")));
+//		}
 		
 	}
 
@@ -83,7 +85,7 @@ public class ServiceRegistry {
 		ServiceVersion serviceVersion = new ServiceVersion(bindingName, operations);
 		Service service = services.get(serviceName);
 		if (service == null) {
-			service = new Service(serviceName);
+			service = new Service(serviceName, null);
 			services.put(serviceName, service);
 		}
 		serviceVersion = service.addServiceVersion(serviceVersion);
