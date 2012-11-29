@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -41,20 +43,32 @@ public class ServiceRegistry {
 		return services.values();
 	}
 	
-	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
-		
-		String applicationName = application;
-		
+//	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
+//		
+//		String applicationName = application;
+//		
 //		for (File f: wsdlDir.listFiles()){
 //			Definition definition = DPWsdlUtils.getDefinition(f.toString());
 //			
 //			app.addServiceInstance(new ServiceInstance(environment, esbHostname, esbSOAPPort,esbUseSSL, export.get("module"), export.get("export")));
 //		}
-		
-	}
+//		
+//	}
 
-	public void addServiceInstance(ServiceInstance endpoint) {
-		Definition definition = DPWsdlUtils.getDefinition(endpoint.getWsdlAddress().toString());
+	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
+		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
+		//url må fikses!!
+		URL serviceEndpoint;
+		URL wsdlAddress;
+		try {
+			serviceEndpoint = new URL(endpoint + "/" + "moduleName" + "Web/sca/" + "exportName");
+			wsdlAddress = new URL(endpoint.toString() + "?wsdl");
+
+		} catch (MalformedURLException e) {
+			throw new RuntimeException("The endpoint provided is not valid (check input from envconfig), details: " + e);
+		}
+		ServiceInstance instance = new ServiceInstance(serviceEndpoint, wsdlAddress);
+
 		for (Iterator iterator = definition.getAllServices().values().iterator(); iterator.hasNext();) {
 			javax.wsdl.Service service = (javax.wsdl.Service) iterator.next();
 			for (Iterator iterator2 = service.getPorts().values().iterator(); iterator2
@@ -70,22 +84,53 @@ public class ServiceRegistry {
 							String soapActionURI = soapOperation.getSoapActionURI(); 
 							if (soapActionURI != null && !soapActionURI.isEmpty()) {
 								operations.add(new ServiceOperation(operation.getName(), soapActionURI));
+							} else {
+								String soapAction = definition.getTargetNamespace() + "/" + operation.getName();
+								operations.add(new ServiceOperation(operation.getName(), soapAction));
 							}
 						}
 					}
 				}
 				if (operations.size() > 0) {
-					addServiceInstance(service.getQName(), binding.getQName(), endpoint, operations);
+					addServiceInstance(service.getQName(), application, binding.getQName(), instance, operations);
 				}
 			}
 		}
 	}
+	
+//	public void addServiceInstance(ServiceInstance endpoint) {
+//		Definition definition = DPWsdlUtils.getDefinition(endpoint.getWsdlAddress().toString());
+//		for (Iterator iterator = definition.getAllServices().values().iterator(); iterator.hasNext();) {
+//			javax.wsdl.Service service = (javax.wsdl.Service) iterator.next();
+//			for (Iterator iterator2 = service.getPorts().values().iterator(); iterator2
+//					.hasNext();) {
+//				Port port = (Port) iterator2.next();
+//				Binding binding = port.getBinding();
+//				List<ServiceOperation> operations = new ArrayList<ServiceOperation>();
+//				for (Object op : binding.getBindingOperations()) {
+//					BindingOperation operation = (BindingOperation) op;
+//					for (Object obj : operation.getExtensibilityElements()) {
+//						if (obj instanceof SOAPOperation) {
+//							SOAPOperation soapOperation = (SOAPOperation) obj;
+//							String soapActionURI = soapOperation.getSoapActionURI(); 
+//							if (soapActionURI != null && !soapActionURI.isEmpty()) {
+//								operations.add(new ServiceOperation(operation.getName(), soapActionURI));
+//							}
+//						}
+//					}
+//				}
+//				if (operations.size() > 0) {
+//					addServiceInstance(service.getQName(), null, binding.getQName(), endpoint, operations);
+//				}
+//			}
+//		}
+//	}
 
-	public void addServiceInstance(QName serviceName, QName bindingName, ServiceInstance serviceInstance, List<ServiceOperation> operations) {
+	public void addServiceInstance(QName serviceName, String applicationName, QName bindingName, ServiceInstance serviceInstance, List<ServiceOperation> operations) {
 		ServiceVersion serviceVersion = new ServiceVersion(bindingName, operations);
 		Service service = services.get(serviceName);
 		if (service == null) {
-			service = new Service(serviceName, null);
+			service = new Service(serviceName, applicationName);
 			services.put(serviceName, service);
 		}
 		serviceVersion = service.addServiceVersion(serviceVersion);

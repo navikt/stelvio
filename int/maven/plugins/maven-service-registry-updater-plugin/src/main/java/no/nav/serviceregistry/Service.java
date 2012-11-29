@@ -50,4 +50,8 @@ public class Service {
 		return serviceVersions.get(bindingName);
 	}
 
+	public String getApplication() {
+		return this.application;
+	}
+	
 }

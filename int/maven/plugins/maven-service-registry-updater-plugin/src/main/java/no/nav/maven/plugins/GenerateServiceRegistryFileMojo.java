@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import no.nav.serviceregistry.ServiceRegistry;
-import no.stelvio.serviceregistry.ServiceInstance;
+import no.nav.serviceregistry.ServiceInstance;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -82,7 +82,9 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			// Gjor sporring mot envconfig for a finne wsdls
 			getInfoFromEnvconfig(application, version);
 						
-			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
+//			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
+			
+			serviceRegistry.addServiceInstance(application, currentEndpoint, currentWsdlDir.toString());
 			
 			// for alle wsdler i pathToWSDL
 			
