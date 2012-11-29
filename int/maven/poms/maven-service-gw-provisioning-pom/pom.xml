@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>NA</groupId>
+	<artifactId>NA</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Update regestry file</name>
+
+	<properties>
+		<passwordVault>${user.home}/vault/</passwordVault>
+		<deployKeys>${user.home}/deploy-keys/</deployKeys>
+		<dataPowerVer>1.7-SNAPSHOT</dataPowerVer>
+		<mavenEnforcerVer>1.0-beta-1</mavenEnforcerVer>
+		<mavenPropertiesVer>1.3</mavenPropertiesVer>
+
+		<envclass>u</envclass>	
+		<env>u3</env>	
+		<gateway-name>service-gw</gateway-name>		
+		<datapower.domain>service-gw-u3</datapower.domain>
+		<getFileName>service-registry.xml</getFileName>
+		<datapower.baseurl>https://dp-tst-13.adeo.no:5550</datapower.baseurl>
+	</properties>
+
+	<build>
+		<outputDirectory>${project.build.directory}</outputDirectory>
+
+		<plugins>
+
+			<!-- Load properties files -->
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-properties-plugin</artifactId>
+				<version>${mavenPropertiesVer}</version>
+				<executions>
+					<execution>
+						<id>load-property-files</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>load-properties</goal>
+						</goals>
+						<configuration>
+							<files>														
+								<file>${deployKeys}/${envclass}/datapower.properties</file>
+								<file>${deployKeys}/${envclass}/datapower-cfg-${gateway-name}.properties</file>
+								<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}.properties</file>
+								<file>${passwordVault}/${envclass}/${env}/environment.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Verify that all required properties are set -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${mavenEnforcerVer}</version>
+				<executions>
+					<execution>
+						<id>enforce-required-properties</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<rules>
+								<requireProperty>
+									<property>datapower.baseurl</property>
+								</requireProperty>
+								<requireProperty>
+									<property>datapower.username</property>
+								</requireProperty>
+								<requireProperty>
+									<property>datapower.password</property>
+								</requireProperty>
+								<requireProperty>
+									<property>datapower.domain</property>
+								</requireProperty>
+								<requireProperty>
+									<property>getFileName</property>
+								</requireProperty>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-datapower-plugin</artifactId>
+				<version>${dataPowerVer}</version>
+				<executions>
+					<execution>
+						<id>get-file</id>
+						<phase>install</phase>
+						<goals>
+							<goal>getFile</goal>
+						</goals>
+						<configuration>
+							<domain>${datapower.domain}</domain>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+</project>
