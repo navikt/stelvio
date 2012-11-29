@@ -26,6 +26,7 @@ import no.nav.datapower.xmlmgmt.command.RemoveDirCommand;
 import no.nav.datapower.xmlmgmt.command.RestartThisDomainCommand;
 import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
 import no.nav.datapower.xmlmgmt.command.SetFileCommand;
+import no.nav.datapower.xmlmgmt.command.GetFileCommand;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
@@ -294,7 +295,14 @@ public class XMLMgmtSession {
 		} catch (IOException e) {
 			throw new XMLMgmtException("Post request failed, content:\n" + content, e);
 		}
-	}	
+	}
+	
+	public String getFile(DeviceFileStore location, final String fileName, final String domain) throws XMLMgmtException {
+		XMLMgmtRequest request = createRequest(domain);
+		request.addCommand(new GetFileCommand(location, fileName));
+		return doRequest(request);
+	}
+	
 //	private void scanFilesAndFolders(File root, File parent, XMLMgmtRequest request, DeviceFileStore location) throws IOException {
 //		File[] children = parent.listFiles();
 //		if (children != null) {
