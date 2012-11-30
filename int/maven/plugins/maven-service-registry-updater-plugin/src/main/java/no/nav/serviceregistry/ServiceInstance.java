@@ -1,6 +1,5 @@
 package no.nav.serviceregistry;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -9,8 +8,6 @@ public class ServiceInstance {
 
 	private URL endpoint;
 	private URL wsdlAddress;
-//	@XmlElement(name="environment")
-//	private Set<String> environments;
 
 	/* For JAXB */
 	@SuppressWarnings("unused")
@@ -20,34 +17,6 @@ public class ServiceInstance {
 		this.endpoint = endpoint;
 		this.wsdlAddress = wsdlAddress;
 	}
-	
-	//Skal typen være url??
-	
-//	public ServiceInstance(String environment, String host, String port, Boolean useSSL, String moduleName, String exportName) {
-//		try {
-//			if(useSSL){
-//				endpoint = new URL("https://" + host + ":" + port + "/" + moduleName + "Web/sca/" + exportName);
-//			} else{
-//				endpoint = new URL("http://" + host + ":" + port + "/" + moduleName + "Web/sca/" + exportName);
-//			}
-//			wsdlAddress = new URL(endpoint.toString() + "?wsdl");
-//		} catch (MalformedURLException e) {
-//			throw new RuntimeException(e);
-//		}
-//		try {
-//			// Workaround for broken relative paths in WSDL when WSDL location is resolved with HTTP 302
-//			// Set WSDL location to the redirect target
-//			HttpURLConnection connection = (HttpURLConnection) wsdlAddress.openConnection();
-//			connection.setInstanceFollowRedirects(false);
-//			if (connection.getResponseCode() == 302) {
-//				wsdlAddress = new URL(connection.getHeaderField("Location"));
-//			}
-//		} catch (IOException e) {
-//			throw new RuntimeException("An error occured while connecting to WSDL address '" + wsdlAddress + "'", e);
-//		}
-////		environments = new LinkedHashSet<String>();
-////		environments.add(environment);
-//	}
 
 	@XmlAttribute
 	public URL getEndpoint() {

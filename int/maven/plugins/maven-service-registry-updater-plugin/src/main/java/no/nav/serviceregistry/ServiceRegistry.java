@@ -2,6 +2,7 @@ package no.nav.serviceregistry;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -13,6 +14,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.wsdl.Binding;
 import javax.wsdl.BindingOperation;
@@ -22,6 +25,7 @@ import javax.wsdl.extensions.soap.SOAPOperation;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.namespace.QName;
@@ -43,17 +47,30 @@ public class ServiceRegistry {
 		return services.values();
 	}
 	
-//	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
-//		
-//		String applicationName = application;
-//		
-//		for (File f: wsdlDir.listFiles()){
-//			Definition definition = DPWsdlUtils.getDefinition(f.toString());
-//			
-//			app.addServiceInstance(new ServiceInstance(environment, esbHostname, esbSOAPPort,esbUseSSL, export.get("module"), export.get("export")));
-//		}
-//		
-//	}
+	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
+		this.removeServices(application);
+		
+		for (File f: wsdlDir.listFiles()) {
+			this.addServiceInstance(application, endpoint, f.getPath());
+		}
+		
+		
+	}
+
+	//removeservice
+	private void removeServices(String application) {
+		Collection<Service> services = this.getServices();
+		for (Service service : services) {
+			if (service.getApplication().equals(application)) {				
+				Set<Entry<QName, Service>> sm = this.services.entrySet();
+				for (Entry<QName, Service> entry : sm) {
+					if (entry.getValue().equals(service)) {
+						this.services.remove(entry.getKey());
+					}
+				}
+			}
+		}
+	}
 
 	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
 		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
@@ -97,34 +114,6 @@ public class ServiceRegistry {
 			}
 		}
 	}
-	
-//	public void addServiceInstance(ServiceInstance endpoint) {
-//		Definition definition = DPWsdlUtils.getDefinition(endpoint.getWsdlAddress().toString());
-//		for (Iterator iterator = definition.getAllServices().values().iterator(); iterator.hasNext();) {
-//			javax.wsdl.Service service = (javax.wsdl.Service) iterator.next();
-//			for (Iterator iterator2 = service.getPorts().values().iterator(); iterator2
-//					.hasNext();) {
-//				Port port = (Port) iterator2.next();
-//				Binding binding = port.getBinding();
-//				List<ServiceOperation> operations = new ArrayList<ServiceOperation>();
-//				for (Object op : binding.getBindingOperations()) {
-//					BindingOperation operation = (BindingOperation) op;
-//					for (Object obj : operation.getExtensibilityElements()) {
-//						if (obj instanceof SOAPOperation) {
-//							SOAPOperation soapOperation = (SOAPOperation) obj;
-//							String soapActionURI = soapOperation.getSoapActionURI(); 
-//							if (soapActionURI != null && !soapActionURI.isEmpty()) {
-//								operations.add(new ServiceOperation(operation.getName(), soapActionURI));
-//							}
-//						}
-//					}
-//				}
-//				if (operations.size() > 0) {
-//					addServiceInstance(service.getQName(), null, binding.getQName(), endpoint, operations);
-//				}
-//			}
-//		}
-//	}
 
 	public void addServiceInstance(QName serviceName, String applicationName, QName bindingName, ServiceInstance serviceInstance, List<ServiceOperation> operations) {
 		ServiceVersion serviceVersion = new ServiceVersion(bindingName, operations);
@@ -186,5 +175,14 @@ public class ServiceRegistry {
 		
 		marshaller.marshal(this, out);
 
+	}
+	
+	//skal denne returnere et objekt eller jobber den på det eksisterende??
+	public ServiceRegistry readServiceRegistry(String serviceRegistryFile) throws JAXBException, FileNotFoundException {
+		JAXBContext context = JAXBContext.newInstance(getClass());
+		Unmarshaller unmarshaller = context.createUnmarshaller();
+		unmarshaller.setSchema(null);//sett riktig xsd
+		ServiceRegistry sr = (ServiceRegistry) unmarshaller.unmarshal(new FileInputStream(serviceRegistryFile));
+		return sr;
 	}
 }

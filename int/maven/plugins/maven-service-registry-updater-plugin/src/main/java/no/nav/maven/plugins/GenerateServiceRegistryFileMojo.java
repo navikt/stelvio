@@ -1,8 +1,11 @@
 package no.nav.maven.plugins;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.xml.bind.JAXBException;
 
 import no.nav.serviceregistry.ServiceRegistry;
 import no.nav.serviceregistry.ServiceInstance;
@@ -51,7 +54,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @parameter expression="${oldServiceRegistryFile}"
 	 * @required
 	 */
-	protected File oldServiceRegistryFile;
+	protected String oldServiceRegistryFile;
 
 	protected HashMap<String, String> applications = new HashMap<String, String>();
 
@@ -62,14 +65,14 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
+		// unmarshal gammel fil!
 		ServiceRegistry serviceRegistry = new ServiceRegistry();
-
 		try {
-			// les inn gammel service registry-fil (serviceRegistry) (unmarshal)
-			buildDirectory.mkdir();
-			serviceReg = new File(buildDirectory, "service-registry.xml");
-		} catch (Exception e) {
-			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
+			serviceRegistry = serviceRegistry.readServiceRegistry(oldServiceRegistryFile);
+		} catch (FileNotFoundException e1) {
+			throw new MojoExecutionException("Old service registry file not found", e1);
+		} catch (JAXBException e1) {
+			throw new MojoExecutionException("XML processing went wrong", e1);
 		}
 
 		// Parse apps og versjoner (forberede rest-kall mot envconfig)
@@ -82,23 +85,16 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			// Gjor sporring mot envconfig for a finne wsdls
 			getInfoFromEnvconfig(application, version);
 						
-//			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
+			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
 			
-			serviceRegistry.addServiceInstance(application, currentEndpoint, currentWsdlDir.toString());
-			
-			// for alle wsdler i pathToWSDL
-			
-			// Generer filblokk i minne
-			
-			// Finn applikasjonsblokk i gammel service-registry.xml, og slett 
+//			serviceRegistry.addServiceInstance(application, currentEndpoint, currentWsdlDir.toString());
 			
 			// Bytt ut med ny og skriv
-			
-			try {
-				serviceRegistry.writeToFile(new File(buildDirectory, "service-registry.xml"));
-			} catch (Exception e) {
-				throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
-			}
+		}
+		try {
+			serviceRegistry.writeToFile(new File(buildDirectory, "service-registry.xml"));
+		} catch (Exception e) {
+			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}
 	}
 
