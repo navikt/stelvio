@@ -22,23 +22,28 @@ import java.util.regex.*;
 public class GetFileMojo extends AbstractDeviceMgmtMojo {
 
     /**
-     * FileName for file to get from DataPower
      * 
-     * @parameter expression="${getFileName}"
+     * @parameter expression="${fileName}"
      * @required
      */    
     private String fileName;
 	
 	 /**
-     * Domain
      * 
-     * @parameter expression="${datapower.domain}"
+     * @parameter expression="${domain}"
      * @required
      */    
     private String domain;
 	
+	/**
+     * 
+     * @parameter expression="${outputDir}"
+     * @required
+     */    
+    private String outputDir;
+	
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("Executing GetFileMojo");
+		getLog().info("Executing GetFileMojo: Getting " + DeviceFileStore.LOCAL + fileName + " @ " + domain);
 		try {
 			String responseFile = getXMLMgmtSession().getFile(DeviceFileStore.LOCAL, fileName, domain);
 			responseFile = responseFile.replace("\n","").replace("\r","");
@@ -51,7 +56,8 @@ public class GetFileMojo extends AbstractDeviceMgmtMojo {
 			String base64value = m.group(2);
 			byte[] decodedFile = javax.xml.bind.DatatypeConverter.parseBase64Binary(base64value);
 			
-			File outputFile = new File(fileName);
+			(new File(outputDir)).mkdir();
+			File outputFile = new File(outputDir + fileName);
 			FileOutputStream fos = new FileOutputStream(outputFile);
 			fos.write(decodedFile);
 			fos.flush();
