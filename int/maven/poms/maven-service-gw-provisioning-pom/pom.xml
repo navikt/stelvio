@@ -6,6 +6,7 @@
 	<name>Update regestry file</name>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<passwordVault>${user.home}/vault/</passwordVault>
 		<deployKeys>${user.home}/deploy-keys/</deployKeys>
 		<dataPowerVer>1.7-SNAPSHOT</dataPowerVer>
@@ -16,7 +17,8 @@
 		<env>u3</env>	
 		<gateway-name>service-gw</gateway-name>		
 		<datapower.domain>service-gw-u3</datapower.domain>
-		<getFileName>service-registry.xml</getFileName>
+		<registryFile>service-registry.xml</registryFile>
+		<registryFolder>regFolder</registryFolder>
 		<datapower.baseurl>https://dp-tst-13.adeo.no:5550</datapower.baseurl>
 	</properties>
 
@@ -33,7 +35,7 @@
 				<executions>
 					<execution>
 						<id>load-property-files</id>
-						<phase>generate-sources</phase>
+						<phase>validate</phase>
 						<goals>
 							<goal>load-properties</goal>
 						</goals>
@@ -60,47 +62,59 @@
 						<goals>
 							<goal>enforce</goal>
 						</goals>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<configuration>
 							<rules>
 								<requireProperty>
 									<property>datapower.baseurl</property>
-								</requireProperty>
-								<requireProperty>
 									<property>datapower.username</property>
-								</requireProperty>
-								<requireProperty>
 									<property>datapower.password</property>
-								</requireProperty>
-								<requireProperty>
 									<property>datapower.domain</property>
-								</requireProperty>
-								<requireProperty>
-									<property>getFileName</property>
+									<property>registryFile</property>
+									<property>registryFolder</property>
 								</requireProperty>
 							</rules>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>		
 
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-datapower-plugin</artifactId>
 				<version>${dataPowerVer}</version>
 				<executions>
+					<!-- Get the registry file from DataPower -->
 					<execution>
 						<id>get-file</id>
-						<phase>install</phase>
+						<phase>process-sources</phase>
 						<goals>
 							<goal>getFile</goal>
 						</goals>
 						<configuration>
 							<domain>${datapower.domain}</domain>
+							<fileName>${registryFile}</fileName>
+							<outputDir>${registryFolder}</outputDir>
+						</configuration>
+					</execution>
+					<!-- Upload the newly updated registry file -->
+					<execution>
+						<id>import-files</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>importFiles</goal>
+						</goals>
+						<configuration>
+							<domain>${datapower.domain}</domain>
+							<importDir>${registryFolder}</importDir>
+							<singleFiles>true</singleFiles>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- Update the registry file -->
+			<!-- TODO kjores i "generate-resources" -->
 
 		</plugins>
 
