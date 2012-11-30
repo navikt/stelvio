@@ -10,9 +10,12 @@ import javax.xml.bind.JAXBException;
 import no.nav.serviceregistry.ServiceRegistry;
 import no.nav.serviceregistry.ServiceInstance;
 
+import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
 
 /**
  * Goal which generates a service registry file. Based on service registry plugin by Øystein Gisnås.
@@ -31,7 +34,30 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected File buildDirectory;
-
+	/**
+	 * @parameter expression="${user.home}"
+	 * @required
+	 */
+	protected File userHome;
+//	/**
+//	 * @parameter expression="${session}"
+//	 * @readonly
+//	 * @required
+//	 */
+//	protected MavenSession session;
+//
+//	/**
+//	 * @parameter expression="${project}"
+//	 * @readonly
+//	 * @required
+//	 */
+//	protected MavenProject project;
+//
+//	/**
+//	 * @component
+//	 * @required
+//	 */
+//	protected BuildPluginManager buildPluginManager;
 	/**
 	 * Apps with services to be exposed formatted like "pselv:1.2.3, norg:3.2.1,Joark:2.1.3"
 	 * 
@@ -43,7 +69,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	/**
 	 * Environment
 	 * 
-	 * @parameter expression="${env}"
+	 * @parameter
 	 * @required
 	 */
 	protected String env;
@@ -51,7 +77,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	/**
 	 * Path to old service-registry.xml
 	 * 
-	 * @parameter expression="${oldServiceRegistryFile}"
+	 * @parameter
 	 * @required
 	 */
 	protected String oldServiceRegistryFile;
@@ -67,6 +93,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 
 		// unmarshal gammel fil!
 		ServiceRegistry serviceRegistry = new ServiceRegistry();
+		getLog().debug("Trying to read service registry file...");
 		try {
 			serviceRegistry = serviceRegistry.readServiceRegistry(oldServiceRegistryFile);
 		} catch (FileNotFoundException e1) {
@@ -74,6 +101,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		} catch (JAXBException e1) {
 			throw new MojoExecutionException("XML processing went wrong", e1);
 		}
+		getLog().debug("Service registry file read! (or sort of read...)");
 
 		// Parse apps og versjoner (forberede rest-kall mot envconfig)
 		parseApplicationsString();
@@ -84,7 +112,8 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			
 			// Gjor sporring mot envconfig for a finne wsdls
 			getInfoFromEnvconfig(application, version);
-						
+			
+			getLog().debug("Trying to replace app block");
 			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
 			
 //			serviceRegistry.addServiceInstance(application, currentEndpoint, currentWsdlDir.toString());
@@ -117,11 +146,11 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	private void getInfoFromEnvconfig(String app, String version) throws MojoExecutionException {
 
 		//EnvConfigClient client = new EnvConfigClient... (rest-klient api fra testsenteret/plattformtjenester)
-		
 		// gjor sporring mot envconfig, returner endpoint og wsdl-artifakt
-		currentEndpoint = ""; // = client.getHostname(app, env)
+		currentEndpoint = "https://hostnavn.test.local:9443/"; // = client.getHostname(app, env)
 		//groupId = client.getGroupId(app);
-		currentWsdlDir = new File(buildDirectory, "/wsdl-" + app); // = undersøkes.
+		currentWsdlDir = new File(userHome, "/wsdl-" + app); // = undersøkes.
+		getLog().debug("Setting endpoint and wsdl-dir to " + currentEndpoint + " and " + currentWsdlDir);
 	}
 
 }
