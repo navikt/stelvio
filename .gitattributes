@@ -8158,6 +8158,7 @@ int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/co
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteFileCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DoImportCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FetchFileCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FlushDocumentCache.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GetFileCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GetStatusCommand.java -text
