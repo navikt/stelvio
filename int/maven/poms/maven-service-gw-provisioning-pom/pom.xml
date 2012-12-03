@@ -3,7 +3,7 @@
 	<groupId>NA</groupId>
 	<artifactId>NA</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Update regestry file</name>
+	<name>Update the service-gw registry file</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,12 +13,15 @@
 		<mavenEnforcerVer>1.0-beta-1</mavenEnforcerVer>
 		<mavenPropertiesVer>1.3</mavenPropertiesVer>
 
+		<registryFile>service-registry.xml</registryFile>
+		<registryFolder>regFolder/</registryFolder>
+		<xmlManager>default</xmlManager>
+		<gateway-name>service-gw</gateway-name>		
+		<datapower.domain>${gateway-name}-${env}</datapower.domain>
+		
+		<!-- The next properties should be given as input in the general solution, hardcoded for convenience now -->
 		<envclass>u</envclass>	
 		<env>u3</env>	
-		<gateway-name>service-gw</gateway-name>		
-		<datapower.domain>service-gw-u3</datapower.domain>
-		<registryFile>service-registry.xml</registryFile>
-		<registryFolder>regFolder</registryFolder>
 		<datapower.baseurl>https://dp-tst-13.adeo.no:5550</datapower.baseurl>
 	</properties>
 
@@ -87,7 +90,7 @@
 					<!-- Get the registry file from DataPower -->
 					<execution>
 						<id>get-file</id>
-						<phase>process-sources</phase>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>getFile</goal>
 						</goals>
@@ -95,6 +98,17 @@
 							<domain>${datapower.domain}</domain>
 							<fileName>${registryFile}</fileName>
 							<outputDir>${registryFolder}</outputDir>
+						</configuration>
+					</execution>
+					<execution>
+						<id>flush-document-cache</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>flushDocumentCache</goal>
+						</goals>
+						<configuration>
+							<domain>${datapower.domain}</domain>
+							<xmlManager>${xmlManager}</xmlManager>
 						</configuration>
 					</execution>
 					<!-- Upload the newly updated registry file -->
@@ -114,7 +128,7 @@
 			</plugin>
 
 			<!-- Update the registry file -->
-			<!-- TODO kjores i "generate-resources" -->
+			<!-- TODO kjores i "process-sources" -->
 
 		</plugins>
 
