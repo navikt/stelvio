@@ -6,18 +6,20 @@
 	<name>Update the service-gw registry file</name>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<passwordVault>${user.home}/vault/</passwordVault>
-		<deployKeys>${user.home}/deploy-keys/</deployKeys>
+		<!-- Dependencies -->
 		<dataPowerVer>1.7-SNAPSHOT</dataPowerVer>
 		<mavenEnforcerVer>1.0-beta-1</mavenEnforcerVer>
 		<mavenPropertiesVer>1.3</mavenPropertiesVer>
+		<deployKeys>${user.home}/deploy-keys/</deployKeys>
+		<passwordVault>${user.home}/vault/</passwordVault>
 
+		<!-- Configuration -->
+		<datapower.domain>${datapower.gateway}-${env}</datapower.domain>
+		<datapower.gateway>service-gw</datapower.gateway>		
+		<datapower.xmlManager>default</datapower.xmlManager>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<registryFile>service-registry.xml</registryFile>
 		<registryFolder>regFolder/</registryFolder>
-		<xmlManager>default</xmlManager>
-		<gateway-name>service-gw</gateway-name>		
-		<datapower.domain>${gateway-name}-${env}</datapower.domain>
 		
 		<!-- The next properties should be given as input in the general solution, hardcoded for convenience now -->
 		<envclass>u</envclass>	
@@ -45,8 +47,8 @@
 						<configuration>
 							<files>														
 								<file>${deployKeys}/${envclass}/datapower.properties</file>
-								<file>${deployKeys}/${envclass}/datapower-cfg-${gateway-name}.properties</file>
-								<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}.properties</file>
+								<file>${deployKeys}/${envclass}/datapower-cfg-${datapower.gateway}.properties</file>
+								<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${datapower.gateway}.properties</file>
 								<file>${passwordVault}/${envclass}/${env}/environment.properties</file>
 							</files>
 						</configuration>
@@ -73,8 +75,12 @@
 									<property>datapower.username</property>
 									<property>datapower.password</property>
 									<property>datapower.domain</property>
+									<property>datapower.gateway</property>
+									<property>datapower.xmlManager</property>
 									<property>registryFile</property>
 									<property>registryFolder</property>
+									<property>env</property>
+									<property>envclass</property>
 								</requireProperty>
 							</rules>
 						</configuration>
@@ -89,7 +95,7 @@
 				<executions>
 					<!-- Get the registry file from DataPower -->
 					<execution>
-						<id>get-file</id>
+						<id>get-registry-file</id>
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>getFile</goal>
@@ -108,12 +114,12 @@
 						</goals>
 						<configuration>
 							<domain>${datapower.domain}</domain>
-							<xmlManager>${xmlManager}</xmlManager>
+							<xmlManager>${datapower.xmlManager}</xmlManager>
 						</configuration>
 					</execution>
 					<!-- Upload the newly updated registry file -->
 					<execution>
-						<id>import-files</id>
+						<id>import-registry-file</id>
 						<phase>process-resources</phase>
 						<goals>
 							<goal>importFiles</goal>
