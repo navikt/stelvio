@@ -14,19 +14,7 @@ import javax.xml.xpath.XPathFactory;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPHttpUtils;
-import no.nav.datapower.xmlmgmt.command.AddHostAliasCommand;
-import no.nav.datapower.xmlmgmt.command.AddStaticRouteCommand;
-import no.nav.datapower.xmlmgmt.command.CreateDirCommand;
-import no.nav.datapower.xmlmgmt.command.CreateDomainCommand;
-import no.nav.datapower.xmlmgmt.command.DeleteDomainCommand;
-import no.nav.datapower.xmlmgmt.command.DeleteFileCommand;
-import no.nav.datapower.xmlmgmt.command.DoImportCommand;
-import no.nav.datapower.xmlmgmt.command.GetStatusCommand;
-import no.nav.datapower.xmlmgmt.command.RemoveDirCommand;
-import no.nav.datapower.xmlmgmt.command.RestartThisDomainCommand;
-import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
-import no.nav.datapower.xmlmgmt.command.SetFileCommand;
-import no.nav.datapower.xmlmgmt.command.GetFileCommand;
+import no.nav.datapower.xmlmgmt.command.*;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
@@ -300,6 +288,12 @@ public class XMLMgmtSession {
 	public String getFile(DeviceFileStore location, final String fileName, final String domain) throws XMLMgmtException {
 		XMLMgmtRequest request = createRequest(domain);
 		request.addCommand(new GetFileCommand(location, fileName));
+		return doRequest(request);
+	}
+	
+	public String flushDocumentCache(final String XMLManager, final String domain) throws XMLMgmtException {
+		XMLMgmtRequest request = createRequest(domain);
+		request.addCommand(new FlushDocumentCacheCommand(XMLManager));
 		return doRequest(request);
 	}
 	
