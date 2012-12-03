@@ -7737,6 +7737,7 @@ int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/Clea
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/CreateDomainMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/DeleteDomainMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/DeleteFileMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/FlushDocumentCacheMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/GetFileMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
