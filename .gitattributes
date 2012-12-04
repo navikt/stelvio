@@ -1134,6 +1134,8 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-authorization-0.0
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/Datapower-SoapUI-test-service-gw/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/Deploy_datapower_TRUNK/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Fixpack[!!-~]repo[!!-~]monitor/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/IRPORT-3446_dokumentbehandling/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel[!!-~]MOD[!!-~]SCM/config.xml -text
@@ -1268,11 +1270,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gateway/config.xm
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gw-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/TRUNK_service-gw-maven-service-registry-plugin/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_WPS__ny_splittet_buss_konfigurasjon/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_7.4/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_7.5/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_7.6-brach/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_Ny_config/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery_nightly_q/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery_nightly_t/config.xml -text

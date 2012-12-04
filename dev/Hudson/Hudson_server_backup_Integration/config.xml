@@ -290,8 +290,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>deploy_datapower_7.5</string>
-        <string>deploy_datapower_service-gw</string>
         <string>eksperimentell-service-discovery</string>
         <string>release_datapower-config</string>
       </jobNames>
