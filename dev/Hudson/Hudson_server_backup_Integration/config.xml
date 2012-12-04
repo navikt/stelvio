@@ -283,12 +283,11 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Datapower</name>
+      <name>DataPower</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>release_datapower-config</string>
       </jobNames>
       <jobFilters/>
       <columns>

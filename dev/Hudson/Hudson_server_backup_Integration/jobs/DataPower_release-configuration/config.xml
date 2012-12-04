@@ -20,18 +20,18 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       </external-property>
     </entry>
     <entry>
-      <string>blockBuildWhenDownstreamBuilding</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-tasks-TasksPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>blockBuildWhenDownstreamBuilding</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
@@ -53,6 +53,12 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       </base-property>
     </entry>
     <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
+    </entry>
+    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -62,20 +68,14 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -102,14 +102,14 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       </boolean-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -130,18 +130,18 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       </external-property>
     </entry>
     <entry>
-      <string>cleanWorkspaceRequired</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>cleanWorkspaceRequired</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -159,13 +159,6 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
     </entry>
     <entry>
       <string>hudson-plugins-sonar-SonarPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -208,11 +201,23 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
                 <description></description>
                 <defaultValue>false</defaultValue>
               </hudson.model.BooleanParameterDefinition>
+              <hudson.model.BooleanParameterDefinition>
+                <name>service_gw</name>
+                <description></description>
+                <defaultValue>false</defaultValue>
+              </hudson.model.BooleanParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-JavadocArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>join-JoinTrigger</string>
@@ -229,17 +234,17 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
       </external-property>
     </entry>
     <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -250,8 +255,11 @@ DO NOT RUN FOR UNFINISHED CONFIGURATION</description>
     <entry>
       <string>hudson-plugins-chucknorris-CordellWalkerRecorder</string>
       <external-property>
+        <originalValue class="hudson.plugins.chucknorris.CordellWalkerRecorder">
+          <factGenerator/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -277,6 +285,7 @@ if ${partner_gw}; then gateways=$gateways&quot; partner-gw&quot;; fi
 if ${secgw}; then gateways=$gateways&quot; secgw&quot;;fi
 if ${portal_gw}; then gateways=$gateways&quot; portal-gw&quot;;fi
 if ${tms_gw}; then gateways=$gateways&quot; tms-gw&quot;;fi
+if ${service_gw}; then gateways=$gateways&quot; service-gw&quot;;fi
 
 if [ &quot;${datapowerProject}&quot; == &quot;both&quot; ]; then
 echo &quot;Releasing ${gateways} for both datapower-environment and datapower-nonenvironment&quot;
@@ -293,14 +302,14 @@ fi</command>
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -347,6 +356,13 @@ fi</command>
       </trigger-property>
     </entry>
     <entry>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -354,7 +370,7 @@ fi</command>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -366,13 +382,6 @@ fi</command>
         <originalValue class="hudson.scm.NullSCM"/>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
@@ -403,10 +412,7 @@ fi</command>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <builders/>
-  <publishers/>
-  <buildWrappers/>
 </project>
