@@ -103,8 +103,6 @@
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-wpsdeploy-pom_sync</string>
-        <string>TRUNK datapower_cfg_partner-gw</string>
-        <string>TRUNK datapower_cfg_secgw</string>
         <string>TRUNK-CheckScripts</string>
         <string>TRUNK-ekstern</string>
         <string>TRUNK-ekstern-modules-ci</string>
@@ -290,7 +288,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>eksperimentell-service-discovery</string>
         <string>release_datapower-config</string>
       </jobNames>
       <jobFilters/>
@@ -305,7 +302,7 @@
         <hudson.views.BuildButtonColumn/>
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
-      <includeRegex>.*datapower.*</includeRegex>
+      <includeRegex>.*[dD][aA][tT][aA][pP][oO][wW][eE][rR].*</includeRegex>
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
