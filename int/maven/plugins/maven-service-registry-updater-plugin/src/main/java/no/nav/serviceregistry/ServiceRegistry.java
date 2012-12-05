@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -40,13 +41,30 @@ import org.w3c.dom.Document;
 @XmlRootElement
 public class ServiceRegistry {
 
-	private Map<QName, Service> services = new LinkedHashMap<QName, Service>();
+//	private Map<QName, Service> services = new LinkedHashMap<QName, Service>();
+	private Set<Service> services = new HashSet<Service>();
 
 	@XmlElement(name="service")
-	public Collection<Service> getServices() {
-		System.out.println("getservices i serviceregistry");
-		return services.values();
+	public Set<Service> getServices() {
+		return services;
 	}
+
+	public void setServices(Set<Service> services) {
+		this.services = services;
+	}
+	
+//	@XmlElement(name="service")
+//	public Collection<Service> getServices() {
+//		System.out.println("getservices i serviceregistry");
+//		return services.values();
+//	}
+//	
+//	public void setServices(Collection<Service> services) {
+//		this.services = new LinkedHashMap<QName, Service>();
+//		for (Service service : services) {
+//			this.services.put(service.getName(), service);
+//		}
+//	}
 	
 	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
 		this.removeServices(application);
@@ -58,19 +76,15 @@ public class ServiceRegistry {
 		
 	}
 
-	//removeservice
 	private void removeServices(String application) {
 		Collection<Service> services = this.getServices();
+		Set<Service> toBeRemoved = new HashSet<Service>();
 		for (Service service : services) {
-			if (service.getApplication().equals(application)) {				
-				Set<Entry<QName, Service>> sm = this.services.entrySet();
-				for (Entry<QName, Service> entry : sm) {
-					if (entry.getValue().equals(service)) {
-						this.services.remove(entry.getKey());
-					}
-				}
+			if (service.getApplication().equals(application)) {
+				toBeRemoved.add(service);
 			}
 		}
+		services.removeAll(toBeRemoved);
 	}
 
 	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
@@ -120,10 +134,16 @@ public class ServiceRegistry {
 
 	public void addServiceInstance(QName serviceName, String applicationName, QName bindingName, ServiceInstance serviceInstance, List<ServiceOperation> operations) {
 		ServiceVersion serviceVersion = new ServiceVersion(bindingName, operations);
-		Service service = services.get(serviceName);
+//		Service service = services.get(serviceName);
+		Service service = null;
+		for (Service service1 : services) {
+			if (service1.getName().toString().equalsIgnoreCase(serviceName.toString())) {
+				service = service1;
+			}
+		}
 		if (service == null) {
 			service = new Service(serviceName, applicationName);
-			services.put(serviceName, service);
+			services.add(service);
 		}
 		serviceVersion = service.addServiceVersion(serviceVersion);
 		serviceVersion.addServiceInstance(serviceInstance);
@@ -132,7 +152,7 @@ public class ServiceRegistry {
 	@Override
 	public String toString() {
 		StringBuilder output = new StringBuilder("Service Registry(size=" + services.size() + ")=[\n");
-		for (Service service : services.values()) {
+		for (Service service : services) {
 			output.append(service + ",\n");
 		}
 		output.append("]");
@@ -190,7 +210,7 @@ public class ServiceRegistry {
 		return sr;
 	}
 
-	public void setServices(Map<QName, Service> services) {
-		this.services = services;
-	}
+
+
+
 }

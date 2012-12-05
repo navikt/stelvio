@@ -55,6 +55,19 @@ public class ServiceVersion {
 		this.operations = operations;
 	}
 
+	@Override
+	public int hashCode() {
+		return bindingName.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (getClass() != obj.getClass())
+			return false;
+		ServiceVersion other = (ServiceVersion) obj;
+		return bindingName.equals(other.bindingName);
+	}
+
 	@XmlElement(name="serviceInstance")
 	public Set<ServiceInstance> getServiceInstances() {
 		return serviceInstances;
