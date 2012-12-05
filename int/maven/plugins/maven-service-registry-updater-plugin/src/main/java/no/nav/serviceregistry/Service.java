@@ -10,9 +10,7 @@ import javax.xml.namespace.QName;
 
 public class Service {
 
-	@XmlAttribute
 	private QName name;
-	@XmlAttribute
 	private String application;
 	// List of service versions accessed by binding qualified name
 	private Map<QName, ServiceVersion> serviceVersions = new LinkedHashMap<QName, ServiceVersion>();
@@ -24,11 +22,38 @@ public class Service {
 	public Service(QName serviceName, String application) {
 		this.name = serviceName;
 		this.application = application;
+		System.out.println("Vi lager service! Navn " + this.name + ", app " + this.application);
 	}
 
 	@XmlElement
 	public Collection<ServiceVersion> getServiceVersion() {
 		return serviceVersions.values();
+	}
+
+	public void setServiceVersions(ServiceVersion newServiceVersion) {
+		this.addServiceVersion(newServiceVersion);
+	}
+	
+	@XmlAttribute
+	public QName getName() {
+		return name;
+	}
+
+	public void setName(QName name) {
+		this.name = name;
+	}
+
+	public Map<QName, ServiceVersion> getServiceVersions() {
+		return serviceVersions;
+	}
+
+	@XmlElement
+	public String getApplication() {
+		return this.application;
+	}
+
+	public void setApplication(String application) {
+		this.application = application;
 	}
 
 	@Override
@@ -48,10 +73,5 @@ public class Service {
 			serviceVersions.put(bindingName, newServiceVersion);
 		}
 		return serviceVersions.get(bindingName);
-	}
-
-	public String getApplication() {
-		return this.application;
-	}
-	
+	}	
 }

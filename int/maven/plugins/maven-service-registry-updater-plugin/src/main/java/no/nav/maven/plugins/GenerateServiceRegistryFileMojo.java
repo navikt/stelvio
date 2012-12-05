@@ -8,14 +8,9 @@ import java.util.Map;
 import javax.xml.bind.JAXBException;
 
 import no.nav.serviceregistry.ServiceRegistry;
-import no.nav.serviceregistry.ServiceInstance;
-
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
 
 /**
  * Goal which generates a service registry file. Based on service registry plugin by Øystein Gisnås.
@@ -69,7 +64,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	/**
 	 * Environment
 	 * 
-	 * @parameter
+	 * @parameter expression="${env}"
 	 * @required
 	 */
 	protected String env;
@@ -149,8 +144,12 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		// gjor sporring mot envconfig, returner endpoint og wsdl-artifakt
 		currentEndpoint = "https://hostnavn.test.local:9443/"; // = client.getHostname(app, env)
 		//groupId = client.getGroupId(app);
-		currentWsdlDir = new File(userHome, "/wsdl-" + app); // = undersøkes.
+		currentWsdlDir = new File(userHome + "\\Kode\\trunk\\stelvio-int-maven\\poms\\maven-service-gw-provisioning-pom", "\\wsdl-" + app); // = undersøkes.
 		getLog().debug("Setting endpoint and wsdl-dir to " + currentEndpoint + " and " + currentWsdlDir);
+	}
+
+	public void setOldServiceRegistryFile(String oldServiceRegistryFile) {
+		this.oldServiceRegistryFile = oldServiceRegistryFile;
 	}
 
 }

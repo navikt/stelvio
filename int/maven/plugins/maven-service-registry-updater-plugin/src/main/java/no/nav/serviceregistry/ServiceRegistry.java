@@ -44,6 +44,7 @@ public class ServiceRegistry {
 
 	@XmlElement(name="service")
 	public Collection<Service> getServices() {
+		System.out.println("getservices i serviceregistry");
 		return services.values();
 	}
 	
@@ -73,13 +74,15 @@ public class ServiceRegistry {
 	}
 
 	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
+		System.out.println("HER");
 		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
 		//url må fikses!!
+		System.out.println("mitt endpoint " + endpoint);
 		URL serviceEndpoint;
 		URL wsdlAddress;
 		try {
-			serviceEndpoint = new URL(endpoint + "/" + "moduleName" + "Web/sca/" + "exportName");
-			wsdlAddress = new URL(endpoint.toString() + "?wsdl");
+			serviceEndpoint = new URL(endpoint + "moduleName" + "Web/sca/" + "exportName");
+			wsdlAddress = new URL(serviceEndpoint.toString() + "?wsdl");
 
 		} catch (MalformedURLException e) {
 			throw new RuntimeException("The endpoint provided is not valid (check input from envconfig), details: " + e);
@@ -102,7 +105,7 @@ public class ServiceRegistry {
 							if (soapActionURI != null && !soapActionURI.isEmpty()) {
 								operations.add(new ServiceOperation(operation.getName(), soapActionURI));
 							} else {
-								String soapAction = definition.getTargetNamespace() + "/" + operation.getName();
+								String soapAction = definition.getTargetNamespace() + "/" + port.getName() + "/" + operation.getName();
 								operations.add(new ServiceOperation(operation.getName(), soapAction));
 							}
 						}
@@ -182,7 +185,12 @@ public class ServiceRegistry {
 		JAXBContext context = JAXBContext.newInstance(getClass());
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		unmarshaller.setSchema(null);//sett riktig xsd
+		System.out.println("Nå skal vi unmarshalle!!");
 		ServiceRegistry sr = (ServiceRegistry) unmarshaller.unmarshal(new FileInputStream(serviceRegistryFile));
 		return sr;
+	}
+
+	public void setServices(Map<QName, Service> services) {
+		this.services = services;
 	}
 }

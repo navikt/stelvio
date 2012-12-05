@@ -4,10 +4,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 public class ServiceOperation {
 
-	@XmlAttribute
-	private String name;
-	@XmlAttribute
 	private String action;
+	private String name;
 	
 	/* For JAXB */
 	@SuppressWarnings("unused")
@@ -16,6 +14,25 @@ public class ServiceOperation {
 	public ServiceOperation(String operationName, String soapActionURI) {
 		name = operationName;
 		action = soapActionURI;
+		System.out.println("OPERATION!!");
+	}
+	
+	@XmlAttribute
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	@XmlAttribute
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override

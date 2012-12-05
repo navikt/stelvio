@@ -11,9 +11,7 @@ import javax.xml.namespace.QName;
 public class ServiceVersion {
 
 	private QName bindingName;
-	@XmlElement(name="operation", required=true)
 	private List<ServiceOperation> operations;
-	@XmlElement(name="serviceInstance")
 	private Set<ServiceInstance> serviceInstances = new LinkedHashSet<ServiceInstance>();
 
 	/* For JAXB */
@@ -42,5 +40,27 @@ public class ServiceVersion {
 	@XmlAttribute
 	public QName getBindingName() {
 		return bindingName;
+	}
+	
+	public void setBindingName(QName bindingName) {
+		this.bindingName = bindingName;
+	}
+	
+	@XmlElement(name="operation", required=true)
+	public List<ServiceOperation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<ServiceOperation> operations) {
+		this.operations = operations;
+	}
+
+	@XmlElement(name="serviceInstance")
+	public Set<ServiceInstance> getServiceInstances() {
+		return serviceInstances;
+	}
+
+	public void setServiceInstances(Set<ServiceInstance> serviceInstances) {
+		this.serviceInstances = serviceInstances;
 	}
 }
