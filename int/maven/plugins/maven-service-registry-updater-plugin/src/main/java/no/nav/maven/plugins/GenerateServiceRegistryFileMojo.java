@@ -108,11 +108,9 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			// Gjor sporring mot envconfig for a finne wsdls
 			getInfoFromEnvconfig(application, version);
 			
-			getLog().debug("Trying to replace app block");
+			getLog().debug("Trying to replace app block for application " + application + ", version " + version);
 			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
-			
-//			serviceRegistry.addServiceInstance(application, currentEndpoint, currentWsdlDir.toString());
-			
+						
 			// Bytt ut med ny og skriv
 		}
 		try {

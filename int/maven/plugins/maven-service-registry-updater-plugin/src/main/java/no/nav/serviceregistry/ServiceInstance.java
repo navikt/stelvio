@@ -1,7 +1,6 @@
 package no.nav.serviceregistry;
 
 import java.net.URL;
-
 import javax.xml.bind.annotation.XmlAttribute;
 
 public class ServiceInstance {
