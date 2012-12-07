@@ -288,6 +288,8 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>DataPower_provisioning</string>
+        <string>DataPower_provisioning_service-gw</string>
       </jobNames>
       <jobFilters/>
       <columns>
