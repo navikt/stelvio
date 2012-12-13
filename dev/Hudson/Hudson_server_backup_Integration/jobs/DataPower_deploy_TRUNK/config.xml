@@ -242,6 +242,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                     <string>https://dp-tst-02.adeo.no:5550</string>
                     <string>https://dp-tst-12.adeo.no:5550</string>
                     <string>https://dp-tst-13.adeo.no:5550</string>
+                    <string>test</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
