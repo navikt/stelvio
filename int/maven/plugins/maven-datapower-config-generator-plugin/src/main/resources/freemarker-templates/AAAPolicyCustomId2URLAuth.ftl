@@ -1,13 +1,13 @@
-<#macro AAAPolicyCustomId2URLAuth name aaaFileName ns1Prefix ns1URI ns2Prefix ns2URI idXpath resourceXpath>
+<#macro AAAPolicyCustomId2URLAuth name aaaFilePath ns1Prefix ns1URI ns2Prefix ns2URI EIXpath ERXPath>
 	<AAAPolicy name="saml" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<NamespaceMapping>
-			<Prefix>saml2</Prefix>
-			<URI>urn:oasis:names:tc:SAML:2.0:assertion</URI>
+			<Prefix>${ns1Prefix}</Prefix>
+			<URI>${ns1URI}</URI>
 		</NamespaceMapping>
 		<NamespaceMapping>
-			<Prefix>wsa</Prefix>
-			<URI>http://www.w3.org/2005/08/addressing</URI>
+			<Prefix>${ns2Prefix}</Prefix>
+			<URI>${ns2URI}</URI>
 		</NamespaceMapping>
 		<ExtractIdentity>
 			<EIBitmap>
@@ -33,7 +33,7 @@
 				<html-forms-auth>off</html-forms-auth>
 			</EIBitmap>
 			<EICustomURL/>
-			<EIXPath>//saml2:Attribute[@Name='consumerId']/saml2:AttributeValue/text()</EIXPath>
+			<EIXPath>idXpath</EIXPath>
 			<EISignerDNValcred/>
 			<EICookieName/>
 			<EIBasicAuthRealm>login</EIBasicAuthRealm>
@@ -50,7 +50,7 @@
 		<Authenticate>
 			<AUMethod>xmlfile</AUMethod>
 			<AUCustomURL/>
-			<AUMapURL>local:///AAAInfo_fraDP.xml</AUMapURL>
+			<AUMapURL>${aaaFilePath}</AUMapURL>
 			<AUHost/>
 			<AUPort/>
 			<AUSSLValcred/>
@@ -122,7 +122,7 @@
 				<XPath>on</XPath>
 				<metadata>off</metadata>
 			</ERBitmap>
-			<ERXPath>//wsa:Action/text()</ERXPath>
+			<ERXPath>${ERXPath}</ERXPath>
 			<ERMetadata/>
 		</ExtractResource>
 		<MapResource>
@@ -137,7 +137,7 @@
 		<Authorize>
 			<AZMethod>xmlfile</AZMethod>
 			<AZCustomURL/>
-			<AZMapURL>local:///AAAInfo_fraDP.xml</AZMapURL>
+			<AZMapURL>${aaaFilePath}</AZMapURL>
 			<AZHost/>
 			<AZPort/>
 			<AZLDAPGroup/>
