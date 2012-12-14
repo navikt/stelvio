@@ -36,6 +36,11 @@
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>no.nav.aura.env-config-client-api</groupId>
+			<artifactId>env-config-client-api</artifactId>
+			<version>0.0.5-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 		
 	<scm>

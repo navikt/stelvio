@@ -61,9 +61,16 @@ public class ServiceRegistry {
 	
 	public void replaceApplicationBlock(String endpoint, File wsdlDir, String application){
 		this.removeServices(application);
-		
+		//for alle tjenester i wsdl-dir:
 		for (File f: wsdlDir.listFiles()) {
-			this.addServiceInstance(application, endpoint, f.getPath());
+			if (f.isDirectory()) {
+				for (File f2: f.listFiles()) {
+					if (f2.isFile()) {
+						this.addServiceInstance(application, endpoint, f2.getPath());
+					}
+					
+				}
+			}
 		}
 	}
 
@@ -79,7 +86,7 @@ public class ServiceRegistry {
 	}
 
 	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
-		System.out.println("HER");
+		System.out.println("HER, path: " + pathToWsdl);
 		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
 		//url må fikses!!
 		System.out.println("mitt endpoint " + endpoint);
@@ -110,7 +117,7 @@ public class ServiceRegistry {
 							if (soapActionURI != null && !soapActionURI.isEmpty()) {
 								operations.add(new ServiceOperation(operation.getName(), soapActionURI));
 							} else {
-								String soapAction = definition.getTargetNamespace() + "/" + port.getName() + "/" + operation.getName();
+								String soapAction = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + operation.getName();
 								operations.add(new ServiceOperation(operation.getName(), soapAction));
 							}
 						}
