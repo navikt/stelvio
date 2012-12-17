@@ -1,5 +1,5 @@
 <#macro AAAPolicyCustomId2URLAuth name aaaFilePath ns1Prefix ns1URI ns2Prefix ns2URI EIXpath ERXPath>
-	<AAAPolicy name="saml" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<NamespaceMapping>
 			<Prefix>${ns1Prefix}</Prefix>
@@ -33,7 +33,7 @@
 				<html-forms-auth>off</html-forms-auth>
 			</EIBitmap>
 			<EICustomURL/>
-			<EIXPath>idXpath</EIXPath>
+			<EIXPath>${EIXpath}</EIXPath>
 			<EISignerDNValcred/>
 			<EICookieName/>
 			<EIBasicAuthRealm>login</EIBasicAuthRealm>

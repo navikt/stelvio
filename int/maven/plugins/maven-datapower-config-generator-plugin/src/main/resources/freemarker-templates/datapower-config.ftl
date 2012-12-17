@@ -11,6 +11,7 @@
 <#include "AAAPolicyClientSSL2LTPA.ftl">
 <#include "AAAPolicyClientSSL2LTPAAllAuthenticated.ftl">
 <#include "AAAPolicyClientSSL2LTPAURLauth.ftl">
+<#include "AAAPolicyCustomId2URLAuth.ftl">
 <#include "AAAPolicyLTPA2LTPA.ftl">
 <#include "AAAPolicyLTPA2None.ftl">
 <#include "AAAPolicyUsernameToken2LTPA.ftl">
