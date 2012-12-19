@@ -4,6 +4,7 @@
 <#include "StylePolicyActionLog.ftl"/>
 <#include "StylePolicyActionResult.ftl"/>
 <#include "StylePolicyActionSign.ftl"/>
+<#include "StylePolicyActionSignXpath.ftl"/>
 <#include "StylePolicyActionSLM.ftl"/>
 <#include "StylePolicyActionTransform.ftl"/>
 <#include "StylePolicyActionTransformParameterized.ftl"/>
@@ -71,6 +72,17 @@
 		name="${actionNamePrefix}${action.name}"
 		input="${action.input}"
 		output="${action.output}"
+		signCert="${action.signCert}"
+		signKey="${action.signKey}"/>
+	<#--
+		Sign xpath Action
+	-->
+	<#elseif action.type == "signXpath">
+	<@StylePolicyActionSignXpath
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		output="${action.output}"
+		xpath="${action.xpath}"
 		signCert="${action.signCert}"
 		signKey="${action.signKey}"/>
 	<#--
