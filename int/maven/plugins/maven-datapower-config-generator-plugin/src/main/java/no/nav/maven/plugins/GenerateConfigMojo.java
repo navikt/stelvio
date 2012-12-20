@@ -282,6 +282,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 				Artifact pomArtifact = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
 				
 				if (dep.getType().equals("pom")){
+					getLog().debug("Type equals pom");
 					MavenProject pomProject = null;
 					try {
 						pomProject = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
@@ -333,6 +334,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 					}
 			
 				} else {
+					getLog().debug("Type does NOT equal pom");
 					Artifact art = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
 
 					resolver.resolve(art, remoteRepos, localRepository);
@@ -417,6 +419,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 			String filename = zipEntry.getName();
 			// Only check files with extension .wsdl
 			if (filename.endsWith(".wsdl")) {
+				getLog().debug("Found wsdl-file: " + filename + " checking if it is valid");
 				File file = new File(wsdlFilesDir, zipEntry.getName());
 				// Load WSDL and check if it has a port (eliminate WSDLs with
 				// port type)

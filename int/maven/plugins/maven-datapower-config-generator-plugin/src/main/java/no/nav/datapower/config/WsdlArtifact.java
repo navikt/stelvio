@@ -1,6 +1,7 @@
 package no.nav.datapower.config;
 
 import org.apache.maven.artifact.Artifact;
+import java.lang.Object;
 
 public class WsdlArtifact {
 
@@ -38,7 +39,11 @@ public class WsdlArtifact {
 	}
 
 	public void setClassifier(String classifier) {
-		this.classifier = classifier;
+		if ("NONE".equals(classifier)) {
+			this.classifier = null;
+		} else {
+			this.classifier = classifier;
+		}
 	}
 
 	public boolean equals(Artifact artifact) {
@@ -56,10 +61,11 @@ public class WsdlArtifact {
 		if (type != null && !artifact.getType().equals(type)) {
 			return false;
 		}
-		if (classifier != null && classifier.length() > 0 && !artifact.getClassifier().equals(classifier)) {
-			return false;
-		}
-		return true;
+		return equals(classifier, artifact.getClassifier());
+	}
+	
+	private static boolean equals(Object a, Object b){
+		return (a == b) || (a != null && a.equals(b));
 	}
 
 	@Override
