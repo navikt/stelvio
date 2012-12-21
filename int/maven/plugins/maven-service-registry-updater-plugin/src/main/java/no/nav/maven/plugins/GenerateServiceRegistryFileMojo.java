@@ -3,14 +3,25 @@ package no.nav.maven.plugins;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
+import no.nav.aura.appconfig.Application;
+import no.nav.aura.appconfig.exposed.ExposedService;
+import no.nav.aura.appconfig.exposed.ExposedWebservice;
+import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.aura.envconfig.client.rest.ServiceGatewayRestClient;
 import no.nav.serviceregistry.ServiceRegistry;
+import no.nav.serviceregistry.util.AppConfigUtils;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
@@ -21,8 +32,9 @@ import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-//import org.codehaus.plexus.archiver.ArchiverException;
-//import org.codehaus.plexus.archiver.UnArchiver;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.archiver.UnArchiver;
 
 /**
  * Goal which generates a service registry file. Based on service registry plugin by Øystein Gisnås.
@@ -46,6 +58,14 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected File userHome;
+	/**
+	 * The maven project
+	 * 
+	 * @parameter expression="${project}"
+	 * @required
+	 * @readonly
+	 */
+	private MavenProject project;
     /**
      * Used to look up Artifacts in the remote repository.
      * 
@@ -83,15 +103,15 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
      * @required
      */
     protected ArtifactRepository localRepository;
-//	/**
-//	 * @component roleHint="zip"
-//	 * @required
-//	 * @readonly
-//	 */
-//	private UnArchiver unArchiver;
+	/**
+	 * @component roleHint="jar"
+	 * @required
+	 * @readonly
+	 */
+	private UnArchiver unArchiver;
 
 	/**
-	 * Apps with services to be exposed formatted like "pselv:1.2.3, norg:3.2.1,Joark:2.1.3"
+	 * Apps with services to be exposed formatted like "pselv, norg,Joark"
 	 * 
 	 * @parameter
 	 * @required
@@ -122,10 +142,15 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 */
 	protected String baseUrl;
 
-	protected HashMap<String, String> applications = new HashMap<String, String>();
+	protected Set<String> applications = new HashSet<String>();
+	protected Set<ApplicationInfo> applicationsFromEnvconfig = new HashSet<ApplicationInfo>();
 
-	private String currentEndpoint;
-	private File currentWsdlDir;
+	private String hostname;
+	private String appConfArtifactID;
+	private String appConfGroupId;
+	private String appConfigVersion;
+	private File appConfig;
+	private File wsdlDir;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
@@ -141,20 +166,64 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 		getLog().debug("Service registry file read! (or sort of read...)");
 
-		// Parse apps og versjoner (forberede rest-kall mot envconfig)
 		parseApplicationsString();
-		// fjern versjon
-		for (Map.Entry<String, String> appAndVersion : applications.entrySet()) {
-			String application = appAndVersion.getKey();
-			String version = appAndVersion.getValue();
+		getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljøet
+		
+		for (ApplicationInfo application : applicationsFromEnvconfig) {
 			
-			// Gjor sporring mot envconfig for a finne wsdls
-			getInfoFromEnvconfig(application, version);
+			System.out.println("Application " + application.getName());
 			
-			getLog().debug("Trying to replace app block for application " + application + ", version " + version);
-			serviceRegistry.replaceApplicationBlock(currentEndpoint, currentWsdlDir, application);
-			System.out.println("BUILD DIR " + buildDirectory);
-						
+			if (applications.contains(application.getName())){
+				hostname = application.getEndpoint();
+				appConfArtifactID = application.getAppConfigArtifactId();
+				appConfGroupId = application.getAppConfigGroupId();
+				appConfigVersion = application.getVersion();
+				if (hostname == null || appConfArtifactID == null || appConfGroupId == null || appConfigVersion == null) {
+					getLog().warn("Maven coordinates needed to locate appConfig for application " + application.getName() + " is missing");
+					break;
+					//skal det være null eller ""?
+				}
+				//extract appConfig-artifact
+				File appConfigJar = downloadMavenArtifact(appConfArtifactID, appConfGroupId, appConfigVersion, "jar");
+				File extractTo = new File(project.getBasedir(), "/appConfDir");
+				extractTo.mkdir();
+				extractArtifact(appConfigJar, extractTo);
+				appConfig = new File(extractTo, "/app-config.xml");//stier må fikses
+				System.out.println("Try to read, " + appConfig);
+				AppConfigUtils util = new AppConfigUtils();
+				Application thisApp = null;
+				try {
+					thisApp = util.readAppConfig(appConfig);
+				} catch (JAXBException e) {
+					throw new MojoExecutionException("app-config.xml could not be read", e);
+				}
+				Collection<ExposedService> services = thisApp.getExposedServices();
+				
+				wsdlDir = new File(project.getBasedir(), "/wsdl-" + application.getName());
+				wsdlDir.mkdir();
+				for (ExposedService exposedService : services) {
+					String path = "getFromAppConfig";
+					String wsdlArtifactId = "getFromAppConfig";
+					String wsdlGroupId = "getFromAppConfig";
+					String wsdlVersion = "getFromAppConfig";
+					if (path == null || wsdlArtifactId == null || wsdlGroupId == null || wsdlVersion == null) {
+						getLog().warn("Maven coordinates needed to locate wsdl artifact for service " + "exposedService.getName()" + " is missing");
+						break;
+						//skal det være null eller ""?						
+					}
+					File serviceJar = downloadMavenArtifact(wsdlArtifactId, wsdlGroupId, wsdlVersion, "jar");
+					File extractServiceTo = new File(wsdlDir, "/" + "exposedService.getName()");
+					extractArtifact(serviceJar, extractServiceTo);
+					
+					//finn mavenkoordinater, last ned og pakk ut, send lokasjon tilbake
+				}
+
+				getLog().debug("Trying to replace app block for application " + application);
+				//endre metoden til å ta inn endpoint, wsdldir, app og path
+				serviceRegistry.replaceApplicationBlock(hostname, wsdlDir, application.getName());
+				
+				
+			}						
 			// Bytt ut med ny og skriv
 		}
 		try {
@@ -165,58 +234,59 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 //		downloadAndExtractMavenArtifact("nav-fim-brukerprofil-tjenestespesifikasjon", "no.nav.tjenester.fim", "0.0.1-alpha002");
 	}
 
-	//fjern versjonsnummer
 	private void parseApplicationsString() throws MojoExecutionException {
-		// "pselv:1.2.3, norg:3.2.1,Joark:2.1.3" -> [<pselv, 1.2.3>, <norg, 3.2.1>, <joark, 2.1.3>]
+		
 		for (String applicationString : apps.split(",")) {
 
-			String application = applicationString.split(":")[0].trim().toLowerCase();
-			String version = applicationString.split(":")[1].trim();
+			String application = applicationString.trim().toLowerCase();
 
-			if (application == null || version == null) {
+			if (application == null) {
 				throw new MojoExecutionException("Something is wrong with the 'apps'-string. Verify that it's on the correct format. " + apps, new NullPointerException());
 			}
 
-			getLog().debug("Adding " + application + ", " + version + " to applications");
-			applications.put(application, version);
+			getLog().debug("Adding " + application + " to applications");
+			applications.add(application);
 		}
 	}
 
-	private void getInfoFromEnvconfig(String app, String version) throws MojoExecutionException {
-
-		//EnvConfigClient client = new EnvConfigClient... (rest-klient api fra testsenteret/plattformtjenester)
+	private void getInfoFromEnvconfig(String environment, String baseUrl) throws MojoExecutionException {
 
 		ServiceGatewayRestClient client = new ServiceGatewayRestClient(baseUrl);
+		applicationsFromEnvconfig = client.getApplicationInfo(environment);
+		getLog().debug("Info for environment " + environment + " retrieved from envConfig");		
+		
+		
 		// gjor sporring mot envconfig, returner endpoint og wsdl-artifakt
-		currentEndpoint = "https://hostnavn.test.local:9443/"; // = client.getHostname(app, env)
-		//groupId = client.getGroupId(app);
-		currentWsdlDir = new File(userHome + "\\Kode\\trunk\\stelvio-int-maven\\poms\\maven-service-gw-provisioning-pom", "\\wsdl-" + app); // = undersøkes.
-		getLog().debug("Setting endpoint and wsdl-dir to " + currentEndpoint + " and " + currentWsdlDir);
+//		hostname = "https://hostnavn.test.local:9443/"; // = client.getHostname(app, env)
+//		wsdlDir = new File(userHome + "\\Kode\\trunk\\stelvio-int-maven\\poms\\maven-service-gw-provisioning-pom", "\\wsdl-app"); // = undersøkes.
+		
 	}
 	
 	// tar inn mavenkoordinater for appconfig-artifakt, laster det ned, pakker ut, setter wsdl-lokasjon
-	private void downloadAndExtractMavenArtifact(String artifactId, String groupId, String version) throws MojoExecutionException {
+	private File downloadMavenArtifact(String artifactId, String groupId, String version, String type) throws MojoExecutionException {
 
-		Artifact pomArtifact = factory.createArtifact(groupId, artifactId, version, "", "zip");
+		Artifact pomArtifact = factory.createArtifact(groupId, artifactId, version, "", type);
 		try {
 			artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
 			System.out.println("Prøver å finne artifakt!! " + pomArtifact.getArtifactId());
+			return pomArtifact.getFile();
 		} catch (ArtifactResolutionException e) {
 			throw new MojoExecutionException("Could not resolve artifact, " + e);
 		} catch (ArtifactNotFoundException e) {
 			throw new MojoExecutionException("Artifact not found, " + e);
 		}
-		
-//		unArchiver.setDestDirectory(currentWsdlDir);//ikke riktig
-//		unArchiver.setSourceFile(pomArtifact.getFile());
-//		try {
-//			unArchiver.extract();
-//		} catch (ArchiverException e) {
-//			throw new MojoExecutionException("Could not extract artifact, " + e);
-//		} catch (IOException e) {
-//			throw new MojoExecutionException("Could not extract artifact, IO: " + e);
-//		}
-
+	}
+	
+	private void extractArtifact(File source, File destination) throws MojoExecutionException {
+		unArchiver.setDestDirectory(destination);
+		unArchiver.setSourceFile(source);
+		try {
+			unArchiver.extract();
+		} catch (ArchiverException e) {
+			throw new MojoExecutionException("Could not extract artifact, " + e);
+		} catch (IOException e) {
+			throw new MojoExecutionException("Could not extract artifact, IO: " + e);
+		}
 	}
 
 	

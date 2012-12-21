@@ -37,9 +37,18 @@
 			<artifactId>plexus-utils</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-archiver</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>no.nav.aura.env-config-client-api</groupId>
 			<artifactId>env-config-client-api</artifactId>
-			<version>0.0.5-SNAPSHOT</version>
+			<version>0.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>no.nav.aura.app-config</groupId>
+			<artifactId>app-config</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 		

@@ -11,6 +11,7 @@
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar" sourcepath="M2_REPO/javax/annotation/jsr250-api/1.0/jsr250-api-1.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar" sourcepath="M2_REPO/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/no/nav/aura/app-config/app-config/0.0.3-SNAPSHOT/app-config-0.0.3-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/.m2/repository/commons-codec/commons-codec/1.4/commons-codec-1.4-javadoc.jar!/" name="javadoc_location"/>
@@ -43,15 +44,19 @@
       <attribute value="jar:file:/C:/.m2/repository/no/nav/maven/plugins/datapower-utils/1.2/datapower-utils-1.2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/no/nav/aura/env-config-client-api/env-config-client-api/0.0.5-SNAPSHOT/env-config-client-api-0.0.5-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/no/nav/aura/env-config-client-api/env-config-client-api/0.0.5/env-config-client-api-0.0.5.jar" sourcepath="M2_REPO/no/nav/aura/env-config-client-api/env-config-client-api/0.0.5/env-config-client-api-0.0.5-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/.m2/repository/no/nav/aura/env-config-client-api/env-config-client-api/0.0.5/env-config-client-api-0.0.5-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/com/google/code/google-collections/google-collect/snapshot-20080530/google-collect-snapshot-20080530.jar" sourcepath="M2_REPO/com/google/code/google-collections/google-collect/snapshot-20080530/google-collect-snapshot-20080530-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/.m2/repository/com/google/code/google-collections/google-collect/snapshot-20080530/google-collect-snapshot-20080530-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1.jar" sourcepath="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/13.0/guava-13.0.jar" sourcepath="M2_REPO/com/google/guava/guava/13.0/guava-13.0-sources.jar">
     <attributes>
-      <attribute value="jar:file:/C:/.m2/repository/com/google/guava/guava/13.0.1/guava-13.0.1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/C:/.m2/repository/com/google/guava/guava/13.0/guava-13.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.1.2/httpclient-4.1.2.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpclient/4.1.2/httpclient-4.1.2-sources.jar"/>
@@ -98,6 +103,11 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/maven-settings/3.0-alpha-3/maven-settings-3.0-alpha-3.jar" sourcepath="M2_REPO/org/apache/maven/maven-settings/3.0-alpha-3/maven-settings-3.0-alpha-3-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/.m2/repository/org/apache/maven/maven-settings/3.0-alpha-3/maven-settings-3.0-alpha-3-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-archiver/1.0-alpha-7/plexus-archiver-1.0-alpha-7.jar" sourcepath="M2_REPO/org/codehaus/plexus/plexus-archiver/1.0-alpha-7/plexus-archiver-1.0-alpha-7-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/.m2/repository/org/codehaus/plexus/plexus-archiver/1.0-alpha-7/plexus-archiver-1.0-alpha-7-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar" sourcepath="M2_REPO/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4-sources.jar">
