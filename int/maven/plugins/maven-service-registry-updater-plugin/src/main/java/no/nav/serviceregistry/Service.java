@@ -61,6 +61,22 @@ public class Service {
 		output.append("}");
 		return output.toString();
 	}
+	
+	@Override
+	public int hashCode() {
+		return name.hashCode() + application.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (getClass() != obj.getClass())
+			return false;
+		Service other = (Service) obj;
+		if (application.equals(other.application)) {
+			return name.equals(other.name);
+		}
+		return false;
+	}
 
 	public ServiceVersion addServiceVersion(ServiceVersion newServiceVersion) {
 		QName bindingName = newServiceVersion.getBindingName();

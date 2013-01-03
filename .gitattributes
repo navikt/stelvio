@@ -7760,6 +7760,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/ServiceVersion.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/package-info.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/AppConfigUtils.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ExposedService.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/resources/service-registry.xsd -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain

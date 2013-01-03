@@ -16,12 +16,12 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import no.nav.aura.appconfig.Application;
-import no.nav.aura.appconfig.exposed.ExposedService;
-import no.nav.aura.appconfig.exposed.ExposedWebservice;
+import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.aura.envconfig.client.rest.ServiceGatewayRestClient;
 import no.nav.serviceregistry.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
+import no.nav.serviceregistry.util.ExposedService;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
@@ -197,33 +197,43 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 				} catch (JAXBException e) {
 					throw new MojoExecutionException("app-config.xml could not be read", e);
 				}
-				Collection<ExposedService> services = thisApp.getExposedServices();
+				
+				Collection<Service> services = thisApp.getExposedServices();
 				
 				wsdlDir = new File(project.getBasedir(), "/wsdl-" + application.getName());
 				wsdlDir.mkdir();
-				for (ExposedService exposedService : services) {
-					String path = "getFromAppConfig";
-					String wsdlArtifactId = "getFromAppConfig";
-					String wsdlGroupId = "getFromAppConfig";
-					String wsdlVersion = "getFromAppConfig";
+				Collection<ExposedService> exposedServices = new HashSet<ExposedService>(); 
+				for (Service service : services) {
+					String path = service.getPath();
+					String wsdlArtifactId = service.getWsdlArtifactId();
+					String wsdlGroupId = service.getWsdlGroupId();
+					String wsdlVersion = service.getWsdlVersion();
 					if (path == null || wsdlArtifactId == null || wsdlGroupId == null || wsdlVersion == null) {
 						getLog().warn("Maven coordinates needed to locate wsdl artifact for service " + "exposedService.getName()" + " is missing");
-						break;
+						continue;
 						//skal det være null eller ""?						
 					}
-					File serviceJar = downloadMavenArtifact(wsdlArtifactId, wsdlGroupId, wsdlVersion, "jar");
-					File extractServiceTo = new File(wsdlDir, "/" + "exposedService.getName()");
-					extractArtifact(serviceJar, extractServiceTo);
+					File serviceZip = downloadMavenArtifact(wsdlArtifactId, wsdlGroupId, wsdlVersion, "zip");
+					File extractServiceTo = new File(wsdlDir, "/" + service.getName());
+					extractServiceTo.mkdir();
+					extractArtifact(serviceZip, extractServiceTo);
+					
+					exposedServices.add(new ExposedService(service.getName(), path, extractServiceTo));
 					
 					//finn mavenkoordinater, last ned og pakk ut, send lokasjon tilbake
 				}
 
 				getLog().debug("Trying to replace app block for application " + application);
 				//endre metoden til å ta inn endpoint, wsdldir, app og path
-				serviceRegistry.replaceApplicationBlock(hostname, wsdlDir, application.getName());
+				serviceRegistry.replaceApplicationBlock(application.getName(), hostname, exposedServices);
 				
 				
-			}						
+			}
+//			Collection<ExposedService> tsys = new HashSet<ExposedService>();
+//			File tsysDir = new File(project.getBasedir(), "/wsdl-tsys");
+//			tsysDir.mkdirs();
+//			tsys.add(new ExposedService("nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha001", "/path/til/tsys", tsysDir));
+//			serviceRegistry.replaceApplicationBlock("tsys", "hostname.no", tsys);
 			// Bytt ut med ny og skriv
 		}
 		try {

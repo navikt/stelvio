@@ -17,7 +17,7 @@
 												<xs:attribute name="action" type="xs:string" />
 											</xs:complexType>
 										</xs:element>
-										<xs:element name="serviceInstance" minOccurs="1" maxOccurs="unbounded">
+										<xs:element name="serviceInstance" minOccurs="1" maxOccurs="1">
 											<xs:complexType>
 												<xs:attribute name="endpoint" type="xs:string" />
 												<xs:attribute name="wsdlAddress" type="xs:string" />

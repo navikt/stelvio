@@ -12,7 +12,8 @@ public class ServiceVersion {
 
 	private QName bindingName;
 	private List<ServiceOperation> operations;
-	private Set<ServiceInstance> serviceInstances = new LinkedHashSet<ServiceInstance>();
+//	private Set<ServiceInstance> serviceInstances = new LinkedHashSet<ServiceInstance>();//skal kun ha en!!
+	private ServiceInstance serviceInstance;
 
 	/* For JAXB */
 	@SuppressWarnings("unused")
@@ -33,9 +34,13 @@ public class ServiceVersion {
 		return output.toString();
 	}
 
-	public void addServiceInstance(ServiceInstance newServiceInstance) {
-		serviceInstances.add(newServiceInstance);
+//	public void addServiceInstance(ServiceInstance newServiceInstance) {
+//		serviceInstances.add(newServiceInstance);
+//	}
+	public void setServiceInstance(ServiceInstance serviceInstance) {
+		this.serviceInstance = serviceInstance;
 	}
+
 
 	@XmlAttribute
 	public QName getBindingName() {
@@ -68,12 +73,16 @@ public class ServiceVersion {
 		return bindingName.equals(other.bindingName);
 	}
 
+//	@XmlElement(name="serviceInstance")
+//	public Set<ServiceInstance> getServiceInstances() {
+//		return serviceInstances;
+//	}
 	@XmlElement(name="serviceInstance")
-	public Set<ServiceInstance> getServiceInstances() {
-		return serviceInstances;
+	public ServiceInstance getServiceInstance() {
+		return serviceInstance;
 	}
 
-	public void setServiceInstances(Set<ServiceInstance> serviceInstances) {
-		this.serviceInstances = serviceInstances;
-	}
+//	public void setServiceInstances(Set<ServiceInstance> serviceInstances) {
+//		this.serviceInstances = serviceInstances;
+//	}
 }
