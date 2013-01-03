@@ -164,8 +164,25 @@
 					</plugin>
 
 					<!-- Update the registry file -->
-					<!-- TODO kjores i "process-sources" -->
-
+					<plugin>
+						<groupId>no.nav.maven.plugins</groupId>
+						<artifactId>maven-service-registry-updater-plugin</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+						<executions>
+							<execution>
+								<id>generate-service-registry</id>
+								<phase>process-sources</phase>
+								<goals>
+									<goal>generate-file</goal>
+								</goals>
+								<configuration>
+									<apps>autodeploy-test</apps><!-- should be input from hudson job formatted like "pselv, norg,Joark" -->
+									<serviceRegistryFile>${registryFolder}/${registryFile}</serviceRegistryFile>
+									<baseUrl>http://env-config.adeo.no:8080/conf</baseUrl>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 
 			</build>
