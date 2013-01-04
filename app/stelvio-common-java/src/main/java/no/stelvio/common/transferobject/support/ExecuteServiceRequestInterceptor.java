@@ -73,24 +73,24 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 				RequestContext requestContext = getRequestContext(arg);
 
-				if (requestContext == null && log.isDebugEnabled()) {
-					log.debug("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
-				}
-
-				if (overideComponentId) {
-					if (log.isTraceEnabled()) {
-						log.trace("ComponentId passed by ServiceRequest is set to be overridden if possible");
+				if (requestContext != null) {
+					if (overideComponentId) {
+						if (log.isTraceEnabled()) {
+							log.trace("ComponentId passed by ServiceRequest is set to be overridden if possible");
+						}
+						requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
 					}
-					requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
-				}
 
-				// Set requestContext on thread.
-				// If the requestContext is null, we want to reset the request context to ensure that the context from another thread is _not_ re-used. 
-				RequestContextSetter.setRequestContext(requestContext); 
-				if (log.isDebugEnabled()) {
-					log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
+					RequestContextSetter.setRequestContext(requestContext); // Set requestContext on thread
+					if (log.isDebugEnabled()) {
+						log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
+					}
+					break; // Should not be more than one service request per call
+				} else {
+					if (log.isDebugEnabled()) {
+						log.debug("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
+					}
 				}
-				break; // Should not be more than one service request per call
 			}
 		}
 		if (log.isDebugEnabled()) {
