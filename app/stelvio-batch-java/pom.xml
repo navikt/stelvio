@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>3.0.1-SNAPSHOT</version>
+		<version>2.2.1-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-batch-java</artifactId>
@@ -14,29 +14,33 @@
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.7</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
+			<version>3.3.2.GA</version>
 		</dependency>
-		
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>hibernate-annotations</groupId>
 			<artifactId>hibernate-annotations</artifactId>
+			<version>3.3.0.GA</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>hibernate-commons-annotations</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.0.0.GA</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
+			<version>3.8.0.GA</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
@@ -53,102 +57,172 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-beans is a Spring core library used for manipulating Java 
-				beans. This is the most basic Spring library. -->
+			<!--
+				spring-beans is a Spring core library used for manipulating Java
+				beans. This is the most basic Spring library.
+			-->
 			<artifactId>spring-beans</artifactId>
 			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and 
-				dependency injection. Builds on the spring-beans library. -->
+			<!--
+				spring-context is a Spring core library used for configuration and
+				dependency injection. Builds on the spring-beans library.
+			-->
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<artifactId>spring-core</artifactId>
 			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<artifactId>spring-orm</artifactId>
 			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<artifactId>spring-tx</artifactId>
 			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<!-- Framework for AOP (Aspect Oriented Programming), providing method 
-				interceptors that for instance is used by Stelvio transfer objects to set 
-				service context data behind the scene. Also used in Spring-AOP. -->
+			<!--
+				Framework for AOP (Aspect Oriented Programming), providing method
+				interceptors that for instance is used by Stelvio transfer objects
+				to set service context data behind the scene. Also used in
+				Spring-AOP.
+			-->
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<!-- Apache commons-lang library provides a host of helper utilities that 
-				extend the standard java.lang API, for example String manipulation methods. -->
+			<!--
+				Apache commons-lang library provides a host of helper utilities that
+				extend the standard java.lang API, for example String manipulation
+				methods.
+			-->
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
+			<version>1.5.3</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.jamonapi</groupId>
 			<artifactId>jamon</artifactId>
+			<version>2.7</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
+			<version>1.8.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-api</artifactId>
+			<version>1.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
+			<version>1.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-integration</artifactId>
+			<version>1.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring Batch dependencies -->
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-core</artifactId>
+			<version>${spring-batch.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.thoughtworks.xstream</groupId>
+					<artifactId>xstream</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.jettison</groupId>
+					<artifactId>jettison</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-test</artifactId>
+			<version>${spring-batch.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

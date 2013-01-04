@@ -1,29 +1,17 @@
 package no.stelvio.common.cache;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
-
 import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 /**
  * Simple test for CacheManagement.
  * 
  * @author person4f9bc5bd17cc, Accenture
  */
-@ContextConfiguration(locations = { "classpath:common-java_test_cache_beans.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
-public class CacheManagementTest {
+public class CacheManagementTest extends AbstractDependencyInjectionSpringContextTests {
 	private Logger log = Logger.getLogger(CacheManagementTest.class);
 
 	private final String initialString = "This is a cacheable string";
@@ -32,10 +20,32 @@ public class CacheManagementTest {
 	private final String cacheableStringKey = "cacheableString";
 
 	/** Implementation class to test. */
-	@Autowired
-	@Qualifier(value = "cacheManagementProxy")
 	private CacheManagement cacheManagement;
-	
+
+	/**
+	 * Get configuration locations.
+	 * 
+	 * @return the location of the spring configuration xml-file.
+	 */
+	@Override
+	protected String[] getConfigLocations() {
+		return new String[] { "common-java_test_cache_beans.xml" };
+	}
+
+	/**
+	 * Initialize components prior to running tests.
+	 * 
+	 * @throws Exception
+	 *             exception
+	 */
+	public void onSetUp() throws Exception {
+		cacheManagement = (CacheManagement) applicationContext.getBean("cacheManagement");
+		assertNotNull("Couldn't initiate CacheManagement using standard POJO implementation.", cacheManagement);
+
+		cacheManagement = (CacheManagement) applicationContext.getBean("cacheManagementProxy");
+		assertNotNull("Couldn't initiate CacheManagement using JMX implementation.", cacheManagement);
+	}
+
 	/**
 	 * Test-method that test functionality in the <code>CacheManagment</code>-class.
 	 * 
@@ -44,8 +54,6 @@ public class CacheManagementTest {
 	 * @throws Exception
 	 *             exception
 	 */
-	@DirtiesContext
-	@Test
 	public void testCacheManagement() throws BeansException, Exception {
 		log.debug("DEBUG: Entering testCacheManagement()...");
 
@@ -94,4 +102,11 @@ public class CacheManagementTest {
 		assertNull("Cache was not removed.", removedCache);
 	}
 
+	/**
+	 * Cleans up after tests are complete.
+	 */
+	@Override
+	public void onTearDown() {
+		cacheManagement.getCacheManager().shutdown();
+	}
 }

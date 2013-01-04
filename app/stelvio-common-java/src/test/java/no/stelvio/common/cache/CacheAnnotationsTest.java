@@ -1,47 +1,40 @@
 package no.stelvio.common.cache;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import net.sf.ehcache.CacheManager;
-
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 /**
  * Simple test for caching using JDK 1.5 annotations.
  * Should test that management interface is in place with an http get or something
  * 
  * @author person4f9bc5bd17cc, Accenture 
- * @author person5dc3535ea7f4, Accenture
  */
-@ContextConfiguration(locations = { "classpath:common-java_test_cache_beans_cache_annotations.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
-public class CacheAnnotationsTest {
+public class CacheAnnotationsTest extends AbstractDependencyInjectionSpringContextTests {
 	private static final String INITIAL_STRING = "This is a cacheable string";
 
-	@Autowired
+	/** Implementation class to test. */
 	private TestCache testCache;
-	
-	@Autowired
-	private CacheManager cacheManager;
-	
-	@After
-	public void after(){
-		cacheManager.clearAll();
+
+	/**
+	 * @return the location of the spring configuration xml-file.
+	 */
+	@Override
+	protected String[] getConfigLocations() {
+		return new String[] { "common-java_test_cache_beans_cache_annotations.xml" };
 	}
-	
+
+	/**
+	 * Initialize components prior to running tests.
+	 * 
+	 * @throws Exception exception
+	 */
+	public void onSetUp() throws Exception {
+		testCache = (TestCache) applicationContext.getBean("testCache");
+	}
+
 	/**
 	 * Test-method that test caching using JDK 1.5 annotations.
 	 */
-	@Test
-	@DirtiesContext
-	public void shuldReturnCorrectStringsWhenChaching() {
-		
+	public void testAnnotations() {
 		// Retrieve String for the first time
 		String cachedString = testCache.getStringCached();
 		assertTrue("Retrieved string is not equal to inital String.", cachedString.equals(INITIAL_STRING));
@@ -60,4 +53,5 @@ public class CacheAnnotationsTest {
 		cachedString = testCache.getStringCached();
 		assertFalse("String retrieved from cache. Cache was not flushed.", cachedString.equals(INITIAL_STRING));
 	}
+
 }

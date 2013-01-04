@@ -1,15 +1,21 @@
 package no.stelvio.common.cache.support;
 
+import no.stelvio.common.cache.CacheAnnotationsWithoutAutoProxyTest;
 import no.stelvio.common.cache.TestCache;
-import org.springmodules.cache.annotations.CacheFlush;
-import org.springmodules.cache.annotations.Cacheable;
 
 /**
- * Implements services for accessing data related to TestCache.
+ * Class that implements the same interface as {@link DefaultTestCache} but is not declared as a chacheable resource using
+ * caching annotations.
  * 
- * @author person4f9bc5bd17cc, Accenture
+ * Used to assert that even though the class matches a pointcut for which caching interceptors are applied, this class will not
+ * be subject to caching.
+ * 
+ * @see CacheAnnotationsWithoutAutoProxyTest#cacheIsNotUsedWhenAnnotationsAreNotApplied()
+ * 
+ * @author person983601e0e117 (Accenture)
+ * 
  */
-public class DefaultTestCache implements TestCache {
+public class NoAnnotationsTestCache implements TestCache {
 	private static final String INITIAL_STRING = "This is a cacheable string";
 	private String cachedString = INITIAL_STRING;
 	private int cnt;
@@ -17,7 +23,6 @@ public class DefaultTestCache implements TestCache {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Cacheable(modelId = "non-persistent")
 	public String getStringCached() {
 		return cachedString;
 	}
@@ -25,7 +30,6 @@ public class DefaultTestCache implements TestCache {
 	/**
 	 * {@inheritDoc}
 	 */
-	@CacheFlush(modelId = "flushingModel")
 	public void updateStringAndFlush() {
 		cnt++;
 		cachedString = INITIAL_STRING + cnt;
@@ -39,4 +43,5 @@ public class DefaultTestCache implements TestCache {
 		cnt++;
 		cachedString = INITIAL_STRING + cnt;
 	}
+
 }

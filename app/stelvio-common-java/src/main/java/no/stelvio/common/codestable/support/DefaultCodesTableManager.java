@@ -52,7 +52,7 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 
 	/** {@inheritDoc} */
 	@Cacheable(cacheName = CACHE_MODEL_ID) // ehcache-spring-annotations, new caching library
-//	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
+	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
 	public <T extends AbstractCodesTablePeriodicItem<K, V>, K extends Enum, V> CodesTablePeriodic<T, K, V> getCodesTablePeriodic(
 			Class<T> codesTablePeriodicItemClass) {
 		validate(codesTablePeriodicItemClass, AbstractCodesTablePeriodicItem.class);

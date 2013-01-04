@@ -6,7 +6,6 @@ app/stelvio-batch-java/.settings
 app/stelvio-batch-java/target
 app/stelvio-common-java/.classpath
 app/stelvio-common-java/.settings
-app/stelvio-common-java/bin
 app/stelvio-common-java/target
 app/stelvio-consumer-java/.classpath
 app/stelvio-consumer-java/.settings
