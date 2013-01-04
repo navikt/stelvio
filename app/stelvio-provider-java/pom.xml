@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>stelvio</artifactId>
 		<groupId>no.stelvio</groupId>
-		<version>3.0.1-SNAPSHOT</version>
+		<version>2.4.0-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-provider-java</artifactId>
@@ -15,8 +15,11 @@
 			<artifactId>stelvio-common-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
+
 		<dependency>
-			<!-- Stelvio DTO are used in the provider layer for data transfer objects -->
+			<!--
+				Stelvio DTO are used in the provider layer for data transfer objects
+			-->
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-dto-java</artifactId>
 			<version>${pom.version}</version>
@@ -27,53 +30,79 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
+			<!--
+				Apache commons-lang library provides a host of helper utilities that
+				extend the standard java.lang API, for example String manipulation
+				methods.
+			-->
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
+			<!--
+				spring-context is a Spring core library used for configuration and
+				dependency injection. Builds on the spring-beans library.
+			-->
 			<artifactId>spring-context</artifactId>
+			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
 			<artifactId>dozer</artifactId>
+			<version>${dozer.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-beanutils</groupId>
+					<artifactId>commons-beanutils</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.xmlbeans</groupId>
 			<artifactId>xmlbeans</artifactId>
+			<version>2.4.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
+			<version>1.5.3</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock</artifactId>
+			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-junit4</artifactId>
+			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
