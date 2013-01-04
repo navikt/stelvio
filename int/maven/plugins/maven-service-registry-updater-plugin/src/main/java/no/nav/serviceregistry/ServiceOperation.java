@@ -14,7 +14,6 @@ public class ServiceOperation {
 	public ServiceOperation(String operationName, String soapActionURI) {
 		name = operationName;
 		action = soapActionURI;
-		System.out.println("OPERATION!!");
 	}
 	
 	@XmlAttribute

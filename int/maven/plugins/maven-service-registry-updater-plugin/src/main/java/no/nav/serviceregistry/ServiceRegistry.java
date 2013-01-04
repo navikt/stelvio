@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,13 +16,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.zip.ZipEntry;
 
 import javax.wsdl.Binding;
 import javax.wsdl.BindingOperation;
@@ -70,36 +66,16 @@ public class ServiceRegistry {
 		this.removeServices(application);
 		
 		for (ExposedService exposedService : exposedServices) {
-			File wsdlDir = exposedService.getWsdlDir();
-			System.out.println("WSDLdir for brukerprofil: " + wsdlDir.getPath());
+			//protokoll og port vil antageligvis komme fra envconfig, men er ikke klart
 			String endpoint = "https://" + hostname + ":443/" + exposedService.getPath();
-			
+
+			File wsdlDir = exposedService.getWsdlDir();
 			String[] extensions = {"wsdl"};
 			Collection<File> wsdlFiles = FileUtils.listFiles(wsdlDir, extensions, true);
-						
-//			File[] wsdlFiles = wsdlDir.listFiles(new FilenameFilter() {
-//				public boolean accept(File wsdlDir, String filename)
-//				{return filename.endsWith(".wsdl");}
-//			});
 			
 			for (File file : wsdlFiles) {
 				this.addServiceInstance(application, endpoint, file.getPath());
 			}
-
-			//for alle tjenester i wsdl-dir:
-//			for (File f: wsdlDir.listFiles()) {
-//				if (f.isFile()) {
-//					this.addServiceInstance(application, endpoint, f.getPath());
-//				}
-//				if (f.isDirectory()) {
-//					for (File f2: f.listFiles()) {
-//						if (f2.isFile()) {
-//							this.addServiceInstance(application, endpoint, f2.getPath());
-//						}
-//						
-//					}
-//				}
-//			}
 		}		
 	}
 
@@ -115,24 +91,22 @@ public class ServiceRegistry {
 	}
 
 	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
-		System.out.println("HER, path: " + pathToWsdl);
 		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
-		System.out.println("mitt endpoint " + endpoint);
 		URL serviceEndpoint;
 		URL wsdlAddress;
 		try {
 			serviceEndpoint = new URL(endpoint);
+			//vil wsdlAddress alltid se slik ut?
 			wsdlAddress = new URL(serviceEndpoint.toString() + "?wsdl");
-
 		} catch (MalformedURLException e) {
 			throw new RuntimeException("The endpoint provided is not valid (check input from envconfig), details: " + e);
 		}
+		
 		ServiceInstance instance = new ServiceInstance(serviceEndpoint, wsdlAddress);
 
 		for (Iterator iterator = definition.getAllServices().values().iterator(); iterator.hasNext();) {
 			javax.wsdl.Service service = (javax.wsdl.Service) iterator.next();
-			for (Iterator iterator2 = service.getPorts().values().iterator(); iterator2
-					.hasNext();) {
+			for (Iterator iterator2 = service.getPorts().values().iterator(); iterator2.hasNext();) {
 				Port port = (Port) iterator2.next();
 				Binding binding = port.getBinding();
 				List<ServiceOperation> operations = new ArrayList<ServiceOperation>();
@@ -219,8 +193,14 @@ public class ServiceRegistry {
 		JAXBContext context = JAXBContext.newInstance(getClass());
 		Marshaller marshaller = context.createMarshaller();
 		OutputStream out = new FileOutputStream(file);
+		Schema schema;		
+		try {
+			schema = this.getSchemaFromClassPath("service-registry.xsd");
+		} catch (IOException e) {
+			throw new RuntimeException(e); 
+		}
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		//valider output!
+		marshaller.setSchema(schema);
 		marshaller.marshal(this, out);
 
 	}
@@ -234,26 +214,23 @@ public class ServiceRegistry {
 		} catch (IOException e) {
 			throw new RuntimeException(e); 
 		}
-		System.out.println("schema " + schema.toString());
 		unmarshaller.setSchema(schema);
 		ValidationEventCollector vec = new ValidationEventCollector();
 		unmarshaller.setEventHandler(vec);
 		
-		System.out.println("Nå skal vi unmarshalle!!");
 		ServiceRegistry sr = (ServiceRegistry) unmarshaller.unmarshal(new FileInputStream(serviceRegistryFile));
 		return sr;
 	}
 	
 	private Schema getSchemaFromClassPath(String filename) throws IOException {
-
-		File outFile = new File("/" + filename);
-
 		InputStream in = getClass().getResourceAsStream("/" + filename);
 		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+		File outFile = new File("/" + filename);
 		OutputStream out = new FileOutputStream(outFile);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out));
+		
 		String line;
-
 		while ((line = br.readLine()) != null) {
 			bw.write(line);
 			bw.newLine();
@@ -269,35 +246,6 @@ public class ServiceRegistry {
 		} catch (SAXException e) {
 			throw new RuntimeException(e);
 		}
-		
 		return schema;
 	}
-	
-	/*
-	 * Iterates through a ZIP file and find all WSDL ports (filename *.wsdl and
-	 * contains a SOAP service) The WSDL (same relative path as in the ZIP file)
-	 * is lookuped in a directory and added to the list of WSDL files returned
-	 */
-//	private Set<File> findWsdlFiles(Enumeration<? extends java.util.zip.ZipEntry> name, File wsdlFilesDir,
-//			File localFilesDir, boolean rewriteEndpoints) {
-//		Set<File> wsdlFiles = new LinkedHashSet<File>();
-//		// Iterate through the ZIP file
-//		while (name.hasMoreElements()) {
-//			ZipEntry zipEntry = (ZipEntry) name.nextElement();
-//			String filename = zipEntry.getName();
-//			// Only check files with extension .wsdl
-//			if (filename.endsWith(".wsdl")) {
-//				File file = new File(wsdlFilesDir, zipEntry.getName());
-//				// Load WSDL and check if it has a port (eliminate WSDLs with
-//				// port type)
-//				Definition definition = DPWsdlUtils.getDefinition(file.getPath());
-//				if (definition.getServices().size() > 0) { // Only keep ports,
-//															// not port types
-//					File wsdlFile = new File(localFilesDir, file);
-//					wsdlFiles.add(wsdlFile);
-//				}
-//			}
-//		}
-//		return wsdlFiles;
-
 }

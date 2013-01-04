@@ -2,8 +2,6 @@ package no.nav.serviceregistry.util;
 
 import java.io.File;
 
-import no.nav.serviceregistry.ServiceInstance;
-
 public class ExposedService {
 	
 	private String name;

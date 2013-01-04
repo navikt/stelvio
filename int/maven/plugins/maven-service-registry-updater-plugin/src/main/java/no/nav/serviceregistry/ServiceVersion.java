@@ -1,8 +1,6 @@
 package no.nav.serviceregistry;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,7 +10,6 @@ public class ServiceVersion {
 
 	private QName bindingName;
 	private List<ServiceOperation> operations;
-//	private Set<ServiceInstance> serviceInstances = new LinkedHashSet<ServiceInstance>();//skal kun ha en!!
 	private ServiceInstance serviceInstance;
 
 	/* For JAXB */
@@ -34,13 +31,9 @@ public class ServiceVersion {
 		return output.toString();
 	}
 
-//	public void addServiceInstance(ServiceInstance newServiceInstance) {
-//		serviceInstances.add(newServiceInstance);
-//	}
 	public void setServiceInstance(ServiceInstance serviceInstance) {
 		this.serviceInstance = serviceInstance;
 	}
-
 
 	@XmlAttribute
 	public QName getBindingName() {
@@ -73,16 +66,8 @@ public class ServiceVersion {
 		return bindingName.equals(other.bindingName);
 	}
 
-//	@XmlElement(name="serviceInstance")
-//	public Set<ServiceInstance> getServiceInstances() {
-//		return serviceInstances;
-//	}
 	@XmlElement(name="serviceInstance")
 	public ServiceInstance getServiceInstance() {
 		return serviceInstance;
 	}
-
-//	public void setServiceInstances(Set<ServiceInstance> serviceInstances) {
-//		this.serviceInstances = serviceInstances;
-//	}
 }

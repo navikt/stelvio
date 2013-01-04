@@ -15,14 +15,9 @@ public class AppConfigUtils {
 	}
 
 	public Application readAppConfig(File appConfig) throws JAXBException {
-		System.out.println("I metoden");
-//		JAXBContext context = JAXBContext.newInstance("no.nav.aura.appconfig");
 		JAXBContext context = JAXBContext.newInstance(Application.class);
-		System.out.println("lager context, " + context);
 		Unmarshaller unmarshaller = context.createUnmarshaller();
-		System.out.println("Skal unmarshalle, " + unmarshaller);
 		Application app = (Application) unmarshaller.unmarshal(appConfig);
-		System.out.println("har lest");
 		return app;
 	}
 }

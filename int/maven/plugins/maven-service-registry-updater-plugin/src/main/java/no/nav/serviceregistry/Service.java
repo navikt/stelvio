@@ -21,7 +21,6 @@ public class Service {
 	public Service(QName serviceName, String application) {
 		this.name = serviceName;
 		this.application = application;
-		System.out.println("Vi lager service! Navn " + this.name + ", app " + this.application);
 	}
 
 	@XmlElement(name="serviceVersion")

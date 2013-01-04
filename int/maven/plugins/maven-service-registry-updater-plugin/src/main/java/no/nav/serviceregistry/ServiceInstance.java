@@ -15,8 +15,6 @@ public class ServiceInstance {
 	public ServiceInstance(URL endpoint, URL wsdlAddress) {
 		this.endpoint = endpoint;
 		this.wsdlAddress = wsdlAddress;
-		
-		System.out.println("Endpoint: " + this.endpoint + ", wsdladdress: " + this.wsdlAddress);
 	}
 	
 	@XmlAttribute
@@ -39,7 +37,6 @@ public class ServiceInstance {
 
 	@Override
 	public int hashCode() {
-		System.out.println("endpoint: " + endpoint);
 		return endpoint.hashCode();
 	}
 
