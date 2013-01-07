@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package no.stelvio.presentation.jsf.context;
 
 import org.springframework.validation.FieldError;
@@ -87,18 +90,11 @@ public class FieldInListError extends FieldError {
 	 * {@inheritDoc}
 	 * @see org.springframework.validation.FieldError#equals(java.lang.Object)
 	 */
-	@Override
 	public boolean equals(Object other) {
-		return this == other ? true : super.equals(other);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @see org.springframework.validation.FieldError#hashCode(java.lang.Object)
-	 */
-	@Override
-	public int hashCode() {
-		return super.hashCode();
+		if (this == other) {
+			return true;
+		}
+		return super.equals(other);
 	}
 
 }

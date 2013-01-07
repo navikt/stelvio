@@ -23,7 +23,7 @@ public class ConflictingPropertiesException extends ConfigurationException {
 	 */
 	public ConflictingPropertiesException(String message, Object[] conflictingProperties, Throwable cause) {
 		super(message, cause);
-		this.conflictingProperties = conflictingProperties.clone();
+		this.conflictingProperties = conflictingProperties;
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class ConflictingPropertiesException extends ConfigurationException {
 	 */
 	public ConflictingPropertiesException(String message, Object[] conflictingProperties) {
 		super(message);
-		this.conflictingProperties = conflictingProperties.clone();
+		this.conflictingProperties = conflictingProperties;
 	}
 
 	/**

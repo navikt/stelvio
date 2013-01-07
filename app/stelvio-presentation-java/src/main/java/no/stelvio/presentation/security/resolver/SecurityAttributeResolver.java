@@ -29,18 +29,26 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 
 		switch (function) {
 		case SECURED:
-		case PRINCIPAL_NAME:
-		case USER_IN_ROLE:
-		case USER_IN_ALL_ROLES:
 			supported = true;
 			break;
 		case AUTH_TYPE:
+			supported = false;
+			break;
+		case PRINCIPAL_NAME:
+			supported = true;
+			break;
+		case USER_IN_ROLE:
+			supported = true;
+			break;
+		case USER_IN_ALL_ROLES:
+			supported = true;
+			break;
 		default:
+			supported = false;
 			break;
 		}
 		return supported;
 	}
-	
 
 	/**
 	 * Return a flag indicating if security is currently switched on.

@@ -30,7 +30,8 @@ public class WebXmlParser {
 	 * @throws SAXException
 	 *             from the digester
 	 */
-	public WebXmlParser(final URL url) throws IOException, SAXException {
+	public WebXmlParser(URL url) throws IOException, SAXException {
+		if (this.webAppRoles == null) {
 
 			Digester digester = new Digester();
 			// don't validate the XML compared to the schema. This setting
@@ -41,6 +42,7 @@ public class WebXmlParser {
 			digester.setValidating(false);
 			digester.addRuleSet(new DefineSecurityRuleSet());
 			this.webAppRoles = parseWebXml(digester, url);
+		}
 	}
 
 	/**
@@ -55,7 +57,7 @@ public class WebXmlParser {
 	/**
 	 * Parses web.xml using the specified digester and returns a WebAppRoles object.
 	 * 
-	 * @param digester
+	 * @param d
 	 *            the digester to use
 	 * @param url
 	 *            the url of the web.xml file
@@ -65,8 +67,8 @@ public class WebXmlParser {
 	 * @throws SAXException
 	 *             from the digester
 	 */
-	private WebAppRoles parseWebXml(final Digester digester, final URL url) throws IOException, SAXException {
-		final WebAppRoles webapp = (WebAppRoles) digester.parse(url.toString());
+	private WebAppRoles parseWebXml(Digester d, URL url) throws IOException, SAXException {
+		WebAppRoles webapp = (WebAppRoles) d.parse(url.toString());
 
 		return webapp;
 	}
@@ -80,11 +82,11 @@ public class WebXmlParser {
 		 * {@inheritDoc}
 		 */
 		@Override
-		public void addRuleInstances(Digester digester) {
-			digester.addObjectCreate("web-app", WebAppRoles.class);
-			digester.addObjectCreate("web-app/security-role", SecurityRole.class);
-			digester.addBeanPropertySetter("web-app/security-role/role-name", "roleName");
-			digester.addSetNext("web-app/security-role", "addSecurityRole");
+		public void addRuleInstances(Digester d) {
+			d.addObjectCreate("web-app", WebAppRoles.class);
+			d.addObjectCreate("web-app/security-role", SecurityRole.class);
+			d.addBeanPropertySetter("web-app/security-role/role-name", "roleName");
+			d.addSetNext("web-app/security-role", "addSecurityRole");
 		}
 	}
 }

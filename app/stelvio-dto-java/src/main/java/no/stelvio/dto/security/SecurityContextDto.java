@@ -45,7 +45,7 @@ public class SecurityContextDto implements Serializable {
 	 * @param roles the roles
 	 */
 	public void setRoles(String[] roles) {
-		this.roles = roles.clone();
+		this.roles = roles;
 	}
 
 	/**

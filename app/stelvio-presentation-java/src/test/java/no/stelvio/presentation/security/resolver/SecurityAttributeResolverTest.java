@@ -1,8 +1,15 @@
 package no.stelvio.presentation.security.resolver;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.faces.context.FacesContext;
@@ -20,6 +27,12 @@ import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 
 import com.groundside.jsf.securityresolver.adapter.AttributeResolver;
 
+/**
+ * SecurityAttributeResolverTest.
+ * 
+ * @author ??
+ * 
+ */
 public class SecurityAttributeResolverTest extends AbstractPhaselistenerTestCase {
 
 	private FacesContext faces;
@@ -31,6 +44,11 @@ public class SecurityAttributeResolverTest extends AbstractPhaselistenerTestCase
 	private enum ValidRolesEnum implements ValidRole {
 		ROLE1, ROLE2;
 
+		/**
+		 * Get role name.
+		 * 
+		 * @return name
+		 */
 		public String getRoleName() {
 			return name();
 		}
@@ -44,41 +62,23 @@ public class SecurityAttributeResolverTest extends AbstractPhaselistenerTestCase
 		resolver = new SecurityAttributeResolver();
 	}
 
-	/* Needs to be overridden as long as <code>AbstractPhaselistenerTestCase</code> is implemented */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onTearDown() {
 	}
 	
+	/**
+	 * Test is supported.
+	 */
 	@Test
-	public void shouldNotSupportUnknownNumbers() {
-		final int UNSUPPORTED_NUMBER_1 = 1337, UNSUPPORTED_NUMBER_2 = 42;
-		assertFalse("This uknown number should default to false", resolver.isSupported(UNSUPPORTED_NUMBER_1));
-		assertFalse("This uknown number should default to false", resolver.isSupported(UNSUPPORTED_NUMBER_2));
-	}
-
-	@Test
-	public void shouldSupportUserInRole() {
-		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.USER_IN_ROLE));
-	}
-
-	@Test
-	public void shouldSupportUsersInAllRoles() {
-		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.USER_IN_ALL_ROLES));
-	}
-	
-	@Test
-	public void shouldSupportAuth_type() {
-		assertFalse("Should be false.", resolver.isSupported(AttributeResolver.AUTH_TYPE));
-	}
-
-	@Test
-	public void shouldSupportPrincipal_name() {
-		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.PRINCIPAL_NAME));
-	}
-
-	@Test
-	public void shouldSupportSecured() {
+	public void isSupported() {
 		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.SECURED));
+		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.PRINCIPAL_NAME));
+		assertFalse("Should be false.", resolver.isSupported(AttributeResolver.AUTH_TYPE));
+		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.USER_IN_ALL_ROLES));
+		assertTrue("Should be true.", resolver.isSupported(AttributeResolver.USER_IN_ROLE));
 	}
 
 	/**
