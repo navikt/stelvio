@@ -44,18 +44,23 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HTML;
 import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
 
 /**
- * @JSFRenderer renderKitId = "HTML_BASIC" family = "org.apache.myfaces.Checkbox" type = "org.apache.myfaces.Checkbox"
+ * @JSFRenderer renderKitId = "HTML_BASIC" family =
+ *              "org.apache.myfaces.Checkbox" type =
+ *              "org.apache.myfaces.Checkbox"
  * 
- * @JSFRenderer renderKitId = "HTML_BASIC" family = "javax.faces.SelectBoolean" type = "org.apache.myfaces.Checkbox"
+ * @JSFRenderer renderKitId = "HTML_BASIC" family = "javax.faces.SelectBoolean"
+ *              type = "org.apache.myfaces.Checkbox"
  * 
- * @JSFRenderer renderKitId = "HTML_BASIC" family = "javax.faces.SelectMany" type = "org.apache.myfaces.Checkbox"
+ * @JSFRenderer renderKitId = "HTML_BASIC" family = "javax.faces.SelectMany"
+ *              type = "org.apache.myfaces.Checkbox"
  * 
  * @author person055361994206 (latest modification by $Author: lu4242 $)
- * @version $Revision: 784968 $ $Date: 2009-06-15 15:39:15 -0500 (Mon, 15 Jun 2009) $
+ * @version $Revision: 784968 $ $Date: 2009-06-15 15:39:15 -0500 (Mon, 15 Jun
+ *          2009) $
  */
 @SuppressWarnings("unchecked")
 public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
-	private static final Log log = LogFactory.getLog(HtmlCheckboxRenderer.class);
+	private static final Log LOG = LogFactory.getLog(HtmlCheckboxRenderer.class);
 
 	private static final String PAGE_DIRECTION = "pageDirection";
 
@@ -64,19 +69,21 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 	private static final String LAYOUT_SPREAD = "spread";
 
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-		if (context == null)
+		if (context == null){
 			throw new NullPointerException("context");
-		if (component == null)
+		}
+		if (component == null){
 			throw new NullPointerException("component");
-
+		}
 		if (component instanceof HtmlCheckbox) {
 			renderSingleCheckbox(context, (HtmlCheckbox) component);
 		} else if (component instanceof DisplayValueOnlyCapable && HtmlRendererUtils.isDisplayValueOnly(component)) {
 			HtmlRendererUtils.renderDisplayValueOnlyForSelects(context, component);
 		} else if (component instanceof UISelectMany) {
-			String layout = getLayout((UISelectMany) component);
+			final String layout = getLayout((UISelectMany) component);
 			if (layout != null && layout.equals(LAYOUT_SPREAD)) {
-				return; // checkbox inputs are rendered by spread checkbox components
+				return; // checkbox inputs are rendered by spread checkbox
+						// components
 			} else {
 				super.encodeEnd(context, component);
 			}
@@ -96,21 +103,21 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 			} else if (layout.equals(LINE_DIRECTION)) {
 				renderCheckboxListHorizontally(facesContext, selectMany, converter);
 			} else {
-				log.error("Wrong layout attribute for component " + selectMany.getClientId(facesContext) + ": " + layout);
+				LOG.error("Wrong layout attribute for component " + selectMany.getClientId(facesContext) + ": "
+						+ layout);
 			}
 		}
 	}
 
-	
-	protected void renderCheckboxListHorizontally(FacesContext facesContext, UISelectMany selectMany, Converter converter)
-			throws IOException {
+	protected void renderCheckboxListHorizontally(FacesContext facesContext, UISelectMany selectMany,
+			Converter converter) throws IOException {
 		Set lookupSet = RendererUtils.getSubmittedValuesAsSet(facesContext, selectMany, converter, selectMany);
-		boolean useSubmittedValues = lookupSet != null;
+		final boolean useSubmittedValues = lookupSet != null;
 		if (!useSubmittedValues) {
 			lookupSet = RendererUtils.getSelectedValuesAsSet(facesContext, selectMany, converter, selectMany);
 		}
 
-		ResponseWriter writer = facesContext.getResponseWriter();
+		final ResponseWriter writer = facesContext.getResponseWriter();
 		writer.startElement(HTML.TABLE_ELEM, selectMany);
 		HtmlRendererUtils.renderHTMLAttributes(writer, selectMany, HTML.SELECT_TABLE_PASSTHROUGH_ATTRIBUTES);
 		HtmlRendererUtils.writeIdIfNecessary(writer, selectMany, facesContext);
@@ -135,7 +142,8 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 				colNum++;
 				SelectItem selectItem = (SelectItem) items.get(count);
 				writer.startElement(HTML.TD_ELEM, selectMany);
-				renderGroupOrItemCheckbox(facesContext, selectMany, selectItem, lookupSet != null, lookupSet, converter, false);
+				renderGroupOrItemCheckbox(facesContext, selectMany, selectItem, lookupSet != null, lookupSet,
+						converter, false);
 				writer.endElement(HTML.TD_ELEM);
 			}
 		}
@@ -174,8 +182,8 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 				writer.startElement(HTML.TD_ELEM, selectMany);
 				if (count < totalItems) {
 					SelectItem selectItem = (SelectItem) items.get(count);
-					renderGroupOrItemCheckbox(facesContext, selectMany, selectItem, lookupSet != null, lookupSet, converter,
-							true);
+					renderGroupOrItemCheckbox(facesContext, selectMany, selectItem, lookupSet != null, lookupSet,
+							converter, true);
 				}
 				writer.endElement(HTML.TD_ELEM);
 				if (i < numCols - 1) {
@@ -187,19 +195,25 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 		writer.endElement(HTML.TABLE_ELEM);
 	}
 
+	// @edu.umd.cs.findbugs.annotations.SupressWarnings("BC_UNCONFIRMED_CAST",
+	// "This is checked by local variable isSelectItemGroup")
 	protected void renderGroupOrItemCheckbox(FacesContext facesContext, UIComponent uiComponent, SelectItem selectItem,
-			boolean useSubmittedValues, Set lookupSet, Converter converter, boolean pageDirectionLayout) throws IOException {
+			boolean useSubmittedValues, Set lookupSet, Converter converter, boolean pageDirectionLayout)
+			throws IOException {
 		ResponseWriter writer = facesContext.getResponseWriter();
 
 		boolean isSelectItemGroup = (selectItem instanceof SelectItemGroup);
-
+		// if (selectItem instanceof SelectItemGroup) {
 		if (isSelectItemGroup) {
 			SelectItemGroup selectItemGroup = (SelectItemGroup) selectItem;
 			renderCheckboxGroup(facesContext, uiComponent, selectItemGroup, useSubmittedValues, lookupSet, converter,
 					pageDirectionLayout);
 		} else {
 			UISelectMany selectMany = (UISelectMany) uiComponent;
-			Object itemValue = selectItem.getValue(); // TODO : Check here for getSubmittedValue. Look at RendererUtils.getValue
+			Object itemValue = selectItem.getValue(); // TODO : Check here for
+														// getSubmittedValue.
+														// Look at
+														// RendererUtils.getValue
 			String itemStrValue = getItemStringValue(facesContext, selectMany, converter, itemValue);
 
 			boolean checked = (useSubmittedValues && lookupSet.contains(itemStrValue))
@@ -235,13 +249,17 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 		}
 	}
 
-	protected void renderCheckboxGroup(FacesContext facesContext, UIComponent uiComponent, SelectItemGroup selectItemGroup,
-			boolean useSubmittedValues, Set lookupSet, Converter converter, boolean pageDirectionLayout) throws IOException {
+	protected void renderCheckboxGroup(FacesContext facesContext, UIComponent uiComponent,
+			SelectItemGroup selectItemGroup, boolean useSubmittedValues, Set lookupSet, Converter converter,
+			boolean pageDirectionLayout) throws IOException {
 		ResponseWriter writer = facesContext.getResponseWriter();
 		UISelectMany selectMany = (UISelectMany) uiComponent;
 		writer.startElement(HTML.TABLE_ELEM, selectMany);
-		if (pageDirectionLayout)
+		
+		if (pageDirectionLayout){
 			writer.startElement(HTML.TR_ELEM, selectMany);
+		}
+		
 		writer.startElement(HTML.TD_ELEM, selectMany);
 		writer.write(selectItemGroup.getLabel());
 		writer.endElement(HTML.TD_ELEM);
@@ -256,19 +274,21 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 
 		SelectItem[] selectItems = selectItemGroup.getSelectItems();
 		for (int i = 0; i < selectItems.length; i++) {
-			renderGroupOrItemCheckbox(facesContext, selectMany, selectItems[i], useSubmittedValues, lookupSet, converter,
-					pageDirectionLayout);
+			renderGroupOrItemCheckbox(facesContext, selectMany, selectItems[i], useSubmittedValues, lookupSet,
+					converter, pageDirectionLayout);
 		}
 
 		writer.endElement(HTML.TABLE_ELEM);
 		writer.endElement(HTML.TD_ELEM);
-		if (pageDirectionLayout)
+		if (pageDirectionLayout){
 			writer.endElement(HTML.TR_ELEM);
+		}
 		writer.endElement(HTML.TABLE_ELEM);
 	}
 
 	/**
-	 * Determines the layout setting. Defaults to <code>lineDirection</code> if not specified.
+	 * Determines the layout setting. Defaults to <code>lineDirection</code> if
+	 * not specified.
 	 * 
 	 * @param selectMany
 	 *            the component
@@ -283,7 +303,8 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 	}
 
 	/**
-	 * Gets the layout width. Returns the default layout width of 1 if the layout width is not set or is less than 1.
+	 * Gets the layout width. Returns the default layout width of 1 if the
+	 * layout width is not set or is less than 1.
 	 * 
 	 * @param selectMany
 	 *            the component
@@ -323,8 +344,8 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 
 		UIComponent uiComponent = checkbox.findComponent(forAttr);
 		if (uiComponent == null) {
-			throw new IllegalStateException("Could not find component '" + forAttr + "' (calling findComponent on component '"
-					+ checkbox.getClientId(facesContext) + "')");
+			throw new IllegalStateException("Could not find component '" + forAttr
+					+ "' (calling findComponent on component '" + checkbox.getClientId(facesContext) + "')");
 		}
 		if (!(uiComponent instanceof UISelectMany)) {
 			throw new IllegalStateException("UISelectMany expected");
@@ -351,8 +372,8 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 
 		ResponseWriter writer = facesContext.getResponseWriter();
 
-		String itemId = renderCheckbox(facesContext, uiSelectMany, itemStrValue, isDisabled(facesContext, uiSelectMany),
-				lookupSet.contains(itemStrValue), false, index);
+		String itemId = renderCheckbox(facesContext, uiSelectMany, itemStrValue,
+				isDisabled(facesContext, uiSelectMany), lookupSet.contains(itemStrValue), false, index);
 
 		// Render the
 		// label element after the input
@@ -396,7 +417,7 @@ public class HtmlCheckboxRenderer extends HtmlCheckboxRendererBase {
 		try {
 			converter = RendererUtils.findUISelectManyConverter(facesContext, selectMany);
 		} catch (FacesException e) {
-			log.error("Error finding Converter for component with id " + selectMany.getClientId(facesContext));
+			LOG.error("Error finding Converter for component with id " + selectMany.getClientId(facesContext));
 			converter = null;
 		}
 		return converter;

@@ -33,6 +33,8 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
 	}};
 	
 	private String databaseType = DB2;
+	
+	private String currentSchema;
 	 
 	/** Spring injected. */
 	private InfoLogger infoLogger;
@@ -206,11 +208,14 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
 	 * @return Current DB2 Schema
 	 */
 	private String getCurrentSchema() {
-		String currentSchema = "UNKNOWN";
-		String currentSchemaSql = dbTypeToSql.get(databaseType);
-		
-		if(currentSchemaSql != null) {
-			currentSchema = (String) jdbcTemplate.queryForObject(currentSchemaSql, String.class);
+
+		if (currentSchema == null){
+			currentSchema = "UNKNOWN";
+			String currentSchemaSql = dbTypeToSql.get(databaseType);
+			
+			if(currentSchemaSql != null) {
+				currentSchema = (String) jdbcTemplate.queryForObject(currentSchemaSql, String.class);
+			}
 		}
 
 		return currentSchema;

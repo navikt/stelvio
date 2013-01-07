@@ -1,7 +1,7 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<?xml version="1.0" encoding="UTF-8"?> -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
@@ -11,9 +11,9 @@
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio</artifactId>
 	<packaging>pom</packaging>
-	<version>2.3.1-SNAPSHOT</version>
+	<version>3.0.1-SNAPSHOT</version>
 	<name>stelvio</name>
-	
+
 	<modules>
 		<!-- ========================= -->
 		<!-- ========================= -->
@@ -37,43 +37,578 @@
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</developerConnection>
 	</scm>
-		
-	<properties>
-		<swf.version>2.0.9.RELEASE</swf.version>
-		<spring.version>2.5.6.SEC02</spring.version>
-		<clover.version>2.4.3</clover.version>
-		<ehcache.version>1.5.0</ehcache.version>
-		<spring-batch.version>2.1.3.RELEASE</spring-batch.version>
-		<commons-beanutils.version>1.8.3</commons-beanutils.version>
-		<commons-lang.version>2.4</commons-lang.version>
-		<commons-logging.version>1.1.1</commons-logging.version>
-		<commons-collections.version>3.2.1</commons-collections.version>
-		<commons-digester.version>1.8.1</commons-digester.version>
-		<slf4j.version>1.6.1</slf4j.version>
-		<dozer.version>5.2.2</dozer.version>
-		<jmock.version>2.5.1</jmock.version>
-		<maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>
-		<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
-	</properties>
+
+	<dependencyManagement>
+		<!-- NB! Listen er sortert alfabetisk etter artifactId for å gi bedre oversikt -->
+		<dependencies>
+			<dependency>
+				<groupId>org.acegisecurity</groupId>
+				<artifactId>acegi-security-tiger</artifactId>
+				<version>${org.acegisecurity.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-aop</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-remoting</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-jdbc</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-support</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-lang</groupId>
+						<artifactId>commons-lang</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-collections</groupId>
+						<artifactId>commons-collections</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-codec</groupId>
+						<artifactId>commons-codec</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<!-- Framework for AOP (Aspect Oriented Programming), providing method interceptors that for instance is used by Stelvio 
+					transfer objects to set service context data behind the scene. Also used in Spring-AOP. -->
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>${aopalliance.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectjweaver.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib-nodep</artifactId>
+				<version>${cglib-nodep.version}</version>
+			</dependency>
+			<dependency>
+				<!-- Apache commons-beanutils library provides classes that support easy-to-use wrappers for dynamic access of standard 
+					JavaBean classes properties. -->
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons-beanutils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+			</dependency>
+			<dependency>
+				<!-- Apache commons-lang library provides a host of helper utilities that extend the standard java.lang API, for example 
+					String manipulation methods. -->
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-digester</groupId>
+				<artifactId>commons-digester</artifactId>
+				<version>${commons-digester.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<!-- Mapping framework for mapping between different types of data objects -->
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>${dozer.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-beanutils</groupId>
+						<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.easymock</groupId>
+				<artifactId>easymock</artifactId>
+				<version>2.5.2</version>
+			</dependency>	
+			<dependency>
+				<!-- Cache provider -->
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>${ehcache.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-collections</groupId>
+						<artifactId>commons-collections</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.ehcache-spring-annotations</groupId>
+				<artifactId>ehcache-spring-annotations</artifactId>
+				<version>${ehcache-spring-annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-api</artifactId>
+				<version>${hamcrest-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-core</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-integration</artifactId>
+				<version>${hamcrest-integration.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-library</artifactId>
+				<version>${hamcrest-library.version}</version>
+			</dependency>			
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>3.4.0.GA</version>
+				<exclusions>
+					<!-- Hibernate is already included, we do not want to duplicate exclusions 
+						defined for hibernate -->
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-commons-annotations</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-commons-annotations</artifactId>
+				<version>${hibernate-commons-annotations.version}</version>
+				<exclusions>
+					<!-- Hibernate is already included, we do not want to duplicate exclusions 
+						defined for hibernate -->
+					<exclusion>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>			
+				<!-- Hibernate is used for Object Relational Mapping -->
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<!-- Kan se ut som det gir problemer å oppgradere denne -->
+				<version>${hibernate-core.version}</version>
+			</dependency>				
+			<dependency>
+				<groupId>hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>1.8.0.7</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jamonapi</groupId>
+				<artifactId>jamon</artifactId>
+				<version>2.7</version>
+			</dependency>
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.8.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock</artifactId>
+				<version>${jmock.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock-junit4</artifactId>
+				<version>${jmock.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda-time.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.facelets</groupId>
+				<artifactId>jsf-facelets</artifactId>
+				<version>1.1.14</version>
+			</dependency>
+			<dependency>
+				<groupId>com.groundside</groupId>
+				<artifactId>jsf-security</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId> 
+				<version>1.8.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.myfaces.core</groupId>
+				<artifactId>myfaces-api</artifactId>
+				<version>1.2.9</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>jstl</artifactId>
+						<groupId>javax.servlet</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>	
+			<dependency>
+				<groupId>org.apache.myfaces.tomahawk</groupId>
+				<artifactId>tomahawk12</artifactId>
+				<version>1.1.10</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>batik-util</artifactId>
+						<groupId>batik</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>				
+			<dependency>
+				<!-- JPA, for data access using Java Persistence API -->
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>${persistence-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.richfaces.framework</groupId>
+				<artifactId>richfaces-impl</artifactId>
+				<version>3.3.3.Final</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-collections</groupId>
+						<artifactId>commons-collections</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-beanutils</groupId>
+						<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.4</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+			<artifactId>shale-test</artifactId>
+			<groupId>org.apache.shale</groupId>
+			<version>1.0.4</version>
+			<exclusions>
+				<exclusion>
+					<groupId>myfaces</groupId>
+					<artifactId>myfaces-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>myfaces</groupId>
+					<artifactId>myfaces-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<!-- spring-aop library is used to provide AOP interfaces used by Spring. Built on AOP Alliance library. -->
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>${spring-batch.version}</version>
+			<exclusions>
+
+				<exclusion>
+					<groupId>com.thoughtworks.xstream</groupId>
+					<artifactId>xstream</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.jettison</groupId>
+					<artifactId>jettison</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<version>${spring-batch.version}</version>
+		</dependency>
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-binding</artifactId>
+				<version>${swf.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-faces</artifactId>
+				<version>${swf.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+					</exclusion>			
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-webmvc</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-js</artifactId>
+				<version>${swf.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>asm</groupId>
+						<artifactId>asm</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>asm</groupId>
+						<artifactId>asm-attrs</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>cglib</groupId>
+						<artifactId>cglib</artifactId>
+					</exclusion>
+				</exclusions>				
+			</dependency>
+			<dependency>
+				<!-- Needs spring mock support in order to run tests -->
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>struts</groupId>
+						<artifactId>struts</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<artifactId>spring-tx</artifactId>
+				<groupId>org.springframework</groupId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-webflow</artifactId>
+				<version>${swf.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+					</exclusion>			
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-webmvc</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
+				<version>7.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.runtime</artifactId>
+				<version>7.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>2.4.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
-			<dependency>
+		<dependency>
 			<!-- Apache commons-logging is the main logging framework used as a facade for application logging. -->
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>${commons-logging.version}</version>
 			<exclusions>
 				<exclusion>
-					<artifactId>servlet-api</artifactId>
 					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<artifactId>avalon-framework</artifactId>
 					<groupId>avalon-framework</groupId>
+					<artifactId>avalon-framework</artifactId>
 				</exclusion>
-			</exclusions>			
+			</exclusions>
 		</dependency>
-	
+
 		<dependency>
 			<!-- JUnit testing is the selected framework for unit testing. -->
 			<artifactId>junit</artifactId>
@@ -82,36 +617,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-<!--	<distributionManagement>
-		<repository>
-			<id>nav-maven2-internal-repo</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
-		</repository>
-		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<name>NAV Maven2 Internal Snapshot Repository</name>
-			<url>scp://10.33.1.53/var/maven2/snapshot</url>
-		</snapshotRepository>
-		<site>
-			<id>website</id>
-			<url>scp://10.33.1.53/var/www/html/project/stelvio_m</url>
-		</site>
-	</distributionManagement> -->
-	
+
 	<reporting>
 		<plugins>
-			<!--<plugin>
-				<artifactId>
-					maven-project-info-reports-plugin
-				</artifactId>
-				<version>2.1</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -154,46 +662,14 @@
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>2.7.2</version>
 			</plugin>
-			<!--<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<configuration>
-					<targetJdk>1.5</targetJdk>
-					<rulesets>
-						<ruleset>
-							http://confluence.adeo.no/download/attachments/12007/nav_pmd.xml
-						</ruleset>
-					</rulesets>
-					<format>xml</format>
-					<linkXref>true</linkXref>					
-					<minimumTokens>100</minimumTokens>
-				</configuration>
-			</plugin>-->
-
-			<!--<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.1</version>
-				<configuration>
-					<findbugsXmlOutput>true</findbugsXmlOutput>
-					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
-					<xmlOutput>true</xmlOutput>
-					<threshold>Normal</threshold>High|Normal|Low|Exp
-					<effort>Default</effort> Min|Default1Max
-					<excludeFilterFile>
-						http://confluence.adeo.no/download/attachments/107131/nav-stelvio-findbugs-exclude.xml
-					</excludeFilterFile>
-				</configuration>
-			</plugin>-->
 		</plugins>
 	</reporting>
 	<build>
 		<plugins>
 			<plugin>
-			<!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin
-				To run: mvn depgraph:fullgraph
-				If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf - [file.pdf]
-			-->
+				<!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin 
+					To run: mvn depgraph:fullgraph If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf 
+					- [file.pdf] -->
 				<groupId>ch.elca.el4j.maven.plugins</groupId>
 				<artifactId>maven-depgraph-plugin</artifactId>
 				<version>1.1</version>
@@ -202,7 +678,7 @@
 					<outFile>${artifactId}-depgraph.png</outFile>
 					<dotFile>${artifactId}-depgraph.dot</dotFile>
 				</configuration>
-			</plugin>		
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -247,7 +723,7 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>${maven-dependency-plugin.version}</version>
-				</plugin>	
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -264,59 +740,50 @@
 						<password>Maven1234</password>
 					</configuration>
 				</plugin>
-				<!--<plugin> 
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<configLocation>
-						http://confluence.adeo.no/download/attachments/12007/nav_checkstyle.xml
-					</configLocation>
-				</configuration>
-			</plugin>-->
 			</plugins>
 		</pluginManagement>
-		<!-- Prevents ClearCase(*.db)-files being copied into target folder-->
+		<!-- Prevents ClearCase(*.db)-files being copied into target folder -->
 		<resources>
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 				<excludes>
-					<exclude>**/*.db</exclude>		
+					<exclude>**/*.db</exclude>
 				</excludes>
 			</resource>
 			<resource>
 				<directory>${basedir}/src/main/java</directory>
 				<excludes>
-					<exclude>**/*.db</exclude>		
+					<exclude>**/*.db</exclude>
 				</excludes>
 			</resource>
-		</resources>		
-		<!-- Prevents ClearCase(*.db)-files being copied into target folder-->		
+		</resources>
+		<!-- Prevents ClearCase(*.db)-files being copied into target folder -->
 		<testResources>
-			<testResource> 
+			<testResource>
 				<directory>${basedir}/src/test/java</directory>
 				<excludes>
-					<exclude>**/*.db</exclude>		
+					<exclude>**/*.db</exclude>
 				</excludes>
 			</testResource>
-			<testResource> 
+			<testResource>
 				<directory>${basedir}/src/test/resources</directory>
 				<excludes>
-					<exclude>**/*.db</exclude>		
+					<exclude>**/*.db</exclude>
 				</excludes>
-			</testResource>			
+			</testResource>
 		</testResources>
 	</build>
-	
+
 	<profiles>
-	  <!-- clover profile, used to generate unit test coverage reports. Usage: -Dclover site -->
-	  <!-- Ref: http://confluence.atlassian.com/display/CLOVER/Clover+Documentation+Home -->
+		<!-- clover profile, used to generate unit test coverage reports. Usage: -Dclover site -->
+		<!-- Ref: http://confluence.atlassian.com/display/CLOVER/Clover+Documentation+Home -->
 		<profile>
 			<id>clover</id>
 			<activation>
 				<property>
 					<name>clover</name>
 				</property>
-			</activation>   
+			</activation>
 			<!-- Setup the build and site goals -->
 			<build>
 				<plugins>
@@ -326,11 +793,11 @@
 						<artifactId>maven-clover2-plugin</artifactId>
 						<version>${clover.version}</version>
 						<configuration>
-							<licenseLocation>${clover.licenseLocation}</licenseLocation>							
+							<licenseLocation>${clover.licenseLocation}</licenseLocation>
 						</configuration>
 						<executions>
 							<execution>
-								<!-- Instrument sources, build, run tests and prepare Clover database pre-site -->      
+								<!-- Instrument sources, build, run tests and prepare Clover database pre-site -->
 								<id>main</id>
 								<phase>verify</phase>
 								<goals>
@@ -340,7 +807,7 @@
 								</goals>
 							</execution>
 							<execution>
-								<!-- Instrument sources, build, run tests and prepare Clover database pre-site -->      
+								<!-- Instrument sources, build, run tests and prepare Clover database pre-site -->
 								<id>site</id>
 								<phase>pre-site</phase>
 								<goals>
@@ -370,9 +837,9 @@
 						<groupId>com.atlassian.maven.plugins</groupId>
 						<artifactId>maven-clover2-plugin</artifactId>
 						<version>${clover.version}</version>
-						<configuration>    
+						<configuration>
 							<licenseLocation>${clover.licenseLocation}</licenseLocation>
-							<generateHistorical>true</generateHistorical><!-- Enable historical reports -->                                
+							<generateHistorical>true</generateHistorical><!-- Enable historical reports -->
 							<generateXml>true</generateXml>
 							<contextFilters>property</contextFilters> <!-- Exclude properties from coverage report -->
 						</configuration>
@@ -381,5 +848,36 @@
 			</reporting>
 		</profile>
 	</profiles>
-	
+
+	<properties>
+		<!-- NB! Listen er sortert alfabetisk for å gi bedre oversikt -->
+		<aopalliance.version>1.0</aopalliance.version>
+		<aspectjweaver.version>1.5.3</aspectjweaver.version>
+		<cglib-nodep.version>2.1_3</cglib-nodep.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<commons-lang.version>2.4</commons-lang.version>
+		<commons-logging.version>1.1.1</commons-logging.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-digester.version>1.8.1</commons-digester.version>
+		<clover.version>2.4.3</clover.version>
+		<dozer.version>5.2.2</dozer.version>
+		<ehcache.version>2.5.2</ehcache.version>
+		<ehcache-spring-annotations.version>1.2.0</ehcache-spring-annotations.version>
+		<hamcrest-api.version>1.0</hamcrest-api.version>
+		<hamcrest-integration.version>1.1</hamcrest-integration.version>
+		<hamcrest-library.version>1.0</hamcrest-library.version>
+		<hibernate-commons-annotations.version>3.1.0.GA</hibernate-commons-annotations.version>
+		<hibernate-core.version>3.3.2.GA</hibernate-core.version>
+		<jmock.version>2.5.1</jmock.version>
+		<joda-time.version>1.6.2</joda-time.version>
+		<maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>
+		<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
+		<org.acegisecurity.version>1.0.7</org.acegisecurity.version>
+		<persistence-api.version>1.0</persistence-api.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<spring.version>2.5.6.SEC02</spring.version>
+		<spring-batch.version>2.1.3.RELEASE</spring-batch.version>
+		<swf.version>2.0.9.RELEASE</swf.version>
+	</properties>
+
 </project>

@@ -1,6 +1,7 @@
 package no.stelvio.common.security.ws;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -320,7 +321,7 @@ public class SecurityHeader {
 				// Get the security token
 				token = securityCredential.getCredentialToken();
 				if (LOG.isDebugEnabled()) {
-					LOG.debug("Security name: " + user + " Token: " + token);
+					LOG.debug("Security name: " + user + " Token: " + Arrays.toString(token));
 					if (token != null ) {
 						if (token.length == 0) {
 							LOG.debug("The token byte array is empty");

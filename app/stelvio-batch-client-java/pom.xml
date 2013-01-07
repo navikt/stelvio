@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>2.3.1-SNAPSHOT</version>
+		<version>3.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-batch-client-java</artifactId>
@@ -14,25 +14,21 @@
 			<!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
 			<artifactId>spring-beans</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>org.easymock</groupId>
     		<artifactId>easymock</artifactId>
-			<version>2.5.2</version>
 			<scope>test</scope>	
 		</dependency>			
 		<dependency>
 			<groupId>commons-lang</groupId>
  			<artifactId>commons-lang</artifactId>
-			<version>${commons-lang.version}</version>
  			<scope>test</scope>	
 		</dependency>	
 	</dependencies>	

@@ -22,16 +22,14 @@ public class RepositoryCodesTableItemsFactory implements CodesTableItemsFactory 
 	private CodesTableRepository codesTableRepository;
 
 	/** {@inheritDoc} */
-	@Cacheable(cacheName = CACHE_MODEL_ID) // ehcache-spring-annotations, new caching library
-	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
+	@Cacheable(cacheName = CACHE_MODEL_ID)
 	public <T extends AbstractCodesTableItem<K, V>, K extends Enum, V> List<T> createCodesTableItems(
 			Class<T> codesTableItemClass) throws CodesTableNotFoundException {
 		return codesTableRepository.findCodesTableItems(codesTableItemClass);
 	}
 
 	/** {@inheritDoc} */
-	@Cacheable(cacheName = CACHE_MODEL_ID) // ehcache-spring-annotations, new caching library
-	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
+	@Cacheable(cacheName = CACHE_MODEL_ID)
 	public <T extends AbstractCodesTablePeriodicItem<K, V>, K extends Enum, V> List<T> createCodesTablePeriodicItems(
 			Class<T> codesTableItemPeriodicClass) throws CodesTableNotFoundException {
 		return codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);

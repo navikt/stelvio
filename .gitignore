@@ -1,3 +1,4 @@
+app/*.trash*
 app/stelvio-batch-client-java/.classpath
 app/stelvio-batch-client-java/.settings
 app/stelvio-batch-client-java/target
@@ -6,6 +7,7 @@ app/stelvio-batch-java/.settings
 app/stelvio-batch-java/target
 app/stelvio-common-java/.classpath
 app/stelvio-common-java/.settings
+app/stelvio-common-java/bin
 app/stelvio-common-java/target
 app/stelvio-consumer-java/.classpath
 app/stelvio-consumer-java/.settings
@@ -34,6 +36,7 @@ app/stelvio-service-java/target
 app/stelvio-test-java/.classpath
 app/stelvio-test-java/.settings
 app/stelvio-test-java/target
+app/target
 dev/Hudson/integration_var_lib_hudson/*.bak
 dev/Hudson/integration_var_lib_hudson/*.jar
 dev/Hudson/integration_var_lib_hudson/*.json

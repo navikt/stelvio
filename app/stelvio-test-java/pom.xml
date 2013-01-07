@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>2.3.1-SNAPSHOT</version>
+		<version>3.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-test-java</artifactId>
@@ -13,17 +13,14 @@
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock</artifactId>
-			<version>${jmock.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<artifactId>spring-tx</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>${spring.version}</version>
+			<artifactId>spring-tx</artifactId>
 		</dependency>
 	</dependencies>
 </project>
