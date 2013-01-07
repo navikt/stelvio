@@ -311,6 +311,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>deploy_WPS__ny_splittet_buss_konfigurasjon</string>
+        <string>deploy_WPS__ny_splittet_buss_konfigurasjon_Maven3</string>
       </jobNames>
       <jobFilters/>
       <columns>
