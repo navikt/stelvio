@@ -177,7 +177,7 @@
 								</goals>
 								<configuration>
 									<apps>autodeploy-test</apps><!-- should be input from hudson job formatted like "pselv, norg,Joark" -->
-									<serviceRegistryFile>${registryFolder}/${registryFile}</serviceRegistryFile>
+									<serviceRegistryFile>${registryFolder}${registryFile}</serviceRegistryFile>
 									<baseUrl>http://env-config.adeo.no:8080/conf</baseUrl>
 								</configuration>
 							</execution>
