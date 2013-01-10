@@ -134,8 +134,10 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * for each application.  
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		File buildOutputDirectory = new File(buildDirectory, "/classes");
+		buildOutputDirectory.mkdir();
 		
-		ServiceRegistry serviceRegistry = new ServiceRegistry();
+		ServiceRegistry serviceRegistry = new ServiceRegistry(buildOutputDirectory);
 		getLog().debug("Trying to read original service registry file...");
 		try {
 			serviceRegistry = serviceRegistry.readServiceRegistry(serviceRegistryFile);

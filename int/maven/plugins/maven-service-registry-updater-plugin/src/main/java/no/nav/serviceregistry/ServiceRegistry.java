@@ -52,6 +52,15 @@ import org.xml.sax.SAXException;
 public class ServiceRegistry {
 	
 	private Set<Service> services = new HashSet<Service>();
+	private String schemaFile = "service-registry.xsd";
+	private static File pathToResourceDir;
+
+	public ServiceRegistry() {
+	}
+	
+	public ServiceRegistry(File pathToResourceDir) {
+		ServiceRegistry.pathToResourceDir = pathToResourceDir;
+	}
 
 	@XmlElement(name="service")
 	public Set<Service> getServices() {
@@ -193,16 +202,23 @@ public class ServiceRegistry {
 		JAXBContext context = JAXBContext.newInstance(getClass());
 		Marshaller marshaller = context.createMarshaller();
 		OutputStream out = new FileOutputStream(file);
-		Schema schema;		
+		
+		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		File schemaXsd = new File(pathToResourceDir, "/" + schemaFile);
+		Schema schema = null;
 		try {
-			schema = this.getSchemaFromClassPath("service-registry.xsd");
-		} catch (IOException e) {
-			throw new RuntimeException(e); 
+			schema = sf.newSchema(schemaXsd);
+		} catch (SAXException e) {
+			throw new RuntimeException(e);
+		}
+		if (schema != null) {
+			marshaller.setSchema(schema);			
+		} else {
+			throw new RuntimeException("Can not validate new service-registry.xml because schema is not set!");
 		}
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		marshaller.setSchema(schema);
-		marshaller.marshal(this, out);
 
+		marshaller.marshal(this, out);
 	}
 	
 	public ServiceRegistry readServiceRegistry(String serviceRegistryFile) throws JAXBException, FileNotFoundException {
@@ -210,11 +226,15 @@ public class ServiceRegistry {
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		Schema schema;
 		try {
-			schema = this.getSchemaFromClassPath("service-registry.xsd");
+			schema = this.getSchemaFromClassPath(schemaFile);
 		} catch (IOException e) {
 			throw new RuntimeException(e); 
 		}
-		unmarshaller.setSchema(schema);
+		if (schema != null) {
+			unmarshaller.setSchema(schema);
+		} else {
+			throw new RuntimeException("Can not validate service-registry.xml because schema is not set!");
+		}
 		ValidationEventCollector vec = new ValidationEventCollector();
 		unmarshaller.setEventHandler(vec);
 		
@@ -226,7 +246,7 @@ public class ServiceRegistry {
 		InputStream in = getClass().getResourceAsStream("/" + filename);
 		BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-		File outFile = new File("/" + filename);
+		File outFile = new File(pathToResourceDir, "/" + filename);
 		OutputStream out = new FileOutputStream(outFile);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out));
 		
@@ -238,7 +258,7 @@ public class ServiceRegistry {
 
 		br.close();
 		bw.close();
-		
+
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		Schema schema = null;
 		try {
@@ -246,6 +266,7 @@ public class ServiceRegistry {
 		} catch (SAXException e) {
 			throw new RuntimeException(e);
 		}
+		
 		return schema;
 	}
 }

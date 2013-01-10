@@ -28,8 +28,8 @@ public class Service {
 		return serviceVersions;
 	}
 
-	public void setServiceVersions(Collection<ServiceVersion> serviceVersion) {
-		System.out.println("Heidu");
+	public void setServiceVersions(Set<ServiceVersion> serviceVersion) {
+		this.serviceVersions = serviceVersion;
 	}
 
 	@XmlAttribute
