@@ -138,7 +138,7 @@
 							</execution>
 							<execution>
 								<id>flush-document-cache</id>
-								<phase>generate-resources</phase>
+								<phase>process-classes</phase>
 								<goals>
 									<goal>flushDocumentCache</goal>
 								</goals>
@@ -150,7 +150,7 @@
 							<!-- Upload the newly updated registry file -->
 							<execution>
 								<id>import-registry-file</id>
-								<phase>process-resources</phase>
+								<phase>install</phase>
 								<goals>
 									<goal>importFiles</goal>
 								</goals>
@@ -171,7 +171,7 @@
 						<executions>
 							<execution>
 								<id>generate-service-registry</id>
-								<phase>process-sources</phase>
+								<phase>compile</phase>
 								<goals>
 									<goal>generate-file</goal>
 								</goals>
