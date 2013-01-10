@@ -195,6 +195,11 @@
                 <description></description>
                 <defaultValue>1.0.0-SNAPSHOT</defaultValue>
               </hudson.model.StringParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>apps</name>
+                <description>Applikasjonene som vi vil oppdatere registerfilen med tjenester fra, formattert f.eks. slik:  pselv, norg,Joark</description>
+                <defaultValue>autodeploy-test</defaultValue>
+              </hudson.model.StringParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
         </originalValue>
