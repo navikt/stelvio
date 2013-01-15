@@ -1260,6 +1260,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_stelvio-commo
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_stelvio-commons-lib_sonar/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_systemavailability/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_int_wpshelpers/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/test_datapower_provisioning/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/test_plugin_build/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/plugins.list -text
 dev/Hudson/integration_var_lib_hudson/config.xml -text
