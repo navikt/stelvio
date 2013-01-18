@@ -17,7 +17,7 @@ import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.mocker.MyMocker;
 import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
-import no.nav.serviceregistry.util.ExposedService;
+import no.nav.serviceregistry.util.ServiceWrapper;
 import no.nav.serviceregistry.util.MvnArtifact;
 import no.nav.serviceregistry.util.ServiceRegistryUtils;
 
@@ -175,7 +175,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
 				
 				Collection<Service> services = thisApp.getExposedServices();
-				Collection<ExposedService> exposedServices = new HashSet<ExposedService>(); 
+				Collection<ServiceWrapper> exposedServices = new HashSet<ServiceWrapper>(); 
 				for (Service service : services) {
 					String serviceName = service.getName();
 					String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
@@ -187,7 +187,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 						serviceExtractDir = testData.getServiceExtractDir();
 					}
 
-					exposedServices.add(new ExposedService(serviceName, service.getPath(), serviceExtractDir));
+					exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
 					getLog().debug("Added service " + serviceName);
 				}
 

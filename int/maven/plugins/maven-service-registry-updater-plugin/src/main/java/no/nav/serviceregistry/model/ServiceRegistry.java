@@ -29,7 +29,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import no.nav.datapower.util.DPWsdlUtils;
 import no.nav.serviceregistry.exception.BadUrlException;
-import no.nav.serviceregistry.util.ExposedService;
+import no.nav.serviceregistry.util.ServiceWrapper;
 
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
@@ -51,10 +51,10 @@ public class ServiceRegistry {
 		this.services = services;
 	}
 	
-	public void replaceApplicationBlock(String application, String hostname, Collection<ExposedService> exposedServices){
+	public void replaceApplicationBlock(String application, String hostname, Collection<ServiceWrapper> exposedServices){
 		this.removeServices(application);
 		
-		for (ExposedService exposedService : exposedServices) {
+		for (ServiceWrapper exposedService : exposedServices) {
 			//TODO: protokoll og port vil antageligvis komme fra envconfig, men er ikke klart
 			String urlString = "https://" + hostname + ":443/" + exposedService.getPath();
 			URL endpoint;

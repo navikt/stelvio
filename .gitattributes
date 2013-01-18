@@ -7759,9 +7759,9 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/ServiceVersion.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/package-info.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/AppConfigUtils.java -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ExposedService.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/MvnArtifact.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ServiceRegistryUtils.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ServiceWrapper.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/resources/service-registry.xsd -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/AppConfigUtilsTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/GenerateServiceRegistryFileMojoTest.java -text
