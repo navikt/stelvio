@@ -11,6 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import no.nav.aura.appconfig.Application;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.aura.envconfig.client.rest.ServiceGatewayRestClient;
+import no.nav.serviceregistry.exception.ApplicationConfigException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
@@ -28,7 +29,7 @@ public class AppConfigUtils {
 		for (String applicationString : appString.split(",")) {
 			String application = applicationString.trim().toLowerCase();
 			if (application == null) {
-				throw new MojoExecutionException("Something is wrong with the 'apps'-string. Verify that it's on the correct format. " + apps, new NullPointerException());
+				throw new ApplicationConfigException("Something is wrong with the 'apps'-string. Verify that it's on the correct format. " + apps);
 			}
 			apps.add(application);
 		}
@@ -47,7 +48,7 @@ public class AppConfigUtils {
 		try {
 			return AppConfigUtils.readAppConfig(appConfig);
 		} catch (JAXBException e) {
-			throw new MojoExecutionException("app-config.xml in "+appConfigXml+" could not be read", e);
+			throw new ApplicationConfigException("app-config.xml in "+appConfigXml+" could not be read", e);
 		}
 	}
 	

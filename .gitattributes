@@ -7749,6 +7749,7 @@ int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/deployment/ModuleDeploymentMojo.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/pom.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceRegistryFileMojo.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/ApplicationConfigException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/BadUrlException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/ServiceRegistryException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/mocker/MyMocker.java -text
