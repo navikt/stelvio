@@ -3,6 +3,7 @@ package no.nav.serviceregistry.util;
 import static no.nav.serviceregistry.util.AppConfigUtils.empty;
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
+import no.nav.serviceregistry.exception.ApplicationConfigException;
 
 public class MvnArtifact {
 	private String artifactId, groupId, version, type = "";
@@ -18,13 +19,13 @@ public class MvnArtifact {
 	}
 	
 	private void setClassProperties(String artifactId, String groupId, String version, String type){
-		if(empty(artifactId) || empty(groupId) || empty(version) || empty(type)){
-			throw new RuntimeException("The coordinates needed to create a Maven artifact is missing!\n" + this.toString());
-		}
 		this.artifactId = artifactId;
 		this.groupId = groupId;
 		this.version = version;
 		this.type = type;
+		if(empty(artifactId) || empty(groupId) || empty(version) || empty(type)){
+			throw new ApplicationConfigException("The coordinates needed to create a Maven artifact is missing, check the application configuration for missing/empty values!\n" + this.toString());
+		}
 	}
 
 	public String getArtifactId() {

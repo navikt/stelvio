@@ -164,12 +164,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			if (empty(apps) || applicationsFromInput.contains(applicationName)){
 				String hostname = envConfigApplicationInfo.getEndpoint();
 				if (empty(hostname)) throw new ServiceRegistryException("Maven coordinates needed to locate appConfig for application " + applicationName + " is missing");
-				File appConfigExtractDir;
-				if(testData==null){
-					appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
-				}else{
-					appConfigExtractDir = testData.getAppConfigExtractDir();
-				}
+				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName, testData);
 				
 				getLog().debug("Reading app-config.xml for application " + applicationName);
 				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
@@ -180,12 +175,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 					String serviceName = service.getName();
 					String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
 					getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
-					File serviceExtractDir;
-					if(testData==null){ 
-						serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
-					}else{
-						serviceExtractDir = testData.getServiceExtractDir();
-					}
+					File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir, testData);
 
 					exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
 					getLog().debug("Added service " + serviceName);
@@ -202,14 +192,22 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
+	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo, MyMocker mocker) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
-		return downloadAndExtract(artifact, extractTo);
+		if(mocker==null){
+			return downloadAndExtract(artifact, extractTo);
+		}else{
+			return mocker.getAppConfigExtractDir();
+		}
 	}
 	
-	private File downloadAndExtractService(Service service, String extractTo) throws MojoExecutionException{
+	private File downloadAndExtractService(Service service, String extractTo, MyMocker mocker) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(service, "zip");
-		return downloadAndExtract(artifact, extractTo);
+		if(mocker==null){
+			return downloadAndExtract(artifact, extractTo);
+		}else{
+			return mocker.getServiceExtractDir();
+		}
 	}
 	
 	public File downloadMavenArtifact(MvnArtifact mvnArtifact) throws MojoExecutionException {
