@@ -183,7 +183,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}
 	}
-//TODO: fiks etter at du har fikset serviceRegistry.readServiceRegistry metoden:
+
 	private ServiceRegistry readServiceRegistryFromFile(File serviceRegistryPath) throws MojoExecutionException {
 		File buildOutputDirectory = new File(this.buildDirectory, "/classes");
 		buildOutputDirectory.mkdir();
