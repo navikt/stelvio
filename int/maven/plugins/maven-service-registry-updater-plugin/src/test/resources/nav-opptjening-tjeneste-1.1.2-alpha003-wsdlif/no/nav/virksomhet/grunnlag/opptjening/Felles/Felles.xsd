@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" version="1.0" xmlns:felles="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="Endringsinfo">
+    <xsd:annotation>
+      <xsd:documentation>Informasjon om når og hvem som har opprettet og sist endret dataene.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="datoOpprettet" type="xsd:dateTime"/>
+      <xsd:element minOccurs="0" name="opprettetAv" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="datoEndret" type="xsd:dateTime"/>
+      <xsd:element minOccurs="0" name="endretAv" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="Utvidelse">
+    <xsd:annotation>
+      <xsd:documentation>
+    Plassholder for fremtidige utvidelser. Skal ignoreres i denne versjonen.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any"/>
+    </xsd:sequence>
+    <xsd:anyAttribute namespace="##any"/>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://nav.no/virksomhet/grunnlag/opptjening/beregnedeVerdierKap20/v1" version="1.0" xmlns:felles="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" xmlns:grunnlag="http://nav.no/virksomhet/grunnlag/opptjening/grunnlag/v1" xmlns:kap20="http://nav.no/virksomhet/grunnlag/opptjening/beregnedeVerdierKap20/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://nav.no/virksomhet/grunnlag/opptjening/grunnlag/v1" schemaLocation="../Grunnlag/Grunnlag.xsd"/>
+  <xsd:import namespace="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" schemaLocation="../Felles/Felles.xsd"/>
+  <xsd:simpleType name="BeholdningType">
+    <xsd:annotation>
+      <xsd:documentation>Type beholdning. Er koblet til K_BEHOLDNING_T.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PEN_B">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonsbeholdning</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GAR_PEN_B">
+        <xsd:annotation>
+          <xsd:documentation>Garantipensjonsbeholdning</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GAR_T_B">
+        <xsd:annotation>
+          <xsd:documentation>Garantitilleggsbeholdning</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="InntektOpptjeningBelopUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="InntektOpptjeningBelop">
+    <xsd:annotation>
+      <xsd:documentation>Representerer den opptjeningen inntektene for et gitt år gir til pensjonsbeholdning per 01.januar to år senere.Inntektsopptjeningsbeløpet er et PREG-beregnet beløp som kan inngå i summen Beholdning.beholdningsgrunnlag for
+pensjonsbeholdninger.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="inntektOpptjeningBelopId" nillable="true" type="xsd:long"/>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året dette Opptjeningsbeløpet er beregnet basert på.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="belop" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen som er beregnet for det spesifikke opptjeningbeløp-objektet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektListe" type="grunnlag:Inntekt">
+        <xsd:annotation>
+          <xsd:documentation>En liste av alle inntekter som sumPensjonsgivendeInntekt består av. En person kan for et gitt år ha flere typer inntekter som samlet gir en sum pensjonsgivende inntekt. Dette feltet peker på alle slike inntekter for bruker. Listen består da av alle inntekter for aktuell bruker hvor status = ”G” OG inntektAr = sumPensjonsgivendeInntekt.inntektAr OG inntektType != SUM_PI</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="sumPensjonsgivendeInntekt" type="grunnlag:Inntekt">
+        <xsd:annotation>
+          <xsd:documentation>Grunnlagsinformasjon om sum pensjonsgivende inntekt som lå til grunn for beregning av inntektopptjeningsbeløpet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo">
+        <xsd:annotation>
+          <xsd:documentation>
+    Informasjon om endringer på OpptjeningBelop og undertyper
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap20:InntektOpptjeningBelopUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DagpengerOpptjeningBelopUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DagpengerOpptjeningBelop">
+    <xsd:annotation>
+      <xsd:documentation>Representerer den opptjeningen dagpengene for et gitt år gir til pensjonsbeholdning per 01.januar to år senere. Dagpengeopptjeningsbeløpet er et PREG-beregnet beløp som kan inngå i summen Beholdning.beholdningsgrunnlag for pensjonsbeholdninger.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="dagpengerOpptjeningBelopId" nillable="true" type="xsd:long"/>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året dette Opptjeningsbeløpet er beregnet basert på.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="belopFiskere" nillable="true" type="xsd:double"/>
+      <xsd:element name="belopOrdinar" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen som er beregnet for det spesifikke opptjeningbeløp-objektet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="dagpengerListe" type="grunnlag:Dagpenger">
+        <xsd:annotation>
+          <xsd:documentation>Grunnlagsinformasjon om utbetalte dagpenger, ferietilegg, barnetillegg og uavkortet dagpengegrunnlag som lå til grunn for beregning av dagpengeopptjeningsbeløpet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo">
+        <xsd:annotation>
+          <xsd:documentation>
+    Informasjon om endringer på OpptjeningBelop og undertyper
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap20:DagpengerOpptjeningBelopUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OmsorgOpptjeningBelopUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OmsorgOpptjeningBelop">
+    <xsd:annotation>
+      <xsd:documentation>Representerer den opptjeningen omsorgsarbeidet for et gitt år gir til pensjonsbeholdning per 01.januar to år senere. Omsorgsopptjeningsbeløpet er et PREG-beregnet beløp som kan inngå i summen Beholdning.beholdningsgrunnlag for pensjonsbeholdninger. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="omsorgOpptjeningBelopId" nillable="true" type="xsd:long"/>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året dette Opptjeningsbeløpet er beregnet basert på.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="belop" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen som er beregnet for det spesifikke opptjeningbeløp-objektet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="omsorgListe" type="grunnlag:Omsorg">
+        <xsd:annotation>
+          <xsd:documentation>Grunnlagsinformasjon om utført omsorgsarbeid som lå til grunn for beregning av omsorgsopptjeningsbeløpet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="omsorgOpptjeningInnskudd" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Innskudd til beholdning for omsorgsarbeid. Etter avkorting mot 7,1G og beregning av årlig innskudd på 18,1%.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo">
+        <xsd:annotation>
+          <xsd:documentation>
+    Informasjon om endringer på OpptjeningBelop og undertyper
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap20:OmsorgOpptjeningBelopUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Lonnsvekstregulering">
+    <xsd:annotation>
+      <xsd:documentation>Informasjon om lønnsvekstreguleringen av beholdninger i POPP</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="reguleringsbelop" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Reguleringsbeløp som restpensjon/beholdning er regulert med</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="reguleringsDato" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Datoen for når reguleringen er foretatt med virk fom.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UforeOpptjeningBelopUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UforeOpptjeningBelop">
+    <xsd:annotation>
+      <xsd:documentation>Representerer den opptjeningen uføreperioder for et gitt år gir til pensjonsbeholdning per 01.januar to år senere. Uføreopptjeningsbeløpet er et PREG-beregnet beløp som kan inngå i summen Beholdning.beholdningsgrunnlag for pensjonsbeholdninger. Grunnlagsinformasjon for uføre
+er ikke lagret, og det vil således ikke være en
+knytning til grunnlagsinformasjon slik det er på de øvrige OpptjeningBelop
+undertypene.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="uforeOpptjeningBelopId" nillable="true" type="xsd:long"/>
+      <xsd:element minOccurs="0" name="andelProrata" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Andel av opptjening som blir benyttet i året. Skal kun være satt hvis proRataBeregnetUp = True.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="antattInntekt" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Antatt inntekt for uførepensjon.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="antattInntektProRata" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Antatt Inntekt for proRata-beregnet uførepensjon. Skal kun være satt hvis proRataBeregnetUp = True</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="antattInntektYrke" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Antatt Inntekt for yrkesskade. Er ikke satt dersom det ikke er yrkesskadeopptjening.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="antFremtidigeArProRata" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Antall teoretisk mulige fremtidige år. Skal kun være satt hvis proRataBeregnetUp = True.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året dette Opptjeningsbeløpet er beregnet basert på.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="belop" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen som er beregnet for det spesifikke opptjeningbeløp-objektet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="poengAntattArligInntekt" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Poeng etter antatt årlig inntekt. Er ikke satt dersom det ikke er yrkesskadeopptjening.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="poengarNevnerProRata" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Poengår nevner. Brukes for å beregne proRata brøk. Skal kun være satt hvis proRataBeregnetUp = True.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="poengarTellerProRata" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Poengår teller. Brukes for å beregne proRata brøk. Skal kun være satt hvis proRataBeregnetUp = True.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="poengtall" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Angir poengtallet antatt inntekt er beregnet av. Tilsvarer benyttet FPP i år med ordinær uførepensjon, og sluttpoengtall ved proRata-beregnet uførepensjon.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="proRataBeregnetUp" nillable="true" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Angir om året er basert på proRata-beregnet uførepensjon. Hvis ja, er felter med postfix "proRata" aktuelle.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="uforegrad" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Høyeste uføregrad for året</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="yrkesskadegrad" nillable="true" type="xsd:int"/>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo">
+        <xsd:annotation>
+          <xsd:documentation>
+    Informasjon om endringer på OpptjeningBelop og undertyper
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap20:UforeOpptjeningBelopUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BeholdningUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ForstegangstjenesteOpptjeningBelopUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ForstegangstjenesteOpptjeningBelop">
+    <xsd:annotation>
+      <xsd:documentation>Representerer den opptjeningen førstegangstjeneste for et gitt år gir til pensjonsbeholdning per 01.januar to år senere. Førstegangstjenesteopptjeningsbeløpet er et PREG-beregnet beløp som kan inngå i summen Beholdning.beholdningsgrunnlag for pensjonsbeholdninger.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="forstegangstjenesteOpptjeningBelopId" nillable="true" type="xsd:long"/>
+      <xsd:element maxOccurs="unbounded" name="anvendtForstegangstjenestePeriodeListe" type="grunnlag:ForstegangstjenestePeriode">
+        <xsd:annotation>
+          <xsd:documentation>En peker til de førstegangstjenestePeriodene som hadde hele eller deler av sin periode innenfor det aktuelle opptjeningsåret. Disse periodene er da brukt ifm fastsetting av opptjeningsbeløpet for førstegangstjeneste for det aktuelle opptjeningsåret.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året dette Opptjeningsbeløpet er beregnet basert på.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="belop" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen som er beregnet for det spesifikke opptjeningbeløp-objektet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="forstegangstjeneste" type="grunnlag:Forstegangstjeneste">
+        <xsd:annotation>
+          <xsd:documentation>Grunnlagsinformasjon om avtjent førstegangstjeneste som lå til grunn for beregning av forstegangstjeneste-opptjeningsbeløpet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo">
+        <xsd:annotation>
+          <xsd:documentation>
+    Informasjon om endringer på OpptjeningBelop og undertyper
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap20:ForstegangstjenesteOpptjeningBelopUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Beholdning">
+    <xsd:annotation>
+      <xsd:documentation>En beholdning holder på den totale opptjente beholdning for en person. Det er tre ulike beholdningstyper som er representert gjennom dette objektet og de er skilt gjennom feltet beholdningType. Beholdning av typen pensjonsbeholdning vil kunne eksistere for personer født etter 1953 og som har en pensjonsopptjening. Ny opptjening tilføres til pensjonsbeholdning med virkning fra og med 01.januar året etter likningen foreligger. Et eksempel: 2015-inntekten vil være ferdigliknet i 2016 og vil føre til innskudd til beholdning pr 01.01.2017. 
+
+Det gis pensjonsopptjening basert på pensjonsgivende inntekter fra og med en bruker fyller 13 år. Et eksempel: en bruker som jobber det året han fyller 13 år vil få beregnet et innskudd til pensjonsbeholdning fra og med 01.januar i det året vedkommende fyller 15 år. Dette vil da være personens første pensjonsbeholdning.
+
+Det bemerkes at pensjonsbeholdning pr 01.01.2010 er tidligste pensjonsbeholdning som skal anvendes i beregning av alderspensjon2025 eller alderspensjon2016. Alle pensjonsbeholdninger før 01.01.2010 kan ses på som dokumentasjon for hvordan pensjonsbeholdningen per 01.01.2010 har blitt beregnet.
+
+Beholdninger av typene garantipensjonsbeholdning og garantitilleggsbeholdning vil først oppstå ved uttak, og hvor sistnevnte kun kan oppstå etter fylte 67år. Garantipensjonsbeholdningen skal også lagres i POPP ved negativ verdi, mens garantitilleggsbeholdningen ikke lagres hvis den er negativ. Disse to beholdningstypene vil ikke ha knytning til opptjeningsinformasjon, kun pensjonsbeholdning vil ha denne knytningen.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="beholdningId" nillable="true" type="xsd:long"/>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen beholdningen tilhører.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="beholdningKode" type="kap20:BeholdningType"/>
+      <xsd:element name="belop" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Beholdningsbeløpet for en gitt beholdning. Negative verdier tillates for beholdninger av typen garantipensjonsbeholdning.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="vedtakId" nillable="true" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Nøkkel til vedtaket (i PEN)
+som medførte denne beholdningen. Vil kun være satt dersom beholdningen er opprettet gjennom et vedtak.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fom" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Dato for når beholdningen er gyldig fra og med. Vil alltid være den første dagen i en måned.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="tom" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Dato for når beholdningen er gyldig til og med. Vil alltid være den siste dagen i en måned.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="beholdningGrunnlag" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Høyeste sum av 
+ENTEN 
+(Summen av DagpengerOpptjeningBelop, ForstegangstjenesteOpptjeningBelop OG (ENTEN inntektOpptjeningBelop eller UforeOpptjeningBelop)) 
+ELLER 
+OmsorgOpptjeningBelop
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="beholdningGrunnlagAvkortet" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Beholdningsgrunnlag avkortet til 7,1 gjennomsnittlig G for opptjeningsåret. Eksempel: hvis beholdningen gjelder 2020 så vil opptjeningen være fra 2018, og avkortingen av beløpet i dette feltet vil da være utført med 7,1Ggj for 2018.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="beholdningInnskudd" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Tilsvarer 18,1% av beholdningGrunnlagAvkortet. Dette beløpet er det som faktisk tilføres pensjonsbeholdningen.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="beholdningInnskuddUtenOmsorg" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Innskudd til beholdning uten omsorgsarbeid. Etter avkorting mot 7,1G og beregning av årlig innskudd på 18,1%. Altså vil beløpet tilsvare feltet beholdningInnskudd hvis personen ikke hadde omsorgsarbeid til grunn for det årlige innskuddet til beholdningen.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="oppdateringArsakKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Årsaken til at beholdningen er opprettet, er koblet til K_RESTP_BEH_ARSAK.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="inntektOpptjeningBelop" type="kap20:InntektOpptjeningBelop">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen for den inntekten som er godskrevet beholdningen for aktuell beholdningsår. Eksempel: bruker har inntekt for år 2015, og det skal beregnes en opptjening fra den som skal inn i beholdningen til bruker fom 01.01.2017. Da skal alle beholdninger med fomDato i 2017 ha satt dette feltet til inntektsopptjeningsbeløpet for 2015. Det er en liste av opptjeninger fordi den første beholdningen er per 01.01.2010, og den vil da peke på alle inntektOpptjeningBelop tom 2008.
+Merk at feltet kun er utfylt for beholdninger av typen pensjonsbeholdning.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="omsorgOpptjeningBelop" type="kap20:OmsorgOpptjeningBelop">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen for det omsorgsarbeidet som er godskrevet beholdningen for aktuell beholdningsår. Eksempel: bruker har forsørget sitt barn i 2015, og det skal beregnes en opptjening for dette arbeidet som skal inn i beholdningen til bruker
+fom 01.01.2017. Da skal alle beholdninger med fomDato i 2017 ha satt dette feltet til det aktuelle omsorgsopptjeningsbeløpet for 2015. Det er en liste av omsorg fordi den første beholdningen er per 01.01.2010, og den vil da peke på alle omsorg tom 2008.
+Merk at feltet kun er utfylt for beholdninger av typen pensjonsbeholdning.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="dagpengerOpptjeningBelop" type="kap20:DagpengerOpptjeningBelop">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen for de dagpengene som er godskrevet beholdningen for aktuell beholdningsår. Eksempel: bruker mottok dagpenger i 2015, og det skal beregnes en opptjenig for disse dagpengene som skal da inn i beholdningen til bruker fom 01.01.2017. Da skal alle beholdninger med fomDato i 2017 ha satt dette feltet til dagpengeopptjeningsbeløpet for 2015. Merk at feltet kun er utfylt for beholdninger av typen pensjonsbeholdning.
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="forstegangstjenesteOpptjeningBelop" type="kap20:ForstegangstjenesteOpptjeningBelop">
+        <xsd:annotation>
+          <xsd:documentation>Opptjeningen for avtjent førstegangstjeneste som er godskrevet beholdningen for aktuell beholdningsår. Eksempel: bruker avtjente førstegangstjeneste fom oktober 2014 tom februar 2016. Da vil det finnes 3 forstegangstjenesteobjekter, ett for hvert av årene 2014, 2015 og 2016. Alle beholdninger med fomDato i:
+- 2016 skal ha satt dette feltet til opptjeningen for førstegangstjenesten avtjent i 2014.
+- 2017 skal ha satt dette feltet til opptjeningen for forstegangstjeneste avtjent i 2015
+- 2018 skal ha satt dette feltet til opptjeningen for forstegangstjeneste avtjent i 2016
+
+Merk at feltet kun er utfylt for beholdninger av typen pensjonsbeholdning.
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="uforeOpptjeningBelop" type="kap20:UforeOpptjeningBelop">
+        <xsd:annotation>
+          <xsd:documentation>Opptjening for mottatt uførepensjon. Eksempel: bruker mottok uførepensjon i 2015, da beregnes en opptjening for uføreperioden som skal inn i beholdning per 01.01.2017. Da skal alle beholdninger med fomDato i 2017 ha satt dette feltet til uføreopptjeningsbeløpet for 2015. 
+Merk at feltet kun er utfylt for beholdninger av typen pensjonsbeholdning.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="lonnsvekstregulering" type="kap20:Lonnsvekstregulering"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap20:BeholdningUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

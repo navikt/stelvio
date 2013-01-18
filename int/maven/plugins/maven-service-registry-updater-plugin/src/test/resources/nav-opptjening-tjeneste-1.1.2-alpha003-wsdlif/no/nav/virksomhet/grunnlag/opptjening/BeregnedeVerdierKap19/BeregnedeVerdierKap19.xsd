@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://nav.no/virksomhet/grunnlag/opptjening/beregnedeVerdierKap19/v1" version="1.0" xmlns:felles="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" xmlns:grunnlag="http://nav.no/virksomhet/grunnlag/opptjening/grunnlag/v1" xmlns:kap19="http://nav.no/virksomhet/grunnlag/opptjening/beregnedeVerdierKap19/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://nav.no/virksomhet/grunnlag/opptjening/grunnlag/v1" schemaLocation="../Grunnlag/Grunnlag.xsd"/>
+  <xsd:import namespace="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" schemaLocation="../Felles/Felles.xsd"/>
+  <xsd:simpleType name="PoengType">
+    <xsd:annotation>
+      <xsd:documentation>Er koblet til K_OPPTJ_T.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PPI">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonspoeng for pensjonsgivende inntekt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OSFE">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for syke/funksjonshemmede/eldre</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBO7H">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn over 7 år med hjelpestønad sats 3 eller 4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBU7">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn under 7 år - eget vedtak</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBO6H">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn over 6 år med hjelpestønad sats 3 eller 4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBU6">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn under 6 år - eget vedtak</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="PensjonspoengUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Pensjonspoeng">
+    <xsd:annotation>
+      <xsd:documentation>Opptjent pensjonspoeng basert på grunnlag som for eksempel pensjonsgivende inntekt og omsorg. Fra og med Horisonten har domeneobjektet OpptjeningOpptjening byttet navn til Pensjonspoeng</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som har utført omsorgsarbeidet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fnrOmsorgFor" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som har blitt forsørget.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="kilde" type="grunnlag:Kilde">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonspoengets kilde. For lovlige verdier se Kilde.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="pensjonspoengKode" type="kap19:PoengType"/>
+      <xsd:element minOccurs="0" name="inntekt" type="grunnlag:Inntekt">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonspoengets relasjon til inntekten som medførte dette poenget.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="omsorg" type="grunnlag:Omsorg">
+        <xsd:annotation>
+          <xsd:documentation>Omsorgsgrunnlaget som medførte dette pensjonspoenget.Hvis pensjonspoengType =
+OBU7/OBO7H/OBU6/OBO6H/OSFE så må feltet være satt.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>År for pensjonspoenget</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="anvendtPi" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Anvendt pensjonsgivende inntekt ved beregning av pensjonspoeng</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="maksUforegrad" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Anvendt uføregrad ved beregning av pensjonspoeng</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="poeng" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonspoeng for enten inntekt eller omsorg.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap19:PensjonspoengUtvidelse1"/>
+      <xsd:element name="pensjonspoengId" nillable="true" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>pensjonspoengets primærnøkkel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RestpensjonUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Restpensjon">
+    <xsd:annotation>
+      <xsd:documentation>Restpensjon består av restandel av ytelseskomponentene grunnpensjon (GP), tilleggspensjon (TP) og pensjonstillegg (PT). Ved 100% uttak vil resttandel for ytelseskomponentene grunnpensjon og tilleggspensjon ha verdien null. Restpensjon vil mappe de tre restandelene som ligger lagret som RestpensjonKomponenter til ett Restpensjon.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til person</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="restGrunnpensjon" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Restandel av grunnpensjonen</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="restTilleggspensjon" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Restandel av tilleggspensjon</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="restPensjonstillegg" nillable="true" type="xsd:double">
+        <xsd:annotation>
+          <xsd:documentation>Restandel av pensjonstillegg. Denne kan være negativ og skal lagres som negativ verdi. Ved regulering vil en negativ restPensjonstillegg bli mer negativ.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="vedtakId" nillable="true" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Nøkkel til vedtaket (i PEN) som medførte denne restpensjonskomponenten.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fom" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Dato for når restpensjon er gyldig fra og med. Tre ulike hendelser kan medføre ny restpensjon, og datoFom settes basert på virkningsdato for disse hendelsene: 
+1.	uttaksvedtaket som medførte denne restpensjonen
+2.	regulering av restpensjonen
+3.	godskriving til restpensjonen som følge av ny/endret opptjening.
+Merk at fomDato vil være lik for alle tre restPensjonskomponetene.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="tom" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Dato for når restpensjonen er gyldig til og med. datoTom settes normalt når en ny restpensjon med nyere datoFom lagres,
+slik at virkningstidspunkt for ulike restpensjon for en gitt bruker aldri overlapper hverandre. Merk at tomDato vil være lik for alle tre restPensjonskomponetene.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="pensjonspoengListe" type="kap19:Pensjonspoeng">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonspoengene som har påvirket denne restpensjonen. En restpensjon har kobling til alle pensjonspoeng som er godskrevet restpensjonen, og pensjonspoenglisten vil sådan ofte inneholde flere titalls poeng på
+grunn av restTilleggspensjon.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="oppdateringArsakKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Årsaken til opprettelse av restpensjonen.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="kap19:RestpensjonUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="oppholdsstatus" targetNamespace="http://nav.no/virksomhet/tjenester/oppholdsstatus/v1" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://nav.no/virksomhet/tjenester/oppholdsstatus/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav.no/virksomhet/tjenester/oppholdsstatus/v1" xmlns:feil="http://nav.no/virksomhet/tjenester/oppholdsstatus/feil/v1" xmlns:meldinger="http://nav.no/virksomhet/tjenester/oppholdsstatus/meldinger/v1">
+      <xsd:import namespace="http://nav.no/virksomhet/tjenester/oppholdsstatus/feil/v1" schemaLocation="feil/feil.xsd"/>
+      <xsd:import namespace="http://nav.no/virksomhet/tjenester/oppholdsstatus/meldinger/v1" schemaLocation="meldinger/meldinger.xsd"/>
+      <xsd:element name="hentOppholdsstatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="request" type="meldinger:HentOppholdsstatusRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentOppholdsstatusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="response" type="meldinger:HentOppholdsstatusResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentOppholdsstatuspersonIkkeFunnet" type="feil:PersonIkkeFunnet"/>
+      <xsd:element name="hentOppholdsstatusoppholdsstatusIkkeFunnet" type="feil:OppholdsstatusIkkeFunnet"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="hentOppholdsstatusResponse">
+    <wsdl:part name="parameters" element="tns:hentOppholdsstatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hentOppholdsstatus_oppholdsstatusIkkeFunnet">
+    <wsdl:part name="oppholdsstatusIkkeFunnet" element="tns:hentOppholdsstatusoppholdsstatusIkkeFunnet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hentOppholdsstatusRequest">
+    <wsdl:part name="parameters" element="tns:hentOppholdsstatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hentOppholdsstatus_personIkkeFunnet">
+    <wsdl:part name="personIkkeFunnet" element="tns:hentOppholdsstatuspersonIkkeFunnet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Oppholdsstatus">
+    <wsdl:operation name="hentOppholdsstatus">
+<wsdl:documentation>&lt;p&gt;Operasjonen tilbyr henting av oppholdsstatusinformasjon om personer fra UDI. Operasjonen orkesterer generering av PDF for visning og journalføring av informasjonen.&lt;/p&gt; </wsdl:documentation>
+      <wsdl:input message="tns:hentOppholdsstatusRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:hentOppholdsstatusResponse">
+    </wsdl:output>
+      <wsdl:fault name="oppholdsstatusIkkeFunnet" message="tns:hentOppholdsstatus_oppholdsstatusIkkeFunnet">
+    </wsdl:fault>
+      <wsdl:fault name="personIkkeFunnet" message="tns:hentOppholdsstatus_personIkkeFunnet">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

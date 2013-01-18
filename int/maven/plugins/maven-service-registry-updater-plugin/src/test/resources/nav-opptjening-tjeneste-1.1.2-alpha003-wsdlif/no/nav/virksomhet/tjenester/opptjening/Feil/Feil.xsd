@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://nav.no/virksomhet/tjenester/opptjening/feil/v1" version="1.0" xmlns:feil="http://nav.no/virksomhet/tjenester/opptjening/feil/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="StelvioFault">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="errorSource" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="errorType" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="rootCause" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="dateTimeStamp" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PersonEksistererIkke">
+    <xsd:annotation>
+      <xsd:documentation>Angitt person eksisterer ikke i persontabellen i registerkomponenten</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="feil:StelvioFault"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OpptjeningEksistererAllerede">
+    <xsd:annotation>
+      <xsd:documentation>Kan ikke lagre førstegangsrapport fordi opptjening eksisterer allerede</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="feil:StelvioFault"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OpptjeningEksistererIkke">
+    <xsd:annotation>
+      <xsd:documentation>Angitt opptjening eksisterer ikke i POPP</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="feil:StelvioFault"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UgyldigDagpenger">
+    <xsd:annotation>
+      <xsd:documentation>Verdi i dagpenger kan ikke være negativ</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="feil:StelvioFault"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UgyldigOpptjeningsgrunnlag">
+    <xsd:annotation>
+      <xsd:documentation>Ugyldig opptjeningsgrunnlag, mulige årsaker:
+- Bruker er født før 1949
+- Bruker er yngre enn 13 år
+- Bruker er eldre enn 75 år
+- Opptjeningsår er før 2010
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="feil:StelvioFault"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UgyldigForstegangstjeneste">
+    <xsd:annotation>
+      <xsd:documentation>Ugyldig førstegangstjeneste, mulige årsaker:
+- Ugyldige avtjeningsperioder
+- Doble brukerrapporter i fil. Det kan kun finnes en rapport pr  bruker i en fil fra Vernepliktsverket.
+- Tjenestestartdatoen kan tidligst være 1.1.2010
+- Innslag eksisterer allerede i POPP ved forsøk på å lagre en førstegangsrapport eller det finnes ikke et innslag ved endrings- eller sletterapport.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="feil:StelvioFault"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

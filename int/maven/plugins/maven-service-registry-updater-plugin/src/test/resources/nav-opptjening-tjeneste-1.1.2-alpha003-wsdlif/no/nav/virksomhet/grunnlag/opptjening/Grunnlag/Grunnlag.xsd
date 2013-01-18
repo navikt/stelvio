@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://nav.no/virksomhet/grunnlag/opptjening/grunnlag/v1" version="1.1" xmlns:felles="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" xmlns:grunnlag="http://nav.no/virksomhet/grunnlag/opptjening/grunnlag/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://nav.no/virksomhet/grunnlag/opptjening/felles/v1" schemaLocation="../Felles/Felles.xsd"/>
+  <xsd:simpleType name="Kilde">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_KILDE_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SKD">
+        <xsd:annotation>
+          <xsd:documentation>Skattedirektoratet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NAVU">
+        <xsd:annotation>
+          <xsd:documentation>Folketrygdkontoret for utenlandssaker
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NAV">
+        <xsd:annotation>
+          <xsd:documentation>NAV
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="IT">
+        <xsd:annotation>
+          <xsd:documentation>Infotrygd
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DSF">
+        <xsd:annotation>
+          <xsd:documentation>DSF
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="POPP">
+        <xsd:annotation>
+          <xsd:documentation>Generert av POPP
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PEN">
+        <xsd:annotation>
+          <xsd:documentation>Generer av PEN
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="APPBRK">
+        <xsd:annotation>
+          <xsd:documentation>Applikasjonsbruker
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PP01">
+        <xsd:annotation>
+          <xsd:documentation>Pensjon
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="TPS">
+        <xsd:annotation>
+          <xsd:documentation>Tjenesteorientert Persondata System i NAV
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="VPV">
+        <xsd:annotation>
+          <xsd:documentation>Vernepliktsverket
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GFF">
+        <xsd:annotation>
+          <xsd:documentation>Garantikassen for fiskere
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ARENA">
+        <xsd:annotation>
+          <xsd:documentation>ARENA</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OmsorgType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_OMSORG_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OSFE">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for syke/funksjonshemmede/eldre</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBO7H">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn over 7 år med hjelpestønad sats 3 eller 4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBU7">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn under 7 år - eget vedtak</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBO6H">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn over 6 år med hjelpestønad sats 3 eller 4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OBU6">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg for barn under 6 år - eget vedtak</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="OmsorgUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Omsorg">
+    <xsd:annotation>
+      <xsd:documentation>Omsorg vil etter Folketrygdloven kapittel 19 gi pensjonspoeng, og etter kapittel 20 (Alderspensjon2016 og Alderspensjon2025) gi pensjonsopptjening til pensjonsbeholdning. Omsorgsobjektet er grunnlagsobjekt på lik linje med inntekt, dagpenger og forstegangstjeneste, og det kan beregnes pensjonspoeng og pensjonsopptjening basert på den.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="omsorgId" nillable="true" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg sin primærnøkkel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som har utført omsorgsarbeidet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fnrOmsorgFor" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som har blitt forsørget.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="omsorgKode" type="grunnlag:OmsorgType"/>
+      <xsd:element minOccurs="0" name="kilde" type="grunnlag:Kilde"/>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året omsorgsarbeidet ble utført.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:OmsorgUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DagpengerUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="DagpengerType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_DAGPENGER_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="DP">
+        <xsd:annotation>
+          <xsd:documentation>Dagpenger for ordinære dagpengemottakere</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DP_FF">
+        <xsd:annotation>
+          <xsd:documentation>Dagpenger for fiskere og fangstmenn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RapportType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_RAPPORT_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="FORST">
+        <xsd:annotation>
+          <xsd:documentation>Førstegangsrapport</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ENDRING">
+        <xsd:annotation>
+          <xsd:documentation>Endringsrapport</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SLETT">
+        <xsd:annotation>
+          <xsd:documentation>Sletterapport</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Dagpenger">
+    <xsd:annotation>
+      <xsd:documentation>Dagpenger vil etter Folketrygdloven kapittel 20 (Alderspensjon2016 og Alderspensjon2025) gi pensjonsopptjening til pensjonsbeholdning. ARENA leverer dagpengeopplysninger for alle ordinære dagpengemottakere, og det er behov for kjennskap til utbetalte dagpenger, uavkortet dagpengegrunnlag, ferietillegg og barnetillegg for korrekt beregning av innskudd til pensjonsbeholdning basert på dagpenger.
+
+Garantikassen for fiskere leverer dagpengeopplysninger for fiskere og fangstmenn. Innskudd til pensjonsbeholdning for disse brukere beregnes ulikt fra øvrige dagpengemottakere, og det er således kun behov for informasjon om utbetalte dagpenger og barnetillegg. Garantikassen utbetaler ikke ferietillegg, og rapporterer sådan heller ikke dette beløpet.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="dagpengerId" nillable="true" type="xsd:long"/>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som har mottatt dagpenger</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="dagpengerKode" type="grunnlag:DagpengerType"/>
+      <xsd:element minOccurs="0" name="rapportKode" type="grunnlag:RapportType">
+        <xsd:annotation>
+          <xsd:documentation>Forteller om type rapportering</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="kilde" type="grunnlag:Kilde"/>
+      <xsd:element name="ar" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Året dagpengene ble mottatt av aktuell person. Dagpengene er da liknet for dette året.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utbetalteDagpenger" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Utbetalte dagpenger eksklusive barnetillegg og ferietillegg</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="uavkortetDagpengegrunnlag" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Ved utregning av dagpenger til utbetaling legger man til grunn et dagpengegrunnlag (avkortet til 6G, hvor ”G” angir Grunnbeløpet i Folketrygden). Dette feltet skal holde på dette dagpengegrunnlaget før den var avkortet til 6G. Påkrevd dersom dagpengerType er DP.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ferietillegg" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Utbetalt ferietillegg. Påkrevd dersom dagpengerType er DP.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="barnetillegg" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Utbetalt barnetillegg</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:DagpengerUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InntektUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="InntektType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_INNTEKT_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INN_LON">
+        <xsd:annotation>
+          <xsd:documentation>Innenlandsinntekt - Lønn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="INN_SEL">
+        <xsd:annotation>
+          <xsd:documentation>Innenlandsinntekt - Selvstendig</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="INN_JSF">
+        <xsd:annotation>
+          <xsd:documentation>Innenlandsinntekt - Jord/Skog/Fisk</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SJO_LON">
+        <xsd:annotation>
+          <xsd:documentation>Sjøinntekt - Lønn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SJO_SEL">
+        <xsd:annotation>
+          <xsd:documentation>Sjøinntekt - Selvstendig</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UTE_LON">
+        <xsd:annotation>
+          <xsd:documentation>Utenlandsinntekt - Lønn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="UTE_SEL">
+        <xsd:annotation>
+          <xsd:documentation>Utenlandsinntekt - Selvstendig</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SVA_LON">
+        <xsd:annotation>
+          <xsd:documentation>Svalbardinntekt - Lønn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SVA_SEL">
+        <xsd:annotation>
+          <xsd:documentation>Svalbardinntekt - Selvstendig</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DIP_LON">
+        <xsd:annotation>
+          <xsd:documentation>Diplomatinntekt - Lønn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DIP_SEL">
+        <xsd:annotation>
+          <xsd:documentation>Diplomatinntekt - Selvstendig</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RED_INT">
+        <xsd:annotation>
+          <xsd:documentation>Reduksjonsinntekt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SUM_PI">
+        <xsd:annotation>
+          <xsd:documentation>Sum pensjonsgivende inntekt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AI">
+        <xsd:annotation>
+          <xsd:documentation>Antatt inntekt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PI66">
+        <xsd:annotation>
+          <xsd:documentation>Pensjonsgivende inntekt 1966 - Konv</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SJO_JSF">
+        <xsd:annotation>
+          <xsd:documentation>Sjøinntekt - Jord/Skog/Fisk</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SVA_JSF">
+        <xsd:annotation>
+          <xsd:documentation>Svalbardinntekt - Jord/Skog/Fisk</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DIP_JSF">
+        <xsd:annotation>
+          <xsd:documentation>Diplomatinntekt - Jord/Skog/Fisk</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PGI_NAV">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;PGI innland fastsatt av NAV&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Inntekt">
+    <xsd:annotation>
+      <xsd:documentation>Inntektsopplysninger fra SKD.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="inntektId" nillable="true" type="xsd:long"/>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som har mottatt denne inntekten.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="kilde" type="grunnlag:Kilde"/>
+      <xsd:element minOccurs="0" name="kommunenummer" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Kommunenummret til skattekommunen som har rapportert inntekten.
+Er knyttet til K_KOMMUNE.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="piMerke" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Merke som er knyttet til inntekten, er koblet til K_PI_MERKE_T</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="inntektKode" type="grunnlag:InntektType"/>
+      <xsd:element name="inntektAr" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>Inntektsår</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="belop" nillable="true" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>Inntektsbeløp</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:InntektUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ForstegangstjenesteUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ForstegangstjenestePeriodeUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="PeriodeType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_PERIODE_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="BEFAL">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Befalskole&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="TEKN">
+        <xsd:annotation>
+          <xsd:documentation>Teknisk utdanning</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NORMAL">
+        <xsd:annotation>
+          <xsd:documentation>Normal avtjening</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TjenesteType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_TJENESTE_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="MIL">
+        <xsd:annotation>
+          <xsd:documentation>Militær førstegangstjenste</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SIV">
+        <xsd:annotation>
+          <xsd:documentation>Sivil førstegangstjeneste</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ForstegangstjenestePeriode">
+    <xsd:annotation>
+      <xsd:documentation>ForstegangstjenestePeriode-objektet representerer en periode med sammenhengende avtjent førstegangstjeneste. Dersom den sammenhengende perioden strekker seg over to ulike kalenderår, vil det opprettes to ulike periodeobjekter, et for hvert av årene.
+
+Eksempel: en person har avtjent førstegangstjeneste fom okt 2015 til og med mai 2016. Dette er en sammenhengende periode på 8 måneder, men det vil opprettes to FørstegangstjenestePeriode-objekter. ForstegangstjenestePeriode.fomDato/tomDato vil være likt på begge datoene og vil være [okt 2015, mai 2016], mens fomDatoAvkortet og tomDatoAvkortet vil være ulike for hvert av objektene, henholdvis [okt 2015, des 2015] og [jan 2016, mai 2016]. Alle Forstegangsperiode-objekter med fomDatoAvkortet/tomDatoAvkortet for for eksempel 2015 knyttes til et Forstegangstjeneste-objekt for 2015, og tilsvarende for 2016.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="forstegangstjenestePeriodeId" nillable="true" type="xsd:long"/>
+      <xsd:element name="periodeKode" type="grunnlag:PeriodeType">
+        <xsd:annotation>
+          <xsd:documentation>Typen periode under avtjeningen</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tjenesteKode" type="grunnlag:TjenesteType">
+        <xsd:annotation>
+          <xsd:documentation>Typen tjeneste som er avtjent.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fom" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Angir startdatoen for når denne perioden med sammenhengende førstegangstjeneste begynte. Dette vil samsvare med den datoen Vernepliktsverket har rapportert inn, og kan således gå på tvers av flere kalenderår.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tom" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Angir sluttdatoen for når denne perioden med sammenhengende førstegangstjeneste ble avsluttet. Dette vil samsvare med den datoen Vernepliktsverket har rapportert inn, og kan således gå på tvers av flere kalenderår.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:ForstegangstjenestePeriodeUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Forstegangstjeneste">
+    <xsd:annotation>
+      <xsd:documentation>Førstegangstjeneste vil etter Folketrygdloven kapittel 20 (Alderspensjon2016 og Alderspensjon2025) gi pensjonsopptjening til pensjonsbeholdning. Vernepliktsverket leverer informasjon om avtjent førstegangstjeneste for både militær og sivil førstegangstjeneste. Innad i et år vil en person kunne ha hatt avbrekk, så all informasjon om førstegangstjenestens varighet, type med mer. er gitt i egne objekter som representerer hver enkel periode med førstegangstjeneste, ForstegangstjenestePeriode. Dersom en person har avtjent førstegangstjeneste over to kalenderår, så vil det finnes to forstegangstjeneste-objekter, ett for hvert år.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="forstegangstjenesteId" nillable="true" type="xsd:long"/>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som avtjente førstegangstjenesten.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="kilde" type="grunnlag:Kilde">
+        <xsd:annotation>
+          <xsd:documentation>Førstegangstjenesteperiodens kilde. For lovlige verdier se Kilde.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rapportKode" type="grunnlag:RapportType">
+        <xsd:annotation>
+          <xsd:documentation>Forteller om type rapportering.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tjenestestartDato" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Angir sluttdatoen for når denne perioden med sammenhengende førstegangstjeneste ble avsluttet. Dette vil samsvare med den datoen Vernepliktsverket har rapportert inn, og kan således gå på tvers av flere kalenderår.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="dimitteringDato" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Angir datoen for når personen dimitterte</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" name="forstegangstjenestePeriodeListe" type="grunnlag:ForstegangstjenestePeriode">
+        <xsd:annotation>
+          <xsd:documentation>Periodene med avtjent førstegangstjeneste innenfor dette året.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endringsinfo" type="felles:Endringsinfo"/>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:ForstegangstjenesteUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="GrunnlagType">
+    <xsd:annotation>
+      <xsd:documentation>Er knyttet til K_GRUNNLAG_T</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INNTEKT">
+        <xsd:annotation>
+          <xsd:documentation>Inntekt</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OMSORG">
+        <xsd:annotation>
+          <xsd:documentation>Omsorg</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DAGPENGER">
+        <xsd:annotation>
+          <xsd:documentation>Dagpenger</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="FORST_TJENESTE">
+        <xsd:annotation>
+          <xsd:documentation>Førstegangstjeneste</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="OpptjeningsgrunnlagUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Opptjeningsgrunnlag">
+    <xsd:annotation>
+      <xsd:documentation>Dette objektet er et wrapperobjekt for all grunnlagsdata (inntekter, omsorg, dagpenger og førstegangstjeneste) POPP har om en person. Objektet persisteres ikke. Dette objektet kan populeres med grunnlagsdata etter ønskede kriterier som for eksempel for et gitt år, et gitt sett med år, at kun et av grunnlagstypene er populert osv. avhengig av behov fra tjenester som eksponerer objektet.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som grunnlagsinformasjonen gjelder.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektListe" type="grunnlag:Inntekt">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med forstegangstjenesteobjekter som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="omsorgListe" type="grunnlag:Omsorg">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med omsorgsgrunnlag som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="dagpengerListe" type="grunnlag:Dagpenger">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med dagpengeobjekter som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="forstegangstjeneste" type="grunnlag:Forstegangstjeneste">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med forstegangstjenesteobjekter som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:OpptjeningsgrunnlagUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OpptjeningsgrunnlagHistorikkUtvidelse1">
+    <xsd:complexContent>
+      <xsd:extension base="felles:Utvidelse"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OpptjeningsgrunnlagHistorikk">
+    <xsd:annotation>
+      <xsd:documentation>Dette objektet er et wrapperobjekt for all grunnlagsdata (inntekter, omsorg, dagpenger og førstegangstjeneste) POPP har om en person. Objektet persisteres ikke. Dette objektet kan populeres med grunnlagsdata etter ønskede kriterier som for eksempel for et gitt år, et gitt sett med år, at kun et av grunnlagstypene er populert osv. avhengig av behov fra tjenester som eksponerer objektet.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fnr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Fødselsnummer til personen som grunnlagsinformasjonen gjelder.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="inntektListe" type="grunnlag:Inntekt">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med forstegangstjenesteobjekter som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="omsorgListe" type="grunnlag:Omsorg">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med omsorgsgrunnlag som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="dagpengerListe" type="grunnlag:Dagpenger">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med dagpengeobjekter som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="forstegangstjenesteListe" type="grunnlag:Forstegangstjeneste">
+        <xsd:annotation>
+          <xsd:documentation>Et sett med forstegangstjenesteobjekter som gjelder personen. Populeres etter behov av en tjeneste som opererer på objektet.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="utvidelse" type="grunnlag:OpptjeningsgrunnlagHistorikkUtvidelse1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
