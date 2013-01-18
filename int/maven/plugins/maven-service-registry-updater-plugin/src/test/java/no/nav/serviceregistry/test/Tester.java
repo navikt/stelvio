@@ -1,6 +1,9 @@
 package no.nav.serviceregistry.test;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import no.nav.maven.plugins.GenerateServiceRegistryFileMojo;
 import no.nav.serviceregistry.ServiceRegistry;
 
@@ -13,13 +16,13 @@ import org.junit.Ignore;
 public class Tester {
 	
 	//@Test
-	public void test1() {
+	public void test1() throws MalformedURLException {
 		ServiceRegistry serviceRegistry = new ServiceRegistry();
-		serviceRegistry.addServiceInstance("popp", "https://hostnavn.test.local:9443/", 
+		serviceRegistry.addServiceInstance("popp", new URL("https://hostnavn.test.local:9443/"), 
 				"C:/Users/F133008/Kode/trunk/stelvio-int-maven/poms/maven-service-gw-provisioning-pom/wsdl-popp/nav-opptjening-tjeneste-1.1.2-wsdlif/nav-opptjening-tjeneste_OpptjeningWSEXP.wsdl");
-		serviceRegistry.addServiceInstance("pselv", "https://hostnavn2.test.local:9443/", 
+		serviceRegistry.addServiceInstance("pselv", new URL("https://hostnavn2.test.local:9443/"), 
 		"C:/Users/F133008/Kode/trunk/stelvio-int-maven/poms/maven-service-gw-provisioning-pom/wsdl-pselv/nav-tjeneste-oppholdsstatus-1.0.4-wsdlif/no/nav/virksomhet/tjenester/oppholdsstatus/v1/Binding.wsdl");
-		serviceRegistry.addServiceInstance("tsys", "https://hostnavn.test.local:9443/", 
+		serviceRegistry.addServiceInstance("tsys", new URL("https://hostnavn.test.local:9443/"), 
 				"C:/Users/F133008/Kode/trunk/stelvio-int-maven/poms/maven-service-gw-provisioning-pom/wsdl-tsys/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha001/Brukerprofil.wsdl");
 		File testfil = new File("C:/Users/F133008/Kode/trunk/stelvio-int-maven/poms/maven-service-gw-provisioning-pom/testFil");
 		File oldServiceRegistryFile;

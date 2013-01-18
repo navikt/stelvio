@@ -75,8 +75,14 @@ public class ServiceRegistry {
 		this.removeServices(application);
 		
 		for (ExposedService exposedService : exposedServices) {
-			//protokoll og port vil antageligvis komme fra envconfig, men er ikke klart
-			String endpoint = "https://" + hostname + ":443/" + exposedService.getPath();
+			//TODO: protokoll og port vil antageligvis komme fra envconfig, men er ikke klart
+			String urlString = "https://" + hostname + ":443/" + exposedService.getPath();
+			URL endpoint;
+			try {
+				endpoint = new URL(urlString);
+			} catch (MalformedURLException e) {
+				throw new RuntimeException("URL er ikke på riktig format: "+urlString);
+			}
 
 			File wsdlDir = exposedService.getWsdlDir();
 			String[] extensions = {"wsdl"};
@@ -99,13 +105,11 @@ public class ServiceRegistry {
 		this.services.removeAll(toBeRemoved);
 	}
 
-	public void addServiceInstance(String application, String endpoint, String pathToWsdl) {
+	public void addServiceInstance(String application, URL serviceEndpoint, String pathToWsdl) {
 		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
-		URL serviceEndpoint;
 		URL wsdlAddress;
 		try {
-			serviceEndpoint = new URL(endpoint);
-			//vil wsdlAddress alltid se slik ut?
+			//TODO: vil wsdlAddress alltid se slik ut?
 			wsdlAddress = new URL(serviceEndpoint.toString() + "?wsdl");
 		} catch (MalformedURLException e) {
 			throw new RuntimeException("The endpoint provided is not valid (check input from envconfig), details: " + e);

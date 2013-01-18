@@ -3,6 +3,8 @@ package no.nav.serviceregistry.test;
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.xml.bind.JAXBException;
 
@@ -47,9 +49,9 @@ public class ServiceRegestryTest {
 	}
 
 	@Test
-	public void testAddServiceInstanceStringStringString() throws JAXBException {
+	public void testAddServiceInstanceStringStringString() throws JAXBException, MalformedURLException {
 		ServiceRegistry sr = new ServiceRegistry();
-		sr.addServiceInstance("popp", "http://tset.com/", getResource(Values.BRUKERPROFIL_WSDL));
+		sr.addServiceInstance("popp", new URL("http://tset.com/"), getResource(Values.BRUKERPROFIL_WSDL));
 		assertEquals(Values.BRUKER_PROFIL_SERVICEREGISTRY_XML.getValue(), sr.toXml());
 	}
 
