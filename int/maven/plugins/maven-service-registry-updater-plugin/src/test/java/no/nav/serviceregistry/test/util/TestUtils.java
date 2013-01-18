@@ -21,8 +21,8 @@ public abstract class TestUtils {
 		return lines;
 	}
 	
-	public static String getResource(String r){
-		return TestUtils.class.getResource(r).getFile();
+	public static String getResource(String resource){
+		return TestUtils.class.getResource(resource).getFile();
 	}
 
 }
