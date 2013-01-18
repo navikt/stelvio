@@ -42,6 +42,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import no.nav.datapower.util.DPWsdlUtils;
+import no.nav.serviceregistry.exception.BadUrlException;
 import no.nav.serviceregistry.util.ExposedService;
 
 import org.apache.commons.io.FileUtils;
@@ -81,7 +82,7 @@ public class ServiceRegistry {
 			try {
 				endpoint = new URL(urlString);
 			} catch (MalformedURLException e) {
-				throw new RuntimeException("URL er ikke på riktig format: "+urlString);
+				throw new BadUrlException("URL er ikke på riktig format: "+urlString);
 			}
 
 			File wsdlDir = exposedService.getWsdlDir();
@@ -112,7 +113,7 @@ public class ServiceRegistry {
 			//TODO: vil wsdlAddress alltid se slik ut?
 			wsdlAddress = new URL(serviceEndpoint.toString() + "?wsdl");
 		} catch (MalformedURLException e) {
-			throw new RuntimeException("The endpoint provided is not valid (check input from envconfig), details: " + e);
+			throw new BadUrlException("The endpoint provided is not valid (check input from envconfig)!", e);
 		}
 		
 		ServiceInstance instance = new ServiceInstance(serviceEndpoint, wsdlAddress);

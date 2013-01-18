@@ -7754,6 +7754,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/ServiceOperation.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/ServiceRegistry.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/ServiceVersion.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/BadUrlException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/package-info.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/AppConfigUtils.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ExposedService.java -text
