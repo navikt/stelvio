@@ -7760,6 +7760,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/MvnArtifact.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/resources/service-registry.xsd -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/AppConfigUtilsTest.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/MvnArtifactTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/ServiceRegestryTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/Tester.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/app-config.xml -text
