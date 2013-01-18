@@ -22,6 +22,7 @@ import no.nav.serviceregistry.util.ServiceWrapper;
 import no.nav.serviceregistry.util.MvnArtifact;
 import no.nav.serviceregistry.util.ServiceRegistryUtils;
 
+import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -137,26 +138,26 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * for each application.  
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		testableMojoExecutor(env, baseUrl, apps, serviceRegistryFile, null);
+		testableMojoExecutor(env, baseUrl, apps, serviceRegistryFile, null, getLog());
 	}
 
-	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile, MyMocker testData) throws MojoExecutionException {
+	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile, MyMocker testData, Log log) throws MojoExecutionException {
 		Set<String> applicationsFromInput = new HashSet<String>();
-		getLog().debug("Retrieving info for environment " + env + " from envConfig!");
+		log.debug("Retrieving info for environment " + env + " from envConfig!");
 		Set<ApplicationInfo> applicationsFromEnvconfig;
 		if(testData==null){
 			applicationsFromEnvconfig = AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
 		}else{
 			applicationsFromEnvconfig = testData.getEnvConfigApplications();
 		}
-		getLog().debug("Trying to read original service registry file...");
+		log.debug("Trying to read original service registry file...");
 		ServiceRegistry serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
-		getLog().debug("Original service registry file read!");
+		log.debug("Original service registry file read!");
 
 		if (!empty(apps)) {
 			Set<String> parsedApps = AppConfigUtils.parseApplicationsString(apps);
 			applicationsFromInput.addAll(parsedApps);
-			getLog().debug("Addded applications: " + Arrays.toString(parsedApps.toArray()));
+			log.debug("Addded applications: " + Arrays.toString(parsedApps.toArray()));
 		}
 		
 		for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
@@ -167,7 +168,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 				if (empty(hostname)) throw new ServiceRegistryException("Maven coordinates needed to locate appConfig for application " + applicationName + " is missing");
 				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName, testData);
 				
-				getLog().debug("Reading app-config.xml for application " + applicationName);
+				log.debug("Reading app-config.xml for application " + applicationName);
 				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
 				
 				Collection<Service> services = thisApp.getExposedServices();
@@ -175,14 +176,14 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 				for (Service service : services) {
 					String serviceName = service.getName();
 					String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
-					getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
+					log.debug("Downloading WSDL into: " + wsdlDownloadDir);
 					File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir, testData);
 
 					exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
-					getLog().debug("Added service " + serviceName);
+					log.debug("Added service " + serviceName);
 				}
 
-				getLog().debug("Replacing all information for application " + applicationName);
+				log.debug("Replacing all information for application " + applicationName);
 				serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
 			}
 		}
