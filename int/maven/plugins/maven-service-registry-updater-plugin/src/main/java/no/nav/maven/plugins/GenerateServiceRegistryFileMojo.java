@@ -13,6 +13,7 @@ import java.util.Set;
 import no.nav.aura.appconfig.Application;
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
+import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.mocker.MyMocker;
 import no.nav.serviceregistry.model.ServiceRegistry;
@@ -210,7 +211,15 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	public File downloadMavenArtifact(MvnArtifact mvnArtifact) throws MojoExecutionException {
+	private File downloadAndExtract(MvnArtifact artifact, String extractTo) throws MojoExecutionException{
+		File zip = downloadMavenArtifact(artifact);
+		File extractToFile = new File(extractTo);
+		extractToFile.mkdirs();
+		extractArtifact(zip, extractToFile);
+		return extractToFile;
+	}
+	
+	public File downloadMavenArtifact(MvnArtifact mvnArtifact) {
 
 		Artifact pomArtifact = factory.createArtifact(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), "", mvnArtifact.getType());
 		getLog().debug("Resolving artifact: "+ mvnArtifact);
@@ -218,18 +227,10 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
 			return pomArtifact.getFile();
 		} catch (ArtifactResolutionException e) {
-			throw new MojoExecutionException("Could not resolve artifact, " + e);
+			throw new MavenArtifactResolevException("Could not resolve artifact, " + e);
 		} catch (ArtifactNotFoundException e) {
-			throw new MojoExecutionException("Artifact not found, " + e);
+			throw new MavenArtifactResolevException("Artifact not found, " + e);
 		}
-	}
-	
-	private File downloadAndExtract(MvnArtifact artifact, String extractTo) throws MojoExecutionException{
-		File zip = downloadMavenArtifact(artifact);
-		File extractToFile = new File(extractTo);
-		extractToFile.mkdirs();
-		extractArtifact(zip, extractToFile);
-		return extractToFile;
 	}
 	
 	private void extractArtifact(File source, File destination) throws MojoExecutionException {
