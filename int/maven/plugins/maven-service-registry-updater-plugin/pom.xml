@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-service-registry-updater-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>Maven Service Registry Updater Plugin</name>
 	<description>This plugin updates the service-registry.xml file on service gateway based on wsdls in the applications given as input.</description>
