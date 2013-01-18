@@ -43,6 +43,7 @@ import javax.xml.validation.SchemaFactory;
 
 import no.nav.datapower.util.DPWsdlUtils;
 import no.nav.serviceregistry.exception.BadUrlException;
+import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.util.ExposedService;
 
 import org.apache.commons.io.FileUtils;
@@ -214,12 +215,12 @@ public class ServiceRegistry {
 		try {
 			schema = sf.newSchema(schemaXsd);
 		} catch (SAXException e) {
-			throw new RuntimeException(e);
+			throw new ServiceRegistryException(e);
 		}
 		if (schema != null) {
 			marshaller.setSchema(schema);			
 		} else {
-			throw new RuntimeException("Can not validate new service-registry.xml because schema is not set!");
+			throw new ServiceRegistryException("Can not validate new service-registry.xml because schema is not set!");
 		}
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
@@ -233,12 +234,12 @@ public class ServiceRegistry {
 		try {
 			schema = this.getSchemaFromClassPath(schemaFile);
 		} catch (IOException e) {
-			throw new RuntimeException(e); 
+			throw new ServiceRegistryException(e); 
 		}
 		if (schema != null) {
 			unmarshaller.setSchema(schema);
 		} else {
-			throw new RuntimeException("Can not validate service-registry.xml because schema is not set!");
+			throw new ServiceRegistryException("Can not validate service-registry.xml because schema is not set!");
 		}
 		ValidationEventCollector vec = new ValidationEventCollector();
 		unmarshaller.setEventHandler(vec);
@@ -269,7 +270,7 @@ public class ServiceRegistry {
 		try {
 			schema = sf.newSchema(outFile);
 		} catch (SAXException e) {
-			throw new RuntimeException(e);
+			throw new ServiceRegistryException(e);
 		}
 		
 		return schema;
