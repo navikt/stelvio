@@ -4,9 +4,13 @@ import static org.junit.Assert.*;
 import static no.nav.serviceregistry.test.util.TestUtils.getResource;
 
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.List;
 
+import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.maven.plugins.GenerateServiceRegistryFileMojo;
+import no.nav.serviceregistry.exception.ApplicationConfigException;
+import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.mocker.MyMocker;
 import no.nav.serviceregistry.test.util.TestUtils;
@@ -22,6 +26,7 @@ public class GenerateServiceRegistryFileMojoTest {
 	static final String SERVICE_REGISTRY_FILE = GenerateServiceRegistryFileMojoTest.class.getClass().getResource("/serviceregistry-simple.xml").getFile();
 	static final String TEST_URL = "http://test.url";
 	static final String ENVIRONMENT = "u3";
+	static final String EMPTY_DIR = getResource("/emptyDir");
 	
 	@Test
 	public void testPossitiveMojoExecutor() throws MojoExecutionException {
@@ -50,8 +55,89 @@ public class GenerateServiceRegistryFileMojoTest {
 		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, corruptServiceRegistryFile, globalMocker);	
 	}
 	
-	@Test
+	@Test//TODO: sjekk om dette er godt nok
 	public void testApplicationNotInEnvConfig() throws MojoExecutionException{
 		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, "MySuper-Duper_Test_app_that_is_not_in_envConfig_32410978786978", SERVICE_REGISTRY_FILE, globalMocker);	
 	}
+	
+	@Test
+	public void testNoApplicationsSpessified() throws MojoExecutionException{
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, "", SERVICE_REGISTRY_FILE, globalMocker);
+	}
+
+	@Test
+	public void testNoServicesInAppConfig_EmptyServicesList() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setAppConfigExtractDir(getResource("/appConfigNoServices-EmptyList"));
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+	
+	@Test
+	public void testNoServicesInAppConfig_StartStopServicesTag() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setAppConfigExtractDir(getResource("/appConfigNoServices-StartStopTag"));
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+	
+	@Test
+	public void testNoServicesInAppConfig_NoServicesTag() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setAppConfigExtractDir(getResource("/appConfigNoServices-NoTag"));
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+	
+	@Test(expected=ApplicationConfigException.class)
+	public void testNoAppconfigFound() throws MojoExecutionException{
+		MyMocker myMock = new MyMocker();
+		myMock.setAppConfigExtractDir(EMPTY_DIR);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMock);
+	}
+	
+	@Test(expected=ServiceRegistryException.class)
+	public void testNoWsdlFound() throws MojoExecutionException{
+		MyMocker myMock = new MyMocker();
+		myMock.setServiceExtractDir(EMPTY_DIR);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMock);
+	}
+
+	@Test(expected=ServiceRegistryException.class)
+	public void testEnvConfigDoesNotReturnAllArtifactCoordinates() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		HashSet<ApplicationInfo> hashSet = new HashSet<ApplicationInfo>();
+		ApplicationInfo applicationInfo = new ApplicationInfo();
+		applicationInfo.setName(TEST_APPLICATION);
+		hashSet.add(applicationInfo);
+		myMocker.setEnvConfigApplications(hashSet);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+
+	@Test(expected=ApplicationConfigException.class)
+	public void testCorruptAppconfig() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setAppConfigExtractDir(getResource("/appConfig-Corrupt"));
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+
+	@Test(expected=ApplicationConfigException.class)
+	public void testMissigWsdlCoordinates() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setAppConfigExtractDir(getResource("/appConfig-MissingWSDLCoordinates"));
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+
+	@Test(expected=MavenArtifactResolevException.class)
+	public void testServiceResolveException() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setMockServiceResolveException(true);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+
+	@Test(expected=MavenArtifactResolevException.class)
+	public void testApplicationInfoResolceException() throws MojoExecutionException{
+		MyMocker myMocker = new MyMocker();
+		myMocker.setMockApplicationInfoResolveException(true);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker);
+	}
+	
+	
 }

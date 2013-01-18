@@ -5,19 +5,63 @@ import java.util.HashSet;
 import java.util.Set;
 
 import no.nav.aura.envconfig.client.ApplicationInfo;
+import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 
 public class MyMocker {
-
+	private File appConfigExtractDir;
+	private File serviceExtractDir;
+	private Set<ApplicationInfo> envConfigApplications;
+	private boolean mockApplicationInfoResolveException;
+	private boolean mockServiceResolveException;
+	
+	public MyMocker() {
+		appConfigExtractDir = new File(this.getClass().getResource("/").getFile());
+		serviceExtractDir = appConfigExtractDir;
+		envConfigApplications = generateMockEnvConfigApplications();
+		mockApplicationInfoResolveException = false;
+		mockServiceResolveException = false;
+	}
 	public File getAppConfigExtractDir() {
-		return new File(this.getClass().getResource("/").getFile());
+		if(mockApplicationInfoResolveException){
+			throw new MavenArtifactResolevException();
+		}
+		return appConfigExtractDir;
 	}
 
 	public File getServiceExtractDir() {
-		return new File(this.getClass().getResource("/").getFile());
+		if(mockServiceResolveException){
+			throw new MavenArtifactResolevException(null, null);
+		}
+		return serviceExtractDir;
+	}
+
+	public void setAppConfigExtractDir(String appConfigExtractDir) {
+		this.appConfigExtractDir = new File(appConfigExtractDir);
+	}
+
+	public void setServiceExtractDir(String serviceExtractDir) {
+		this.serviceExtractDir = new File(serviceExtractDir);
 	}
 
 	public Set<ApplicationInfo> getEnvConfigApplications() {
-		
+		return this.envConfigApplications;
+	}
+
+	public void setMockApplicationInfoResolveException(boolean mockApplicationInfoResolveException) {
+		this.mockApplicationInfoResolveException = mockApplicationInfoResolveException;
+	}
+
+	public void setMockServiceResolveException(boolean mockServiceResolveException) {
+		this.mockServiceResolveException = mockServiceResolveException;
+	}
+
+
+	public void setEnvConfigApplications(Set<ApplicationInfo> envConfigApplications) {
+		this.envConfigApplications = envConfigApplications;
+	}
+	
+	
+	private Set<ApplicationInfo> generateMockEnvConfigApplications(){
 		Set<ApplicationInfo> envConfigApplikasjons = new HashSet<ApplicationInfo>();
 		ApplicationInfo applicationInfo = new ApplicationInfo();
 		applicationInfo.setName("autodeploy-test");
@@ -29,5 +73,4 @@ public class MyMocker {
 		envConfigApplikasjons.add(applicationInfo);
 		return envConfigApplikasjons;
 	}
-
 }
