@@ -108,12 +108,12 @@ public class ServiceRegistry {
 					for (Object obj : operation.getExtensibilityElements()) {
 						if (obj instanceof SOAPOperation) {
 							SOAPOperation soapOperation = (SOAPOperation) obj;
-							String soapActionURI = soapOperation.getSoapActionURI(); 
-							if (soapActionURI != null && !soapActionURI.isEmpty()) {
-								operations.add(new ServiceOperation(operation.getName(), soapActionURI));
+							String actionURI = soapOperation.getSoapActionURI(); 
+							if (actionURI != null && !actionURI.isEmpty()) {
+								operations.add(new ServiceOperation(operation.getName(), actionURI));
 							} else {
-								String soapAction = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + operation.getName();
-								operations.add(new ServiceOperation(operation.getName(), soapAction));
+								String action = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + operation.getName();
+								operations.add(new ServiceOperation(operation.getName(), action));
 							}
 						}
 					}
