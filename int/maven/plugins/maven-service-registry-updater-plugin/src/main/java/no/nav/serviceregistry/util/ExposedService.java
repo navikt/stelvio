@@ -8,9 +8,8 @@ public class ExposedService {
 	private String path;
 	private File wsdlDir;
 	
-	private ExposedService () {
-		
-	}
+	@SuppressWarnings("unused")
+	private ExposedService () {}
 	
 	public ExposedService(String name, String path, File wsdlDir) {
 		this.setName(name);

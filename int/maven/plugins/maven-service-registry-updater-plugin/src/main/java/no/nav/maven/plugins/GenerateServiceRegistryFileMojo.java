@@ -42,6 +42,7 @@ import org.codehaus.plexus.archiver.UnArchiver;
  * @author Johnny Horvi, Accenture
  * @author Øystein Gisnås, Accenture
  */
+@SuppressWarnings("deprecation")
 public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 
 	/**
