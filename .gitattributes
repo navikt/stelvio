@@ -7751,6 +7751,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/pom.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceRegistryFileMojo.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/BadUrlException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/ServiceRegistryException.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/mocker/MyMocker.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/Service.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/ServiceInstance.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/ServiceOperation.java -text
@@ -7763,6 +7764,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ServiceRegistryUtils.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/resources/service-registry.xsd -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/AppConfigUtilsTest.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/GenerateServiceRegistryFileMojoTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/MvnArtifactTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/ServiceRegestryTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/Tester.java -text
@@ -7789,6 +7791,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/nav-t
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/nav-tjeneste-oppholdsstatus-1.0.4-wsdlif/no/nav/virksomhet/tjenester/oppholdsstatus/v1/Binding.wsdl -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/orchestration-pom.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/service-registry.xsd -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-simple.xml -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
