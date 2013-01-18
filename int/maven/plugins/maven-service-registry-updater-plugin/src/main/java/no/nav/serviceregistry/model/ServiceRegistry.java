@@ -29,6 +29,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import no.nav.datapower.util.DPWsdlUtils;
 import no.nav.serviceregistry.exception.BadUrlException;
+import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.util.ServiceWrapper;
 
 import org.apache.commons.io.FileUtils;
@@ -67,6 +68,10 @@ public class ServiceRegistry {
 			File wsdlDir = exposedService.getWsdlDir();
 			String[] extensions = {"wsdl"};
 			Collection<File> wsdlFiles = FileUtils.listFiles(wsdlDir, extensions, true);
+			
+			if(wsdlFiles.size() == 0){
+				throw new ServiceRegistryException("WSDL dir doesn't contain any WSDLs!");
+			}
 			
 			for (File file : wsdlFiles) {
 				this.addServiceInstance(application, endpoint, file.getPath());
