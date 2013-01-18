@@ -2,10 +2,6 @@ package no.nav.serviceregistry.model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,35 +17,27 @@ import javax.wsdl.BindingOperation;
 import javax.wsdl.Definition;
 import javax.wsdl.Port;
 import javax.wsdl.extensions.soap.SOAPOperation;
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.util.ValidationEventCollector;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 
 import no.nav.datapower.util.DPWsdlUtils;
 import no.nav.serviceregistry.exception.BadUrlException;
-import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.util.ExposedService;
 
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 @XmlRootElement
 public class ServiceRegistry {
 	
 	private Set<Service> services = new HashSet<Service>();
-	private static final String SCHEMA_FILE = "service-registry.xsd";
 
 	public ServiceRegistry() {
 	}
@@ -192,58 +180,5 @@ public class ServiceRegistry {
 		marshaller.marshal(this, doc);
 
 		return doc;
-	}
-	
-	public void writeToFile(File file) throws JAXBException, FileNotFoundException {
-		JAXBContext context = JAXBContext.newInstance(getClass());
-		Marshaller marshaller = context.createMarshaller();
-		OutputStream out = new FileOutputStream(file);
-		
-		Schema schema = null;
-		try {
-			schema = this.getSchemaFromClassPath();
-		} catch (IOException e) {
-			throw new ServiceRegistryException(e); 
-		}
-		if (schema != null) {
-			marshaller.setSchema(schema);			
-		} else {
-			throw new ServiceRegistryException("Can not validate new service-registry.xml because schema is not set!");
-		}
-		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-		marshaller.marshal(this, out);
-	}
-	
-	public void readServiceRegistry(String serviceRegistryFile) throws JAXBException, FileNotFoundException {
-		JAXBContext context = JAXBContext.newInstance(getClass());
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		Schema schema;
-		try {
-			schema = this.getSchemaFromClassPath();
-		} catch (IOException e) {
-			throw new ServiceRegistryException(e); 
-		}
-		if (schema != null) {
-			unmarshaller.setSchema(schema);
-		} else {
-			throw new ServiceRegistryException("Can not validate service-registry.xml because schema is not set!");
-		}
-		ValidationEventCollector vec = new ValidationEventCollector();
-		unmarshaller.setEventHandler(vec);
-		
-		ServiceRegistry sr = (ServiceRegistry) unmarshaller.unmarshal(new FileInputStream(serviceRegistryFile));
-		this.services = sr.getServices();
-	}
-	
-	private Schema getSchemaFromClassPath() throws IOException {
-		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		try {
-			URL resource = getClass().getClassLoader().getResource(SCHEMA_FILE);
-			return sf.newSchema(resource);
-		} catch (SAXException e) {
-			throw new ServiceRegistryException("SAXException", e);
-		}
-		
 	}
 }

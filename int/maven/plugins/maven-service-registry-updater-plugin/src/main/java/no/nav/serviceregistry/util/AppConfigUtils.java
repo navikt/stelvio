@@ -1,7 +1,6 @@
 package no.nav.serviceregistry.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,8 +11,6 @@ import javax.xml.bind.Unmarshaller;
 import no.nav.aura.appconfig.Application;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.aura.envconfig.client.rest.ServiceGatewayRestClient;
-import no.nav.serviceregistry.exception.ServiceRegistryException;
-import no.nav.serviceregistry.model.ServiceRegistry;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
@@ -57,21 +54,5 @@ public class AppConfigUtils {
 	public static Set<ApplicationInfo> getInfoFromEnvconfig(String environment, String baseUrl) throws MojoExecutionException {
 		ServiceGatewayRestClient client = new ServiceGatewayRestClient(baseUrl);
 		return client.getApplicationInfo(environment);
-	}
-	
-	public static ServiceRegistry readServiceRegistryFromFile(File serviceRegistryPath, String serviceRegistryFile) throws MojoExecutionException {
-		File buildOutputDirectory = new File(serviceRegistryPath, "/classes");
-		buildOutputDirectory.mkdir();
-		
-		ServiceRegistry serviceRegistry = new ServiceRegistry();
-		try {
-			serviceRegistry.readServiceRegistry(serviceRegistryFile);
-		} catch (FileNotFoundException e1) {
-			//TODO: legg inn support for ingen fil!
-			throw new ServiceRegistryException("Original service registry file not found", e1);
-		} catch (JAXBException e1) {
-			throw new ServiceRegistryException("XML processing went wrong", e1);
-		}
-		return serviceRegistry;
 	}
 }

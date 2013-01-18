@@ -17,6 +17,7 @@ import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
 import no.nav.serviceregistry.util.ExposedService;
 import no.nav.serviceregistry.util.MvnArtifact;
+import no.nav.serviceregistry.util.ServiceRegistryUtils;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
@@ -137,7 +138,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		getLog().debug("Retrieving info for environment " + env + " from envConfig!");
 		Set<ApplicationInfo> applicationsFromEnvconfig = AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
 		getLog().debug("Trying to read original service registry file...");
-		ServiceRegistry serviceRegistry = AppConfigUtils.readServiceRegistryFromFile(buildDirectory, serviceRegistryFile);
+		ServiceRegistry serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
 		getLog().debug("Original service registry file read!");
 
 		if (!empty(apps)) {
@@ -178,7 +179,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			}
 		}
 		try {
-			serviceRegistry.writeToFile(new File(serviceRegistryFile));
+			ServiceRegistryUtils.writeToFile(serviceRegistry, new File(serviceRegistryFile));
 		} catch (Exception e) {
 			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}

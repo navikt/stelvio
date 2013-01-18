@@ -9,6 +9,7 @@ import java.net.URL;
 import javax.xml.bind.JAXBException;
 
 import no.nav.serviceregistry.model.ServiceRegistry;
+import no.nav.serviceregistry.util.ServiceRegistryUtils;
 
 import org.junit.Test;
 
@@ -84,8 +85,7 @@ public class ServiceRegestryTest {
 
 	@Test
 	public void testReadServiceRegistry() throws FileNotFoundException, JAXBException {
-		ServiceRegistry readSR = new ServiceRegistry();
-		readSR.readServiceRegistry(getResource(Values.SERVICE_REGISTRY_XML));
+		ServiceRegistry readSR = ServiceRegistryUtils.readServiceRegistryFromFile(getResource(Values.SERVICE_REGISTRY_XML));
 		assertEquals(Values.STD_SERVICE_REGISTRY_XML.getValue(), readSR.toXml());
 	}
 
