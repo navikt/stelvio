@@ -1,9 +1,9 @@
 package no.nav.serviceregistry.test;
 
 import static org.junit.Assert.*;
+import static no.nav.serviceregistry.test.util.TestUtils.getResource;
 
 import java.io.File;
-import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,14 +18,11 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.junit.Test;
 
 public class AppConfigUtilsTest {
-	private String getResource(String s){
-		return this.getClass().getResource(s).getFile();
-	}
 	
 	@Test
 	public void testReadAppConfig() throws JAXBException {
-		URL appConfigUrl = this.getClass().getResource("/app-config.xml");
-		Application app = AppConfigUtils.readAppConfig(new File(appConfigUrl.getFile()));
+		File appConfigFile = new File(getResource("/app-config.xml"));
+		Application app = AppConfigUtils.readAppConfig(appConfigFile);
 		assertEquals("autodeploy-test", app.getName());
 	}
 

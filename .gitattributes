@@ -7767,7 +7767,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/GenerateServiceRegistryFileMojoTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/MvnArtifactTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/ServiceRegestryTest.java -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/Tester.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/util/TestUtils.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha002/Brukerprofil.wsdl -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha002/brukerprofil/fakta.xsd -text
