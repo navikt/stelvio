@@ -1,16 +1,14 @@
 package no.nav.maven.plugins;
 
 import static no.nav.serviceregistry.util.AppConfigUtils.empty;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.xml.bind.JAXBException;
 
 import no.nav.aura.appconfig.Application;
 import no.nav.aura.appconfig.exposed.Service;
@@ -138,7 +136,9 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		Set<String> applicationsFromInput = new HashSet<String>();
 		getLog().debug("Retrieving info for environment " + env + " from envConfig!");
 		Set<ApplicationInfo> applicationsFromEnvconfig = AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
-		ServiceRegistry serviceRegistry = readServiceRegistryFromFile(buildDirectory);
+		getLog().debug("Trying to read original service registry file...");
+		ServiceRegistry serviceRegistry = AppConfigUtils.readServiceRegistryFromFile(buildDirectory, serviceRegistryFile);
+		getLog().debug("Original service registry file read!");
 
 		if (!empty(apps)) {
 			Set<String> parsedApps = AppConfigUtils.parseApplicationsString(apps);
@@ -182,24 +182,6 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		} catch (Exception e) {
 			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}
-	}
-
-	private ServiceRegistry readServiceRegistryFromFile(File serviceRegistryPath) throws MojoExecutionException {
-		File buildOutputDirectory = new File(this.buildDirectory, "/classes");
-		buildOutputDirectory.mkdir();
-		
-		ServiceRegistry serviceRegistry = new ServiceRegistry(buildOutputDirectory);
-		getLog().debug("Trying to read original service registry file...");
-		try {
-			serviceRegistry.readServiceRegistry(serviceRegistryFile);
-		} catch (FileNotFoundException e1) {
-			//TODO: legg inn support for ingen fil!
-			throw new MojoExecutionException("Original service registry file not found", e1);
-		} catch (JAXBException e1) {
-			throw new MojoExecutionException("XML processing went wrong", e1);
-		}
-		getLog().debug("Original service registry file read!");
-		return serviceRegistry;
 	}
 	
 	private File downloadAndExtractApplicationApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
