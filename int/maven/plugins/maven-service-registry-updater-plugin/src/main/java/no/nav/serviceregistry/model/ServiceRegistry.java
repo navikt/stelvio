@@ -1,17 +1,12 @@
 package no.nav.serviceregistry.model;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -54,16 +49,11 @@ import org.xml.sax.SAXException;
 public class ServiceRegistry {
 	
 	private Set<Service> services = new HashSet<Service>();
-	private String schemaFile = "service-registry.xsd";
-	private static File pathToResourceDir;
+	private static final String SCHEMA_FILE = "service-registry.xsd";
 
 	public ServiceRegistry() {
 	}
 	
-	public ServiceRegistry(File pathToResourceDir) {
-		ServiceRegistry.pathToResourceDir = pathToResourceDir;
-	}
-
 	@XmlElement(name="service")
 	public Set<Service> getServices() {
 		return services;
@@ -209,13 +199,11 @@ public class ServiceRegistry {
 		Marshaller marshaller = context.createMarshaller();
 		OutputStream out = new FileOutputStream(file);
 		
-		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		File schemaXsd = new File(pathToResourceDir, "/" + schemaFile);
 		Schema schema = null;
 		try {
-			schema = sf.newSchema(schemaXsd);
-		} catch (SAXException e) {
-			throw new ServiceRegistryException(e);
+			schema = this.getSchemaFromClassPath();
+		} catch (IOException e) {
+			throw new ServiceRegistryException(e); 
 		}
 		if (schema != null) {
 			marshaller.setSchema(schema);			
@@ -232,7 +220,7 @@ public class ServiceRegistry {
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		Schema schema;
 		try {
-			schema = this.getSchemaFromClassPath(schemaFile);
+			schema = this.getSchemaFromClassPath();
 		} catch (IOException e) {
 			throw new ServiceRegistryException(e); 
 		}
@@ -248,31 +236,14 @@ public class ServiceRegistry {
 		this.services = sr.getServices();
 	}
 	
-	private Schema getSchemaFromClassPath(String filename) throws IOException {
-		InputStream in = getClass().getResourceAsStream("/" + filename);
-		BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-		File outFile = new File(pathToResourceDir, "/" + filename);
-		OutputStream out = new FileOutputStream(outFile);
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out));
-		
-		String line;
-		while ((line = br.readLine()) != null) {
-			bw.write(line);
-			bw.newLine();
-		}
-
-		br.close();
-		bw.close();
-
+	private Schema getSchemaFromClassPath() throws IOException {
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		Schema schema = null;
 		try {
-			schema = sf.newSchema(outFile);
+			URL resource = getClass().getClassLoader().getResource(SCHEMA_FILE);
+			return sf.newSchema(resource);
 		} catch (SAXException e) {
-			throw new ServiceRegistryException(e);
+			throw new ServiceRegistryException("SAXException", e);
 		}
 		
-		return schema;
 	}
 }

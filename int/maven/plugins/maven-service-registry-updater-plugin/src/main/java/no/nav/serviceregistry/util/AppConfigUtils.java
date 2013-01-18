@@ -63,7 +63,7 @@ public class AppConfigUtils {
 		File buildOutputDirectory = new File(serviceRegistryPath, "/classes");
 		buildOutputDirectory.mkdir();
 		
-		ServiceRegistry serviceRegistry = new ServiceRegistry(buildOutputDirectory);
+		ServiceRegistry serviceRegistry = new ServiceRegistry();
 		try {
 			serviceRegistry.readServiceRegistry(serviceRegistryFile);
 		} catch (FileNotFoundException e1) {
