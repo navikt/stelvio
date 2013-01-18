@@ -7758,6 +7758,8 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/AppConfigUtils.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ExposedService.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/resources/service-registry.xsd -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/AppConfigUtilsTest.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/ServiceRegestryTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/Tester.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha002/Brukerprofil.wsdl -text
