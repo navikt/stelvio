@@ -2497,6 +2497,9 @@ int/maven/plugins/maven-service-deploy-plugin/src/main/bin
 int/maven/plugins/maven-service-deploy-plugin/src/main/target
 int/maven/plugins/maven-service-deploy-plugin/src/target
 int/maven/plugins/maven-service-deploy-plugin/target
+int/maven/plugins/maven-service-registry-updater-plugin/.classpath
+int/maven/plugins/maven-service-registry-updater-plugin/.git
+int/maven/plugins/maven-service-registry-updater-plugin/.project
 int/maven/plugins/maven-update-ear-plugin/.classpath
 int/maven/plugins/maven-update-ear-plugin/.project
 int/maven/plugins/maven-update-ear-plugin/.settings
