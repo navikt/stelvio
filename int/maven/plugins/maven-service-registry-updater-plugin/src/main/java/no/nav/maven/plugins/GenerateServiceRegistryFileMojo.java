@@ -156,7 +156,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 					continue; //TODO: avslutte  når dette skjer?
 				}
 				
-				File appConfigExtractDir = downloadAndExtractApplicationApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
+				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
 				
 				getLog().debug("Reading app-config.xml for application " + applicationName);
 				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
@@ -167,7 +167,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 					String serviceName = service.getName();
 					String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
 					getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
-					File serviceExtractDir = downloadAndExtractApplicationService(service, wsdlDownloadDir);
+					File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
 
 					exposedServices.add(new ExposedService(serviceName, service.getPath(), serviceExtractDir));
 					getLog().debug("Added service " + serviceName);
@@ -184,12 +184,12 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	private File downloadAndExtractApplicationApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
+	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
 		return downloadAndExtract(artifact, extractTo);
 	}
 	
-	private File downloadAndExtractApplicationService(Service service, String extractTo) throws MojoExecutionException{
+	private File downloadAndExtractService(Service service, String extractTo) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(service, "zip");
 		return downloadAndExtract(artifact, extractTo);
 	}
