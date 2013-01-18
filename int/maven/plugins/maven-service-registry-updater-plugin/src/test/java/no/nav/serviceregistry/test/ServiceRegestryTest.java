@@ -82,7 +82,8 @@ public class ServiceRegestryTest {
 
 	@Test
 	public void testReadServiceRegistry() throws FileNotFoundException, JAXBException {
-		ServiceRegistry readSR = new ServiceRegistry().readServiceRegistry(getResource(Values.SERVICE_REGISTRY_XML));
+		ServiceRegistry readSR = new ServiceRegistry();
+		readSR.readServiceRegistry(getResource(Values.SERVICE_REGISTRY_XML));
 		assertEquals(Values.STD_SERVICE_REGISTRY_XML.getValue(), readSR.toXml());
 	}
 

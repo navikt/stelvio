@@ -35,7 +35,7 @@ public class Tester {
 		
 		ServiceRegistry sr = new ServiceRegistry();
 		try {
-			sr = serviceRegistry.readServiceRegistry(oldServiceRegistryFile.toString());
+			sr.readServiceRegistry(oldServiceRegistryFile.toString());
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}

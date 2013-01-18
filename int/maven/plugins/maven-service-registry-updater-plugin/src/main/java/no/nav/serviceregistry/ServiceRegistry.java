@@ -221,7 +221,7 @@ public class ServiceRegistry {
 		marshaller.marshal(this, out);
 	}
 	
-	public ServiceRegistry readServiceRegistry(String serviceRegistryFile) throws JAXBException, FileNotFoundException {
+	public void readServiceRegistry(String serviceRegistryFile) throws JAXBException, FileNotFoundException {
 		JAXBContext context = JAXBContext.newInstance(getClass());
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		Schema schema;
@@ -239,7 +239,7 @@ public class ServiceRegistry {
 		unmarshaller.setEventHandler(vec);
 		
 		ServiceRegistry sr = (ServiceRegistry) unmarshaller.unmarshal(new FileInputStream(serviceRegistryFile));
-		return sr;
+		this.services = sr.getServices();
 	}
 	
 	private Schema getSchemaFromClassPath(String filename) throws IOException {

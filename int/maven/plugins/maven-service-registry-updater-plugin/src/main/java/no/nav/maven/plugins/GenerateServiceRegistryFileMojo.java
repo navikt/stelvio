@@ -191,7 +191,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		ServiceRegistry serviceRegistry = new ServiceRegistry(buildOutputDirectory);
 		getLog().debug("Trying to read original service registry file...");
 		try {
-			serviceRegistry = serviceRegistry.readServiceRegistry(serviceRegistryFile);
+			serviceRegistry.readServiceRegistry(serviceRegistryFile);
 		} catch (FileNotFoundException e1) {
 			//TODO: legg inn support for ingen fil!
 			throw new MojoExecutionException("Original service registry file not found", e1);
