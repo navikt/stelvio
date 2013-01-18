@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import no.nav.maven.plugins.GenerateServiceRegistryFileMojo;
-import no.nav.serviceregistry.ServiceRegistry;
+import no.nav.serviceregistry.model.ServiceRegistry;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;

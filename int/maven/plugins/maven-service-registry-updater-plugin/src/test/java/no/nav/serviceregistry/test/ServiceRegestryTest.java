@@ -8,7 +8,7 @@ import java.net.URL;
 
 import javax.xml.bind.JAXBException;
 
-import no.nav.serviceregistry.ServiceRegistry;
+import no.nav.serviceregistry.model.ServiceRegistry;
 
 import org.junit.Test;
 

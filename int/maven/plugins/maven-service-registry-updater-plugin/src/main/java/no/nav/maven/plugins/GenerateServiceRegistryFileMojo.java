@@ -15,7 +15,7 @@ import javax.xml.bind.JAXBException;
 import no.nav.aura.appconfig.Application;
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
-import no.nav.serviceregistry.ServiceRegistry;
+import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
 import no.nav.serviceregistry.util.ExposedService;
 import no.nav.serviceregistry.util.MvnArtifact;

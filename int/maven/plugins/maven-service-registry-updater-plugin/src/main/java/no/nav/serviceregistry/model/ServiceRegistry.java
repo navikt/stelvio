@@ -1,4 +1,4 @@
-package no.nav.serviceregistry;
+package no.nav.serviceregistry.model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
