@@ -1,11 +1,9 @@
 package no.nav.serviceregistry.test;
 
-import static org.junit.Assert.*;
 import static no.nav.serviceregistry.test.util.TestUtils.getResource;
 
 import java.io.FileNotFoundException;
 import java.util.HashSet;
-import java.util.List;
 
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.maven.plugins.GenerateServiceRegistryFileMojo;
@@ -26,20 +24,18 @@ public class GenerateServiceRegistryFileMojoTest {
 	MyMocker globalMocker = new MyMocker();
 	MyMockLogger mLog = new MyMockLogger();
 	static final String TEST_APPLICATION = "autodeploy-test";
-	static final String SERVICE_REGISTRY_FILE = GenerateServiceRegistryFileMojoTest.class.getClass().getResource("/serviceregistry-simple.xml").getFile();
+	static final String ORIGINAL_SERVICE_REGISTRY_FILE = getResource("/serviceregistry-simple.org.xml");
+	static final String SERVICE_REGISTRY_FILE = getResource("/serviceregistry-simple.xml");
 	static final String TEST_URL = "http://test.url";
 	static final String ENVIRONMENT = "u3";
 	static final String EMPTY_DIR = getResource("/emptyDir");
 	
 	@Test
 	public void testPossitiveMojoExecutor() throws MojoExecutionException {
-		String orgServiceRegistryFile = getResource("/serviceregistry-simple.result.xml");
-
-		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, globalMocker, mLog);
-		
-		List<String> orgServiceLines = TestUtils.fileToLines(orgServiceRegistryFile);
-		List<String> serviceLines = TestUtils.fileToLines(SERVICE_REGISTRY_FILE);
-		assertArrayEquals(orgServiceLines.toArray(), serviceLines.toArray());
+		String sr = getResource("/serviceregistry-testPossitiveMojoExecutor/serviceregistry-simple.result.xml");
+		String result = getResource("/serviceregistry-testPossitiveMojoExecutor/serviceregistry-simple.result.xml");
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, sr, globalMocker, mLog);
+		TestUtils.assertNoFileDiff(result, sr);
 	}
 	
 	@Test(expected=RuntimeException.class) //her burde Platform teamet ha sendt en egendefinert exception
@@ -65,28 +61,40 @@ public class GenerateServiceRegistryFileMojoTest {
 	
 	@Test
 	public void testNoApplicationsSpessified() throws MojoExecutionException{
-		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, "", SERVICE_REGISTRY_FILE, globalMocker, mLog);
+		String sr = getResource("/serviceregistry-testNoApplicationsSpessified/serviceregistry-simple.xml");
+		String result = getResource("/serviceregistry-testNoApplicationsSpessified/serviceregistry-simple.result.xml");
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, "", sr, globalMocker, mLog);
+		TestUtils.assertNoFileDiff(result, sr);
 	}
 
 	@Test
 	public void testNoServicesInAppConfig_EmptyServicesList() throws MojoExecutionException{
+		String sr = getResource("/serviceregistry-testNoServicesInAppConfig_EmptyServicesList/serviceregistry-simple.xml");
+		String result = getResource("/serviceregistry-testNoServicesInAppConfig_EmptyServicesList/serviceregistry-simple.result.xml");
 		MyMocker myMocker = new MyMocker();
 		myMocker.setAppConfigExtractDir(getResource("/appConfigNoServices-EmptyList"));
-		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker, mLog);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, sr, myMocker, mLog);
+		TestUtils.assertNoFileDiff(result, sr);
 	}
 	
 	@Test
 	public void testNoServicesInAppConfig_StartStopServicesTag() throws MojoExecutionException{
+		String sr = getResource("/serviceregistry-testNoServicesInAppConfig_StartStopServicesTag/serviceregistry-simple.xml");
+		String result = getResource("/serviceregistry-testNoServicesInAppConfig_StartStopServicesTag/serviceregistry-simple.result.xml");
 		MyMocker myMocker = new MyMocker();
 		myMocker.setAppConfigExtractDir(getResource("/appConfigNoServices-StartStopTag"));
-		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker, mLog);
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, sr, myMocker, mLog);
+		TestUtils.assertNoFileDiff(result, sr);
 	}
 	
 	@Test
 	public void testNoServicesInAppConfig_NoServicesTag() throws MojoExecutionException{
+		String sr = getResource("/serviceregistry-testNoServicesInAppConfig_NoServicesTag/serviceregistry-simple.xml");
+		String result = getResource("/serviceregistry-testNoServicesInAppConfig_NoServicesTag/serviceregistry-simple.result.xml");
 		MyMocker myMocker = new MyMocker();
 		myMocker.setAppConfigExtractDir(getResource("/appConfigNoServices-NoTag"));
 		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker, mLog);
+		TestUtils.assertNoFileDiff(result, sr);
 	}
 	
 	@Test(expected=ApplicationConfigException.class)
@@ -141,6 +149,5 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMocker.setMockApplicationInfoResolveException(true);
 		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, SERVICE_REGISTRY_FILE, myMocker, mLog);
 	}
-	
 	
 }
