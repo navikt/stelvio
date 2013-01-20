@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:serviceRegistry xmlns:ns2="http://www.stelvio.no/ServiceRegistry">
+    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
+        <application>popp</application>
+        <serviceVersion bindingName="ns3:BrukerprofilBinding">
+            <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
+            <serviceInstance endpoint="http://tset.com/" wsdlAddress="http://tset.com/?wsdl"/>
+        </serviceVersion>
+    </service>
+</ns2:serviceRegistry>

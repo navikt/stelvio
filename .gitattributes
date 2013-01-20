@@ -7804,6 +7804,8 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/servi
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-corrupt.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-simple.org.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-simple.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testAddServiceInstanceStringStringString/serviceregistry-simple.result.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testAddServiceInstanceStringStringString/serviceregistry-simple.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testNoApplicationsSpessified/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testNoApplicationsSpessified/serviceregistry-simple.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testNoServicesInAppConfig_EmptyServicesList/serviceregistry-simple.result.xml -text
@@ -7814,6 +7816,8 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/servi
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testNoServicesInAppConfig_StartStopServicesTag/serviceregistry-simple.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testPossitiveMojoExecutor/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testPossitiveMojoExecutor/serviceregistry-simple.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testReadServiceRegistry/serviceregistry-simple.result.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testReadServiceRegistry/serviceregistry-simple.xml -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
