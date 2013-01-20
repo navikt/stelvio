@@ -10,6 +10,7 @@ import java.util.List;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.maven.plugins.GenerateServiceRegistryFileMojo;
 import no.nav.serviceregistry.exception.ApplicationConfigException;
+import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
 import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.mocker.MyMockLogger;
@@ -57,9 +58,9 @@ public class GenerateServiceRegistryFileMojoTest {
 		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, TEST_APPLICATION, corruptServiceRegistryFile, globalMocker, mLog);	
 	}
 	
-	@Test//TODO: sjekk om dette er godt nok
+	@Test(expected=ApplicationNotInEnvConfigException.class)
 	public void testApplicationNotInEnvConfig() throws MojoExecutionException{
-		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, "MySuper-Duper_Test_app_that_is_not_in_envConfig_32410978786978", SERVICE_REGISTRY_FILE, globalMocker, mLog);	
+		globalMojo.testableMojoExecutor(ENVIRONMENT, TEST_URL, "MySuper-Duper_Test_app_that_is_not_in_envConfig_32410978786978", SERVICE_REGISTRY_FILE, globalMocker, mLog);
 	}
 	
 	@Test

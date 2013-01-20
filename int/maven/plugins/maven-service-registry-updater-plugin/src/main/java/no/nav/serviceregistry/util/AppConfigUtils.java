@@ -12,6 +12,7 @@ import no.nav.aura.appconfig.Application;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.aura.envconfig.client.rest.ServiceGatewayRestClient;
 import no.nav.serviceregistry.exception.ApplicationConfigException;
+import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
@@ -55,5 +56,16 @@ public class AppConfigUtils {
 	public static Set<ApplicationInfo> getInfoFromEnvconfig(String environment, String baseUrl) throws MojoExecutionException {
 		ServiceGatewayRestClient client = new ServiceGatewayRestClient(baseUrl);
 		return client.getApplicationInfo(environment);
+	}
+
+	public static void appsExistInEnvConfig(Set<String> applicationsFromInput, Set<ApplicationInfo> applicationsFromEnvconfig) {
+		if(applicationsFromInput.size() != 0){
+			for (ApplicationInfo applicationInfo : applicationsFromEnvconfig) {
+				String name = applicationInfo.getName();
+				if(!applicationsFromInput.contains(name)){
+					throw new ApplicationNotInEnvConfigException("Could not find application in the list of applications retrived from envConfig");
+				}
+			}
+		}
 	}
 }

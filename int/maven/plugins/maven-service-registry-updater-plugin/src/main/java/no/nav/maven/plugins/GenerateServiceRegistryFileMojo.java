@@ -157,9 +157,12 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		if (!empty(apps)) {
 			Set<String> parsedApps = AppConfigUtils.parseApplicationsString(apps);
 			applicationsFromInput.addAll(parsedApps);
+			
+			AppConfigUtils.appsExistInEnvConfig(applicationsFromInput, applicationsFromEnvconfig);
+			
 			log.debug("Addded applications: " + Arrays.toString(parsedApps.toArray()));
 		}
-		
+
 		for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
 			String applicationName = envConfigApplicationInfo.getName();
 
