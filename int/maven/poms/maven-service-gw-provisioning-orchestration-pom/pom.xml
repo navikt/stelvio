@@ -9,7 +9,7 @@
 
 	<groupId>no.stelvio.maven.poms</groupId>
 	<artifactId>maven-service-gw-provisioning-orchestration-pom</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>Maven service-gw provisioning orchestration POM</name>
 	
 	<properties>
@@ -191,8 +191,8 @@
 	</profiles>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-gw-provisioning-orchestration-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-gw-provisioning-orchestration-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/maven/poms/maven-service-gw-provisioning-orchestration-pom/maven-service-gw-provisioning-orchestration-pom-0.0.2</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/maven/poms/maven-service-gw-provisioning-orchestration-pom/maven-service-gw-provisioning-orchestration-pom-0.0.2</developerConnection>
 	</scm>
 
 </project>
