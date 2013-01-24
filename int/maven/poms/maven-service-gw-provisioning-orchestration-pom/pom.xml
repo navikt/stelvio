@@ -30,8 +30,8 @@
 		<registryFolder>regFolder/</registryFolder>
 
 		<!-- The next properties should be given as input in the general solution, hardcoded for convenience now -->
-		<envclass>u</envclass>	
-		<env>u3</env>	
+		<envclass>${envclass}</envclass>
+		<env>${env}</env>
 		<datapower.baseurl>https://dp-tst-13.adeo.no:5550</datapower.baseurl>
 	</properties>
 
