@@ -192,8 +192,8 @@
               </hudson.model.ChoiceParameterDefinition>
               <hudson.model.StringParameterDefinition>
                 <name>Provisioning_script_version</name>
-                <description></description>
-                <defaultValue>1.0.0-SNAPSHOT</defaultValue>
+                <description>1.0.0-SNAPSHOT</description>
+                <defaultValue>0.0.2</defaultValue>
               </hudson.model.StringParameterDefinition>
               <hudson.model.StringParameterDefinition>
                 <name>apps</name>
@@ -268,9 +268,10 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/aura/trunk/maven/poms/nav-init-pom/pom.xml?op=dl
+EnvironmentClass=${Environment:0:1}
 mvn3 clean compile -DgroupId=no.stelvio.maven.poms -DartifactId=maven-service-gw-provisioning-orchestration-pom -Dversion=${Provisioning_script_version}
 mv target/pom.xml pom.xml
-mvn3 clean install -Pprovision -e -X -Denv=${Environment}</command>
+mvn3 clean install -Pprovision -e -X -Denvironment=${Environment} -DenvClass=${EnvironmentClass}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
