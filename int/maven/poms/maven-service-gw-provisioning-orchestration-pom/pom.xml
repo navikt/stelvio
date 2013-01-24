@@ -27,7 +27,7 @@
 		<datapower.xmlManager>default</datapower.xmlManager>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<registryFile>service-registry.xml</registryFile>
-		<registryFolder>regFolder/</registryFolder>
+		<registryFolder>${project.build.directory}/regFolder/</registryFolder>
 
 		<!-- The next properties should be given as input in the general solution, hardcoded for convenience now -->
 		<envclass>${envClass}</envclass>
