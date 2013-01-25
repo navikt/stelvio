@@ -13,9 +13,9 @@
 	<name>Maven service-gw provisioning orchestration POM</name>
 	
 	<properties>
-		<serviceRegistryUpdaterPluginVersion>0.0.1</serviceRegistryUpdaterPluginVersion>
+		<serviceRegistryUpdaterPluginVersion>0.0.2</serviceRegistryUpdaterPluginVersion>
 		<!-- Dependencies -->
-		<dataPowerVer>1.7</dataPowerVer>
+		<dataPowerVer>1.8</dataPowerVer>
 		<mavenEnforcerVer>1.0-beta-1</mavenEnforcerVer>
 		<mavenPropertiesVer>1.3</mavenPropertiesVer>
 		<deployKeys>${user.home}/deploy-keys/</deployKeys>
