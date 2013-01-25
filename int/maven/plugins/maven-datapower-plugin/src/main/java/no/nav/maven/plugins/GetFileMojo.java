@@ -56,7 +56,7 @@ public class GetFileMojo extends AbstractDeviceMgmtMojo {
 			String base64value = m.group(2);
 			byte[] decodedFile = javax.xml.bind.DatatypeConverter.parseBase64Binary(base64value);
 			
-			(new File(outputDir)).mkdir();
+			(new File(outputDir)).mkdirs();
 			File outputFile = new File(outputDir + fileName);
 			FileOutputStream fos = new FileOutputStream(outputFile);
 			fos.write(decodedFile);
