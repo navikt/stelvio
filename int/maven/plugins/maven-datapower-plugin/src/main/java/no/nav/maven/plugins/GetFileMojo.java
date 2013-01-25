@@ -65,7 +65,7 @@ public class GetFileMojo extends AbstractDeviceMgmtMojo {
 		} catch (XMLMgmtException e) {
 			throw new MojoExecutionException("Failed to get " + DeviceFileStore.LOCAL.toString() + fileName + " on the DataPower device",e);
 		} catch (Exception e) {
-			getLog().info("XML parsing error", e);
+			throw new MojoExecutionException("An unexpected error occured", e);
 		}
 	}
 }
