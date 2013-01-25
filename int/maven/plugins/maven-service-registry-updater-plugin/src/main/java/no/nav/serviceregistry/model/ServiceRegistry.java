@@ -57,7 +57,7 @@ public class ServiceRegistry {
 		
 		for (ServiceWrapper exposedService : exposedServices) {
 			//TODO: protokoll og port vil antageligvis komme fra envconfig, men er ikke klart
-			String urlString = "https://" + hostname + ":443/" + exposedService.getPath();
+			String urlString = "https://" + hostname + ":8443/" + exposedService.getPath();
 			URL endpoint;
 			try {
 				endpoint = new URL(urlString);
