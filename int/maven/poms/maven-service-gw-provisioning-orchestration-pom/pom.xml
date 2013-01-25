@@ -15,7 +15,7 @@
 	<properties>
 		<serviceRegistryUpdaterPluginVersion>0.0.2</serviceRegistryUpdaterPluginVersion>
 		<!-- Dependencies -->
-		<dataPowerVer>1.8</dataPowerVer>
+		<dataPowerVer>1.9</dataPowerVer>
 		<mavenEnforcerVer>1.0-beta-1</mavenEnforcerVer>
 		<mavenPropertiesVer>1.3</mavenPropertiesVer>
 		<deployKeys>${user.home}/deploy-keys/</deployKeys>
@@ -28,11 +28,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<registryFile>service-registry.xml</registryFile>
 		<registryFolder>${project.build.directory}/regFolder/</registryFolder>
-
-		<!-- The next properties should be given as input in the general solution, hardcoded for convenience now -->
-		<envclass>${envClass}</envclass>
-		<env>${environment}</env>
-		<datapower.baseurl>https://dp-tst-13.adeo.no:5550</datapower.baseurl>
 	</properties>
 
 	<build>
@@ -78,9 +73,6 @@
 								<configuration>
 									<files>														
 										<file>${deployKeys}/${envclass}/datapower.properties</file>
-										<file>${deployKeys}/${envclass}/datapower-cfg-${datapower.gateway}.properties</file>
-										<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${datapower.gateway}.properties</file>
-										<file>${passwordVault}/${envclass}/${env}/environment.properties</file>
 									</files>
 								</configuration>
 							</execution>
