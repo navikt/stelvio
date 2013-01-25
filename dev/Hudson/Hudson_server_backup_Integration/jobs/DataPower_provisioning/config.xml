@@ -192,13 +192,18 @@
               </hudson.model.ChoiceParameterDefinition>
               <hudson.model.StringParameterDefinition>
                 <name>Provisioning_script_version</name>
-                <description>1.0.0-SNAPSHOT</description>
-                <defaultValue>0.0.2</defaultValue>
+                <description></description>
+                <defaultValue>0.0.4</defaultValue>
               </hudson.model.StringParameterDefinition>
               <hudson.model.StringParameterDefinition>
                 <name>apps</name>
                 <description>Applikasjonene som vi vil oppdatere registerfilen med tjenester fra, formattert f.eks. slik:  pselv, norg,Joark</description>
                 <defaultValue>autodeploy-test</defaultValue>
+              </hudson.model.StringParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>DatapowerURL</name>
+                <description></description>
+                <defaultValue>https://dp-tst-13.adeo.no:5550</defaultValue>
               </hudson.model.StringParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
@@ -271,7 +276,7 @@
 EnvironmentClass=${Environment:0:1}
 mvn3 clean compile -DgroupId=no.stelvio.maven.poms -DartifactId=maven-service-gw-provisioning-orchestration-pom -Dversion=${Provisioning_script_version}
 mv target/pom.xml pom.xml
-mvn3 clean install -Pprovision -e -X -Denvironment=${Environment} -DenvClass=${EnvironmentClass}</command>
+mvn3 clean install -Pprovision -e -B -Ddatapower.baseurl=${DatapowerURL} -Denv=${Environment} -Denvclass=${EnvironmentClass} -Dapps=${apps}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
