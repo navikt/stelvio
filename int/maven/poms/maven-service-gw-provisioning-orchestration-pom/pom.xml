@@ -13,7 +13,7 @@
 	<name>Maven service-gw provisioning orchestration POM</name>
 	
 	<properties>
-		<serviceRegistryUpdaterPluginVersion>0.0.2</serviceRegistryUpdaterPluginVersion>
+		<serviceRegistryUpdaterPluginVersion>0.0.3</serviceRegistryUpdaterPluginVersion>
 		<!-- Dependencies -->
 		<dataPowerVer>1.9</dataPowerVer>
 		<mavenEnforcerVer>1.0-beta-1</mavenEnforcerVer>
