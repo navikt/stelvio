@@ -28,7 +28,7 @@ public class AppConfigUtils {
 	public static Set<String> parseApplicationsString(String appString) throws MojoExecutionException {
 		Set<String> apps = new HashSet<String>();
 		for (String applicationString : appString.split(",")) {
-			String application = applicationString.trim().toLowerCase();
+			String application = applicationString.split(":")[0].trim().toLowerCase();
 			if (application == null) {
 				throw new ApplicationConfigException("Something is wrong with the 'apps'-string. Verify that it's on the correct format. " + apps);
 			}
@@ -58,13 +58,21 @@ public class AppConfigUtils {
 		return client.getApplicationInfo(environment);
 	}
 
-	public static void appsExistInEnvConfig(Set<String> applicationsFromInput, Set<ApplicationInfo> applicationsFromEnvconfig) {
+	public static void appsExistInEnvConfig(Set<String> applicationsFromInput, Set<ApplicationInfo> applicationsFromEnvconfig) throws MojoExecutionException {
+		if (applicationsFromEnvconfig == null || applicationsFromEnvconfig.isEmpty()) {
+			throw new MojoExecutionException("No applications retrieved from envConfig");
+		}
+		
 		if(applicationsFromInput.size() != 0){
-			for (ApplicationInfo applicationInfo : applicationsFromEnvconfig) {
-				String name = applicationInfo.getName();
-				if(!applicationsFromInput.contains(name)){
+			Set<String> appNamesFromEnvConfig = new HashSet<String>();
+			for (ApplicationInfo ai : applicationsFromEnvconfig) {
+				appNamesFromEnvConfig.add(ai.getName());
+			}
+			for (String application : applicationsFromInput) {
+				if(!appNamesFromEnvConfig.contains(application)){
 					throw new ApplicationNotInEnvConfigException("Could not find application in the list of applications retrived from envConfig");
 				}
+				
 			}
 		}
 	}
