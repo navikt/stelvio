@@ -1,6 +1,5 @@
 package no.nav.maven.plugins;
 
-import no.nav.datapower.xmlmgmt.DeviceFileStore;
 import no.nav.datapower.xmlmgmt.XMLMgmtException;
 
 import org.apache.maven.plugin.MojoExecutionException;

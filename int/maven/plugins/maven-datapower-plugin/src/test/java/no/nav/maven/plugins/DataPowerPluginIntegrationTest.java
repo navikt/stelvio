@@ -53,6 +53,7 @@ public class DataPowerPluginIntegrationTest extends AbstractMojoTestCase {
 	}
 
 
+	@SuppressWarnings("unused")
 	private void executeMojo(MojoTest test) {
 		Mojo wsClient = getMojo(test);
 		try {
