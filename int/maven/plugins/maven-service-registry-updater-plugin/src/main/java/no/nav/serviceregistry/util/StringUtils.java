@@ -4,7 +4,7 @@ public class StringUtils {
 	public static boolean empty(String... s){
 		if (s == null) return true;
 		for (String string : s) {
-			if(string == null || "".equals(string)){
+			if(string == null || string.isEmpty()){
 				continue;
 			} else {
 				return false;
@@ -16,7 +16,7 @@ public class StringUtils {
 	public static boolean notEmpty(String... s){
 		if (s == null) return false;
 		for (String string : s) {
-			if(string != null && !"".equals(string)){
+			if(string != null && !string.isEmpty()){
 				continue;
 			} else {
 				return false;
