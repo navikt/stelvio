@@ -177,16 +177,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
 				
 				Collection<Service> services = thisApp.getExposedServices();
-				Collection<ServiceWrapper> exposedServices = new HashSet<ServiceWrapper>(); 
-				for (Service service : services) {
-					String serviceName = service.getName();
-					String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
-					getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
-					File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
-
-					exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
-					getLog().debug("Added service " + serviceName);
-				}
+				Collection<ServiceWrapper> exposedServices = getExposedServices(applicationName, services);
 
 				getLog().debug("Replacing all information for application " + applicationName);
 				serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
@@ -197,6 +188,20 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		} catch (Exception e) {
 			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}
+	}
+
+	private Collection<ServiceWrapper> getExposedServices(String applicationName, Collection<Service> services)	throws MojoExecutionException {
+		Collection<ServiceWrapper> exposedServices = new HashSet<ServiceWrapper>(); 
+		for (Service service : services) {
+			String serviceName = service.getName();
+			String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
+			getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
+			File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
+
+			exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
+			getLog().debug("Added service " + serviceName);
+		}
+		return exposedServices;
 	}
 	
 	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
