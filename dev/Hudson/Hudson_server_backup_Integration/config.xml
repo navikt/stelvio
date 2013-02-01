@@ -421,6 +421,28 @@
       </columns>
       <includeRegex>(2012HL6_7\.6_).*</includeRegex>
     </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>IRPORT-2906</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>IRPORT-2906-pensjon</string>
+        <string>IRPORT-2906-tjenestespesifikasjon-pensjon</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+    </listView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
