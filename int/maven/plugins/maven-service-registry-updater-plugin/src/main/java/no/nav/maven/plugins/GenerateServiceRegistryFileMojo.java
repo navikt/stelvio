@@ -1,6 +1,6 @@
 package no.nav.maven.plugins;
 
-import static no.nav.serviceregistry.util.AppConfigUtils.empty;
+import static no.nav.serviceregistry.util.StringUtils.*;
 
 import java.io.File;
 import java.io.IOException;

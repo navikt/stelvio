@@ -37,13 +37,6 @@ public class AppConfigUtils {
 		return apps;
 	}
 	
-	public static boolean empty(String s){
-		if(s == null || "".equals(s)){
-			return true;
-		}
-		return false;
-	}
-	
 	public static Application unmarshalAppConfig(String appConfigXml) throws MojoExecutionException {
 		File appConfig = new File(appConfigXml);
 		try {

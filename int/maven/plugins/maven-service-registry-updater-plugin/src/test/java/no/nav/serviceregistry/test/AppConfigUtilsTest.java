@@ -1,7 +1,7 @@
 package no.nav.serviceregistry.test;
 
-import static org.junit.Assert.*;
 import static no.nav.serviceregistry.test.util.TestUtils.getResource;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.util.Collection;
@@ -34,14 +34,6 @@ public class AppConfigUtilsTest {
 		mockApps.add("joark");
 		Set<String> apps = AppConfigUtils.parseApplicationsString("pselv, norg,Joark");
 		assertEquals(mockApps, apps);
-	}
-
-	@Test
-	public void testEmpty() throws MojoExecutionException {
-		assertTrue(AppConfigUtils.empty(""));
-		assertTrue(AppConfigUtils.empty(null));
-		assertTrue(AppConfigUtils.empty(new String()));
-		assertFalse(AppConfigUtils.empty("sl"));
 	}
 
 	@Test

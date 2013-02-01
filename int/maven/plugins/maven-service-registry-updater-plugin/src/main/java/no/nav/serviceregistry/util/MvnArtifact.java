@@ -1,6 +1,6 @@
 package no.nav.serviceregistry.util;
 
-import static no.nav.serviceregistry.util.AppConfigUtils.empty;
+import static no.nav.serviceregistry.util.StringUtils.*;
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.serviceregistry.exception.ApplicationConfigException;
