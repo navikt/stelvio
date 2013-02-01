@@ -7,7 +7,7 @@ import no.nav.serviceregistry.exception.ApplicationConfigException;
 
 public class MvnArtifact {
 	private String artifactId, groupId, version, type = "";
-	
+
 	public MvnArtifact(String artifactId, String groupId, String version, String type){
 		this.setClassProperties(artifactId, groupId, version, type);
 	}
@@ -17,13 +17,14 @@ public class MvnArtifact {
 	public MvnArtifact(Service service, String type){
 		this.setClassProperties(service.getWsdlArtifactId(), service.getWsdlGroupId(), service.getWsdlVersion(), type);
 	}
-	
+
 	private void setClassProperties(String artifactId, String groupId, String version, String type){
-		this.artifactId = artifactId;
-		this.groupId = groupId;
-		this.version = version;
-		this.type = type;
-		if(empty(artifactId) || empty(groupId) || empty(version) || empty(type)){
+		if(notEmpty(artifactId, groupId, version, type)){
+			this.artifactId = artifactId;
+			this.groupId = groupId;
+			this.version = version;
+			this.type = type;
+		}else{
 			throw new ApplicationConfigException("The coordinates needed to create a Maven artifact is missing, check the application configuration for missing/empty values!\n" + this.toString());
 		}
 	}
@@ -43,7 +44,7 @@ public class MvnArtifact {
 	public String getType() {
 		return type;
 	}
-	
+
 	public String toString(){
 		return "ArtifactId: '"+artifactId+"', GroupId: '"+groupId+"', Version: '"+version+"', Type: '"+type+"'";
 	}

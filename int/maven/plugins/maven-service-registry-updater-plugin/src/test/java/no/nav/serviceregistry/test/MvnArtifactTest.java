@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
+import no.nav.serviceregistry.exception.ApplicationConfigException;
 import no.nav.serviceregistry.util.MvnArtifact;
 
 import org.junit.Test;
@@ -47,6 +48,15 @@ public class MvnArtifactTest {
 		assertEquals(groupId, mvnArtifact.getGroupId());
 		assertEquals(version, mvnArtifact.getVersion());
 		assertEquals(type, mvnArtifact.getType());
+	}
+	
+	@Test(expected=ApplicationConfigException.class)
+	public void testMvnArtifactMissingInput() {
+		Service service = new Service();
+		service.setWsdlArtifactId("");
+		service.setWsdlGroupId(groupId);
+		service.setWsdlVersion(version);
+		new MvnArtifact(service, type);
 	}
 
 }
