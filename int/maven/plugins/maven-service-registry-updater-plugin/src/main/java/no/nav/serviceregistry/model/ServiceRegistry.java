@@ -38,11 +38,10 @@ import org.w3c.dom.Document;
 
 @XmlRootElement
 public class ServiceRegistry {
+
+	public ServiceRegistry() {}
 	
 	private Set<Service> services = new HashSet<Service>();
-
-	public ServiceRegistry() {
-	}
 	
 	@XmlElement(name="service")
 	public Set<Service> getServices() {
