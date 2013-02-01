@@ -1,7 +1,5 @@
 package no.nav.maven.plugins;
 
-import static no.nav.serviceregistry.util.StringUtils.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -15,7 +13,6 @@ import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
 import no.nav.serviceregistry.exception.MavenArtifactResolevException;
-import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
 import no.nav.serviceregistry.util.MvnArtifact;
@@ -171,8 +168,6 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			String applicationName = envConfigApplicationInfo.getName();
 
 			String hostname = envConfigApplicationInfo.getEndpoint();
-			if (empty(hostname)) throw new ServiceRegistryException("Hostname for " + applicationName + " is missing");
-
 			File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
 
 			getLog().debug("Reading app-config.xml for application " + applicationName);

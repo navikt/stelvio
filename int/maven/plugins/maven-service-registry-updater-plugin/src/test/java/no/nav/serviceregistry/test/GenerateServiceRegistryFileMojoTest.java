@@ -119,7 +119,7 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMojo.testableMojoExecutor(TEST_APPLICATION, SERVICE_REGISTRY_FILE);
 	}
 
-	@Test(expected=ServiceRegistryException.class)
+	@Test(expected=ApplicationConfigException.class)
 	public void testEnvConfigDoesNotReturnAllArtifactCoordinates() throws MojoExecutionException{
 		Testdata myMocker = new MyMocker();
 		HashSet<ApplicationInfo> hashSet = new HashSet<ApplicationInfo>();
