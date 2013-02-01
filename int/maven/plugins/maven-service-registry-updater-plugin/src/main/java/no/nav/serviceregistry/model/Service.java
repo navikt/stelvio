@@ -1,5 +1,6 @@
 package no.nav.serviceregistry.model;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,7 +66,8 @@ public class Service {
 	
 	@Override
 	public int hashCode() {
-		return name.hashCode() + application.hashCode();
+		Object[] ar = {name,application};
+		return Arrays.hashCode(ar);
 	}
 
 	@Override

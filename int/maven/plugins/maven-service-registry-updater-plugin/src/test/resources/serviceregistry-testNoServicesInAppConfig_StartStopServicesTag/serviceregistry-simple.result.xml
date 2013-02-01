@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:serviceRegistry xmlns:ns2="http://www.stelvio.no/ServiceRegistry">
+    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/" name="ns3:BehandleBrukerprofil">
+        <application>pselv</application>
+        <serviceVersion bindingName="ns3:BehandleBrukerprofilBinding">
+            <operation action="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/BehandleBrukerprofilPortType/oppdaterKontaktinformasjonOgPreferanser" name="oppdaterKontaktinformasjonOgPreferanser"/>
+            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName" wsdlAddress="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName?wsdl"/>
+        </serviceVersion>
+    </service>
+    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
+        <application>tsys</application>
+        <serviceVersion bindingName="ns3:BrukerprofilBinding">
+            <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
+            <serviceInstance endpoint="https://hostname.no:443//path/til/tsys" wsdlAddress="https://hostname.no:443//path/til/tsys?wsdl"/>
+        </serviceVersion>
+    </service>
     <service xmlns:ns3="http://nav.no/virksomhet/tjenester/opptjening/v1/Binding" name="ns3:OpptjeningWSEXP_OpptjeningHttpService">
         <application>popp</application>
         <serviceVersion bindingName="ns3:OpptjeningWSEXP_OpptjeningHttpBinding">
@@ -19,20 +33,6 @@
             <operation action="http://nav.no/virksomhet/tjenester/opptjening/v1/Binding/slettOmsorg" name="slettOmsorg"/>
             <operation action="http://nav.no/virksomhet/tjenester/opptjening/v1/Binding/hentOpptjeningsgrunnlagHistorikk" name="hentOpptjeningsgrunnlagHistorikk"/>
             <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName" wsdlAddress="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName?wsdl"/>
-        </serviceVersion>
-    </service>
-    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/" name="ns3:BehandleBrukerprofil">
-        <application>pselv</application>
-        <serviceVersion bindingName="ns3:BehandleBrukerprofilBinding">
-            <operation action="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/BehandleBrukerprofilPortType/oppdaterKontaktinformasjonOgPreferanser" name="oppdaterKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName" wsdlAddress="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName?wsdl"/>
-        </serviceVersion>
-    </service>
-    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
-        <application>tsys</application>
-        <serviceVersion bindingName="ns3:BrukerprofilBinding">
-            <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostname.no:443//path/til/tsys" wsdlAddress="https://hostname.no:443//path/til/tsys?wsdl"/>
         </serviceVersion>
     </service>
 </ns2:serviceRegistry>
