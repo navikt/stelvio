@@ -170,7 +170,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 
 			if (empty(apps) || applicationsFromInput.contains(applicationName)){
 				String hostname = envConfigApplicationInfo.getEndpoint();
-				if (empty(hostname)) throw new ServiceRegistryException("Maven coordinates needed to locate appConfig for application " + applicationName + " is missing");
+				if (empty(hostname)) throw new ServiceRegistryException("Hostname for " + applicationName + " is missing");
 				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
 				
 				getLog().debug("Reading app-config.xml for application " + applicationName);
