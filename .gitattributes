@@ -7754,8 +7754,6 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/BadUrlException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/MavenArtifactResolevException.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/exception/ServiceRegistryException.java -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/mocker/MyMockLogger.java -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/mocker/MyMocker.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/Service.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/ServiceInstance.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/model/ServiceOperation.java -text
@@ -7766,11 +7764,14 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/ser
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/MvnArtifact.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ServiceRegistryUtils.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/ServiceWrapper.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/main/java/no/nav/serviceregistry/util/Testdata.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/main/resources/service-registry.xsd -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/AppConfigUtilsTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/GenerateServiceRegistryFileMojoTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/MvnArtifactTest.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/ServiceRegestryTest.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/mocker/MyMockLogger.java -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/mocker/MyMocker.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/java/no/nav/serviceregistry/test/util/TestUtils.java -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/appConfig-Corrupt/app-config.xml -text

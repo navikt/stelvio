@@ -1,4 +1,4 @@
-package no.nav.serviceregistry.mocker;
+package no.nav.serviceregistry.test.mocker;
 
 import java.io.File;
 import java.util.HashSet;
@@ -6,8 +6,9 @@ import java.util.Set;
 
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.serviceregistry.exception.MavenArtifactResolevException;
+import no.nav.serviceregistry.util.Testdata;
 
-public class MyMocker {
+public class MyMocker implements Testdata {
 	private File appConfigExtractDir;
 	private File serviceExtractDir;
 	private Set<ApplicationInfo> envConfigApplications;
@@ -21,6 +22,7 @@ public class MyMocker {
 		mockApplicationInfoResolveException = false;
 		mockServiceResolveException = false;
 	}
+
 	public File getAppConfigExtractDir() {
 		if(mockApplicationInfoResolveException){
 			throw new MavenArtifactResolevException();

@@ -1,4 +1,4 @@
-package no.nav.serviceregistry.mocker;
+package no.nav.serviceregistry.test.mocker;
 
 import org.apache.maven.plugin.logging.Log;
 

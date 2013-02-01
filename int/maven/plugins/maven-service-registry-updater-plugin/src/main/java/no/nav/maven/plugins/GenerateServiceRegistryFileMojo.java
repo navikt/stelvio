@@ -15,12 +15,12 @@ import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
-import no.nav.serviceregistry.mocker.MyMocker;
 import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
 import no.nav.serviceregistry.util.ServiceWrapper;
 import no.nav.serviceregistry.util.MvnArtifact;
 import no.nav.serviceregistry.util.ServiceRegistryUtils;
+import no.nav.serviceregistry.util.Testdata;
 
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.artifact.Artifact;
@@ -141,7 +141,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		testableMojoExecutor(env, baseUrl, apps, serviceRegistryFile, null, getLog());
 	}
 
-	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile, MyMocker testData, Log log) throws MojoExecutionException {
+	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile, Testdata testData, Log log) throws MojoExecutionException {
 		Set<String> applicationsFromInput = new HashSet<String>();
 		log.debug("Retrieving info for environment " + env + " from envConfig!");
 		Set<ApplicationInfo> applicationsFromEnvconfig;
@@ -197,21 +197,21 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo, MyMocker mocker) throws MojoExecutionException{
+	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo, Testdata testdata) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
-		if(mocker==null){
+		if(testdata==null){
 			return downloadAndExtract(artifact, extractTo);
 		}else{
-			return mocker.getAppConfigExtractDir();
+			return testdata.getAppConfigExtractDir();
 		}
 	}
 	
-	private File downloadAndExtractService(Service service, String extractTo, MyMocker mocker) throws MojoExecutionException{
+	private File downloadAndExtractService(Service service, String extractTo, Testdata testdata) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(service, "zip");
-		if(mocker==null){
+		if(testdata==null){
 			return downloadAndExtract(artifact, extractTo);
 		}else{
-			return mocker.getServiceExtractDir();
+			return testdata.getServiceExtractDir();
 		}
 	}
 	
