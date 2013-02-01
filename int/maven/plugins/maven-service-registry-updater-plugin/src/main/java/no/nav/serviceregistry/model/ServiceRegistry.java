@@ -123,7 +123,7 @@ public class ServiceRegistry {
 					if (empty(actionURI)) {
 						Operation portTypeOperation = portType.getOperation(operation.getName(), null, null);
 						actionURI = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + portTypeOperation.getInput().getName();
-					}//TODO: burde ikke vi ha brukt input/output istede for portTypeOperation.getName()
+					}
 					operations.add(new ServiceOperation(operationName, actionURI));
 				}
 			}
