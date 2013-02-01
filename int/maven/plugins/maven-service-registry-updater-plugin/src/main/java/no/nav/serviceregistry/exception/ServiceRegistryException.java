@@ -1,7 +1,7 @@
 package no.nav.serviceregistry.exception;
 
 public class ServiceRegistryException extends RuntimeException {
-	private static final long serialVersionUID = 5071188633564752042L;
+	private static final long serialVersionUID = 1L;
 
 	public ServiceRegistryException() {}
 

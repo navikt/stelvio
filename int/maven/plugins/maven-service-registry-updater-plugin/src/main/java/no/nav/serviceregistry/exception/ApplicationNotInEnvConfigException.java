@@ -1,7 +1,7 @@
 package no.nav.serviceregistry.exception;
 
 public class ApplicationNotInEnvConfigException extends RuntimeException {
-	private static final long serialVersionUID = 2169477382806225400L;
+	private static final long serialVersionUID = 1L;
 
 	public ApplicationNotInEnvConfigException() {}
 
