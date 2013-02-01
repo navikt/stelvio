@@ -17,12 +17,11 @@ import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
-import no.nav.serviceregistry.util.ServiceWrapper;
 import no.nav.serviceregistry.util.MvnArtifact;
 import no.nav.serviceregistry.util.ServiceRegistryUtils;
+import no.nav.serviceregistry.util.ServiceWrapper;
 import no.nav.serviceregistry.util.Testdata;
 
-import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -128,6 +127,9 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected String baseUrl;
+	
+
+	protected Testdata testdata;
 
 
 	/**
@@ -138,21 +140,21 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * for each application.  
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		testableMojoExecutor(env, baseUrl, apps, serviceRegistryFile, null, getLog());
+		testableMojoExecutor(env, baseUrl, apps, serviceRegistryFile);
 	}
 
-	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile, Testdata testData, Log log) throws MojoExecutionException {
+	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile) throws MojoExecutionException {
 		Set<String> applicationsFromInput = new HashSet<String>();
-		log.debug("Retrieving info for environment " + env + " from envConfig!");
+		getLog().debug("Retrieving info for environment " + env + " from envConfig!");
 		Set<ApplicationInfo> applicationsFromEnvconfig;
-		if(testData==null){
+		if(testdata==null){
 			applicationsFromEnvconfig = AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
 		}else{
-			applicationsFromEnvconfig = testData.getEnvConfigApplications();
+			applicationsFromEnvconfig = testdata.getEnvConfigApplications();
 		}
-		log.debug("Trying to read original service registry file...");
+		getLog().debug("Trying to read original service registry file...");
 		ServiceRegistry serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
-		log.debug("Original service registry file read!");
+		getLog().debug("Original service registry file read!");
 
 		if (!empty(apps)) {
 			Set<String> parsedApps = AppConfigUtils.parseApplicationsString(apps);
@@ -160,7 +162,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			
 			AppConfigUtils.appsExistInEnvConfig(applicationsFromInput, applicationsFromEnvconfig);
 			
-			log.debug("Addded applications: " + Arrays.toString(parsedApps.toArray()));
+			getLog().debug("Addded applications: " + Arrays.toString(parsedApps.toArray()));
 		}
 
 		for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
@@ -169,9 +171,9 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			if (empty(apps) || applicationsFromInput.contains(applicationName)){
 				String hostname = envConfigApplicationInfo.getEndpoint();
 				if (empty(hostname)) throw new ServiceRegistryException("Maven coordinates needed to locate appConfig for application " + applicationName + " is missing");
-				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName, testData);
+				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
 				
-				log.debug("Reading app-config.xml for application " + applicationName);
+				getLog().debug("Reading app-config.xml for application " + applicationName);
 				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
 				
 				Collection<Service> services = thisApp.getExposedServices();
@@ -179,14 +181,14 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 				for (Service service : services) {
 					String serviceName = service.getName();
 					String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
-					log.debug("Downloading WSDL into: " + wsdlDownloadDir);
-					File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir, testData);
+					getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
+					File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
 
 					exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
-					log.debug("Added service " + serviceName);
+					getLog().debug("Added service " + serviceName);
 				}
 
-				log.debug("Replacing all information for application " + applicationName);
+				getLog().debug("Replacing all information for application " + applicationName);
 				serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
 			}
 		}
@@ -197,7 +199,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo, Testdata testdata) throws MojoExecutionException{
+	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
 		if(testdata==null){
 			return downloadAndExtract(artifact, extractTo);
@@ -206,7 +208,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	private File downloadAndExtractService(Service service, String extractTo, Testdata testdata) throws MojoExecutionException{
+	private File downloadAndExtractService(Service service, String extractTo) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(service, "zip");
 		if(testdata==null){
 			return downloadAndExtract(artifact, extractTo);
@@ -250,7 +252,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 	}
 	
-	public void setServiceRegistryFile(String serviceRegistryFile) {
-		this.serviceRegistryFile = serviceRegistryFile;
+	public void setTestdata(Testdata testdata) {
+		this.testdata = testdata;
 	}
 }
