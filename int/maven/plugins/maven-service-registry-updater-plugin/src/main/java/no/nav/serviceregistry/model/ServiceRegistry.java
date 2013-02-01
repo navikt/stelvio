@@ -15,7 +15,9 @@ import java.util.Set;
 import javax.wsdl.Binding;
 import javax.wsdl.BindingOperation;
 import javax.wsdl.Definition;
+import javax.wsdl.Operation;
 import javax.wsdl.Port;
+import javax.wsdl.PortType;
 import javax.wsdl.extensions.soap.SOAPOperation;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -92,15 +94,8 @@ public class ServiceRegistry {
 
 	public void addServiceInstance(String application, URL serviceEndpoint, String pathToWsdl) {
 		Definition definition = DPWsdlUtils.getDefinition(pathToWsdl);
-		URL wsdlAddress;
-		try {
-			//TODO: vil wsdlAddress alltid se slik ut?
-			wsdlAddress = new URL(serviceEndpoint.toString() + "?wsdl");
-		} catch (MalformedURLException e) {
-			throw new BadUrlException("The endpoint provided is not valid (check input from envconfig)!", e);
-		}
 		
-		ServiceInstance instance = new ServiceInstance(serviceEndpoint, wsdlAddress);
+		ServiceInstance instance = new ServiceInstance(serviceEndpoint);
 
 		for (Iterator iterator = definition.getAllServices().values().iterator(); iterator.hasNext();) {
 			javax.wsdl.Service service = (javax.wsdl.Service) iterator.next();
@@ -117,6 +112,7 @@ public class ServiceRegistry {
 
 	private List<ServiceOperation> getOperations(Definition definition,	Binding binding) {
 		List<ServiceOperation> operations = new ArrayList<ServiceOperation>();
+		PortType portType = binding.getPortType();
 		for (Object op : binding.getBindingOperations()) {
 			BindingOperation operation = (BindingOperation) op;
 			for (Object obj : operation.getExtensibilityElements()) {
@@ -125,8 +121,9 @@ public class ServiceRegistry {
 					SOAPOperation soapOperation = (SOAPOperation) obj;
 					String actionURI = soapOperation.getSoapActionURI();
 					if (empty(actionURI)) {
-						actionURI = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + operationName;
-					}
+						Operation portTypeOperation = portType.getOperation(operation.getName(), null, null);
+						actionURI = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + portTypeOperation.getInput().getName();
+					}//TODO: burde ikke vi ha brukt input/output istede for portTypeOperation.getName()
 					operations.add(new ServiceOperation(operationName, actionURI));
 				}
 			}

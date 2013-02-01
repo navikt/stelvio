@@ -6,15 +6,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class ServiceInstance {
 
 	private URL endpoint;
-	private URL wsdlAddress;
 	
 	/* For JAXB */
 	@SuppressWarnings("unused")
 	private ServiceInstance() {}
 
-	public ServiceInstance(URL endpoint, URL wsdlAddress) {
+	public ServiceInstance(URL endpoint) {
 		this.endpoint = endpoint;
-		this.wsdlAddress = wsdlAddress;
 	}
 	
 	@XmlAttribute
@@ -25,16 +23,7 @@ public class ServiceInstance {
 	public void setEndpoint(URL endpoint) {
 		this.endpoint = endpoint;
 	}
-
-	@XmlAttribute
-	public URL getWsdlAddress() {
-		return wsdlAddress;
-	}
-
-	public void setWsdlAddress(URL wsdlAddress) {
-		this.wsdlAddress = wsdlAddress;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		return endpoint.hashCode();

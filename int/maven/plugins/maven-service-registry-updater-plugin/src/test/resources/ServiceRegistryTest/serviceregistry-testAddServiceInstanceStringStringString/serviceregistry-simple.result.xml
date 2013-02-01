@@ -3,8 +3,8 @@
     <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
         <application>popp</application>
         <serviceVersion bindingName="ns3:BrukerprofilBinding">
-            <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="http://tset.com/" wsdlAddress="http://tset.com/?wsdl"/>
+            <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanserRequest" name="hentKontaktinformasjonOgPreferanser"/>
+            <serviceInstance endpoint="http://tset.com/"/>
         </serviceVersion>
     </service>
 </ns2:serviceRegistry>
