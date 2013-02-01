@@ -31,6 +31,7 @@ import no.nav.datapower.util.DPWsdlUtils;
 import no.nav.serviceregistry.exception.BadUrlException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.util.ServiceWrapper;
+import static no.nav.serviceregistry.util.StringUtils.*;
 
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
@@ -107,27 +108,31 @@ public class ServiceRegistry {
 			for (Iterator iterator2 = service.getPorts().values().iterator(); iterator2.hasNext();) {
 				Port port = (Port) iterator2.next();
 				Binding binding = port.getBinding();
-				List<ServiceOperation> operations = new ArrayList<ServiceOperation>();
-				for (Object op : binding.getBindingOperations()) {
-					BindingOperation operation = (BindingOperation) op;
-					for (Object obj : operation.getExtensibilityElements()) {
-						if (obj instanceof SOAPOperation) {
-							SOAPOperation soapOperation = (SOAPOperation) obj;
-							String actionURI = soapOperation.getSoapActionURI(); 
-							if (actionURI != null && !actionURI.isEmpty()) {
-								operations.add(new ServiceOperation(operation.getName(), actionURI));
-							} else {
-								String action = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + operation.getName();
-								operations.add(new ServiceOperation(operation.getName(), action));
-							}
-						}
-					}
-				}
+				List<ServiceOperation> operations = getOperations(definition, binding);
 				if (operations.size() > 0) {
 					addServiceInstance(service.getQName(), application, binding.getQName(), instance, operations);
 				}
 			}
 		}
+	}
+
+	private List<ServiceOperation> getOperations(Definition definition,	Binding binding) {
+		List<ServiceOperation> operations = new ArrayList<ServiceOperation>();
+		for (Object op : binding.getBindingOperations()) {
+			BindingOperation operation = (BindingOperation) op;
+			for (Object obj : operation.getExtensibilityElements()) {
+				if (obj instanceof SOAPOperation) {
+					String operationName = operation.getName();
+					SOAPOperation soapOperation = (SOAPOperation) obj;
+					String actionURI = soapOperation.getSoapActionURI();
+					if (empty(actionURI)) {
+						actionURI = definition.getTargetNamespace() + binding.getPortType().getQName().getLocalPart() + "/" + operationName;
+					}
+					operations.add(new ServiceOperation(operationName, actionURI));
+				}
+			}
+		}
+		return operations;
 	}
 
 	public void addServiceInstance(QName serviceName, String applicationName, QName bindingName, ServiceInstance serviceInstance, List<ServiceOperation> operations) {
