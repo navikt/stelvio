@@ -13,6 +13,7 @@ import java.util.Set;
 import no.nav.aura.appconfig.Application;
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
+import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
 import no.nav.serviceregistry.exception.MavenArtifactResolevException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.model.ServiceRegistry;
@@ -52,43 +53,43 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected File buildDirectory;
-    /**
-     * Used to look up Artifacts in the remote repository.
-     * 
-     * @parameter expression=
-     *  "${component.org.apache.maven.artifact.factory.ArtifactFactory}"
-     * @required
-     * @readonly
-     */
+	/**
+	 * Used to look up Artifacts in the remote repository.
+	 * 
+	 * @parameter expression=
+	 *  "${component.org.apache.maven.artifact.factory.ArtifactFactory}"
+	 * @required
+	 * @readonly
+	 */
 	protected ArtifactFactory factory;
 
-    /**
-     * Used to look up Artifacts in the remote repository.
-     * 
-     * @parameter expression=
-     *  "${component.org.apache.maven.artifact.resolver.ArtifactResolver}"
-     * @required
-     * @readonly
-     */
-    protected ArtifactResolver artifactResolver;
+	/**
+	 * Used to look up Artifacts in the remote repository.
+	 * 
+	 * @parameter expression=
+	 *  "${component.org.apache.maven.artifact.resolver.ArtifactResolver}"
+	 * @required
+	 * @readonly
+	 */
+	protected ArtifactResolver artifactResolver;
 
-    /**
-     * List of Remote Repositories used by the resolver
-     * 
-     * @parameter expression="${project.remoteArtifactRepositories}"
-     * @readonly
-     * @required
-     */
-    protected List remoteRepositories;
+	/**
+	 * List of Remote Repositories used by the resolver
+	 * 
+	 * @parameter expression="${project.remoteArtifactRepositories}"
+	 * @readonly
+	 * @required
+	 */
+	protected List remoteRepositories;
 
-    /**
-     * Location of the local repository.
-     * 
-     * @parameter expression="${localRepository}"
-     * @readonly
-     * @required
-     */
-    protected ArtifactRepository localRepository;
+	/**
+	 * Location of the local repository.
+	 * 
+	 * @parameter expression="${localRepository}"
+	 * @readonly
+	 * @required
+	 */
+	protected ArtifactRepository localRepository;
 	/**
 	 * @component roleHint="jar"
 	 * @required
@@ -99,10 +100,17 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	/**
 	 * Apps with services to be exposed formatted like "pselv, norg,Joark"
 	 * 
-	 * @parameter
+	 * @parameter expression="${apps}"
 	 * 
 	 */
-	protected String apps;
+	protected String applicationsString;
+
+	/**
+	 * Boolean paramerter that you set as true if you are installing a new environment, or need a fresh install
+	 * 
+	 * @parameter default-value="false"
+	 */
+	protected Boolean isFreshInstall;
 
 	/**
 	 * Environment
@@ -127,7 +135,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected String baseUrl;
-	
+
 
 	protected Testdata testdata;
 
@@ -140,54 +148,73 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 	 * for each application.  
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		testableMojoExecutor(env, baseUrl, apps, serviceRegistryFile);
+		testableMojoExecutor(applicationsString, serviceRegistryFile);
 	}
 
-	public void testableMojoExecutor(String env, String baseUrl, String apps, String serviceRegistryFile) throws MojoExecutionException {
-		Set<String> applicationsFromInput = new HashSet<String>();
-		getLog().debug("Retrieving info for environment " + env + " from envConfig!");
+	public void testableMojoExecutor(String applicationsString, String serviceRegistryFile) throws MojoExecutionException {
 		Set<ApplicationInfo> applicationsFromEnvconfig;
-		if(testdata==null){
-			applicationsFromEnvconfig = AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
-		}else{
-			applicationsFromEnvconfig = testdata.getEnvConfigApplications();
+		ServiceRegistry serviceRegistry;
+		if (isFreshInstall){
+			getLog().debug("Retrieving all applications for environment " + env + " from envConfig...");
+			applicationsFromEnvconfig = getAllApplikationsFromEnvConfig();
+			serviceRegistry = new ServiceRegistry();
 		}
-		getLog().debug("Trying to read original service registry file...");
-		ServiceRegistry serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
-		getLog().debug("Original service registry file read!");
-
-		if (!empty(apps)) {
-			Set<String> parsedApps = AppConfigUtils.parseApplicationsString(apps);
-			applicationsFromInput.addAll(parsedApps);
-			
-			AppConfigUtils.appsExistInEnvConfig(applicationsFromInput, applicationsFromEnvconfig);
-			
-			getLog().debug("Addded applications: " + Arrays.toString(parsedApps.toArray()));
+		else{
+			getLog().debug("Reading original service registry file...");
+			serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
+			getLog().debug("Retrieving info for "+ applicationsString +" in environment " + env + " from envConfig...");
+			Set<String> applicationNames = AppConfigUtils.parseApplicationsString(applicationsString);
+			applicationsFromEnvconfig = getFilterdApplikationsFromEnvConfig(applicationNames);
 		}
 
 		for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
 			String applicationName = envConfigApplicationInfo.getName();
 
-			if (empty(apps) || applicationsFromInput.contains(applicationName)){
-				String hostname = envConfigApplicationInfo.getEndpoint();
-				if (empty(hostname)) throw new ServiceRegistryException("Hostname for " + applicationName + " is missing");
-				File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
-				
-				getLog().debug("Reading app-config.xml for application " + applicationName);
-				Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
-				
-				Collection<Service> services = thisApp.getExposedServices();
-				Collection<ServiceWrapper> exposedServices = getExposedServices(applicationName, services);
+			String hostname = envConfigApplicationInfo.getEndpoint();
+			if (empty(hostname)) throw new ServiceRegistryException("Hostname for " + applicationName + " is missing");
 
-				getLog().debug("Replacing all information for application " + applicationName);
-				serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
-			}
+			File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
+
+			getLog().debug("Reading app-config.xml for application " + applicationName);
+			Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
+
+			Collection<Service> services = thisApp.getExposedServices();
+			Collection<ServiceWrapper> exposedServices = getExposedServices(applicationName, services);
+
+			getLog().debug("Replacing all information for application " + applicationName);
+			serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
 		}
 		try {
 			ServiceRegistryUtils.writeToFile(serviceRegistry, new File(serviceRegistryFile));
 		} catch (Exception e) {
 			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
 		}
+	}
+
+	private Set<ApplicationInfo> getAllApplikationsFromEnvConfig() throws MojoExecutionException {
+		if(testdata!=null) return testdata.getEnvConfigApplications();
+		return AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
+	}
+
+	private Set<ApplicationInfo> getFilterdApplikationsFromEnvConfig(Set<String> applicationNames) throws MojoExecutionException {
+		Set<ApplicationInfo> output = new HashSet<ApplicationInfo>();
+		Set<ApplicationInfo> applicationsFromEnvconfig = getAllApplikationsFromEnvConfig();
+		for (ApplicationInfo applicationInfo : applicationsFromEnvconfig) {
+			for (String applicationName : applicationNames) {
+				if(applicationInfo.getName().equals(applicationName)){
+					output.add(applicationInfo);
+					applicationNames.remove(applicationName);
+					break;
+				}
+			}
+		}
+
+		if (applicationNames.size() != 0) throw new ApplicationNotInEnvConfigException("Could not find this/theese application(s) in envConfig"+ Arrays.toString(applicationNames.toArray()));
+		getLog().debug("Addded these applications:");
+		for (ApplicationInfo applicationInfo : output) {
+			getLog().debug(applicationInfo.getName());
+		}
+		return output;
 	}
 
 	private Collection<ServiceWrapper> getExposedServices(String applicationName, Collection<Service> services)	throws MojoExecutionException {
@@ -203,7 +230,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		}
 		return exposedServices;
 	}
-	
+
 	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
 		if(testdata==null){
@@ -212,7 +239,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			return testdata.getAppConfigExtractDir();
 		}
 	}
-	
+
 	private File downloadAndExtractService(Service service, String extractTo) throws MojoExecutionException{
 		MvnArtifact artifact = new MvnArtifact(service, "zip");
 		if(testdata==null){
@@ -221,7 +248,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			return testdata.getServiceExtractDir();
 		}
 	}
-	
+
 	private File downloadAndExtract(MvnArtifact artifact, String extractTo) throws MojoExecutionException{
 		File zip = downloadMavenArtifact(artifact);
 		File extractToFile = new File(extractTo);
@@ -229,7 +256,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		extractArtifact(zip, extractToFile);
 		return extractToFile;
 	}
-	
+
 	public File downloadMavenArtifact(MvnArtifact mvnArtifact) {
 
 		Artifact pomArtifact = factory.createArtifact(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), "", mvnArtifact.getType());
@@ -243,7 +270,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			throw new MavenArtifactResolevException("Artifact not found, " + e);
 		}
 	}
-	
+
 	private void extractArtifact(File source, File destination) throws MojoExecutionException {
 
 		unArchiver.setDestDirectory(destination);
@@ -256,8 +283,12 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 			throw new MojoExecutionException("Could not extract artifact(IO error): " + source + "\n" + e);
 		}
 	}
-	
+
 	public void setTestdata(Testdata testdata) {
 		this.testdata = testdata;
+	}
+
+	public void setFreshInstall(boolean freshInstall) {
+		this.isFreshInstall = freshInstall;
 	}
 }

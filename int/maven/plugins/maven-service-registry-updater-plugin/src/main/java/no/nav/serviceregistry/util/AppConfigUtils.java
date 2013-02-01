@@ -1,5 +1,7 @@
 package no.nav.serviceregistry.util;
 
+import static no.nav.serviceregistry.util.StringUtils.empty;
+
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +14,6 @@ import no.nav.aura.appconfig.Application;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.aura.envconfig.client.rest.ServiceGatewayRestClient;
 import no.nav.serviceregistry.exception.ApplicationConfigException;
-import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
@@ -26,10 +27,13 @@ public class AppConfigUtils {
 	}
 	
 	public static Set<String> parseApplicationsString(String appString) throws MojoExecutionException {
+		if (empty(appString)){
+			throw new ApplicationConfigException("You need to give the -freshInstall option or give applications(\"tys,pen,gosys\") as input to the -apps input!");
+		}
 		Set<String> apps = new HashSet<String>();
 		for (String applicationString : appString.split(",")) {
 			String application = applicationString.split(":")[0].trim().toLowerCase();
-			if (application == null) {
+			if (empty(application)) {
 				throw new ApplicationConfigException("Something is wrong with the 'apps'-string. Verify that it's on the correct format. " + apps);
 			}
 			apps.add(application);
@@ -49,24 +53,5 @@ public class AppConfigUtils {
 	public static Set<ApplicationInfo> getInfoFromEnvconfig(String environment, String baseUrl) throws MojoExecutionException {
 		ServiceGatewayRestClient client = new ServiceGatewayRestClient(baseUrl);
 		return client.getApplicationInfo(environment);
-	}
-
-	public static void appsExistInEnvConfig(Set<String> applicationsFromInput, Set<ApplicationInfo> applicationsFromEnvconfig) throws MojoExecutionException {
-		if (applicationsFromEnvconfig == null || applicationsFromEnvconfig.isEmpty()) {
-			throw new MojoExecutionException("No applications retrieved from envConfig");
-		}
-		
-		if(applicationsFromInput.size() != 0){
-			Set<String> appNamesFromEnvConfig = new HashSet<String>();
-			for (ApplicationInfo ai : applicationsFromEnvconfig) {
-				appNamesFromEnvConfig.add(ai.getName());
-			}
-			for (String application : applicationsFromInput) {
-				if(!appNamesFromEnvConfig.contains(application)){
-					throw new ApplicationNotInEnvConfigException("Could not find application in the list of applications retrived from envConfig");
-				}
-				
-			}
-		}
 	}
 }

@@ -7821,6 +7821,8 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/servi
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testPossitiveMojoExecutor/serviceregistry-simple.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testReadServiceRegistry/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/serviceregistry-testReadServiceRegistry/serviceregistry-simple.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/testFreshInstallTrue/serviceregistry-simple.result.xml -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/testFreshInstallTrue/serviceregistry-simple.xml -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
