@@ -7811,6 +7811,10 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/Servi
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/emptyDir/tom.txt -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/service-registry.xsd -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/wsdl/nav-tjeneste-oppholdsstatus-1.0.4-wsdlif/no/nav/virksomhet/tjenester/oppholdsstatus/feil/feil.xsd -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/wsdl/nav-tjeneste-oppholdsstatus-1.0.4-wsdlif/no/nav/virksomhet/tjenester/oppholdsstatus/meldinger/meldinger.xsd -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/wsdl/nav-tjeneste-oppholdsstatus-1.0.4-wsdlif/no/nav/virksomhet/tjenester/oppholdsstatus/oppholdsstatus.wsdl -text
+int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/wsdl/nav-tjeneste-oppholdsstatus-1.0.4-wsdlif/no/nav/virksomhet/tjenester/oppholdsstatus/v1/Binding.wsdl -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text

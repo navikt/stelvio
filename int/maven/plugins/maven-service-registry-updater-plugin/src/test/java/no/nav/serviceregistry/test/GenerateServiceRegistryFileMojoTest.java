@@ -35,6 +35,14 @@ public class GenerateServiceRegistryFileMojoTest {
 		globalMojo = mojoFactory(new MyMocker());
 	}
 	
+	private GenerateServiceRegistryFileMojo mojoFactory(Testdata testdata){
+		GenerateServiceRegistryFileMojo myMojo = new GenerateServiceRegistryFileMojo();
+		myMojo.setTestdata(testdata);
+		myMojo.setFreshInstall(false);
+		myMojo.setLog(new MyMockLogger());
+		return myMojo;
+	}
+	
 	@Test
 	public void testPossitiveMojoExecutor() throws MojoExecutionException {
 		String sr = getResource("/GenerateServiceRegistryFileMojoTest/serviceregistry-testPossitiveMojoExecutor/serviceregistry-simple.result.xml");
@@ -161,14 +169,6 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMocker.setMockApplicationInfoResolveException(true);
 		GenerateServiceRegistryFileMojo myMojo = mojoFactory(myMocker);
 		myMojo.testableMojoExecutor(TEST_APPLICATION, SERVICE_REGISTRY_FILE);
-	}
-	
-	private GenerateServiceRegistryFileMojo mojoFactory(Testdata testdata){
-		GenerateServiceRegistryFileMojo myMojo = new GenerateServiceRegistryFileMojo();
-		myMojo.setTestdata(testdata);
-		myMojo.setFreshInstall(false);
-		myMojo.setLog(new MyMockLogger());
-		return myMojo;
 	}
 
 	@Test

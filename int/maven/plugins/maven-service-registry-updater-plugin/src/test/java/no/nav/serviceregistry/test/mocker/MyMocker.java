@@ -17,7 +17,7 @@ public class MyMocker implements Testdata {
 	
 	public MyMocker() {
 		appConfigExtractDir = new File(this.getClass().getResource("/").getFile());
-		serviceExtractDir = appConfigExtractDir;
+		serviceExtractDir = new File(this.getClass().getResource("/wsdl").getFile());
 		envConfigApplications = generateMockEnvConfigApplications();
 		mockApplicationInfoResolveException = false;
 		mockServiceResolveException = false;
@@ -32,7 +32,7 @@ public class MyMocker implements Testdata {
 
 	public File getServiceExtractDir() {
 		if(mockServiceResolveException){
-			throw new MavenArtifactResolevException(null, null);
+			throw new MavenArtifactResolevException();
 		}
 		return serviceExtractDir;
 	}
