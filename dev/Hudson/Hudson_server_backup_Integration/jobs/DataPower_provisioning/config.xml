@@ -193,7 +193,7 @@
               <hudson.model.StringParameterDefinition>
                 <name>Provisioning_script_version</name>
                 <description></description>
-                <defaultValue>0.0.4</defaultValue>
+                <defaultValue>0.0.7</defaultValue>
               </hudson.model.StringParameterDefinition>
               <hudson.model.StringParameterDefinition>
                 <name>apps</name>
