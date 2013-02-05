@@ -428,6 +428,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>IRPORT-2906-nav</string>
         <string>IRPORT-2906-pensjon</string>
         <string>IRPORT-2906-tjenestespesifikasjon-pensjon</string>
       </jobNames>
@@ -442,6 +443,28 @@
         <hudson.views.ConsoleColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Service Gateway</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[12]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
+      <includeRegex>.*[sS]ervice-?(gw|[gG]ateway).*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>

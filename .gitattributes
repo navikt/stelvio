@@ -1117,6 +1117,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_deploy_TRUNK/config.x
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_provisioning/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_release-configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Fixpack[!!-~]repo[!!-~]monitor/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/IRPORT-2906-nav/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/IRPORT-2906-pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/IRPORT-2906-tjenestespesifikasjon-pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Jira2Excel[!!-~]MOD[!!-~]SCM/config.xml -text
