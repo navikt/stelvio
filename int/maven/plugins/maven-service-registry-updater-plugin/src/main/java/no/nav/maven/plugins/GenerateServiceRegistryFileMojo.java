@@ -148,6 +148,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 		testableMojoExecutor(applicationsString, serviceRegistryFile);
 	}
 
+	//TODO: fjern denne metoden og sett "applicationsString" og "serviceRegistryFile" med set-ere istede. Slik at det er execute() som blir testet.
 	public void testableMojoExecutor(String applicationsString, String serviceRegistryFile) throws MojoExecutionException {
 		Set<ApplicationInfo> applicationsFromEnvconfig;
 		ServiceRegistry serviceRegistry;
