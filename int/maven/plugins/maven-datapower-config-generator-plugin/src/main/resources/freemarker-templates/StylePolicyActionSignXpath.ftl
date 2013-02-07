@@ -11,6 +11,10 @@
 			<ParameterValue>${xpath}</ParameterValue>
 		</StylesheetParameters>
 		<StylesheetParameters>
+			<ParameterName>{http://www.datapower.com/param/config}c14nalg</ParameterName>
+			<ParameterValue>exc-c14n</ParameterValue>
+		</StylesheetParameters>
+		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
 			<ParameterValue>${signCert}</ParameterValue>
 		</StylesheetParameters>
