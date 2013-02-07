@@ -18,28 +18,28 @@
             <operation action="http://nav.no/virksomhet/tjenester/opptjening/v1/Binding/slettForstegangstjeneste" name="slettForstegangstjeneste"/>
             <operation action="http://nav.no/virksomhet/tjenester/opptjening/v1/Binding/slettOmsorg" name="slettOmsorg"/>
             <operation action="http://nav.no/virksomhet/tjenester/opptjening/v1/Binding/hentOpptjeningsgrunnlagHistorikk" name="hentOpptjeningsgrunnlagHistorikk"/>
-            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName" wsdlAddress="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName?wsdl"/>
+            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName"/>
         </serviceVersion>
     </service>
     <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/" name="ns3:BehandleBrukerprofil">
         <application>pselv</application>
         <serviceVersion bindingName="ns3:BehandleBrukerprofilBinding">
             <operation action="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/BehandleBrukerprofilPortType/oppdaterKontaktinformasjonOgPreferanser" name="oppdaterKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName" wsdlAddress="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName?wsdl"/>
+            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName"/>
         </serviceVersion>
     </service>
     <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
         <application>autodeploy-test</application>
         <serviceVersion bindingName="ns3:BrukerprofilBinding">
             <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://e34apsl00120.devillo.no:8443/test/brukerprofil" wsdlAddress="https://e34apsl00120.devillo.no:8443/test/brukerprofil?wsdl"/>
+            <serviceInstance endpoint="https://e34apsl00120.devillo.no:8443/test/brukerprofil"/>
         </serviceVersion>
     </service>
     <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
         <application>tsys</application>
         <serviceVersion bindingName="ns3:BrukerprofilBinding">
             <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostname.no:8443//path/til/tsys" wsdlAddress="https://hostname.no:8443//path/til/tsys?wsdl"/>
+            <serviceInstance endpoint="https://hostname.no:8443//path/til/tsys"/>
         </serviceVersion>
     </service>
 </ns2:serviceRegistry>
