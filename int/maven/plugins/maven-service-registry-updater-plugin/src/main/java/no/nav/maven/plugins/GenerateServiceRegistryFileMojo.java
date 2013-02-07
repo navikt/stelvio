@@ -32,6 +32,8 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 
+import com.google.common.collect.Sets;
+
 /**
  * Goal which generates a service registry file. Based on service registry plugin by Øystein Gisnås.
  * 
@@ -45,246 +47,251 @@ import org.codehaus.plexus.archiver.UnArchiver;
 @SuppressWarnings("deprecation")
 public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 
-	/**
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	protected File buildDirectory;
-	/**
-	 * Used to look up Artifacts in the remote repository.
-	 * 
-	 * @parameter expression=
-	 *  "${component.org.apache.maven.artifact.factory.ArtifactFactory}"
-	 * @required
-	 * @readonly
-	 */
-	protected ArtifactFactory factory;
+    /**
+     * @parameter expression="${project.build.directory}"
+     * @required
+     */
+    protected File buildDirectory;
+    /**
+     * Used to look up Artifacts in the remote repository.
+     * 
+     * @parameter expression= "${component.org.apache.maven.artifact.factory.ArtifactFactory}"
+     * @required
+     * @readonly
+     */
+    protected ArtifactFactory factory;
 
-	/**
-	 * Used to look up Artifacts in the remote repository.
-	 * 
-	 * @parameter expression=
-	 *  "${component.org.apache.maven.artifact.resolver.ArtifactResolver}"
-	 * @required
-	 * @readonly
-	 */
-	protected ArtifactResolver artifactResolver;
+    /**
+     * Used to look up Artifacts in the remote repository.
+     * 
+     * @parameter expression= "${component.org.apache.maven.artifact.resolver.ArtifactResolver}"
+     * @required
+     * @readonly
+     */
+    protected ArtifactResolver artifactResolver;
 
-	/**
-	 * List of Remote Repositories used by the resolver
-	 * 
-	 * @parameter expression="${project.remoteArtifactRepositories}"
-	 * @readonly
-	 * @required
-	 */
-	protected List remoteRepositories;
+    /**
+     * List of Remote Repositories used by the resolver
+     * 
+     * @parameter expression="${project.remoteArtifactRepositories}"
+     * @readonly
+     * @required
+     */
+    protected List remoteRepositories;
 
-	/**
-	 * Location of the local repository.
-	 * 
-	 * @parameter expression="${localRepository}"
-	 * @readonly
-	 * @required
-	 */
-	protected ArtifactRepository localRepository;
-	/**
-	 * @component roleHint="jar"
-	 * @required
-	 * @readonly
-	 */
-	private UnArchiver unArchiver;//vurder aa endre til role,rolehint siden denne syntaksen er deprecated
+    /**
+     * Location of the local repository.
+     * 
+     * @parameter expression="${localRepository}"
+     * @readonly
+     * @required
+     */
+    protected ArtifactRepository localRepository;
+    /**
+     * @component roleHint="jar"
+     * @required
+     * @readonly
+     */
+    private UnArchiver unArchiver;// vurder aa endre til role,rolehint siden denne syntaksen er deprecated
 
-	/**
-	 * Apps with services to be exposed formatted like "pselv, norg,Joark"
-	 * 
-	 * @parameter expression="${apps}"
-	 * 
-	 */
-	protected String applicationsString;
+    /**
+     * Apps with services to be exposed formatted like "pselv, norg,Joark"
+     * 
+     * @parameter expression="${apps}"
+     * 
+     */
+    protected String applicationsString;
 
-	/**
-	 * Boolean paramerter that you set as true if you are installing a new environment, or need a fresh install
-	 * 
-	 * @parameter default-value="false"
-	 */
-	protected Boolean isFreshInstall;
+    /**
+     * Boolean paramerter that you set as true if you are installing a new environment, or need a fresh install
+     * 
+     * @parameter default-value="false"
+     */
+    protected Boolean isFreshInstall;
 
-	/**
-	 * Environment
-	 * 
-	 * @parameter expression="${env}"
-	 * @required
-	 */
-	protected String env;
+    /**
+     * Environment
+     * 
+     * @parameter expression="${env}"
+     * @required
+     */
+    protected String env;
 
-	/**
-	 * Path to service-registry.xml
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	protected String serviceRegistryFile;
+    /**
+     * Path to service-registry.xml
+     * 
+     * @parameter
+     * @required
+     */
+    protected String serviceRegistryFile;
 
-	/**
-	 * Base url for envconfig
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	protected String baseUrl;
+    /**
+     * Base url for envconfig
+     * 
+     * @parameter
+     * @required
+     */
+    protected String baseUrl;
 
+    protected Testdata testdata;
 
-	protected Testdata testdata;
+    /**
+     * This mojo takes an old service registry file as input and creates a java representation of it using JAXB. The mojo then
+     * retrieves all applications in environment env and retrieves the app config artifact for all applications that was given
+     * as input to the plugin. Then the app config file is used to retrieve wsdl files for all exposed services of the
+     * applications. This information will be used to replace all information in the original service registry file for each
+     * application.
+     */
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        testableMojoExecutor(applicationsString, serviceRegistryFile);
+    }
 
+    // TODO: fjern denne metoden og sett "applicationsString" og "serviceRegistryFile" med set-ere istede. Slik at det er
+    // execute() som blir testet.
+    public void testableMojoExecutor(String applicationsString, String serviceRegistryFile) throws MojoExecutionException {
+        Set<ApplicationInfo> applicationsFromEnvconfig;
+        ServiceRegistry serviceRegistry;
+        if (isFreshInstall) {
+            getLog().debug("Retrieving all applications for environment " + env + " from envConfig...");
+            applicationsFromEnvconfig = getAllApplikationsFromEnvConfig();
+            serviceRegistry = new ServiceRegistry();
+        }
+        else {
+            getLog().debug("Reading original service registry file...");
+            serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
+            getLog().debug("Retrieving info for " + applicationsString + " in environment " + env + " from envConfig...");
+            Set<String> applicationNames = AppConfigUtils.parseApplicationsString(applicationsString);
+            applicationsFromEnvconfig = getFilterdApplikationsFromEnvConfig(applicationNames);
+        }
 
-	/**
-	 * This mojo takes an old service registry file as input and creates a java representation of it using JAXB.  
-	 * The mojo then retrieves all applications in environment env and retrieves the app config artifact for all applications 
-	 * that was given as input to the plugin.  Then the app config file is used to retrieve wsdl files for all exposed services 
-	 * of the applications.  This information will be used to replace all information in the original service registry file 
-	 * for each application.  
-	 */
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		testableMojoExecutor(applicationsString, serviceRegistryFile);
-	}
+        Set<String> validDomains = Sets.newHashSet("test.local", "preprod.local", "adeo.no");
 
-	//TODO: fjern denne metoden og sett "applicationsString" og "serviceRegistryFile" med set-ere istede. Slik at det er execute() som blir testet.
-	public void testableMojoExecutor(String applicationsString, String serviceRegistryFile) throws MojoExecutionException {
-		Set<ApplicationInfo> applicationsFromEnvconfig;
-		ServiceRegistry serviceRegistry;
-		if (isFreshInstall){
-			getLog().debug("Retrieving all applications for environment " + env + " from envConfig...");
-			applicationsFromEnvconfig = getAllApplikationsFromEnvConfig();
-			serviceRegistry = new ServiceRegistry();
-		}
-		else{
-			getLog().debug("Reading original service registry file...");
-			serviceRegistry = ServiceRegistryUtils.readServiceRegistryFromFile(serviceRegistryFile);
-			getLog().debug("Retrieving info for "+ applicationsString +" in environment " + env + " from envConfig...");
-			Set<String> applicationNames = AppConfigUtils.parseApplicationsString(applicationsString);
-			applicationsFromEnvconfig = getFilterdApplikationsFromEnvConfig(applicationNames);
-		}
+        for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
 
-		for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
-			String applicationName = envConfigApplicationInfo.getName();
+            if (validDomains.contains(envConfigApplicationInfo.getDomain())) {
 
-			String hostname = envConfigApplicationInfo.getEndpoint();
-			File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory+ "/appConfDir-" + applicationName);
+                String applicationName = envConfigApplicationInfo.getName();
 
-			getLog().debug("Reading app-config.xml for application " + applicationName);
-			Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
+                String hostname = envConfigApplicationInfo.getEndpoint();
+                File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory + "/appConfDir-" + applicationName);
 
-			Collection<Service> services = thisApp.getExposedServices();
-			Collection<ServiceWrapper> exposedServices = getExposedServices(applicationName, services);
+                getLog().debug("Reading app-config.xml for application " + applicationName);
+                Application thisApp = AppConfigUtils.unmarshalAppConfig(appConfigExtractDir + "/app-config.xml");
 
-			getLog().debug("Replacing all information for application " + applicationName);
-			serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
-		}
-		try {
-			ServiceRegistryUtils.writeToFile(serviceRegistry, new File(serviceRegistryFile));
-		} catch (Exception e) {
-			throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
-		}
-	}
+                Collection<Service> services = thisApp.getExposedServices();
+                Collection<ServiceWrapper> exposedServices = getExposedServices(applicationName, services);
 
-	private Set<ApplicationInfo> getAllApplikationsFromEnvConfig() throws MojoExecutionException {
-		if(testdata!=null) return testdata.getEnvConfigApplications();
-		return AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);//gir et set av alle apps i miljoet
-	}
+                getLog().debug("Replacing all information for application " + applicationName);
+                serviceRegistry.replaceApplicationBlock(applicationName, hostname, exposedServices);
+            }
+        }
+        try {
+            ServiceRegistryUtils.writeToFile(serviceRegistry, new File(serviceRegistryFile));
+        } catch (Exception e) {
+            throw new MojoExecutionException("An error occured while trying to write service registry to file", e);
+        }
+    }
 
-	private Set<ApplicationInfo> getFilterdApplikationsFromEnvConfig(Set<String> applicationNames) throws MojoExecutionException {
-		Set<ApplicationInfo> output = new HashSet<ApplicationInfo>();
-		Set<ApplicationInfo> applicationsFromEnvconfig = getAllApplikationsFromEnvConfig();
-		for (ApplicationInfo applicationInfo : applicationsFromEnvconfig) {
-			for (String applicationName : applicationNames) {
-				if(applicationInfo.getName().equals(applicationName)){
-					output.add(applicationInfo);
-					applicationNames.remove(applicationName);
-					break;
-				}
-			}
-		}
+    private Set<ApplicationInfo> getAllApplikationsFromEnvConfig() throws MojoExecutionException {
+        if (testdata != null)
+            return testdata.getEnvConfigApplications();
+        return AppConfigUtils.getInfoFromEnvconfig(env, baseUrl);// gir et set av alle apps i miljoet
+    }
 
-		if (applicationNames.size() != 0) throw new ApplicationNotInEnvConfigException("Could not find this/theese application(s) in envConfig"+ Arrays.toString(applicationNames.toArray()));
-		getLog().debug("Addded these applications:");
-		for (ApplicationInfo applicationInfo : output) {
-			getLog().debug(applicationInfo.getName());
-		}
-		return output;
-	}
+    private Set<ApplicationInfo> getFilterdApplikationsFromEnvConfig(Set<String> applicationNames) throws MojoExecutionException {
+        Set<ApplicationInfo> output = new HashSet<ApplicationInfo>();
+        Set<ApplicationInfo> applicationsFromEnvconfig = getAllApplikationsFromEnvConfig();
+        for (ApplicationInfo applicationInfo : applicationsFromEnvconfig) {
+            for (String applicationName : applicationNames) {
+                if (applicationInfo.getName().equals(applicationName)) {
+                    output.add(applicationInfo);
+                    applicationNames.remove(applicationName);
+                    break;
+                }
+            }
+        }
 
-	private Collection<ServiceWrapper> getExposedServices(String applicationName, Collection<Service> services)	throws MojoExecutionException {
-		Collection<ServiceWrapper> exposedServices = new HashSet<ServiceWrapper>(); 
-		for (Service service : services) {
-			String serviceName = service.getName();
-			String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
-			getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
-			File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
+        if (applicationNames.size() != 0)
+            throw new ApplicationNotInEnvConfigException("Could not find this/theese application(s) in envConfig" + Arrays.toString(applicationNames.toArray()));
+        getLog().debug("Addded these applications:");
+        for (ApplicationInfo applicationInfo : output) {
+            getLog().debug(applicationInfo.getName());
+        }
+        return output;
+    }
 
-			exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
-			getLog().debug("Added service " + serviceName);
-		}
-		return exposedServices;
-	}
+    private Collection<ServiceWrapper> getExposedServices(String applicationName, Collection<Service> services) throws MojoExecutionException {
+        Collection<ServiceWrapper> exposedServices = new HashSet<ServiceWrapper>();
+        for (Service service : services) {
+            String serviceName = service.getName();
+            String wsdlDownloadDir = buildDirectory + "/wsdl-" + applicationName + "/" + serviceName;
+            getLog().debug("Downloading WSDL into: " + wsdlDownloadDir);
+            File serviceExtractDir = downloadAndExtractService(service, wsdlDownloadDir);
 
-	private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException{
-		MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
-		if(testdata==null){
-			return downloadAndExtract(artifact, extractTo);
-		}else{
-			return testdata.getAppConfigExtractDir();
-		}
-	}
+            exposedServices.add(new ServiceWrapper(serviceName, service.getPath(), serviceExtractDir));
+            getLog().debug("Added service " + serviceName);
+        }
+        return exposedServices;
+    }
 
-	private File downloadAndExtractService(Service service, String extractTo) throws MojoExecutionException{
-		MvnArtifact artifact = new MvnArtifact(service, "zip");
-		if(testdata==null){
-			return downloadAndExtract(artifact, extractTo);
-		}else{
-			return testdata.getServiceExtractDir();
-		}
-	}
+    private File downloadAndExtractApplicationInfo(ApplicationInfo appInfo, String extractTo) throws MojoExecutionException {
+        MvnArtifact artifact = new MvnArtifact(appInfo, "jar");
+        if (testdata == null) {
+            return downloadAndExtract(artifact, extractTo);
+        } else {
+            return testdata.getAppConfigExtractDir();
+        }
+    }
 
-	private File downloadAndExtract(MvnArtifact artifact, String extractTo) throws MojoExecutionException{
-		File zip = downloadMavenArtifact(artifact);
-		File extractToFile = new File(extractTo);
-		extractToFile.mkdirs();
-		extractArtifact(zip, extractToFile);
-		return extractToFile;
-	}
+    private File downloadAndExtractService(Service service, String extractTo) throws MojoExecutionException {
+        MvnArtifact artifact = new MvnArtifact(service, "zip");
+        if (testdata == null) {
+            return downloadAndExtract(artifact, extractTo);
+        } else {
+            return testdata.getServiceExtractDir();
+        }
+    }
 
-	public File downloadMavenArtifact(MvnArtifact mvnArtifact) {
+    private File downloadAndExtract(MvnArtifact artifact, String extractTo) throws MojoExecutionException {
+        File zip = downloadMavenArtifact(artifact);
+        File extractToFile = new File(extractTo);
+        extractToFile.mkdirs();
+        extractArtifact(zip, extractToFile);
+        return extractToFile;
+    }
 
-		Artifact pomArtifact = factory.createArtifact(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), "", mvnArtifact.getType());
-		getLog().debug("Resolving artifact: "+ mvnArtifact);
-		try {
-			artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
-			return pomArtifact.getFile();
-		} catch (ArtifactResolutionException e) {
-			throw new MavenArtifactResolevException("Could not resolve artifact, " + e);
-		} catch (ArtifactNotFoundException e) {
-			throw new MavenArtifactResolevException("Artifact not found, " + e);
-		}
-	}
+    public File downloadMavenArtifact(MvnArtifact mvnArtifact) {
 
-	private void extractArtifact(File source, File destination) throws MojoExecutionException {
+        Artifact pomArtifact = factory.createArtifact(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), "", mvnArtifact.getType());
+        getLog().debug("Resolving artifact: " + mvnArtifact);
+        try {
+            artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
+            return pomArtifact.getFile();
+        } catch (ArtifactResolutionException e) {
+            throw new MavenArtifactResolevException("Could not resolve artifact, " + e);
+        } catch (ArtifactNotFoundException e) {
+            throw new MavenArtifactResolevException("Artifact not found, " + e);
+        }
+    }
 
-		unArchiver.setDestDirectory(destination);
-		unArchiver.setSourceFile(source);
-		try {
-			unArchiver.extract();
-		} catch (ArchiverException e) {
-			throw new MojoExecutionException("Could not extract artifact: " + source + "\n" + e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("Could not extract artifact(IO error): " + source + "\n" + e);
-		}
-	}
+    private void extractArtifact(File source, File destination) throws MojoExecutionException {
 
-	public void setTestdata(Testdata testdata) {
-		this.testdata = testdata;
-	}
+        unArchiver.setDestDirectory(destination);
+        unArchiver.setSourceFile(source);
+        try {
+            unArchiver.extract();
+        } catch (ArchiverException e) {
+            throw new MojoExecutionException("Could not extract artifact: " + source + "\n" + e);
+        } catch (IOException e) {
+            throw new MojoExecutionException("Could not extract artifact(IO error): " + source + "\n" + e);
+        }
+    }
 
-	public void setFreshInstall(boolean freshInstall) {
-		this.isFreshInstall = freshInstall;
-	}
+    public void setTestdata(Testdata testdata) {
+        this.testdata = testdata;
+    }
+
+    public void setFreshInstall(boolean freshInstall) {
+        this.isFreshInstall = freshInstall;
+    }
 }
