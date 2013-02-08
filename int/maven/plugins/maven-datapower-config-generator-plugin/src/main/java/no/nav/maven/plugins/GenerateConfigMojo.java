@@ -190,7 +190,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		
 		File certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/filters/main.properties");
 		// main.properties leses også i pom, så den behoves ikke aa lesses her. For partner-gw derimot maa man lese inn sertifikatinfo.
-		if(gatewayName.equals("partner-gw")){ 
+		if(gatewayName.equals("partner-gw") || gatewayName.equals("dialog-gw")){ 
 			certFile = new File(project.getBasedir(), "target/dependency/" + gatewayName + "-environment-configuration-jar/" + envclass + "/trustCerts.properties");
 		}
 		
