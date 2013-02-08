@@ -130,7 +130,7 @@
       <string>hudson-tasks-Mailer</string>
       <external-property>
         <originalValue class="hudson.tasks.Mailer">
-          <recipients>test@example.com</recipients>
+          <recipients>test@example.com test@example.com</recipients>
           <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
           <sendToIndividuals>false</sendToIndividuals>
         </originalValue>
@@ -318,19 +318,19 @@ fi</command>
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean
-${Lifecycle}
--Denvironment=${Environment}
--Desb-modules-version=${ESBVersion}
--Dnav-modules-version=${ESBVersion}
--Dpensjon-modules-version=${ESBVersion}
--Dpensjon-prosess-modules-version=${ESBVersion}
--Dekstern-pensjon-modules-version=${ESBVersion}
--DinteractiveMode=false
--Dskip=backup-config
--Desb-authorization-configuration=${ESBVersion}
--Desb-nonenviroment-configuration=${ESBVersion}
--Desb-enviroment-configuration=${ESBVersion}
+              <goals>clean&#xd;
+${Lifecycle}&#xd;
+-Denvironment=${Environment}&#xd;
+-Desb-modules-version=${ESBVersion}&#xd;
+-Dnav-modules-version=${ESBVersion}&#xd;
+-Dpensjon-modules-version=${ESBVersion}&#xd;
+-Dpensjon-prosess-modules-version=${ESBVersion}&#xd;
+-Dekstern-pensjon-modules-version=${ESBVersion}&#xd;
+-DinteractiveMode=false&#xd;
+-Dskip=backup-config&#xd;
+-Desb-authorization-configuration=${ESBVersion}&#xd;
+-Desb-nonenviroment-configuration=${ESBVersion}&#xd;
+-Desb-enviroment-configuration=${ESBVersion}&#xd;
 -Dlogging.level=${logging_level}</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
