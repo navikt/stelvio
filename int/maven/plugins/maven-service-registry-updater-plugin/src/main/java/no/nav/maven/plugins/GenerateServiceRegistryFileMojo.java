@@ -158,7 +158,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
             applicationsFromEnvconfig = getFilterdApplikationsFromEnvConfig(applicationNames);
         }
 
-        Set<String> validDomains = Sets.newHashSet("test.local", "preprod.local", "adeo.no");
+        Set<String> validDomains = Sets.newHashSet("test.local", "preprod.local", "adeo.no", "devillo.no");
 
         for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
 
