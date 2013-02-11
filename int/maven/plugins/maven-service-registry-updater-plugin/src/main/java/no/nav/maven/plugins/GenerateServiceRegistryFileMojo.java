@@ -143,12 +143,6 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
      * application.
      */
     public void execute() throws MojoExecutionException, MojoFailureException {
-        testableMojoExecutor(applicationsString, serviceRegistryFile);
-    }
-
-    // TODO: fjern denne metoden og sett "applicationsString" og "serviceRegistryFile" med set-ere istede. Slik at det er
-    // execute() som blir testet.
-    public void testableMojoExecutor(String applicationsString, String serviceRegistryFile) throws MojoExecutionException {
         Set<ApplicationInfo> applicationsFromEnvconfig;
         ServiceRegistry serviceRegistry;
         if (isFreshInstall) {
@@ -294,4 +288,12 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
     public void setFreshInstall(boolean freshInstall) {
         this.isFreshInstall = freshInstall;
     }
+
+    public void setApplicationsString(String applicationsString) {
+		this.applicationsString = applicationsString;
+	}
+
+	public void setServiceRegistryFile(String serviceRegistryFile) {
+		this.serviceRegistryFile = serviceRegistryFile;
+	}
 }
