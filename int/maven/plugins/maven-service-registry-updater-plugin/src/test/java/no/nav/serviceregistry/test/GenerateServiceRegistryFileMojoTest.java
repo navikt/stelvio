@@ -133,6 +133,7 @@ public class GenerateServiceRegistryFileMojoTest {
 		HashSet<ApplicationInfo> hashSet = new HashSet<ApplicationInfo>();
 		ApplicationInfo applicationInfo = new ApplicationInfo();
 		applicationInfo.setName(TEST_APPLICATION);
+		applicationInfo.setDomain("test.local");
 		hashSet.add(applicationInfo);
 		myMocker.setEnvConfigApplications(hashSet);
 		GenerateServiceRegistryFileMojo myMojo = mojoFactory(myMocker);

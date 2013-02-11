@@ -69,7 +69,7 @@ public class MyMocker implements Testdata {
 		applicationInfo.setName("autodeploy-test");
 		applicationInfo.setAppConfigArtifactId("autodeploy-test");
 		applicationInfo.setAppConfigGroupId("no.nav.leren");
-		applicationInfo.setDomain("devillo.no");
+		applicationInfo.setDomain("test.local");
 		applicationInfo.setEndpoint("e34apsl00120.devillo.no");
 		applicationInfo.setVersion("1.0.1-SNAPSHOT");
 		envConfigApplikasjons.add(applicationInfo);
