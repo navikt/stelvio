@@ -24,8 +24,6 @@ public class GenerateServiceRegistryFileMojoTest {
 	static final String TEST_APPLICATION = "autodeploy-test";
 	static final String ORIGINAL_SERVICE_REGISTRY_FILE = getResource("/GenerateServiceRegistryFileMojoTest/serviceregistry-simple.org.xml");
 	static final String SERVICE_REGISTRY_FILE = getResource("/GenerateServiceRegistryFileMojoTest/serviceregistry-simple.xml");
-	static final String TEST_URL = "http://test.url";
-	static final String ENVIRONMENT = "u3";
 	static final String EMPTY_DIR = getResource("/emptyDir");
 	
 
