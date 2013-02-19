@@ -187,6 +187,7 @@
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
                     <string>u3</string>
+                    <string>t8</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -203,7 +204,7 @@
               <hudson.model.StringParameterDefinition>
                 <name>DatapowerURL</name>
                 <description></description>
-                <defaultValue>https://dp-tst-13.adeo.no:5550</defaultValue>
+                <defaultValue>https://dp-tst-11.adeo.no:5550</defaultValue>
               </hudson.model.StringParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
