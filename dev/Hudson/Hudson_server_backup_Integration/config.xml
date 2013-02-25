@@ -448,6 +448,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[12]/jobNames/comparator"/>
+        <string>Tjenesteforsyning_v1.0_Enhetstester</string>
       </jobNames>
       <jobFilters/>
       <columns>
