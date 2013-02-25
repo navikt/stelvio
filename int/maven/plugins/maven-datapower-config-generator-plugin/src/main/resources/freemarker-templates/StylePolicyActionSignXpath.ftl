@@ -22,6 +22,10 @@
 			<ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
 			<ParameterValue>${signKey}</ParameterValue>
 		</StylesheetParameters>
+		<StylesheetParameters>
+			<ParameterName>{http://www.datapower.com/param/config}sigalg</ParameterName>
+			<ParameterValue>rsa</ParameterValue>
+		</StylesheetParameters>
 		<OutputType>default</OutputType>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
