@@ -1,5 +1,7 @@
 package no.nav.serviceregistry.test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.*;
 import static no.nav.serviceregistry.test.util.TestUtils.getResource;
 
@@ -20,7 +22,7 @@ public class ServiceRegestryTest {
 
 	@Test
 	public void testAddServiceInstanceStringStringString() throws JAXBException, MalformedURLException {
-		String resultString = TestUtils.fileToString(getResource("/ServiceRegistryTest/serviceregistry-testAddServiceInstanceStringStringString/serviceregistry-simple.result.xml"));
+		String resultString = TestUtils.fileToString(getResource("/ServiceRegistryTest/serviceregistry-testAddServiceInstanceStringStringString/serviceregistry-simple.xml"));
 		ServiceRegistry serviceRegistry = new ServiceRegistry();
 		serviceRegistry.addServiceInstance("popp", new URL("http://tset.com/"), BRUKERPROFIL_WSDL);
 		assertEquals(resultString, serviceRegistry.toXml());
@@ -29,9 +31,14 @@ public class ServiceRegestryTest {
 	@Test
 	public void testReadServiceRegistry() throws FileNotFoundException, JAXBException {
 		String sr = getResource("/ServiceRegistryTest/serviceregistry-testReadServiceRegistry/serviceregistry-simple.xml");
-		String resultString = TestUtils.fileToString(getResource("/ServiceRegistryTest/serviceregistry-testReadServiceRegistry/serviceregistry-simple.result.xml"));
 		ServiceRegistry readSR = ServiceRegistryUtils.readServiceRegistryFromFile(sr);
-		assertEquals(resultString, readSR.toXml());
+
+		String result = readSR.toXml();
+		assertThat(result, containsString("<application>autodeploy-test</application>"));
+		assertThat(result, containsString("<application>popp</application>"));
+		assertThat(result, containsString("<application>tsys</application>"));
+		assertThat(result, containsString("<application>pselv</application>"));
 	}
 
 }
+

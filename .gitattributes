@@ -7801,9 +7801,7 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/Servi
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha002/brukerprofil/multippel.xsd -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha002/brukerprofil/part.xsd -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/nav-fim-brukerprofil-tjenestespesifikasjon-0.0.1-alpha002/meldinger/meldinger.xsd -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/serviceregistry-testAddServiceInstanceStringStringString/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/serviceregistry-testAddServiceInstanceStringStringString/serviceregistry-simple.xml -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/serviceregistry-testReadServiceRegistry/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/ServiceRegistryTest/serviceregistry-testReadServiceRegistry/serviceregistry-simple.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/autodeploy-test.xml -text
