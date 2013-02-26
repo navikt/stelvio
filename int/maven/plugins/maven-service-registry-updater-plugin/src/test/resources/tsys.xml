@@ -2,6 +2,6 @@
         <application>tsys</application>
         <serviceVersion bindingName="ns3:BrukerprofilBinding">
             <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanserRequest" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostname.no:443//path/til/tsys"/>
+            <serviceInstance endpoint="https://hostname.no:8443//path/til/tsys"/>
         </serviceVersion>
     </service>

@@ -53,7 +53,7 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMojo.setApplicationsString(TEST_APPLICATION);
 		myMojo.setServiceRegistryFile(sr);
 		myMojo.execute();
-		assertThat(TestUtils.fileToString(sr), containsString("<application>autodeploy-test</application>"));
+		assertThat(TestUtils.fileToString(sr), containsString(AUTODEPLOY_TEST));
 	}
 	
 	@Test(expected=RuntimeException.class) //her burde Platform teamet ha sendt en egendefinert exception

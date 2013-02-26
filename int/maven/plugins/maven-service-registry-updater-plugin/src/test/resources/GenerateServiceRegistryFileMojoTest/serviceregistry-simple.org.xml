@@ -32,14 +32,14 @@
         <application>autodeploy-test</application>
         <serviceVersion bindingName="ns3:BrukerprofilBinding">
             <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://e34apsl00120.devillo.no:443/test/brukerprofil"/>
+            <serviceInstance endpoint="https://e34apsl00120.devillo.no:8443/test/brukerprofil"/>
         </serviceVersion>
     </service>
     <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
         <application>tsys</application>
         <serviceVersion bindingName="ns3:BrukerprofilBinding">
             <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanser" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostname.no:443//path/til/tsys"/>
+            <serviceInstance endpoint="https://hostname.no:8443//path/til/tsys"/>
         </serviceVersion>
     </service>
 </ns2:serviceRegistry>
