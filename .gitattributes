@@ -7787,8 +7787,6 @@ int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/Gener
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testFreshInstallTrue/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testFreshInstallTrue/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testFreshInstallTrue/serviceregistry-simple.xml -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testNoApplicationsSpessified/serviceregistry-simple.result.xml -text
-int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testNoApplicationsSpessified/serviceregistry-simple.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testNoServicesInAppConfig_EmptyServicesList/app-config.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testNoServicesInAppConfig_EmptyServicesList/serviceregistry-simple.result.xml -text
 int/maven/plugins/maven-service-registry-updater-plugin/src/test/resources/GenerateServiceRegistryFileMojoTest/testNoServicesInAppConfig_EmptyServicesList/serviceregistry-simple.xml -text
