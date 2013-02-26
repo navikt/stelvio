@@ -41,7 +41,7 @@ public class GenerateServiceRegistryFileMojoTest {
 	
 	@Test
 	public void testPossitiveMojoExecutor() throws MojoExecutionException, MojoFailureException {
-		String sr = getResource("/GenerateServiceRegistryFileMojoTest/testPossitiveMojoExecutor/serviceregistry-simple.result.xml");
+		String sr = getResource("/GenerateServiceRegistryFileMojoTest/testPossitiveMojoExecutor/serviceregistry-simple.xml");
 		String result = getResource("/GenerateServiceRegistryFileMojoTest/testPossitiveMojoExecutor/serviceregistry-simple.result.xml");
 		GenerateServiceRegistryFileMojo myMojo = mojoFactory();
 		myMojo.setApplicationsString(TEST_APPLICATION);
