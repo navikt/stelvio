@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-service-registry-updater-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<name>Maven Service Registry Updater Plugin</name>
 	<description>This plugin updates the service-registry.xml file on service gateway based on wsdls in the applications given as input.</description>
@@ -58,7 +58,7 @@
 	</dependencies>
 		
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-service-registry-updater-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-service-registry-updater-plugin</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-service-registry-updater-plugin-1.0.0</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-service-registry-updater-plugin-1.0.0</developerConnection>
 	</scm>
 </project>
