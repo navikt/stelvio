@@ -9,7 +9,7 @@ import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.maven.plugins.GenerateServiceRegistryFileMojo;
 import no.nav.serviceregistry.exception.ApplicationConfigException;
 import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
-import no.nav.serviceregistry.exception.MavenArtifactResolevException;
+import no.nav.serviceregistry.exception.MavenArtifactResolvedException;
 import no.nav.serviceregistry.exception.ServiceRegistryException;
 import no.nav.serviceregistry.test.mocker.MyMockLogger;
 import no.nav.serviceregistry.test.mocker.MyMocker;
@@ -198,7 +198,7 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMojo.execute();
 	}
 
-	@Test(expected=MavenArtifactResolevException.class)
+	@Test(expected=MavenArtifactResolvedException.class)
 	public void testServiceResolveException() throws MojoExecutionException, MojoFailureException{
 		Testdata myMocker = new MyMocker();
 		myMocker.setMockServiceResolveException(true);
@@ -208,7 +208,7 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMojo.execute();
 	}
 
-	@Test(expected=MavenArtifactResolevException.class)
+	@Test(expected=MavenArtifactResolvedException.class)
 	public void testApplicationInfoResolceException() throws MojoExecutionException, MojoFailureException{
 		Testdata myMocker = new MyMocker();
 		myMocker.setMockApplicationInfoResolveException(true);
@@ -225,7 +225,7 @@ public class GenerateServiceRegistryFileMojoTest {
 		myMocker.setAppConfigExtractDir(getResource("/GenerateServiceRegistryFileMojoTest/testFreshInstallTrue/"));
 		GenerateServiceRegistryFileMojo myMojo = mojoFactory(myMocker);
 		myMojo.setFreshInstall(true);
-		myMojo.setApplicationsString(TEST_APPLICATION);
+		myMojo.setApplicationsString("");
 		myMojo.setServiceRegistryFile(sr);
 		myMojo.execute();
 		assertThat(TestUtils.fileToString(sr), containsString("serviceRegistry"));

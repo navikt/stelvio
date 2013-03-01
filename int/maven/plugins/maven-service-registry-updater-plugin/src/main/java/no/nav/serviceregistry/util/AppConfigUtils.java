@@ -28,7 +28,7 @@ public class AppConfigUtils {
 	
 	public static Set<String> parseApplicationsString(String appString) throws MojoExecutionException {
 		if (empty(appString)){
-			throw new ApplicationConfigException("You need to give the -freshInstall option or give applications(\"tys,pen,gosys\") as input to the -apps input!");
+			throw new ApplicationConfigException("You need to give the -DfreshInstall=true option or give applications(\"tys,pen,gosys\") as input to the -apps input!");
 		}
 		Set<String> apps = new HashSet<String>();
 		for (String applicationString : appString.split(",")) {

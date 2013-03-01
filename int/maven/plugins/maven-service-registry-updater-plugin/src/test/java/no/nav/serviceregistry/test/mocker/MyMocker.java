@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import no.nav.aura.envconfig.client.ApplicationInfo;
-import no.nav.serviceregistry.exception.MavenArtifactResolevException;
+import no.nav.serviceregistry.exception.MavenArtifactResolvedException;
 import no.nav.serviceregistry.util.Testdata;
 
 public class MyMocker implements Testdata {
@@ -25,14 +25,14 @@ public class MyMocker implements Testdata {
 
 	public File getAppConfigExtractDir() {
 		if(mockApplicationInfoResolveException){
-			throw new MavenArtifactResolevException();
+			throw new MavenArtifactResolvedException();
 		}
 		return appConfigExtractDir;
 	}
 
 	public File getServiceExtractDir() {
 		if(mockServiceResolveException){
-			throw new MavenArtifactResolevException();
+			throw new MavenArtifactResolvedException();
 		}
 		return serviceExtractDir;
 	}

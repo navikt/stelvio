@@ -62,3 +62,4 @@
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-service-registry-updater-plugin</developerConnection>
 	</scm>
 </project>
+

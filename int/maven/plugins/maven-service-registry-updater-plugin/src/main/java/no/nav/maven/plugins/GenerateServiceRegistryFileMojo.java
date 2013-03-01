@@ -12,7 +12,7 @@ import no.nav.aura.appconfig.Application;
 import no.nav.aura.appconfig.exposed.Service;
 import no.nav.aura.envconfig.client.ApplicationInfo;
 import no.nav.serviceregistry.exception.ApplicationNotInEnvConfigException;
-import no.nav.serviceregistry.exception.MavenArtifactResolevException;
+import no.nav.serviceregistry.exception.MavenArtifactResolvedException;
 import no.nav.serviceregistry.model.ServiceRegistry;
 import no.nav.serviceregistry.util.AppConfigUtils;
 import no.nav.serviceregistry.util.MvnArtifact;
@@ -105,7 +105,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
     /**
      * Boolean paramerter that you set as true if you are installing a new environment, or need a fresh install
      * 
-     * @parameter default-value="false"
+     * @parameter expression="${freshInstall}" default-value="false"
      */
     protected Boolean isFreshInstall;
 
@@ -163,8 +163,9 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
         for (ApplicationInfo envConfigApplicationInfo : applicationsFromEnvconfig) {
 
             if (validDomains.contains(envConfigApplicationInfo.getDomain())) {
+            	String applicationName = envConfigApplicationInfo.getName();
 
-                String applicationName = envConfigApplicationInfo.getName();
+            	getLog().info("Adding application \"" + applicationName + "\" to service registry!");
 
                 String hostname = envConfigApplicationInfo.getEndpoint();
                 File appConfigExtractDir = downloadAndExtractApplicationInfo(envConfigApplicationInfo, buildDirectory + "/appConfDir-" + applicationName);
@@ -262,11 +263,25 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
             artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
             return pomArtifact.getFile();
         } catch (ArtifactResolutionException e) {
-            throw new MavenArtifactResolevException("Could not resolve artifact, " + e);
+            throw new MavenArtifactResolvedException("Could not resolve artifact, " + e);
         } catch (ArtifactNotFoundException e) {
-            throw new MavenArtifactResolevException("Artifact not found, " + e);
+        	Artifact pomArtifactWsdlif = retryWsdlifArtifactDownload(mvnArtifact);
+            return pomArtifactWsdlif.getFile();
         }
     }
+
+	private Artifact retryWsdlifArtifactDownload(MvnArtifact mvnArtifact) {
+		Artifact pomArtifact = factory.createArtifactWithClassifier(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), mvnArtifact.getType(), "wsdlif");
+		getLog().info("Retrying to resolve artifact with wsdlif: " + pomArtifact);
+		try {
+			artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
+		} catch (ArtifactResolutionException e) {
+		    throw new MavenArtifactResolvedException("Could not resolve artifact, " + e);
+		} catch (ArtifactNotFoundException e) {
+			throw new MavenArtifactResolvedException("Artifact not found, " + e);
+		}
+		return pomArtifact;
+	}
 
     private void extractArtifact(File source, File destination) throws MojoExecutionException {
 
