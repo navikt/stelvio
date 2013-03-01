@@ -28,6 +28,7 @@
 <#include "LDAPSearchParameters.ftl">
 <#include "LoadBalancerGroup.ftl">
 <#include "LogTarget.ftl">
+<#include "LogTargetParameterized.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
 <#include "MatchingRuleXPath.ftl">
