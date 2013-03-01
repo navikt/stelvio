@@ -288,7 +288,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>DataPower_provisioning</string>
-        <string>DataPower_TestServiceGateway</string>
+        <string>DataPower_TestServiceGateway_fault-handling</string>
       </jobNames>
       <jobFilters/>
       <columns>

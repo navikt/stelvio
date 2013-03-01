@@ -235,9 +235,9 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower-soap-tests/service-gw/pom.xml?op=dl
-wget -O service-gw-test-echo-soapui-project.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower-soap-tests/service-gw/service-gw-test-echo-soapui-project.xml?op=dl
+wget -O service-gw-v1.0-feilhandtering-soapui-project.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower-soap-tests/service-gw/service-gw-v1.0-feilhandtering-soapui-project.xml?op=dl
 
-mvn clean eviware:maven-soapui-plugin:test -Dsoapui.projectfile=service-gw-test-echo-soapui-project.xml</command>
+mvn clean eviware:maven-soapui-plugin:test -Dsoapui.projectfile=service-gw-v1.0-feilhandtering-soapui-project.xml</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
