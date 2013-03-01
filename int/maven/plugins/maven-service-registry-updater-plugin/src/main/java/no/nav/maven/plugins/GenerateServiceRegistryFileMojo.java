@@ -258,7 +258,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
     public File downloadMavenArtifact(MvnArtifact mvnArtifact) {
 
         Artifact pomArtifact = factory.createArtifact(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), "", mvnArtifact.getType());
-        getLog().debug("Resolving artifact: " + mvnArtifact);
+        getLog().info("Resolving artifact: " + mvnArtifact.toString());
         try {
             artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
             return pomArtifact.getFile();
@@ -272,7 +272,7 @@ public class GenerateServiceRegistryFileMojo extends AbstractMojo {
 
 	private Artifact retryWsdlifArtifactDownload(MvnArtifact mvnArtifact) {
 		Artifact pomArtifact = factory.createArtifactWithClassifier(mvnArtifact.getGroupId(), mvnArtifact.getArtifactId(), mvnArtifact.getVersion(), mvnArtifact.getType(), "wsdlif");
-		getLog().info("Retrying to resolve artifact with wsdlif: " + pomArtifact);
+		getLog().info("Retrying to resolve artifact with wsdlif: " + mvnArtifact.toString());
 		try {
 			artifactResolver.resolve(pomArtifact, remoteRepositories, localRepository);
 		} catch (ArtifactResolutionException e) {
