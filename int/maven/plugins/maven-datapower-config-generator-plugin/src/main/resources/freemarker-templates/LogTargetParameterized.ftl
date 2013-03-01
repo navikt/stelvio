@@ -1,4 +1,4 @@
-<#macro LogTarget 
+<#macro LogTargetParameterized 
 		name
 		size 
 		nfsStaticMount
