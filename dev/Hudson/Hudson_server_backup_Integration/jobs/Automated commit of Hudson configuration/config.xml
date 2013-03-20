@@ -271,10 +271,9 @@ svn add --force -q --parents config.xml plugins.list jobs/*/config.xml
 
 svn st |grep &apos;^!&apos; |while read notation folder
 do
-   if [[ &quot;$folder&quot; != *&quot;/config.xml&quot; ]]
-   then
-     svn rm &quot;$folder&quot;
-   fi
+   svn up &quot;$folder&quot;
+   svn rm &quot;$folder&quot;
+   rm -rf &quot;$folder&quot;
 done
 
 if svn st |grep -v &apos;^?&apos; ;then
