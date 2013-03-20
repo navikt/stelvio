@@ -240,7 +240,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>chmod -R 775 /var/www/html/7.6/site/
+            <command>chmod -R 775 /var/www/html/7.7/site/
 </command>
           </hudson.tasks.Shell>
         </originalValue>
@@ -345,7 +345,7 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1351174521507</creationTime>
+  <creationTime>1363614750887</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
