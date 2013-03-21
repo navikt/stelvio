@@ -176,7 +176,7 @@
     <groupId>no.nav.esb</groupId>
     <artifactId>esb-release</artifactId>
   </rootModule>
-  <goals>clean deploy</goals>
+  <goals>clean verify</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
