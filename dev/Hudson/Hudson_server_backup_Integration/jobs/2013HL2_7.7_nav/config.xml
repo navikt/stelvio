@@ -78,6 +78,13 @@
       </integer-property>
     </entry>
     <entry>
+      <string>hudson-tasks-BuildTrigger</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.SCMTrigger">
@@ -202,8 +209,8 @@
             <recipientList></recipientList>
             <subject>$PROJECT_DEFAULT_SUBJECT</subject>
             <body>$PROJECT_DEFAULT_CONTENT</body>
-            <sendToDevelopers>true</sendToDevelopers>
-            <includeCulprits>true</includeCulprits>
+            <sendToDevelopers>false</sendToDevelopers>
+            <includeCulprits>false</includeCulprits>
             <sendToRecipientList>false</sendToRecipientList>
           </email>
         </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>

@@ -206,7 +206,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>Jira2Excel-MOD</string>
         <string>Post Data Source config (WPS) overview to Confluence</string>
         <string>Post installed fixpacks (WPS) on U2, U3 and U4 to Confluence</string>
         <string>Post JVM config (WPS) overview to Confluence</string>
