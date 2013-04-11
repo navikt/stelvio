@@ -259,7 +259,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>wget http://maven.adeo.no/m2internal/no/nav/tjenester/fim/nav-fim-sykepenger-v1-tjenestespesifikasjon/0.0.1-alpha001/nav-fim-sykepenger-v1-tjenestespesifikasjon-0.0.1-alpha001.zip</command>
+            <command>~/bin/oppdaterTjenestebeskrivelse.py -cp ${ConfluencePageId} --artifactId ${artifactId} --groupId ${groupId} --artifactVersion ${version}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
