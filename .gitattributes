@@ -7677,6 +7677,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MatchingRuleURL.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MatchingRuleXPath.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MultiProtocolGateway.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/MultiProtocolGatewayMTOMEnabled.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/NFSStaticMount.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/ProcessingRule.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/ProcessingRules.ftl -text
@@ -7708,9 +7709,11 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSEndpointRewritePolicyMultipleWsdl.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSGateway.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSGatewayLoadBalancing.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSGatewayMTOMEnabled.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSGatewayMultipleWsdl.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackend.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendLoadBalancing.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendMTOMEnabled.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendMultipleWsdl.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSProxyWSADynamicBackend.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSProxyWSADynamicBackendMultipleWsdl.ftl -text

@@ -35,6 +35,7 @@
 <#include "MPGProcessingRules.ftl">
 <#include "MPGStylePolicy.ftl">
 <#include "MultiProtocolGateway.ftl">
+<#include "MultiProtocolGatewayMTOMEnabled.ftl">
 <#include "NFSStaticMount.ftl">
 <#include "ProcessingRules.ftl">
 <#include "RequestFaultResponseErrorRuleProcessingPolicy.ftl">
@@ -55,6 +56,7 @@
 <#include "WSGatewayLoadBalancing.ftl">
 <#include "WSProxyStaticBackend.ftl">
 <#include "WSProxyStaticBackendLoadBalancing.ftl">
+<#include "WSProxyStaticBackendMTOMEnabled.ftl">
 <#include "WSProxyStaticBackendMultipleWsdl.ftl">
 <#include "WSProxyWSADynamicBackend.ftl">
 <#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">
