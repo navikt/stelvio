@@ -8093,6 +8093,7 @@ int/maven/poms/maven-configure-wps-dev-pom/pom.xml -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text
 int/maven/poms/maven-jca-pom/pom.xml -text
+int/maven/poms/maven-message-specification-pom/pom.xml -text
 int/maven/poms/maven-plugin-pom/.project -text
 int/maven/poms/maven-plugin-pom/pom.xml -text
 int/maven/poms/maven-root-pom/.project -text
