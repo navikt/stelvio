@@ -41,6 +41,7 @@
 <#include "RequestFaultResponseErrorRuleProcessingPolicy.ftl">
 <#include "RequestResponseErrorRuleProcessingPolicy.ftl">
 <#include "RequestResponseRuleProcessingPolicy.ftl">
+<#include "SAMLProxy.ftl">
 <#include "SLMPolicy.ftl">
 <#include "StylePolicyActionAAA.ftl">
 <#include "StylePolicyActionConditional.ftl">
