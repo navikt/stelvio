@@ -7545,9 +7545,9 @@ int/maven-runtimes/wps-runtime/files.txt -text
 int/maven-runtimes/wps-runtime/pom.xml -text
 int/maven/lifecycles/message-specification-lifecycle/pom.xml -text
 int/maven/lifecycles/message-specification-lifecycle/src/main/resources/META-INF/plexus/components.xml -text
+int/maven/lifecycles/message-specification-lifecycle/src/main/resources/assemblies/jaxb-javadoc.xml -text
+int/maven/lifecycles/message-specification-lifecycle/src/main/resources/assemblies/jaxb-sources.xml -text
 int/maven/lifecycles/message-specification-lifecycle/src/main/resources/assemblies/message-specification.xml -text
-int/maven/lifecycles/message-specification-lifecycle/src/main/resources/assemblies/xjc-javadoc.xml -text
-int/maven/lifecycles/message-specification-lifecycle/src/main/resources/assemblies/xjc-sources.xml -text
 int/maven/lifecycles/pom.xml -text
 int/maven/lifecycles/service-specification-lifecycle/pom.xml -text
 int/maven/lifecycles/service-specification-lifecycle/src/main/resources/META-INF/plexus/components.xml -text
