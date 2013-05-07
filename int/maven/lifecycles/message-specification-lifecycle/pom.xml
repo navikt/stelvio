@@ -10,12 +10,12 @@
 
 	<groupId>no.nav.maven.lifecycles</groupId>
 	<artifactId>message-specification-lifecycle</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>Message Specification Lifecycle</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/message-specification-lifecycle</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/message-specification-lifecycle</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/message-specification-lifecycle-1.0.1</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/message-specification-lifecycle-1.0.1</developerConnection>
 	</scm>
 
 	<properties>
