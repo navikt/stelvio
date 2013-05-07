@@ -17,7 +17,7 @@
 			<extension>
 				<groupId>no.nav.maven.lifecycles</groupId>
 				<artifactId>message-specification-lifecycle</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.1</version>
 			</extension>
 		</extensions>
 		
@@ -44,27 +44,27 @@
 					</configuration>
 					<executions>
 						<execution>
-				            <id>xjc-javadoc</id>
+				            <id>jaxb-javadoc</id>
 				            <phase>package</phase>
 				            <goals>
 				              <goal>single</goal>
 				            </goals>
 				            <configuration>
 								<descriptorRefs>
-									<descriptorRef>xjc-javadoc</descriptorRef>
+									<descriptorRef>jaxb-javadoc</descriptorRef>
 								</descriptorRefs>
 								<appendAssemblyId>true</appendAssemblyId>
 				            </configuration>
 						</execution>
 						<execution>
-				            <id>xjc-sources</id>
+				            <id>jaxb-sources</id>
 				            <phase>package</phase>
 				            <goals>
 				              <goal>single</goal>
 				            </goals>
 				            <configuration>
 								<descriptorRefs>
-									<descriptorRef>xjc-sources</descriptorRef>
+									<descriptorRef>jaxb-sources</descriptorRef>
 								</descriptorRefs>
 								<appendAssemblyId>true</appendAssemblyId>
 				            </configuration>
@@ -75,7 +75,7 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<configuration>
-						<classifier>xjc</classifier>
+						<classifier>jaxb</classifier>
 					</configuration>
 				</plugin>
 				<plugin>
