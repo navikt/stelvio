@@ -397,27 +397,6 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status HL6 (7.6)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.ConsoleColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2012HL6_7\.6_).*</includeRegex>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>Service Gateway</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -445,7 +424,7 @@
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[12]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[11]/jobNames/comparator"/>
       </jobNames>
       <jobFilters/>
       <columns>
