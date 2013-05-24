@@ -16,6 +16,7 @@
 <#include "AAAPolicyLTPA2None.ftl">
 <#include "AAAPolicyUsernameToken2LTPA.ftl">
 <#include "AAAPolicyUsernameToken2None.ftl">
+<#include "AAAPolicyUsernameToken2NoneLDAPS.ftl">
 <#include "AAAPolicyUsernameToken2NoneAnyAuth.ftl">
 <#include "AAAPolicyUsernameToken2UsernameToken.ftl">
 <#include "AAAPolicyUsernameToken2UsernameTokenAuthorize.ftl">
