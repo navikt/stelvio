@@ -7640,6 +7640,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2LTPA.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2None.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2NoneAnyAuth.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2NoneLDAPS.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2UsernameToken.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2UsernameTokenAuthorize.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2UsernameTokenAuthorizeLDAPS.ftl -text
