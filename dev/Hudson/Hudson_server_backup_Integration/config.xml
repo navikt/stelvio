@@ -20,7 +20,12 @@
     </jdk>
     <jdk>
       <name>Sun JDK 6.0</name>
-      <home>/usr/java/default</home>
+      <home>/usr/java/jdk1.6.0_20</home>
+      <properties/>
+    </jdk>
+    <jdk>
+      <name>Oracle JDK 1.7</name>
+      <home>/usr/java/jdk1.7.0_21</home>
       <properties/>
     </jdk>
   </jdks>

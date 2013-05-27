@@ -247,6 +247,21 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>envConfigUser</name>
+                <description>Bare til bruk ved deploy av dialog-gw</description>
+                <defaultValue></defaultValue>
+              </hudson.model.StringParameterDefinition>
+              <hudson.model.PasswordParameterDefinition>
+                <name>envConfigPassword</name>
+                <description>Bare til bruk ved deploy av dialog-gw</description>
+                <defaultValue>vw2E/I1SPlDQAJl1SesEpQ==</defaultValue>
+              </hudson.model.PasswordParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>envConfigDomain</name>
+                <description>Bare til bruk ved deploy av dialog-gw</description>
+                <defaultValue>oera-t.local</defaultValue>
+              </hudson.model.StringParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
         </originalValue>
@@ -321,11 +336,14 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
+            <command>java -version</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
             <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://envconfig.adeo.no:8080/conf -DenvDomain=oera-t.local -Dusername=${envUser} -Dpassword=${envPassword}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
@@ -355,7 +373,7 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
     <entry>
       <string>jdk</string>
       <string-property>
-        <originalValue class="string">(Default)</originalValue>
+        <originalValue class="string">Oracle JDK 1.7</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
     </entry>
