@@ -953,8 +953,8 @@
         <QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>
         <PropagateURI>off</PropagateURI>
         <MonitorProcessingPolicy>terminate-at-first-throttle</MonitorProcessingPolicy>
-        <RequestAttachments>strip</RequestAttachments>
-        <ResponseAttachments>strip</ResponseAttachments>
+        <RequestAttachments>allow</RequestAttachments>
+        <ResponseAttachments>allow</ResponseAttachments>
         <RootPartNotFirstAction>process-in-order</RootPartNotFirstAction>
         <FrontAttachmentFormat>dynamic</FrontAttachmentFormat>
         <BackAttachmentFormat>dynamic</BackAttachmentFormat>
