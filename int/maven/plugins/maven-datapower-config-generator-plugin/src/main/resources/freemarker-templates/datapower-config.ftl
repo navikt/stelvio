@@ -44,6 +44,7 @@
 <#include "RequestResponseRuleProcessingPolicy.ftl">
 <#include "SAMLProxy.ftl">
 <#include "SLMPolicy.ftl">
+<#include "STSProxy.ftl">
 <#include "StylePolicyActionAAA.ftl">
 <#include "StylePolicyActionConditional.ftl">
 <#include "StylePolicyActionFetch.ftl">
@@ -67,4 +68,5 @@
 <#include "WSStylePolicyRuleRequest.ftl">
 <#include "WSStylePolicyRuleResponse.ftl">
 <#include "XMLFirewallServiceLoopback.ftl">
+<#include "XMLFirewallServiceSTSLoopback.ftl">
 <#include "XMLManager.ftl">
