@@ -187,6 +187,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                     <string>portal-gw</string>
                     <string>tms-gw</string>
                     <string>service-gw</string>
+                    <string>sts</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
