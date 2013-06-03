@@ -1,4 +1,4 @@
-<#macro STSProxy name port loopbackPort cfgHost cfgHost2>
+<#macro STSProxy name port loopbackPort cfgHost cfgHost_test>
 	<HTTPSourceProtocolHandler name="sts-HttpFrontsideHandler" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<LocalAddress>${cfgHost}</LocalAddress>
@@ -750,11 +750,11 @@
 		</StylesheetParameters>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
-			<ParameterValue>${cfgHost2}</ParameterValue>
+			<ParameterValue>${cfgHost_test}</ParameterValue>
 		</StylesheetParameters>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
-			<ParameterValue>${cfgHost2}</ParameterValue>
+			<ParameterValue>${cfgHost_test}</ParameterValue>
 		</StylesheetParameters>
 		<OutputType>default</OutputType>
 		<Transactional>off</Transactional>
@@ -1213,11 +1213,11 @@
 		</StylesheetParameters>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
-			<ParameterValue>${cfgHost2}</ParameterValue>
+			<ParameterValue>${cfgHost_test}</ParameterValue>
 		</StylesheetParameters>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
-			<ParameterValue>${cfgHost2}</ParameterValue>
+			<ParameterValue>${cfgHost_test}</ParameterValue>
 		</StylesheetParameters>
 		<OutputType>default</OutputType>
 		<Transactional>off</Transactional>
