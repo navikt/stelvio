@@ -46,7 +46,7 @@
 			<ServicePortMatchRegexp>^{http://docs.oasis-open.org/ws-sx/ws-trust/200512/wsdl}SecurityTokenServiceSOAP$</ServicePortMatchRegexp>
 			<RemoteEndpointProtocol>http</RemoteEndpointProtocol>
 			<RemoteEndpointHostname>${cfgHost}</RemoteEndpointHostname>
-			<RemoteEndpointPort>{loopbackPort}</RemoteEndpointPort>
+			<RemoteEndpointPort>${loopbackPort}</RemoteEndpointPort>
 			<RemoteEndpointURI>/SecurityTokenServiceProvider/</RemoteEndpointURI>
 			<RemoteMQQM/>
 			<RemoteTibcoEMS/>
