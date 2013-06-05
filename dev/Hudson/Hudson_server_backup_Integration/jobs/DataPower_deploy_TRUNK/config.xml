@@ -248,21 +248,16 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>envConfigUser</name>
-                <description>Bare til bruk ved deploy av dialog-gw</description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.PasswordParameterDefinition>
-                <name>envConfigPassword</name>
-                <description>Bare til bruk ved deploy av dialog-gw</description>
-                <defaultValue>vw2E/I1SPlDQAJl1SesEpQ==</defaultValue>
-              </hudson.model.PasswordParameterDefinition>
-              <hudson.model.StringParameterDefinition>
+              <hudson.model.ChoiceParameterDefinition>
                 <name>envConfigDomain</name>
-                <description>Bare til bruk ved deploy av dialog-gw</description>
-                <defaultValue>oera-t.local</defaultValue>
-              </hudson.model.StringParameterDefinition>
+                <description>Bare til bruk ved deploy av service-gw og dialog-gw</description>
+                <choices class="java.util.Arrays$ArrayList">
+                  <a class="string-array">
+                    <string>test.local</string>
+                    <string>oera-t.local</string>
+                  </a>
+                </choices>
+              </hudson.model.ChoiceParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
         </originalValue>
@@ -337,6 +332,9 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
+            <command>/home/ci/cleanRepo.sh</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
             <command>java -version</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
@@ -344,7 +342,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://envconfig.adeo.no:8080/conf -DenvDomain=oera-t.local -Dusername=${envUser} -Dpassword=${envPassword}</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://envconfig.adeo.no:8080/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
