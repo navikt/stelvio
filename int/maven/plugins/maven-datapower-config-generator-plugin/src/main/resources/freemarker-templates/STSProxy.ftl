@@ -1,4 +1,47 @@
 <#macro STSProxy name port loopbackPort cfgHost cfgHost_test>
+	<URLMap name="default-attempt-stream-all" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<URLMapRule>
+			<Pattern>*</Pattern>
+		</URLMapRule>
+	</URLMap>
+	<CompileOptionsPolicy name="default-attempt-stream" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<XSLTVersion>XSLT10</XSLTVersion>
+		<Strict>off</Strict>
+		<TryStream class="URLMap">default-attempt-stream-all</TryStream>
+		<StackSize>524288</StackSize>
+		<WSIValidation>ignore</WSIValidation>
+		<WSDLValidateBody>strict</WSDLValidateBody>
+		<WSDLValidateHeaders>lax</WSDLValidateHeaders>
+		<WSDLValidateFaults>strict</WSDLValidateFaults>
+		<WSDLWrappedFaults>off</WSDLWrappedFaults>
+		<WSDLStrictSOAPVersion>off</WSDLStrictSOAPVersion>
+		<XACMLDebug>off</XACMLDebug>
+	</CompileOptionsPolicy>
+	<XMLManager name="default-attempt-stream" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<UserSummary>Default Streaming XML-Manager</UserSummary>
+			<CompileOptionsPolicy class="CompileOptionsPolicy">default-attempt-stream</CompileOptionsPolicy>
+			<CacheSize>256</CacheSize>
+			<SHA1Caching>on</SHA1Caching>
+			<StaticDocumentCalls>on</StaticDocumentCalls>
+			<SearchResults>on</SearchResults>
+			<SupportTxWarn>off</SupportTxWarn>
+			<Memoization>on</Memoization>
+			<ParserLimitsBytesScanned>268435456</ParserLimitsBytesScanned>
+			<ParserLimitsElementDepth>512</ParserLimitsElementDepth>
+			<ParserLimitsAttributeCount>128</ParserLimitsAttributeCount>
+			<ParserLimitsMaxNodeSize>268435456</ParserLimitsMaxNodeSize>
+			<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
+			<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
+			<ParserLimitsMaxPrefixes>0</ParserLimitsMaxPrefixes>
+			<ParserLimitsMaxNamespaces>0</ParserLimitsMaxNamespaces>
+			<ParserLimitsMaxLocalNames>0</ParserLimitsMaxLocalNames>
+			<DocCacheMaxDocs>5000</DocCacheMaxDocs>
+			<DocCacheSize>0</DocCacheSize>
+			<UserAgent class="HTTPUserAgent">default</UserAgent>
+		</XMLManager>
 	<HTTPSourceProtocolHandler name="sts-HttpFrontsideHandler" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<LocalAddress>${cfgHost}</LocalAddress>
@@ -53,6 +96,51 @@
 			<RemoteWebSphereJMS/>
 		</WSEndpointRemoteRewriteRule>
 	</WSEndpointRewritePolicy>
+	<Matching name="action_negative_match" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<MatchRules>
+			<Type>xpath</Type>
+			<HttpTag/>
+			<HttpValue/>
+			<Url/>
+			<ErrorCode/>
+			<XPATHExpression>//*[local-name()='Action' and not(node()='http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue')]</XPATHExpression>
+			<Method>default</Method>
+		</MatchRules>
+		<MatchWithPCRE>off</MatchWithPCRE>
+		<CombineWithOr>off</CombineWithOr>
+	</Matching>
+	<StylePolicyAction name="SecurityTokenService_action_negative_match_rule_xform_4" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Type>xform</Type>
+		<Input>INPUT</Input>
+		<Transform>local:///wrongAction_fault_handler.xsl</Transform>
+		<Output>OUTPUT</Output>
+		<NamedInOutLocationType>default</NamedInOutLocationType>
+		<OutputType>default</OutputType>
+		<Transactional>off</Transactional>
+		<SOAPValidation>body</SOAPValidation>
+		<SQLSourceType>static</SQLSourceType>
+		<Asynchronous>off</Asynchronous>
+		<ResultsMode>first-available</ResultsMode>
+		<RetryCount>0</RetryCount>
+		<RetryInterval>1000</RetryInterval>
+		<MultipleOutputs>off</MultipleOutputs>
+		<IteratorType>XPATH</IteratorType>
+		<Timeout>0</Timeout>
+		<MethodRewriteType>GET</MethodRewriteType>
+		<MethodType>POST</MethodType>
+		<MethodType2>POST</MethodType2>
+	</StylePolicyAction>
+	<WSStylePolicyRule name="SecurityTokenService_action_negative_match_rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Direction>request-rule</Direction>
+		<InputFormat>none</InputFormat>
+		<OutputFormat>none</OutputFormat>
+		<NonXMLProcessing>off</NonXMLProcessing>
+		<Unprocessed>off</Unprocessed>
+		<Actions class="StylePolicyAction">SecurityTokenService_action_negative_match_rule_xform_4</Actions>
+	</WSStylePolicyRule>
 	<Matching name="Match-SAMLV2-OpenAMClaim" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<MatchRules>
@@ -1368,6 +1456,14 @@
 		<mAdminState>enabled</mAdminState>
 		<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
 		<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+		<PolicyMaps>
+			<WSDLComponentType>fragmentid</WSDLComponentType>
+			<WSDLComponentValue/>
+			<Match class="Matching">action_negative_match</Match>
+			<Rule class="WSStylePolicyRule">SecurityTokenService_action_negative_match_rule</Rule>
+			<Subscription/>
+			<WSDLFragmentID>http://www.datapower.com/fragment-id#dp.all()</WSDLFragmentID>
+		</PolicyMaps>
 		<PolicyMaps>
 			<WSDLComponentType>fragmentid</WSDLComponentType>
 			<WSDLComponentValue/>
