@@ -1,4 +1,4 @@
-<#macro STSProxy name port loopbackPort cfgHost cfgHost_test>
+<#macro STSProxy name port loopbackPort cfgHost ldapHost ldapPort ldapBindDN ldapBindPw ldapBaseDN ldapCheckGroup ADHost>
 	<URLMap name="default-attempt-stream-all" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<URLMapRule>
@@ -20,28 +20,28 @@
 		<XACMLDebug>off</XACMLDebug>
 	</CompileOptionsPolicy>
 	<XMLManager name="default-attempt-stream" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<UserSummary>Default Streaming XML-Manager</UserSummary>
-			<CompileOptionsPolicy class="CompileOptionsPolicy">default-attempt-stream</CompileOptionsPolicy>
-			<CacheSize>256</CacheSize>
-			<SHA1Caching>on</SHA1Caching>
-			<StaticDocumentCalls>on</StaticDocumentCalls>
-			<SearchResults>on</SearchResults>
-			<SupportTxWarn>off</SupportTxWarn>
-			<Memoization>on</Memoization>
-			<ParserLimitsBytesScanned>268435456</ParserLimitsBytesScanned>
-			<ParserLimitsElementDepth>512</ParserLimitsElementDepth>
-			<ParserLimitsAttributeCount>128</ParserLimitsAttributeCount>
-			<ParserLimitsMaxNodeSize>268435456</ParserLimitsMaxNodeSize>
-			<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
-			<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
-			<ParserLimitsMaxPrefixes>0</ParserLimitsMaxPrefixes>
-			<ParserLimitsMaxNamespaces>0</ParserLimitsMaxNamespaces>
-			<ParserLimitsMaxLocalNames>0</ParserLimitsMaxLocalNames>
-			<DocCacheMaxDocs>5000</DocCacheMaxDocs>
-			<DocCacheSize>0</DocCacheSize>
-			<UserAgent class="HTTPUserAgent">default</UserAgent>
-		</XMLManager>
+		<mAdminState>enabled</mAdminState>
+		<UserSummary>Default Streaming XML-Manager</UserSummary>
+		<CompileOptionsPolicy class="CompileOptionsPolicy">default-attempt-stream</CompileOptionsPolicy>
+		<CacheSize>256</CacheSize>
+		<SHA1Caching>on</SHA1Caching>
+		<StaticDocumentCalls>on</StaticDocumentCalls>
+		<SearchResults>on</SearchResults>
+		<SupportTxWarn>off</SupportTxWarn>
+		<Memoization>on</Memoization>
+		<ParserLimitsBytesScanned>268435456</ParserLimitsBytesScanned>
+		<ParserLimitsElementDepth>512</ParserLimitsElementDepth>
+		<ParserLimitsAttributeCount>128</ParserLimitsAttributeCount>
+		<ParserLimitsMaxNodeSize>268435456</ParserLimitsMaxNodeSize>
+		<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
+		<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
+		<ParserLimitsMaxPrefixes>0</ParserLimitsMaxPrefixes>
+		<ParserLimitsMaxNamespaces>0</ParserLimitsMaxNamespaces>
+		<ParserLimitsMaxLocalNames>0</ParserLimitsMaxLocalNames>
+		<DocCacheMaxDocs>5000</DocCacheMaxDocs>
+		<DocCacheSize>0</DocCacheSize>
+		<UserAgent class="HTTPUserAgent">default</UserAgent>
+	</XMLManager>
 	<HTTPSourceProtocolHandler name="sts-HttpFrontsideHandler" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<LocalAddress>${cfgHost}</LocalAddress>
@@ -71,6 +71,7 @@
 		<MaxNameHdrLen>0</MaxNameHdrLen>
 		<MaxValueHdrLen>0</MaxValueHdrLen>
 		<MaxQueryStringLen>0</MaxQueryStringLen>
+		<CredentialCharset>protocol</CredentialCharset>
 	</HTTPSourceProtocolHandler>
 	<WSEndpointRewritePolicy name="SecurityTokenService" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
@@ -114,7 +115,7 @@
 		<mAdminState>enabled</mAdminState>
 		<Type>xform</Type>
 		<Input>INPUT</Input>
-		<Transform>local:///wrongAction_fault_handler.xsl</Transform>
+		<Transform>local:///xslt/wrongAction_fault_handler.xsl</Transform>
 		<Output>OUTPUT</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
 		<OutputType>default</OutputType>
@@ -149,15 +150,6 @@
 			<HttpValue/>
 			<Url/>
 			<ErrorCode/>
-			<XPATHExpression>//*[local-name()='Claims']//*[local-name()='ClaimType' and @Uri='nav:names:claims:openam:tokenid']</XPATHExpression>
-			<Method>default</Method>
-		</MatchRules>
-		<MatchRules>
-			<Type>xpath</Type>
-			<HttpTag/>
-			<HttpValue/>
-			<Url/>
-			<ErrorCode/>
 			<XPATHExpression>//*[local-name()='KeyType' and node()='http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer']</XPATHExpression>
 			<Method>default</Method>
 		</MatchRules>
@@ -182,6 +174,13 @@
 		<MatchWithPCRE>off</MatchWithPCRE>
 		<CombineWithOr>off</CombineWithOr>
 	</Matching>
+	<LDAPSearchParameters name="LDAPSearch_sAMActtionName" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<LDAPBaseDN>${ldapBaseDN}</LDAPBaseDN>
+		<LDAPReturnedAttribute>dn</LDAPReturnedAttribute>
+		<LDAPFilterPrefix>sAMAccountName=</LDAPFilterPrefix>
+		<LDAPScope>subtree</LDAPScope>
+	</LDAPSearchParameters>
 	<AAAPolicy name="ConsumerAAA" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
@@ -225,11 +224,11 @@
 			<EIOAuthClientGroup/>
 		</ExtractIdentity>
 		<Authenticate>
-			<AUMethod>token</AUMethod>
+			<AUMethod>ldap</AUMethod>
 			<AUCustomURL/>
 			<AUMapURL/>
-			<AUHost/>
-			<AUPort/>
+			<AUHost>${ldapHost}</AUHost>
+			<AUPort>${ldapPort}</AUPort>
 			<AUSSLValcred/>
 			<AUCacheAllow>absolute</AUCacheAllow>
 			<AUCacheTTL>3</AUCacheTTL>
@@ -252,8 +251,8 @@
 			<AUSignedXPath/>
 			<AUSSLProxyProfile/>
 			<AUNetegrityConfig/>
-			<AULDAPBindDN/>
-			<AULDAPBindPassword/>
+			<AULDAPBindDN>${ldapBindDN}</AULDAPBindDN>
+			<AULDAPBindPassword>${ldapBindPw}</AULDAPBindPassword>
 			<AULDAPSearchAttribute>userPassword</AULDAPSearchAttribute>
 			<AULTPATokenVersionsBitmap>
 				<LTPA>off</LTPA>
@@ -268,8 +267,8 @@
 			<AUAllowRemoteTokenReference>off</AUAllowRemoteTokenReference>
 			<AURemoteTokenProcessService/>
 			<AUWSTrustVersion>1.2</AUWSTrustVersion>
-			<AULDAPSearchForDN>off</AULDAPSearchForDN>
-			<AULDAPSearchParameters/>
+			<AULDAPSearchForDN>on</AULDAPSearchForDN>
+			<AULDAPSearchParameters class="LDAPSearchParameters">LDAPSearch_sAMActtionName</AULDAPSearchParameters>
 			<AUWSTrustRequireClientEntropy>off</AUWSTrustRequireClientEntropy>
 			<AUWSTrustClientEntropySize>32</AUWSTrustClientEntropySize>
 			<AUWSTrustRequireServerEntropy>off</AUWSTrustRequireServerEntropy>
@@ -313,12 +312,12 @@
 			<MRTAMWebSEALDynURLFile/>
 		</MapResource>
 		<Authorize>
-			<AZMethod>anyauthenticated</AZMethod>
+			<AZMethod>ldap</AZMethod>
 			<AZCustomURL/>
 			<AZMapURL/>
-			<AZHost/>
-			<AZPort/>
-			<AZLDAPGroup/>
+			<AZHost>${ldapHost}</AZHost>
+			<AZPort>${ldapPort}</AZPort>
+			<AZLDAPGroup>${ldapCheckGroup}</AZLDAPGroup>
 			<AZValcred/>
 			<AZSAMLURL/>
 			<AZSAMLType>any</AZSAMLType>
@@ -331,8 +330,8 @@
 			<AZClearTrustServerURL/>
 			<AZSAMLVersion>1.1</AZSAMLVersion>
 			<AZLDAPLoadBalanceGroup/>
-			<AZLDAPBindDN/>
-			<AZLDAPBindPassword/>
+			<AZLDAPBindDN>${ldapBindDN}</AZLDAPBindDN>
+			<AZLDAPBindPassword>${ldapBindPw}</AZLDAPBindPassword>
 			<AZLDAPGroupAttribute>member</AZLDAPGroupAttribute>
 			<AZSSLProxyProfile/>
 			<AZNetegrityConfig/>
@@ -482,7 +481,7 @@
 		<Input>INPUT</Input>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
 		<Variable>var://context/sts/attribute-provider-url</Variable>
-		<Value>http://e34apsl00227.devillo.no:8080/openam/identity/xml/attributes</Value>
+		<Value>${ADHost}</Value>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>
@@ -821,131 +820,23 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_default_request-rule_sign_2" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-		<mAdminState>enabled</mAdminState>
-		<Type>xform</Type>
-		<Input>samltoken</Input>
-		<Transform>store:///sign-enveloped.xsl</Transform>
-		<Output>signedtoken</Output>
-		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<StylesheetParameters>
-			<ParameterName>{http://www.datapower.com/param/config}XPath</ParameterName>
-			<ParameterValue>//*[local-name()='Assertion']</ParameterValue>
-		</StylesheetParameters>
-		<StylesheetParameters>
-			<ParameterName>{http://www.datapower.com/param/config}c14nalg</ParameterName>
-			<ParameterValue>exc-c14n</ParameterValue>
-		</StylesheetParameters>
-		<StylesheetParameters>
-			<ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
-			<ParameterValue>${cfgHost_test}</ParameterValue>
-		</StylesheetParameters>
-		<StylesheetParameters>
-			<ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
-			<ParameterValue>${cfgHost_test}</ParameterValue>
-		</StylesheetParameters>
-		<OutputType>default</OutputType>
-		<Transactional>off</Transactional>
-		<SOAPValidation>body</SOAPValidation>
-		<SQLSourceType>static</SQLSourceType>
-		<Asynchronous>off</Asynchronous>
-		<ResultsMode>first-available</ResultsMode>
-		<RetryCount>0</RetryCount>
-		<RetryInterval>1000</RetryInterval>
-		<MultipleOutputs>off</MultipleOutputs>
-		<IteratorType>XPATH</IteratorType>
-		<Timeout>0</Timeout>
-		<MethodRewriteType>GET</MethodRewriteType>
-		<MethodType>POST</MethodType>
-		<MethodType2>POST</MethodType2>
-	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_default_request-rule_xform_3" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-		<mAdminState>enabled</mAdminState>
-		<Type>xform</Type>
-		<Input>signedtoken</Input>
-		<Transform>local:///xslt/rst-response.xsl</Transform>
-		<Output>response</Output>
-		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<OutputType>default</OutputType>
-		<Transactional>off</Transactional>
-		<SOAPValidation>body</SOAPValidation>
-		<SQLSourceType>static</SQLSourceType>
-		<Asynchronous>off</Asynchronous>
-		<ResultsMode>first-available</ResultsMode>
-		<RetryCount>0</RetryCount>
-		<RetryInterval>1000</RetryInterval>
-		<MultipleOutputs>off</MultipleOutputs>
-		<IteratorType>XPATH</IteratorType>
-		<Timeout>0</Timeout>
-		<MethodRewriteType>GET</MethodRewriteType>
-		<MethodType>POST</MethodType>
-		<MethodType2>POST</MethodType2>
-	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_default_request-rule_defaultaction_result" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-		<mAdminState>enabled</mAdminState>
-		<Type>results</Type>
-		<Input>response</Input>
-		<Output>OUTPUT</Output>
-		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<OutputType>default</OutputType>
-		<Transactional>off</Transactional>
-		<SOAPValidation>body</SOAPValidation>
-		<SQLSourceType>static</SQLSourceType>
-		<Asynchronous>off</Asynchronous>
-		<ResultsMode>first-available</ResultsMode>
-		<RetryCount>0</RetryCount>
-		<RetryInterval>1000</RetryInterval>
-		<MultipleOutputs>off</MultipleOutputs>
-		<IteratorType>XPATH</IteratorType>
-		<Timeout>0</Timeout>
-		<MethodRewriteType>GET</MethodRewriteType>
-		<MethodType>POST</MethodType>
-		<MethodType2>POST</MethodType2>
-	</StylePolicyAction>
-	<WSStylePolicyRule name="SecurityTokenService_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<StylePolicyRule name="SecurityTokenService_create_external_user_SAML_rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Direction>request-rule</Direction>
 		<InputFormat>none</InputFormat>
 		<OutputFormat>none</OutputFormat>
 		<NonXMLProcessing>off</NonXMLProcessing>
 		<Unprocessed>off</Unprocessed>
-		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_aaa_1</Actions>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_setvar_0</Actions>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_aaa_0</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_sign_2</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_xform_3</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_defaultaction_result</Actions>
-	</WSStylePolicyRule>
-	<Matching name="Match-SAMLV2-NoClaims" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	</StylePolicyRule>
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_conditional_0_refaction_call_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
-		<MatchRules>
-			<Type>xpath</Type>
-			<HttpTag/>
-			<HttpValue/>
-			<Url/>
-			<ErrorCode/>
-			<XPATHExpression>//*[local-name()='RequestSecurityToken']/*[local-name()='TokenType' and node()='http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0']</XPATHExpression>
-			<Method>default</Method>
-		</MatchRules>
-		<MatchRules>
-			<Type>xpath</Type>
-			<HttpTag/>
-			<HttpValue/>
-			<Url/>
-			<ErrorCode/>
-			<XPATHExpression>//*[local-name()='RequestSecurityToken'][not(child::*[local-name() ='Claims'])]</XPATHExpression>
-			<Method>default</Method>
-		</MatchRules>
-		<MatchWithPCRE>off</MatchWithPCRE>
-		<CombineWithOr>off</CombineWithOr>
-	</Matching>
-	<StylePolicyAction name="SecurityTokenService_no_claims_rule_aaa_3" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-		<mAdminState>enabled</mAdminState>
-		<Type>aaa</Type>
-		<Input>INPUT</Input>
-		<Output>consumer</Output>
+		<Type>call</Type>
+		<Input>dpvar_1</Input>
+		<Output>dpvar_2</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<AAA class="AAAPolicy">ConsumerAAA</AAA>
+		<Rule>SecurityTokenService_create_external_user_SAML_rule</Rule>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>
@@ -960,37 +851,37 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<SAMLAttributes name="MOD-SAML-Attributes" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<SAMLAttributes name="SystemUser_SAMLAttributes" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<SAMLAttribute>
-			<SourceType>var</SourceType>
-			<Name>authenticationLevel</Name>
-			<Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
-			<XPath/>
-			<ValueData/>
-			<SubValueData>authenticationLevel</SubValueData>
-			<FriendlyName/>
-		</SAMLAttribute>
-		<SAMLAttribute>
-			<SourceType>var</SourceType>
+			<SourceType>static</SourceType>
 			<Name>identType</Name>
 			<Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
 			<XPath/>
-			<ValueData/>
-			<SubValueData>identType</SubValueData>
+			<ValueData>SystemRessurs</ValueData>
+			<SubValueData/>
 			<FriendlyName/>
 		</SAMLAttribute>
 		<SAMLAttribute>
-			<SourceType>var</SourceType>
-			<Name>consumerId</Name>
+			<SourceType>static</SourceType>
+			<Name>authenticationLevel</Name>
 			<Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
 			<XPath/>
+			<ValueData>0</ValueData>
+			<SubValueData/>
+			<FriendlyName/>
+		</SAMLAttribute>
+		<SAMLAttribute>
+			<SourceType>xpath</SourceType>
+			<Name>consumerId</Name>
+			<Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
+			<XPath>//*[local-name()='Username']/text()</XPath>
 			<ValueData/>
-			<SubValueData>consumerId</SubValueData>
+			<SubValueData>Username</SubValueData>
 			<FriendlyName/>
 		</SAMLAttribute>
 	</SAMLAttributes>
-	<AAAPolicy name="SimpleClaimSAMLV2AAA" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<AAAPolicy name="SecurityTokenService_SystemUser_AAA" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
 			<EIBitmap>
@@ -1008,7 +899,7 @@
 				<saml-artifact>off</saml-artifact>
 				<client-ip-address>off</client-ip-address>
 				<signer-dn>off</signer-dn>
-				<token>on</token>
+				<token>off</token>
 				<cookie-token>off</cookie-token>
 				<ltpa>off</ltpa>
 				<metadata>off</metadata>
@@ -1017,7 +908,7 @@
 				<oauth>off</oauth>
 			</EIBitmap>
 			<EICustomURL/>
-			<EIXPath>//*[local-name()='RequestSecurityToken']/*[local-name()='Claims']</EIXPath>
+			<EIXPath/>
 			<EISignerDNValcred/>
 			<EICookieName/>
 			<EIBasicAuthRealm>login</EIBasicAuthRealm>
@@ -1033,13 +924,13 @@
 			<EIOAuthClientGroup/>
 		</ExtractIdentity>
 		<Authenticate>
-			<AUMethod>custom</AUMethod>
-			<AUCustomURL>local:///xslt/simple-claim-resolver.xsl</AUCustomURL>
+			<AUMethod>token</AUMethod>
+			<AUCustomURL/>
 			<AUMapURL/>
 			<AUHost/>
 			<AUPort/>
 			<AUSSLValcred/>
-			<AUCacheAllow>disabled</AUCacheAllow>
+			<AUCacheAllow>absolute</AUCacheAllow>
 			<AUCacheTTL>3</AUCacheTTL>
 			<AUKerberosPrincipal/>
 			<AUKerberosPassword/>
@@ -1100,10 +991,10 @@
 		</MapCredentials>
 		<ExtractResource>
 			<ERBitmap>
-				<target-url>off</target-url>
+				<target-url>on</target-url>
 				<original-url>on</original-url>
 				<request-uri>off</request-uri>
-				<request-opname>off</request-opname>
+				<request-opname>on</request-opname>
 				<http-method>off</http-method>
 				<XPath>off</XPath>
 				<metadata>off</metadata>
@@ -1175,7 +1066,7 @@
 			<PPEnabled>off</PPEnabled>
 			<PPCustomURL/>
 			<PPSAMLAuthAssertion>off</PPSAMLAuthAssertion>
-			<PPSAMLServerName>BD03</PPSAMLServerName>
+			<PPSAMLServerName>sts-datapower</PPSAMLServerName>
 			<PPSAMLNameQualifier/>
 			<PPKerberosTicket>off</PPKerberosTicket>
 			<PPKerberosClient/>
@@ -1244,12 +1135,13 @@
 			<PPSAMLProxyAudience/>
 			<PPSAMLProxyCount>0</PPSAMLProxyCount>
 			<PPSAMLAuthzAction>AllHTTP</PPSAMLAuthzAction>
-			<PPSAMLAttributes class="SAMLAttributes">MOD-SAML-Attributes</PPSAMLAttributes>
+			<PPSAMLAttributes class="SAMLAttributes">SystemUser_SAMLAttributes</PPSAMLAttributes>
 			<PPLTPAInsertCookie>on</PPLTPAInsertCookie>
 			<PPTAMPACPropagate>off</PPTAMPACPropagate>
-			<PPTAMHeader>iv-creds</PPTAMHeader>
+			<PPTAMHeader>HTTP_IV_CREDS</PPTAMHeader>
 			<PPTAMHeaderSize>0</PPTAMHeaderSize>
 		</PostProcess>
+		<SAMLValcred class="CryptoValCred">sts_backside_CryptoValCred</SAMLValcred>
 		<SAMLSigningHashAlg>sha1</SAMLSigningHashAlg>
 		<SAMLSigningAlg>rsa</SAMLSigningAlg>
 		<LDAPsuffix/>
@@ -1258,18 +1150,18 @@
 		<LogRejected>on</LogRejected>
 		<LogRejectedLevel>warn</LogRejectedLevel>
 		<PingIdentityCompatibility>off</PingIdentityCompatibility>
-		<DoSValve>3</DoSValve>
+		<DoSValve>1</DoSValve>
 		<LDAPVersion>v2</LDAPVersion>
 		<EnforceSOAPActor>on</EnforceSOAPActor>
 		<WSSecActorRoleID/>
 	</AAAPolicy>
-	<StylePolicyAction name="SecurityTokenService_no_claims_rule_aaa_4" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_conditional_0_refaction_aaa_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>aaa</Type>
-		<Input>INPUT</Input>
+		<Input>dpvar_1</Input>
 		<Output>samltoken</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<AAA class="AAAPolicy">SimpleClaimSAMLV2AAA</AAA>
+		<AAA class="AAAPolicy">SecurityTokenService_SystemUser_AAA</AAA>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>
@@ -1284,7 +1176,86 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_no_claims_rule_sign_3" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<StylePolicyRule name="SecurityTokenService_systemuser_rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Direction>request-rule</Direction>
+		<InputFormat>none</InputFormat>
+		<OutputFormat>none</OutputFormat>
+		<NonXMLProcessing>off</NonXMLProcessing>
+		<Unprocessed>off</Unprocessed>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_conditional_0_refaction_aaa_0</Actions>
+	</StylePolicyRule>
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_conditional_0_refaction_call_1" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Type>call</Type>
+		<Input>dpvar_1</Input>
+		<Output>dpvar_2</Output>
+		<NamedInOutLocationType>default</NamedInOutLocationType>
+		<Rule>SecurityTokenService_systemuser_rule</Rule>
+		<Transactional>off</Transactional>
+		<SOAPValidation>body</SOAPValidation>
+		<SQLSourceType>static</SQLSourceType>
+		<Asynchronous>off</Asynchronous>
+		<ResultsMode>first-available</ResultsMode>
+		<RetryCount>0</RetryCount>
+		<RetryInterval>1000</RetryInterval>
+		<MultipleOutputs>off</MultipleOutputs>
+		<IteratorType>XPATH</IteratorType>
+		<Timeout>0</Timeout>
+		<MethodRewriteType>GET</MethodRewriteType>
+		<MethodType>POST</MethodType>
+		<MethodType2>POST</MethodType2>
+	</StylePolicyAction>
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_conditional_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Type>conditional</Type>
+		<Input>dpvar_1</Input>
+		<NamedInOutLocationType>default</NamedInOutLocationType>
+		<Transactional>off</Transactional>
+		<SOAPValidation>body</SOAPValidation>
+		<SQLSourceType>static</SQLSourceType>
+		<Asynchronous>off</Asynchronous>
+		<Condition>
+			<Expression>boolean(//*[local-name()='RequestSecurityToken']/*[local-name()='Claims'])</Expression>
+			<ConditionAction>SecurityTokenService_default_request-rule_conditional_0_refaction_call_0</ConditionAction>
+		</Condition>
+		<Condition>
+			<Expression>/*</Expression>
+			<ConditionAction>SecurityTokenService_default_request-rule_conditional_0_refaction_call_1</ConditionAction>
+		</Condition>
+		<ResultsMode>first-available</ResultsMode>
+		<RetryCount>0</RetryCount>
+		<RetryInterval>1000</RetryInterval>
+		<MultipleOutputs>off</MultipleOutputs>
+		<IteratorType>XPATH</IteratorType>
+		<Timeout>0</Timeout>
+		<MethodRewriteType>GET</MethodRewriteType>
+		<MethodType>POST</MethodType>
+		<MethodType2>POST</MethodType2>
+	</StylePolicyAction>
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_log_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Type>log</Type>
+		<Input>samltoken</Input>
+		<NamedInOutLocationType>default</NamedInOutLocationType>
+		<OutputType>default</OutputType>
+		<LogLevel>error</LogLevel>
+		<LogType class="LogLabel">all</LogType>
+		<Transactional>off</Transactional>
+		<SOAPValidation>body</SOAPValidation>
+		<SQLSourceType>static</SQLSourceType>
+		<Asynchronous>off</Asynchronous>
+		<ResultsMode>first-available</ResultsMode>
+		<RetryCount>0</RetryCount>
+		<RetryInterval>1000</RetryInterval>
+		<MultipleOutputs>off</MultipleOutputs>
+		<IteratorType>XPATH</IteratorType>
+		<Timeout>0</Timeout>
+		<MethodRewriteType>GET</MethodRewriteType>
+		<MethodType>POST</MethodType>
+		<MethodType2>POST</MethodType2>
+	</StylePolicyAction>
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_sign_2" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>xform</Type>
 		<Input>samltoken</Input>
@@ -1301,11 +1272,11 @@
 		</StylesheetParameters>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
-			<ParameterValue>${cfgHost_test}</ParameterValue>
+			<ParameterValue>${cfgHost}</ParameterValue>
 		</StylesheetParameters>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
-			<ParameterValue>${cfgHost_test}</ParameterValue>
+			<ParameterValue>${cfgHost}</ParameterValue>
 		</StylesheetParameters>
 		<OutputType>default</OutputType>
 		<Transactional>off</Transactional>
@@ -1322,7 +1293,7 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_no_claims_rule_xform_4" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_xform_3" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>xform</Type>
 		<Input>signedtoken</Input>
@@ -1344,10 +1315,11 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_no_claims_rule_results_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<StylePolicyAction name="SecurityTokenService_default_request-rule_defaultaction_result" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>results</Type>
 		<Input>response</Input>
+		<Output>OUTPUT</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
 		<OutputType>default</OutputType>
 		<Transactional>off</Transactional>
@@ -1364,18 +1336,19 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<WSStylePolicyRule name="SecurityTokenService_no_claims_rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<WSStylePolicyRule name="SecurityTokenService_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Direction>request-rule</Direction>
 		<InputFormat>none</InputFormat>
 		<OutputFormat>none</OutputFormat>
 		<NonXMLProcessing>off</NonXMLProcessing>
 		<Unprocessed>off</Unprocessed>
-		<Actions class="StylePolicyAction">SecurityTokenService_no_claims_rule_aaa_3</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_no_claims_rule_aaa_4</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_no_claims_rule_sign_3</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_no_claims_rule_xform_4</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_no_claims_rule_results_0</Actions>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_aaa_1</Actions>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_conditional_0</Actions>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_log_0</Actions>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_sign_2</Actions>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_xform_3</Actions>
+		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_defaultaction_result</Actions>
 	</WSStylePolicyRule>
 	<Matching name="SecurityTokenService_match_all" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
@@ -1475,14 +1448,6 @@
 		<PolicyMaps>
 			<WSDLComponentType>fragmentid</WSDLComponentType>
 			<WSDLComponentValue/>
-			<Match class="Matching">Match-SAMLV2-NoClaims</Match>
-			<Rule class="WSStylePolicyRule">SecurityTokenService_no_claims_rule</Rule>
-			<Subscription/>
-			<WSDLFragmentID>http://www.datapower.com/fragment-id#dp.all()</WSDLFragmentID>
-		</PolicyMaps>
-		<PolicyMaps>
-			<WSDLComponentType>fragmentid</WSDLComponentType>
-			<WSDLComponentValue/>
 			<Match class="Matching">SecurityTokenService_match_all</Match>
 			<Rule class="WSStylePolicyRule">SecurityTokenService_default_response-rule</Rule>
 			<Subscription/>
@@ -1506,7 +1471,7 @@
 	<WSGateway name="SecurityTokenService" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Priority>normal</Priority>
-		<XMLManager class="XMLManager">default</XMLManager>
+		<XMLManager class="XMLManager">default-attempt-stream</XMLManager>
 		<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
 		<QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>
 		<PropagateURI>off</PropagateURI>
