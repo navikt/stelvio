@@ -157,7 +157,7 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
             getLog().error("URL to environment configuration is not valid URI", e);
         }
         Set<WSDLFile> wsdlFiles = discover(envConfigBaseUrl, env, envDomain, username, password, wsdlOutputDirectory);
-
+        
         // 2. Create WSProxy objects based on WSDLFile objects and put them in properties
         Collection<WSProxy> proxies = getProxies(wsdlFiles);
         String proxiesPropertyKeyName = PROXIES_PROPERTY_KEY_NAME;
@@ -204,6 +204,16 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
         Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
         for (WebServiceResource webServiceResource : webServiceResources) {
             WSDLFile wsdlFile = new WSDLFile(webServiceResource.getWsdlFile(), wsdlOutputDirectory.getParentFile());
+            
+            // OBS! TEKNISK GJELD!!!
+            //
+            // Setter frontside URI til samme URI som tjenesten bruker på egen host
+            //
+            // MULIG FOR 2 TJENESTER Å FÅ SAMME FRONTSIDE URI
+            getLog().info("Frontside URI: " + webServiceResource.getEndpointUrl().getPath());
+            wsdlFile.setFrontsideURI(webServiceResource.getEndpointUrl().getPath());
+            
+            
             wsdlFiles.add(wsdlFile);
         }
 

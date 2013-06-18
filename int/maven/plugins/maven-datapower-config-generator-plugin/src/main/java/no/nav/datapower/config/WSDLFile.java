@@ -88,6 +88,10 @@ public class WSDLFile {
 	public String getEndpointURI() {
 		return location.getPath();
 	}
+	
+	public void setFrontsideURI(String uri) {
+		frontsideURI = uri;
+	}
 
 	public String getFrontsideURI() {
 		if (proxy != null && proxy.hasMultipleWsdls()) {
