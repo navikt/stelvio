@@ -1113,6 +1113,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/CI-deploy_bus-nonenviroment-0.0
 dev/Hudson/Hudson_server_backup_Integration/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_SoapUI-test_service-gw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_TestServiceGateway_fault-handling/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_deploy_MOD/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_deploy_TRUNK/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_provisioning/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/DataPower_release-configuration/config.xml -text
