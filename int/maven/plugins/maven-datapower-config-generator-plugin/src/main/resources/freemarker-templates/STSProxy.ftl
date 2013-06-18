@@ -250,7 +250,7 @@
 			<AUSAML2Issuer/>
 			<AUSignerValcred/>
 			<AUSignedXPath/>
-			<AUSSLProxyProfile/>
+			<AUSSLProxyProfile class="SSLProxyProfile">LDAPS_SSLProxyProfile</AUSSLProxyProfile>
 			<AUNetegrityConfig/>
 			<AULDAPBindDN>${ldapBindDN}</AULDAPBindDN>
 			<AULDAPBindPassword>${ldapBindPw}</AULDAPBindPassword>
@@ -1234,28 +1234,6 @@
 		<MethodType>POST</MethodType>
 		<MethodType2>POST</MethodType2>
 	</StylePolicyAction>
-	<StylePolicyAction name="SecurityTokenService_default_request-rule_log_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-		<mAdminState>enabled</mAdminState>
-		<Type>log</Type>
-		<Input>samltoken</Input>
-		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<OutputType>default</OutputType>
-		<LogLevel>error</LogLevel>
-		<LogType class="LogLabel">all</LogType>
-		<Transactional>off</Transactional>
-		<SOAPValidation>body</SOAPValidation>
-		<SQLSourceType>static</SQLSourceType>
-		<Asynchronous>off</Asynchronous>
-		<ResultsMode>first-available</ResultsMode>
-		<RetryCount>0</RetryCount>
-		<RetryInterval>1000</RetryInterval>
-		<MultipleOutputs>off</MultipleOutputs>
-		<IteratorType>XPATH</IteratorType>
-		<Timeout>0</Timeout>
-		<MethodRewriteType>GET</MethodRewriteType>
-		<MethodType>POST</MethodType>
-		<MethodType2>POST</MethodType2>
-	</StylePolicyAction>
 	<StylePolicyAction name="SecurityTokenService_default_request-rule_sign_2" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>xform</Type>
@@ -1346,7 +1324,6 @@
 		<Unprocessed>off</Unprocessed>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_aaa_1</Actions>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_conditional_0</Actions>
-		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_log_0</Actions>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_sign_2</Actions>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_xform_3</Actions>
 		<Actions class="StylePolicyAction">SecurityTokenService_default_request-rule_defaultaction_result</Actions>
@@ -1602,4 +1579,77 @@
 		<SOAPActionPolicy>lax</SOAPActionPolicy>
 		<WSMAgentMonitor>on</WSMAgentMonitor>
 	</WSGateway>
+
+	
+	<!-- SSL Profile for LDAP -->
+	<CryptoValCred name="LDAPS_CryptoValCred" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Certificate class="CryptoCertificate">D26SubCA</Certificate>
+		<Certificate class="CryptoCertificate">D26RootCA</Certificate>
+		<Certificate class="CryptoCertificate">D26IssuingCA</Certificate>
+		<Certificate class="CryptoCertificate">Commfides_Premium_SSL_Wildcard_SGC</Certificate>
+		<CertValidationMode>legacy</CertValidationMode>
+		<UseCRL>off</UseCRL>
+		<RequireCRL>off</RequireCRL>
+		<CRLDPHandling>ignore</CRLDPHandling>
+		<InitialPolicySet>2.5.29.32.0</InitialPolicySet>
+		<ExplicitPolicy>off</ExplicitPolicy>
+	</CryptoValCred>
+	<CryptoProfile name="LDAPS_SSLCryptoProfile" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<ValCredential class="CryptoValCred">LDAPS_CryptoValCred</ValCredential>
+		<Ciphers>DEFAULT</Ciphers>
+		<SSLOptions>
+			<OpenSSL-default>on</OpenSSL-default>
+			<Disable-SSLv2>on</Disable-SSLv2>
+			<Disable-SSLv3>off</Disable-SSLv3>
+			<Disable-TLSv1>off</Disable-TLSv1>
+			<Enable-Legacy-Renegotiation>off</Enable-Legacy-Renegotiation>
+		</SSLOptions>
+		<ClientCAList>off</ClientCAList>
+	</CryptoProfile>
+	<SSLProxyProfile name="LDAPS_SSLProxyProfile" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Direction>forward</Direction>
+		<ForwardCryptoProfile class="CryptoProfile">LDAPS_SSLCryptoProfile</ForwardCryptoProfile>
+		<ServerCaching>on</ServerCaching>
+		<SessionTimeout>300</SessionTimeout>
+		<CacheSize>20</CacheSize>
+		<ClientCache>on</ClientCache>
+		<ClientAuthOptional>off</ClientAuthOptional>
+		<ClientAuthAlwaysRequest>off</ClientAuthAlwaysRequest>
+		<PermitInsecureServers>on</PermitInsecureServers>
+	</SSLProxyProfile>
+	
+	
+	<!-- SSL Profile for OpenAM -->
+	
+	<CryptoProfile name="OpenAM_CryptoProfile" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<IdentCredential class="CryptoIdentCred">${cfgHost}_CryptoIdCred</IdentCredential>
+		<ValCredential class="CryptoValCred">sts_backside_CryptoValCred</ValCredential>
+		<Ciphers>HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH</Ciphers>
+		<SSLOptions>
+			<OpenSSL-default>on</OpenSSL-default>
+			<Disable-SSLv2>on</Disable-SSLv2>
+			<Disable-SSLv3>off</Disable-SSLv3>
+			<Disable-TLSv1>off</Disable-TLSv1>
+			<Enable-Legacy-Renegotiation>off</Enable-Legacy-Renegotiation>
+		</SSLOptions>
+		<ClientCAList>off</ClientCAList>
+	</CryptoProfile>
+	<SSLProxyProfile name="OpenAM_SSLProxyProfile" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Direction>forward</Direction>
+		<ForwardCryptoProfile class="CryptoProfile">OpenAM_CryptoProfile</ForwardCryptoProfile>
+		<ServerCaching>on</ServerCaching>
+		<SessionTimeout>300</SessionTimeout>
+		<CacheSize>20</CacheSize>
+		<ClientCache>off</ClientCache>
+		<ClientAuthOptional>off</ClientAuthOptional>
+		<ClientAuthAlwaysRequest>off</ClientAuthAlwaysRequest>
+		<PermitInsecureServers>off</PermitInsecureServers>
+	</SSLProxyProfile>
+	
+	
 </#macro>
