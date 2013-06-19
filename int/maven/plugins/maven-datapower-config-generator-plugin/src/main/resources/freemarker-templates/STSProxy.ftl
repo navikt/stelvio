@@ -712,7 +712,7 @@
 			<PPEnabled>off</PPEnabled>
 			<PPCustomURL/>
 			<PPSAMLAuthAssertion>off</PPSAMLAuthAssertion>
-			<PPSAMLServerName>sts-datapower</PPSAMLServerName>
+			<PPSAMLServerName>IS02</PPSAMLServerName>
 			<PPSAMLNameQualifier/>
 			<PPKerberosTicket>off</PPKerberosTicket>
 			<PPKerberosClient/>
