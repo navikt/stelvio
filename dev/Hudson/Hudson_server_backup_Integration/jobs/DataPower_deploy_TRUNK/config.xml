@@ -181,13 +181,10 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                 <description></description>
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
-                    <string>dialog-gw</string>
                     <string>partner-gw</string>
                     <string>secgw</string>
                     <string>portal-gw</string>
                     <string>tms-gw</string>
-                    <string>service-gw</string>
-                    <string>sts</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -245,16 +242,6 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                     <string>https://dp-tst-11.adeo.no:5550</string>
                     <string>https://dp-tst-12.adeo.no:5550</string>
                     <string>test</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>envConfigDomain</name>
-                <description>Bare til bruk ved deploy av service-gw og dialog-gw</description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>test.local</string>
-                    <string>oera-t.local</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -342,7 +329,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://envconfig.adeo.no:8080/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
