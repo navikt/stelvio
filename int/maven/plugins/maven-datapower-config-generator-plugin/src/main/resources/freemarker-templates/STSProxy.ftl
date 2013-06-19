@@ -1624,23 +1624,30 @@
 	
 	<!-- SSL Profile for OpenAM -->
 	
-	<CryptoCertificate name="AddTrustExternalCARoot_Nytt" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<CryptoCertificate name="AddTrustExternalCARoot" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
-		<Filename>pubcert:///AddTrustExternalCARoot_nytt.cer</Filename>
+		<Filename>pubcert:///AddTrustExternalCARoot.crt</Filename>
 		<PasswordAlias>off</PasswordAlias>
 		<IgnoreExpiration>off</IgnoreExpiration>
 	</CryptoCertificate>
-	
+	<CryptoCertificate name="UTN-DATACorp-SGC" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Filename>pubcert:///UTN-DATACorp-SGC.pem</Filename>
+		<PasswordAlias>off</PasswordAlias>
+		<IgnoreExpiration>off</IgnoreExpiration>
+	</CryptoCertificate>
 	<CryptoValCred name="OpenAMCryptoValCred" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
-		<Certificate class="CryptoCertificate">AddTrustExternalCARoot_Nytt</Certificate>
-		<CertValidationMode>legacy</CertValidationMode>
+		<Certificate class="CryptoCertificate">AddTrustExternalCARoot</Certificate>
+		<Certificate class="CryptoCertificate">UTN-DATACorp-SGC</Certificate>
+		<CertValidationMode>pkix</CertValidationMode>
 		<UseCRL>off</UseCRL>
 		<RequireCRL>off</RequireCRL>
 		<CRLDPHandling>ignore</CRLDPHandling>
 		<InitialPolicySet>2.5.29.32.0</InitialPolicySet>
 		<ExplicitPolicy>off</ExplicitPolicy>
 	</CryptoValCred>
+	
 	
 	<CryptoProfile name="OpenAM_CryptoProfile" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
