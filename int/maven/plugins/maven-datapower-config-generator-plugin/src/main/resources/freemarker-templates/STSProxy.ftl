@@ -1624,10 +1624,28 @@
 	
 	<!-- SSL Profile for OpenAM -->
 	
+	<CryptoCertificate name="AddTrustExternalCARoot_Nytt" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Filename>pubcert:///AddTrustExternalCARoot_nytt.cer</Filename>
+		<PasswordAlias>off</PasswordAlias>
+		<IgnoreExpiration>off</IgnoreExpiration>
+	</CryptoCertificate>
+	
+	<CryptoValCred name="OpenAMCryptoValCred" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+		<mAdminState>enabled</mAdminState>
+		<Certificate class="CryptoCertificate">AddTrustExternalCARoot_Nytt</Certificate>
+		<CertValidationMode>legacy</CertValidationMode>
+		<UseCRL>off</UseCRL>
+		<RequireCRL>off</RequireCRL>
+		<CRLDPHandling>ignore</CRLDPHandling>
+		<InitialPolicySet>2.5.29.32.0</InitialPolicySet>
+		<ExplicitPolicy>off</ExplicitPolicy>
+	</CryptoValCred>
+	
 	<CryptoProfile name="OpenAM_CryptoProfile" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<IdentCredential class="CryptoIdentCred">${cfgHost}_CryptoIdCred</IdentCredential>
-		<ValCredential class="CryptoValCred">sts_backside_CryptoValCred</ValCredential>
+		<ValCredential class="CryptoValCred">OpenAMCryptoValCred</ValCredential>
 		<Ciphers>HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH</Ciphers>
 		<SSLOptions>
 			<OpenSSL-default>on</OpenSSL-default>
