@@ -244,6 +244,8 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                   <a class="string-array">
                     <string>test.local</string>
                     <string>oera-t.local</string>
+                    <string></string>
+                    <string>devillo-t.local</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -314,6 +316,9 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
+            <command>wget -qO - &quot;$@&quot; &quot;http://e34apsl00136.devillo.no:8080/conf/resources/bestmatch?alias=openam&amp;domain=oera-t.local&amp;envName=t9&quot;</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
             <command>/home/ci/cleanRepo.sh</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
@@ -324,7 +329,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=https://d26jbsl00076.test.local:8443/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://e34apsl00136.devillo.no:8080/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
