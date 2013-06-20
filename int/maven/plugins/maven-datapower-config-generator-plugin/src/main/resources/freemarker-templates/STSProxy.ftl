@@ -482,7 +482,7 @@
 		<Input>INPUT</Input>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
 		<Variable>var://context/sts/attribute-provider-url</Variable>
-		<Value>${ADHost}</Value>
+		<Value>${OpenAMHost}</Value>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>
