@@ -859,7 +859,7 @@
 			<Name>identType</Name>
 			<Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
 			<XPath/>
-			<ValueData>SystemRessurs</ValueData>
+			<ValueData>Systemressurs</ValueData>
 			<SubValueData/>
 			<FriendlyName/>
 		</SAMLAttribute>

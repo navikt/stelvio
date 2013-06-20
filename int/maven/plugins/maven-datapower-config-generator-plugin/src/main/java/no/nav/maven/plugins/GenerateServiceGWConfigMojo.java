@@ -3,10 +3,17 @@ package no.nav.maven.plugins;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import no.nav.aura.service.discovery.EnvConfigResourceDiscovery;
+import no.nav.aura.service.discovery.constants.EnvConfigQueryParameters;
+import no.nav.aura.service.discovery.domain.EnvConfigResource;
 import no.nav.datapower.config.freemarker.Freemarker;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
@@ -69,24 +76,80 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 	 */
 	private List repositories;
 	
-	/**
-	 * 
-	 * @parameter expression="${gateway-name}"
-	 * @readonly
-	 * @required
-	 */
-	private String gatewayName;	
+
+	 /**
+     * The endpoint URL to environment configuration
+     * 
+     * @parameter expression="${envConfigBaseUrlString}"
+     * @required
+     * @readonly
+     */
 	
-	/**
-	 * @parameter expression="${envclass}"
-	 * @required
-	 */
-	protected String envclass;
+    private String envConfigBaseUrlString;
+    /**
+     * The name of the environment where to discover web services
+     * 
+     * @parameter expression="${env}"
+     * @required
+     * @readonly
+     */
+    private String env;
+
+    /**
+     * The domain of the environment where to discover web services
+     * 
+     * Example: devillo.no, test.local, oera.t
+     * 
+     * @parameter expression="${envDomain}"
+     * @required
+     * @readonly
+     */
+    private String envDomain;
+
+    /**
+     * The username to authenticate to environment configuration
+     * 
+     * @parameter expression="${username}"
+     * @required
+     * @readonly
+     */
+    private String username;
+
+    /**
+     * The password to authenticate to environment configuration
+     * 
+     * 
+     * @parameter expression="${password}"
+     * @required
+     * @readonly
+     */
+    private String password;
+	
+    /**
+     * secgw or partner-gw
+     * 
+     * @parameter expression="${gateway-name}"
+     * @readonly
+     * @required
+     */
+    private String gatewayName;
+
+    /**
+     * @parameter expression="${envclass}"
+     * @required
+     */
+    protected String envclass;
+	
 
 	// Properties for template interpolation
 	private Properties properties;
 
 	private List remoteRepos;
+	
+	
+	// Exported properties
+    public static final String PROPERTY_KEY_LOGGINGHOST = "loggingRemoteHost";
+    public static final String PROPERTY_KEY_LOGGINGURI = "loggingRemoteURI";
 
 	/**
 	 * The mojo method doing the actual work when goal is invoked
@@ -104,6 +167,12 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 		getLog().info("Adding certificates from partnertrust file: " + certFile);
 		
 		addTrustCerts(properties);
+
+		try {
+			getEnvConfigProperties(properties);
+		} catch (Exception e) {
+			throw new MojoExecutionException("[ERROR] Getting values from EnvConfig", e);
+		}
 
 		// Instantiate the remote repositories object
 		try {
@@ -123,6 +192,23 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 			throw new IllegalStateException("Caught IllegalStateException while generating DataPower configuration", e);
 		}
 	}
+	
+	
+
+	private void getEnvConfigProperties(Properties properties) throws URISyntaxException, MalformedURLException, IOException  {
+		URI envConfigBaseUrl = new URI(envConfigBaseUrlString);
+
+		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl, username, password);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "nfs.log");
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
+		
+		EnvConfigResource resource = discovery.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
+		URL url = new URL(resource.getPropertyValue("url"));
+		properties.put(PROPERTY_KEY_LOGGINGHOST, url.getHost());
+		properties.put(PROPERTY_KEY_LOGGINGURI, url.getPath());
+	}
+	
 
 	/*
 	 * Load properties from property file
