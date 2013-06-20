@@ -1,4 +1,4 @@
-<#macro STSProxy name port loopbackPort cfgHost ldapHost ldapPort ldapBindDN ldapBindPw ldapBaseDN ldapCheckGroup ADHost>
+<#macro STSProxy name port loopbackPort cfgHost ldapHost ldapPort ldapBindDN ldapBindPw ldapBaseDN ldapCheckGroup OpenAMHost>
 	<URLMap name="default-attempt-stream-all" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<URLMapRule>
