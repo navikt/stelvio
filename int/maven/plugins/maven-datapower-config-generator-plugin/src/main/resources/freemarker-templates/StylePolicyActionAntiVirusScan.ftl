@@ -1,7 +1,7 @@
 <#macro StylePolicyActionAntiVirusScan name webwasher icap_server icap_port icap_uri>
     <StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
         <mAdminState>enabled</mAdminState>
-        <Type>filter</Type>
+        <Type>antivirus</Type>
         <Input>PIPE</Input>
         <Transform>${webwasher}</Transform>
         <Output>PIPE</Output>
@@ -26,6 +26,11 @@
             <ParameterName>{http://www.datapower.com/param/config}ICAPRemoteURI</ParameterName>
             <ParameterValue>${icap_uri}</ParameterValue>
         </StylesheetParameters>
+		<StylesheetParameters>
+			<ParameterName>{http://www.datapower.com/param/config}virus-header</ParameterName>
+			<ParameterValue>X-Virus-Name</ParameterValue>
+		</StylesheetParameters>
+		<OutputType>default</OutputType>
         <Transactional>off</Transactional>
         <SOAPValidation>body</SOAPValidation>
         <SQLSourceType>static</SQLSourceType>
