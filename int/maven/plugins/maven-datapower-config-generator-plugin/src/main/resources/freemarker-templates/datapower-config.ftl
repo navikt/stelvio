@@ -47,6 +47,7 @@
 <#include "SLMPolicy.ftl">
 <#include "STSProxy.ftl">
 <#include "StylePolicyActionAAA.ftl">
+<#include "StylePolicyActionAntiVirusScan.ftl">
 <#include "StylePolicyActionConditional.ftl">
 <#include "StylePolicyActionFetch.ftl">
 <#include "StylePolicyActionLog.ftl">

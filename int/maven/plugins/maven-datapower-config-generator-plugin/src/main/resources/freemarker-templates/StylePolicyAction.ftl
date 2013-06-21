@@ -1,4 +1,5 @@
 <#include "StylePolicyActionAAA.ftl"/>
+<#include "StylePolicyActionAntiVirusScan.ftl"/>
 <#include "StylePolicyActionConditional.ftl"/>
 <#include "StylePolicyActionFetch.ftl"/>
 <#include "StylePolicyActionLog.ftl"/>
@@ -28,6 +29,16 @@
 		name="${actionNamePrefix}${action.name}"
 		destination="${action.destination}"
 		output="${action.output}"/>
+    <#--
+		AntiVirus Action
+	-->
+	<#elseif action.type == "antivirus">
+	<@StylePolicyActionAntiVirusScan
+		name="${actionNamePrefix}${action.name}"
+		webwasher="${action.webwasher}"
+        icap_server="${action.icap_server}"
+        icap_port="${action.icap_port}"
+        icap_uri="${action.icap_uri}"/>
 	<#--
 		Route Action
 	-->
