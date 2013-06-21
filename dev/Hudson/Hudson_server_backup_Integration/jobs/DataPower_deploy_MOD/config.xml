@@ -329,7 +329,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://e34apsl00136.devillo.no:8080/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=https://e34apsl00136.devillo.no:8443/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
