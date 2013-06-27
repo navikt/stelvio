@@ -334,7 +334,7 @@
 			<AZLDAPBindDN>${ldapBindDN}</AZLDAPBindDN>
 			<AZLDAPBindPassword>${ldapBindPw}</AZLDAPBindPassword>
 			<AZLDAPGroupAttribute>member</AZLDAPGroupAttribute>
-			<AZSSLProxyProfile/>
+			<AZSSLProxyProfile class="SSLProxyProfile">LDAPS_SSLProxyProfile</AZSSLProxyProfile>
 			<AZNetegrityConfig/>
 			<AZLDAPSearchScope>subtree</AZLDAPSearchScope>
 			<AZLDAPSearchFilter>(objectClass=*)</AZLDAPSearchFilter>
