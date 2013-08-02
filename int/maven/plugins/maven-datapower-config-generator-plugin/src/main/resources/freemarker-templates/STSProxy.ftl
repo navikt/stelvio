@@ -1,4 +1,4 @@
-<#macro STSProxy name port loopbackPort cfgHost ldapHost ldapPort ldapBindDN ldapBindPw ldapBaseDN ldapCheckGroup OpenAMHost>
+<#macro STSProxy name port loopbackPort cfgHost ldapHost ldapPort ldapBindDN ldapBindPw ldapBaseDN ldapCheckGroup OpenAMHost trustedCerts>
 	<URLMap name="default-attempt-stream-all" intrinsic="true" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<URLMapRule>
@@ -1584,10 +1584,13 @@
 	<!-- SSL Profile for LDAP -->
 	<CryptoValCred name="LDAPS_CryptoValCred" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
-		<Certificate class="CryptoCertificate">D26SubCA</Certificate>
+		<!-- <Certificate class="CryptoCertificate">D26SubCA</Certificate>
 		<Certificate class="CryptoCertificate">D26RootCA</Certificate>
 		<Certificate class="CryptoCertificate">D26IssuingCA</Certificate>
-		<Certificate class="CryptoCertificate">Commfides_Premium_SSL_Wildcard_SGC</Certificate>
+		<Certificate class="CryptoCertificate">Commfides_Premium_SSL_Wildcard_SGC</Certificate> -->
+        <#list trustedCerts as cert>
+            <Certificate class="CryptoCertificate">${cert.name}</Certificate>
+		</#list>
 		<CertValidationMode>legacy</CertValidationMode>
 		<UseCRL>off</UseCRL>
 		<RequireCRL>off</RequireCRL>
