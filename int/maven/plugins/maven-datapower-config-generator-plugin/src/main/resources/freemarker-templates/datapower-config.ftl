@@ -24,6 +24,7 @@
 <#include "AAAPolicyUsernameToken2UsernameTokenAuthorizeLDAPS.ftl">
 <#include "AAAPolicyUsernameToken2UsernameTokenLDAPS.ftl">
 <#include "datapower-crypto.ftl">
+<#include "DefaultXMLManager.ftl">
 <#include "FrontsideHandler.ftl">
 <#include "HTTPSourceProtocolHandler.ftl">
 <#include "HTTPSSourceProtocolHandler.ftl">
