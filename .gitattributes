@@ -1181,6 +1181,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Statistikk_CI/con
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Tilbakekreving_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Tjenestepensjon_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Trekk_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Utbetaling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Beregning_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Grunnlag_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Iverksetting_CI/config.xml -text

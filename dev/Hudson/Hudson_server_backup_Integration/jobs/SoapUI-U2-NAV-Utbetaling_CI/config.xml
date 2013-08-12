@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Denne er disabled, og kan enables først når samhandler_v2 er releaset</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
@@ -135,7 +135,7 @@
           <sendToIndividuals>true</sendToIndividuals>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -156,12 +156,12 @@
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
         <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
-          <testResults>nav-tjeneste-samhandler-test/reports/TEST-*.xml</testResults>
+          <testResults>nav-utbetaling-test/reports/TEST-*.xml</testResults>
           <keepLongStdio>false</keepLongStdio>
           <testDataPublishers/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -216,7 +216,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -250,7 +250,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Maven>
-            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-samhandler-soapui-project.xml -Dsoapui.endpoint=http://e26apvl036.test.local:9080/nav-tjeneste-samhandler_v2Web/sca/SamhandlerWSEXP</targets>
+            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-utbetaling-UtbetalingWSEXP-soapui-project.xml -Dsoapui.endpoint=http://e26apvl036.test.local:9080/nav-tjeneste-utbetaling_v2Web/sca/UtbetalingWSEXP</targets>
             <mavenName>(Default)</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
@@ -332,7 +332,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/samhandler/nav-tjeneste-samhandler-test</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/utbetaling/nav-utbetaling-test</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -372,7 +372,8 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>n129069</createdBy>
+  <creationTime>1376310316938</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -383,7 +384,7 @@
   <scm class="hudson.scm.SubversionSCM">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/samhandler/nav-tjeneste-samhandler-test</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/arkiv/nav-arkiv-test</remote>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
@@ -399,7 +400,7 @@
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
