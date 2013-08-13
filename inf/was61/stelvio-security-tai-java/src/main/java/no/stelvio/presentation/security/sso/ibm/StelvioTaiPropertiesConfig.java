@@ -2,21 +2,20 @@ package no.stelvio.presentation.security.sso.ibm;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
-import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
-import no.stelvio.presentation.security.sso.DebugHelper;
 import no.stelvio.presentation.security.sso.RequestValueKeys;
 import no.stelvio.presentation.security.sso.RequestValueType;
 import no.stelvio.presentation.security.sso.SSORequestHandler;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioAccessManager;
 import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
-import no.stelvio.presentation.security.sso.accessmanager.support.WebSealAccessManager;
-import no.stelvio.presentation.security.sso.support.WebSealRequestHandler;
+import no.stelvio.presentation.security.sso.accessmanager.support.OpenAmAccessManager;
+import no.stelvio.presentation.security.sso.support.OpenAmRequestHandler;
 
 /**
  * A configuration class for the StelvioTai which can read in properties from 2 properties files or 
@@ -103,9 +102,11 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig{
 		return accessManager;
 	}
 	
-	private WebSealAccessManager createAccessManager() {
-		WebSealAccessManager accessManager = new WebSealAccessManager();
+	private OpenAmAccessManager createAccessManager() {
+		OpenAmAccessManager accessManager = new OpenAmAccessManager();
 		accessManager.setGroupMap(ldapProps);
+		accessManager.setOpenAMAddress(getTrimmedProperty(commonProps,ConfigPropertyKeys.OPENAM_ADDRESS));
+		accessManager.setOpenAMQueryTemplate(getTrimmedProperty(commonProps,ConfigPropertyKeys.OPENAM_QUERY_TEMPLATE));
 		return accessManager;
 	}
 	
@@ -125,37 +126,16 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig{
 	 * Private helper method which creates a WebSealRequestHandler from the properties in
 	 * the common properties file.
 	 * 
-	 * @return a new WebSealRequestHandler
+	 * @return a new OpenAmRequestHandler
 	 */
-	private WebSealRequestHandler createRequestHandler(){
+	private OpenAmRequestHandler createRequestHandler(){
 		
-		WebSealRequestHandler handler = new WebSealRequestHandler();
+		OpenAmRequestHandler handler = new OpenAmRequestHandler();
 		
-		handler.setAccessManagerUser(
-				getTrimmedProperty(commonProps,ConfigPropertyKeys.ACCESS_MANAGER_USERNAME));
-		handler.setUsePacHeader(false);
 		handler.setRequestValueType(getRequestValueType(commonProps));
 		
-		/*Properties requestValueKeyConfig = new Properties();
-		requestValueKeyConfig.put(ConfigPropertyKeys.ORIGINAL_USER_NAME_REQUEST_VALUE_KEY, 
-				getTrimmedProperty(commonProps,ConfigPropertyKeys.ORIGINAL_USER_NAME_REQUEST_VALUE_KEY));
-		requestValueKeyConfig.put(ConfigPropertyKeys.AUTHENTICATION_LEVEL_REQUEST_VALUE_KEY,
-				getTrimmedProperty(commonProps,ConfigPropertyKeys.AUTHENTICATION_LEVEL_REQUEST_VALUE_KEY));
-		requestValueKeyConfig.put(ConfigPropertyKeys.ACCESS_MANAGER_USER_REQUEST_VALUE_KEY,
-				getTrimmedProperty(commonProps,ConfigPropertyKeys.ACCESS_MANAGER_USER_REQUEST_VALUE_KEY));
-		
-		requestValueKeyConfig.put(ConfigPropertyKeys.AUTHORIZED_AS_REQUEST_VALUE_KEY,
-				getTrimmedProperty(commonProps,ConfigPropertyKeys.AUTHORIZED_AS_REQUEST_VALUE_KEY));
-		requestValueKeyConfig.put(ConfigPropertyKeys.AUTHORIZATION_TYPE_REQUEST_VALUE_KEY,
-				getTrimmedProperty(commonProps,ConfigPropertyKeys.AUTHORIZATION_TYPE_REQUEST_VALUE_KEY));
-		
-		handler.setRequestValueKeyConfig(requestValueKeyConfig);*/
 		RequestValueKeys reqKeys = new RequestValueKeys();
-		reqKeys.setOriginalUserNameKey(getTrimmedProperty(commonProps,ConfigPropertyKeys.ORIGINAL_USER_NAME_REQUEST_VALUE_KEY));
-		reqKeys.setAuthenticationLevelKey(getTrimmedProperty(commonProps,ConfigPropertyKeys.AUTHENTICATION_LEVEL_REQUEST_VALUE_KEY));
-		reqKeys.setAccessManagerUserKey(getTrimmedProperty(commonProps,ConfigPropertyKeys.ACCESS_MANAGER_USER_REQUEST_VALUE_KEY));
-		reqKeys.setAuthorizedAsKey(getTrimmedProperty(commonProps,ConfigPropertyKeys.AUTHORIZED_AS_REQUEST_VALUE_KEY));
-		reqKeys.setAuthorizationTypeKey(getTrimmedProperty(commonProps,ConfigPropertyKeys.AUTHORIZATION_TYPE_REQUEST_VALUE_KEY));
+		reqKeys.setCookieKey(getTrimmedProperty(commonProps,ConfigPropertyKeys.COOKIE_REQUEST_VALUE_KEY));
 		handler.setRequestValueKeys(reqKeys);
 		
 		return handler;

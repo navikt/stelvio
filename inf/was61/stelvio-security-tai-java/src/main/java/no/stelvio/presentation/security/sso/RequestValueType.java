@@ -9,5 +9,6 @@ public enum RequestValueType {
 	HEADER,
 	PARAMETER,
 	ATTRIBUTE,
-	SESSION_ATTRIBUTE;
+	SESSION_ATTRIBUTE,
+	COOKIE;
 }

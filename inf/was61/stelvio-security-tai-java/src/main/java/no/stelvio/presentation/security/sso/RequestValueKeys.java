@@ -7,6 +7,7 @@ public class RequestValueKeys {
 	private String authenticationLevelKey;
 	private String authorizedAsKey;
 	private String authorizationTypeKey;
+	private String cookieKey;
 	/**
 	 * @return the authorizedAsKey
 	 */
@@ -67,6 +68,19 @@ public class RequestValueKeys {
 	public void setOriginalUserNameKey(String originalUserNameKey) {
 		this.originalUserNameKey = originalUserNameKey;
 	}
+	/**
+	 * @return the cookieKey
+	 */
+	public String getCookieKey() {
+		return cookieKey;
+	}
+	/**
+	 * @param cookieKey the cookieKey to set
+	 */
+	public void setCookieKey(String cookieKey) {
+		this.cookieKey = cookieKey;
+	}
+
 	
 	
 	
