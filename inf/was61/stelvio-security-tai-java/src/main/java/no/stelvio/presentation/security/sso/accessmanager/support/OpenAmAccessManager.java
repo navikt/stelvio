@@ -15,10 +15,12 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
 import no.stelvio.presentation.security.sso.accessmanager.AccessManagerConnector;
 import no.stelvio.presentation.security.sso.accessmanager.PrincipalNotValidException;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioAccessManager;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioPrincipal;
+import no.stelvio.presentation.security.sso.support.PrincipalRepresentation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -157,15 +159,28 @@ public class OpenAmAccessManager implements StelvioAccessManager {
 		String authorizedAs = userId;
 		
 		List<String> authLevelGroupIds = getGroupIdsFromKey(attributeMap.get(PARAMETER_SECURITY_LEVEL));
+		List<String> selfGroups = getGroupIdsFromKey(ConfigPropertyKeys.AUTHORIZED_AS_SELF_GROUPS_KEY);;
+		
+		List<String> groupIds = mergeLists(authLevelGroupIds, null, selfGroups);
 		
 		if(log.isLoggable(Level.FINE)){		
 			log.fine("A StelvioPrincipal will be created with the following values: " 
-					+ userId + ", " + authorizedAs + ", " + authLevelGroupIds );
+					+ userId + ", " + authorizedAs + ", " + groupIds );
 		}	
 		principal = new DefaultStelvioPrincipal(userId, 
 												authorizedAs,
-												authLevelGroupIds);
+												groupIds);
 		return principal;
+	}
+	
+	private List<String> mergeLists(List<String>... lists){
+		List<String> merged = new ArrayList<String>();
+		for (List<String> list : lists) {
+			if(list != null){
+				merged.addAll(list);
+			}
+		}
+		return merged;
 	}
 	
 	/**
