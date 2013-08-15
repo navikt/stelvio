@@ -42,7 +42,6 @@ public class StelvioTai implements TrustAssociationInterceptor {
 	private SubjectMapper mapper;
 	private StelvioTaiConfig config;
 	private Properties taiCustomProps;
-	private boolean debug;
 	private Logger log = Logger.getLogger("no.stelvio.presentation.security.sso.ibm.StelvioTai");;
 	/**
 	 * Cleans up references and close connections.
