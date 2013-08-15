@@ -43,6 +43,7 @@ public class StelvioTai implements TrustAssociationInterceptor {
 	private SSORequestHandler requestHandler;
 	private SubjectMapper mapper;
 	private StelvioTaiConfig config;
+	private Properties taiCustomProps;
 	private boolean debug;
 	private Logger log = Logger.getLogger("no.stelvio.presentation.security.sso.ibm.StelvioTai");;
 	/**
@@ -78,6 +79,7 @@ public class StelvioTai implements TrustAssociationInterceptor {
 	 */
 	public int initialize(Properties props)
 			throws WebTrustAssociationFailedException {	
+		this.taiCustomProps = props;
 		initStelvioTaiComponents();
 		return 0;
 	}
@@ -107,6 +109,7 @@ public class StelvioTai implements TrustAssociationInterceptor {
 	public void initStelvioTaiComponents(StelvioTaiConfig configuration){
 		config = configuration;
 		config.loadConfig();
+		config.setProperties(taiCustomProps);
 		this.accessManager = config.getAccessManager();
 		this.requestHandler = config.getRequestHandler();
 		this.mapper = config.getSubjectMapper();

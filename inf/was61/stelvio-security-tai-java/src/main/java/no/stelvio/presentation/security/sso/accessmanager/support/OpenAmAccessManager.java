@@ -151,7 +151,7 @@ public class OpenAmAccessManager implements StelvioAccessManager {
 	throws PrincipalNotValidException {
 		
 		StelvioPrincipal principal;
-		// TODO populate representation with values from openAM
+		// populate representation with values from openAM
 		String restResponse = invokeOpenAmRestApi((String) representation);
 		Map<String, String> attributeMap = parseUserAttributes(restResponse);
 		
@@ -159,28 +159,15 @@ public class OpenAmAccessManager implements StelvioAccessManager {
 		String authorizedAs = userId;
 		
 		List<String> authLevelGroupIds = getGroupIdsFromKey(attributeMap.get(PARAMETER_SECURITY_LEVEL));
-		List<String> selfGroups = getGroupIdsFromKey(ConfigPropertyKeys.AUTHORIZED_AS_SELF_GROUPS_KEY);;
-		
-		List<String> groupIds = mergeLists(authLevelGroupIds, null, selfGroups);
 		
 		if(log.isLoggable(Level.FINE)){		
 			log.fine("A StelvioPrincipal will be created with the following values: " 
-					+ userId + ", " + authorizedAs + ", " + groupIds );
+					+ userId + ", " + authorizedAs + ", " + authLevelGroupIds );
 		}	
 		principal = new DefaultStelvioPrincipal(userId, 
 												authorizedAs,
-												groupIds);
+												authLevelGroupIds);
 		return principal;
-	}
-	
-	private List<String> mergeLists(List<String>... lists){
-		List<String> merged = new ArrayList<String>();
-		for (List<String> list : lists) {
-			if(list != null){
-				merged.addAll(list);
-			}
-		}
-		return merged;
 	}
 	
 	/**

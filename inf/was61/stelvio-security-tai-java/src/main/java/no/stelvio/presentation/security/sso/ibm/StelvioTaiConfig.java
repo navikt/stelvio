@@ -1,5 +1,7 @@
 package no.stelvio.presentation.security.sso.ibm;
 
+import java.util.Properties;
+
 import no.stelvio.presentation.security.sso.SSORequestHandler;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioAccessManager;
 import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
@@ -13,6 +15,13 @@ import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
  * @see SubjectMapper
  */
 public interface StelvioTaiConfig {
+	
+	/**
+	 *  Set the custom properties for the TAI
+	 * @param props
+	 */
+	void setProperties(Properties props);
+	
 	/**
 	 * Loads the appropriate configuration needed to create the StelvioAccessManager,
 	 * SSORequestHandler and SubjectMapper.

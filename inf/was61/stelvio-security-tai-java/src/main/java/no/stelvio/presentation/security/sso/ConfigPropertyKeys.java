@@ -14,6 +14,8 @@ public final class ConfigPropertyKeys {
 	public static final String AUTHORIZATION_TYPE_REQUEST_VALUE_KEY = "AUTHORIZATION_TYPE_REQUEST_VALUE_KEY";
 	public static final String COOKIE_REQUEST_VALUE_KEY = "COOKIE_REQUEST_VALUE_KEY";
 	// OpenAM
-	public static final String OPENAM_ADDRESS = "OPENAM_ADDRESS";
 	public static final String OPENAM_QUERY_TEMPLATE = "OPENAM_QUERY_TEMPLATE";
+	
+	// TAI custom property
+	public static final String OPENAM_ADDRESS = "openam.address";
 }
