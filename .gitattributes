@@ -7220,6 +7220,7 @@ inf/was61/pom.xml -text
 inf/was61/stelvio-security-login-java/.project -text
 inf/was61/stelvio-security-login-java/pom.xml -text
 inf/was61/stelvio-security-login-java/src/main/java/no/stelvio/common/security/ws/lm/StelvioMapCSIv2OutboundLoginModule.java -text
+inf/was61/stelvio-security-tai-java/.classpath -text
 inf/was61/stelvio-security-tai-java/.project -text
 inf/was61/stelvio-security-tai-java/pom.xml -text
 inf/was61/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/ConfigPropertyKeys.java -text
