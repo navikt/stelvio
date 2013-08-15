@@ -2,7 +2,6 @@ package no.stelvio.presentation.security.sso.ibm;
 
 import java.rmi.RemoteException;
 import java.util.List;
-import java.util.Properties;
 
 import javax.naming.NamingException;
 
