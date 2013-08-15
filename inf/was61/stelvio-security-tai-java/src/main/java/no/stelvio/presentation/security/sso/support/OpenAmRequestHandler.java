@@ -182,10 +182,12 @@ public class OpenAmRequestHandler implements SSORequestHandler {
 	private Object getCookieValue(HttpServletRequest request, String key){
 		Cookie[] cookies= request.getCookies();
 		String value = null;
-		for(int i=0; i<cookies.length;i++) {
-			if(cookies[i].getName().equals(requestValueKeys.getCookieKey())) {
-				value = cookies[i].getValue(); 
-				break;
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().equals(requestValueKeys.getCookieKey())) {
+					value = cookies[i].getValue();
+					break;
+				}
 			}
 		}
 		return value;
