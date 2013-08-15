@@ -7,8 +7,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServletRequest;
-
 import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
 import no.stelvio.presentation.security.sso.accessmanager.AccessManagerConnector;
 import no.stelvio.presentation.security.sso.accessmanager.PrincipalNotValidException;

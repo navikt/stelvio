@@ -2,29 +2,19 @@ package no.stelvio.presentation.security.sso.ibm;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
-import java.util.Properties;
 
 import javax.security.auth.Subject;
 
-import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
 import no.stelvio.presentation.security.sso.RequestValueKeys;
 import no.stelvio.presentation.security.sso.RequestValueType;
-import no.stelvio.presentation.security.sso.SSORequestHandler;
 import no.stelvio.presentation.security.sso.accessmanager.PrincipalNotValidException;
-import no.stelvio.presentation.security.sso.accessmanager.StelvioPrincipal;
-import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
 import no.stelvio.presentation.security.sso.support.WebSealRequestHandler;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
 
-import com.ibm.wsspi.security.tai.TAIResult;
 import com.ibm.wsspi.security.token.AttributeNameConstants;
 
 public class StelvioTaiTest extends AbstractTaiTest{

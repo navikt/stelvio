@@ -1,15 +1,12 @@
 package no.stelvio.presentation.security.sso.support;
 
 import java.util.Enumeration;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
-import no.stelvio.presentation.security.sso.DebugHelper;
 import no.stelvio.presentation.security.sso.RequestValueKeys;
 import no.stelvio.presentation.security.sso.RequestValueType;
 import no.stelvio.presentation.security.sso.SSORequestHandler;
@@ -143,10 +140,6 @@ public class WebSealRequestHandler implements SSORequestHandler {
 		return (isRequestValuePresent(request, requestValueKeys.getOriginalUserNameKey()) 
 				&& isRequestValuePresent(request, requestValueKeys.getAuthenticationLevelKey())
 				&& isRequestValuePresent(request, requestValueKeys.getAccessManagerUserKey()));
-	}
-	
-	private boolean isAuthenticated(HttpServletRequest request){
-		return request.getRemoteUser() != null;
 	}
 	
 	/**

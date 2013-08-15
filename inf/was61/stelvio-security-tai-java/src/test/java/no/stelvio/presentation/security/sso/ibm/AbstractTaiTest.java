@@ -1,27 +1,14 @@
 package no.stelvio.presentation.security.sso.ibm;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
 import java.util.Properties;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.security.auth.Subject;
-
-import org.springframework.mock.web.MockHttpServletRequest;
-
-import no.stelvio.presentation.security.sso.DebugHelper;
+import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
+import no.stelvio.presentation.security.sso.RequestValueKeys;
 import no.stelvio.presentation.security.sso.RequestValueType;
-import no.stelvio.presentation.security.sso.accessmanager.StelvioPrincipal;
-import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
+import no.stelvio.presentation.security.sso.accessmanager.support.WebSealAccessManager;
 import no.stelvio.presentation.security.sso.support.WebSealRequestHandler;
 
-import com.ibm.websphere.security.CustomRegistryException;
-import com.ibm.websphere.security.EntryNotFoundException;
-import com.ibm.websphere.security.UserRegistry;
-import com.ibm.wsspi.security.token.AttributeNameConstants;
+import org.springframework.mock.web.MockHttpServletRequest;
 
 public abstract class AbstractTaiTest {
 	
@@ -52,6 +39,8 @@ public abstract class AbstractTaiTest {
 		
 	};*/
 	protected MockWebsphereSubjectMapper mapper = new MockWebsphereSubjectMapper();
+	protected WebSealRequestHandler requestHandler = new WebSealRequestHandler();
+	protected WebSealAccessManager accessManager = new WebSealAccessManager();
 	
 	protected StelvioTai initializeStelvioTaiComponents(StelvioTaiConfig config){
 		StelvioTai tai = new StelvioTai();
@@ -67,9 +56,24 @@ public abstract class AbstractTaiTest {
 		StelvioTaiPropertiesConfig config = new StelvioTaiPropertiesConfig();
 		//Can not test using the WebsphereSubjectMapper since it needs a connection to
 		//the user-registry to retrieve ldapgroups.
-		/*Properties ldapGroups = config.loadPropertiesFromFile(config.getLdapGroupsPropertiesFileName());
-		mapper.setGroupMap(ldapGroups);*/
 		config.setSubjectMapper(mapper);
+		Properties ldapGroups = config.loadPropertiesFromFile("test-" + config.getLdapGroupsPropertiesFileName());
+		Properties common = config.loadPropertiesFromFile("test-" + config.getCommonPropertiesFileName());
+		accessManager.setGroupMap(ldapGroups);
+		config.setAccessManager(accessManager);
+		requestHandler.setAccessManagerUser(common.getProperty(ConfigPropertyKeys.ACCESS_MANAGER_USERNAME));
+		requestHandler.setUsePacHeader(false);
+		requestHandler.setRequestValueType(RequestValueType.HEADER);
+		RequestValueKeys reqKeys = new RequestValueKeys();
+		reqKeys.setOriginalUserNameKey(common.getProperty(ConfigPropertyKeys.ORIGINAL_USER_NAME_REQUEST_VALUE_KEY));
+		reqKeys.setAuthenticationLevelKey(common.getProperty(ConfigPropertyKeys.AUTHENTICATION_LEVEL_REQUEST_VALUE_KEY));
+		reqKeys.setAccessManagerUserKey(common.getProperty(ConfigPropertyKeys.ACCESS_MANAGER_USER_REQUEST_VALUE_KEY));
+		reqKeys.setAuthorizedAsKey(common.getProperty(ConfigPropertyKeys.AUTHORIZED_AS_REQUEST_VALUE_KEY));
+		reqKeys.setAuthorizationTypeKey(common.getProperty(ConfigPropertyKeys.AUTHORIZATION_TYPE_REQUEST_VALUE_KEY));
+		requestHandler.setRequestValueKeys(reqKeys);
+		
+
+		config.setRequestHandler(requestHandler);
 		
 		return config;
 	}

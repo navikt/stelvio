@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,19 +11,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.security.auth.Subject;
 
-import no.stelvio.presentation.security.sso.DebugHelper;
-import no.stelvio.presentation.security.sso.accessmanager.PrincipalNotValidException;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioPrincipal;
 import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
 
 import com.ibm.websphere.security.CustomRegistryException;
 import com.ibm.websphere.security.EntryNotFoundException;
 import com.ibm.websphere.security.UserRegistry;
-import com.ibm.websphere.security.auth.WSSubject;
-import com.ibm.websphere.security.cred.WSCredential;
-import com.ibm.ws.security.auth.SubjectHelper;
 import com.ibm.wsspi.security.token.AttributeNameConstants;
-import com.ibm.wsspi.security.token.AuthorizationToken;
 /**
  * A WebSphere-specific implementation of a SubjectMapper which can create
  * a <code>Subject</code> and populate it with group-memberships from a custom user-registry. 

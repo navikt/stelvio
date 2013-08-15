@@ -8,8 +8,6 @@ import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.presentation.security.sso.DebugHelper;
-
 import no.stelvio.presentation.security.sso.SSORequestHandler;
 import no.stelvio.presentation.security.sso.accessmanager.PrincipalNotValidException;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioAccessManager;

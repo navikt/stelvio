@@ -15,12 +15,10 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
 import no.stelvio.presentation.security.sso.accessmanager.AccessManagerConnector;
 import no.stelvio.presentation.security.sso.accessmanager.PrincipalNotValidException;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioAccessManager;
 import no.stelvio.presentation.security.sso.accessmanager.StelvioPrincipal;
-import no.stelvio.presentation.security.sso.support.PrincipalRepresentation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
