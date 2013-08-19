@@ -7219,8 +7219,6 @@ inf/WebSEAL/stelvio-security-webseal-html/src/main/resources/lib/html/C/webseal_
 inf/was/pom.xml -text
 inf/was/stelvio-security-login-java/pom.xml -text
 inf/was/stelvio-security-login-java/src/main/java/no/stelvio/common/security/ws/lm/StelvioMapCSIv2OutboundLoginModule.java -text
-inf/was/stelvio-security-tai-java/.classpath -text
-inf/was/stelvio-security-tai-java/.project -text
 inf/was/stelvio-security-tai-java/pom.xml -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/ConfigPropertyKeys.java -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/DebugHelper.java -text
