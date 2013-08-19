@@ -4,9 +4,6 @@ import java.util.Properties;
 
 import javax.servlet.http.Cookie;
 
-import no.stelvio.presentation.security.sso.ConfigPropertyKeys;
-import no.stelvio.presentation.security.sso.RequestValueKeys;
-import no.stelvio.presentation.security.sso.RequestValueType;
 import no.stelvio.presentation.security.sso.accessmanager.support.OpenAmAccessManager;
 import no.stelvio.presentation.security.sso.accessmanager.support.WebSealAccessManager;
 import no.stelvio.presentation.security.sso.ibm.MockWebsphereSubjectMapper;
@@ -118,25 +115,25 @@ public abstract class AbstractTaiTest {
 		return config;
 	}
 	
-	public class MockTaiHttpServletRequest extends MockHttpServletRequest {
-		
-		public void addValueToRequest(
-				RequestValueType requestValueType, String key, String value){
-			
-			if (requestValueType == RequestValueType.HEADER){
-				if(value != null){
-					addHeader(key,value);
-				}
-			} else if( requestValueType == RequestValueType.ATTRIBUTE){
-				setAttribute(key, value);
-			} else if( requestValueType == RequestValueType.PARAMETER){
-				addParameter(key, value);
-			} else if( requestValueType == RequestValueType.SESSION_ATTRIBUTE){
-				getSession().setAttribute(key, value);
-			} else if( requestValueType == RequestValueType.COOKIE){
-				setCookies(new Cookie[]{ new Cookie(key, value)});
-			}  
-		}
-	}
+    public class MockTaiHttpServletRequest extends MockHttpServletRequest {
+
+        public void addValueToRequest(
+                RequestValueType requestValueType, String key, String value) {
+
+            if (requestValueType == RequestValueType.HEADER) {
+                if (value != null) {
+                    addHeader(key, value);
+                }
+            } else if (requestValueType == RequestValueType.ATTRIBUTE) {
+                setAttribute(key, value);
+            } else if (requestValueType == RequestValueType.PARAMETER) {
+                addParameter(key, value);
+            } else if (requestValueType == RequestValueType.SESSION_ATTRIBUTE) {
+                getSession().setAttribute(key, value);
+            } else if (requestValueType == RequestValueType.COOKIE) {
+                setCookies(new Cookie[] { new Cookie(key, value) });
+            }
+        }
+    }
 	
 }

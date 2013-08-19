@@ -15,31 +15,37 @@ import no.stelvio.presentation.security.sso.accessmanager.SubjectMapper;
  * @see SubjectMapper
  */
 public interface StelvioTaiConfig {
-	
-	/**
-	 *  Set the custom properties for the TAI
-	 * @param props
-	 */
-	void setProperties(Properties props);
-	
-	/**
-	 * Loads the appropriate configuration needed to create the StelvioAccessManager,
-	 * SSORequestHandler and SubjectMapper.
-	 */
-	void loadConfig();
-	/**
-	 * Gets the access-manager
-	 * @return the access-manager
-	 */
-	StelvioAccessManager getAccessManager();
-	/**
-	 * Gets the request-handler
-	 * @return the request-handler
-	 */
-	SSORequestHandler getRequestHandler();
-	/**
-	 * Gets the subject-mapper
-	 * @return the subject-mapper
-	 */
-	SubjectMapper getSubjectMapper();
+
+    /**
+     * Set the custom properties for the TAI
+     * 
+     * @param props
+     */
+    void setProperties(Properties props);
+
+    /**
+     * Loads the appropriate configuration needed to create the StelvioAccessManager, SSORequestHandler and SubjectMapper.
+     */
+    void loadConfig();
+
+    /**
+     * Gets the access-manager
+     * 
+     * @return the access-manager
+     */
+    StelvioAccessManager getAccessManager();
+
+    /**
+     * Gets the request-handler
+     * 
+     * @return the request-handler
+     */
+    SSORequestHandler getRequestHandler();
+
+    /**
+     * Gets the subject-mapper
+     * 
+     * @return the subject-mapper
+     */
+    SubjectMapper getSubjectMapper();
 }

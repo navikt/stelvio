@@ -9,12 +9,14 @@ import javax.security.auth.Subject;
  * @see Subject
  */
 public interface SubjectMapper {
-	/**
-	 * Creates a Subject from a StelvioPrincipal
-	 * @param principal the StelvioPrincipal
-	 * @return a Subject 
-	 * @throws Exception if an exception occurs while creating a Subject, typically vendor specific 
-	 * exceptions.
-	 */
-	Subject createSubject(StelvioPrincipal principal) throws Exception;
+    /**
+     * Creates a Subject from a StelvioPrincipal
+     * 
+     * @param principal
+     *            the StelvioPrincipal
+     * @return a Subject
+     * @throws Exception
+     *             if an exception occurs while creating a Subject, typically vendor specific exceptions.
+     */
+    Subject createSubject(StelvioPrincipal principal) throws Exception;
 }
