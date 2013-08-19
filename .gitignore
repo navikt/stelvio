@@ -2140,6 +2140,9 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 inf/was/stelvio-security-login-java/.classpath
 inf/was/stelvio-security-login-java/.project
 inf/was/stelvio-security-login-java/.settings
+inf/was/stelvio-security-tai-java/.classpath
+inf/was/stelvio-security-tai-java/.project
+inf/was/stelvio-security-tai-java/.settings
 int/eclipse/plugins/stelvio-models-service-metamodel/.classpath
 int/eclipse/plugins/stelvio-models-service-metamodel/.project
 int/eclipse/plugins/stelvio-models-service-metamodel/.settings
