@@ -5,26 +5,27 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
-		<version>1.2.2</version>
+		<version>1.2.5</version>
 	</parent>
 
-	<groupId>no.stelvio.was61</groupId>
-	<artifactId>was61</artifactId>
+	<groupId>no.stelvio.was</groupId>
+	<artifactId>was</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.1</version>
-	<name>stelvio - was61</name>
+	<version>2.0.0-SNAPSHOT</version>
+	<name>stelvio - was</name>
 	<modules>
 		<module>stelvio-security-tai-java</module>
 		<module>stelvio-security-login-java</module>
 	</modules>
 	<scm>
-		<connection>scm:clearcase:maven_stelvio:\\localhost\c$\config_spec.stelvio</connection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/was</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/was</developerConnection>
 	</scm>
+	
 	<dependencies>
 		<dependency>
 			<artifactId>junit</artifactId>
 			<groupId>junit</groupId>
-			<version>4.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -41,22 +42,21 @@
 		</dependency>
 		
 	</dependencies>
+	
 	<distributionManagement>
 		<repository>
 			<id>nav-maven2-internal-repo</id>
 			<name>NAV Maven2 Internal Repository</name>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
+			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
 		</repository>
 		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<name>NAV Maven2 Internal Snapshot Repository</name>
-			<url>scp://10.33.1.53/var/maven2/snapshot</url>
+			<id>m2snapshot</id>
+			<name>NAV Maven2 Snapshot Repository</name>
+			<url>http://maven.adeo.no/nexus/content/repositories/m2snapshot</url>
+			<uniqueVersion>true</uniqueVersion>
 		</snapshotRepository>
-		<site>
-			<id>website</id>
-			<url>scp://10.33.1.53/var/www/html/project/stelvio/</url>
-		</site>
 	</distributionManagement>
+	
 	<reporting>
 		<plugins>
 			<plugin>
@@ -117,7 +117,7 @@
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<configuration>
-					<targetJdk>1.5</targetJdk>
+					<targetJdk>1.6</targetJdk>
 					<rulesets>
 						<ruleset>
 							http://confluence.adeo.no/download/attachments/12007/nav_pmd.xml
@@ -158,6 +158,14 @@
 				<configuration>
 					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
 				</configuration>
+			</plugin>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
