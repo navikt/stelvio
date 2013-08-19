@@ -7217,7 +7217,6 @@ inf/WebSEAL/stelvio-security-webseal-html/src/main/resources/lib/html/C/pensjont
 inf/WebSEAL/stelvio-security-webseal-html/src/main/resources/lib/html/C/too_many_sessions.html -text
 inf/WebSEAL/stelvio-security-webseal-html/src/main/resources/lib/html/C/webseal_login.html -text
 inf/was/pom.xml -text
-inf/was/stelvio-security-login-java/.project -text
 inf/was/stelvio-security-login-java/pom.xml -text
 inf/was/stelvio-security-login-java/src/main/java/no/stelvio/common/security/ws/lm/StelvioMapCSIv2OutboundLoginModule.java -text
 inf/was/stelvio-security-tai-java/.classpath -text
