@@ -1,88 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>no.stelvio.was61</groupId>
-		<artifactId>was61</artifactId>
-		<version>1.0.1</version>
+		<groupId>no.stelvio.was</groupId>
+		<artifactId>was</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
 	</parent>
-	<groupId>no.stelvio.was61</groupId>
+	
 	<artifactId>stelvio-security-login-java</artifactId>
-	<version>1.0.2</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>stelvio - security - login</name>
+
 	<dependencies>
 		<dependency>
-			<groupId>com.ibm.ws</groupId>
-  			<artifactId>runtime</artifactId>
-  			<version>6.1.0</version>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.admin.client</artifactId>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<!-- Hijack .project -->
-			<plugin>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>exec-maven-plugin</artifactId>
-			<executions>
-					<execution>
-						<id>hijack .project</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>attrib</executable>
-							<arguments>
-								<argument>-r</argument>
-								<argument>.project</argument>
-							</arguments>
-						</configuration>	
-					</execution>
-				</executions>
-			</plugin>
-		
-			<!-- Set up classpath and project -->
-			<plugin>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>eclipse:eclipse</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>eclipse</goal>
-						</goals>
-						<configuration>
-							<downloadSources>true</downloadSources>
-							<buildcommands>
-						<buildcommand>com.ibm.etools.common.migration.MigrationBuilder</buildcommand>
-						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
-						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
-						<buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
-					</buildcommands>
-					<projectnatures>
-						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
-						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
-						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
-						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
-					</projectnatures>
-					<classpathContainers>
-						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-						<classpathContainer>org.eclipse.jst.j2ee.internal.module.container</classpathContainer>
-						<classpathContainer>org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v6/was.base.v6</classpathContainer>
-					</classpathContainers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.4</source>
-						<target>1.4</target>
-					</configuration>
-			</plugin>
-		</plugins>
-	</build>
+
 </project>
