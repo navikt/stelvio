@@ -2137,6 +2137,9 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.library.attributes
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.module.attributes
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/target
+inf/was/stelvio-security-login-java/.classpath
+inf/was/stelvio-security-login-java/.project
+inf/was/stelvio-security-login-java/.settings
 int/eclipse/plugins/stelvio-models-service-metamodel/.classpath
 int/eclipse/plugins/stelvio-models-service-metamodel/.project
 int/eclipse/plugins/stelvio-models-service-metamodel/.settings
