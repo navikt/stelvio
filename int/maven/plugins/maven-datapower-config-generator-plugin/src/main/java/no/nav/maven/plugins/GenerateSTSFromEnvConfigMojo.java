@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -146,6 +147,8 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 	// Exported properties
     public static final String PROPERTY_KEY_OPENAMHOST = "OpenAMHost";
     public static final String PROPERTY_KEY_LDAPHOST = "frontsideLDAPHost";
+    public static final String PROPERTY_KEY_LOGGINGHOST = "loggingRemoteHost";
+    public static final String PROPERTY_KEY_LOGGINGURI = "loggingRemoteURI";
 	
 	
 	private List remoteRepos;
@@ -218,6 +221,16 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 
 		String ldapUrl = resource.getPropertyValue("url").replace("ldap://", "").replace("ldaps://", "");
 		props.put(PROPERTY_KEY_LDAPHOST, ldapUrl);
+		
+		discovery.resetUriBuilder();
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "nfs.log");
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
+		
+		resource = discovery.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
+		URL url = new URL(resource.getPropertyValue("url"));
+		props.put(PROPERTY_KEY_LOGGINGHOST, url.getHost());
+		props.put(PROPERTY_KEY_LOGGINGURI, url.getPath());
 	}
 	
 	

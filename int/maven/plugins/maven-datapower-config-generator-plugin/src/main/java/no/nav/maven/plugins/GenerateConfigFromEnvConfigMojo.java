@@ -3,8 +3,10 @@ package no.nav.maven.plugins;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -19,7 +21,10 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
 
 import freemarker.template.TemplateException;
+import no.nav.aura.service.discovery.constants.EnvConfigQueryParameters;
+import no.nav.aura.service.discovery.EnvConfigResourceDiscovery;
 import no.nav.aura.service.discovery.EnvConfigServiceDiscovery;
+import no.nav.aura.service.discovery.domain.EnvConfigResource;
 import no.nav.aura.service.discovery.domain.WebServiceResource;
 import no.nav.datapower.config.WSDLFile;
 import no.nav.datapower.config.WSProxy;
@@ -120,6 +125,10 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
 
     private final String PROXIES_PROPERTY_KEY_NAME = "GeneralProxies";
 
+	// Exported properties
+    public static final String PROPERTY_KEY_LOGGINGHOST = "loggingRemoteHost";
+    public static final String PROPERTY_KEY_LOGGINGURI = "loggingRemoteURI";
+    
     /**
      * The mojo method doing the actual work when goal is invoked
      */
@@ -135,10 +144,17 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
         // 3. Expand trust ceriticate property previously loaded
         expandTrustCertificateProperty(properties);
 
-        // 4. Discover and map wsdls to wsdl proxies
+        // 4. Reading nfs log targets from envconfig
+        try {
+			getEnvConfigProperties(properties);
+		} catch (Exception e) {
+			throw new MojoExecutionException("[ERROR] Getting values from EnvConfig", e);
+		}
+        
+        // 5. Discover and map wsdls to wsdl proxies
         mapWsdlsToProxies(properties);
 
-        // 5. Merge templates with properties and output to config file
+        // 6. Merge templates with properties and output to config file
         try {
             processFreemarkerTemplates(mainTemplateFile, configFile, properties);
         } catch (IOException e) {
@@ -147,6 +163,20 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
             throw new IllegalStateException("Caught IllegalStateException while generating DataPower configuration", e);
         }
     }
+    
+    private void getEnvConfigProperties(Properties properties) throws URISyntaxException, MalformedURLException, IOException  {
+		URI envConfigBaseUrl = new URI(envConfigBaseUrlString);
+
+		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl, username, password);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "nfs.log");
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
+		
+		EnvConfigResource resource = discovery.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
+		URL url = new URL(resource.getPropertyValue("url"));
+		properties.put(PROPERTY_KEY_LOGGINGHOST, url.getHost());
+		properties.put(PROPERTY_KEY_LOGGINGURI, url.getPath());
+	}
 
     private void mapWsdlsToProxies(Properties properties) {
         // 1. Discover services and get WSDLFile objects
