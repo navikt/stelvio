@@ -98,11 +98,11 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig {
     private OpenAmAccessManager createAccessManager() {
         OpenAmAccessManager accessManager = new OpenAmAccessManager();
         accessManager.setGroupMap(ldapProps);
-        String openamaddress = taiProps.getProperty(ConfigPropertyKeys.OPENAM_ADDRESS);
+        String openamaddress = taiProps.getProperty(ConfigPropertyKeys.OPENAM_URL);
         if (openamaddress != null) {
             accessManager.setOpenAMAddress(openamaddress);
         } else {
-            log.logp(Level.SEVERE, this.getClass().getName(), "createAccessManager", "Missing TAI custom property: " + ConfigPropertyKeys.OPENAM_ADDRESS);
+            log.logp(Level.SEVERE, this.getClass().getName(), "createAccessManager", "Missing TAI custom property: " + ConfigPropertyKeys.OPENAM_URL);
         }
         accessManager.setOpenAMQueryTemplate(getTrimmedProperty(commonProps, ConfigPropertyKeys.OPENAM_QUERY_TEMPLATE));
         return accessManager;

@@ -17,5 +17,5 @@ public final class ConfigPropertyKeys {
     public static final String OPENAM_QUERY_TEMPLATE = "OPENAM_QUERY_TEMPLATE";
 
     // TAI custom property
-    public static final String OPENAM_ADDRESS = "openam.address";
+    public static final String OPENAM_URL = "openam.url";
 }
