@@ -51,18 +51,6 @@
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>-1</daysToKeep>
-          <numToKeep>4</numToKeep>
-          <artifactDaysToKeep>-1</artifactDaysToKeep>
-          <artifactNumToKeep>-1</artifactNumToKeep>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
-    </entry>
-    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -70,6 +58,12 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
+    </entry>
+    <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
     </entry>
     <entry>
       <string>hudson-plugins-violations-ViolationsPublisher</string>
@@ -129,18 +123,6 @@
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
-        <originalValue class="hudson.tasks.Mailer">
-          <recipients>test@example.com</recipients>
-          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-          <sendToIndividuals>true</sendToIndividuals>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
-      </external-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
-      <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -153,15 +135,17 @@
       </boolean-property>
     </entry>
     <entry>
+      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
-        <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
-          <testResults>nav-endagspassord-test/reports/TEST-*.xml</testResults>
-          <keepLongStdio>false</keepLongStdio>
-          <testDataPublishers/>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -181,7 +165,37 @@
     <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList"/>
+        <originalValue class="hudson.util.CopyOnWriteList">
+          <hudson.model.ParametersDefinitionProperty>
+            <parameterDefinitions>
+              <hudson.model.StringParameterDefinition>
+                <name>envName</name>
+                <description></description>
+                <defaultValue>u3</defaultValue>
+              </hudson.model.StringParameterDefinition>
+              <hudson.model.StringParameterDefinition>
+                <name>user</name>
+                <description></description>
+                <defaultValue></defaultValue>
+              </hudson.model.StringParameterDefinition>
+              <hudson.model.PasswordParameterDefinition>
+                <name>Password</name>
+                <description></description>
+                <defaultValue>vw2E/I1SPlDQAJl1SesEpQ==</defaultValue>
+              </hudson.model.PasswordParameterDefinition>
+              <hudson.model.ChoiceParameterDefinition>
+                <name>pluginVer</name>
+                <description></description>
+                <choices class="java.util.Arrays$ArrayList">
+                  <a class="string-array">
+                    <string>1.0.0-SNAPSHOT</string>
+                    <string>0.9.7</string>
+                  </a>
+                </choices>
+              </hudson.model.ChoiceParameterDefinition>
+            </parameterDefinitions>
+          </hudson.model.ParametersDefinitionProperty>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
     </entry>
@@ -207,17 +221,17 @@
       </external-property>
     </entry>
     <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
-    </entry>
-    <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -235,16 +249,8 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
-        <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>SoapUI-U2-StoppStubbing_CI</childProjects>
-          <threshold>
-            <name>SUCCESS</name>
-            <ordinal>0</ordinal>
-            <color>BLUE</color>
-          </threshold>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -257,11 +263,35 @@
       <string>builders</string>
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
-          <hudson.tasks.Maven>
-            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Endagspassord-integrasjonstest-soapui-project.xml -Dsoapui.endpoint=http://e26apvl036.test.local:9080/nav-tjeneste-endagspassord_v1Web/sca/EndagspassordWSEXP</targets>
-            <mavenName>(Default)</mavenName>
-            <usePrivateRepository>false</usePrivateRepository>
-          </hudson.tasks.Maven>
+          <maven-builder>
+            <config>
+              <installationId>Maven 3</installationId>
+              <goals>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVer}:provision -e -B -U</goals>
+              <privateRepository>false</privateRepository>
+              <privateTmpdir>false</privateTmpdir>
+              <pomFile>pom.xml</pomFile>
+              <properties>
+                <entries>
+                  <entry name="password" value="${Password}"/>
+                  <entry name="env" value="${envName}"/>
+                  <entry name="envConfigUrlString" value="https://envconfig.adeo.no/conf"/>
+                  <entry name="dpAliases" value="dp-01,dp-02"/>
+                  <entry name="username" value="${User}"/>
+                </entries>
+              </properties>
+              <errors>false</errors>
+              <verbosity>NORMAL</verbosity>
+              <offline>false</offline>
+              <snapshotUpdateMode>NORMAL</snapshotUpdateMode>
+              <recursive>true</recursive>
+              <checksumMode>NORMAL</checksumMode>
+              <failMode>NORMAL</failMode>
+              <makeMode>NONE</makeMode>
+              <settingsId>NONE</settingsId>
+              <globalSettingsId>NONE</globalSettingsId>
+              <toolChainsId>NONE</toolChainsId>
+            </config>
+          </maven-builder>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
@@ -301,18 +331,18 @@
       </base-property>
     </entry>
     <entry>
-      <string>hudson-tasks-ArtifactArchiver</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>concurrentBuild</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-ArtifactArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyTrigger</string>
@@ -335,26 +365,16 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>scm</string>
       <scm-property>
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/endagspassord/nav-endagspassord-test</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/aura/trunk/maven/poms/init-maven-pom</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
-          <browser class="hudson.scm.browsers.ViewSVN">
-            <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
-          </browser>
           <excludedRegions></excludedRegions>
           <includedRegions></includedRegions>
           <excludedUsers></excludedUsers>
@@ -364,6 +384,13 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>org-hudsonci-maven-plugin-artifactrecorder-ArtifactFingerprinter</string>
@@ -380,37 +407,23 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>l135479</createdBy>
-  <creationTime>1375860162329</creationTime>
+  <creationTime>1377518505842</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM">
-    <locations>
-      <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/arbeidOgAktivitet/nav-test-arbeidOgAktivitet</remote>
-        <ignoreExternalsOption>false</ignoreExternalsOption>
-      </hudson.scm.SubversionSCM_-ModuleLocation>
-    </locations>
-    <browser class="hudson.scm.browsers.ViewSVN">
-      <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
-    </browser>
-    <excludedRegions></excludedRegions>
-    <includedRegions></includedRegions>
-    <excludedUsers></excludedUsers>
-    <excludedRevprop></excludedRevprop>
-    <excludedCommitMessages></excludedCommitMessages>
-    <useUpdate>true</useUpdate>
-    <doRevert>false</doRevert>
-  </scm>
-  <canRoam>true</canRoam>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
 </project>

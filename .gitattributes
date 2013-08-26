@@ -1134,6 +1134,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]U2[!!-~]WPS[!!-~]conf
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]U3[!!-~]WPS[!!-~]config[!!-~]to[!!-~]Confluence/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]U4[!!-~]WPS[!!-~]config[!!-~]to[!!-~]Confluence/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/Post[!!-~]installed[!!-~]fixpacks[!!-~](WPS)[!!-~]on[!!-~]U2,[!!-~]U3[!!-~]and[!!-~]U4[!!-~]to[!!-~]Confluence/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SGW_Provisioning_Test/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/ServiceGateway_ServiceProvisioning_Test/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
