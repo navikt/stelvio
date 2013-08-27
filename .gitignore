@@ -2142,9 +2142,11 @@ inf/was/.settings
 inf/was/stelvio-security-login-java/.classpath
 inf/was/stelvio-security-login-java/.project
 inf/was/stelvio-security-login-java/.settings
+inf/was/stelvio-security-login-java/target
 inf/was/stelvio-security-tai-java/.classpath
 inf/was/stelvio-security-tai-java/.project
 inf/was/stelvio-security-tai-java/.settings
+inf/was/stelvio-security-tai-java/target
 inf/was/target
 int/eclipse/plugins/stelvio-models-service-metamodel/.classpath
 int/eclipse/plugins/stelvio-models-service-metamodel/.project
