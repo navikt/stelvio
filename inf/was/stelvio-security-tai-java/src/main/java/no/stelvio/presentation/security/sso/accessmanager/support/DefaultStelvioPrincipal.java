@@ -13,6 +13,7 @@ import no.stelvio.presentation.security.sso.accessmanager.StelvioPrincipal;
 public class DefaultStelvioPrincipal implements StelvioPrincipal {
 
     private String userId;
+    private String ssoToken;
     private String authorizedAs;
     private List<String> groupIds;
 
@@ -24,14 +25,19 @@ public class DefaultStelvioPrincipal implements StelvioPrincipal {
      * @param authLevel
      *            the authentication level for the principal
      */
-    public DefaultStelvioPrincipal(String userId, String authorizedAs, List<String> groupIds) {
+    public DefaultStelvioPrincipal(String userId, String authorizedAs, List<String> groupIds, String ssoToken) {
         this.userId = userId;
         this.authorizedAs = authorizedAs;
+        this.ssoToken = ssoToken;
         this.groupIds = groupIds;
     }
 
     public String getAuthorizedAs() {
         return this.authorizedAs;
+    }
+    
+    public String getSsoToken() {
+        return this.ssoToken;
     }
 
     public List<String> getGroupIds() {

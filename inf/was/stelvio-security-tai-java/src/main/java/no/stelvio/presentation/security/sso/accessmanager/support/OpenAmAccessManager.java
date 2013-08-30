@@ -169,11 +169,11 @@ public class OpenAmAccessManager implements StelvioAccessManager {
 
         if (log.isLoggable(Level.FINE)) {
             log.fine("A StelvioPrincipal will be created with the following values: "
-                    + userId + ", " + authorizedAs + ", " + authLevelGroupIds);
+                    + userId + ", " + authorizedAs + ", " + authLevelGroupIds + ", " + representation);
         }
         principal = new DefaultStelvioPrincipal(userId,
                 authorizedAs,
-                authLevelGroupIds);
+                authLevelGroupIds, representation);
         return principal;
     }
 
@@ -185,6 +185,10 @@ public class OpenAmAccessManager implements StelvioAccessManager {
      */
     private List<String> getGroupIdsFromKey(String key) {
 
+        if (key == null) {
+            return null;
+        }
+        
         List<String> groups = new ArrayList<String>();
 
         String[] groupsFromGroupsKey = getGroupsFromMap(key);
@@ -221,8 +225,10 @@ public class OpenAmAccessManager implements StelvioAccessManager {
                 JSONObject obj = (JSONObject) array.get(i);
                 String name = obj.getString(PARAMETER_NAME);
                 JSONArray values = (JSONArray) obj.get(PARAMETER_VALUES);
-                String value = values.getString(0);
-                attributeMap.put(name, value);
+                if (values.length() > 0) {
+                    String value = values.getString(0);
+                    attributeMap.put(name, value);                    
+                }                
             }
             return attributeMap;
         } catch (JSONException e) {

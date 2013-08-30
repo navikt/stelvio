@@ -136,7 +136,7 @@ public class WebSealAccessManager implements StelvioAccessManager {
         }
         principal = new DefaultStelvioPrincipal(userId,
                 authorizedAs,
-                groupIds);
+                groupIds, null);
         return principal;
     }
 

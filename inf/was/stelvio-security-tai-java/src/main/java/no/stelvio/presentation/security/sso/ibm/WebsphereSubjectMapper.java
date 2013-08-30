@@ -32,6 +32,7 @@ public class WebsphereSubjectMapper implements SubjectMapper {
 
     private Logger log = Logger.getLogger("no.stelvio.presentation.security.sso.ibm.WebsphereSubjectMapper");
     private static final String AUTHORIZED_AS = "no.stelvio.presentation.security.sso.ibm.WebsphereSubjectMapper.AUTHORIZED_AS";
+    private static final String SSOTOKEN = "no.stelvio.presentation.security.sso.ibm.WebsphereSubjectMapper.SSOTOKEN";
 
     /**
      * Creates a <code>Subject</code> from the supplied StelvioPrincipal. Groups from the user-registry corresponding to the
@@ -83,7 +84,12 @@ public class WebsphereSubjectMapper implements SubjectMapper {
 
         // Add custom attribute
         hashtable.put(AUTHORIZED_AS, authorizedAs);
-        hashtable.put(AttributeNameConstants.WSCREDENTIAL_GROUPS, ldapGroups);
+        if (principal.getSsoToken() != null) {
+            hashtable.put(SSOTOKEN, principal.getSsoToken());
+        }
+        if (ldapGroups != null) {
+            hashtable.put(AttributeNameConstants.WSCREDENTIAL_GROUPS, ldapGroups);
+        }
         hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, key);
 
         // AuthorizationToken tok;
@@ -109,6 +115,11 @@ public class WebsphereSubjectMapper implements SubjectMapper {
      */
     protected List<String> getLdapGroups(List<String> groups)
             throws EntryNotFoundException, NamingException, CustomRegistryException, RemoteException {
+        
+        if (groups == null) {
+            return null;
+        }
+        
         // Gets the groups from the userregistry. Use the UniqueGroupId.
         InitialContext ctx = new InitialContext();
         List<String> ldapGroups = new ArrayList<String>();

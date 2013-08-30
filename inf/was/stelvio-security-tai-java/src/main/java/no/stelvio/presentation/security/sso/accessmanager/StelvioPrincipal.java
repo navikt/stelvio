@@ -21,6 +21,12 @@ public interface StelvioPrincipal {
      * @return the username
      */
     String getAuthorizedAs();
+    
+    /**
+     * Returns the SSO token used for logging in this principal. Used only when OpenAm is accessmanager
+     * @return the ssotoken
+     */
+    String getSsoToken();
 
     /**
      * 
