@@ -37,7 +37,10 @@
 <#include "MatchingRuleXPath.ftl">
 <#include "MPGProcessingRules.ftl">
 <#include "MPGStylePolicy.ftl">
+<#include "MQFrontsideHandler.ftl">
+<#include "MQQM.ftl">
 <#include "MultiProtocolGateway.ftl">
+<#include "MultiProtocolGatewayMQ.ftl">
 <#include "MultiProtocolGatewayMTOMEnabled.ftl">
 <#include "NFSStaticMount.ftl">
 <#include "ProcessingRules.ftl">

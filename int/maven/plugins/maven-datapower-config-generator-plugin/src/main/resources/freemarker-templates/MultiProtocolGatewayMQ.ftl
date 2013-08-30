@@ -1,5 +1,5 @@
 <#macro MultiProtocolGatewayMQ name mqSourceProtocolHandlerList xmlManager backendURL propagateURI backTimeout includeResponseTypeEncoding processHTTPErrors requestType responseType stylePolicy>
-	<MultiProtocolGateway name="Arena-Nystilling-MPG" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+	<MultiProtocolGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Priority>normal</Priority>
 		<#list mqSourceProtocolHandlerList as FrontProtocol>
