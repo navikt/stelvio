@@ -7219,6 +7219,7 @@ inf/WebSEAL/stelvio-security-webseal-html/src/main/resources/lib/html/C/too_many
 inf/WebSEAL/stelvio-security-webseal-html/src/main/resources/lib/html/C/webseal_login.html -text
 inf/openam/nav-esso-onedaypw-plugin/pom.xml -text
 inf/openam/nav-esso-onedaypw-plugin/src/main/java/no/nav/esso/AuthValidator.java -text
+inf/openam/nav-esso-onedaypw-plugin/src/main/java/no/nav/esso/NavSSOPostAuthProcessor.java -text
 inf/openam/nav-esso-onedaypw-plugin/src/main/java/no/nav/esso/OneDayPwLoginModule.java -text
 inf/openam/nav-esso-onedaypw-plugin/src/main/java/no/nav/esso/OneDayPwPrincipal.java -text
 inf/openam/nav-esso-onedaypw-plugin/src/main/java/no/nav/esso/OneDayPwValidator.java -text

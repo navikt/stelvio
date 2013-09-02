@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
+import javax.xml.ws.ProtocolException;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
@@ -26,9 +27,8 @@ public class UsernameTokenHandler implements SOAPHandler<SOAPMessageContext> {
 			try {
 				SOAPElement wsunt = UsernameTokenHeader.createUsernameToken(untUsername, untPassword);
 				context.getMessage().getSOAPPart().getEnvelope().getHeader().addChildElement(wsunt);
-			} catch (SOAPException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (SOAPException e) {				
+				throw new ProtocolException("Error adding UsernameToken to outbound call", e);
 			}
 		}
 		return true;
@@ -48,4 +48,4 @@ public class UsernameTokenHandler implements SOAPHandler<SOAPMessageContext> {
 		return null;
 	}
 
-	}
+}

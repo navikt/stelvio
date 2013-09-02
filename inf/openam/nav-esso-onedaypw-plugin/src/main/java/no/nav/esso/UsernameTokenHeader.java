@@ -32,7 +32,7 @@ public class UsernameTokenHeader {
 	 *            the password
 	 * @return SOAPElement new SOAP header with basic authentication embedded
 	 */
-	public static SOAPElement createUsernameToken(String user, String password) {
+	public static SOAPElement createUsernameToken(String user, String password) throws SOAPException {
 
 		// Make sure we have the credentials
 		if ((user == null) || (password == null)) {
@@ -41,36 +41,37 @@ public class UsernameTokenHeader {
 
 		// Now try to build the header
 		SOAPElement header = null;
-		try {
-			SOAPFactory sFactory = SOAPFactory.newInstance();
+		SOAPFactory sFactory = SOAPFactory.newInstance();
 
-			// Create header Element
-			header = createHeaderElement(sFactory);
+		// Create header Element
+		header = createHeaderElement(sFactory);
 
-			// Create and add userName token Element
-			Name userTokenName = sFactory.createName("UsernameToken", WSSE, securityURL);
-			SOAPElement userToken = sFactory.createElement(userTokenName);			
+		// Create and add userName token Element
+		Name userTokenName = sFactory.createName("UsernameToken", WSSE,
+				securityURL);
+		SOAPElement userToken = sFactory.createElement(userTokenName);
 
-			// Populate token
-			Name userElementName = sFactory.createName("Username", WSSE, securityURL);
-			Name passwordElementName = sFactory.createName("Password", WSSE, securityURL);
+		// Populate token
+		Name userElementName = sFactory.createName("Username", WSSE,
+				securityURL);
+		Name passwordElementName = sFactory.createName("Password", WSSE,
+				securityURL);
 
-			SOAPElement userElement = sFactory.createElement(userElementName);
-			userElement.addTextNode(user);
-			SOAPElement passwordElement = sFactory.createElement(passwordElementName);
-			Name attrName = sFactory.createName("Type");
-			passwordElement.addAttribute(attrName, passwordType);
-			passwordElement.addTextNode(password);
+		SOAPElement userElement = sFactory.createElement(userElementName);
+		userElement.addTextNode(user);
+		SOAPElement passwordElement = sFactory
+				.createElement(passwordElementName);
+		Name attrName = sFactory.createName("Type");
+		passwordElement.addAttribute(attrName, passwordType);
+		passwordElement.addTextNode(password);
 
-			// add populated fields to UNT
-			userToken.addChildElement(userElement);
-			userToken.addChildElement(passwordElement);
-			
-			// add UNT to WSS header
-			header.addChildElement(userToken);
-		} catch (Exception e) {
-			System.err.println("Error building security header with UsernameToken" +  e);
-		}
+		// add populated fields to UNT
+		userToken.addChildElement(userElement);
+		userToken.addChildElement(passwordElement);
+
+		// add UNT to WSS header
+		header.addChildElement(userToken);
+
 		return header;
 	}
 

@@ -21,7 +21,6 @@ import no.nav.virksomhet.tjenester.endagspassord.v1.binding.VerifiserEndagspasso
 public class OneDayPwValidator implements AuthValidator {
 
 	private Endagspassord portType;
-	// TODO: get from config
 	private String untUserName;
 	private String untPassword;
 	private static final String DEFAULT_ENDPOINT = "http://e26apvl037.test.local:9080/nav-tjeneste-endagspassord_v1Web/sca/EndagspassordWSEXP";
@@ -71,15 +70,13 @@ public class OneDayPwValidator implements AuthValidator {
 					reply.getEndagspassord().isGyldig().booleanValue(),
 					reply.getEndagspassord().getPaloggingsnivaKode());
 		} catch (VerifiserEndagspassordFeilBrukerIdEllerPassord e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (VerifiserEndagspassordPassordSperret e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (VerifiserEndagspassordPassordUtlopt e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// this indicates an error
 		return new ValidationResult(null, false, null);
 	}
 

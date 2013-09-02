@@ -60,17 +60,16 @@ public class OneDayPwLoginModule extends AMLoginModule {
 		ValidationResult result = validator.validate(userName, password);
 		if (result.isValid()) {
 			userId = result.getUserId();
-			// TODO set AuthLevel eller SecLevel basert på svar fra BPROF
+			// set AuthLevel based on service response
 			if( result.getServiceSecLevel().equals("L")) {
 				// set AuthLevel which gives SecLevel 1
 				setAuthLevel(1);
 				debug.message("AuthLevel set to 1");
 			}else if( result.getServiceSecLevel().equals("M")) {
 				// set AuthLevel which gives SecLevel 2 or 3
-				setAuthLevel(2);
+				setAuthLevel(2);				
 				debug.message("AuthLevel set to 2");
-			}
-			
+			}			
             return ISAuthConstants.LOGIN_SUCCEED;
         } else {
             throw new AuthLoginException("User with username " + userName + " failed to authenticate.");
