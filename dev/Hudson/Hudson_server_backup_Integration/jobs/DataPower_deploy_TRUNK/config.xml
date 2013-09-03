@@ -237,8 +237,6 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                 <description></description>
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
-                    <string>https://10.1.10.150:5550</string>
-                    <string>https://10.1.10.151:5550</string>
                     <string>https://dp-tst-01.adeo.no:5550</string>
                     <string>https://dp-tst-02.adeo.no:5550</string>
                     <string>https://dp-tst-11.adeo.no:5550</string>
