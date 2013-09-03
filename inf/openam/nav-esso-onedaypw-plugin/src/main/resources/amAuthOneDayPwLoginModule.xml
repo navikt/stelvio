@@ -87,7 +87,7 @@
                                     syntax="number_range" rangeStart="0" rangeEnd="2147483647"
                                     i18nKey="a104">
                         <DefaultValues>
-                            <Value>2</Value>
+                            <Value>1</Value>
                         </DefaultValues>
                     </AttributeSchema>
 
