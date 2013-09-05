@@ -8,16 +8,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import no.stelvio.common.security.ws.WSCustomSubject;
+import no.stelvio.presentation.security.logout.LogoutService;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.ibm.websphere.security.WSSecurityException;
-import com.ibm.websphere.security.WSSecurityHelper;
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
 
@@ -34,6 +33,8 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
 	private static final String SSO_COOKIE_NAME = "nav-esso";
     private static final Log LOGGER = LogFactory.getLog(OpenAMSessionFilter.class);
     private static final String SSOTOKEN = "no.stelvio.presentation.security.sso.ibm.WebsphereSubjectMapper.SSOTOKEN";
+    
+    private LogoutService logoutService;
 
 	/**
 	 * Validates the SSO token in the request against the token stored in the current Subject.
@@ -63,10 +64,8 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
                 Subject subject = WSSubject.getCallerSubject();
                 String ssoSubjectCookie = getSubjectEksternSsoToken(subject);
                 if (ssoSubjectCookie != null && !ssoRequestCookie.equals(ssoSubjectCookie)) {
-                    // cookie value has changed, invalidate session and LTPA
-                    HttpSession session = req.getSession(false);
-                    session.invalidate();
-                    WSSecurityHelper.revokeSSOCookies(req, res);
+                    // invalidate session, ltpa and logout subject
+                    logoutService.logout(req, res);
                 }                
                 
             } catch (WSSecurityException e) {
@@ -128,5 +127,17 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
         }
         return null;
     }
+	
+   /**
+     * 
+     * Mutator
+     * 
+     * @param logoutService
+     *            the logoutService to set
+     */
+    public void setLogoutService(LogoutService logoutService) {
+        this.logoutService = logoutService;
+    }
+
 
 }
