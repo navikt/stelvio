@@ -834,6 +834,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/res
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/resolver/SecurityAttributeResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/session/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/session/HttpSessionSecurityIntegrationFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/session/OpenAMSessionFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/session/SecuritySessionAttribute.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/session/StelvioSecuritySessionMap.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/util/.copyarea.db -text
