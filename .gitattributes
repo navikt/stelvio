@@ -7655,6 +7655,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/m
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateSTSFromEnvConfigMojo.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceGWConfigMojo.java -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateSikkerhetslytterConfigMojo.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GetVersionsMojo.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/ModuleVersion.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/WsdlDependency.java -text
