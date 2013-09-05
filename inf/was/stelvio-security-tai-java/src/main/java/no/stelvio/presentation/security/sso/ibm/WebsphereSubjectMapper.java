@@ -75,8 +75,7 @@ public class WebsphereSubjectMapper implements SubjectMapper {
         String uniqueId = principal.getUserId();
         String userId = principal.getUserId();
         String authorizedAs = principal.getAuthorizedAs();
-        // String key = uniqueid + ldapGroups.toString() + authorizedAs;
-        String key = uniqueId + "_" + principal.getGroupIds() + "_" + authorizedAs;
+        
         // Build Hashtable with the new information and add to the Subject.
         Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
         hashtable.put(AttributeNameConstants.WSCREDENTIAL_UNIQUEID, uniqueId);
@@ -86,11 +85,15 @@ public class WebsphereSubjectMapper implements SubjectMapper {
         hashtable.put(AUTHORIZED_AS, authorizedAs);
         if (principal.getSsoToken() != null) {
             hashtable.put(SSOTOKEN, principal.getSsoToken());
+            hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, principal.getSsoToken());
+        } else {
+            String key = uniqueId + "_" + principal.getGroupIds() + "_" + authorizedAs;
+            hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, key);            
         }
         if (ldapGroups != null) {
             hashtable.put(AttributeNameConstants.WSCREDENTIAL_GROUPS, ldapGroups);
         }
-        hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, key);
+        
 
         // AuthorizationToken tok;
         subject.getPublicCredentials().add(hashtable);
