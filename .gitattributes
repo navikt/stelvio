@@ -799,6 +799,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/eai
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/eai/support/WebsealHeaderNames.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/logout/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/logout/LogoutService.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/logout/OpenAMLogoutService.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/logout/WasLogoutService.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/logout/WebsealLogoutService.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/.copyarea.db -text
