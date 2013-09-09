@@ -910,6 +910,7 @@ app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/validato
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/validator/PidValidatorTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/validator/TextValidatorTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/.copyarea.db -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/logout/OpenAMLogoutServiceTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/.copyarea.db -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/AbstractPhaselistenerTestCase.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/MockExternalContextExtended.java -text
