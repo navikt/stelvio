@@ -7249,6 +7249,7 @@ inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/accessmanager/StelvioPrincipal.java -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/accessmanager/SubjectMapper.java -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/accessmanager/support/DefaultStelvioPrincipal.java -text
+inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/accessmanager/support/OpenAMRestAPIImpl.java -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/accessmanager/support/OpenAmAccessManager.java -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/accessmanager/support/WebSealAccessManager.java -text
 inf/was/stelvio-security-tai-java/src/main/java/no/stelvio/presentation/security/sso/ibm/StelvioTai.java -text
@@ -7267,6 +7268,7 @@ inf/was/stelvio-security-tai-java/src/main/java/org/json/README -text
 inf/was/stelvio-security-tai-java/src/main/resources/stelvio-tai-common.properties -text
 inf/was/stelvio-security-tai-java/src/main/resources/stelvio-tai-ldap-groups.properties -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/AbstractTaiTest.java -text
+inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/accessmanager/support/OpenAmAccessManagerTest.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/ibm/MockWebsphereSubjectMapper.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/ibm/StelvioTaiWebSealTest.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/openam/StelvioTaiOpenAmTest.java -text

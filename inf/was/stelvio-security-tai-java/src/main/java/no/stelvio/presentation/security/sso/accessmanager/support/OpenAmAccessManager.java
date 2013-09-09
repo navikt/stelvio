@@ -29,7 +29,6 @@ import org.json.JSONObject;
  * @author person0a5e006fe6fb Hilstad
  * @see StelvioAccessManager
  * @see StelvioPrincipal
- * @see AccessManagerConnector
  */
 public class OpenAmAccessManager implements StelvioAccessManager {
 
@@ -46,6 +45,16 @@ public class OpenAmAccessManager implements StelvioAccessManager {
     private Properties groupMap;
     private String openAMAddress;
     private String openAMQueryTemplate;
+
+    public void setOpenAMRestAPI(OpenAMRestAPIImpl openAMRestAPI) {
+        this.openAMRestAPI = openAMRestAPI;
+    }
+
+    private OpenAMRestAPIImpl openAMRestAPI;
+
+    public OpenAmAccessManager() {
+        openAMRestAPI = new OpenAMRestAPIImpl();
+    }
 
     /**
      * Gets the open AM address
@@ -159,7 +168,8 @@ public class OpenAmAccessManager implements StelvioAccessManager {
 
         StelvioPrincipal principal;
         // populate representation with values from openAM
-        String restResponse = invokeOpenAmRestApi((String) representation);
+        String openAMQueryTemplateWithAddress = getOpenAMAddress() + getOpenAMQueryTemplate();
+        String restResponse = openAMRestAPI.invokeOpenAmRestApi((String) representation, openAMQueryTemplateWithAddress);
         Map<String, String> attributeMap = parseUserAttributes(restResponse);
 
         String userId = attributeMap.get(PARAMETER_UID);
@@ -235,46 +245,5 @@ public class OpenAmAccessManager implements StelvioAccessManager {
             log.logp(Level.SEVERE, getClass().getName(), "parseUserAttributes", e.getMessage(), e);
             throw new RuntimeException("Error parsing JSON response. ", e);
         }
-    }
-
-    /**
-     * Invoke OpenAM REST API to get information for given session
-     * 
-     * @param sessionId
-     *            OpenAM sessionid from cookie
-     * @return response from OpenAM
-     */
-    private String invokeOpenAmRestApi(String sessionId) {
-
-        StringBuffer result = new StringBuffer();
-        URL url = null;
-        String openAMQuery = getOpenAMAddress() + getOpenAMQueryTemplate().replace("[TOKENID]", sessionId);
-        log.fine("Invoking OpenAM REST interface: " + openAMQuery);
-
-        try {
-            url = new URL(openAMQuery);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
-            if (conn.getResponseCode() != 200) {
-                log.logp(Level.SEVERE, getClass().getName(), "invokeOpenAmRestApi",
-                        "Error from openAM: " + conn.getResponseCode() + " " + conn.getResponseMessage());
-                throw new RuntimeException("Failed: HTTP error code : " + conn.getResponseCode());
-            }
-            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            String output;
-            while ((output = br.readLine()) != null) {
-                result.append(output);
-            }
-            conn.disconnect();
-        } catch (MalformedURLException e) {
-            log.logp(Level.SEVERE, getClass().getName(), "invokeOpenAmRestApi", e.getMessage(), e);
-            throw new RuntimeException("Malformed URL: " + url, e);
-        } catch (IOException e) {
-            log.logp(Level.SEVERE, getClass().getName(), "invokeOpenAmRestApi", e.getMessage(), e);
-            throw new RuntimeException("Error when invoking openAM", e);
-        }
-        return result.toString();
     }
 }
