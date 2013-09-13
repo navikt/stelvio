@@ -17,9 +17,9 @@ public class MockValidator extends OneDayPwValidator {
 	@Override
 	public ValidationResult validate(String userName, String password) {
 		if(returnValid) {
-			return new ValidationResult("userid", true, "M");			
+			return new ValidationResult("userid", true, "M", null);			
 		} else {
-			return new ValidationResult("userid", false, null);
+			return new ValidationResult("userid", false, null, null);
 		}
 		
 	}

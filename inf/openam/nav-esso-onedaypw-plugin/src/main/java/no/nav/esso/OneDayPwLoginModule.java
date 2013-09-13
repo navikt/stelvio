@@ -17,8 +17,8 @@ import com.sun.identity.authentication.util.ISAuthConstants;
 
 public class OneDayPwLoginModule extends AMLoginModule {
 	
-	private final static String DEBUG_NAME = "OneDayPasswordLoginModule";
-	private final static Debug debug = Debug.getInstance(DEBUG_NAME);
+	private final static String MODULE_NAME = "OneDayPasswordLoginModule";
+	protected final static Debug logger = Debug.getInstance(MODULE_NAME);		
 	
 	private String userId;
 	private String authenticationUrl;
@@ -26,9 +26,9 @@ public class OneDayPwLoginModule extends AMLoginModule {
 	
 	@Override
 	public void init(Subject subject, Map sharedState, Map options) {
-		if (subject != null) debug.message("Subject:" + subject.toString());
-		if (sharedState != null) debug.message("SharedState:" + sharedState.toString());
-		if (options != null) debug.message("Options:" + options.toString());
+		if (subject != null) logger.message("Subject:" + subject.toString());
+		if (sharedState != null) logger.message("SharedState:" + sharedState.toString());
+		if (options != null) logger.message("Options:" + options.toString());
 		initPasswordValidator(options);
 	}
 
@@ -49,7 +49,7 @@ public class OneDayPwLoginModule extends AMLoginModule {
 	public int process(Callback[] callbacks, int state) throws LoginException {
 
 		String userName = ((NameCallback) callbacks[0]).getName();
-		debug.message("Username: " + userName);
+		logger.message("Username: " + userName);
         char[] passwordCharArray = ((PasswordCallback) callbacks[1]).getPassword();
         String password = new String(passwordCharArray);
 
@@ -64,14 +64,16 @@ public class OneDayPwLoginModule extends AMLoginModule {
 			if( result.getServiceSecLevel().equals("L")) {
 				// set AuthLevel which gives SecLevel 1
 				setAuthLevel(1);
-				debug.message("AuthLevel set to 1");
+				logger.message("AuthLevel set to 1");
 			}else if( result.getServiceSecLevel().equals("M")) {
 				// set AuthLevel which gives SecLevel 2 or 3
 				setAuthLevel(2);				
-				debug.message("AuthLevel set to 2");
+				logger.message("AuthLevel set to 2");
 			}			
-            return ISAuthConstants.LOGIN_SUCCEED;
+			return ISAuthConstants.LOGIN_SUCCEED;
         } else {
+        	//TODO do something fancy with the ValidationError
+        	logger.message("Error from validator" + result.getError());
             throw new AuthLoginException("User with username " + userName + " failed to authenticate.");
         }
 	}

@@ -23,14 +23,7 @@ public class OneDayPwValidator implements AuthValidator {
 	private Endagspassord portType;
 	private String untUserName;
 	private String untPassword;
-	private static final String DEFAULT_ENDPOINT = "http://e26apvl037.test.local:9080/nav-tjeneste-endagspassord_v1Web/sca/EndagspassordWSEXP";
 	private String endpoint;
-	
-	public static void main(String[] args) {
-		AuthValidator o = new OneDayPwValidator("untUserName", "untPassword", DEFAULT_ENDPOINT);
-		ValidationResult result = o.validate("username", "password");
-		System.out.println("\nPassord gyldig?: " + result.isValid());
-	}
 	
 	public OneDayPwValidator(String untUserName, String untPassword, String endpoint) {
 		this.untUserName = untUserName;
@@ -68,16 +61,23 @@ public class OneDayPwValidator implements AuthValidator {
 			return new ValidationResult(
 					reply.getEndagspassord().getBrukerId(), 
 					reply.getEndagspassord().isGyldig().booleanValue(),
-					reply.getEndagspassord().getPaloggingsnivaKode());
+					reply.getEndagspassord().getPaloggingsnivaKode(),
+					null);
 		} catch (VerifiserEndagspassordFeilBrukerIdEllerPassord e) {
-			e.printStackTrace();
+			return validationError(e, ValidationError.INVALID_USERNAME_PASSWORD);
 		} catch (VerifiserEndagspassordPassordSperret e) {
-			e.printStackTrace();
+			return validationError(e, ValidationError.PASSWORD_BLOCKED);
 		} catch (VerifiserEndagspassordPassordUtlopt e) {
-			e.printStackTrace();
+			return validationError(e, ValidationError.PASSWORD_EXPIRED);
+		} catch (Exception e) {
+			return validationError(e, ValidationError.TECHINCAL);
 		}
-		// this indicates an error
-		return new ValidationResult(null, false, null);
+	}
+	
+	// method to log and create validationerror
+	private ValidationResult validationError(Exception e, ValidationError error) {
+		OneDayPwLoginModule.logger.error(e.getMessage());
+		return new ValidationResult(null, false, null, error);
 	}
 
 }
