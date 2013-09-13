@@ -66,6 +66,7 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
                 if (ssoSubjectCookie != null && !ssoRequestCookie.equals(ssoSubjectCookie)) {
                     // invalidate session, ltpa and logout subject
                     logoutService.logout(req, res);
+                    return;
                 }                
                 
             } catch (WSSecurityException e) {
