@@ -218,7 +218,6 @@ public class StelvioTai implements TrustAssociationInterceptor {
             return TAIResult.create(HttpServletResponse.SC_OK, "notused", subject);
 
         } catch (Exception e) {
-            log.logp(Level.SEVERE, this.getClass().getName(), "negotiateValidateandEstablishTrust", e.getMessage(), e);
             throw new WebTrustAssociationFailedException(e.getMessage());
         }
     }
