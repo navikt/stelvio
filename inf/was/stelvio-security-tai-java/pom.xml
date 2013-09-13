@@ -12,12 +12,7 @@
 	<packaging>jar</packaging>
 	<name>stelvio - security - tai</name>
 
-	<dependencies>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>        
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.admin.client</artifactId>
@@ -48,6 +43,11 @@
 			<version>2.0.4</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 </project>
