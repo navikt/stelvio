@@ -1,11 +1,14 @@
 package no.nav.maven.plugins;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import no.nav.datapower.config.Policy;
+import no.nav.datapower.config.freemarker.Freemarker;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
 import no.nav.datapower.util.PropertiesBuilder;
@@ -14,6 +17,8 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+
+import freemarker.template.TemplateException;
 
 /**
  * Goal which generates a DataPower configuration for the sikkerhetslytter-domain (MQ).
@@ -79,6 +84,20 @@ public class GenerateSikkerhetslytterConfigMojo extends AbstractMojo {
 
 		properties = loadProperties(certFile.getPath());
 		addTrustCerts(properties);
+		
+		// Create MPG, frontsidehandlers and policy, and map to queue
+		// TODO
+		// for hver policy og alle artifakter pr policy (lag egne objekter og kanskje nytt policy-objekt):  
+		// generer mpg, frontsidehandler, knytt mot kø, lag policy av aktuell type
+		
+		// Merge templates with properties and output to config file
+		try {
+			processFreemarkerTemplates(configFile);
+		} catch (IOException e) {
+			throw new IllegalStateException("Caught IOException while generating DataPower configuration", e);
+		} catch (TemplateException e) {
+			throw new IllegalStateException("Caught IllegalStateException while generating DataPower configuration", e);
+		}
 
 		
 		
@@ -111,6 +130,18 @@ public class GenerateSikkerhetslytterConfigMojo extends AbstractMojo {
 			}
 			props.put("partnerTrustedCerts", trustCertMapList);
 		}
+	}
+	
+	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
+		// Prepare for fremarker template processing
+		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/" + gatewayName + "-nonenvironment-configuration-jar/freemarker-templates"));
+		// Open file for writing
+		FileWriter writer = new FileWriter(configFile);
+		// Process main template
+		freemarker.processTemplate(MAIN_TEMPLATE, properties, writer);
+		// Flush and close file writer
+		writer.flush();
+		writer.close();
 	}
 
 }
