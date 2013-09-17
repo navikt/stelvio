@@ -43,13 +43,6 @@ public class GenerateSikkerhetslytterConfigMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * Policies to configure MPGs for, containing queue info
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	private Policy[] policies;
-	/**
 	 * The mojo method doing the actual work when goal is invoked
 	 */
 	
