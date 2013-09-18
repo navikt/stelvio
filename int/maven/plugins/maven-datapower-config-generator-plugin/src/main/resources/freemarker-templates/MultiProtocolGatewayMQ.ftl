@@ -2,8 +2,8 @@
 	<MultiProtocolGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Priority>normal</Priority>
-		<#list mqSourceProtocolHandlerList as FrontProtocol>
-		<FrontProtocol class="MQSourceProtocolHandler">${mqSourceProtocolHandlerList.name}</FrontProtocol>
+		<#list mqSourceProtocolHandlerList as mqSourceProtocolHandler>
+		<FrontProtocol class="MQSourceProtocolHandler">${mqSourceProtocolHandler}</FrontProtocol>
 		</#list>
 		<XMLManager class="XMLManager">${xmlManager}</XMLManager>
 		<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
