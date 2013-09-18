@@ -9,18 +9,29 @@
 		<Heartbeat>300</Heartbeat>
 		<UserName>${userName}</UserName>
 		<MaximumMessageSize>${maximumMessageSize}</MaximumMessageSize>
+		<#if cacheTimeout != "">
 		<CacheTimeout>${cacheTimeout}</CacheTimeout>
+		</#if>
 		<UnitsOfWork>${unitsOfWork}</UnitsOfWork>
+		<SSLProxy class="SSLProxyProfile">${sslProxy}</SSLProxy>
 		<AutomaticBackout>${automaticBackout}</AutomaticBackout>
+		<#if backoutThreshold != "">
 		<BackoutThreshold>${backoutThreshold}</BackoutThreshold>
+		</#if>
+		<#if backoutQueueName != "">
 		<BackoutQueueName>${backoutQueueName}</BackoutQueueName>
+		</#if>
 		<TotalConnectionLimit>${totalConnectionLimit}</TotalConnectionLimit>
 		<InitialConnections>1</InitialConnections>
 		<SharingConversations>${sharingConversations}</SharingConversations>
+		<#if sslKey != "">
 		<SSLkey>${sslKey}</SSLkey>
+		</#if>
 		<PermitInsecureServers>off</PermitInsecureServers>
 		<SSLcipher>${sslCipher}</SSLcipher>
+		<#if sslProxyProfile != "">
 		<SSLProxyProfile class="SSLProxyProfile">${sslProxyProfile}</SSLProxyProfile>
+		</#if>
 		<AutoRecovery>off</AutoRecovery>
 		<ConvertInput>on</ConvertInput>
 		<AutoRetry>on</AutoRetry>
