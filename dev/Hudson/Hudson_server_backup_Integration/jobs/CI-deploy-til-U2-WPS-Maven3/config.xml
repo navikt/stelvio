@@ -4,13 +4,6 @@
   <description>Starter deploy til U2 kl 02.00</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
-      <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -25,11 +18,24 @@
       </external-property>
     </entry>
     <entry>
+      <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>blockBuildWhenDownstreamBuilding</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>org-hudsonci-plugins-snapshotmonitor-SnapshotTrigger</string>
+      <trigger-property>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
     </entry>
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
@@ -39,14 +45,17 @@
       </base-property>
     </entry>
     <entry>
-      <string>org-hudsonci-plugins-snapshotmonitor-SnapshotTrigger</string>
-      <trigger-property>
-        <propertyOverridden>false</propertyOverridden>
-      </trigger-property>
-    </entry>
-    <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
       <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -63,23 +72,14 @@
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -106,14 +106,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -134,18 +134,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>cleanWorkspaceRequired</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -176,14 +176,14 @@
       </copy-write-list-property>
     </entry>
     <entry>
-      <string>hudson-tasks-JavadocArchiver</string>
+      <string>join-JoinTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>join-JoinTrigger</string>
+      <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -197,10 +197,16 @@
       </external-property>
     </entry>
     <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com, test@example.com</recipientList>
+          <recipientList>test@example.com,test@example.com</recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -230,12 +236,6 @@
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
-    </entry>
-    <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -278,19 +278,19 @@
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean
-deploy
--Denvironment=U2
--Dbus-configuration-version=0.0.0.1-SNAPSHOT
--Dnav-modules-ci-version=0.0.0.1-SNAPSHOT
--Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT
--Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT
--Desb-modules-ci-version=0.0.0.1-SNAPSHOT
--DinteractiveMode=false
--Dskip=backup-config,create-BLA-groups,bounce-dmgr
--Desb-authorization-configuration=0.0.0.1-SNAPSHOT
--Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT
--Desb-enviroment-configuration=0.0.0.1-SNAPSHOT
+              <goals>clean&#xd;
+deploy&#xd;
+-Denvironment=U2&#xd;
+-Dbus-configuration-version=0.0.0.1-SNAPSHOT&#xd;
+-Dnav-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-Desb-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
+-DinteractiveMode=false&#xd;
+-Dskip=backup-config,create-BLA-groups,bounce-dmgr&#xd;
+-Desb-authorization-configuration=0.0.0.1-SNAPSHOT&#xd;
+-Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT&#xd;
+-Desb-enviroment-configuration=0.0.0.1-SNAPSHOT&#xd;
 -Dlogging.level=DEBUG</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
@@ -316,14 +316,14 @@ deploy
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -350,13 +350,6 @@ deploy
       </base-property>
     </entry>
     <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-ArtifactArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -364,17 +357,17 @@ deploy
       </external-property>
     </entry>
     <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">true</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
+    </entry>
+    <entry>
       <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyTrigger</string>
       <trigger-property>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>hudson-plugins-cigame-GamePublisher</string>
@@ -384,7 +377,7 @@ deploy
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -413,14 +406,11 @@ deploy
       </scm-property>
     </entry>
     <entry>
-      <string>hudson-triggers-TimerTrigger</string>
-      <trigger-property>
-        <originalValue class="hudson.triggers.TimerTrigger">
-          <spec># at 02:00 in the morning
-0 2 * * *</spec>
-        </originalValue>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
+      <external-property>
         <propertyOverridden>false</propertyOverridden>
-      </trigger-property>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>org-hudsonci-maven-plugin-artifactrecorder-ArtifactFingerprinter</string>
@@ -428,6 +418,16 @@ deploy
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>hudson-triggers-TimerTrigger</string>
+      <trigger-property>
+        <originalValue class="hudson.triggers.TimerTrigger">
+          <spec># at 02:00 in the morning&#xd;
+0 2 * * *</spec>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
