@@ -13,7 +13,6 @@
 		<CacheTimeout>${cacheTimeout}</CacheTimeout>
 		</#if>
 		<UnitsOfWork>${unitsOfWork}</UnitsOfWork>
-		<SSLProxy class="SSLProxyProfile">${sslProxy}</SSLProxy>
 		<AutomaticBackout>${automaticBackout}</AutomaticBackout>
 		<#if backoutThreshold != "">
 		<BackoutThreshold>${backoutThreshold}</BackoutThreshold>
