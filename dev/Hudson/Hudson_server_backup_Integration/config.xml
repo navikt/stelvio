@@ -4,12 +4,13 @@
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
-  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
   <securityRealm class="hudson.plugins.active_directory.ActiveDirectorySecurityRealm">
     <domain>adeo.no</domain>
     <bindName>srvciintegrasjon</bindName>
     <bindPassword>Q6j28cmRnJt7aeCp5/xmUjUZdOlp/GRsytwuftGVbnw=</bindPassword>
   </securityRealm>
+  <systemMessage>&lt;h2 style=&quot;color:red&quot;&gt;Du må nå logge inn med ADEO ident for å starte jobber.&lt;/h2&gt; Dette for at du skal få mailene du skal ha og at vi kan se hvem som starter deploy.</systemMessage>
   <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter"/>
   <configuredWorkspaceRoot></configuredWorkspaceRoot>
   <jdks>
@@ -175,6 +176,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <string>SoapUI-U2-Ekstern-Pensjon-ErUngUfor_CI</string>
         <string>SoapUI-U2-NAV-Endagspassord_CI</string>
         <string>SoapUI-U2-Pensjon-UngUfor_CI</string>
       </jobNames>
