@@ -193,6 +193,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                 <choices class="java.util.Arrays$ArrayList">
                   <a class="string-array">
                     <string>u3</string>
+                    <string>u2</string>
                     <string>t8</string>
                     <string>t9</string>
                     <string>t11</string>
