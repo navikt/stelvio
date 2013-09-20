@@ -2137,6 +2137,10 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.library.attributes
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.module.attributes
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/target
+inf/openam/nav-esso-onedaypw-plugin/.classpath
+inf/openam/nav-esso-onedaypw-plugin/.project
+inf/openam/nav-esso-onedaypw-plugin/.settings
+inf/openam/nav-esso-onedaypw-plugin/target
 inf/was/.project
 inf/was/.settings
 inf/was/stelvio-security-login-java/.classpath
