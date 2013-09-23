@@ -10,6 +10,7 @@
 <#include "StylePolicyActionTransform.ftl"/>
 <#include "StylePolicyActionTransformParameterized.ftl"/>
 <#include "StylePolicyActionVerify.ftl"/>
+<#include "StylePolicyActionValidate.ftl"/>
 <#include "StylePolicyActionRoute.ftl"/>
 <#macro StylePolicyAction actionNamePrefix action>
 	<#--
@@ -96,6 +97,14 @@
 		xpath="${action.xpath}"
 		signCert="${action.signCert}"
 		signKey="${action.signKey}"/>
+	<#--
+		Validate Action
+	-->
+	<#elseif action.type == "validate">
+	<@StylePolicyActionValidate
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		schemaURL="${action.schemaURL}"/>
 	<#--
 		SLM Action
 	-->
