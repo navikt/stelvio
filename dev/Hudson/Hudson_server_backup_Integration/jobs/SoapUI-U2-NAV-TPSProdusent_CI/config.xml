@@ -151,12 +151,12 @@
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
         <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
-          <testResults>esb-soap-tests/reports/TEST-*.xml</testResults>
+          <testResults>nav-person-test/TPSProdusent/TEST-*.xml</testResults>
           <keepLongStdio>false</keepLongStdio>
           <testDataPublishers/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -283,7 +283,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Maven>
-            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=GOSYS-3.0.0-soapui-project.xml -Dsoapui.host=e26apvl036.test.local</targets>
+            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=TPSProdusent-soapui-project.xml -Dsoapui.endpoint=http://e26apvl036.test.local:9080/nav-produsent-tps_v1Web/sca/TPSProdusentWSEXP</targets>
             <mavenName>(Default)</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
@@ -372,7 +372,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-soap-tests</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/person/nav-person-test</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -406,7 +406,7 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1331222805897</creationTime>
+  <creationTime>1379953860096</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -417,7 +417,7 @@
   <scm class="hudson.scm.SubversionSCM">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-soap-tests</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/person/nav-person-test</remote>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>

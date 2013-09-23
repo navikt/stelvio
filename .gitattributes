@@ -1183,6 +1183,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Ruting_CI/config.
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Sak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Samhandler_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Statistikk_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-TPSProdusent_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Tilbakekreving_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Tjenestepensjon_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Trekk_CI/config.xml -text
