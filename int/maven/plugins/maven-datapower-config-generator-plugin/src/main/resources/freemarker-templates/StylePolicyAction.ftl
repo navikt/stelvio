@@ -2,6 +2,7 @@
 <#include "StylePolicyActionAntiVirusScan.ftl"/>
 <#include "StylePolicyActionConditional.ftl"/>
 <#include "StylePolicyActionFetch.ftl"/>
+<#include "StylePolicyActionFilter.ftl"/>
 <#include "StylePolicyActionLog.ftl"/>
 <#include "StylePolicyActionResult.ftl"/>
 <#include "StylePolicyActionSign.ftl"/>
@@ -30,6 +31,16 @@
 		name="${actionNamePrefix}${action.name}"
 		destination="${action.destination}"
 		output="${action.output}"/>
+	<#--
+		Filter Action
+	-->
+	<#elseif action.type == "filter">
+	<@StylePolicyActionFilter
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		stylesheet="${action.stylesheet}"
+		params=action.params
+		async="${action.async}"/>
     <#--
 		AntiVirus Action
 	-->

@@ -7730,6 +7730,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionAntiVirusScan.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionConditional.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionFetch.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionFilter.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionLog.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionResult.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionRoute.ftl -text
