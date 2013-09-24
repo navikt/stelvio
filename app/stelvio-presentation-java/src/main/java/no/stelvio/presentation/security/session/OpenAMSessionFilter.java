@@ -17,6 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.ibm.websphere.security.WSSecurityException;
+import com.ibm.websphere.security.WSSecurityHelper;
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
 
@@ -31,6 +32,7 @@ import com.ibm.websphere.security.cred.WSCredential;
 public class OpenAMSessionFilter extends OncePerRequestFilter {
 
 	private static final String SSO_COOKIE_NAME = "nav-esso";
+	private static final String LTPA_COOKIE_NAME = "LtpaToken2";
     private static final Log LOGGER = LogFactory.getLog(OpenAMSessionFilter.class);
     private static final String SSOTOKEN = "no.stelvio.presentation.security.sso.ibm.WebsphereSubjectMapper.SSOTOKEN";
     
@@ -57,7 +59,15 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Entering filter to validate that the SSO cookie value is unchanged");
 		}
-		String ssoRequestCookie = getRequestEksternSsoToken(req);
+		String ltpaRequestCookie = getRequestEksternSsoToken(req, LTPA_COOKIE_NAME);		
+		String ssoRequestCookie = getRequestEksternSsoToken(req, SSO_COOKIE_NAME);
+		// if only LTPA cookie, then revoke it to prevent hijacking
+		if(ltpaRequestCookie != null && ssoRequestCookie==null ) {
+		    if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("Revoking LTPA cookie to prevent hijacking: " + ltpaRequestCookie);
+            }
+		    WSSecurityHelper.revokeSSOCookies(req, res);
+		}
 
 		if (ssoRequestCookie != null) {
 		    try {
@@ -112,16 +122,17 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
     }
 
 	/**
-     * Helper method to extract the SSO token from the request
+     * Helper method to extract value of a cookie from the request
      * 
      * @param request the request to get SSO token from
+     * @param cookieName the cookie to search for
      * @return a String with the value of the SSO token or null if no token found
      */
-	private String getRequestEksternSsoToken(HttpServletRequest request) {
+	private String getRequestEksternSsoToken(HttpServletRequest request, String cookieName) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(SSO_COOKIE_NAME)) {
+                if (cookie.getName().equals(cookieName)) {
                     return cookie.getValue();
                 }
             }
