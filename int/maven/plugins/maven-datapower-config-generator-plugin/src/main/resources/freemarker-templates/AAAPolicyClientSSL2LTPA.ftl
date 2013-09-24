@@ -1,4 +1,4 @@
-<#macro AAAPolicyClientSSL2LTPA name aaaFileName ppLtpaKeyFile ppLtpaKeyFilePwd>
+<#macro AAAPolicyClientSSL2LTPA name aaaFileName ppLtpaKeyFile ppLtpaKeyFilePwd eRXPath>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
@@ -99,7 +99,7 @@
 				<XPath>on</XPath>
 				<metadata>off</metadata>
 			</ERBitmap>
-			<ERXPath>/*[local-name()='Envelope']/*[local-name()='Body']/*/*/*[local-name()='tpnr']</ERXPath>
+			<ERXPath>${eRXPath}</ERXPath>
 			<ERMetadata/>
 		</ExtractResource>
 		<MapResource>
