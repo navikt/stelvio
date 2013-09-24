@@ -7,6 +7,25 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>openam plugin for onedaypassword</name>
+	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam</developerConnection>
+	</scm>
+	
+	<distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-repo</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>m2snapshot</id>
+			<name>NAV Maven2 Snapshot Repository</name>
+			<url>http://maven.adeo.no/nexus/content/repositories/m2snapshot</url>
+			<uniqueVersion>true</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>	
 
 	<dependencies>
 		<dependency>
