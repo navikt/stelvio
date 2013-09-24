@@ -9,11 +9,12 @@ import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.NameCallback;
 import javax.security.auth.callback.PasswordCallback;
 import javax.security.auth.login.LoginException;
+import javax.servlet.http.HttpServletResponse;
 
 import com.sun.identity.authentication.spi.AMLoginModule;
 import com.sun.identity.authentication.spi.AuthLoginException;
-import com.sun.identity.shared.debug.Debug;
 import com.sun.identity.authentication.util.ISAuthConstants;
+import com.sun.identity.shared.debug.Debug;
 
 public class OneDayPwLoginModule extends AMLoginModule {
 	
@@ -72,9 +73,18 @@ public class OneDayPwLoginModule extends AMLoginModule {
 			}			
 			return ISAuthConstants.LOGIN_SUCCEED;
         } else {
-        	//TODO do something fancy with the ValidationError
-        	logger.message("Error from validator" + result.getError());
-            throw new AuthLoginException("User with username " + userName + " failed to authenticate.");
+        	// redirect to gotoOnFail + the errorcode
+        	logger.message("Error from validator: " + result.getError());
+        	String gotoOnFail = getHttpServletRequest().getParameter("gotoOnFail");
+        	if(gotoOnFail == null) {
+        		throw new AuthLoginException("Missing gotoOnFail parameter");
+        	}
+        	gotoOnFail = gotoOnFail.concat("?authResult=" + result.getError().getCode());        	
+        	setLoginFailureURL(gotoOnFail);
+        	HttpServletResponse response = getHttpServletResponse();
+        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+        	
+        	return ISAuthConstants.LOGIN_SUCCEED;        	
         }
 	}
 	

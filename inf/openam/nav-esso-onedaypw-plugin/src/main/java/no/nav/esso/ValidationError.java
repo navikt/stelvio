@@ -1,10 +1,10 @@
 package no.nav.esso;
 
 public enum ValidationError {
-	INVALID_USERNAME_PASSWORD("1", "Invalid username or password"),
-	PASSWORD_EXPIRED("2", "Password expired"),
-	PASSWORD_BLOCKED("3", "Password blocked"),
-	TECHINCAL("4", "Technical error");
+	INVALID_USERNAME_PASSWORD("bad_credentials", "Invalid username or password"),
+	PASSWORD_EXPIRED("bad_credentials", "Password expired"),
+	PASSWORD_BLOCKED("account_locked", "Password blocked"),
+	TECHINCAL("system_error", "Technical error");
 	
 	private final String code;
 	private final String description;
