@@ -151,7 +151,7 @@
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
         <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
-          <testResults>nav-person-test/TPSProdusent/TEST-*.xml</testResults>
+          <testResults>nav-person-test/reports/TEST-*.xml</testResults>
           <keepLongStdio>false</keepLongStdio>
           <testDataPublishers/>
         </originalValue>
