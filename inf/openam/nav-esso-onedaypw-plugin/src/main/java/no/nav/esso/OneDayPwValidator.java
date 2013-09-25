@@ -41,7 +41,6 @@ public class OneDayPwValidator implements AuthValidator {
 			
 			@Override
 			public List<Handler> getHandlerChain(PortInfo portInfo) {
-				// TODO Auto-generated method stub
 				UsernameTokenHandler unthandler = new UsernameTokenHandler(untUserName, untPassword);
 				List<Handler> handlerchain = new ArrayList<Handler>();
 				handlerchain.add(unthandler);

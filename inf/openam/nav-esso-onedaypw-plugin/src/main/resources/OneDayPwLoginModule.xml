@@ -13,4 +13,10 @@
             <Prompt> Passord </Prompt>
         </PasswordCallback>
     </Callbacks>
+    <Callbacks length="1" order="2" timeout="120"
+       header="Error" error="true">
+        <NameCallback>
+            <Prompt> #DUMMY. NEVER SHOWN# </Prompt>
+        </NameCallback>
+    </Callbacks>
 </ModuleProperties>

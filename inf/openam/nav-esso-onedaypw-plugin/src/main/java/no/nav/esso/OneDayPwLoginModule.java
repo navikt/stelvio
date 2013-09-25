@@ -21,6 +21,8 @@ public class OneDayPwLoginModule extends AMLoginModule {
 	private final static String MODULE_NAME = "OneDayPasswordLoginModule";
 	protected final static Debug logger = Debug.getInstance(MODULE_NAME);		
 	
+	private final static int AUTH_ERROR = 2;
+	
 	private String userId;
 	private String authenticationUrl;
 	private AuthValidator validator;
@@ -84,7 +86,7 @@ public class OneDayPwLoginModule extends AMLoginModule {
         	HttpServletResponse response = getHttpServletResponse();
         	response.setStatus(response.SC_MOVED_TEMPORARILY);
         	
-        	return ISAuthConstants.LOGIN_SUCCEED;        	
+        	return AUTH_ERROR;        	
         }
 	}
 	
