@@ -675,8 +675,8 @@
 				<version>1.1</version>
 				<configuration>
 					<outDir>target/site/graphs</outDir>
-					<outFile>${artifactId}-depgraph.png</outFile>
-					<dotFile>${artifactId}-depgraph.dot</dotFile>
+					<outFile>${project.artifactId}-depgraph.png</outFile>
+					<dotFile>${project.artifactId}-depgraph.dot</dotFile>
 				</configuration>
 			</plugin>
 			<plugin>

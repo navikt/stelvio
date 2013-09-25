@@ -40,17 +40,17 @@
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-batch-client-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<!-- spring-beans is a Spring core library used for manipulating Java 
