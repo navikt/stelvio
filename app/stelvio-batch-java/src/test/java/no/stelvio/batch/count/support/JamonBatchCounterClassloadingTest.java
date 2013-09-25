@@ -16,6 +16,7 @@ import java.util.Set;
 
 import no.stelvio.batch.count.support.CounterEvent.EventType;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -25,6 +26,7 @@ import org.junit.Test;
 public class JamonBatchCounterClassloadingTest {
 	
 	@Test
+	@Ignore
 	public void shouldBeAbleToLoadCounterClassWithoutJamonOnClasspath() throws Exception {
 		URLClassLoader classloaderForTest = removeJamonFromClassloader();
 		Object event = getCounterEvent(classloaderForTest);
