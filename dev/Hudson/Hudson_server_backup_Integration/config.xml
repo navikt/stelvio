@@ -153,6 +153,7 @@
         <string>Stelvio-app-site</string>
         <string>Stelvio-app-svn</string>
         <string>Stelvio-app-svn-dryRun-release</string>
+        <string>Stelvio-app-svn-mvn3</string>
         <string>stelvio_trunk_incubator_stelvio_example</string>
         <string>stelvio_trunk_int_stelvio-commons-lib_sonar</string>
       </jobNames>
