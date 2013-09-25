@@ -47,7 +47,7 @@
 	
 	<distributionManagement>
 		<repository>
-			<id>nav-maven2-internal-repo</id>
+			<id>m2internal</id>
 			<name>NAV Maven2 Internal Repository</name>
 			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
 		</repository>
