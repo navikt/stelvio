@@ -12,17 +12,17 @@
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-repository-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>

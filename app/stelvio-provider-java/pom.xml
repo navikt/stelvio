@@ -13,18 +13,18 @@
 			<!-- Stelvio common library -->
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<!-- Stelvio DTO are used in the provider layer for data transfer objects -->
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-dto-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
