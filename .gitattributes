@@ -3,8 +3,6 @@
 app/.copyarea.db -text
 app/changelog.txt -text
 app/pom.xml -text
-app/stelvio-batch-client-java/.copyarea.db -text
-app/stelvio-batch-client-java/.project -text
 app/stelvio-batch-client-java/pom.xml -text
 app/stelvio-batch-client-java/src/.copyarea.db -text
 app/stelvio-batch-client-java/src/main/.copyarea.db -text
@@ -36,8 +34,6 @@ app/stelvio-batch-client-java/src/test/resources/btc-controllerclient-context.xm
 app/stelvio-batch-client-java/src/test/resources/btc-controllerclient-environment.properties -text
 app/stelvio-batch-client-java/src/test/resources/log4j.properties -text
 app/stelvio-batch-java/.checkstyle -text
-app/stelvio-batch-java/.copyarea.db -text
-app/stelvio-batch-java/.project -text
 app/stelvio-batch-java/pom.xml -text
 app/stelvio-batch-java/src/.copyarea.db -text
 app/stelvio-batch-java/src/main/.copyarea.db -text
@@ -159,8 +155,6 @@ app/stelvio-batch-java/src/test/resources/batchvalidator-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/btc-testbatch-context.xml -text
 app/stelvio-batch-java/src/test/resources/log4j.properties -text
 app/stelvio-batch-java/src/test/resources/tst-stopbatch-context.xml -text
-app/stelvio-common-java/.copyarea.db -text
-app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/src/.copyarea.db -text
 app/stelvio-common-java/src/main/.copyarea.db -text
@@ -569,8 +563,6 @@ app/stelvio-common-java/src/test/resources/test-services.xml -text
 app/stelvio-common-java/src/test/resources/test-services2.xml -text
 app/stelvio-common-java/src/test/resources/test-services3.xml -text
 app/stelvio-common-java/src/test/resources/tst-log-infologger-context.xml -text
-app/stelvio-consumer-java/.copyarea.db -text
-app/stelvio-consumer-java/.project -text
 app/stelvio-consumer-java/pom.xml -text
 app/stelvio-consumer-java/src/.copyarea.db -text
 app/stelvio-consumer-java/src/main/.copyarea.db -text
@@ -590,8 +582,6 @@ app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/StelvioContextDat
 app/stelvio-consumer-java/src/main/resources/no/stelvio/consumer/ws/ContextHandlerChain.xml -text
 app/stelvio-consumer-java/src/test/.copyarea.db -text
 app/stelvio-consumer-java/src/test/java/no/stelvio/consumer/ws/JaxWsConsumerContextHandlerTest.java -text
-app/stelvio-domain-java/.copyarea.db -text
-app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/.copyarea.db -text
 app/stelvio-domain-java/src/main/.copyarea.db -text
@@ -622,7 +612,6 @@ app/stelvio-domain-java/src/test/resources/application-services.xml -text
 app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-domain-java/src/test/resources/error-handling.xml -text
 app/stelvio-domain-java/src/test/resources/performance-monitoring.xml -text
-app/stelvio-dto-java/.copyarea.db -text
 app/stelvio-dto-java/pom.xml -text
 app/stelvio-dto-java/src/.copyarea.db -text
 app/stelvio-dto-java/src/main/.copyarea.db -text
@@ -667,8 +656,6 @@ app/stelvio-dto-java/src/test/java/no/stelvio/dto/.copyarea.db -text
 app/stelvio-dto-java/src/test/java/no/stelvio/dto/exception/.copyarea.db -text
 app/stelvio-dto-java/src/test/java/no/stelvio/dto/exception/TestUnrevocerableDtoException.java -text
 app/stelvio-model-uml/.compatibility -text
-app/stelvio-model-uml/.copyarea.db -text
-app/stelvio-model-uml/.project -text
 app/stelvio-model-uml/com-sun[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/j2ee[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/java-se[!!-~]Design[!!-~]Model.emx -text
@@ -680,8 +667,6 @@ app/stelvio-model-uml/org-hibernate[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/org-springframework[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/org-springmodules[!!-~]Design[!!-~]Model.emx -text
 app/stelvio-model-uml/stelvio[!!-~]Design[!!-~]Model.emx -text
-app/stelvio-presentation-java/.copyarea.db -text
-app/stelvio-presentation-java/.project -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/.copyarea.db -text
 app/stelvio-presentation-java/src/main/.copyarea.db -text
@@ -940,7 +925,6 @@ app/stelvio-presentation-java/src/test/resources/numberconverter-context.xml -te
 app/stelvio-presentation-java/src/test/resources/test-context.xml -text
 app/stelvio-presentation-java/src/test/resources/test-flow.xml -text
 app/stelvio-presentation-java/src/test/resources/test-requestcontextfilter-context.xml -text
-app/stelvio-provider-java/.copyarea.db -text
 app/stelvio-provider-java/pom.xml -text
 app/stelvio-provider-java/src/.copyarea.db -text
 app/stelvio-provider-java/src/main/.copyarea.db -text
@@ -1011,8 +995,6 @@ app/stelvio-provider-java/src/test/resources/.copyarea.db -text
 app/stelvio-provider-java/src/test/resources/loglevels.properties -text
 app/stelvio-provider-java/src/test/resources/prv-testcodestable-mapping.xml -text
 app/stelvio-provider-java/src/test/resources/test-morphtosdk14-context.xml -text
-app/stelvio-repository-java/.copyarea.db -text
-app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
 app/stelvio-repository-java/src/.copyarea.db -text
 app/stelvio-repository-java/src/main/.copyarea.db -text
@@ -1033,8 +1015,6 @@ app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/MenuReposit
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/support/.copyarea.db -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/support/HibernateMenuRepository.java -text
 app/stelvio-repository-java/src/test/.copyarea.db -text
-app/stelvio-service-java/.copyarea.db -text
-app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
 app/stelvio-service-java/src/.copyarea.db -text
 app/stelvio-service-java/src/main/.copyarea.db -text
@@ -1064,8 +1044,6 @@ app/stelvio-service-java/src/test/java/no/stelvio/service/codestable/TestCtiCode
 app/stelvio-service-java/src/test/java/no/stelvio/service/codestable/TestCtpi.java -text
 app/stelvio-service-java/src/test/resources/.copyarea.db -text
 app/stelvio-service-java/src/test/resources/test-codestable-context.xml -text
-app/stelvio-test-java/.copyarea.db -text
-app/stelvio-test-java/.project -text
 app/stelvio-test-java/pom.xml -text
 app/stelvio-test-java/src/.copyarea.db -text
 app/stelvio-test-java/src/main/.copyarea.db -text
