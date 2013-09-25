@@ -1,4 +1,6 @@
 app/*.trash*
+app/.project
+app/.settings
 app/stelvio-batch-client-java/.classpath
 app/stelvio-batch-client-java/.settings
 app/stelvio-batch-client-java/target
