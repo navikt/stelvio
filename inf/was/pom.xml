@@ -18,8 +18,8 @@
 		<module>stelvio-security-login-java</module>
 	</modules>
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/was-2.0.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/was-2.0.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/was</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/was</developerConnection>
 	</scm>
 	
 	<dependencyManagement>
