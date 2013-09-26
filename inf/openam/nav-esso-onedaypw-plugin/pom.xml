@@ -9,8 +9,8 @@
 	<name>openam plugin for onedaypassword</name>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam/nav-esso-onedaypw-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam/nav-esso-onedaypw-plugin</developerConnection>
 	</scm>
 	
 	<distributionManagement>
