@@ -15,7 +15,7 @@
 	
 	<distributionManagement>
 		<repository>
-			<id>nav-maven2-internal-repo</id>
+			<id>m2internal</id>
 			<name>NAV Maven2 Internal Repository</name>
 			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
 		</repository>
@@ -97,6 +97,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.1</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -112,6 +113,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -137,5 +139,12 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>1.0</version>
+			</extension>
+		</extensions>
 	</build>
 </project>

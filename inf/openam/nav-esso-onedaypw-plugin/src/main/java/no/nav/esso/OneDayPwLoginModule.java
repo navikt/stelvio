@@ -84,7 +84,7 @@ public class OneDayPwLoginModule extends AMLoginModule {
         	gotoOnFail = gotoOnFail.concat("?authResult=" + result.getError().getCode());        	
         	setLoginFailureURL(gotoOnFail);
         	HttpServletResponse response = getHttpServletResponse();
-        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+        	response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
         	
         	return AUTH_ERROR;        	
         }

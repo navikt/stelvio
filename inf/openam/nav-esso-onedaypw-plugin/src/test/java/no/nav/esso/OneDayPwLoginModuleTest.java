@@ -13,6 +13,7 @@ public class OneDayPwLoginModuleTest {
 
 	@Test
 	@Ignore
+	// not easy to test to mock enough to allow the AM LoginModule to be initialized
 	public void testSuccessfulLogin() {
 		try {
 			whenNew(OneDayPwValidator.class).withAnyArguments().thenReturn(new MockValidator(MockValidator.VALID_USER, null, null));
@@ -20,7 +21,6 @@ public class OneDayPwLoginModuleTest {
 			module.init(null, null, null);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
