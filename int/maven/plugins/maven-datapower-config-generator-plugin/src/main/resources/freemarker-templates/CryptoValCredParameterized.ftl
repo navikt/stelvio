@@ -1,4 +1,4 @@
-<#macro CryptoValCred name trustedCerts useCRL>
+<#macro CryptoValCredParameterized name trustedCerts useCRL>
 	<CryptoValCred name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<#list trustedCerts as cert>

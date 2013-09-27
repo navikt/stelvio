@@ -43,6 +43,7 @@
 <#include "MQQM.ftl">
 <#include "MultiProtocolGateway.ftl">
 <#include "MultiProtocolGatewayMQ.ftl">
+<#include "MultiProtocolGatewayMQWithHeaderSuppression.ftl">
 <#include "MultiProtocolGatewayMTOMEnabled.ftl">
 <#include "NFSStaticMount.ftl">
 <#include "ProcessingRules.ftl">
