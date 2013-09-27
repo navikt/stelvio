@@ -1,4 +1,4 @@
-<#macro MultiProtocolGatewayMQ name mqSourceProtocolHandlerList xmlManager backendURL propagateURI backTimeout includeResponseTypeEncoding processHTTPErrors requestType responseType stylePolicy>
+<#macro MultiProtocolGatewayMQ name mqSourceProtocolHandlerList xmlManager headerSuppressionParams backendURL propagateURI backTimeout includeResponseTypeEncoding processHTTPErrors requestType responseType stylePolicy>
 	<MultiProtocolGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Priority>normal</Priority>
@@ -6,6 +6,12 @@
 		<FrontProtocol class="MQSourceProtocolHandler">${mqSourceProtocolHandler}</FrontProtocol>
 		</#list>
 		<XMLManager class="XMLManager">${xmlManager}</XMLManager>
+		<#list headerSuppressionParams as param>
+		<HeaderSuppression>
+			<Direction>${param.direction}</Direction>
+			<HeaderTag>${param.tag}</HeaderTag>
+		</HeaderSuppression>
+		</#list>
 		<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
 		<QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>
 		<BackendUrl>${backendURL}</BackendUrl>

@@ -7670,6 +7670,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoKey.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoValCred.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoValCredPKIX.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoValCredParameterized.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/DefaultXMLManager.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/ForwardCryptoProfile.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/ForwardSSLProxy.ftl -text
@@ -7723,7 +7724,9 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/StylePolicyActionVerify.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/TrustedCertificate.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/TwoWayCryptoProfile.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/TwoWayCryptoProfileParameterized.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/TwoWaySSLProxy.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/TwoWaySSLProxyParameterized.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSEndpointRewritePolicy.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSEndpointRewritePolicyMultipleWsdl.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSGateway.ftl -text

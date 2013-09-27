@@ -5,13 +5,16 @@
 <#include "TrustedCertificate.ftl">
 <#include "CryptoIdentCred.ftl">
 <#include "CryptoValCred.ftl">
+<#include "CryptoValCredParameterized.ftl">
 <#include "CryptoValCredPKIX.ftl">
 <#include "ForwardCryptoProfile.ftl">
 <#include "ForwardSSLProxy.ftl">
 <#include "ReverseCryptoProfile.ftl">
 <#include "ReverseSSLProxy.ftl">
 <#include "TwoWaySSLProxy.ftl">
+<#include "TwoWaySSLProxyParameterized.ftl">
 <#include "TwoWayCryptoProfile.ftl">
+<#include "TwoWayCryptoProfileParameterized.ftl">
 
 <#macro FrontsideSSL name keystoreName keystoreFile keystorePwd>
 	<#local sslIdCred="${name}_CryptoIdCred"/>
@@ -45,6 +48,32 @@
 	<@TwoWaySSLProxy name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}"/>
 </#macro>
 
+<#macro TwoWaySSLClientAuthParameterized
+		name
+		keystoreName
+		keystoreFile
+		keystorePwd
+		trustedCerts
+		useCRL
+		ciphers
+		disableSSLv2
+		disableSSLv3
+		disableTLSv1
+		permitInsecureServers>
+	<#local sslIdCred="${name}_CryptoIdCred"/>
+	<#local sslValCred="${name}_CryptoValCred">
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslProxyProfile="${name}_SSLProxyProfile"/>
+	<@SSLCertificate name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
+	<@CryptoKey name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
+	<@CryptoIdentCred name="${sslIdCred}" key="${keystoreName}" cert="${keystoreName}"/>
+	<#list trustedCerts as cert>
+	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
+	</#list>
+	<@CryptoValCredParameterized name="${sslValCred}" trustedCerts=trustedCerts useCRL=${useCRL}/>
+	<@TwoWayCryptoProfileParameterized name="${sslCryptoProfile}" identCred="${sslIdCred}" valCred="${sslValCred}" ciphers disableSSLv2 disableSSLv3 disableTLSv1/>
+	<@TwoWaySSLProxyParameterized name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}" permitInsecureServers/>
+</#macro>
 
 <#macro BacksideSSL name trustedCerts>
 	<#local sslValCred="${name}_CryptoValCred">
