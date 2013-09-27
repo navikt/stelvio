@@ -70,7 +70,7 @@
 	<#list trustedCerts as cert>
 	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
 	</#list>
-	<@CryptoValCredParameterized name="${sslValCred}" trustedCerts=trustedCerts useCRL=${useCRL}/>
+	<@CryptoValCredParameterized name="${sslValCred}" trustedCerts=trustedCerts useCRL=useCRL/>
 	<@TwoWayCryptoProfileParameterized name="${sslCryptoProfile}" identCred="${sslIdCred}" valCred="${sslValCred}" ciphers disableSSLv2 disableSSLv3 disableTLSv1/>
 	<@TwoWaySSLProxyParameterized name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}" permitInsecureServers/>
 </#macro>
