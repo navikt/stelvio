@@ -1153,6 +1153,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Oppgave_CI/config
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Oppgavebehandling_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Oppholdsstatus_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Opptjening_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-PIPEgenansatt_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-PensjonBeregning_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-PensjonSak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-NAV-Person_CI/config.xml -text

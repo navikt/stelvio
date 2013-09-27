@@ -179,6 +179,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>SoapUI-U2-Ekstern-Pensjon-ErUngUfor_CI</string>
         <string>SoapUI-U2-NAV-Endagspassord_CI</string>
+        <string>SoapUI-U2-NAV-PIPEgenansatt_CI</string>
         <string>SoapUI-U2-Pensjon-UngUfor_CI</string>
       </jobNames>
       <jobFilters/>
