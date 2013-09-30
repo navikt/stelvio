@@ -43,8 +43,14 @@ public class OneDayPwLoginModule extends AMLoginModule {
 	}
 
 	@Override
-	public Principal getPrincipal() {
-		return new OneDayPwPrincipal(userId);
+	public Principal getPrincipal() {		
+		try {
+			setUserSessionProperty("uid", userId);
+		} catch (AuthLoginException e) {
+			logger.error("Error setting property uid on UserSession: " + e.getMessage());
+			return null;
+		}
+		return new OneDayPwPrincipal("anonymous");
 	}
 
 
