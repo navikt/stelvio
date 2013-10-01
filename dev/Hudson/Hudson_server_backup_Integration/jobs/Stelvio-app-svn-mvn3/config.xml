@@ -21,7 +21,7 @@
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -34,6 +34,10 @@
     <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-SnapshotTrigger</string>
       <trigger-property>
+        <originalValue class="maven-snapshot-trigger">
+          <spec></spec>
+          <excludeInternallyProduced>false</excludeInternallyProduced>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -47,6 +51,7 @@
     <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
       <base-property>
+        <originalValue class="watched-dependencies-property"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -64,7 +69,7 @@
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
           <daysToKeep>-1</daysToKeep>
-          <numToKeep>5</numToKeep>
+          <numToKeep>10</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -129,8 +134,13 @@
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
+        <originalValue class="hudson.tasks.Mailer">
+          <recipients>test@example.com</recipients>
+          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+          <sendToIndividuals>false</sendToIndividuals>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -186,7 +196,7 @@
       <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -232,6 +242,9 @@
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>15 * * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -373,6 +386,9 @@
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.TimerTrigger">
+          <spec>15 0 * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
