@@ -24,18 +24,6 @@
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>-1</daysToKeep>
-          <numToKeep>10</numToKeep>
-          <artifactDaysToKeep>-1</artifactDaysToKeep>
-          <artifactNumToKeep>-1</artifactNumToKeep>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
-    </entry>
-    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -43,6 +31,18 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
+    </entry>
+    <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>5</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
     </entry>
     <entry>
       <string>scmCheckoutRetryCount</string>
@@ -94,18 +94,18 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>jdk</string>
       <string-property>
         <originalValue class="string">IBM J9 6.0</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>appointedNode</string>
@@ -119,7 +119,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/was</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -138,14 +138,15 @@
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
-          <spec>15 0 * * *</spec>
+          <spec>@midnight</spec>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>h103841</createdBy>
+  <creationTime>1381134567175</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -169,16 +170,16 @@
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
-    <groupId>no.stelvio</groupId>
-    <artifactId>stelvio</artifactId>
+    <groupId>no.stelvio.was</groupId>
+    <artifactId>was</artifactId>
   </rootModule>
-  <goals>clean deploy</goals>
+  <goals>site:site</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
