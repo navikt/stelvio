@@ -39,7 +39,7 @@
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:set-environment-variables,	<!-- SetEnvironmentVariableDmgr.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-rolemapping,	<!-- RoleMapping.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-wsendpoints,	<!-- ModifySCAImportsBinding.py -->
-							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,	<!-- ApplyUsernameTokenDetailsMojo.py -->
+							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,	<!-- ModifyUserNameTokenGenerator.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-activationspecs,	<!-- ModifyMaxConcurrencyAS.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:synchronize-nodes,	<!-- ClusterStartStop.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,		<!-- (SSH) -->
