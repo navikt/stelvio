@@ -64,7 +64,7 @@ public class ConcurrentJamonBatchCounterTest {
 		ConcurrentExecutor.execute(noOfThreads, numberOfTimeSamplesPerThread, action);	
 		
 		Monitor monitor = (Monitor) counter.getMonitor(concurrentEvent);
-		assertEquals(noOfThreads * numberOfTimeSamplesPerThread * sleeptime, monitor.getTotal(), 500);
+		assertEquals(noOfThreads * numberOfTimeSamplesPerThread * sleeptime, monitor.getTotal(), 1000);
 	}	
 	
 	@Test
