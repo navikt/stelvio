@@ -76,12 +76,6 @@ public class GenerateSikkerhetslytterConfigMojo extends AbstractMojo {
 		File configFile = new File(tempDir, "configuration.xml");
 
 		properties = loadProperties(certFile.getPath());
-		addTrustCerts(properties);
-		
-		// Create MPG, frontsidehandlers and policy, and map to queue
-		// TODO
-		// for hver policy og alle artifakter pr policy (lag egne objekter og kanskje nytt policy-objekt):  
-		// generer mpg, frontsidehandler, knytt mot kø, lag policy av aktuell type
 		
 		// Merge templates with properties and output to config file
 		try {
@@ -91,8 +85,6 @@ public class GenerateSikkerhetslytterConfigMojo extends AbstractMojo {
 		} catch (TemplateException e) {
 			throw new IllegalStateException("Caught IllegalStateException while generating DataPower configuration", e);
 		}
-
-		
 		
 	}
 	
@@ -105,24 +97,6 @@ public class GenerateSikkerhetslytterConfigMojo extends AbstractMojo {
 		builder.putAll(properties);
 		builder.interpolate();
 		return builder.buildProperties();
-	}
-	
-	/*
-	 * Expand trust certificate property and inject new expanded property TODO
-	 * Move out of the generic configuration generator
-	 */
-	private void addTrustCerts(Properties props) {
-		if (props.getProperty("partnerTrustCerts") != null) {
-			List<String> trustCertList = DPCollectionUtils.listFromString(props.getProperty("partnerTrustCerts"));
-			List<Map<String, String>> trustCertMapList = DPCollectionUtils.newArrayList();
-			for (String trustCert : trustCertList) {
-				Map<String, String> cert = DPCollectionUtils.newHashMap();
-				cert.put("name", trustCert.substring(trustCert.lastIndexOf("/") + 1));
-				cert.put("file", trustCert);
-				trustCertMapList.add(cert);
-			}
-			props.put("partnerTrustedCerts", trustCertMapList);
-		}
 	}
 	
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
