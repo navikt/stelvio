@@ -24,7 +24,7 @@
   		</includes>  		
   	</fileSet>
   	<fileSet>
-  		<directory>${project.basedir}/src/main/resources</directory>
+  		<directory>${project.basedir}/src/main/resources/config/auth/default</directory>
   		<outputDirectory>/config/auth/default</outputDirectory>  		
   		<includes>
   			<include>One*.xml</include>
