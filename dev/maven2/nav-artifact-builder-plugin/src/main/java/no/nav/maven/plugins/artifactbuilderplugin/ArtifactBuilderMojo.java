@@ -216,7 +216,7 @@ public class ArtifactBuilderMojo extends AbstractMojo {
 	 * @throws IOException
 	 */
 	private File unpackJarEntries(Artifact artifact) throws FileNotFoundException, IOException {
-    	File unzipTempFolder = new File(System.getProperty("java.io.tmpdir")+project.getArtifactId()+"_"+artifact.getArtifactId()+"_"+System.currentTimeMillis());
+    	File unzipTempFolder = new File(System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+project.getArtifactId()+"_"+artifact.getArtifactId()+"_"+System.currentTimeMillis());
     	JarInputStream jis = new JarInputStream(new FileInputStream(artifact.getFile()));
 		JarEntry je = null;
 		while ((je = jis.getNextJarEntry()) != null) {

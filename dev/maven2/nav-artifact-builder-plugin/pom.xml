@@ -9,7 +9,7 @@
   <artifactId>nav-artifact-builder-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>NAV Maven Artifact Builder Plugin</name>
-  <version>1.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <url>http://10.33.1.53/project/maven/plugins/nav-artifact-builder-plugin</url>
   <prerequisites>
     <maven>2.0.1</maven>
@@ -53,7 +53,7 @@
     <dependency>
       <groupId>no.nav.maven</groupId>
       <artifactId>nav-maven-common</artifactId>
-      <version>1.0</version>
+      <version>1.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
   
@@ -75,6 +75,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 				<configuration>
 					<attach>true</attach>
 				</configuration>
@@ -88,22 +89,6 @@
 				</executions>
 			</plugin>
 			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>eclipse:eclipse</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>eclipse</goal>
-						</goals>
-						<configuration>
-							<downloadSources>true</downloadSources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 		
         <pluginManagement>
