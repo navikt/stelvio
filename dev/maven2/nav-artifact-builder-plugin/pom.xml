@@ -53,7 +53,7 @@
     <dependency>
       <groupId>no.nav.maven</groupId>
       <artifactId>nav-maven-common</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0</version>
     </dependency>
   </dependencies>
   
