@@ -2005,6 +2005,7 @@ dev/maven2/maven-propertiesgenerator-plugin/.classpath
 dev/maven2/maven-propertiesgenerator-plugin/.project
 dev/maven2/maven-propertiesgenerator-plugin/.settings
 dev/maven2/maven-propertiesgenerator-plugin/target
+dev/maven2/nav-artifact-builder-plugin/target
 dev/maven2/nav-batchclient-plugin/.classpath
 dev/maven2/nav-batchclient-plugin/.project
 dev/maven2/nav-batchclient-plugin/.settings

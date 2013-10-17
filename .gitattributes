@@ -3829,8 +3829,6 @@ dev/maven2/maven-wasconfig-plugin/src/main/java/no/nav/maven/plugins/SetupConfig
 dev/maven2/maven-wasconfig-plugin/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-wasconfig-plugin/src/main/java/no/nav/maven/plugins/UploadConfig.java -text
 dev/maven2/maven-wasconfig-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
-dev/maven2/nav-artifact-builder-plugin/.classpath -text
-dev/maven2/nav-artifact-builder-plugin/.project -text
 dev/maven2/nav-artifact-builder-plugin/pom.xml -text
 dev/maven2/nav-artifact-builder-plugin/src/main/java/no/nav/maven/plugins/artifactbuilderplugin/ArtifactBuilderMojo.java -text
 dev/maven2/nav-artifact-builder-plugin/src/main/java/no/nav/maven/plugins/artifactbuilderplugin/ArtifactItem.java -text
