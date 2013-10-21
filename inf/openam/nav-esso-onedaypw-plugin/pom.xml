@@ -3,7 +3,7 @@
 
 	<groupId>nav-esso-onedaypw-plugin</groupId>
 	<artifactId>nav-esso-onedaypw-plugin</artifactId>
-	<version>1.0.0-alpha003-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>openam plugin for onedaypassword</name>
 	
@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>no.nav.tjenester</groupId>
 			<artifactId>nav-endagspassord-tjenestespesifikasjon</artifactId>
-			<version>1.0.0-alpha001</version>
+			<version>1.0.0</version>
 			<classifier>jaxws</classifier>
 		</dependency>
 		
