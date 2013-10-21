@@ -1,4 +1,4 @@
- <#macro StylePolicyActionLog name error-rule>
+ <#macro StylePolicyActionOnError name error-rule>
     <StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
         <mAdminState>enabled</mAdminState>
         <Type>on-error</Type>
