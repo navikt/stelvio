@@ -3,13 +3,13 @@
 
 	<groupId>nav-esso-onedaypw-plugin</groupId>
 	<artifactId>nav-esso-onedaypw-plugin</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>openam plugin for onedaypassword</name>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam/nav-esso-onedaypw-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam/nav-esso-onedaypw-plugin</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/nav-esso-onedaypw-plugin-1.0.0</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/nav-esso-onedaypw-plugin-1.0.0</developerConnection>
 	</scm>
 	
 	<distributionManagement>
