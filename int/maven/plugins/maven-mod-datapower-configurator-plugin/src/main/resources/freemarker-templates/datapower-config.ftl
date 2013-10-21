@@ -58,6 +58,7 @@
 <#include "StylePolicyActionCall.ftl">
 <#include "StylePolicyActionFetch.ftl">
 <#include "StylePolicyActionLog.ftl">
+<#include "StylePolicyActionOnError.ftl">
 <#include "StylePolicyActionResult.ftl">
 <#include "StylePolicyActionRoute.ftl">
 <#include "StylePolicyActionSign.ftl">
