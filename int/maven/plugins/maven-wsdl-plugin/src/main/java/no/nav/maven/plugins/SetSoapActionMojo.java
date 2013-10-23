@@ -40,6 +40,11 @@ public class SetSoapActionMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
+	
+	/**
+	 * @parameter default-value="false"
+	 */
+	private boolean blankSOAPAction;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (!"pom".equals(project.getPackaging())) {
@@ -61,9 +66,11 @@ public class SetSoapActionMojo extends AbstractMojo {
 	
 	
 	/**
-	 * Set blank SOAP action for all operations
+	 * Set SOAP action for all operations
+	 * Blank SOAP action will be set if blankSOAPAction is true
+	 * Default SOAP action according to default WS-Addressing pattern for wsa:Action
 	 */
-	public void setSOAPActions(Definition definition) {
+	public void setSOAPActions(Definition definition) {		
 		Collection<Service> services = definition.getServices().values();
 		for (Service service : services) {
 			Collection<Port> ports = service.getPorts().values();
@@ -71,8 +78,22 @@ public class SetSoapActionMojo extends AbstractMojo {
 				Binding binding = port.getBinding();
 				for (BindingOperation bindingOperation : (List<BindingOperation>) binding.getBindingOperations()) {
 					for (ExtensibilityElement extensibilityElement : (List<ExtensibilityElement>) bindingOperation.getExtensibilityElements()) {
-						if (extensibilityElement instanceof SOAPOperation) {
-							((SOAPOperation) extensibilityElement).setSoapActionURI("");
+						if (extensibilityElement instanceof SOAPOperation) {							
+							if(blankSOAPAction) {								
+								((SOAPOperation) extensibilityElement).setSoapActionURI("");
+							} else {
+								// Default behaviour is to set soap:action to the default wsa:Action which follows the syntax
+								// namespace/portType.name/operation.name/input.name
+								// This is to overcome an interoperability issue between WAS and jBoss. A WAS consumer when using WS-Addresssing
+								// sets a default value in SOAPAction if SOAPAction is blank "" in the WSDL. A jBoss provider fails when the request 
+								// contains the WAS default value while the WSDL contains a blank value "".
+								String actionURI = definition.getTargetNamespace() +
+								"/" +
+								binding.getPortType().getQName().getLocalPart() +
+								"/" +
+								binding.getPortType().getOperation(bindingOperation.getName(), null, null).getInput().getName();
+								((SOAPOperation) extensibilityElement).setSoapActionURI(actionURI);
+							}
 						}
 					}
 				}
