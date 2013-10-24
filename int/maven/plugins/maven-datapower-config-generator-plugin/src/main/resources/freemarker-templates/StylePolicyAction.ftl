@@ -5,6 +5,7 @@
 <#include "StylePolicyActionFilter.ftl"/>
 <#include "StylePolicyActionLog.ftl"/>
 <#include "StylePolicyActionResult.ftl"/>
+<#include "StylePolicyActionParameterizedResult.ftl"/>
 <#include "StylePolicyActionSign.ftl"/>
 <#include "StylePolicyActionSignXpath.ftl"/>
 <#include "StylePolicyActionSLM.ftl"/>
@@ -87,6 +88,19 @@
 		output="${action.output}"
 		async="${action.async!'off'}"
 		destination="${action.destination!''}"/>
+	<#--
+		Parameterized Result Action
+	-->
+	<#elseif action.type == "parameterizedResult">
+	<@StylePolicyActionParameterizedResult
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		output="${action.output}"
+		async="${action.async!'off'}"
+		destination="${action.destination!''}"
+		retryCount="${action.retryCount}"
+		retryInterval="${action.retryInterval}"
+		timeout="${action.timeout}"/>
 	<#--
 		Add WS-Security Signature Action
 	-->
