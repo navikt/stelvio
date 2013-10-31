@@ -12,7 +12,11 @@
                 <XPath/>
                 <ValueData>${attribute.valueData}</ValueData>
             </#if>
-            <SubValueData/>
+            <#if attribute.subValueData?has_content>
+            	<SubValueData>${attribute.subValueData}</SubValueData>
+            <#else>
+            	<SubValueData/>
+            </#if>
             <FriendlyName/>
         </SAMLAttribute>
     </#list>

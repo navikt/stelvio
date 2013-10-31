@@ -2,10 +2,10 @@
     <StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>call</Type>
-		<Input>"${input}"</Input>
-		<Output>"${output}"</Output>
+		<Input>${input}</Input>
+		<Output>${output}</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
-		<Rule>"${ruleRef}"</Rule>
+		<Rule>${ruleRef}</Rule>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>

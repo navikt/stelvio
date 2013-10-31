@@ -28,3 +28,10 @@
 		direction="error-rule"
 		actions=actions/>
 </#macro>
+
+<#macro MPGProcessingRequestRule name actions>
+	<@MPGProcessingRule
+		name="${name}"
+		direction="request-rule"
+		actions=actions/>
+</#macro>

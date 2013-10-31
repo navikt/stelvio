@@ -32,19 +32,18 @@ import org.apache.maven.project.ProjectUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
 
 import freemarker.template.TemplateException;
 
 /**
  * Goal which generates a DataPower configuration.
  * 
- * @goal generateSTS
+ * @goal generateGeneric
  * @phase compile
  * 
- * @author person4fdbf4cece95, Accenture
+ * @author person39c21c42691c, Accenture
  */
-public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
+public class GenerateConfigGenericMojo extends AbstractMojo {
 
 	private static final String MAIN_TEMPLATE = "main.ftl";
 
@@ -145,11 +144,6 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 	 */
 	protected String envclass;
 
-	// Exported properties
-	public static final String PROPERTY_KEY_OPENAMHOST = "OpenAMHost";
-	public static final String PROPERTY_KEY_LDAPHOST = "frontsideLDAPHost";
-	public static final String PROPERTY_KEY_LOGGINGHOST = "loggingRemoteHost";
-	public static final String PROPERTY_KEY_LOGGINGURI = "loggingRemoteURI";
 
 	private List remoteRepos;
 
@@ -175,20 +169,13 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 
 		addTrustCerts(properties);
 
-		// Get ldap and openam from envConfig
+		// Resolve envConfig properties
 		try {
-
-			// #envconfig://alias=openam&domain={envDomain}&envName={env}//property//restUrl
-
 			getLog().info(
-					" ========================= AFTER MERGE =================== ");
-			for (String key : properties.stringPropertyNames()) {
-				String value = properties.getProperty(key);
-				getLog().info(
-						String.format("key : %s | value : %s", key, value));
-			}
+					" ========================= resolveEnvConfigProperties =================== ");
+			
 			resolveEnvConfigProperties(properties);
-			// getEnvConfigProperties(properties);
+			
 
 		} catch (Exception e) {
 			throw new MojoExecutionException(
@@ -223,15 +210,17 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 	private void resolveEnvConfigProperties(Properties properties)
 			throws MalformedURLException, URISyntaxException, IOException {
 		getLog().info(
-				" ========================= resolveEnvConfigProperties =================== ");
+				" ========================= resolvingEnvConfigProperties =================== ");
 		for (String key : properties.stringPropertyNames()) {
 			String value = properties.getProperty(key);
 			if (value.contains("envQuery")) {
 				getLog().info(
-						String.format("key : %s | value : %s", key, value));
+						String.format("Lookup key : %s", key));
 				String paramValue = processEnvConfigProperty(value);
-				getLog().info("SETTING PROP : " + paramValue);
-				properties.setProperty(key, paramValue);
+				
+				String paramKey = key.replace("_EnvConfigLookup", "");
+				properties.setProperty(paramKey, paramValue);
+				//properties.put(arg0, arg1)
 			}
 
 		}
@@ -239,7 +228,6 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 
 	private String processEnvConfigProperty(String jsonString) throws URISyntaxException, MalformedURLException, IOException {
 		
-		JSONParser parser = new JSONParser();
 		JSONObject obj= (JSONObject) JSONValue.parse(jsonString); 
 		
 		String envQuery = (String) obj.get("envQuery");
@@ -247,7 +235,6 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 		JSONArray postProcess = (JSONArray)obj.get("postprocess");
 		
 		 
-		
 		// Fetching value from envconfig
 		URI envConfigBaseUrl = new URI(envConfigBaseUrlString);
 		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl, username, password);
@@ -285,8 +272,7 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 					 envConfigValue = envConfigValue.replace(find, replace);
 					 
 				 } else if(type.toLowerCase().equals("substring")) {
-
-
+					 
 					 String start = (String) postprocessObject.get("start");
 					 String end = (String) postprocessObject.get("end");
 					 
@@ -314,59 +300,6 @@ public class GenerateSTSFromEnvConfigMojo extends AbstractMojo {
 		return envConfigValue;
 	}
 
-	private void getEnvConfigProperties(Properties props)
-			throws URISyntaxException, MalformedURLException, IOException {
-		URI envConfigBaseUrl = new URI(envConfigBaseUrlString);
-
-		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(
-				envConfigBaseUrl, username, password);
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "openam");
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
-
-		EnvConfigResource resource = discovery
-				.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
-		System.out.println(props.size());
-		getLog().info("props.size(): " + props.size());
-		getLog().info("resource: " + props.size());
-
-		props.put(PROPERTY_KEY_OPENAMHOST, resource.getPropertyValue("restUrl")
-				+ "/identity/xml/attributes");
-
-		discovery.resetUriBuilder();
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "ldap");
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
-
-		resource = discovery
-				.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
-
-		String ldapUrl = resource.getPropertyValue("url")
-				.replace("ldap://", "").replace("ldaps://", "");
-		props.put(PROPERTY_KEY_LDAPHOST, ldapUrl);
-
-		discovery.resetUriBuilder();
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "nfs.log");
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
-		discovery.addQueryParameter(
-				EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
-
-		resource = discovery
-				.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
-		URL url = new URL(resource.getPropertyValue("url"));
-
-		props.put(PROPERTY_KEY_LOGGINGHOST, url.getHost());
-		props.put(PROPERTY_KEY_LOGGINGURI, url.getPath());
-
-	}
 
 	/*
 	 * Load properties from property file

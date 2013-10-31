@@ -83,7 +83,7 @@
 	<#elseif action.type == "on-error">
 	<@StylePolicyActionOnError
 		name="${actionNamePrefix}${action.name}"
-		error-rule="${action.error-rule}"/>
+		errorRule="${action.errorRule}"/>
 	<#--
 		Result Action
 	-->

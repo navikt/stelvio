@@ -1,10 +1,10 @@
- <#macro StylePolicyActionOnError name error-rule>
+ <#macro StylePolicyActionOnError name errorRule>
     <StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
         <mAdminState>enabled</mAdminState>
         <Type>on-error</Type>
         <NamedInOutLocationType>default</NamedInOutLocationType>
         <ErrorMode>abort</ErrorMode>
-        <Rule>${error-rule}</Rule>
+        <Rule>${errorRule}</Rule>
         <Transactional>off</Transactional>
         <SOAPValidation>body</SOAPValidation>
         <SQLSourceType>static</SQLSourceType>

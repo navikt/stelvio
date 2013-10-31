@@ -7789,6 +7789,7 @@ int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/d
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/datapower/config/WsdlArtifact.java -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/datapower/config/freemarker/Freemarker.java -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigFromEnvConfigMojo.java -text
+int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigGenericMojo.java -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/maven/plugins/GenerateSTSFromEnvConfigMojo.java -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceGWConfigMojo.java -text
