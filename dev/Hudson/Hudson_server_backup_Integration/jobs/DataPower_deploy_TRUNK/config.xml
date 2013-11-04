@@ -331,8 +331,8 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
             <command>java -version</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
-            <command>#wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/branches/datapower/D20131014_2014ELSAM/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+#wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/branches/datapower/D20131014_2014ELSAM/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
 
 EnvironmentClass=${Environment:0:1}
 
