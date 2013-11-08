@@ -7899,6 +7899,7 @@ int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/fre
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/XMLManager.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/datapower-config.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/datapower-crypto.ftl -text
+int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/datapower-frontsidePort.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/scripts/GetVersions.py -text
 int/maven/plugins/maven-project-interchange-plugin/pom.xml -text
 int/maven/plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
