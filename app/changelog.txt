@@ -2,6 +2,50 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 3.1.0
+----------------------------------
+Module stelvio-presentation-java:
+* Added filter to detect changes in nav-esso cookie (PKIGUAN-155)
+* Added logoutservice that supports OpenAM (PKIGUAN-156)
+
+Stelvio:
+* Switched to maven3 for building and removed use of deprecated maven variables
+* Updated maven-root-pom from 1.2.3 to 1.2.5
+* Changed maven-compiler-plugin config from version 1.5 to 1.6
+* Added wagon-webdav-jackrabbit to support DAV when communicating with maven repositories
+
+Version 3.0.0
+----------------------------------
+Module stelvio-common-java:
+* Updated ehcache version to 2.5.2 and ehcache-spring-annotations version to 1.2.0 (IRPORT-2450)
+
+Version 2.4.0
+----------------------------------
+Module stelvio-common-java, stelvio-presentation-java:
+* Improved code quality (IR-352/IR-353)
+
+Module stelvio-batch-java:
+* Improved error handling for stelvio batch history (IR-544)
+
+Version 2.3.0
+----------------------------------
+Module stelvio-common-java:
+* Rollback IRPORT-1531
+
+Version 2.2.0 (07.05.2012) DEPRECATED! Do not use, use 2.3.0.
+----------------------------------
+Module stelvio-common-java:
+* Fixed a bug in ExecuteServiceRequestInterceptor (IRPORT-1531)
+
+Module stelvio-consumer:
+* Added JAX-WS support (IRPORT-1490)
+
+Module stelvio-presentation:
+* Fixed a bug in CodeTableItemSelectOneMenu that resulted in duplicate entries in drop downs (IRPORT-1639)
+
+Module stelvio-batch:
+* Added the parameters that a Stelvio batch is started with to the batch history (IRPORT-993)
+
 Version 2.1.2 (29.06.2011)
 ----------------------------------
 Module stelvio-batch:
