@@ -1,6 +1,5 @@
 * text=auto !eol
 /.project -text
-app/.copyarea.db -text
 app/changelog.txt -text
 app/pom.xml -text
 app/stelvio-batch-client-java/pom.xml -text
