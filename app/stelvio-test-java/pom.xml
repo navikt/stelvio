@@ -3,13 +3,18 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>3.1.1-SNAPSHOT</version>
+		<version>4.0.2-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-test-java</artifactId>
 	<packaging>jar</packaging>
 	<name>stelvio - test</name>
 	<dependencies>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock</artifactId>

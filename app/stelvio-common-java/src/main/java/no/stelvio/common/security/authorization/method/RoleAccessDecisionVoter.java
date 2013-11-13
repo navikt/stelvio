@@ -1,17 +1,18 @@
 package no.stelvio.common.security.authorization.method;
 
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.List;
 
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.vote.AccessDecisionVoter;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.aop.framework.ReflectiveMethodInvocation;
 
 import no.stelvio.common.security.SecurityContextHolder;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.Authentication;
 
 /**
  * An access-controller, i.e. an <code>AccessDecisionVoter</code> implementation that participate in an access-controll decision
@@ -21,7 +22,7 @@ import no.stelvio.common.security.SecurityContextHolder;
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-public class RoleAccessDecisionVoter implements AccessDecisionVoter {
+public class RoleAccessDecisionVoter implements AccessDecisionVoter<ReflectiveMethodInvocation> {
 	private static final Log LOGGER = LogFactory.getLog(RoleAccessDecisionVoter.class);
 
 	/**
@@ -35,7 +36,8 @@ public class RoleAccessDecisionVoter implements AccessDecisionVoter {
 		return true;
 	}
 
-	/**
+
+    /**
 	 * Indication of wheter or not this class supports the secure object represented by the clazz argument.
 	 * 
 	 * @param clazz
@@ -51,33 +53,26 @@ public class RoleAccessDecisionVoter implements AccessDecisionVoter {
 	 * from the intercepted method's Roles annotation. If no such annotation is present AccessDecisionVoter.ACCESS_ABSTAIN will
 	 * be returned.
 	 * 
-	 * @param authentication
-	 *            the authentication object containing the user principal
-	 * @param secureObject
-	 *            the secured object, should be a ReflectiveMethodInvocation
-	 * @param config
-	 *            the configuration attributes for a particular method invocation
-	 * @return AccessDecisionVoter.ACCESS_GRANTED, AccessDecisionVoter.ACCESS_DENIED or AccessDecisionVoter.ACCESS_ABSTAIN.
-	 */
-	public int vote(Authentication authentication, Object secureObject, ConfigAttributeDefinition config) {
+	*/
+    @Override
+    public int vote(Authentication authentication, ReflectiveMethodInvocation secureObject, Collection<ConfigAttribute> configAttributes) {
+        ReflectiveMethodInvocation invocation =  secureObject;
+        Method method = invocation.getMethod();
+        List<String> roles = RolesUtil.getAnnotatedRoles(method);
 
-		ReflectiveMethodInvocation invocation = (ReflectiveMethodInvocation) secureObject;
-		Method method = invocation.getMethod();
-		List<String> roles = RolesUtil.getAnnotatedRoles(method);
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Getting roles from annotation for the intercepted method.");
+            for (String role : roles) {
+                LOGGER.debug("Role: " + role);
+            }
+        }
 
-		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Getting roles from annotation for the intercepted method.");
-			for (String role : roles) {
-				LOGGER.debug("Role: " + role);
-			}
-		}
-
-		if (roles == null || roles.isEmpty()) {
-			return AccessDecisionVoter.ACCESS_ABSTAIN;
-		} else if (SecurityContextHolder.currentSecurityContext().isUserInRoles(roles)) {
-			return AccessDecisionVoter.ACCESS_GRANTED;
-		} else {
-			return AccessDecisionVoter.ACCESS_DENIED;
-		}
-	}
+        if (roles == null || roles.isEmpty()) {
+            return AccessDecisionVoter.ACCESS_ABSTAIN;
+        } else if (SecurityContextHolder.currentSecurityContext().isUserInRoles(roles)) {
+            return AccessDecisionVoter.ACCESS_GRANTED;
+        } else {
+            return AccessDecisionVoter.ACCESS_DENIED;
+        }
+    }
 }

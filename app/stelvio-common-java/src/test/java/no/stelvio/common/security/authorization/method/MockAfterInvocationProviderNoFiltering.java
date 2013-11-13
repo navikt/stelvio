@@ -1,10 +1,11 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.AccessDeniedException;
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.afterinvocation.AfterInvocationProvider;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.AfterInvocationProvider;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.Authentication;
+
+import java.util.Collection;
 
 /**
  * Mocks AfterInvocationProviderNoFiltering.
@@ -17,7 +18,7 @@ public class MockAfterInvocationProviderNoFiltering implements AfterInvocationPr
 	/**
 	 * {@inheritDoc}
 	 */
-	public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config, Object returnedObject)
+	public Object decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes, Object returnedObject)
 			throws AccessDeniedException {
 		return returnedObject;
 	}

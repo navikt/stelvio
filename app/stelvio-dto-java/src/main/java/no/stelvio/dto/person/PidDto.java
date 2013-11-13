@@ -2,7 +2,7 @@ package no.stelvio.dto.person;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Data Transfer Object representation of <code>no.stelvio.domain.person.Pid</code>.

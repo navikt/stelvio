@@ -3,7 +3,7 @@ package no.stelvio.dto.time;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Data Transfer Object representation of <code>no.stelvio.domain.time.ChangeStamp</code>.

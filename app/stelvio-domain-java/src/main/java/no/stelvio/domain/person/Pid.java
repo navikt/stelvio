@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.Period;
 import org.joda.time.PeriodType;
 

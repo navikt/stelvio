@@ -3,13 +3,18 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>3.1.1-SNAPSHOT</version>
+		<version>4.0.2-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-common-java</artifactId>
 	<packaging>jar</packaging>
 	<name>stelvio - common</name>
 	<dependencies>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
 			<artifactId>spring-core</artifactId>
 			<groupId>org.springframework</groupId>
@@ -23,8 +28,8 @@
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>	
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
 			<artifactId>spring-beans</artifactId>
@@ -34,6 +39,10 @@
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
@@ -52,10 +61,10 @@
 			<artifactId>slf4j-log4j12</artifactId> 
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<artifactId>acegi-security-tiger</artifactId>
-			<groupId>org.acegisecurity</groupId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
@@ -64,14 +73,18 @@
 			<groupId>net.sf.dozer</groupId>
 			<artifactId>dozer</artifactId>
 		</dependency>
-		<dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+ 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
 		</dependency>
-		<dependency>
-		  <groupId>com.googlecode.ehcache-spring-annotations</groupId>
-		  <artifactId>ehcache-spring-annotations</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
@@ -87,18 +100,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
-			<artifactId>spring-context-support</artifactId>
-			<groupId>org.springframework</groupId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>		
-			<groupId>aspectj</groupId>
+			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -113,25 +115,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-integration</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<!-- Needs spring mock support in order to run tests -->
 			<artifactId>spring-test</artifactId>
 			<groupId>org.springframework</groupId>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 </project>

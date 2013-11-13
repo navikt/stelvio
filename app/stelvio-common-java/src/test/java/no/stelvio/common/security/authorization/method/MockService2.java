@@ -1,6 +1,6 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  * Mock service.

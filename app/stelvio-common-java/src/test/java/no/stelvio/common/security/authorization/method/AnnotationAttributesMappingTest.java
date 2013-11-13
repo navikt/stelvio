@@ -3,10 +3,10 @@ package no.stelvio.common.security.authorization.method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.SecurityConfig;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
 
 /**
  * AnnotationAttributesMappingTest.

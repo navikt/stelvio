@@ -4,7 +4,7 @@ import java.util.Locale;
 
 import no.stelvio.common.error.SystemUnrecoverableException;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.logging.LogFactory;
 
 /**

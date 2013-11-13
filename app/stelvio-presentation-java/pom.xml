@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>3.1.1-SNAPSHOT</version>
+		<version>4.0.2-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-presentation-java</artifactId>
@@ -11,11 +11,7 @@
 	<name>stelvio - presentation</name>
 	<dependencies>
 	
-		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-common-java</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>
@@ -71,18 +67,19 @@
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>websphere</groupId>
+            <artifactId>com.ibm.ws.runtime</artifactId>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>com.groundside</groupId>
 			<artifactId>jsf-security</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.richfaces.framework</groupId>
-			<artifactId>richfaces-impl</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.richfaces.framework</groupId>
+            <artifactId>richfaces-api</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-api</artifactId>
@@ -92,17 +89,17 @@
 			<artifactId>tomahawk12</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-digester</groupId>
-			<artifactId>commons-digester</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
@@ -126,21 +123,6 @@
 		<dependency>
 			<artifactId>spring-test</artifactId>
 			<groupId>org.springframework</groupId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-integration</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

@@ -16,7 +16,7 @@ import javax.faces.convert.ConverterException;
 
 import no.stelvio.presentation.binding.context.MessageContextUtil;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.i18n.LocaleContextHolder;

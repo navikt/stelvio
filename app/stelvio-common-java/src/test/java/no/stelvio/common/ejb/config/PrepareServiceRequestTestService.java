@@ -17,8 +17,8 @@ public class PrepareServiceRequestTestService {
 	 *            request
 	 * @return true
 	 */
-	public boolean testService(ServiceRequest req) {
-		return true;
+	public Boolean testService(ServiceRequest req) {
+		return Boolean.TRUE;
 	}
 
 }

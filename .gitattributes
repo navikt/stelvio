@@ -315,10 +315,10 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/AlwaysAffirmativeVoter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/AnnotationAttributesMapping.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/AnnotationAttributesMappingEditor.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/Attributes.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/CollectionFilterer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/DataFilterer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/MethodAccessDeniedException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/MethodDefinitionSources.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/RoleAccessDecisionVoter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/Roles.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/RolesUtil.java -text
@@ -489,7 +489,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AlwaysAffirmativeVoterTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AnnotationAttributesMappingEditorTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AnnotationAttributesMappingTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MethodDefinitionSourcesTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockAccessAbstainVoter.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockAccessDeniedVoter.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockAccessGrantedVoter.java -text
@@ -497,7 +496,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockAfterInvocationProvider2.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockAfterInvocationProviderDeniesAccess.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockAfterInvocationProviderNoFiltering.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockMethodDefinitionSource.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockReflectiveMethodInvocation.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockService.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockService2.java -text
@@ -743,8 +741,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/validato
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/AbstractSecurityContextFilter.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/AcegiSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/SecurityContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/SpringSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/WSCustomSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/parse/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/parse/SecurityRole.java -text

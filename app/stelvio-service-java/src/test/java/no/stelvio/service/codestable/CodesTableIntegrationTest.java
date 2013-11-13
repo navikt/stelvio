@@ -4,7 +4,7 @@ import static no.stelvio.common.util.Internal.cast;
 
 import java.util.List;
 
-import org.springframework.beans.factory.generic.GenericBeanFactoryAccessor;
+import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
@@ -14,13 +14,13 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
  * @author personf8e9850ed756, Accenture
  */
 public class CodesTableIntegrationTest extends AbstractDependencyInjectionSpringContextTests {
-	private GenericBeanFactoryAccessor beanFactoryAccessor;
+	private ApplicationContext beanFactoryAccessor;
 
 	/**
 	 * test of load configs.
 	 */
 	public void testLoadConfigs() {
-		HibernateTemplate hibernateTemplate = beanFactoryAccessor.getBean("rep.inttest.hibernateTemplate");
+		HibernateTemplate hibernateTemplate = (HibernateTemplate)beanFactoryAccessor.getBean("rep.inttest.hibernateTemplate");
 
 		hibernateTemplate.save(TestCti.createCti1());
 		hibernateTemplate.save(TestCti.createCti2());
@@ -46,7 +46,7 @@ public class CodesTableIntegrationTest extends AbstractDependencyInjectionSpring
 	 */
 	protected void onSetUp() throws Exception {
 		super.onSetUp();
-		beanFactoryAccessor = new GenericBeanFactoryAccessor(applicationContext);
+		beanFactoryAccessor = applicationContext;
 	}
 
 	/**

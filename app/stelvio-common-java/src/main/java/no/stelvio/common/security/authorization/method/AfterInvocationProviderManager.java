@@ -1,16 +1,18 @@
 package no.stelvio.common.security.authorization.method;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.acegisecurity.AfterInvocationManager;
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.afterinvocation.AfterInvocationProvider;
+import com.ibm.ws.config.config;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.AfterInvocationProvider;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.intercept.AfterInvocationManager;
+import org.springframework.security.core.Authentication;
 
 /**
  * Provider-based implementation of <code>AfterInvocationManager</code>.
@@ -29,11 +31,6 @@ import org.apache.commons.logging.LogFactory;
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
- * @see AfterInvocationManager
- * @see AfterInvocationProvider
- * @see ConfigAttributeDefinition
- * @see org.acegisecurity.intercept.ObjectDefinitionSource
- * @see #decide(Authentication, Object, ConfigAttributeDefinition, Object)
  */
 public class AfterInvocationProviderManager implements AfterInvocationManager {
 
@@ -45,16 +42,13 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	 * Iterates through the attributes in a ConfigAttributeDefinition and creates a list of <code>AfterInvocationProvider</code>
 	 * s based on these.
 	 * 
-	 * @param config
-	 *            the {@link ConfigAttributeDefinition} containing attributes with the full class names of the
-	 *            <code>AfterInvocationProvider</code>s that should be used on the secure object (e.g. a method invocation).
 	 * @throws AfterInvocationProviderNotFoundException
 	 *             if one of the attributes do not represent a class.
 	 */
-	public void addProviders(ConfigAttributeDefinition config) throws AfterInvocationProviderNotFoundException {
+	public void addProviders( Collection<ConfigAttribute> configAttributes) throws AfterInvocationProviderNotFoundException {
 
 		this.providers = new ArrayList<AfterInvocationProvider>();
-		Iterator<?> iterator = config.getConfigAttributes();
+		Iterator<?> iterator = configAttributes.iterator();
 		ConfigAttribute configAttribute = null;
 		try {
 			while (iterator.hasNext()) {
@@ -84,34 +78,18 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	/**
 	 * Given the details of a secure object invocation including its returned <code>Object</code>, make an access control
 	 * decision or optionally modify the returned <code>Object</code>.
-	 * 
-	 * @param authentication
-	 *            the caller that invoked the method
-	 * @param object
-	 *            the secured object that was called
-	 * @param config
-	 *            the configuration attributes associated with the secured object that was invoked
-	 * @param returnedObject
-	 *            the <code>Object</code> that was returned from the secure object invocation
-	 * 
-	 * @return the <code>Object</code> that will ultimately be returned to the caller (if an implementation does not wish to
-	 *         modify the object to be returned to the caller, the implementation should simply return the same object it was
-	 *         passed by the <code>returnedObject</code> method argument)
-	 * 
-	 * @throws MethodAccessDeniedException
-	 *             if access is denied
 	 */
-	public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config, Object returnedObject)
-			throws MethodAccessDeniedException {
+    @Override
+    public Object decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes, Object returnedObject) throws AccessDeniedException {
 
 		// populate the provider list with respect to the config attributes
-		addProviders(config);
+		addProviders(configAttributes);
 		Iterator<AfterInvocationProvider> iter = this.providers.iterator();
 		Object result = returnedObject;
 
 		while (iter.hasNext()) {
 			AfterInvocationProvider provider = iter.next();
-			result = provider.decide(authentication, object, config, result);
+			result = provider.decide(authentication, object, configAttributes, result);
 		}
 		return result;
 	}
@@ -188,4 +166,5 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 		}
 		return canSupport;
 	}
+
 }

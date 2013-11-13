@@ -1,34 +1,35 @@
 <?xml version="1.0" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       http://www.springframework.org/schema/aop     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-       http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring 
-       http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-	 <ehcache:annotation-driven /> 
+    <cache:annotation-driven/>
 
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-	  <property name="configLocation" value="/test-ehcache.xml" />
-	  <property name="shared" value="true" />
-	</bean>
- 
-	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="/test-ehcache.xml"/>
+    </bean>
 
-  	<bean id="hashCodeCacheKeyGeneratorNAVAnsatt" class="no.stelvio.common.cache.support.HashCodeCacheKeyGeneratorNAVAnsatt" />
-  	
-  	<bean id="stringCacheKeyGeneratorNavAnsatt" class="no.stelvio.common.cache.support.StringCacheKeyGeneratorNavAnsatt" />
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager"><ref local="ehcache"/></property>
+    </bean>
 
-	<bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">
-		<property name="cacheManager" ref="cacheManager" />
-	</bean>
-	
-	<bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
-		<property name="objectName" value="bean:name=cacheManagement"/>
-		<property name="proxyInterface" value="no.stelvio.common.cache.CacheManagement"/>
-	</bean>
-	
-	</beans>
+    <bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache"/>
+
+    <bean id="hashCodeCacheKeyGeneratorNAVAnsatt"
+          class="no.stelvio.common.cache.support.HashCodeCacheKeyGeneratorNAVAnsatt"/>
+
+    <bean id="stringCacheKeyGeneratorNavAnsatt"
+          class="no.stelvio.common.cache.support.StringCacheKeyGeneratorNavAnsatt"/>
+
+    <bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+
+    <bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
+        <property name="objectName" value="bean:name=cacheManagement"/>
+        <property name="proxyInterface" value="no.stelvio.common.cache.CacheManagement"/>
+    </bean>
+
+</beans>

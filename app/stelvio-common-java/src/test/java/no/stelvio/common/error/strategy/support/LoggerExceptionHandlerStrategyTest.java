@@ -103,17 +103,14 @@ public class LoggerExceptionHandlerStrategyTest {
 		loggers.put(this.getClass().getName(), log);
 
 		final Throwable t1 = new TestRecoverableException("error1");
-		final Throwable t2 = new IllegalArgumentException("error2");
 
 		context.checking(new Expectations() {
 			{
 				allowing(log).warn("test message", t1);
-				allowing(log).warn("test message", t2);
 			}
 		});
 
 		leh.handleException(t1);
-		leh.handleException(t2);
 	}
 
 	/**

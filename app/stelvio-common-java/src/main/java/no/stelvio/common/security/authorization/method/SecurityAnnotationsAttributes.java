@@ -6,9 +6,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.annotation.Secured;
-import org.springframework.metadata.Attributes;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  * Java 5 Annotation <code>Attributes</code> metadata implementation used for secure method interception.
@@ -56,7 +55,6 @@ import org.springframework.metadata.Attributes;
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
- * @see org.acegisecurity.annotation.Secured
  */
 
 public class SecurityAnnotationsAttributes implements Attributes {
@@ -111,8 +109,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 *            the filter to process on
 	 * @return null
 	 * @throws UnsupportedOperationException
-	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.Class, java.lang.Class)
-	 */
+	*/
 	public Collection getAttributes(Class clazz, Class filter) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + clazz + " " + filter);
 	}
@@ -160,7 +157,6 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 *            the class to process
 	 * @return null
 	 * @throws UnsupportedOperationException
-	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Method, java.lang.Class)
 	 */
 	public Collection getAttributes(Method method, Class clazz) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + method + " " + clazz);
@@ -173,7 +169,6 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 *            the field the retrieve
 	 * @return null
 	 * @throws UnsupportedOperationException
-	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Field)
 	 */
 	public Collection getAttributes(Field field) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + field);
@@ -188,7 +183,6 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 *            the class to process
 	 * @return null
 	 * @throws UnsupportedOperationException
-	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Field, java.lang.Class)
 	 */
 	public Collection getAttributes(Field field, Class clazz) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + field + " " + clazz);

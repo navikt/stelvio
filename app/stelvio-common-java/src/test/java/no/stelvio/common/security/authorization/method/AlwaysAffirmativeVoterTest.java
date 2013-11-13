@@ -1,12 +1,14 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.SecurityConfig;
-import org.acegisecurity.vote.AccessDecisionVoter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
+
+import java.util.ArrayList;
 
 /**
  * Test class for AlwaysAffirmativeVoter.
@@ -34,7 +36,7 @@ public class AlwaysAffirmativeVoterTest {
 	 */
 	@Test
 	public void testSupportsConfigAttribute() {
-		assertTrue(voter.supports(new SecurityConfig("")));
+		assertTrue(voter.supports(new SecurityConfig("attributt")));
 	}
 
 	/**
@@ -50,7 +52,7 @@ public class AlwaysAffirmativeVoterTest {
 	 */
 	@Test
 	public void testVote() {
-		assertEquals(AccessDecisionVoter.ACCESS_GRANTED, voter.vote(null, new Object(), new ConfigAttributeDefinition()));
+		assertEquals(AccessDecisionVoter.ACCESS_GRANTED, voter.vote(null, new Object(), new ArrayList<ConfigAttribute>()));
 	}
 
 }

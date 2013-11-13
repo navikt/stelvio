@@ -2,7 +2,7 @@ package no.stelvio.common.codestable.support;
 
 import java.util.Comparator;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * This Comparator may be used to order a collection of {@link AbstractCodesTableItem}s according to their decode. If to decodes

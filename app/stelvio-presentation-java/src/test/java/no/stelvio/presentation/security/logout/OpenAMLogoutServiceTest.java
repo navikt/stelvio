@@ -1,11 +1,9 @@
 package no.stelvio.presentation.security.logout;
 
-import static org.junit.Assert.*;
-
-import org.hamcrest.Matchers;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+import static org.junit.Assert.assertEquals;
+
 
 
 public class OpenAMLogoutServiceTest {

@@ -136,6 +136,7 @@ public class CodestableComponentTest {
 	/** Con011.001. */
 	@Test
 	public void testGetDecodePeriodicWithLocale() {
+        LocaleContextHolder.setLocale(locale);
 		assertEquals("Test : getDecode() with locale failed ", createCodesTableManager().getCodesTablePeriodic(TestCtpi.class)
 				.getDecode(code, locale, date), decode);
 	}

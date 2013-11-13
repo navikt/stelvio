@@ -1,9 +1,10 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.vote.AccessDecisionVoter;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.Authentication;
+
+import java.util.Collection;
 
 /**
  * Implementation of a <code>AccessDecisionVoter</code> that always grants
@@ -12,7 +13,7 @@ import org.acegisecurity.vote.AccessDecisionVoter;
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
+public class AlwaysAffirmativeVoter implements AccessDecisionVoter<Object> {
 
 	/**
 	 * This implementation supports any type of ConfigAttribute, because it does
@@ -27,7 +28,7 @@ public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
 		return true;
 	}
 
-	/**
+    /**
 	 * This implementation supports any type of class, because it does not query
 	 * the presented secure object.
 	 * 
@@ -42,16 +43,9 @@ public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
 
 	/**
 	 * This implementation always grant access to a secure object.
-	 * @param authentication {@inheritDoc}
-	 * @param object {@inheritDoc}
-	 * @param config {@inheritDoc}
-	 * @return always
-	 *         <code>org.acegisecurity.vote.AccessDecisionVoter.ACCESS_GRANTED</code>
-	 * @see org.acegisecurity.vote.AccessDecisionVoter#vote(org.acegisecurity.Authentication,
-	 *      java.lang.Object, org.acegisecurity.ConfigAttributeDefinition)
-	 */
-	public int vote(Authentication authentication, Object object,
-			ConfigAttributeDefinition config) {
-		return ACCESS_GRANTED;
-	}
+    */
+    @Override
+    public int vote(Authentication authentication, Object o, Collection<ConfigAttribute> configAttributes) {
+        return ACCESS_GRANTED;
+    }
 }

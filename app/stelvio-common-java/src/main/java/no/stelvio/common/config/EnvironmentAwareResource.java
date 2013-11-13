@@ -199,7 +199,11 @@ public class EnvironmentAwareResource implements Resource, ResourceLoaderAware {
 		return resourceImpl.getFile();
 	}
 
-	/**
+    public long contentLength() throws IOException {
+        return getFile().length();
+    }
+
+    /**
 	 * Implementation of org.springframework.core.io.Resource.
 	 * 
 	 * @return the filename for the resource

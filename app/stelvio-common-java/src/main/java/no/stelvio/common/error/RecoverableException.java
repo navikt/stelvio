@@ -1,6 +1,6 @@
 package no.stelvio.common.error;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Thrown to indicate that a recoverable exception in the application logic occured.

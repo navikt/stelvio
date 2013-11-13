@@ -3,7 +3,7 @@
     <parent>
         <groupId>no.stelvio</groupId>
         <artifactId>stelvio</artifactId>
-        <version>3.1.1-SNAPSHOT</version>
+        <version>4.0.2-SNAPSHOT</version>
     </parent>
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio-domain-java</artifactId>
@@ -16,27 +16,12 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
 		</dependency>
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
-        <dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-integration</artifactId>
-			<scope>test</scope>
-		</dependency>
     </dependencies>
 </project>

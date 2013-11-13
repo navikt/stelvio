@@ -2,7 +2,7 @@ package no.stelvio.dto.codestable;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Abstract base class for <code>CodeTableItemDto</code>.

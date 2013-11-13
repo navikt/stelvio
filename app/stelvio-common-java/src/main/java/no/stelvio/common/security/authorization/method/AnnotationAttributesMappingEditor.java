@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.SecurityConfig;
 import org.springframework.beans.propertyeditors.PropertiesEditor;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
 import org.springframework.util.StringUtils;
 
 /**
@@ -52,7 +52,7 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
 	public void setAsText(String s) throws IllegalArgumentException {
 		AnnotationAttributesMapping source = new AnnotationAttributesMapping();
 
-		if (org.apache.commons.lang.StringUtils.isNotEmpty(s)) {
+		if (org.apache.commons.lang3.StringUtils.isNotEmpty(s)) {
 			// Use properties editor to tokenize the string
 			PropertiesEditor propertiesEditor = new PropertiesEditor();
 			propertiesEditor.setAsText(s);
@@ -92,7 +92,7 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
 				for (String token : tokens) {
 					String str = token.trim();
 
-					if (org.apache.commons.lang.StringUtils.isNotEmpty(str)) {
+					if (org.apache.commons.lang3.StringUtils.isNotEmpty(str)) {
 						providers.add(new SecurityConfig(str));
 					}
 				}

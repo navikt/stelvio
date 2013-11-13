@@ -1,9 +1,8 @@
 package no.stelvio.common.cache.support;
 
-import com.googlecode.ehcache.annotations.Cacheable;
-import com.googlecode.ehcache.annotations.TriggersRemove;
-
 import no.stelvio.common.cache.TestCache;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 
 /**
  * Implements services for accessing data related to TestCache.
@@ -18,7 +17,7 @@ public class DefaultTestCache implements TestCache {
 	/**
 	 * {@inheritDoc}
 	 */	
-	@Cacheable(cacheName = "sampleCache2")
+	@Cacheable("sampleCache2")
 	public String getStringCached() {
 		return cachedString;
 	}
@@ -26,7 +25,7 @@ public class DefaultTestCache implements TestCache {
 	/**
 	 * {@inheritDoc}
 	 */
-	@TriggersRemove(cacheName = "sampleCache2", removeAll=true)
+	@CacheEvict(value = "sampleCache2", allEntries=true)
 	public void updateStringAndFlush() {
 		cnt++;
 		cachedString = INITIAL_STRING + cnt;

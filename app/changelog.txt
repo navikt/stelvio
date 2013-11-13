@@ -2,6 +2,19 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.0.1
+---------------------------------- 
+New version of Spring security replaces acegi security
+ 
+Version 4.0.0
+---------------------------------- 
+Technical 3. party dependency updates. 
+New version of Spring framework and related libraries.
+New Spring cache implementation replaces googlecode spring cache.
+Spring security, spring batch, spring webflow is not upgraded in this release
+Based on version 3.0.0 of stelvio, without OpenAM implementation.
+Dependency cleanup, removal of unneccesary libraries, and upgrade of internal dependencies.
+
 Version 3.1.0
 ----------------------------------
 Module stelvio-presentation-java:

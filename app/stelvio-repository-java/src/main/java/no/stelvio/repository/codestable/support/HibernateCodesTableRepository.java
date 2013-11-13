@@ -35,13 +35,13 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 		// Uses HibernateCallback to be able to set the FlushMode
 		// Without effecting the code using the same HibernateTemplate
 		// as would be the case with HibernateTemplate.setFlushMode)
-		return cast(hibernateTemplate.execute(new HibernateCallback() {
-			public Object doInHibernate(Session session) throws HibernateException {
+		return hibernateTemplate.execute(new HibernateCallback<List<T>>() {
+			public List<T> doInHibernate(Session session) throws HibernateException {
 				Query queryObject = session.createQuery(queryString);
 				queryObject.setFlushMode(FlushMode.MANUAL);
 				return queryObject.list();
 			}
-		}, true));
+		});
 
 	}
 

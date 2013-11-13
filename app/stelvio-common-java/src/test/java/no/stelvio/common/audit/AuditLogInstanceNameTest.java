@@ -6,8 +6,10 @@ import no.stelvio.common.util.ReflectUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.impl.Log4JLogger;
+import org.apache.commons.logging.impl.SLF4JLocationAwareLog;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.slf4j.impl.Log4jLoggerAdapter;
 
 /**
  * Test class for AuditLogInstanceName.
@@ -27,8 +29,8 @@ public class AuditLogInstanceNameTest {
 	public void readLogInitializedWithCorrectName() {
 		AuditItem item = new AuditItem();
 		READ_LOG.info(item);
-		Log4JLogger l4jlogger = ((Log4JLogger) READ_LOG);
-		Logger logger = (Logger) ReflectUtil.getFielValueFromInstance(l4jlogger, "logger");
+        SLF4JLocationAwareLog l4jlogger = ((SLF4JLocationAwareLog) READ_LOG);
+        Log4jLoggerAdapter logger = (Log4jLoggerAdapter) ReflectUtil.getFielValueFromInstance(l4jlogger, "logger");
 		assertTrue(logger.getName().equals("audit.read"));
 	}
 
@@ -39,8 +41,8 @@ public class AuditLogInstanceNameTest {
 	public void writeLogInitializedWithCorrectName() {
 		AuditItem item = new AuditItem();
 		WRITE_LOG.info(item);
-		Log4JLogger l4jlogger = ((Log4JLogger) WRITE_LOG);
-		Logger logger = (Logger) ReflectUtil.getFielValueFromInstance(l4jlogger, "logger");
+        SLF4JLocationAwareLog l4jlogger = ((SLF4JLocationAwareLog) WRITE_LOG);
+        Log4jLoggerAdapter logger = (Log4jLoggerAdapter) ReflectUtil.getFielValueFromInstance(l4jlogger, "logger");
 		assertTrue(logger.getName().equals("audit.write"));
 	}
 

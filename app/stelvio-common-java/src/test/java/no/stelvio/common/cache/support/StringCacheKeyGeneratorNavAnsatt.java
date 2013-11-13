@@ -1,16 +1,14 @@
 package no.stelvio.common.cache.support;
 
-import com.googlecode.ehcache.annotations.Cacheable;
-import com.googlecode.ehcache.annotations.KeyGenerator;
-
 import no.stelvio.common.cache.NavAnsattServiceBi;
 import no.stelvio.common.cache.TestRequest;
+import org.springframework.cache.annotation.Cacheable;
 
-public class StringCacheKeyGeneratorNavAnsatt implements NavAnsattServiceBi {
+public class StringCacheKeyGeneratorNavAnsatt implements NavAnsattServiceBi{
 
 	private int hitCount;
 
-	@Cacheable(cacheName = "navAnsattCache", keyGenerator=@KeyGenerator(name = "StringCacheKeyGenerator"))
+	@Cacheable("navAnsattCache")
 	public String hentNAVAnsattFagomradeListe(TestRequest testRequest) {
 		hitCount++;
 		

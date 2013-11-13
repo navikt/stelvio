@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>stelvio</artifactId>
 		<groupId>no.stelvio</groupId>
-		<version>3.1.1-SNAPSHOT</version>
+		<version>4.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-consumer-java</artifactId>
 	<packaging>jar</packaging>
@@ -13,6 +13,12 @@
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
 			<version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
@@ -26,18 +32,14 @@
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
 			<scope>provided</scope>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId> 
 			<scope>test</scope>	
 		</dependency>			
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<scope>test</scope>			
-		</dependency>
+
 	</dependencies>
 </project>

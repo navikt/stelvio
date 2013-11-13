@@ -20,9 +20,8 @@ import no.stelvio.common.codestable.ItemNotFoundException;
 import no.stelvio.common.error.InvalidArgumentException;
 
 import org.apache.commons.collections.Predicate;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.generic.GenericBeanFactoryAccessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
@@ -73,7 +72,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	/**
 	 * The current Spring application context for looking up locale beans for each code table.
 	 */
-	private GenericBeanFactoryAccessor applicationContext;
+	private ApplicationContext applicationContext;
 
 	/**
 	 * Indicates whether filtering should be performed each time a predicate is added This property may be adjusted to tune
@@ -448,7 +447,8 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 			return decodeVal;
 		}
 
-		MessageSource messageSource = applicationContext.getBean(codesTableItemsClass.getName());
+        // Should not use getbean here. Use Dependency injection...
+		MessageSource messageSource = (MessageSource)applicationContext.getBean(codesTableItemsClass.getName());
 		String message = messageSource.getMessage((String) code, null, locale);
 
 		/* Return localised message, if it exists. */
@@ -622,7 +622,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	 *             if a BeansException occurs
 	 */
 	public void setApplicationContext(final ApplicationContext applicationContext) throws BeansException {
-		this.applicationContext = new GenericBeanFactoryAccessor(applicationContext);
+		this.applicationContext = applicationContext;
 	}
 
 	/**

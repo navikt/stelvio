@@ -7,7 +7,7 @@ import javax.faces.validator.ValidatorException;
 
 import no.stelvio.presentation.binding.context.MessageContextUtil;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * IbanValidator validates whether the specified parameter is a valid IBAN, and if invalid sets an error message on

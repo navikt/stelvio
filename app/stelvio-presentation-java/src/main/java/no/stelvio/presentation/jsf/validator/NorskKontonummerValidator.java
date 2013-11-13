@@ -7,7 +7,7 @@ import javax.faces.validator.ValidatorException;
 
 import no.stelvio.presentation.binding.context.MessageContextUtil;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * NorskKontonummerValidator validates whether the specified parameter is a valid norsk kontonummer, and if invalid sets an

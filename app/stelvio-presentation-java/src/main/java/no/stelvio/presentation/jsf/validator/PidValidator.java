@@ -7,7 +7,7 @@ import javax.faces.validator.ValidatorException;
 import no.stelvio.domain.person.Pid;
 import no.stelvio.presentation.binding.context.MessageContextUtil;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * PidValidator validates whether the specified parameter is a valid Personal Identification number (fodselsnummer), and if

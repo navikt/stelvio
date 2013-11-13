@@ -3,7 +3,7 @@ package no.stelvio.presentation.jsf.component;
 import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.myfaces.shared_tomahawk.renderkit.JSFAttr;
 
 /**

@@ -1,14 +1,13 @@
 package no.stelvio.service.codestable;
 
-import java.util.List;
-
-import com.googlecode.ehcache.annotations.Cacheable;
-
 import no.stelvio.common.codestable.CodesTableNotFoundException;
 import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
 import no.stelvio.repository.codestable.CodesTableRepository;
+import org.springframework.cache.annotation.Cacheable;
+
+import java.util.List;
 
 /** Bean implementation class for CodesTableItemsFactory. */
 public class RepositoryCodesTableItemsFactory implements CodesTableItemsFactory {
@@ -22,14 +21,14 @@ public class RepositoryCodesTableItemsFactory implements CodesTableItemsFactory 
 	private CodesTableRepository codesTableRepository;
 
 	/** {@inheritDoc} */
-	@Cacheable(cacheName = CACHE_MODEL_ID)
+	@Cacheable(CACHE_MODEL_ID)
 	public <T extends AbstractCodesTableItem<K, V>, K extends Enum, V> List<T> createCodesTableItems(
 			Class<T> codesTableItemClass) throws CodesTableNotFoundException {
 		return codesTableRepository.findCodesTableItems(codesTableItemClass);
 	}
 
 	/** {@inheritDoc} */
-	@Cacheable(cacheName = CACHE_MODEL_ID)
+	@Cacheable(CACHE_MODEL_ID)
 	public <T extends AbstractCodesTablePeriodicItem<K, V>, K extends Enum, V> List<T> createCodesTablePeriodicItems(
 			Class<T> codesTableItemPeriodicClass) throws CodesTableNotFoundException {
 		return codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);

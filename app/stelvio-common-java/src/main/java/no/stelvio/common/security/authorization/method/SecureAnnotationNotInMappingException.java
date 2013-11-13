@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 import no.stelvio.common.security.SecurityException;
 
-import org.acegisecurity.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  * Exception thrown if the attribute of a <code>Secured</code> annotation is not present in a

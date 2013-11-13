@@ -1,9 +1,10 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.vote.AccessDecisionVoter;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.Authentication;
+
+import java.util.Collection;
 
 /**
  * Mocks AccessGrantedVoter.
@@ -11,7 +12,7 @@ import org.acegisecurity.vote.AccessDecisionVoter;
  * @author ??
  * 
  */
-public class MockAccessGrantedVoter implements AccessDecisionVoter {
+public class MockAccessGrantedVoter implements AccessDecisionVoter<Object> {
 
 	/**
 	 * {@inheritDoc}
@@ -20,10 +21,10 @@ public class MockAccessGrantedVoter implements AccessDecisionVoter {
 		return true;
 	}
 
-	/**
+    /**
 	 * {@inheritDoc}
 	 */
-	public int vote(Authentication authentication, Object object, ConfigAttributeDefinition config) {
+    public int vote(Authentication authentication, Object o, Collection<ConfigAttribute> configAttributes) {
 		return ACCESS_GRANTED;
 	}
 

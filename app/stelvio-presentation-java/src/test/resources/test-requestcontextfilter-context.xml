@@ -1,11 +1,7 @@
 <?xml version="1.0" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:stelvio="http://www.stelvio.no/schema/stelvio"
-   	   xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
-       http://www.stelvio.no/schema/stelvio http://www.stelvio.no/schema/stelvio/stelvio.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 
   	<!-- Filter must be set up in appctx, to get appctx injected (ApplicationContextAware) -->

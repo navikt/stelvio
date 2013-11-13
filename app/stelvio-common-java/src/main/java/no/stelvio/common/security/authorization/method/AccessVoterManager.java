@@ -1,20 +1,21 @@
 package no.stelvio.common.security.authorization.method;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.acegisecurity.AccessDecisionManager;
-import org.acegisecurity.AcegiMessageSource;
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.vote.AccessDecisionVoter;
 import org.springframework.aop.framework.ReflectiveMethodInvocation;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.support.MessageSourceAccessor;
+import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.security.core.Authentication;
 import org.springframework.util.Assert;
 
 /**
@@ -29,16 +30,13 @@ import org.springframework.util.Assert;
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
- * @see AccessDecisionManager
- * @see AccessDecisionVoter
- * @see ConfigAttributeDefinition
- * @see org.acegisecurity.intercept.ObjectDefinitionSource
+
  */
 public class AccessVoterManager implements AccessDecisionManager, InitializingBean, MessageSourceAware {
 
 	private List<AccessDecisionVoter> decisionVoters;
 
-	private MessageSourceAccessor messages = AcegiMessageSource.getAccessor();
+	private MessageSourceAccessor messages;
 
 	private boolean allowIfAllAbstainDecisions = false;
 
@@ -76,16 +74,13 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
 	 * based on these. If no voters are found an <code>AlwaysAffirmativeVoter</code> will be added to the list so that access is
 	 * always granted to the secure object.
 	 * 
-	 * @param config
-	 *            the {@link ConfigAttributeDefinition} containing attributes with the full class names of the voters that
-	 *            should be used on the secure object (e.g. a method invocation).
 	 * @throws AccessDecisionVoterNotFoundException
 	 *             if one of the attributes do not represent a class.
 	 */
-	public void addDecisionVoters(ConfigAttributeDefinition config) throws AccessDecisionVoterNotFoundException {
+	public void addDecisionVoters( Collection<ConfigAttribute> configAttributes) throws AccessDecisionVoterNotFoundException {
 
 		this.decisionVoters = new ArrayList<AccessDecisionVoter>();
-		Iterator<?> iterator = config.getConfigAttributes();
+		Iterator<?> iterator = configAttributes.iterator();
 		ConfigAttribute configAttribute = null;
 		try {
 			while (iterator.hasNext()) {
@@ -142,21 +137,21 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
 	 *            the caller invoking the method
 	 * @param object
 	 *            the secured object
-	 * @param config
+	 * @param configAttributes
 	 *            the configuration attributes associated with the method being invoked
 	 * 
 	 * @throws MethodAccessDeniedException
 	 *             if access is denied
 	 */
-	public void decide(Authentication authentication, Object object, ConfigAttributeDefinition config)
-			throws MethodAccessDeniedException {
+    @Override
+    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
 
-		addDecisionVoters(config);
+		addDecisionVoters(configAttributes);
 		Iterator<?> voterIterator = this.getDecisionVoters().iterator();
 		int result = AccessDecisionVoter.ACCESS_ABSTAIN;
 		while (voterIterator.hasNext()) {
 			AccessDecisionVoter voter = (AccessDecisionVoter) voterIterator.next();
-			result = voter.vote(authentication, object, config);
+			result = voter.vote(authentication, object, configAttributes);
 
 			if (result == AccessDecisionVoter.ACCESS_GRANTED) {
 				return;
@@ -261,4 +256,5 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
 		}
 		return canSupport;
 	}
+
 }

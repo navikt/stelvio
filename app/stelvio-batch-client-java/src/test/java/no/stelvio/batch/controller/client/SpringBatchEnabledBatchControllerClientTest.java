@@ -15,7 +15,7 @@ import no.stelvio.batch.controller.client.BatchControllerClient.SpringBatchLaunc
 import no.stelvio.batch.controller.client.support.SpringBatchEnabledBatchRunner;
 
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 

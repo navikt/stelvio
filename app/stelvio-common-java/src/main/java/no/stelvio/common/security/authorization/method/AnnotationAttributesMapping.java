@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.acegisecurity.ConfigAttribute;
+import org.springframework.security.access.ConfigAttribute;
 
 /**
  * This class holds mappings between a <code>String</code> id and a collection

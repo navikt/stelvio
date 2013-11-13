@@ -1,6 +1,6 @@
 package no.stelvio.common.validation;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Class used to validate BBAN. (Basic Bank Account Number: used by financial institutions in individual countries as part of a

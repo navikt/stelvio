@@ -83,7 +83,7 @@ public class DefaultExceptionLoggerTest {
 		RequestContextSetter.setRequestContext(new SimpleRequestContext("screen1", "module1", "trans1", "component1", "user1"));
 		String messageToPrint = "Message: '".concat(msg).concat("'.");
 		messageToPrint = messageToPrint + " ErrorCode=1234. ";
-		appender.addMessageToVerify(messageToPrint, Severity.FATAL);
+		appender.addMessageToVerify(messageToPrint, Severity.ERROR);
 		SystemUnrecoverableException exToThrow = new LoggingTestUnrecoverableException(msg, MyErrorCodes.MY_CODE_1);
 		defaultExceptionLogger.log(exToThrow);
 		appender.printResults();
@@ -103,7 +103,7 @@ public class DefaultExceptionLoggerTest {
 		messageToPrint = messageToPrint + " ErrorCode=" + MyErrorCodes.MY_CODE_1.getErrorCode() + ". ";
 
 		// Loglevel and message that is expected
-		appender.addMessageToVerify(messageToPrint, Severity.FATAL);
+		appender.addMessageToVerify(messageToPrint, Severity.ERROR);
 
 		SystemUnrecoverableException exToThrow = new LoggingTestUnrecoverableException("generic1", MyErrorCodes.MY_CODE_1);
 		defaultExceptionLogger.log(exToThrow);

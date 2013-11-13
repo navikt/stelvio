@@ -17,7 +17,7 @@ import no.stelvio.presentation.binding.context.MessageContextUtil;
 import no.stelvio.presentation.jsf.mock.SpringDefinition;
 import no.stelvio.presentation.jsf.mock.UIComponentMock;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

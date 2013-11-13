@@ -10,7 +10,7 @@ import javax.faces.validator.ValidatorException;
 
 import no.stelvio.presentation.binding.context.MessageContextUtil;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * BbanValidator validates whether the specified parameter is a valid Norwegian bank account number. If invalid sets an error

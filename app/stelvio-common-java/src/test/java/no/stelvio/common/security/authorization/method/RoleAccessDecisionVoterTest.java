@@ -3,8 +3,6 @@ package no.stelvio.common.security.authorization.method;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.acegisecurity.SecurityConfig;
-import org.acegisecurity.vote.AccessDecisionVoter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -13,6 +11,8 @@ import org.junit.Test;
 
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SecurityContextSetter;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.SecurityConfig;
 
 /**
  * Test class for the RoleAccessDecisionVoter.
@@ -47,7 +47,7 @@ public class RoleAccessDecisionVoterTest {
 	 */
 	@Test
 	public void supportsConfigAttribute() {
-		assertTrue("Should always return true.", voter.supports(new SecurityConfig("")));
+		assertTrue("Should always return true.", voter.supports(new SecurityConfig("attributt")));
 	}
 
 	/**

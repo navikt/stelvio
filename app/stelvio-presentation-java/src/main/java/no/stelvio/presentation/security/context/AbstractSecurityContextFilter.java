@@ -29,7 +29,7 @@ import no.stelvio.presentation.security.context.parse.WebAppRoles;
 import no.stelvio.presentation.security.context.parse.WebXmlParser;
 import no.stelvio.presentation.security.page.constants.Constants;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.ClassUtils;

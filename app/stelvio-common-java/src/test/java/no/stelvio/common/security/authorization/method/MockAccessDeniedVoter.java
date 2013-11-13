@@ -1,9 +1,10 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.Authentication;
-import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.vote.AccessDecisionVoter;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.Authentication;
+
+import java.util.Collection;
 
 /**
  * Mocks AccessDeniedVoter.
@@ -11,7 +12,7 @@ import org.acegisecurity.vote.AccessDecisionVoter;
  * @author ??
  * 
  */
-public class MockAccessDeniedVoter implements AccessDecisionVoter {
+public class MockAccessDeniedVoter implements AccessDecisionVoter<Object> {
 
 	/**
 	 * {@inheritDoc}
@@ -23,7 +24,7 @@ public class MockAccessDeniedVoter implements AccessDecisionVoter {
 	/**
 	 * {@inheritDoc}
 	 */
-	public int vote(Authentication authentication, Object object, ConfigAttributeDefinition config) {
+	public int vote(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) {
 		return ACCESS_DENIED;
 	}
 

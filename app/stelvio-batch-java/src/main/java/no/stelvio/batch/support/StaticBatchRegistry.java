@@ -7,7 +7,7 @@ import no.stelvio.batch.BatchBi;
 import no.stelvio.batch.BatchRegistry;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Thread safe BatchRegistry using a final HashMap to hold running batch instances. The HashMap may only be accessed by

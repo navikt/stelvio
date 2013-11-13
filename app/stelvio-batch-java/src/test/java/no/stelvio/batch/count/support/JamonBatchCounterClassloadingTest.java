@@ -26,7 +26,7 @@ import org.junit.Test;
 public class JamonBatchCounterClassloadingTest {
 	
 	@Test
-	@Ignore
+    @Ignore
 	public void shouldBeAbleToLoadCounterClassWithoutJamonOnClasspath() throws Exception {
 		URLClassLoader classloaderForTest = removeJamonFromClassloader();
 		Object event = getCounterEvent(classloaderForTest);

@@ -3,7 +3,7 @@ package no.stelvio.presentation.error;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.webflow.execution.FlowExecutionException;
 import org.springframework.webflow.execution.RequestContextHolder;
 
@@ -78,7 +78,7 @@ public class ErrorAction {
 	public String getStackTrace() {
 
 		if (containsFlowExecutionException()) {
-			return ExceptionUtils.getFullStackTrace(getFlowExecutionException());
+			return ExceptionUtils.getStackTrace(getFlowExecutionException());
 		} else {
 			return "";
 		}

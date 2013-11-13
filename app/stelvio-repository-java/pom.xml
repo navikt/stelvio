@@ -3,12 +3,16 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>3.1.1-SNAPSHOT</version>
+		<version>4.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-repository-java</artifactId>
 	<packaging>jar</packaging>
 	<name>stelvio - repository</name>
 	<dependencies>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>
@@ -27,9 +31,5 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 		</dependency>			
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-		</dependency>				
 	</dependencies>
 </project>

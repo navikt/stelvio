@@ -1,6 +1,6 @@
 package no.stelvio.common.error;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Base exception for exceptions considered system and unrecoverable. Should be inherited by application exceptions in this
