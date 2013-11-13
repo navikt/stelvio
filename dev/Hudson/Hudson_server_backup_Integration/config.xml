@@ -272,14 +272,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>HORISONTEN_7.2_nav-model-doc</string>
-        <string>HORISONTEN_7.2_nav-model-doc-chmod</string>
-        <string>HORISONTEN_7.2_nav-model-doc-diagram</string>
-        <string>HORISONTEN_7.2_nav-model-update</string>
-        <string>TRUNK_nav-model-doc</string>
-        <string>TRUNK_nav-model-doc-chmod</string>
-        <string>TRUNK_nav-model-doc-diagram</string>
-        <string>TRUNK_nav-model-update</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -292,6 +284,7 @@
         <hudson.views.BuildButtonColumn/>
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
+      <includeRegex>.*nav-model-.*</includeRegex>
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
@@ -507,6 +500,27 @@
         <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>(MODTURKIS - SoapUI).*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status HL4 (7.9)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2013HL4_7\.9_).*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>
