@@ -151,6 +151,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Stelvio-app-sandbox</string>
         <string>Stelvio-app-site</string>
+        <string>Stelvio-app-site-mvn3</string>
         <string>Stelvio-app-svn</string>
         <string>Stelvio-app-svn-dryRun-release</string>
         <string>Stelvio-app-svn-mvn3</string>

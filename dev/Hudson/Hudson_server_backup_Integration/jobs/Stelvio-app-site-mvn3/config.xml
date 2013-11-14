@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Hovedjobb for datapower-deploy&#xd;
-&#xd;
-Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_service-gw</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -23,7 +21,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <string>hudson-plugins-checkstyle-CheckStylePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -36,6 +34,10 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
     <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-SnapshotTrigger</string>
       <trigger-property>
+        <originalValue class="maven-snapshot-trigger">
+          <spec></spec>
+          <excludeInternallyProduced>false</excludeInternallyProduced>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -49,8 +51,21 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
     <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
       <base-property>
+        <originalValue class="watched-dependencies-property"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
+    </entry>
+    <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>10</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
     </entry>
     <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
@@ -62,10 +77,11 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <external-property>
         <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-plugins-violations-ViolationsPublisher</string>
@@ -75,23 +91,10 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-descriptionsetter-DescriptionSetterPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-descriptionsetter-DescriptionSetterPublisher</string>
-      <external-property>
-        <originalValue class="hudson.plugins.descriptionsetter.DescriptionSetterPublisher">
-          <regexp></regexp>
-          <regexpForFailed></regexpForFailed>
-          <description>Envconfig ${EnvironmentConfigVersion}, nonenvconfig ${NonenvironmentConfigVersion} -&gt; ${Gateway}-${Environment} @ ${DataPowerInstance}</description>
-          <setForMatrix>false</setForMatrix>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -108,14 +111,14 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       </boolean-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -131,6 +134,11 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
+        <originalValue class="hudson.tasks.Mailer">
+          <recipients>test@example.com</recipients>
+          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+          <sendToIndividuals>false</sendToIndividuals>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
@@ -139,7 +147,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -152,15 +160,20 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
+        <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
+          <testResults>**/target/surefire-reports/*.xml</testResults>
+          <keepLongStdio>false</keepLongStdio>
+          <testDataPublishers/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
       <string>hudson-tasks-Fingerprinter</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -173,80 +186,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
     <entry>
       <string>parametersDefinitionProperties</string>
       <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList">
-          <hudson.model.ParametersDefinitionProperty>
-            <parameterDefinitions>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>Gateway</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>dialog-gw</string>
-                    <string>service-gw</string>
-                    <string>sts</string>
-                    <string>test-token-gw</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>Environment</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>u3</string>
-                    <string>u2</string>
-                    <string>t8</string>
-                    <string>t9</string>
-                    <string>t11</string>
-                    <string>q1</string>
-                    <string>q8</string>
-                    <string>p</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>EnvironmentConfigVersion</name>
-                <description></description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>NonenvironmentConfigVersion</name>
-                <description></description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.StringParameterDefinition>
-                <name>DeployerPomRevision</name>
-                <description>Datapower deployer pom svn revision number</description>
-                <defaultValue></defaultValue>
-              </hudson.model.StringParameterDefinition>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>DataPowerInstance</name>
-                <description></description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>https://dp-tst-01.adeo.no:5550</string>
-                    <string>https://dp-tst-02.adeo.no:5550</string>
-                    <string></string>
-                    <string>https://dp-tst-11.adeo.no:5550</string>
-                    <string>https://dp-tst-12.adeo.no:5550</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-              <hudson.model.ChoiceParameterDefinition>
-                <name>envConfigDomain</name>
-                <description>Sone gateway skal deployes til</description>
-                <choices class="java.util.Arrays$ArrayList">
-                  <a class="string-array">
-                    <string>test.local</string>
-                    <string>oera-t.local</string>
-                    <string></string>
-                    <string>devillo-t.local</string>
-                  </a>
-                </choices>
-              </hudson.model.ChoiceParameterDefinition>
-            </parameterDefinitions>
-          </hudson.model.ParametersDefinitionProperty>
-        </originalValue>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
         <propertyOverridden>false</propertyOverridden>
       </copy-write-list-property>
     </entry>
@@ -261,7 +201,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -272,17 +212,17 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       </external-property>
     </entry>
     <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -297,19 +237,22 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
           <factGenerator/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>15 * * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -317,35 +260,42 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
       <string>builders</string>
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
-          <hudson.tasks.Shell>
-            <command>wget -qO - &quot;$@&quot; &quot;http://e34apsl00136.devillo.no:8080/conf/resources/bestmatch?alias=openam&amp;domain=oera-t.local&amp;envName=t9&quot;</command>
-          </hudson.tasks.Shell>
-          <hudson.tasks.Shell>
-            <command>/home/ci/cleanRepo.sh</command>
-          </hudson.tasks.Shell>
-          <hudson.tasks.Shell>
-            <command>java -version</command>
-          </hudson.tasks.Shell>
-          <hudson.tasks.Shell>
-            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/datapower/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-
-EnvironmentClass=${Environment:0:1}
-
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://e34apsl00136.devillo.no:8080/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
-          </hudson.tasks.Shell>
+          <maven-builder>
+            <config>
+              <installationId>Maven 3</installationId>
+              <goals>site:site</goals>
+              <privateRepository>false</privateRepository>
+              <privateTmpdir>false</privateTmpdir>
+              <pomFile>pom.xml</pomFile>
+              <properties>
+                <entries/>
+              </properties>
+              <errors>false</errors>
+              <verbosity>NORMAL</verbosity>
+              <offline>false</offline>
+              <snapshotUpdateMode>NORMAL</snapshotUpdateMode>
+              <recursive>true</recursive>
+              <checksumMode>NORMAL</checksumMode>
+              <failMode>NORMAL</failMode>
+              <makeMode>NONE</makeMode>
+              <settingsId>NONE</settingsId>
+              <globalSettingsId>NONE</globalSettingsId>
+              <toolChainsId>NONE</toolChainsId>
+            </config>
+          </maven-builder>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -361,7 +311,7 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
     <entry>
       <string>jdk</string>
       <string-property>
-        <originalValue class="string">Oracle JDK 1.7</originalValue>
+        <originalValue class="string">IBM J9 6.0</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
     </entry>
@@ -392,26 +342,16 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
       </trigger-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
-        <originalValue class="hudson.plugins.parameterizedtrigger.BuildTrigger">
-          <configs>
-            <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-              <configs>
-                <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
-              </configs>
-              <projects>DataPower_SoapUI-test_service-gw</projects>
-              <condition>SUCCESS</condition>
-            </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-          </configs>
-        </originalValue>
+        <originalValue class="hudson.plugins.cigame.GamePublisher"/>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
@@ -426,7 +366,22 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</remote>
+              <local>.</local>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -440,13 +395,16 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.TimerTrigger">
+          <spec>15 0 * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>i136181</createdBy>
-  <creationTime>1371541655186</creationTime>
+  <createdBy>h103841</createdBy>
+  <creationTime>1384440247816</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -455,10 +413,11 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>true</canRoam>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
 </project>
