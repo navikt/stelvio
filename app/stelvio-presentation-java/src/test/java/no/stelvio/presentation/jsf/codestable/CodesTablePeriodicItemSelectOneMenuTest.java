@@ -19,7 +19,7 @@ import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 import no.stelvio.common.codestable.support.DefaultCodesTableManager;
 import no.stelvio.presentation.jsf.mock.SpringDefinition;
 
-import org.apache.shale.test.mock.MockFacesContext;
+import org.apache.myfaces.test.mock.MockFacesContext20;
 import org.hamcrest.core.IsAnything;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -78,7 +78,7 @@ public class CodesTablePeriodicItemSelectOneMenuTest {
 	public void selectMenuWithTestCtpi() {
 		try {
 			selectMenu.setCtiClass("no.stelvio.presentation.jsf.codestable.SimpleTestCtpi");
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 
 			assertTrue(selectMenu.getChildCount() == 1);
 			List selectItemsList = (List) ((UISelectItems) selectMenu.getChildren().get(0)).getValue();
@@ -97,7 +97,7 @@ public class CodesTablePeriodicItemSelectOneMenuTest {
 		try {
 			selectMenu.setCtiClass("no.stelvio.presentation.jsf.codestable.SimpleTestCtpi");
 			selectMenu.setComparator("no.stelvio.common.codestable.support.DecodeComparator");
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 
 			assertTrue(selectMenu.getChildCount() == 1);
 			List selectItemsList = (List) ((UISelectItems) selectMenu.getChildren().get(0)).getValue();

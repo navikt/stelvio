@@ -17,7 +17,7 @@ import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 import no.stelvio.common.codestable.support.DefaultCodesTableManager;
 import no.stelvio.presentation.jsf.mock.SpringDefinition;
 
-import org.apache.shale.test.mock.MockFacesContext;
+import org.apache.myfaces.test.mock.MockFacesContext20;
 import org.hamcrest.core.IsAnything;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -73,7 +73,7 @@ public class CodesTableItemSelectOneMenuTest {
 	public void selectMenuWithTestCti() {
 		try {
 			selectMenu.setCtiClass("no.stelvio.presentation.jsf.codestable.SimpleTestCti");
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 
 			assertTrue(selectMenu.getChildCount() == 1);
 			List selectItemsList = (List) ((UISelectItems) selectMenu.getChildren().get(0)).getValue();
@@ -97,17 +97,17 @@ public class CodesTableItemSelectOneMenuTest {
 
 			// Build an initial menu with one item
 			assertTrue(selectMenu.getChildCount() == 0);
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 			assertTrue(selectMenu.getChildCount() == 1);
 		
 			// Verify that menu does not grow if displayValue is true
 			selectMenu.setDisplayValueOnly(true);
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 			assertTrue(selectMenu.getChildCount() == 1);
 			
 			// Verify that menu does not grow if displayValue is false
 			selectMenu.setDisplayValueOnly(false);
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 			assertTrue(selectMenu.getChildCount() == 1);
 
 			} catch (Exception e) {
@@ -124,7 +124,7 @@ public class CodesTableItemSelectOneMenuTest {
 		try {
 			selectMenu.setCtiClass("no.stelvio.presentation.jsf.codestable.SimpleTestCti");
 			selectMenu.setComparator("no.stelvio.common.codestable.support.DecodeNumericComparator");
-			selectMenu.encodeBegin(MockFacesContext.getCurrentInstance());
+			selectMenu.encodeBegin(MockFacesContext20.getCurrentInstance());
 
 			assertTrue(selectMenu.getChildCount() == 1);
 			List selectItemsList = (List) ((UISelectItems) selectMenu.getChildren().get(0)).getValue();

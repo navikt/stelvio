@@ -9,18 +9,18 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.render.RenderKitFactory;
 
-import org.apache.shale.test.mock.MockApplication;
-import org.apache.shale.test.mock.MockExternalContext;
-import org.apache.shale.test.mock.MockFacesContext;
-import org.apache.shale.test.mock.MockFacesContextFactory;
-import org.apache.shale.test.mock.MockHttpServletRequest;
-import org.apache.shale.test.mock.MockHttpServletResponse;
-import org.apache.shale.test.mock.MockHttpSession;
-import org.apache.shale.test.mock.MockLifecycle;
-import org.apache.shale.test.mock.MockLifecycleFactory;
-import org.apache.shale.test.mock.MockRenderKit;
-import org.apache.shale.test.mock.MockServletConfig;
-import org.apache.shale.test.mock.MockServletContext;
+import org.apache.myfaces.test.mock.MockApplication20;
+import org.apache.myfaces.test.mock.MockExternalContext20;
+import org.apache.myfaces.test.mock.MockFacesContext20;
+import org.apache.myfaces.test.mock.MockFacesContextFactory;
+import org.apache.myfaces.test.mock.MockHttpServletRequest;
+import org.apache.myfaces.test.mock.MockHttpServletResponse;
+import org.apache.myfaces.test.mock.MockHttpSession;
+import org.apache.myfaces.test.mock.lifecycle.MockLifecycle;
+import org.apache.myfaces.test.mock.lifecycle.MockLifecycleFactory;
+import org.apache.myfaces.test.mock.MockRenderKit;
+import org.apache.myfaces.test.mock.MockServletConfig;
+import org.apache.myfaces.test.mock.MockServletContext;
 import org.junit.After;
 import org.junit.Before;
 
@@ -32,10 +32,10 @@ import org.junit.Before;
  * <code>tearDown()</code> method:
  * 
  * <ul>
- * <li><code>application(MockApplication)</code></li>
+ * <li><code>application(MockApplication20)</code></li>
  * <li><code>config(MockServletConfig)</code></li>
- * <li><code>externalContext(MockExternalContext)</code></li>
- * <li><code>facesContext(MockFacesContext)</code></li>
+ * <li><code>externalContext(MockExternalContext20)</code></li>
+ * <li><code>facesContext(MockFacesContext20)</code></li>
  * <li><code>lifecycle(MockLifecycle)</code></li>
  * <li><code>request(MockHttpServletRequest)</code></li>
  * <li><code>response(MockHttpServletResponse)</code></li>
@@ -43,7 +43,7 @@ import org.junit.Before;
  * <li><code>session(MockHttpSession)</code></li>
  * </ul>
  * 
- * This class is based on the implementation of <code>org.apache.shale.test.base.AbstractJsfTestCase</code> but does not extend
+ * This class is based on the implementation of <code>org.apache.myfaces.test.base.AbstractJsfTestCase</code> but does not extend
  * <code>junit.framework.TestCase</code>.
  * 
  * @author person6045563b8dec
@@ -54,13 +54,13 @@ public abstract class AbstractJsfTestCase {
 
 	// Mock object instances for our tests
 	/** Mock application. */
-	protected MockApplication application = null;
+	protected MockApplication20 application = null;
 	/** Mock servlet config. */
 	protected MockServletConfig config = null;
 	/** Mock external context. */
-	protected MockExternalContext externalContext = null;
+	protected MockExternalContext20 externalContext = null;
 	/** Mock faces context. */
-	protected MockFacesContext facesContext = null;
+	protected MockFacesContext20 facesContext = null;
 	/** Mock faces context factory. */
 	protected MockFacesContextFactory facesContextFactory = null;
 	/** Mock lifecycle. */
@@ -102,24 +102,24 @@ public abstract class AbstractJsfTestCase {
 
 		// Set up JSF API Objects
 		FactoryFinder.releaseFactories();
-		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.shale.test.mock.MockApplicationFactory");
-		FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY, "org.apache.shale.test.mock.MockFacesContextFactory");
-		FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.shale.test.mock.MockLifecycleFactory");
-		FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.shale.test.mock.MockRenderKitFactory");
+		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.myfaces.test.mock.MockApplicationFactory");
+		FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY, "org.apache.myfaces.test.mock.MockFacesContextFactory");
+		FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.myfaces.test.mock.lifecycle.MockLifecycleFactory");
+		FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.myfaces.test.mock.MockRenderKitFactory");
 
-		externalContext = new MockExternalContext(servletContext, request, response);
+		externalContext = new MockExternalContext20(servletContext, request, response);
 		lifecycleFactory = (MockLifecycleFactory) FactoryFinder.getFactory(FactoryFinder.LIFECYCLE_FACTORY);
 		lifecycle = (MockLifecycle) lifecycleFactory.getLifecycle(LifecycleFactory.DEFAULT_LIFECYCLE);
 		facesContextFactory = (MockFacesContextFactory) FactoryFinder.getFactory(FactoryFinder.FACES_CONTEXT_FACTORY);
-		facesContext = (MockFacesContext) facesContextFactory.getFacesContext(servletContext, request, response, lifecycle);
-		externalContext = (MockExternalContext) facesContext.getExternalContext();
+		facesContext = (MockFacesContext20) facesContextFactory.getFacesContext(servletContext, request, response, lifecycle);
+		externalContext = (MockExternalContext20) facesContext.getExternalContext();
 		UIViewRoot root = new UIViewRoot();
 		root.setViewId("/viewId");
 		root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
 		facesContext.setViewRoot(root);
 		ApplicationFactory applicationFactory = (ApplicationFactory) FactoryFinder
 				.getFactory(FactoryFinder.APPLICATION_FACTORY);
-		application = new MockApplication();
+		application = new MockApplication20();
 		applicationFactory.setApplication(application);
 		facesContext.setApplication(application);
 		RenderKitFactory renderKitFactory = (RenderKitFactory) FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);

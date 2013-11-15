@@ -1,6 +1,6 @@
 package no.stelvio.presentation.web.tag;
 
-import com.sun.facelets.tag.AbstractTagLibrary;
+import org.apache.myfaces.view.facelets.tag.AbstractTagLibrary;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;

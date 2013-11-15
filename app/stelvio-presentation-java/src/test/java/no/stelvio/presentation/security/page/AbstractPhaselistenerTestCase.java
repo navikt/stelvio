@@ -37,21 +37,18 @@ import no.stelvio.common.security.support.SecurityContextSetter;
 import no.stelvio.common.security.support.SimpleSecurityContext;
 import no.stelvio.presentation.security.page.constants.Constants;
 
-import org.apache.shale.test.mock.MockApplication;
-import org.apache.shale.test.mock.MockFacesContext;
-import org.apache.shale.test.mock.MockHttpServletResponse;
-import org.apache.shale.test.mock.MockHttpSession;
-import org.apache.shale.test.mock.MockLifecycle;
-import org.apache.shale.test.mock.MockLifecycleFactory;
-import org.apache.shale.test.mock.MockPrincipal;
-import org.apache.shale.test.mock.MockRenderKit;
-import org.apache.shale.test.mock.MockServletConfig;
-import org.apache.shale.test.mock.MockServletContext;
+import org.apache.myfaces.test.mock.MockApplication20;
+import org.apache.myfaces.test.mock.MockFacesContext20;
+import org.apache.myfaces.test.mock.MockHttpServletResponse;
+import org.apache.myfaces.test.mock.MockHttpSession;
+import org.apache.myfaces.test.mock.lifecycle.MockLifecycle;
+import org.apache.myfaces.test.mock.lifecycle.MockLifecycleFactory;
+import org.apache.myfaces.test.mock.MockPrincipal;
+import org.apache.myfaces.test.mock.MockRenderKit;
+import org.apache.myfaces.test.mock.MockServletConfig;
+import org.apache.myfaces.test.mock.MockServletContext;
 import org.junit.After;
 import org.junit.Before;
-import org.springframework.webflow.context.ExternalContext;
-import org.springframework.webflow.context.ExternalContextHolder;
-import org.springframework.webflow.test.MockExternalContext;
 
 /**
  * <p>
@@ -60,10 +57,10 @@ import org.springframework.webflow.test.MockExternalContext;
  * <code>tearDown()</code> method:
  * </p>
  * <ul>
- * <li><code>application</code> (<code>MockApplication</code>)</li>
+ * <li><code>application</code> (<code>MockApplication20</code>)</li>
  * <li><code>config</code> (<code>MockServletConfig</code>)</li>
- * <li><code>externalContext</code> (<code>MockExternalContext</code>)</li>
- * <li><code>facesContext</code> (<code>MockFacesContext</code>)</li>
+ * <li><code>externalContext</code> (<code>MockExternalContext20</code>)</li>
+ * <li><code>facesContext</code> (<code>MockFacesContext20</code>)</li>
  * <li><code>lifecycle</code> (<code>MockLifecycle</code>)</li>
  * <li><code>request</code> (<code>MockHttpServletRequest</code></li>
  * <li><code>response</code> (<code>MockHttpServletResponse</code>)</li>
@@ -85,13 +82,13 @@ public abstract class AbstractPhaselistenerTestCase {
 	private List<String> roles;
 
 	// Mock object instances for our tests
-	protected MockApplication application;
+	protected MockApplication20 application;
 
 	protected MockServletConfig config;
 
 	protected MockExternalContextExtended externalContext;
 
-	protected MockFacesContext facesContext;
+	protected MockFacesContext20 facesContext;
 
 	protected MockFacesContextFactoryExtended facesContextFactory;
 
@@ -154,17 +151,17 @@ public abstract class AbstractPhaselistenerTestCase {
 
 		// Set up JSF API Objects
 		FactoryFinder.releaseFactories();
-		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.shale.test.mock.MockApplicationFactory");
+		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.myfaces.test.mock.MockApplicationFactory");
 		FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY,
 				"no.stelvio.presentation.security.page.MockFacesContextFactoryExtended");
-		FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.shale.test.mock.MockLifecycleFactory");
-		FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.shale.test.mock.MockRenderKitFactory");
+		FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.myfaces.test.mock.lifecycle.MockLifecycleFactory");
+		FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.myfaces.test.mock.MockRenderKitFactory");
 
 		externalContext = new MockExternalContextExtended(servletContext, request, response);
 		lifecycleFactory = (MockLifecycleFactory) FactoryFinder.getFactory(FactoryFinder.LIFECYCLE_FACTORY);
 		lifecycle = (MockLifecycle) lifecycleFactory.getLifecycle(LifecycleFactory.DEFAULT_LIFECYCLE);
 		facesContextFactory = (MockFacesContextFactoryExtended) FactoryFinder.getFactory(FactoryFinder.FACES_CONTEXT_FACTORY);
-		facesContext = (MockFacesContext) facesContextFactory.getFacesContext(servletContext, request, response, lifecycle);
+		facesContext = (MockFacesContext20) facesContextFactory.getFacesContext(servletContext, request, response, lifecycle);
 		externalContext = (MockExternalContextExtended) facesContext.getExternalContext();
 		UIViewRoot root = new UIViewRoot();
 		root.setViewId("/viewId");
@@ -172,20 +169,12 @@ public abstract class AbstractPhaselistenerTestCase {
 		facesContext.setViewRoot(root);
 		ApplicationFactory applicationFactory = (ApplicationFactory) FactoryFinder
 				.getFactory(FactoryFinder.APPLICATION_FACTORY);
-		application = new MockApplication();
+		application = new MockApplication20();
 		applicationFactory.setApplication(application);
 		facesContext.setApplication(application);
 		RenderKitFactory renderKitFactory = (RenderKitFactory) FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
 		renderKit = new MockRenderKit();
 		renderKitFactory.addRenderKit(RenderKitFactory.HTML_BASIC_RENDER_KIT, renderKit);
-
-		// Principal principal = new Principal();
-		// super.request.setUserPrincipal(principal)
-
-		ExternalContext context = new MockExternalContext();
-		ExternalContextHolder.setExternalContext(context);
-		((MockExternalContext) context).setNativeRequest(request);
-		((MockExternalContext) context).setNativeResponse(response);
 
 		this.onSetUp();
 	}

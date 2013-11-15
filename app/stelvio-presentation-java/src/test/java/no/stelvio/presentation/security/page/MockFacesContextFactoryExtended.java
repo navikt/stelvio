@@ -7,8 +7,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.shale.test.mock.MockFacesContext;
-import org.apache.shale.test.mock.MockFacesContextFactory;
+import org.apache.myfaces.test.mock.MockFacesContext20;
+import org.apache.myfaces.test.mock.MockFacesContextFactory;
 
 /**
  * MockFacesContextFactoryExtended.
@@ -25,7 +25,7 @@ public class MockFacesContextFactoryExtended extends MockFacesContextFactory {
 
 		MockExternalContextExtended externalContext = new MockExternalContextExtended((ServletContext) context,
 				(HttpServletRequest) request, (HttpServletResponse) response);
-		return new MockFacesContext(externalContext, lifecycle);
+		return new MockFacesContext20(externalContext, lifecycle);
 
 	}
 }

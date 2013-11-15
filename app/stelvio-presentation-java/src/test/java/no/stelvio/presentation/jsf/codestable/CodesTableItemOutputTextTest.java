@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import no.stelvio.presentation.jsf.mock.SpringDefinition;
 
-import org.apache.shale.test.mock.MockFacesContext;
+import org.apache.myfaces.test.mock.MockFacesContext20;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -45,7 +45,7 @@ public class CodesTableItemOutputTextTest {
 	public void testCtiOutputText() throws IOException {
 		ctiOutputText.setCodeValue(KravStatusCode.TIL_BEHANDLING.name());
 		ctiOutputText.setCtiClass("no.stelvio.presentation.jsf.codestable.KravStatusCti");
-		ctiOutputText.encodeBegin(MockFacesContext.getCurrentInstance());
+		ctiOutputText.encodeBegin(MockFacesContext20.getCurrentInstance());
 		assertEquals("Til behandling", ctiOutputText.getValue());
 	}
 

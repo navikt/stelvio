@@ -22,7 +22,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.shale.test.mock.MockHttpServletRequest;
+import org.apache.myfaces.test.mock.MockHttpServletRequest;
 
 /**
  * <p>

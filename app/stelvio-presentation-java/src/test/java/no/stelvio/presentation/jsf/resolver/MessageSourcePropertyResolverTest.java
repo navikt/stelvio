@@ -23,7 +23,7 @@ import java.util.Locale;
 
 import no.stelvio.presentation.jsf.mock.SpringDefinition;
 
-import org.apache.shale.test.mock.MockPropertyResolver;
+import org.apache.myfaces.test.mock.MockPropertyResolver;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;

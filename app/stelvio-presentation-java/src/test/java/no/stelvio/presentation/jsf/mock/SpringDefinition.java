@@ -10,14 +10,14 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.renderkit.html.ext.HtmlGridRenderer;
-import org.apache.shale.test.mock.MockApplication;
-import org.apache.shale.test.mock.MockFacesContext;
-import org.apache.shale.test.mock.MockHttpServletRequest;
-import org.apache.shale.test.mock.MockHttpServletResponse;
-import org.apache.shale.test.mock.MockHttpSession;
-import org.apache.shale.test.mock.MockRenderKit;
-import org.apache.shale.test.mock.MockServletConfig;
-import org.apache.shale.test.mock.MockServletContext;
+import org.apache.myfaces.test.mock.MockApplication20;
+import org.apache.myfaces.test.mock.MockFacesContext20;
+import org.apache.myfaces.test.mock.MockHttpServletRequest;
+import org.apache.myfaces.test.mock.MockHttpServletResponse;
+import org.apache.myfaces.test.mock.MockHttpSession;
+import org.apache.myfaces.test.mock.MockRenderKit;
+import org.apache.myfaces.test.mock.MockServletConfig;
+import org.apache.myfaces.test.mock.MockServletContext;
 import org.springframework.binding.message.DefaultMessageContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -101,10 +101,10 @@ public class SpringDefinition {
 			SpringDefinition.context = new ClassPathXmlApplicationContext(configLocations);
 		}
 
-		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.shale.test.mock.MockApplicationFactory");
-		FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY, "org.apache.shale.test.mock.MockFacesContextFactory");
-		FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.shale.test.mock.MockLifecycleFactory");
-		FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.shale.test.mock.MockRenderKitFactory");
+		FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.myfaces.test.mock.MockApplicationFactory");
+		FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY, "org.apache.myfaces.test.mock.MockFacesContextFactory");
+		FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.myfaces.test.mock.lifecycle.MockLifecycleFactory");
+		FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.myfaces.test.mock.MockRenderKitFactory");
 
 		ExternalContext context = new MockExternalContext();
 		ExternalContextHolder.setExternalContext(context);
@@ -121,14 +121,14 @@ public class SpringDefinition {
 			renderKitFactory.addRenderKit(RenderKitFactory.HTML_BASIC_RENDER_KIT, renderKit);
 		}
 
-		MockApplication application = new MockApplication();
+		MockApplication20 application = new MockApplication20();
 		ApplicationFactory applicationFactory = (ApplicationFactory) FactoryFinder
 				.getFactory(FactoryFinder.APPLICATION_FACTORY);
 		applicationFactory.setApplication(application);
 
-		org.apache.shale.test.mock.MockExternalContext externalContext = new org.apache.shale.test.mock.MockExternalContext(
+		org.apache.myfaces.test.mock.MockExternalContext20 externalContext = new org.apache.myfaces.test.mock.MockExternalContext20(
 				servletContext, request, response);
-		MockFacesContext facesContext = new MockFacesContext();
+		MockFacesContext20 facesContext = new MockFacesContext20();
 		facesContext.setExternalContext(externalContext);
 		facesContext.setApplication(application);
 
@@ -137,7 +137,7 @@ public class SpringDefinition {
 		root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
 		facesContext.setViewRoot(root);
 
-		MockFacesContext.setCurrentInstance(facesContext);
+		MockFacesContext20.setCurrentInstance(facesContext);
 	}
 
 	/**
@@ -153,45 +153,4 @@ public class SpringDefinition {
 		return configLocations;
 	}
 
-	// /**
-	// * Sets up needed contexts to perform tests.
-	// */
-	// public static void setFacesContext() {
-	// servletContext = new MockServletContext(); // "WebContent", new FileSystemResourceLoader());
-	// MockHttpSession session = new MockHttpSession();
-	//	
-	// MockHttpServletRequest request = new MockHttpServletRequest(session);
-	// request.setServletContext(servletContext);
-	// MockHttpServletResponse response = new MockHttpServletResponse();
-	//	
-	// MockLifecycleFactory lifecycleFactory = new MockLifecycleFactory();
-	// Lifecycle lifecycle = lifecycleFactory.getLifecycle(LifecycleFactory.DEFAULT_LIFECYCLE);
-	//	
-	// MockFacesContextFactory facesContextFactory = new MockFacesContextFactory();
-	// MockFacesContext facesContext = (MockFacesContext) facesContextFactory.getFacesContext(servletContext, request,
-	// response, lifecycle);
-	//	
-	// MockApplicationFactory applicationFactory = new MockApplicationFactory();
-	// MockApplication application = (MockApplication) applicationFactory.getApplication();
-	// application.setMessageBundle("no-nav-pensjon-common-resources");
-	// facesContext.setApplication(application);
-	//
-	// MockViewHandler viewHandler = new MockViewHandler();
-	// UIViewRoot viewRoot = viewHandler.createView(facesContext, "_viewId");
-	// viewRoot.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
-	// facesContext.setViewRoot(viewRoot);
-	//
-	// MockFacesContext.setCurrentInstance(facesContext);
-	// //
-	// // FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY, "org.apache.shale.test.mock.MockApplicationFactory");
-	// // FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY, "org.apache.shale.test.mock.MockFacesContextFactory");
-	// // FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY, "org.apache.shale.test.mock.MockLifecycleFactory");
-	// // FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY, "org.apache.shale.test.mock.MockRenderKitFactory");
-	// //
-	// // RequestContextSetter.setRequestContextForUnitTest();
-	// }
-	// //
-	// // public static MockServletContext getContext() {
-	// // return servletContext;
-	// // }
 }

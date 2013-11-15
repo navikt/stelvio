@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.shale.test.mock.MockExternalContext;
+import org.apache.myfaces.test.mock.MockExternalContext20;
 
 /**
  * MockExternalContextExtended.
@@ -13,7 +13,7 @@ import org.apache.shale.test.mock.MockExternalContext;
  * @author ??
  * 
  */
-public class MockExternalContextExtended extends MockExternalContext {
+public class MockExternalContextExtended extends MockExternalContext20 {
 
 	/**
 	 * <p>
