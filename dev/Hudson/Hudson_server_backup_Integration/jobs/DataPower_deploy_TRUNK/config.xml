@@ -251,6 +251,17 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                 <description></description>
                 <defaultValue>1</defaultValue>
               </hudson.model.StringParameterDefinition>
+              <hudson.model.ChoiceParameterDefinition>
+                <name>DeilveryVerision</name>
+                <description>Hvilken branch scriptet henter deployer-pom&apos;en fra</description>
+                <choices class="java.util.Arrays$ArrayList">
+                  <a class="string-array">
+                    <string>TRUNK</string>
+                    <string>2013-HL4</string>
+                    <string>2014-HL2</string>
+                  </a>
+                </choices>
+              </hudson.model.ChoiceParameterDefinition>
             </parameterDefinitions>
           </hudson.model.ParametersDefinitionProperty>
         </originalValue>
@@ -331,7 +342,20 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
             <command>java -version</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
-            <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+            <command>echo &quot;Getting deployer-pom from ${DeilveryVerision} repository.&quot;
+if [ &quot;${DeilveryVerision}&quot; == &quot;TRUNK&quot; ];
+then
+      wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+elif [ &quot;${DeilveryVerision}&quot; == &quot;2013-HL4&quot; ];
+then
+      wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/branches/int/R_7_9_0_D20131113_2013HL4/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+elif [ &quot;${DeilveryVerision}&quot; == &quot;2014-HL2&quot; ];
+then
+      wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+fi
+
+
+#wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
 #wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/branches/datapower/D20131014_2014ELSAM/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
 
 EnvironmentClass=${Environment:0:1}

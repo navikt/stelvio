@@ -37,7 +37,7 @@
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
           <daysToKeep>-1</daysToKeep>
-          <numToKeep>5</numToKeep>
+          <numToKeep>10</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -119,7 +119,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/stelvio/branches/stelvio-spring2-maintenance</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -138,15 +138,14 @@
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
-          <spec>@midnight</spec>
+          <spec>15 0 * * *</spec>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>w132847</createdBy>
-  <creationTime>1336035513170</creationTime>
+  <creationTime>0</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -170,7 +169,7 @@
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
@@ -179,7 +178,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio</artifactId>
   </rootModule>
-  <goals>site:site</goals>
+  <goals>clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
@@ -199,17 +198,6 @@
     <hudson.plugins.chucknorris.CordellWalkerRecorder>
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
-    <hudson.plugins.sonar.SonarPublisher>
-      <branch>sonar.devillo.no</branch>
-      <language></language>
-      <mavenOpts></mavenOpts>
-      <jobAdditionalProperties></jobAdditionalProperties>
-      <triggers>
-        <skipScmCause>false</skipScmCause>
-        <skipUpstreamCause>false</skipUpstreamCause>
-        <envVar></envVar>
-      </triggers>
-    </hudson.plugins.sonar.SonarPublisher>
     <hudson.plugins.cigame.GamePublisher/>
     <hudson.plugins.emailext.ExtendedEmailPublisher>
       <recipientList></recipientList>

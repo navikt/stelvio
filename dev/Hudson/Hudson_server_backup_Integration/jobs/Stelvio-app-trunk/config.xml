@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Project for building the openam plugin for supporting endagspassord. Disabled because this is now maintained as a part of NAV openam in git.</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -160,6 +160,11 @@
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
+        <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
+          <testResults>**/target/surefire-reports/*.xml</testResults>
+          <keepLongStdio>false</keepLongStdio>
+          <testDataPublishers/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
@@ -269,12 +274,10 @@
               <verbosity>NORMAL</verbosity>
               <offline>false</offline>
               <snapshotUpdateMode>NORMAL</snapshotUpdateMode>
-              <profiles/>
               <recursive>true</recursive>
               <checksumMode>NORMAL</checksumMode>
               <failMode>NORMAL</failMode>
               <makeMode>NONE</makeMode>
-              <projects/>
               <settingsId>NONE</settingsId>
               <globalSettingsId>NONE</globalSettingsId>
               <toolChainsId>NONE</toolChainsId>
@@ -308,7 +311,7 @@
     <entry>
       <string>jdk</string>
       <string-property>
-        <originalValue class="string">Sun JDK 6.0</originalValue>
+        <originalValue class="string">IBM J9 6.0</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
     </entry>
@@ -359,7 +362,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/inf/openam/nav-esso-onedaypw-plugin</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</remote>
               <local>.</local>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -401,7 +404,7 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>h103841</createdBy>
-  <creationTime>1381144329907</creationTime>
+  <creationTime>1384522090723</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -411,7 +414,7 @@
   </cascading-job-properties>
   <scm class="hudson.scm.NullSCM"/>
   <canRoam>false</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
