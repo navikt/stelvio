@@ -297,6 +297,12 @@ public class XMLMgmtSession {
 		return doRequest(request);
 	}
 	
+	public String deleteHSMKey( String keyHandle, String keyType) throws XMLMgmtException{
+		XMLMgmtRequest request = createRequest();
+		request.addCommand(new DeleteHSMKeyCommand(keyHandle, keyType));
+		return doRequest(request);
+	}
+	
 //	private void scanFilesAndFolders(File root, File parent, XMLMgmtRequest request, DeviceFileStore location) throws IOException {
 //		File[] children = parent.listFiles();
 //		if (children != null) {
