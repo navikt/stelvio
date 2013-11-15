@@ -8010,6 +8010,7 @@ int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/co
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GetFileCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GetStatusCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/ImportHSMKeyCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RemoveDirCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RestartThisDomainCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SaveConfigCommand.java -text

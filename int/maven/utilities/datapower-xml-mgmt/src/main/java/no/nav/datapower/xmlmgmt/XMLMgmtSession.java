@@ -303,6 +303,12 @@ public class XMLMgmtSession {
 		return doRequest(request);
 	}
 	
+	public String importHSMKey( String keyName, String keyFilePath, String keyPassword, boolean kWKExportable) throws XMLMgmtException{
+		XMLMgmtRequest request = createRequest();
+		request.addCommand(new ImportHSMKeyCommand(keyName, keyFilePath, keyPassword, kWKExportable));	
+		return doRequest(request);
+	}
+	
 //	private void scanFilesAndFolders(File root, File parent, XMLMgmtRequest request, DeviceFileStore location) throws IOException {
 //		File[] children = parent.listFiles();
 //		if (children != null) {
