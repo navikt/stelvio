@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>4.0.2-SNAPSHOT</version>
+		<version>4.1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio-common-java</artifactId>
@@ -96,7 +96,7 @@
 		</dependency>
 		<dependency>
 			<groupId>websphere</groupId>
-			<artifactId>com.ibm.ws.runtime</artifactId>
+			<artifactId>com.ibm.ws.ejb.thinclient</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
