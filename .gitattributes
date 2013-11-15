@@ -470,7 +470,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/Serv
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/error/ErrorAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/error/ErrorPageExceptionHandler.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/error/ExceptionHandlerFlowExecutionListener.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/handler/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/handler/Ajax4JsfHandler.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/codestable/CodesTableItemOutputText.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/codestable/CodesTableItemSelectOneMenu.java -text
