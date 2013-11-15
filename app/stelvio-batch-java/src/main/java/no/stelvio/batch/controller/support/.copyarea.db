@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-batch-java\src\main\java\no\stelvio\batch\controller\support
-2
-2
-22:DefaultBatchControllerService.java|1|12e7706e6e4|2061|59524e6d|87cb1de8e63d43daa5f9fb291e94a5a6|0
-2d:SpringBatchEnabledBatchControllerService.java|1|12e7706e704|7f0|4b4ba97d|4f7693aea8ee454787002ab898fa4a1d|0

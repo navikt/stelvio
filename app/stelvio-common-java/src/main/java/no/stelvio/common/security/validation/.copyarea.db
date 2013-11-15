@@ -1,8 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\security\validation
-2
-4
-1a:RoleNotValidException.java|1|12e7707e364|6ea|efd520a5|f6c6e012a6fe454c827900ab78b57dd5|0
-e:ValidRole.java|1|12e7707e3c2|1bc|45e896f9|6ee65a2b57be41669c7753f41311092c|0
-12:RoleValidator.java|1|12e7707e383|3dd|532c395a|cd6afe7d715345c3a3daea5567909890|0
-7:support|2|0|0|0|ca5f5b1cb9e04b919e556a5c1337471a|0

@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-provider-java\src\test\java\no\stelvio\provider\security\map
-2
-2
-1e:TestSecurityContextMapper.java|1|12e770a2873|ad1|5d2b9d11|97d9ec549afc44a18284cb9d9b90a6e5|0
-1e:SecurityContextMapperTest.java|1|12e770a28c1|c2d|1d9154b|83512954e12e40099c39cc69a44732c9|0

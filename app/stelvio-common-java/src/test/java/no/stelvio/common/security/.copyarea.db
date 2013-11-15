@@ -1,9 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\security
-2
-5
-2:ws|2|0|0|0|f2c911b1d514426ea06ef6ab770b7b06|0
-d:authorization|2|0|0|0|06ab08613c074cd68ef29b99883ee6ca|0
-a:validation|2|0|0|0|aee02b6bd00041efaeded9a98f129289|0
-7:support|2|0|0|0|7bfa12bbee62410ca670c92222e70a8f|0
-5:acegi|2|0|0|0|bf68de3cf6ca490e8054eda89bc0a874|0

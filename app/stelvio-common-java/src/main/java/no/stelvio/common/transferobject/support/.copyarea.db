@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\transferobject\support
-2
-2
-25:PrepareServiceRequestInterceptor.java|1|12e7707e614|197e|ff9b63d9|caba7338c3d64d089b8b6ba7f650813f|0
-25:ExecuteServiceRequestInterceptor.java|1|12e7707e5e5|1f23|2f4a4a60|660c27767e18485794ae86de5e3aba79|0

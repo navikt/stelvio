@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-dto-java\src\main\java\no\stelvio\dto\exception\mapping
-2
-2
-18:MappingDtoException.java|1|12e7708fd23|32f|92cf05c3|27195645ecaa4751a67fcae4f558551f|0
-20:AbstractMappingDtoException.java|1|12e7708fcd5|37e|dfb2922|e113c31ca9e34e8985f602e9a1847cbe|0

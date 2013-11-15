@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\jsf\renderkit
-2
-3
-17:JsfResourceHandler.java|1|12e7709324c|cfb|5fab4a31|db2e097b5f80463ea6babcc5ddc2acd5|0
-4:html|2|0|0|0|97939242965245b99dedea1ced0a5f66|0
-16:JsfResourceLoader.java|1|12e7709328b|2665|2bbac29|6ae89883d52f4da4863071da6e78ae8e|0

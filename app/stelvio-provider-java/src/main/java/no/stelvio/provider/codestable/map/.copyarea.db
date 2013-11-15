@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-provider-java\src\main\java\no\stelvio\provider\codestable\map
-2
-3
-1c:CodesTableItemConverter.java|1|12e770a241e|773|61f176d2|9b4b9750d2774f3f8c26ba56bf7a2347|0
-24:CodesTablePeriodicItemConverter.java|1|12e770a23ef|80b|4dc5b34f|84851079a30e4aa68006abb211197b29|0
-24:AbstractCodesTableItemConverter.java|1|12e770a23ff|3f1|a41e4e8e|57ad68cb84ff4fa09bffff7452a208d5|0

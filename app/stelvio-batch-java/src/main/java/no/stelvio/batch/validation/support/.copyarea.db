@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-batch-java\src\main\java\no\stelvio\batch\validation\support
-2
-2
-1c:BatchParameterValidator.java|1|12e7707026b|c28|c376e768|0b3b16ac0a444c6694dd546a57148df1|0
-27:BatchParameterValidatorInterceptor.java|1|12e770702aa|50a|f179afcf|51827a1fe0cd40ffa4023e3fa082a02d|0

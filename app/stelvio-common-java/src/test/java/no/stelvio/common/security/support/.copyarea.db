@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\security\support
-2
-2
-1e:SimpleSecurityContextTest.java|1|12e77089f9b|1ea1|570bd49|035b07bbe1b946d7a98ad21478faec10|0
-1e:SecurityContextSetterTest.java|1|12e77089f6c|594|9e99e25a|1b08a67573a141d994a241fbfa571cfe|0

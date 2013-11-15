@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\logout
-2
-3
-19:WebsealLogoutService.java|1|12e77097d7e|1a3e|902eb819|3a07844f6a014cbeade943645e478a16|0
-15:WasLogoutService.java|1|12e77097d11|1b5d|b5c2d5b5|5e721a1b56ce4679ae855fb7429b3296|0
-12:LogoutService.java|1|12e77096f07|83c|993d55c|776bdab4d49d4f21a45ca6bfc0d99b99|0

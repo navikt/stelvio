@@ -1,8 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-domain-java\src\test\resources
-2
-4
-1f:common-java_test_menu_beans.xml|1|12e7708ead3|eb9|5897a924|1ad023db841546f888e961bb8a7a510d|0
-12:error-handling.xml|1|12e7708eaf2|25c|c44ec422|8d07621f31d64d4d8ab8e37c4af7fd82|0
-1a:performance-monitoring.xml|1|12e7708eb11|128|1294619d|e904786044d44bffb50527dbc31f8348|0
-18:application-services.xml|1|12e7708eab4|d2|6bc642bf|fc9d69171d9a4339a04642ee34846891|0

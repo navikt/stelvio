@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-batch-java\src\main\java\no\stelvio\batch\domain
-2
-3
-c:BatchDO.java|1|12e7706cd71|1ddc|af3c9d8a|5d5ef6e071e647a080891ba03456d7c5|0
-13:BatchParameter.java|1|12e7706cdbf|2d0|f9f4defc|da5190c965c84a69843960d0983b71bb|0
-11:FileIdentity.java|1|12e7706cda0|5bf|46e8c2ea|8970eb04681a4359a4a7a005c79edaf5|0

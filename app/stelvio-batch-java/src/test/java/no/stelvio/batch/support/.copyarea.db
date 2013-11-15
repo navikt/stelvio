@@ -1,9 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-batch-java\src\test\java\no\stelvio\batch\support
-2
-5
-1f:SpringBatchJobOperatorTest.java|1|12e77071f69|131b|1ce5bae6|6a370b1edffa45a0a7177bd13cdc5128|0
-19:ProgressNotifierTest.java|1|12e77071f3a|929|4e1d3271|e5824f7506244fdd841f7306f88a087d|0
-2d:TypeConvertingJobParametersValidatorTest.java|1|12e77071f1b|1c8f|21b8c6c9|54efcbf383dd467a89515c529feb8e6e|0
-1a:TWSExitCodeMapperTest.java|1|12e77071edc|7c7|d9bc7e2b|c47daa1557784857adf5bf63fb51822f|0
-1f:ProgressLoggerListenerTest.java|1|12e77071efb|59b|b966e807|5341f42d2d2a45d09d6e7c98465ebfe3|0

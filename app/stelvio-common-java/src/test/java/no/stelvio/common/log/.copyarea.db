@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\log
-2
-3
-8:appender|2|0|0|0|2c4126887c3d4e35a7908b746c32aff3|0
-13:InfoLoggerTest.java|1|12e77084d20|aaf|ee25fab|bef2479cfed14decbfbd18b093c30319|0
-7:factory|2|0|0|0|378ee846a2ec4b3483c2a852c0f7eed0|0

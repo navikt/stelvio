@@ -1,8 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-dto-java\src\main\java\no\stelvio\dto\codestable
-2
-4
-16:CodesTableItemDto.java|1|12e7708fd52|21a|a59dab62|8d7ee0c3fe32447dac1a354226be2952|0
-1e:AbstractCodesTableItemDto.java|1|12e7708fd81|2bc|3744d771|c2da69e800d3475390cd6e003edeb5df|0
-26:AbstractCodesTablePeriodicItemDto.java|1|12e7708fdb0|2f0|96e7e802|c6bc15ca203742cfbf5035c283a8415a|0
-1e:CodesTablePeriodicItemDto.java|1|12e7708fdde|228|b271b2ab|e25a27e53ff34a139b233f5289e74596|0

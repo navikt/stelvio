@@ -1,6 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\context
-2
-2
-22:ServletContextAttributeSetter.java|1|12e77090dad|90a|4c6b3037|6f29aec87ec34644b8605b75622be76a|0
-19:RequestContextFilter.java|1|12e77090d8e|1ea8|caa24168|35a9b1cffad74082b1cd2605d50f9c3c|0

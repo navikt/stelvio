@@ -1,8 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-provider-java\src\test\java\no\stelvio\provider\codestable
-2
-4
-c:TestCti.java|1|12e770a290f|af4|315a55cd|08b639a2ff45422eaeabd56b68a3e3e4|0
-10:TestCtiCode.java|1|12e770a297d|34b|9b37f27f|454cdf631bc9469a87b31700da097fed|0
-3:map|2|0|0|0|47eb9e8c6aaa4370bd08b5dd044face5|0
-d:TestCtpi.java|1|12e770a292f|193b|906f819d|d2da0fe66b2f442bbc261cefd104e762|0

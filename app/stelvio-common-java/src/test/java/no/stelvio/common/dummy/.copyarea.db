@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\dummy
-2
-3
-9:Bean.java|1|12e7708302f|73f|a1e74123|06b088811dc24089a6c04b8431d473bb|0
-e:BeanOther.java|1|12e7708304e|411|69443d37|36cf2e96c6fb4bf98c5c831dff199340|0
-11:CalendarBean.java|1|12e7708306e|408|8d7a2146|391d2429113147d9bb8239ef00719d99|0

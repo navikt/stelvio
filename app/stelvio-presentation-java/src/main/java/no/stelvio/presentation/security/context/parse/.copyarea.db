@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\context\parse
-2
-3
-10:WebAppRoles.java|1|12e7709447d|40f|a1474fbf|63e4b26c2a7f4ed4a354c2d634676477|0
-11:WebXmlParser.java|1|12e770944ea|b09|725881e9|f57a2a9a239643508f6dd3d5e3067008|0
-11:SecurityRole.java|1|12e7709445d|367|d61c10c2|e34401a571104cd59937c38741c74e18|0

@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\error
-2
-3
-10:ErrorAction.java|1|12e77097f72|dfd|a5ac86a8|551072ef21364ba8b65c3d06246a90bf|0
-1e:ErrorPageExceptionHandler.java|1|12e77098cd0|15ad|3a51347e|3c555c279c8d41339e587ab51e966967|0
-2a:ExceptionHandlerFlowExecutionListener.java|1|12e77098cff|ef7|ef340d92|92ce35fef49f4dcfa24785a50a3c3a5d|0

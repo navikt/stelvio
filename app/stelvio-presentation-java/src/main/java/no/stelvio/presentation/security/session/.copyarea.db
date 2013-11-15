@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\session
-2
-3
-1d:SecuritySessionAttribute.java|1|12e77097ddc|575|25fa474|9d1f0d48df7147a7bd0e10c39c2b74be|0
-1e:StelvioSecuritySessionMap.java|1|12e77097e49|160|c5e46e52|f94e9249e3f44d9cab07065a271fc93f|0
-29:HttpSessionSecurityIntegrationFilter.java|1|12e77097e0b|f78|67ccfe18|4a4f3deba6664a97ae0a3dd94b1d6b82|0

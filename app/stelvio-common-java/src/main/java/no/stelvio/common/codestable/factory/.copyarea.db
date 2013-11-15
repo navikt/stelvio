@@ -1,8 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\codestable\factory
-2
-4
-7:adapter|2|0|0|0|b621d8af38af49db9b3d867fcb505cdc|0
-25:NoGenericsCodesTableItemsFactory.java|1|12e77074c26|4b4|d7719e5b|d282872e07e74fc9a56aa79d3e67fd14|0
-1b:CodesTableItemsFactory.java|1|12e77074bf7|90f|3ce71395|6cb13d34d72d4d30a871d4438fe9441f|0
-7:support|2|0|0|0|5d9d186bf8154228b7f3cb133569e7cc|0

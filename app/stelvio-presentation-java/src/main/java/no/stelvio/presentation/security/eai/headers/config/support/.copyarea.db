@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\eai\headers\config\support
-2
-3
-1b:DefaultEaiHeaderConfig.java|1|12e77096e9a|43b|85915bef|40969e81f20e4c49a91ed8912b294834|0
-14:StanzaEntryEnum.java|1|12e77096ee8|314|8419e5ec|57996c11d84d4d9d82b4e75864014c4b|0
-1a:ExtendedAttributeEnum.java|1|12e77096eb9|32c|e23cfab7|3e98e1c02ef048dd94ed766cde630c56|0

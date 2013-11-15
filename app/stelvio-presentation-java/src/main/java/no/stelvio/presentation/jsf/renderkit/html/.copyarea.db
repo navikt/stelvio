@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\jsf\renderkit\html
-2
-3
-1d:HtmlMenuExtendedRenderer.java|1|12e770932d9|1c70|64be5d9d|5c3cea42199247489a92a564bb76a3b0|0
-1a:HtmlRadioRendererBase.java|1|12e77093308|df9|79a63110|3135875ccfc14002a56449908477c719|0
-16:HtmlRadioRenderer.java|1|12e77093337|1953|a7f2ac93|43a5e2d80ed04a4bb6df384c2a23f42e|0

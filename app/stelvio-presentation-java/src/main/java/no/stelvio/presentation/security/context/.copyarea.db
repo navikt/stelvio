@@ -1,9 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\context
-2
-5
-5:parse|2|0|0|0|e31a38d3b8f945d49a8e2843be2fe0e8|0
-22:AbstractSecurityContextFilter.java|1|12e7709440f|2734|76bb26b9|b24c6c48cf954befbd79b84d01afee6f|0
-1a:SecurityContextFilter.java|1|12e770943f0|5cc|6d59fae5|1fbc253d3c9d49bd9000b017d81703b0|0
-1f:AcegiSecurityContextFilter.java|1|12e770943b1|a8a|95eeb578|6643a63946794490bee1b8bcf2061617|0
-22:WSCustomSecurityContextFilter.java|1|12e7709443e|7d8|7ad1af26|d6e5314aa4f7465eab28a3b3cea60fb5|0

@@ -1,7 +1,0 @@
-ClearCase CopyAreaDB|4
-Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\log\factory
-2
-3
-14:Log4jLogFactory.java|1|12e7707bc64|207f|dc41d5a7|c7fb7ea5a87c4f99968420160cb4a185|0
-15:UndeployListener.java|1|12e7707bca2|382|d9b4363c|ceece8afa76949278bbf295cec7c3557|0
-13:LogFactoryImpl.java|1|12e7707bc83|281|8866cfa1|cf40676dae96494395cbd55095bc6b17|0
