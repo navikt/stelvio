@@ -578,7 +578,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/web/performa
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/web/tag/JsfCoreLibrary.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/web/tag/JsfFunctions.java -text
 app/stelvio-presentation-java/src/main/resources/META-INF/faces-config.xml -text
-app/stelvio-presentation-java/src/main/resources/META-INF/nav-stelvio.tld -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/binding/context/MessagesFixSourcePhaseListenerTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/context/AbstractFilterTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/context/AbstractMockFilterChain.java -text
