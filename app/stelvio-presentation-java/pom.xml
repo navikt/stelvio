@@ -60,10 +60,6 @@
 			<artifactId>spring-js</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.groundside</groupId>
 			<artifactId>jsf-security</artifactId>
 		</dependency>
@@ -91,11 +87,6 @@
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
 			<scope>provided</scope>
-		</dependency>
-		<dependency> <!-- Mockito is the preferred mocking framework in Stelvio. JMock should be removed -->
-			<groupId>org.jmock</groupId>
-			<artifactId>jmock</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>

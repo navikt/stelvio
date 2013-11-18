@@ -120,10 +120,5 @@
 			<groupId>org.springframework</groupId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-            <scope>provided</scope>
-        </dependency>
 	</dependencies>
 </project>
