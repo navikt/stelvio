@@ -38,6 +38,10 @@ public class OpenAmAccessManager implements StelvioAccessManager {
     private static final String PARAMETER_ATTRIBUTES = "attributes";
     private static final String PARAMETER_UID = "uid";
     private static final String PARAMETER_SECURITY_LEVEL = "SecurityLevel";
+    private static final String PARAMETER_AUTH_TYPE = "AuthType";
+    private static final String PARAMETER_AUTH_METHOD = "AuthMethod";
+    private static final String VALID_AUTH_METHOD = "NAV-OneDayPw";
+    private static final String VALID_AUTH_TYPE = "Federation";
 
     private StelvioPrincipal principal;
     private Logger log = Logger.getLogger("no.stelvio.presentation.security.sso.accessmanager.OpenAmAccessManager");
@@ -172,6 +176,17 @@ public class OpenAmAccessManager implements StelvioAccessManager {
         String restResponse = openAMRestAPI.invokeOpenAmRestApi((String) representation, openAMQueryTemplateWithAddress);
         Map<String, String> attributeMap = parseUserAttributes(restResponse);
 
+        String authMethod = attributeMap.get(PARAMETER_AUTH_METHOD);
+        String authType = attributeMap.get(PARAMETER_AUTH_TYPE);
+        if (log.isLoggable(Level.FINE)) {
+            log.fine("AuthMethod=" + authMethod + ", AuthType=" + authType);
+        }
+        // check for valid authMethod or authType
+        if ( !(authType.contains(VALID_AUTH_TYPE) || authMethod.contains(VALID_AUTH_METHOD))) {
+            throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod +
+                    ", expected " + VALID_AUTH_METHOD + ". AuthType was " + authType + ", expected " + VALID_AUTH_TYPE);
+        }
+        
         String userId = attributeMap.get(PARAMETER_UID);
         String authorizedAs = userId;
 
