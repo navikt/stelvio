@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
 <!--
 	Distributed Services Configuration is used by the RemoteServiceLocator
 -->
-<beans>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
 	<bean id="TestBean3" class="no.stelvio.common.ejb.RemoteServiceDescription">
 		<property name="jndiName"><value>ejb/business/bidrag/BusinessFacadeHome</value></property>
 		<property name="providerUrl"><value>iiop://localhost:2809/</value></property>

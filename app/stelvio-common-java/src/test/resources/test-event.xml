@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
 <!--
 	Testing event publishing
-	 TODO: use the Spring xml schema instead
 -->
-<beans>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
 	<bean id="applicationEventPublisherAwareBean" class="no.stelvio.common.event.EventIntegrationTest$TestBean"/>
 	<bean class="no.stelvio.common.event.EventIntegrationTest$TestApplicationEventListener"/>
 </beans>
