@@ -2,6 +2,7 @@
 <#include "CryptoKey.ftl">
 <#include "SSLCertificate.ftl">
 <#include "SigningCertificate.ftl">
+<#include "SigningCertificateHSM.ftl">
 <#include "TrustedCertificate.ftl">
 <#include "CryptoIdentCred.ftl">
 <#include "CryptoValCred.ftl">
@@ -27,6 +28,16 @@
 	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
 </#macro>
 
+<#macro FrontsideSSLHSM name certificateName keyName certificateFile certificatePwd>
+	<#local sslIdCred="${name}_CryptoIdCred"/>
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslProxyProfile="${name}_SSLProxyProfile"/>
+	<@SSLCertificate name="${certificateName}" file="${certificateFile}" password="${certificatePwd}"/>
+	<@CryptoIdentCred name="${sslIdCred}" key="${keyName}" cert="${certificateName}"/>
+	<@ReverseCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}"/>
+	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
+</#macro>
+
 <#macro TwoWaySSLClientAuth
 		name
 		keystoreName
@@ -40,6 +51,27 @@
 	<@SSLCertificate name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
 	<@CryptoKey name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
 	<@CryptoIdentCred name="${sslIdCred}" key="${keystoreName}" cert="${keystoreName}"/>
+	<#list trustedCerts as cert>
+	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
+	</#list>
+	<@CryptoValCred name="${sslValCred}" trustedCerts=trustedCerts/>
+	<@TwoWayCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}" valCred="${sslValCred}"/>
+	<@TwoWaySSLProxy name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}"/>
+</#macro>
+
+<#macro TwoWaySSLClientAuthHSM
+		name
+		certificateName
+		certificateFile
+		certificatePwd
+		keyName
+		trustedCerts>
+	<#local sslIdCred="${name}_CryptoIdCred"/>
+	<#local sslValCred="${name}_CryptoValCred">
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslProxyProfile="${name}_SSLProxyProfile"/>
+	<@SSLCertificate name="${certificateName}" file="${certificateFile}" password="${certificatePwd}"/>
+	<@CryptoIdentCred name="${sslIdCred}" key="${keyName}" cert="${certificateName}"/>
 	<#list trustedCerts as cert>
 	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
 	</#list>
@@ -67,6 +99,34 @@
 	<@SSLCertificate name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
 	<@CryptoKey name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
 	<@CryptoIdentCred name="${sslIdCred}" key="${keystoreName}" cert="${keystoreName}"/>
+	<#list trustedCerts as cert>
+	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
+	</#list>
+	<@CryptoValCredParameterized name="${sslValCred}" trustedCerts=trustedCerts useCRL=useCRL/>
+	<@TwoWayCryptoProfileParameterized name="${sslCryptoProfile}" identCred="${sslIdCred}" valCred="${sslValCred}" ciphers=ciphers 
+		disableSSLv2=disableSSLv2 disableSSLv3=disableSSLv3 disableTLSv1=disableTLSv1/>
+	<@TwoWaySSLProxyParameterized name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}" permitInsecureServers=permitInsecureServers/>
+</#macro>
+
+<#macro TwoWaySSLClientAuthParameterizedHSM
+		name
+		certificateName
+		certificateFile
+		certificatePwd
+		keyName
+		trustedCerts
+		useCRL
+		ciphers
+		disableSSLv2
+		disableSSLv3
+		disableTLSv1
+		permitInsecureServers>
+	<#local sslIdCred="${name}_CryptoIdCred"/>
+	<#local sslValCred="${name}_CryptoValCred">
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslProxyProfile="${name}_SSLProxyProfile"/>
+	<@SSLCertificate name="${certificateName}" file="${certificateFile}" password="${certificatePwd}"/>
+	<@CryptoIdentCred name="${sslIdCred}" key="${keyName}" cert="${certificateName}"/>
 	<#list trustedCerts as cert>
 	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
 	</#list>
