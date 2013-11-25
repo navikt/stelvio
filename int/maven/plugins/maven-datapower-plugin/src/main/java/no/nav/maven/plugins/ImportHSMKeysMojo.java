@@ -42,7 +42,7 @@ public class ImportHSMKeysMojo extends AbstractDeviceMgmtMojo {
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		getLog().info("Executing ImportHSMKeysMojo");
 		
-		HashSet<String> importedKeys = new HashSet<String>();
+//		HashSet<String> importedKeys = new HashSet<String>();
 		
 		// Iterate over all possible arguments an check if they are present.
 		getLog().debug("Importing HSM keys");
@@ -60,33 +60,33 @@ public class ImportHSMKeysMojo extends AbstractDeviceMgmtMojo {
 					keyKwkExport += i;
 				}
 				importKey(keyInfo.get(keyName), keyInfo.get(keyFileName), keyInfo.get(keyPassword), keyInfo.get(keyKwkExport));
-				importedKeys.add(keyInfo.get(keyFileName));
+//				importedKeys.add(keyInfo.get(keyFileName));
 			}
 		}
 		
-		// DELETE ALL FILES IN CERT:/// DIRECTORY
-		for (Iterator<String> iterator = importedKeys.iterator(); iterator.hasNext();) {
-			String key = iterator.next();
-			getLog().debug("Deleting key '" + key + "'");
-			try {
-				String response = getXMLMgmtSession().deleteFile(key, DeviceFileStore.CERT);
-				
-				// Verify the deletion.
-				int resultBeginningIndex =response.indexOf("<dp:result>", 0);
-				int resultEndIndex = response.indexOf("</dp:result>", 0);
-				
-				if(resultBeginningIndex > 0 && resultEndIndex > resultBeginningIndex){
-					if(response.substring(resultBeginningIndex, resultEndIndex).indexOf("OK") > 0){
-						continue;
-					}
-				}
-				getLog().error("Removal of key '" + key + "' failed. Got response:\r\n" + response);
-				throw new MojoExecutionException("Failed to delete key '" + key + "'");
-				
-			} catch (XMLMgmtException e) {
-				throw new MojoExecutionException("Failed to delete key '" + key + "'",e);
-			}
-		}
+//		// DELETE ALL FILES IN CERT:/// DIRECTORY
+//		for (Iterator<String> iterator = importedKeys.iterator(); iterator.hasNext();) {
+//			String key = iterator.next();
+//			getLog().debug("Deleting key '" + key + "'");
+//			try {
+//				String response = getXMLMgmtSession().deleteFile(key, DeviceFileStore.CERT);
+//				
+//				// Verify the deletion.
+//				int resultBeginningIndex =response.indexOf("<dp:result>", 0);
+//				int resultEndIndex = response.indexOf("</dp:result>", 0);
+//				
+//				if(resultBeginningIndex > 0 && resultEndIndex > resultBeginningIndex){
+//					if(response.substring(resultBeginningIndex, resultEndIndex).indexOf("OK") > 0){
+//						continue;
+//					}
+//				}
+//				getLog().error("Removal of key '" + key + "' failed. Got response:\r\n" + response);
+//				throw new MojoExecutionException("Failed to delete key '" + key + "'");
+//				
+//			} catch (XMLMgmtException e) {
+//				throw new MojoExecutionException("Failed to delete key '" + key + "'",e);
+//			}
+//		}
 	}
 	
 	/**
