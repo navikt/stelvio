@@ -10,7 +10,7 @@
 
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>datapower-xml-mgmt</artifactId>
-	<version>1.5</version>
+	<version>1.6-SNAPSHOT</version>
 
 	<name>DataPower XML Management Interface Library</name>
 	
@@ -39,7 +39,7 @@
 	</dependencies>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-xml-mgmt-1.5</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-xml-mgmt-1.5</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/datapower-xml-mgmt</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/datapower-xml-mgmt</developerConnection>
 	</scm>
 </project>
