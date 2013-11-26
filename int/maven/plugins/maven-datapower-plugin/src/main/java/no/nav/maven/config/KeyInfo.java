@@ -1,5 +1,13 @@
 package no.nav.maven.config;
 
+
+/**
+ * Key Info with data that may be used to import HSM keys
+ * 
+ * @author Christian Askeland, Accenture
+ *
+ */
+
 public class KeyInfo {
 	
 	private String name;

@@ -17,6 +17,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * @goal importHSMKeys
  * 
  * @author Petter Solberg, Accenture
+ * @author Christian Askeland, Accenture
  */
 
 public class ImportHSMKeysMojo extends AbstractDeviceMgmtMojo {
@@ -27,7 +28,6 @@ public class ImportHSMKeysMojo extends AbstractDeviceMgmtMojo {
 	 */
 	private KeyInfo[] keyInfos;
 
-	private static final String[] KEY_INFO_ARGUMENTS = {"name", "fileName", "password", "kwkExport"};
 	private static final String CERTIFICATE_DRIECTORY = "cert:///";
 	private static final String RESPONSE_START = "<dp:result>";
 	private static final String RESPONSE_END = "</dp:result>";
