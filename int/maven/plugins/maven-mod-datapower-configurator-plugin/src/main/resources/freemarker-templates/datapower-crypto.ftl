@@ -24,6 +24,16 @@
 	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
 </#macro>
 
+<#macro FrontsideSSLHSM name certificateName keyName certificateFile certificatePwd>
+	<#local sslIdCred="${name}_CryptoIdCred"/>
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslProxyProfile="${name}_SSLProxyProfile"/>
+	<@SSLCertificate name="${certificateName}" file="${certificateFile}" password="${certificatePwd}"/>
+	<@CryptoIdentCred name="${sslIdCred}" key="${keyName}" cert="${certificateName}"/>
+	<@ReverseCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}"/>
+	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
+</#macro>
+
 <#macro TwoWaySSLClientAuth
 		name
 		keystoreName
