@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Starter kl 03.00</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -62,6 +62,12 @@
     <entry>
       <string>logRotator</string>
       <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>3</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
     </entry>
@@ -199,8 +205,46 @@
     <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
+        <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
+          <recipientList>test@example.com</recipientList>
+          <configuredTriggers>
+            <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>true</sendToDevelopers>
+                <includeCulprits>true</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>false</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>true</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+          </configuredTriggers>
+          <contentType>default</contentType>
+          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+          <defaultContent>$DEFAULT_CONTENT</defaultContent>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -234,8 +278,8 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Maven>
-            <targets>clean deploy</targets>
-            <mavenName>Maven 2</mavenName>
+            <targets>clean -e release:clean release:prepare -DdryRun=true</targets>
+            <mavenName>(Default)</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
         </originalValue>
@@ -316,7 +360,8 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-poms</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/layers</remote>
+              <local>.</local>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -348,13 +393,17 @@
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.TimerTrigger">
+          <spec># at 03:00 in the morning
+0 3 * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1385370768435</creationTime>
+  <creationTime>1386328166411</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">

@@ -24,6 +24,15 @@
       </base-property>
     </entry>
     <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
@@ -34,15 +43,6 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
-    </entry>
-    <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
     </entry>
     <entry>
       <string>scmCheckoutRetryCount</string>
@@ -80,6 +80,14 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
+        <originalValue class="hudson.tasks.BuildTrigger">
+          <childProjects>TRUNK-nav 2</childProjects>
+          <threshold>
+            <name>SUCCESS</name>
+            <ordinal>0</ordinal>
+            <color>BLUE</color>
+          </threshold>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
@@ -94,18 +102,18 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>jdk</string>
       <string-property>
         <originalValue class="string">(Default)</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>appointedNode</string>
@@ -187,14 +195,6 @@
   <mavenValidationLevel>0</mavenValidationLevel>
   <reporters/>
   <publishers>
-    <hudson.tasks.BuildTrigger>
-      <childProjects>TRUNK-nav-modules-ci</childProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-      </threshold>
-    </hudson.tasks.BuildTrigger>
     <hudson.plugins.chucknorris.CordellWalkerRecorder>
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>

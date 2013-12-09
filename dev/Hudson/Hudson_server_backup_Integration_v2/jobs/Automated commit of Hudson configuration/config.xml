@@ -273,7 +273,8 @@ SVN_COMMENT=&quot;$JOB_NAME: $HUDSON_HOME&quot;
 
 cd $HUDSON_HOME
 
-svn add --force -q --parents config.xml plugins.list jobs/*/config.xml 
+#svn add --force -q --parents config.xml plugins.list jobs/*/config.xml 
+svn add --force -q --parents config.xml jobs/*/config.xml 
 
 svn st |grep &apos;^!&apos; |while read notation folder
 do

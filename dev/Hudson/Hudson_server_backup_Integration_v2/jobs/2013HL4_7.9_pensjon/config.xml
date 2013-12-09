@@ -32,6 +32,27 @@
       </copy-write-list-property>
     </entry>
     <entry>
+      <string>hudson-tasks-BuildTrigger</string>
+      <external-property>
+        <originalValue class="hudson.tasks.BuildTrigger">
+          <childProjects>TRUNK-pensjon 2</childProjects>
+          <threshold>
+            <name>SUCCESS</name>
+            <ordinal>0</ordinal>
+            <color>BLUE</color>
+          </threshold>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
+      <string>hudson-triggers-SCMTrigger</string>
+      <trigger-property>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
+    </entry>
+    <entry>
       <string>concurrentBuild</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
@@ -59,18 +80,23 @@
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
+    <entry>
+      <string>hudson-triggers-TimerTrigger</string>
+      <trigger-property>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
+    </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <creationTime>0</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet"/>
-  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[6]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[8]/scm-property/originalValue"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
