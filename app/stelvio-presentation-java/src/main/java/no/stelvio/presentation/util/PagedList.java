@@ -3,7 +3,7 @@ package no.stelvio.presentation.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
+import javax.faces.event.FacesEvent;
 
 /**
  * This interface indicates requirements for drawing a standard h:dataTable with nav:pageingFooter for navigation.
@@ -19,9 +19,9 @@ public interface PagedList<T> extends Serializable {
 	 * Handles the paging of the list.
 	 * 
 	 * @param event
-	 *            JSF ActionEvent
+	 *            JSF FacesEvent
 	 */
-	void pageing(ActionEvent event);
+	void pageing(FacesEvent event);
 
 	/**
 	 * The list held by the object. This is input to h:dataTable value.

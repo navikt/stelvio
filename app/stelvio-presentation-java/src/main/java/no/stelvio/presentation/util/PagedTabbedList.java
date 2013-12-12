@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.event.ActionEvent;
+import javax.faces.event.FacesEvent;
 
 /**
  * Creating a tabbed and paged list to display with JSF datatable tag.
@@ -105,9 +105,9 @@ public class PagedTabbedList<T> extends PagedSortableList<T> {
 	 * Handles the paging of the list.
 	 * 
 	 * @param event
-	 *            JSF ActionEvent
+	 *            JSF FacesEvent
 	 */
-	public void pageing(ActionEvent event) {
+	public void pageing(FacesEvent event) {
 		// jac2812: Changed this method due to SIR #63580. The paging does not work correctly in view SIS002 Opptjening
 		// folketrygden if the view contains two lists. Therefore, the id's of the tab elements must be generated differently
 		// for this view. The old element id was equal to the text on the tab, for instance _2000-2009. The new id consists of

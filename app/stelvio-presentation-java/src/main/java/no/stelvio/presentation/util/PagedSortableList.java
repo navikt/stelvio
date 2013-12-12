@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
+import javax.faces.event.FacesEvent;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -178,7 +178,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * @param event
 	 *            the event that has occured
 	 */
-	public void pageing(ActionEvent event) {
+	public void pageing(FacesEvent event) {
 		String way = event.getComponent().getId();
 
 		if (NEXT.equals(way)) {
@@ -219,7 +219,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * @param event
 	 *            the event that has occured
 	 */
-	public void sorting(ActionEvent event) {
+	public void sorting(FacesEvent event) {
 		String column = event.getComponent().getId();
 
 		if (column.equals(lastSortColumn)) {
