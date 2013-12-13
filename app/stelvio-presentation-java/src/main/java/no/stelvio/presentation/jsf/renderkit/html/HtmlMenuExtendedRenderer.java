@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UISelectMany;
 import javax.faces.component.UISelectOne;
+import javax.faces.component.behavior.ClientBehavior;
+import javax.faces.component.behavior.ClientBehaviorContext;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.Converter;
@@ -94,6 +98,13 @@ public class HtmlMenuExtendedRenderer extends HtmlMenuRenderer {
 		if (disabled) {
 			writer.writeAttribute(HTML.DISABLED_ATTR, Boolean.TRUE, null);
 		}
+		// render clientbehavior (for <f:ajax> support)
+		if (uiComponent instanceof ClientBehaviorHolder)
+        {
+			Map<String, List<ClientBehavior>> behaviors = ((ClientBehaviorHolder) uiComponent).getClientBehaviors();
+            HtmlRendererUtils.renderBehaviorizedEventHandlers(facesContext, writer, uiComponent, behaviors);
+            HtmlRendererUtils.renderBehaviorizedFieldEventHandlers(facesContext, writer, uiComponent, behaviors);
+        }		
 
 		Set lookupSet = HtmlRendererUtils.getSubmittedOrSelectedValuesAsSet(selectMany, uiComponent, facesContext, converter);
 

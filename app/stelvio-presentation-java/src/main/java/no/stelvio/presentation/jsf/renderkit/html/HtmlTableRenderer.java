@@ -1,9 +1,13 @@
 package no.stelvio.presentation.jsf.renderkit.html;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIData;
+import javax.faces.component.behavior.ClientBehavior;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
@@ -54,6 +58,14 @@ public class HtmlTableRenderer extends org.apache.myfaces.renderkit.html.ext.Htm
 
 			writer.endElement(HTML.TBODY_ELEM);
 		}
+		
+		// render clientbehavior (for <f:ajax> support)
+		if (component instanceof ClientBehaviorHolder)
+        {
+			Map<String, List<ClientBehavior>> behaviors = ((ClientBehaviorHolder) component).getClientBehaviors();
+            HtmlRendererUtils.renderBehaviorizedEventHandlers(facesContext, writer, component, behaviors);
+            HtmlRendererUtils.renderBehaviorizedFieldEventHandlers(facesContext, writer, component, behaviors);
+        }	
 
 		afterBody(facesContext, (UIData) component);
 	}

@@ -19,9 +19,13 @@
 package no.stelvio.presentation.jsf.renderkit.html;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.NamingContainer;
 import javax.faces.component.UIInput;
+import javax.faces.component.behavior.ClientBehavior;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
@@ -89,6 +93,14 @@ public class HtmlRadioRendererBase
         if (isDisabled(facesContext, uiComponent))
         {
             writer.writeAttribute(org.apache.myfaces.shared_tomahawk.renderkit.html.HTML.DISABLED_ATTR, Boolean.TRUE, null);
+        }
+        
+		// render clientbehavior (for <f:ajax> support)
+		if (uiComponent instanceof ClientBehaviorHolder)
+        {
+			Map<String, List<ClientBehavior>> behaviors = ((ClientBehaviorHolder) uiComponent).getClientBehaviors();
+            HtmlRendererUtils.renderBehaviorizedEventHandlers(facesContext, writer, uiComponent, behaviors);
+            HtmlRendererUtils.renderBehaviorizedFieldEventHandlers(facesContext, writer, uiComponent, behaviors);
         }
 
         writer.endElement(HTML.INPUT_ELEM);
