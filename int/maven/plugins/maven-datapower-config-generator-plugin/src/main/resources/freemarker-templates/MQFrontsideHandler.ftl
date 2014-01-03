@@ -1,6 +1,6 @@
-<#macro MQFrontsideHandler name queueManager getQueue retrieveBackoutSettings>
+<#macro MQFrontsideHandler name queueManager getQueue retrieveBackoutSettings mAdminState>
 	<MQSourceProtocolHandler name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-		<mAdminState>enabled</mAdminState>
+		<mAdminState>${mAdminState}</mAdminState>
 		<QueueManager class="MQQM">${queueManager}</QueueManager>
 		<GetQueue>${getQueue}</GetQueue>
 		<CodePage>0</CodePage>
