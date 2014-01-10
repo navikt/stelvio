@@ -11,6 +11,8 @@ import com.sshtools.j2ssh.transport.HostKeyVerification;
 import com.sshtools.j2ssh.transport.TransportProtocolException;
 import com.sshtools.j2ssh.transport.publickey.SshPublicKey;
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author test@example.com
@@ -22,6 +24,8 @@ public class SshUtil {
 	private static String currentBasePath;
 	private static Integer ServerAlreadyStartedExitCode = 255;
 	private static Integer ServerAlreadyStoppedExitCode = 246;
+
+	private final static Logger logger = LoggerFactory.getLogger(SshUtil.class);
 
 	/**
 	 * @throws NonZeroSshExitCode
@@ -49,18 +53,18 @@ public class SshUtil {
 			if ( exitCode == null || exitCode != 0 ){
 				NonZeroSshExitCode nonZeroSshExitCodeException = new NonZeroSshExitCode("[ERROR] The ssh command had an exitcode different that zero (was "+ exitCode +")!");
 				nonZeroSshExitCodeException.setExitCode(exitCode);
-				System.out.println("[INFO] Throwing non zero exit code: " + exitCode);
+				logger.info("Throwing non zero exit code: " + exitCode);
 				throw nonZeroSshExitCodeException;
 			}
 		} catch (IOException e){
 			throw new RuntimeException("[ERROR] Execution of command failed!");
 		}
-		System.out.println("[INFO] Finished executing command.");
+		logger.info("Finished executing command.");
 	}
 
 	private static boolean executeCommand(String cmd, SessionChannelClient session) throws IOException {
 
-		System.out.println("[INFO] Executing command.");
+		logger.info("Executing command.");
 		boolean result = session.executeCommand(cmd);
 		if (result) {
 			InputStream in = session.getInputStream();
@@ -127,7 +131,7 @@ public class SshUtil {
 				}
 				currentBasePath = OLD_BASE_PATH;
 			}
-			System.out.println("[INFO] Setting ssh basepath to: " + currentBasePath);
+			logger.info("Setting ssh basepath to: " + currentBasePath);
 			return currentBasePath;
 		}
 	}
@@ -142,7 +146,7 @@ public class SshUtil {
 			executeSingleCommand(sshUser, cmd);
 		} catch (NonZeroSshExitCode e){
 			if (e.getExitCode() == ServerAlreadyStartedExitCode) {
-				System.out.println("[INFO] Server was already stopped! (exitcode " + ServerAlreadyStoppedExitCode + ")");
+				logger.info("Server was already stopped! (exitcode " + SERVER_ALREADY_STOPED_EXIT_CODE + ")");
 			} else {
 				throw e;
 			}
@@ -154,7 +158,7 @@ public class SshUtil {
 			executeSingleCommand(sshUser, cmd);
 		} catch (NonZeroSshExitCode e){
 			if (e.getExitCode() == ServerAlreadyStartedExitCode) {
-				System.out.println("[INFO] Server was already running! (exitcode " + ServerAlreadyStartedExitCode + ")");
+				logger.info("Server was already running! (exitcode " + SERVER_ALREADY_STARTED_EXIT_CODE + ")");
 			} else {
 				throw e;
 			}
@@ -180,7 +184,7 @@ public class SshUtil {
 			if (session != null) {
 				String cmd = "df /opt/";
 				boolean result;
-				System.out.println("[INFO] Checking disk space usage in /opt");
+				logger.info("Checking disk space usage in /opt");
 				if (session.executeCommand(cmd)) {
 					InputStream in = session.getInputStream();
 					byte buffer[] = new byte[255];
