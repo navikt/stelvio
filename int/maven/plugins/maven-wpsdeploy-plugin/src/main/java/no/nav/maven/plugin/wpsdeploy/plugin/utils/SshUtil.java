@@ -11,6 +11,7 @@ import com.sshtools.j2ssh.transport.HostKeyVerification;
 import com.sshtools.j2ssh.transport.TransportProtocolException;
 import com.sshtools.j2ssh.transport.publickey.SshPublicKey;
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode;
+import no.nav.maven.plugin.wpsdeploy.plugin.models.SshUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

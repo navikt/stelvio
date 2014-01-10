@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.utils;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode;
+import no.nav.maven.plugin.wpsdeploy.plugin.models.SshUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

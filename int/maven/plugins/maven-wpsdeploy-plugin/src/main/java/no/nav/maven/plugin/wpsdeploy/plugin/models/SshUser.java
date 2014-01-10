@@ -1,4 +1,4 @@
-package no.nav.maven.plugin.wpsdeploy.plugin.utils;
+package no.nav.maven.plugin.wpsdeploy.plugin.models;
 
 public class SshUser {
 	private String hostname;

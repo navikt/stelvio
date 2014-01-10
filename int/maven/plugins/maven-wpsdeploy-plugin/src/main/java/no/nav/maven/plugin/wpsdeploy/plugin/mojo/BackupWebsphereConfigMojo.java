@@ -1,7 +1,7 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshCommands;
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshUser;
+import no.nav.maven.plugin.wpsdeploy.plugin.models.SshUser;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
