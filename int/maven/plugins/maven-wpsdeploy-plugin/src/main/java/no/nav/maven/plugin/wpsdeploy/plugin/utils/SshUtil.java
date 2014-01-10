@@ -110,7 +110,7 @@ public class SshUtil {
 	 */
 	public static void backupConfig(SshUser sshUser) {
 		String baseDir = getBaseDir(sshUser); //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
-		String cmd = baseDir + "backupConfig.sh " + baseDir + "WebSphereConfig_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
+		String cmd = baseDir + "backupConfig.sh " + baseDir + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 		executeSingleCommand(sshUser, cmd);
 	}
 
