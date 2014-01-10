@@ -19,10 +19,10 @@ public class WebUtil {
 			HttpURLConnection huc =  (HttpURLConnection) url.openConnection();
 			int responsecode = huc.getResponseCode();
 			if (responsecode == 404){
-				throw new HttpCode404Exception(responsecode+" response code returned from URL: "+ urlString);
+				throw new HttpCode404Exception("[readUrl()]: "+ responsecode+" response code returned from URL: "+ urlString);
 			} else {
 				if (responsecode < 200 && responsecode >= 300){
-					throw new HttpCodeNon2XXException(responsecode +" response code returned from URL: "+ urlString);
+					throw new HttpCodeNon2XXException("[readUrl()]: "+ responsecode +" response code returned from URL: "+ urlString);
 				} else {
 					InputStream is = huc.getInputStream();
 					outPut = convertStreamToString(is);
@@ -36,35 +36,26 @@ public class WebUtil {
 		return outPut.toString();
 	}
 
-	/*
-	URL url = new URL(“location address”);
-URLConnection uc = url.openConnection();
-String userpass = username + ":" + password";
-String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
-uc.setRequestProperty ("Authorization", basicAuth);
-InputStream in = uc.getInputStream();
-	 */
-
 	public static String readUrlWithAuth(String urlString, String username, String password) {
 		String outPut;
+		String userpass = username + ":" + password;
+		String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
 
 		try {
 			URL url = new URL(urlString);
 			HttpURLConnection huc =  (HttpURLConnection) url.openConnection();
+			huc.setRequestProperty("Authorization", basicAuth);
 			int responsecode = huc.getResponseCode();
 			if (responsecode != 404){
 				if (responsecode >= 200 && responsecode < 300){
-					String userpass = username + ":" + password;
-					String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
-					huc.setRequestProperty("Authorization", basicAuth);
 					InputStream is = huc.getInputStream();
 					outPut = convertStreamToString(is);
 					is.close();
 				} else {
-					throw new HttpCodeNon2XXException(responsecode +" response code returned from URL: "+ urlString);
+					throw new HttpCodeNon2XXException("[readUrlWithAuth()]: "+ responsecode +" response code returned from URL: " + urlString);
 				}
 			} else {
-				throw new HttpCode404Exception(responsecode+" response code returned from URL: "+ urlString);
+				throw new HttpCode404Exception("[readUrlWithAuth()]: "+ responsecode +" response code returned from URL: "+ urlString);
 			}
 		} catch (IOException e) {
 			throw new ConfigurationException("Exception when reading url with authorization: "+ urlString +"\n"+ e);
