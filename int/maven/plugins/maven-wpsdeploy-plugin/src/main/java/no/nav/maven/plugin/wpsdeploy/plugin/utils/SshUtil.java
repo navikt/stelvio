@@ -12,6 +12,7 @@ import com.sshtools.j2ssh.transport.TransportProtocolException;
 import com.sshtools.j2ssh.transport.publickey.SshPublicKey;
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode;
 import no.nav.maven.plugin.wpsdeploy.plugin.models.SshUser;
+import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,9 +30,10 @@ public class SshUtil {
 	/**
 	 * @throws NonZeroSshExitCode
 	 */
-	public static String executeCommand(SshUser sshUser, String cmd) {
+	public static String executeSshCommand(SshUser sshUser, String cmd) {
 		StringBuffer output = new StringBuffer();
 
+		killLogging(); // Killing logging so that we don't print the passwords used in the ssh commands
 
 		try {
 			SessionChannelClient session = openSshSession(sshUser.getHostname(), sshUser.getUsername(), sshUser.getPassword());
@@ -58,6 +60,8 @@ public class SshUtil {
 				Thread.sleep(furtherWaitTime);
 			}
 
+			reanimateLogging();
+
 			Integer exitCode =  session.getExitCode();
 			if ( exitCode == null || exitCode != 0 ){
 				NonZeroSshExitCode nonZeroSshExitCodeException = new NonZeroSshExitCode("[ERROR] The ssh command had an exitcode different that zero (was "+ exitCode +")!");
@@ -73,6 +77,15 @@ public class SshUtil {
 		logger.info("Finished executing command.");
 		return output.toString();
 	}
+	private static void killLogging() {
+		logger.info("Executing SSH command with hidden log output!");
+		System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
+		LogFactory.releaseAll();
+	}
+	private static void reanimateLogging() {
+		System.clearProperty("org.apache.commons.logging.Log");
+		LogFactory.releaseAll();
+	}
 
 	private static SessionChannelClient openSshSession(String hostname, String username, String password) throws IOException {
 		HostKeyVerification hkv = new HostKeyVerification() {
@@ -80,8 +93,6 @@ public class SshUtil {
 				return true;
 			}
 		};
-
-		java.util.logging.Logger.getLogger("com.sshtools").setLevel(java.util.logging.Level.OFF);
 
 		SshClient ssh = new SshClient();
 		ssh.connect(hostname, 22, hkv);
