@@ -31,10 +31,10 @@ def main():
 			doInstall = deployResources = True
 			existingModuleVersion = 'N/A'
 
-		elif installModule.majorVersion == existingModule.majorVersion:
+		elif not installModule.isVersioned() or installModule.majorVersion == existingModule.majorVersion:
 			existingModuleVersion = existingModule.version
 
-			if existingModule.version != installModule.version or installModule.version.endswith('-SNAPSHOT'):
+			if existingModuleVersion != installModule.version or installModule.version.endswith('-SNAPSHOT'):
 				doInstall = deployResources = True
 				if existingModule == installModule:
 					doUninstall = True

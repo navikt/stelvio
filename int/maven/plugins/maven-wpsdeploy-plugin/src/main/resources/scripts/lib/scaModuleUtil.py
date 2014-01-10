@@ -66,19 +66,22 @@ class ScaModule:
 					scaVersion = version
 				else:
 					scaVersion = getMajorVersion(version)
-		self.shortName = shortName
-		self.version = version
-		self.majorVersion = getMajorVersion(version)
-		self.scaVersion = scaVersion
-		
+
 		if scaVersion:
 			self.moduleName = '%s_v%s' % (shortName, str(scaVersion).replace('.','_'))
 		else:
 			self.moduleName = shortName
-			
+
+		self.shortName = shortName
+		self.version = version
+		self.majorVersion = getMajorVersion(version)
+		self.scaVersion = scaVersion
 		self.applicationName = self.moduleName+'App'
-		
-	def toCsvLine(self):			
+
+	def isVersioned(self):
+		return self.scaVersion is not None
+
+	def toCsvLine(self):
 		return ','.join((
 			self.shortName,
 			self.version,
