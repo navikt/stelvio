@@ -67,7 +67,7 @@ public class SshUtil {
 		SessionChannelClient session = openSshSession(hostname, username, password);
 		if (session != null) {
 			String cmd = "/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh " +
-			"/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop";
+			"/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 			boolean result = executeCommand(cmd, session);
 			session.close();
 			return result;
