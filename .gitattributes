@@ -7914,6 +7914,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/adminWrapper.py -t
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/downloadUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/fileMap.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/findCellName.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/how[!!-~]to[!!-~]catch[!!-~]wsadmin[!!-~]spesific[!!-~]exceptions.txt -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/monitor.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/pomUtil.py -text
