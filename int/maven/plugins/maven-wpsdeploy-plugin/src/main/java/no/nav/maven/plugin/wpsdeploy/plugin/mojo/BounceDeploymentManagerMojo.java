@@ -3,10 +3,8 @@
  */
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.IOException;
-
+import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshCommands;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshUser;
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshUtil;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -29,7 +27,7 @@ public class BounceDeploymentManagerMojo extends WebsphereUpdaterMojo {
 			return;
 		}
 		getLog().info("Bouncing deployment manager");
-		SshUtil.bounceDeploymentManager(sshUser, dmgrUsername, dmgrPassword);
+		SshCommands.bounceDeploymentManager(sshUser, dmgrUsername, dmgrPassword);
 		getLog().info(dmgrHostname+" bounced successfully!");
 	}
 

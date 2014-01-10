@@ -1,9 +1,7 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.IOException;
-
+import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshCommands;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshUser;
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.SshUtil;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -26,10 +24,10 @@ public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 			getLog().info("You can't run this step without having extracted the bus-configuration. Skipping ...");
 			return;
 		}
-		if (!SshUtil.checkDiskSpace(sshUser)) throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
+		if (!SshCommands.checkDiskSpace(sshUser)) throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
 		else getLog().info("There is enough disk space. Proceeding with deployment.");
 
-		SshUtil.backupConfig(sshUser);
+		SshCommands.backupConfig(sshUser);
 		getLog().info("The backup of config went OK. Proceeding with deployment.");
 	}
 
