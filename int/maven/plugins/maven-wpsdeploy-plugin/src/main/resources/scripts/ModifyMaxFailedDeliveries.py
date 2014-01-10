@@ -5,6 +5,7 @@
 #
 # Syntax: 	wsadmin -lang jython -f ModifyMaxFailedDeliveries.py
 #****************************************************************************** 
+from lib.environmentInfo import getBusName
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
@@ -19,7 +20,7 @@ def findCellName():
 	l.info("Using cell name: " + cellName)
 	return cellName
 
-BUS_NAME	 = "SCA.SYSTEM." + findCellName() + ".Bus"
+BUS_NAME = getBusName("SYSTEM")
 SIDestList = AdminTask.listSIBDestinations('-bus '+BUS_NAME).splitlines()
 COUNTER = 1
 LENGTH = repr(len(SIDestList))

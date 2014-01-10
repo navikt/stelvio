@@ -43,6 +43,7 @@
 from lib.utils6 import createJAASAuthAlias, findConfigTarget, findConfigTargetWithScope, findDataSourceWithScope, findJDBCProviderWithScope, findScopeEntry, getConfigId, getConfigItemId
 from lib.environment import createSharedLibrary
 from lib.javaPropertiesUtil import PropertiesReader
+from lib.environmentInfo import getBusName
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
@@ -811,7 +812,7 @@ def createJ2CActivationSpec ( propertiesPath ):
 	authAlias =	propReader.get("AUTH_ALIAS")
 	msgListType =	propReader.get("MSG_LISTENER_TYPE")
 
-	busName = 	propReader.get("BUS_NAME")
+	busName = 	getBusName()
 	maxBatch = 	propReader.get("MAX_BATCH")
 	maxEndpts =	propReader.get("MAX_ENDPTS")
 	destType =	propReader.get("DEST_TYPE")
@@ -968,7 +969,7 @@ def createJMSActivationSpec ( propertiesPath ):
 	name = 		propReader.get("NAME")
 	jndiName = 	propReader.get("JNDI_NAME")
 	destJndiName=	propReader.get("DEST_JNDI_NAME")
-	busName = 	propReader.get("BUSNAME")
+	busName = 	getBusName()
 
 	desc = 		propReader.get("DESC")
 	ackMode =	propReader.get("ACK_MODE")
@@ -1049,7 +1050,7 @@ def deleteJMSActivationSpec ( propertiesPath ):
 	name = 		propReader.get("NAME")
 	jndiName = 	propReader.get("JNDI_NAME")
 	destJndiName=	propReader.get("DEST_JNDI_NAME")
-	busName = 	propReader.get("BUS_NAME")
+	busName = 	getBusName()
 
 
 	#------------------------------------------------------------------------------
@@ -1095,10 +1096,10 @@ def createJMSConnectionFactory ( propertiesPath ):
 	scope =			propReader.get("SCOPE")
 	scopeName = 		propReader.get("SCOPE_NAME")
 	nodeName =		propReader.get("NODE_NAME")
-	
+
 	cfName =		propReader.get("CF_NAME")
 	cfJndiName = 		propReader.get("CF_JNDI_NAME")
-	busName = 		propReader.get("SI_BUSNAME")
+	busName = 		getBusName()
 
 	cfType =		propReader.get("CF_TYPE")
 	cfAuthAlias =		propReader.get("CF_AUTH_ALIAS")
@@ -1187,14 +1188,14 @@ def deleteJMSConnectionFactory ( propertiesPath ):
 	scope =			propReader.get("SCOPE")
 	scopeName = 		propReader.get("SCOPE_NAME")
 	nodeName =		propReader.get("NODE_NAME")
-	
+
 	cfName =		propReader.get("CF_NAME")
 	cfJndiName = 		propReader.get("CF_JNDI_NAME")
-	busName = 		propReader.get("SI_BUSNAME")
+	busName = 		getBusName()
 	global AdminTask
 
 	l.info('(deleteJMSConnectionFactory) Delete '+cfName+' on the '+busName+' SIBus')
-	
+
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
 		l.error("(deleteJMSConnectionFactory): Unable to find "+scopeName )
@@ -1286,8 +1287,8 @@ def createJMSQueue ( propertiesPath ):
 	time_to_liv =	propReader.get("TIME_TO_LIVE")
 	priority = 	propReader.get("PRIORITY")
 	readAhead =	propReader.get("READ_AHEAD")
-	busName =	propReader.get("BUSNAME")
-	
+	busName =	getBusName()
+
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS Queue on the given SIBus
 	#------------------------------------------------------------------------------
@@ -1354,8 +1355,8 @@ def deleteJMSQueue ( propertiesPath ):
 	time_to_liv =	propReader.get("TIME_TO_LIVE")
 	priority = 	propReader.get("PRIORITY")
 	readAhead =	propReader.get("READ_AHEAD")
-	busName =	propReader.get("BUSNAME")
-	
+	busName =	getBusName()
+
 	global AdminTask
 
 	l.info('(deleteJMSQueue): Delete '+qName+' for default messaging provider on '+scopeName)
@@ -1400,8 +1401,8 @@ def createJMSTopic ( propertiesPath ):
 	time =		propReader.get("TIME_TO_LIVE")
 	priority =	propReader.get("PRIORITY")
 	readAhead =	propReader.get("READ_AHEAD")
-	busName =	propReader.get("BUS_NAME")
-	
+	busName =	getBusName()
+
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS TOPIC 
 	#------------------------------------------------------------------------------
@@ -1472,8 +1473,8 @@ def deleteJMSTopic ( propertiesPath ):
 	time =		propReader.get("TIME_TO_LIVE")
 	priority =	propReader.get("PRIORITY")
 	readAhead =	propReader.get("READ_AHEAD")
-	busName =	propReader.get("BUS_NAME")
-	
+	busName =	getBusName()
+
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS TOPIC 
 	#------------------------------------------------------------------------------

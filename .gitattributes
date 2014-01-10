@@ -7995,6 +7995,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/configurationPaths.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployEnviromentUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environment.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environmentInfo.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/ibmfixes.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/javaPropertiesUtil.py -text

@@ -1,6 +1,8 @@
 import sys, re
 from lib.utils6 import toggleService
 from lib.javaPropertiesUtil import PropertiesReader
+from lib.environmentInfo import getBusName
+
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
@@ -158,7 +160,7 @@ def createSIBDestination(propertiesPath):
 	propReader = PropertiesReader()
 	propReader.load(propertiesPath)
 
-	busName = 	propReader.get("BUSNAME")
+	busName = 	getBusName()
 	destName = 	propReader.get("NAME")
 	type = 		propReader.get("TYPE")
 
@@ -274,7 +276,7 @@ def deleteSIBDestination(propertiesPath):
 	propReader = PropertiesReader()
 	propReader.load(propertiesPath)
 
-	busName = 	propReader.get("BUSNAME")
+	busName = 	getBusName()
 	destName = 	propReader.get("NAME")
 	l.info('(deleteSIBDestination): Delete '+destName+' on the '+busName+' SIBus')
 	SIDestList = AdminTask.listSIBDestinations('-bus '+busName).splitlines()
