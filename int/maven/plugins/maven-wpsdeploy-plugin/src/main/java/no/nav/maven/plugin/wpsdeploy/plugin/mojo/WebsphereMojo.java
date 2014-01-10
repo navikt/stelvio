@@ -203,22 +203,26 @@ public abstract class WebsphereMojo extends AbstractMojo {
 				if (interactiveMode == true) {
 					String answer = null;
 					try {
-						answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint()
+						answer = prompter.prompt("An error occurred during step \"" + getGoalPrettyPrint()
 								+ "\" . Do you want to abort the deploy process (y/n)? ", "n");
 					} catch (PrompterException e) {
-						throw new RuntimeException("An error occured during prompt input", e);
+						throw new RuntimeException("An error occurred during prompt input", e);
 					}
 
 					if ("y".equalsIgnoreCase(answer)) {
-						throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+						throw new RuntimeException("Stopping deploy because you answered Yes...");
 					}
 				} else {
-					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+					if (errorChecker.isError()){
+						throw new RuntimeException(errorChecker.getErrorMessage() + " Wsadmin exit code: " + retval +"!");
+					} else {
+						throw new RuntimeException("An error occurred during deploy: The wsadmin command exited with a exit code that was not zero (wsadmin exit code: " + retval +")!");
+					}
 				}
 			}
 
 		} catch (CommandLineException e) {
-			throw new RuntimeException("An error occured executing: " + command, e);
+			throw new RuntimeException("An error occurred executing: " + command, e);
 		}
 
 	}
@@ -248,6 +252,8 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 	private static class ErrorCheckingStreamConsumer implements StreamConsumer {
 		private boolean error;
+		private String errorMessage = "An error occurred during deploy: The wsadmin command output had a line that contained the text \"error\"." +
+					" Unless the line also contaned \" 0 errors\", then it's ignored!";
 
 		public void consumeLine(String line) {
 			/* the " 0 errors" check is added to not get a false error with this message:
@@ -262,6 +268,10 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 		public boolean isError() {
 			return error;
+		}
+
+		private String getErrorMessage() {
+			return errorMessage;
 		}
 	}
 }
