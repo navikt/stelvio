@@ -13,7 +13,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 /**
  * Abstract class using the template pattern for child mojos.
- * 
+ *
  * @author test@example.com
  */
 public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
@@ -24,7 +24,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @required
 	 */
 	protected MavenProject project;
-	
+
 	/**
 	 * @parameter expression="${wid.runtime}"
 	 * @required
@@ -66,57 +66,57 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @required
 	 */
 	protected String nonenvironmentConfigurationVersion;
-	
+
 	/**
 	 * @parameter expression="${envClass}"
 	 */
 	protected String envClass;
-	
+
 	/**
 	 * @parameter expression="${envName}"
 	 */
 	protected String envName;
-	
+
 	/**
 	 * @parameter expression="${dmgrUsername}"
 	 */
 	protected String dmgrUsername;
-	
+
 	/**
 	 * @parameter expression="${dmgrPassword}"
 	 */
 	protected String dmgrPassword;
-	
+
 	/**
 	 * @parameter expression="${dmgrHostname}"
 	 */
 	protected String dmgrHostname;
-	
+
 	/**
 	 * @parameter expression="${dmgrSOAPPort}"
 	 */
 	protected String dmgrSOAPPort;
-	
+
 	/**
 	 * @parameter expression="${linuxUser}"
 	 */
 	protected String linuxUser;
-	
+
 	/**
 	 * @parameter expression="${linuxPassword}"
 	 */
 	protected String linuxPassword;
-	
+
 	/**
 	 * @parameter expression="${logging.level}"
 	 */
 	private String logLevel;
-	
+
 	/**
 	 * @parameter expression="${tmpExtractDir}"
 	 */
 	protected String tmpExtractPath;
-	
+
 	/**
 	 * @parameter expression="${tmpInterpolationStageOne}"
 	 */
@@ -126,8 +126,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @parameter expression="${busConfigDir}"
 	 */
 	protected String busConfigPath;
-	
-	/* 
+
+	/*
 	 * path/dir variables:
 	 * path = full path
 	 * dir = a single directory without path
@@ -141,7 +141,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 
 	/* tmp */
 	protected String deployProperties;
-	
+
 	/* after interpolation */
 	protected String environmentPropertiesTree;
 	protected String mainPropertiesFilepath;
@@ -150,26 +150,26 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String blaGroupsPath;
 	protected String applicationEndpoints;
 	protected String deployInfoPropertiesPath;
-	protected String applicationPropertiesPath;	
+	protected String applicationPropertiesPath;
 	protected String activationspecificationsPath;
 	protected String authorizationConsXmlPath;
 	protected String policySetBindings;
-	
+
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
-	
+
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		/* ESB Configuration parts */
 		String authorizationConfiguration = "esb-authorization-configuration";
 		String environmentConfiguration = "esb-enviroment-configuration";
 		String nonenvironmentConfiguration = "esb-nonenviroment-configuration";
-		
+
 		configurationParts.add(authorizationConfiguration);
 		configurationParts.add(environmentConfiguration);
 		configurationParts.add(nonenvironmentConfiguration);
 
 		jythonScriptsPath = targetDirectory + "/scripts";
 		deployDependencies = targetDirectory + "/EarFilesToDeploy.csv";
-		
+
 		/* tmp bus configuration dirs */
 		deployProperties = tmpInterpolationStageOne + "/" + nonenvironmentConfiguration +"/properties/deployInfo.properties";
 
@@ -177,7 +177,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		String authorizationConfigurationPath = busConfigPath + "/" + authorizationConfiguration;
 		String environmentConfigurationPath = busConfigPath + "/" + environmentConfiguration;
 		String nonenvironmentConfigurationPath = busConfigPath + "/" + nonenvironmentConfiguration;
-		
+
 		templatesPath = nonenvironmentConfigurationPath + "/templates";
 		mainPropertiesFilepath = targetDirectory + "/main.properties";
 		environmentPropertiesTree = environmentConfigurationPath + "/properties-tree";
@@ -189,7 +189,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		activationspecificationsPath = nonenvironmentConfigurationPath + "/activationspecifications/maxconcurrency.xml";
 		authorizationConsXmlPath = authorizationConfigurationPath;
 		policySetBindings = nonenvironmentConfigurationPath + "/policySetBindings/policySetBindings.xml";
-		
+
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
 		wsadminCommandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
@@ -199,15 +199,15 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		args.add("-port " + dmgrSOAPPort);
 		args.add("-user " + dmgrUsername);
 		args.add("-password " + dmgrPassword);
-		
+
 		String javaoption = "-Dpython.path="+ jythonScriptsPath;
-		
+
 		if (logLevel != null){
 			javaoption += " -Dlogging.level="+ logLevel;
 		}
-		
+
 		args.add("-javaoption '"+ javaoption +"'");
-		
+
 		args.add("-f " + jythonScriptsPath + "/Executor.py");
 
 		for(String arg : args){
@@ -215,7 +215,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			cmdArg.setLine(arg);
 			wsadminCommandLine.addArg(cmdArg);
 		}
-		
+
 		applyToWebSphere(wsadminCommandLine);
 	}
 
@@ -223,7 +223,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected boolean isConfigurationLoaded(){
 		return envClass != null;
 	}
-	
+
 	protected void configurationRequierdToProceed() {
 		if ((envClass == null) || (envName == null)){
 			throw new IllegalStateException("You can't run this step before having loaded the environment configuration!\nenvClass("+envClass+")\nenvName("+envName+")");

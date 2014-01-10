@@ -9,7 +9,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 /**
  * Goal that contacts the deployment manager to stop MECluster,SupportCluster
  * and WPSCluster.
- * 
+ *
  * @goal stop-clusters
  * @requiresDependencyResolution
  */
@@ -20,7 +20,7 @@ public class StopClustersMojo extends WebsphereUpdaterMojo {
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
 		}
-		
+
 		stopClusters(wsadminCommandLine);
 	}
 
@@ -46,7 +46,7 @@ public class StopClustersMojo extends WebsphereUpdaterMojo {
 			}
 		}
 		getLog().info("Cluster stoped!");
-		
+
 	}
 
 	@Override
