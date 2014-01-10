@@ -250,8 +250,13 @@ public abstract class WebsphereMojo extends AbstractMojo {
 		private boolean error;
 
 		public void consumeLine(String line) {
+			/* the " 0 errors" check is added to not get a false error with this message:
+			 * CWLIN2003E: The following compilation problems were detected. 0 errors, 87 warnings, 0 informational messages. See the log file for details.
+			 */
 			if (line.toLowerCase().contains("error")) {
-				error = true;
+				if ( ! line.toLowerCase().contains(" 0 errors")){
+					error = true;
+				}
 			}
 		}
 
