@@ -42,7 +42,7 @@
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,	<!-- ModifyUserNameTokenGenerator.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-activationspecs,	<!-- ModifyMaxConcurrencyAS.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:synchronize-nodes,	<!-- ClusterStartStop.py -->
-							no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,		<!-- (SSH) -->
+							no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,		<!-- (SSH) Denne har vi pga VERA som er en versjonsoversikts side. Snakk med Roger bjørnstad for mer info. -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:start-clusters,		<!-- ClusterStartStop.py -->
 							no.nav.maven.plugins:maven-wpsdeploy-plugin:modify-max-failed-deliveries,	<!-- ModifyMaxFailedDeliveries.py -->
 						</deploy>
