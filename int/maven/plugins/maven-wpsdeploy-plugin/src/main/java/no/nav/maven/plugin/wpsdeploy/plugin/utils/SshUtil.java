@@ -22,8 +22,8 @@ public class SshUtil {
 	private static String BASE_PATH = "/opt/IBM/BPM/profiles/Dmgr01/bin/";
 	private static String OLD_BASE_PATH = "/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/"; //TODO: @karl.gustav: Denne kan slettes så snart BPM8.5 går i prod
 	private static String currentBasePath;
-	private static Integer ServerAlreadyStartedExitCode = 255;
-	private static Integer ServerAlreadyStoppedExitCode = 246;
+	private static Integer SERVER_ALREADY_STARTED_EXIT_CODE = 255;
+	private static Integer SERVER_ALREADY_STOPPED_EXIT_CODE = 246;
 
 	private final static Logger logger = LoggerFactory.getLogger(SshUtil.class);
 
@@ -48,7 +48,15 @@ public class SshUtil {
 			} else {
 				throw new RuntimeException("[ERROR] Execution of command failed!");
 			}
+
 			session.close();
+			Thread.sleep(20);
+			while (! session.isClosed()){
+				int furtherWaitTime = 1000;
+				logger.info("Waiting " + furtherWaitTime + " milliseconds for the SSH channel to properly close...");
+				Thread.sleep(furtherWaitTime);
+			}
+
 			Integer exitCode =  session.getExitCode();
 			if ( exitCode == null || exitCode != 0 ){
 				NonZeroSshExitCode nonZeroSshExitCodeException = new NonZeroSshExitCode("[ERROR] The ssh command had an exitcode different that zero (was "+ exitCode +")!");
@@ -58,6 +66,8 @@ public class SshUtil {
 			}
 		} catch (IOException e){
 			throw new RuntimeException("[ERROR] Execution of command failed!");
+		} catch (InterruptedException e){
+			throw new RuntimeException("[ERROR] Waiting for ssh channel to close was interrupted!");
 		}
 		logger.info("Finished executing command.");
 	}
@@ -145,8 +155,8 @@ public class SshUtil {
 		try {
 			executeSingleCommand(sshUser, cmd);
 		} catch (NonZeroSshExitCode e){
-			if (e.getExitCode() == ServerAlreadyStartedExitCode) {
-				logger.info("Server was already stopped! (exitcode " + SERVER_ALREADY_STOPED_EXIT_CODE + ")");
+			if (e.getExitCode() == SERVER_ALREADY_STOPPED_EXIT_CODE){
+				logger.info("Server was already stopped! (exitcode " + SERVER_ALREADY_STOPPED_EXIT_CODE + ")");
 			} else {
 				throw e;
 			}
@@ -157,7 +167,7 @@ public class SshUtil {
 		try {
 			executeSingleCommand(sshUser, cmd);
 		} catch (NonZeroSshExitCode e){
-			if (e.getExitCode() == ServerAlreadyStartedExitCode) {
+			if (e.getExitCode() == SERVER_ALREADY_STARTED_EXIT_CODE) {
 				logger.info("Server was already running! (exitcode " + SERVER_ALREADY_STARTED_EXIT_CODE + ")");
 			} else {
 				throw e;
