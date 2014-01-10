@@ -19,12 +19,14 @@ public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		SshUser sshUser = new SshUser(dmgrHostname, linuxUser, linuxPassword);
+		Integer minimumFreeSpaceInMegaBytes = 1024; //1GB
 
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having extracted the bus-configuration. Skipping ...");
 			return;
 		}
-		if (!SshCommands.checkDiskSpace(sshUser)) throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
+
+		if (!SshCommands.checkDiskSpace(sshUser, minimumFreeSpaceInMegaBytes)) throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
 		else getLog().info("There is enough disk space. Proceeding with deployment.");
 
 		SshCommands.backupConfig(sshUser);

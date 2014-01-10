@@ -31,7 +31,7 @@ public class SshUtil {
 	public static String executeCommand(SshUser sshUser, String cmd) {
 		StringBuffer output = new StringBuffer();
 
-		
+
 		try {
 			SessionChannelClient session = openSshSession(sshUser.getHostname(), sshUser.getUsername(), sshUser.getPassword());
 			if (session == null){

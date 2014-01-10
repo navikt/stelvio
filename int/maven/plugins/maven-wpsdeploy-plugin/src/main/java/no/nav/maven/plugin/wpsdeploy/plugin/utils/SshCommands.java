@@ -62,35 +62,17 @@ public class SshCommands {
 	 * @return true if there is enough space, false otherwise
 	 * @throws java.io.IOException
 	 */
-	public static boolean checkDiskSpace(SshUser sshUser) {
+	public static boolean checkDiskSpace(SshUser sshUser, int minimumFreeSpaceInMegaBytes) {
 		String dir = "/opt/";
-		String cmd = "df " + dir;
-		logger.info("Checking disk space usage in " + dir);
+		String cmd = "df -m " + dir;
+		logger.info("Checking disk that there is more than " + minimumFreeSpaceInMegaBytes + "MB free space in " + dir);
 		String commandOutput = SshUtil.executeCommand(sshUser, cmd);
-		String spaceAvailable = extractSize(commandOutput.split("\n")[2].trim());
-		return compareSizeStrings(spaceAvailable, "1000000") > 0;
+		int spaceAvailable = extractSizeFromDfCommandOutput(commandOutput);
+		return spaceAvailable > minimumFreeSpaceInMegaBytes;
 	}
 
-	/**
-	 * Compares numbers from strings
-	 * @param a
-	 * @param b
-	 * @return positiv if a>b, negativ if a&ltb or error (message is written out), 0 if either a=b
-	 */
-	static int compareSizeStrings(String a, String b){
-		int number_a = 0;
-		int number_b = 0;
-		try{
-			number_a = Integer.parseInt(a);
-			number_b = Integer.parseInt(b);
-			return number_a - number_b;
-		}catch (NumberFormatException e){
-			throw new RuntimeException("[ERROR] Size is in incorrect format");
-		}
-	}
-
-	private static String extractSize(String sizeString){
-		StringBuilder output = new StringBuilder(sizeString.trim());
+	private static int extractSizeFromDfCommandOutput(String sizeString){
+		StringBuilder output = new StringBuilder(sizeString.split("\n")[2].trim());
 		int index;
 		while ((index = output.indexOf(" ")) >=0 )
 			output.setCharAt(index, '_');
@@ -99,7 +81,7 @@ public class SshCommands {
 			while (output.charAt(0) == '_')
 				output.deleteCharAt(0);
 		}
-
-		return output.substring(0,output.indexOf("_"));
+		int sizeOfAvailableSpace = Integer.parseInt(output.substring(0,output.indexOf("_")));
+		return sizeOfAvailableSpace;
 	}
 }
