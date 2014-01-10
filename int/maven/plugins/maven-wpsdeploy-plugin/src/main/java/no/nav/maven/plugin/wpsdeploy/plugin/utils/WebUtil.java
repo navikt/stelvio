@@ -4,6 +4,8 @@ import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.ConfigurationException;
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.HttpCode404Exception;
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.HttpCodeNon2XXException;
 import org.codehaus.plexus.util.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,8 +13,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WebUtil {
+	private final static Logger logger = LoggerFactory.getLogger(WebUtil.class);
+
 	public static String readUrl(String urlString) {
 		String outPut;
+
+		logger.info("Accessing url: "+ urlString);
 
 		try {
 			URL url = new URL(urlString);
@@ -37,9 +43,12 @@ public class WebUtil {
 	}
 
 	public static String readUrlWithAuth(String urlString, String username, String password) {
+
 		String outPut;
 		String userpass = username + ":" + password;
 		String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
+
+		logger.info("Accessing url: "+ urlString);
 
 		try {
 			URL url = new URL(urlString);
