@@ -55,7 +55,7 @@ def getName(configElement):
 
 def getNodes():
 	cell = getCell()
-	return [n for n in AdminConfig.list('Node',cell).splitlines() if not re.search('CellManager', n)]
+	return [n for n in AdminConfig.list('Node',cell).splitlines() if not re.search('Manager', n)]
 
 def getAppServer(nodeName):
 	for server in AdminConfig.getid('/Node:'+ nodeName +'/Server:/').splitlines():
