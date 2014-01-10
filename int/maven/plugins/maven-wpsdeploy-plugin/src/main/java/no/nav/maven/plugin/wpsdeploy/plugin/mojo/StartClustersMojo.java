@@ -9,16 +9,11 @@ import org.codehaus.plexus.util.cli.Commandline;
 /**
  * Goal that contacts the deployment manager to start MECluster,SupportCluster
  * and WPSCluster.
- * 
+ *
  * @goal start-clusters
  * @requiresDependencyResolution
  */
 public class StartClustersMojo extends WebsphereUpdaterMojo {
-
-	/**
-	 * @parameter expression="${start-clusters.skip}"
-	 */
-	protected boolean startClustersSkip;
 
 	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 
@@ -27,11 +22,7 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 			return;
 		}
 
-		if (!startClustersSkip) {
-			startClusters(wsadminCommandLine);
-		} else {
-			getLog().info("Skipping cluster start-up.");
-		}
+		startClusters(wsadminCommandLine);
 	}
 
 	private final void startClusters(final Commandline wsadminCommandLine) {
