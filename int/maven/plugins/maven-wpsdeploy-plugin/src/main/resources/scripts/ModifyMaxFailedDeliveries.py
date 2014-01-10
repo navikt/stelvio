@@ -4,42 +4,42 @@
 # Description:	Modify "Max Failed Deliveries" on the all destinations for given BUS
 #
 # Syntax: 	wsadmin -lang jython -f ModifyMaxFailedDeliveries.py
-#****************************************************************************** 
+#******************************************************************************
 from lib.environmentInfo import getBusName
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-def findCellName():
-	cells = AdminConfig.list("Cell").split(java.lang.System.getProperty('line.separator'))
+busName = getBusName('SYSTEM')
+sibDestinations = AdminTask.listSIBDestinations('-bus ' + busName).splitlines()
+counter = 1
+numberOfSibDestinations = len(sibDestinations)
 
-	if(len(cells) > 1):
-		l.error("[FATAL] More than one cells found. Bailing out...")
+for sibDestination in sibDestinations:
+	sibDestinationIdentifier = AdminConfig.showAttribute(sibDestination, "identifier")
 
-	cellName = AdminConfig.showAttribute(cells[0], "name")
-	l.info("Using cell name: " + cellName)
-	return cellName
-
-BUS_NAME = getBusName("SYSTEM")
-SIDestList = AdminTask.listSIBDestinations('-bus '+BUS_NAME).splitlines()
-COUNTER = 1
-LENGTH = repr(len(SIDestList))
-
-for dest in SIDestList:
-	ident = AdminConfig.showAttribute(dest, "identifier")
-		
-	if(ident.find("WBI.FailedEvent") >= 0):
-		parmsmodify = '-bus '+BUS_NAME+' -name "'+ident+ '" -maxFailedDeliveries 5'
-	elif(ident.find("BFMIF") >= 0):
-		parmsmodify = '-bus '+BUS_NAME+' -name "'+ident+ '" -maxFailedDeliveries 5'
-	elif(ident.find("HTMIF") >= 0):
-		parmsmodify = '-bus '+BUS_NAME+' -name "'+ident+ '" -maxFailedDeliveries 5'
+	if sibDestinationIdentifier.find("WBI.FailedEvent") >= 0:
+		maxFailedDeliveries = 5
+	elif sibDestinationIdentifier.find("BFMIF") >= 0:
+		maxFailedDeliveries = 5
+	elif sibDestinationIdentifier.find("HTMIF") >= 0:
+		maxFailedDeliveries = 5
 	else:
-		parmsmodify = '-bus '+BUS_NAME+' -name "'+ident+ '" -maxFailedDeliveries 2'
+		maxFailedDeliveries = 2
+
+		parmsmodify = '-bus %s -name "%s" -maxFailedDeliveries %s' % (busName, sibDestinationIdentifier, maxFailedDeliveries)
+
 	try:
+		l.debug("AdminTask.modifySIBDestination('%s')" % parmsmodify)
 		result = AdminTask.modifySIBDestination(parmsmodify)
-		l.info("[ " + repr(COUNTER) + " of " + LENGTH + " ] - Successfully modified maxFailedDeliveries on destination " + ident)
-		COUNTER += 1
+		l.info("[ %s of %s ] - Successfully set maxFailedDeliveries to %s on destination %s." % (
+			counter,
+			numberOfSibDestinations,
+			maxFailedDeliveries,
+			sibDestinationIdentifier
+		))
+		counter += 1
 	except:
 		l.exception("(ModifyMaxFailedDeliveries): Error modifying SIB Destination for maxFailedDeliveries!")
+
 AdminConfig.save()
