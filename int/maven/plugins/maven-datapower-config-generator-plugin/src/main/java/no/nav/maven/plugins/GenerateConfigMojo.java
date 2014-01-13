@@ -64,6 +64,8 @@ import freemarker.template.TemplateException;
 public class GenerateConfigMojo extends AbstractMojo {
 
 	private static final String MAIN_TEMPLATE = "main.ftl";
+	
+	private static final String CERTIFICATE_PREFIX = "pubcert:///";
 
 	/**
 	 * The maven project
@@ -250,16 +252,35 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * Expand trust certificate property and inject new expanded property TODO
 	 * Move out of the generic configuration generator
 	 */
-	private void addTrustCerts(Properties props) {
+	private void addTrustCerts(Properties props) throws MojoExecutionException {
 		if (props.getProperty("partnerTrustCerts") != null) {
-			List<String> trustCertList = DPCollectionUtils.listFromString(props.getProperty("partnerTrustCerts"));
+			List<String> trustCertsList = DPCollectionUtils.listFromString(props.getProperty("partnerTrustCerts"));
 			List<Map<String, String>> trustCertMapList = DPCollectionUtils.newArrayList();
-			for (String trustCert : trustCertList) {
-				Map<String, String> cert = DPCollectionUtils.newHashMap();
-				cert.put("name", trustCert.substring(trustCert.lastIndexOf("/") + 1));
-				cert.put("file", trustCert);
-				trustCertMapList.add(cert);
+			for (String trustCerts : trustCertsList) {
+				String[] trustCert = trustCerts.split("\\|");
+				for (int i = 0; i < trustCert.length; i++) {
+					if(!trustCert[i].startsWith(CERTIFICATE_PREFIX)){
+						getLog().error("Failed parsing certificate info. Certificate should begin with '" + CERTIFICATE_PREFIX + "' got '" + trustCert[i] + "' from the list '" + trustCerts + "'");
+						throw new MojoExecutionException("Failed to import public certificates");
+					}
+					Map<String, String> cert = DPCollectionUtils.newHashMap();
+					cert.put("name", trustCert[i].substring(trustCert[i].lastIndexOf("/") + 1));
+					cert.put("file", trustCert[i]);
+					// Remove duplicates
+					boolean duplicate = false;
+					for (Iterator<Map<String, String>> iterator = trustCertMapList.iterator(); iterator.hasNext();) {
+						Map<String, String> map = (Map<String, String>) iterator.next();
+						if(map.equals(cert)){
+							duplicate = true;
+							break;
+						}
+					}
+					if(!duplicate){
+						trustCertMapList.add(cert);
+					}
+				}
 			}
+			getLog().info("Imported " + trustCertMapList.size() + " unique trusted certificates");
 			props.put("partnerTrustedCerts", trustCertMapList);
 		}
 	}
