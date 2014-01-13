@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Feiler pga ny bussconfig og bug i deployskriptet.&#xd;
-Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men siden dette nå er styrt av testsenteret har vi ikke lenger den muligheten.</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -52,15 +51,6 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </base-property>
     </entry>
     <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
-    </entry>
-    <entry>
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
@@ -73,14 +63,23 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -107,14 +106,14 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -130,13 +129,15 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
-        <originalValue class="hudson.tasks.Mailer">
-          <recipients>test@example.com</recipients>
-          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-          <sendToIndividuals>true</sendToIndividuals>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
+      </external-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -145,13 +146,6 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -208,17 +202,55 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </external-property>
     </entry>
     <entry>
+      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
+      <external-property>
+        <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
+          <recipientList>test@example.com</recipientList>
+          <configuredTriggers>
+            <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>true</sendToDevelopers>
+                <includeCulprits>true</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>false</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>true</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+          </configuredTriggers>
+          <contentType>default</contentType>
+          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+          <defaultContent>$DEFAULT_CONTENT</defaultContent>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>true</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>customWorkspace</string>
       <string-property>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -260,14 +292,14 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -294,13 +326,6 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </base-property>
     </entry>
     <entry>
-      <string>hudson-tasks-ArtifactArchiver</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>concurrentBuild</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
@@ -308,10 +333,24 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </boolean-property>
     </entry>
     <entry>
+      <string>hudson-tasks-ArtifactArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyTrigger</string>
       <trigger-property>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-cigame-GamePublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
@@ -321,7 +360,7 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -350,13 +389,6 @@ Tidligere unngikk vi dette ved å legge inn en workaround i bussconfig, men side
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
     </entry>
     <entry>
       <string>org-hudsonci-maven-plugin-artifactrecorder-ArtifactFingerprinter</string>
