@@ -64,7 +64,7 @@
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
           <daysToKeep>-1</daysToKeep>
-          <numToKeep>3</numToKeep>
+          <numToKeep>10</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -206,7 +206,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList></recipientList>
+          <recipientList>test@example.com</recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -286,8 +286,14 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace
-</command>
+            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace | tee /home/ci/nilssen-terje/log.txt</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/nilssen-terje/log.txt; then
+  exit 1;
+else
+  exit 0;
+fi</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
