@@ -43,7 +43,7 @@
 from lib.utils6 import createJAASAuthAlias, findConfigTarget, findConfigTargetWithScope, findDataSourceWithScope, findJDBCProviderWithScope, findScopeEntry, getConfigId, getConfigItemId
 from lib.environment import createSharedLibrary
 from lib.javaPropertiesUtil import PropertiesReader
-from lib.environmentInfo import getBusName
+from lib.environmentInfo import getBusName, isLocalBus
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
@@ -1287,7 +1287,10 @@ def createJMSQueue ( propertiesPath ):
 	time_to_liv =	propReader.get("TIME_TO_LIVE")
 	priority = 	propReader.get("PRIORITY")
 	readAhead =	propReader.get("READ_AHEAD")
-	busName =	getBusName()
+	busName =	propReader.get("BUSNAME")
+
+	if isLocalBus(busName):
+		busName = getBusName()
 
 	#------------------------------------------------------------------------------
 	# Create a SIB JMS Queue on the given SIBus
@@ -1355,7 +1358,10 @@ def deleteJMSQueue ( propertiesPath ):
 	time_to_liv =	propReader.get("TIME_TO_LIVE")
 	priority = 	propReader.get("PRIORITY")
 	readAhead =	propReader.get("READ_AHEAD")
-	busName =	getBusName()
+	busName =	propReader.get("BUSNAME")
+
+	if isLocalBus(busName):
+		busName = getBusName()
 
 	global AdminTask
 
