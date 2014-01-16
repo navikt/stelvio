@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Test-jobb for å se om man kan slå sammen disse &quot;nav-model&quot;-jobbene fra 4 til 1.</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -62,24 +62,18 @@
     <entry>
       <string>logRotator</string>
       <log-rotator-property>
-        <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>-1</daysToKeep>
-          <numToKeep>3</numToKeep>
-          <artifactDaysToKeep>-1</artifactDaysToKeep>
-          <artifactNumToKeep>-1</artifactNumToKeep>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -106,14 +100,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -178,11 +172,6 @@
     <entry>
       <string>join-JoinTrigger</string>
       <external-property>
-        <originalValue class="join.JoinTrigger">
-          <joinProjects>TRUNK_nav-model-doc</joinProjects>
-          <joinPublishers/>
-          <evenIfDownstreamUnstable>false</evenIfDownstreamUnstable>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -211,7 +200,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList></recipientList>
+          <recipientList>test@example.com</recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -219,10 +208,20 @@
                 <subject>$PROJECT_DEFAULT_SUBJECT</subject>
                 <body>$PROJECT_DEFAULT_CONTENT</body>
                 <sendToDevelopers>true</sendToDevelopers>
-                <includeCulprits>false</includeCulprits>
+                <includeCulprits>true</includeCulprits>
                 <sendToRecipientList>true</sendToRecipientList>
               </email>
             </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>false</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
             <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
               <email>
                 <recipientList></recipientList>
@@ -235,11 +234,11 @@
             </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
           </configuredTriggers>
           <contentType>default</contentType>
-          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+          <defaultSubject>[Hudson] $DEFAULT_SUBJECT</defaultSubject>
           <defaultContent>$DEFAULT_CONTENT</defaultContent>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -258,14 +257,6 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
-        <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>TRUNK_jobb2_nav-model-doc</childProjects>
-          <threshold>
-            <name>SUCCESS</name>
-            <ordinal>0</ordinal>
-            <color>BLUE</color>
-          </threshold>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -273,9 +264,6 @@
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
-        <originalValue class="hudson.triggers.SCMTrigger">
-          <spec>@monthly</spec>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -286,19 +274,49 @@
           <hudson.tasks.Shell>
             <command>svn update /home/ci/rsa-models/trunk/design --username svnguest --password Subversion01 --no-auth-cache</command>
           </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace | tee /home/ci/nilssen-terje/log.txt
+sleep 1s</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/nilssen-terje/log.txt; then
+  exit 1;
+else
+  exit 0;
+fi</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>#DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog | tee /home/ci/nilssen-terje/log.txt
+sleep 1s</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/nilssen-terje/log.txt; then
+  exit 1;
+else
+  exit 0;
+fi</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>/home/ci/bin/generateRSADiagrams.py /home/ci/rsa-models/trunk/</command>
+          </hudson.tasks.Shell>
+          <hudson.tasks.Shell>
+            <command>svn export --force https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/arkitekturmodeller/bildefiler/esb_tjenestemodell.jpeg /var/www/html/site/images/esb_tjenestemodell_v0.91.jpeg
+svn export --force https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/arkitekturmodeller/bildefiler/esb_informasjonsmodell.jpeg /var/www/html/site/images/esb_informasjonsmodell_v1.1.jpeg
+chmod -Rc 775 /var/www/html/site/</command>
+          </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -345,14 +363,15 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
+      <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
+        <originalValue class="hudson.plugins.cigame.GamePublisher"/>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -365,6 +384,7 @@
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
               <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/spesifikasjon/design</remote>
+              <local>.</local>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -401,33 +421,24 @@
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <creationTime>0</creationTime>
+  <createdBy>n129069</createdBy>
+  <creationTime>1389887035978</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM">
-    <locations>
-      <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/spesifikasjon/design</remote>
-        <ignoreExternalsOption>false</ignoreExternalsOption>
-      </hudson.scm.SubversionSCM_-ModuleLocation>
-    </locations>
-    <excludedRegions></excludedRegions>
-    <includedRegions></includedRegions>
-    <excludedUsers></excludedUsers>
-    <excludedRevprop></excludedRevprop>
-    <excludedCommitMessages></excludedCommitMessages>
-    <useUpdate>true</useUpdate>
-    <doRevert>false</doRevert>
-  </scm>
-  <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
 </project>

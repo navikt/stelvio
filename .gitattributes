@@ -1096,6 +1096,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-tjenestespesifikasjon-
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-tjenestespesifikasjon-nav/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-tjenestespesifikasjon-pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-tjenestespesifikasjon-system/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_NAV-Tjenestebuss/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_configuration_bus-authorization/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_configuration_bus-environment/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_configuration_bus-nonenvironment/config.xml -text
