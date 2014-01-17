@@ -32,7 +32,7 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 		getLog().info("Executing ObjectStatusMojo");
 		try {
 						
-			int numberOfMaximunRetries = (int) (WAIT_TIME_MAXIMUM/WAIT_TIME);
+			int numberOfMaximunRetries = (int) (WAIT_TIME_MAXIMUM/WAIT_TIME)+1;
 			
 			for (int i = 0; i < numberOfMaximunRetries; i++) {
 								
@@ -65,18 +65,19 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 					getLog().info("All enabled objects is up");
 					break;
 				}
+				// SISTE GANG
+				if((numberOfMaximunRetries-1)==i){
+					throwObjectDownError();
+				}
+				
 				getLog().info("Total number of objects down: " + objectsDown);
 				if(logDown){
 					getLog().info("At least one log object is down, indicating that NFS is down.");
-					getLog().info("Waiting for " + WAIT_TIME/1000 + " seconds. Retry " + (i + 1) + " of " + numberOfMaximunRetries);
+					getLog().info("Waiting for " + WAIT_TIME/1000 + " seconds. Retry " + (i + 1) + " of " + (numberOfMaximunRetries - 1));
 					Thread.sleep(WAIT_TIME);
 				}
-				else if((!logDown) || (numberOfMaximunRetries-1)==i){
-					getLog().error("========= An object is down even if it's enabled! =========");
-					getLog().error("NOTE! The configuration has been deployed to the DataPower instance.");
-					getLog().error("Please revert deploy or fix error and redeploy.");
-					getLog().error("=========== =========== =========== =========== ===========\n\n");
-					throw new MojoExecutionException("An object is down even it is enabled.");
+				else{
+					throwObjectDownError();
 				}				
 			}
 			
@@ -104,5 +105,13 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 		String state = object.split("<AdminState>")[1].split("</AdminState>")[0];
 		
 		return state;
+	}
+	
+	private void throwObjectDownError() throws MojoExecutionException{
+		getLog().error("========= An object is down even if it's enabled! =========");
+		getLog().error("NOTE! The configuration has been deployed to the DataPower instance.");
+		getLog().error("Please revert deploy or fix error and redeploy.");
+		getLog().error("=========== =========== =========== =========== ===========");
+		throw new MojoExecutionException("An object is down even it is enabled.");
 	}
 }
