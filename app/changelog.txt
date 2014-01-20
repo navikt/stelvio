@@ -2,6 +2,12 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.0
+---------------------------------- 
+* Code and dependency changes to upgrade from JSF 1.2 to JSF 2.1 (PKIGUAN-355)
+* Added support for JSF ClientBehavior i custom JSF renderers (PKIGUAN-449)
+* Added support for AjaxBehaviorEvent in JSF event listener classes (PKIGUAN-464)
+
 Version 4.0.1
 ---------------------------------- 
 New version of Spring security replaces acegi security
