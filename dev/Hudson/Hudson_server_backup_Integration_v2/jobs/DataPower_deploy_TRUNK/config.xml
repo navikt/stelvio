@@ -258,7 +258,7 @@ Ved deploy til service-gw vil denne jobben sette i gang DataPower_SoapUI-test_se
                   <a class="string-array">
                     <string>TRUNK</string>
                     <string>2013-HL4</string>
-                    <string>2014-HL2</string>
+                    <string>2014-HL1</string>
                   </a>
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
@@ -354,9 +354,9 @@ then
 elif [ &quot;${DeilveryVerision}&quot; == &quot;2013-HL4&quot; ];
 then
       wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/branches/int/R_7_9_0_D20131113_2013HL4/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-elif [ &quot;${DeilveryVerision}&quot; == &quot;2014-HL2&quot; ];
+elif [ &quot;${DeilveryVerision}&quot; == &quot;2014-HL1&quot; ];
 then
-      wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+      wget -O pom.xml https://versjonskontroll.adeo.no/svn/nav/branches/datapower/D20140120_2014HL1_DATAPOWER/datapower-deployer/${Gateway}-deployer/pom.xml?
 fi
 
 
