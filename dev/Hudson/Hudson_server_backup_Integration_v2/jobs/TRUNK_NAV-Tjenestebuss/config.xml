@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Test-jobb for å se om man kan slå sammen disse &quot;nav-model&quot;-jobbene fra 4 til 1.</description>
+  <description>Test-jobb for å se om man kan slå sammen disse &quot;nav-model&quot;-jobbene fra 4 til 1.&lt;br&gt;&#xd;
+&lt;b&gt;NB:&lt;/b&gt; Diagrammet &quot;tredjegenerasjon&quot; blir slettet lokalt på Hudson før generering av NAV Tjenestebuss-siden! Dette fordi dette diagrammet pr nå skaper problemer og hindrer web-siden å bli generert.</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -242,7 +243,8 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>svn update /home/ci/rsa-models/trunk/design --username svnguest --password Subversion01 --no-auth-cache</command>
+            <command>svn update /home/ci/rsa-models/trunk/design --username svnguest --password Subversion01 --no-auth-cache
+rm -rf /home/ci/rsa-models/trunk/design/tredjegenerasjon</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
             <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace | tee /home/ci/nilssen-terje/log.txt
