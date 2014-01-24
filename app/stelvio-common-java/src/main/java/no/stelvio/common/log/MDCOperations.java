@@ -5,42 +5,13 @@ import no.stelvio.common.context.RequestContextHolder;
 
 import org.slf4j.MDC;
 
-/**
- * Log4j Logger.
- * <p>
- * Abstract base logger to be used in logger implementations. Supports custom
- * log4j MDC-properties that can be used to log application request context data
- * in log-files. Requires request context to have been provide
- * </p>
- * <p>
- * MDC Fields:
- * <ul>
- * <li>applicationKey
- * <li>module
- * <li>process
- * <li>screen
- * <li>transaction
- * <li>user
- * </ul>
- * Logger implementations that use this class needs to configure log-layout
- * conversion pattern, and must have configured the application request context
- * top be filled with context data. Example:
- * <code>[log appender].layout.ConversionPattern=[%X{user},%X{screen},%X{process},%X{transaction},%X{applicationKey}]</code>
- * </p>
- * 
- * @see RequestContext Used to retrieve context data
- * @see MdcConstants Defines MDC fields
- * 
- * @author person15754a4522e7
- * @author person983601e0e117
- */
-public abstract class Log4jLogger {
-	
+public final class MDCOperations {
+
 	/**
 	 * Sets properties from RequestContext (if it is set on
 	 * RequestContextHolder) using {@link MDC}.
 	 */
-	protected void setMdcProperties() {
+	public static void setMdcProperties() {
 		// Add fields from RequestContext
 		if (RequestContextHolder.isRequestContextSet()) {
 			RequestContext requestContext = RequestContextHolder.currentRequestContext();
@@ -70,7 +41,7 @@ public abstract class Log4jLogger {
 	 * Resets the request context MDC properties set by {@link #setRequestContextMdcProperties()}.
 	 *
 	 */
-	protected void resetMdcProperties() {
+	public static void resetMdcProperties() {
 		MDC.remove(MdcConstants.MDC_APPLICATION);
 		MDC.remove(MdcConstants.MDC_SCREEN);
 		MDC.remove(MdcConstants.MDC_USER);
@@ -78,5 +49,5 @@ public abstract class Log4jLogger {
 		MDC.remove(MdcConstants.MDC_PROCESS);	
 		MDC.remove(MdcConstants.MDC_MODULE);
 	}	
-	
+
 }

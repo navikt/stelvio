@@ -9,7 +9,7 @@ import no.stelvio.common.error.RecoverableException;
 import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.error.logging.ExceptionLogger;
 import no.stelvio.common.error.support.Severity;
-import no.stelvio.common.log.Log4jLogger;
+import no.stelvio.common.log.MDCLogger;
 import no.stelvio.common.log.MdcConstants;
 import no.stelvio.common.util.ReflectUtil;
 import no.stelvio.common.util.ReflectionException;
@@ -45,7 +45,7 @@ import org.springframework.util.ReflectionUtils.FieldFilter;
  * @author person6045563b8dec (Accenture)
  * @author person15754a4522e7 (ex-coder)
  */
-public class DefaultExceptionLogger extends Log4jLogger implements ExceptionLogger {
+public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger {
 
 	// Loggers used to log, default log is used if no other log is injected.
 	private static final Log DEFAULT_LOG = LogFactory.getLog(ExceptionLogger.class);

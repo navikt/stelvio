@@ -4,9 +4,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -15,11 +17,15 @@ import javax.servlet.ServletRequest;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.log.MDCOperations;
+import no.stelvio.common.log.MdcConstants;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.MDC;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -90,6 +96,46 @@ public class RequestContextFilterTest extends AbstractFilterTest {
 		// Filter should reset requestContext
 		// Subsequently call to currentRequestException should throw IllegalStateException
 		assertThat(callToCurrentRequestContextThrowsException(), is(true));
+
+	}
+	
+	/**
+	 * Test method that checks that MDC is reset after invocation of filter.
+	 * 
+	 * @throws ServletException
+	 *             servlet exception
+	 * @throws IOException
+	 *             io exception
+	 */
+	@Test
+	public void filterResetsMDC() throws ServletException, IOException {
+		Filter filter = (Filter) ctx.getBean("test.requestcontextfilter");
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		MockHttpSession session = new MockHttpSession();
+		request.setSession(session);
+		RequestContext reqCtx = new SimpleRequestContext("screen", "processid", "tx", "compid");
+		RequestContextSetter.setRequestContext(reqCtx);
+		MDCOperations.setMdcProperties();
+		
+		// assert that MDC has been set
+		assertThat(MDC.get(MdcConstants.MDC_SCREEN), is(equalTo("screen")));
+		assertThat(MDC.get(MdcConstants.MDC_MODULE), is(equalTo("processid")));
+		assertThat(MDC.get(MdcConstants.MDC_TRANSACTION), is(equalTo("tx")));		
+		assertThat(MDC.get(MdcConstants.MDC_APPLICATION), is(equalTo("compid")));
+
+		session.setAttribute(REQUEST_CONTEXT, reqCtx);
+
+		executeFilterSimulator(filter, request, createMockFilterChainForComponentIdTest(), "RequestContextFilter");		
+
+		// Filter should reset requestContext
+		// Subsequently call to currentRequestException should throw IllegalStateException
+		assertThat(callToCurrentRequestContextThrowsException(), is(true));
+		
+		// Filter should reset MDC
+		assertThat(MDC.get(MdcConstants.MDC_SCREEN), nullValue());
+		assertThat(MDC.get(MdcConstants.MDC_MODULE), nullValue());
+		assertThat(MDC.get(MdcConstants.MDC_TRANSACTION), nullValue());		
+		assertThat(MDC.get(MdcConstants.MDC_APPLICATION), nullValue());
 
 	}
 

@@ -206,7 +206,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/event/ApplicationEventLi
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/CeiApplicationEventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/LoggingApplicationEventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/InfoLogger.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/Log4jLogger.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/log/MDCLogger.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/log/MDCOperations.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/MdcConstants.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/UndeployListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/support/Log4jInfoLogger.java -text

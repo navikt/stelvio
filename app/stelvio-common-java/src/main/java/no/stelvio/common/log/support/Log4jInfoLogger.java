@@ -1,7 +1,7 @@
 package no.stelvio.common.log.support;
 
 import no.stelvio.common.log.InfoLogger;
-import no.stelvio.common.log.Log4jLogger;
+import no.stelvio.common.log.MDCLogger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
  * Information logger based on Log4J.
  * <p>
  * Restricts logging to <code>INFO</code> as the maximum log-level. In addition adds MDC properties to the log (See
- * {@link Log4jLogger}). Default logger, <code>no.stelvio.common.log.InfoLogger</code> is used if no logger is set for the
+ * {@link MDCLogger}). Default logger, <code>no.stelvio.common.log.InfoLogger</code> is used if no logger is set for the
  * logger instance.
  * </p>
  * 
@@ -18,7 +18,7 @@ import org.apache.commons.logging.LogFactory;
  * @author person15754a4522e7 (ex-coder)
  * @since Stelvio 1.0.6.3
  */
-public class Log4jInfoLogger extends Log4jLogger implements InfoLogger {
+public class Log4jInfoLogger extends MDCLogger implements InfoLogger {
 
 	// Loggers used to log, default log is used if no other log is injected.
 	private static final Log DEFAULT_LOG = LogFactory.getLog(InfoLogger.class);

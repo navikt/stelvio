@@ -15,6 +15,7 @@ import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.ComponentIdHolder;
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.log.MDCOperations;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -77,6 +78,8 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 				Object context = session.getAttribute(REQUEST_CONTEXT);
 				if (null != context) {
 					RequestContextSetter.setRequestContext((RequestContext) context);
+					// Add to MDC
+					MDCOperations.setMdcProperties();
 				} else {
 					if (LOG.isInfoEnabled()) {
 						LOG.info("Session exists, but RequestContext was not persisted");
@@ -84,8 +87,8 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 				}
 			}
 
+			
 			String componentId = retrieveComponentId();
-
 			// Always update the module, process and transaction id
 			// -- why do we save it to session if every property is updated?
 			// The screen id can not be set here because the filter runs outside
@@ -93,11 +96,11 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 			// -- how to find module id? Is this only used when logging?
 			RequestContext requestContext = new SimpleRequestContext(null, null, String.valueOf(UUID.randomUUID()), 
 					componentId);
-			RequestContextSetter.setRequestContext(requestContext);
-
+			RequestContextSetter.setRequestContext(requestContext);			
+			
 			// Delegate processing to the next filter or resource in the chain
-			chain.doFilter(request, response);
-
+			chain.doFilter(request, response);			
+			
 			// UserId is set on RequestContext by a SecurityContext-filter
 
 			// Session might have bean constructed, deleted or invalidated during
@@ -118,6 +121,8 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 		} finally {
 			// Always reset the RequestContext, just to be on the safe side
 			RequestContextSetter.resetRequestContext();
+			// Reset MDC
+			MDCOperations.resetMdcProperties();
 		}
 	}
 
