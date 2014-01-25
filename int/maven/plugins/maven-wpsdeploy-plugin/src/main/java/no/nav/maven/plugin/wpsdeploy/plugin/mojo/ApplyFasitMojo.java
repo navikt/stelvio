@@ -32,19 +32,19 @@ public class ApplyFasitMojo extends WebsphereUpdaterMojo {
 	 */
 	private String fasitPassword;
 
-	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-		String deployInfoPropertiesPath = this.propertiesFilePath;
-		if (!isConfigurationLoaded()){
-			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
-			return;
-		}
+	/**
+	 * @parameter expression="${environment}"
+	 */
+	private String environmentLowerOrUpperCase;
 
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
+		String deployInfoPropertiesPath = this.deployProperties;
 		Properties prop = new Properties();
 
 		try {
 			prop.load(new FileInputStream(deployInfoPropertiesPath));
-			HashMap<String, String> dmgrResources = FasitUtil.getDmgrResources(envName, fasitUsername, fasitPassword);
-			HashMap<String, String> linuxUser = FasitUtil.getLinuxUser(envName, fasitUsername, fasitPassword);
+			HashMap<String, String> dmgrResources = FasitUtil.getDmgrResources(environmentLowerOrUpperCase, fasitUsername, fasitPassword);
+			HashMap<String, String> linuxUser = FasitUtil.getLinuxUser(environmentLowerOrUpperCase, fasitUsername, fasitPassword);
 
 			for (Map.Entry<String, String> entry : dmgrResources.entrySet()) {
 				prop.put(entry.getKey(), entry.getValue());
@@ -57,7 +57,7 @@ public class ApplyFasitMojo extends WebsphereUpdaterMojo {
 		} catch (IOException e) {
 			throw new ConfigurationException("Could not read the properties file: " + deployInfoPropertiesPath);
 		} catch (HttpCode404Exception e){
-			getLog().info("Could not find the environment "+ envName +" in Fasit. Continuing with the vairables unchanged from envConfig.");
+			getLog().info("Could not find the environment "+ environmentLowerOrUpperCase +" in Fasit. Continuing with the vairables unchanged from envConfig.");
 		}
 	}
 
