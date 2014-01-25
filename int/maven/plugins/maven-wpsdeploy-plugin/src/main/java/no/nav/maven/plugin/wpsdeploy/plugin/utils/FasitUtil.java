@@ -51,10 +51,10 @@ public class FasitUtil {
 	}
 
 	private static String buildDmgrResourcesUrl(String environment, String domain) {
-		return String.format("https://envconfig.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=DeploymentManager&alias=bpmDmgr&app=bpm", environment, domain);
+		return String.format("https://fasit.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=DeploymentManager&alias=bpmDmgr&app=bpm", environment, domain);
 	}
 
 	private static String buildLinuxUserUrl(String environment, String domain) {
-		return String.format("https://envconfig.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=Credential&alias=wsadminUser&app=bpm", environment, domain);
+		return String.format("https://fasit.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=Credential&alias=wsadminUser&app=bpm", environment, domain);
 	}
 }
