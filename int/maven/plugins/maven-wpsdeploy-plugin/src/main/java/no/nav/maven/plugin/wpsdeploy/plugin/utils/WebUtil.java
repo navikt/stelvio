@@ -61,10 +61,10 @@ public class WebUtil {
 					outPut = convertStreamToString(is);
 					is.close();
 				} else {
-					throw new HttpCodeNon2XXException("[readUrlWithAuth()]: "+ responsecode +" response code returned from URL: " + urlString);
+					throw new HttpCodeNon2XXException("[readUrlWithAuth()]: "+ responsecode +" response code returned from URL (username was " + username + "): " + urlString);
 				}
 			} else {
-				throw new HttpCode404Exception("[readUrlWithAuth()]: "+ responsecode +" response code returned from URL (username was " + username + "): "+ urlString);
+				throw new HttpCode404Exception("[readUrlWithAuth()]: "+ responsecode +" response code returned from URL: "+ urlString);
 			}
 		} catch (IOException e) {
 			throw new ConfigurationException("Exception when reading url with authorization: "+ urlString +"\n"+ e);
