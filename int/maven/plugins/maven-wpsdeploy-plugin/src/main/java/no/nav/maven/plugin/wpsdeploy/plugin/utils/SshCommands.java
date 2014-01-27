@@ -32,7 +32,7 @@ public class SshCommands {
 		startDeploymentManager(sshUser);
 	}
 
-	static void startDeploymentManager(SshUser sshUser) {
+	private static void startDeploymentManager(SshUser sshUser) {
 		logger.info("Starting the deployment manager...");
 		String cmd = SshUtil.getBaseDir(sshUser) + "startManager.sh"; //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
 		try {
