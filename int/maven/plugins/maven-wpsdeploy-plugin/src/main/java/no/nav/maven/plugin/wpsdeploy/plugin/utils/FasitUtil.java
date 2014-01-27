@@ -12,26 +12,26 @@ public class FasitUtil {
 
 		output.put("envName", xpath.evaluate("/resource/environmentName"));
 		output.put("dmgrHostname", xpath.evaluate("/resource/property[@name='hostname']/value"));
-		output.put("dmgrUsername", xpath.evaluate("/resource/property[@name='username']/value"));
-		String passwordUrl = xpath.evaluate("/resource/property[@name='password']/ref");
-		output.put("dmgrPassword", WebUtil.readUrlWithAuth(passwordUrl, username, password));
 		output.put("dmgrSOAPPort", "8879");
+		output.put("linuxUser", xpath.evaluate("/resource/property[@name='username']/value"));
+		String passwordUrl = xpath.evaluate("/resource/property[@name='password']/ref");
+		output.put("linuxPassword", WebUtil.readUrlWithAuth(passwordUrl, username, password));
 
 		return output;
 	}
 
-	public static HashMap<String, String> getLinuxUser(String environment, String username, String password){
-		String urlString = buildLinuxUserUrl(environment, getDomain(environment));
+	public static HashMap<String, String> getWsadminUser(String environment, String username, String password){
+		String urlString = buildWsadminUserUrl(environment, getDomain(environment));
 		HashMap<String, String> output = new HashMap<String, String>();
 		String xml = WebUtil.readUrl(urlString);
 		XpathDocumentParser xpath = new XpathDocumentParser(xml);
 
-		String linuxUser = xpath.evaluate("/resource/property[@name='username']/value");
+		String wsadminUser = xpath.evaluate("/resource/property[@name='username']/value");
 		String passwordUrl = xpath.evaluate("/resource/property[@name='password']/ref");
-		String linuxPassword = WebUtil.readUrlWithAuth(passwordUrl, username, password);
+		String wsadminPassword = WebUtil.readUrlWithAuth(passwordUrl, username, password);
 
-		output.put("linuxUser", linuxUser);
-		output.put("linuxPassword", linuxPassword);
+		output.put("dmgrUsername", wsadminUser);
+		output.put("dmgrPassword", wsadminPassword);
 
 		return output;
 	}
@@ -54,7 +54,7 @@ public class FasitUtil {
 		return String.format("https://fasit.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=DeploymentManager&alias=bpmDmgr&app=bpm", environment, domain);
 	}
 
-	private static String buildLinuxUserUrl(String environment, String domain) {
+	private static String buildWsadminUserUrl(String environment, String domain) {
 		return String.format("https://fasit.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=Credential&alias=wsadminUser&app=bpm", environment, domain);
 	}
 }

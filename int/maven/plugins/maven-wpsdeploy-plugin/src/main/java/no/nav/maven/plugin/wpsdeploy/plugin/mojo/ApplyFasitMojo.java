@@ -44,12 +44,12 @@ public class ApplyFasitMojo extends WebsphereUpdaterMojo {
 		try {
 			prop.load(new FileInputStream(deployInfoPropertiesPath));
 			HashMap<String, String> dmgrResources = FasitUtil.getDmgrResources(environmentLowerOrUpperCase, fasitUsername, fasitPassword);
-			HashMap<String, String> linuxUser = FasitUtil.getLinuxUser(environmentLowerOrUpperCase, fasitUsername, fasitPassword);
+			HashMap<String, String> wsadminUser = FasitUtil.getWsadminUser(environmentLowerOrUpperCase, fasitUsername, fasitPassword);
 
 			for (Map.Entry<String, String> entry : dmgrResources.entrySet()) {
 				prop.put(entry.getKey(), entry.getValue());
 			}
-			for (Map.Entry<String, String> entry : linuxUser.entrySet()) {
+			for (Map.Entry<String, String> entry : wsadminUser.entrySet()) {
 				prop.put(entry.getKey(), entry.getValue());
 			}
 
