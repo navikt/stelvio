@@ -172,7 +172,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 			// If a password is sent as a parameter, we hide it from the output
 			if (command.toString().contains("-password")) {
-				String cmd = command.toString().replaceFirst("-password\\s[\\w]+", "-password *****");
+				String cmd = command.toString().replaceFirst("-password\\s\\S+", "-password *****");
 				getLog().info("Executing the following command: " + cmd);
 			}
 			else {
