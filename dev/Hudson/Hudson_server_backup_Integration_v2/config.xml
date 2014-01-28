@@ -104,7 +104,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>CI-buss-pom_sync</string>
         <string>CI-deploy-til-U2-WPS-Maven3</string>
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
@@ -185,10 +184,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>SoapUI-U2-Ekstern-Pensjon-ErUngUfor_CI</string>
-        <string>SoapUI-U2-NAV-Endagspassord_CI</string>
-        <string>SoapUI-U2-NAV-PIPEgenansatt_CI</string>
-        <string>SoapUI-U2-Pensjon-UngUfor_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -200,7 +195,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(SoapUI-U\d-).*</includeRegex>
+      <includeRegex>(SoapUI-U(2|3)-).*</includeRegex>
     </listView>
     <hudson.model.RadiatorView>
       <owner class="hudson" reference="../../.."/>
@@ -212,7 +207,7 @@
       </jobNames>
       <jobFilters/>
       <columns/>
-      <includeRegex>(SoapUI-U\d-).*</includeRegex>
+      <includeRegex>(SoapUI-U(2|3)).*</includeRegex>
       <showStable>true</showStable>
       <showStableDetail>true</showStableDetail>
       <highVis>true</highVis>
@@ -430,6 +425,28 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>(2013HL4_7\.9_).*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>CI Trunk - U5</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
+      <includeRegex>(SoapUI-U5-).*</includeRegex>
     </listView>
   </views>
   <primaryView>All</primaryView>

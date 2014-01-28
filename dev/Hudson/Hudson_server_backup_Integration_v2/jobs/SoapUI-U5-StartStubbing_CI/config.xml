@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>synker *-ci/pom.xml´ene hver dag kl 23.00</description>
+  <description>Slår på stubbing på U5 (e26apvl059.test.local)</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -40,7 +40,6 @@
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
       <base-property>
-        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -65,9 +64,6 @@
     <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -132,10 +128,10 @@
         <originalValue class="hudson.tasks.Mailer">
           <recipients>test@example.com</recipients>
           <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-          <sendToIndividuals>true</sendToIndividuals>
+          <sendToIndividuals>false</sendToIndividuals>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -183,6 +179,11 @@
     <entry>
       <string>join-JoinTrigger</string>
       <external-property>
+        <originalValue class="join.JoinTrigger">
+          <joinProjects>SoapUI-U5-StoppStubbing_CI</joinProjects>
+          <joinPublishers/>
+          <evenIfDownstreamUnstable>true</evenIfDownstreamUnstable>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -205,7 +206,7 @@
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -223,9 +224,6 @@
     <entry>
       <string>hudson-plugins-chucknorris-CordellWalkerRecorder</string>
       <external-property>
-        <originalValue class="hudson.plugins.chucknorris.CordellWalkerRecorder">
-          <factGenerator/>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -234,7 +232,7 @@
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
         <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>TRUNK-nav-modules-ci, TRUNK-pensjon-modules-ci, TRUNK-ekstern-modules-ci, TRUNK-esb-modules-ci</childProjects>
+          <childProjects>SoapUI-U5-NAV-Opptjening_CI, SoapUI-U5-NAV-Oppgavebehandling_CI, SoapUI-U5-NAV-Henvendelsebehandling_CI, SoapUI-U5-NAV-Henvendelse_CI, SoapUI-U5-NAV-Oppgave_CI, SoapUI-U5-NAV-Ruting_CI, SoapUI-U5-NAV-Tilbakekreving_CI, SoapUI-U5-layers-Vedtak_CI, SoapUI-U5-layers-Samordning_CI, SoapUI-U5-layers-NAVOrgEnhet_CI, SoapUI-U5-layers-Arena-2.0.0_CI, SoapUI-U5-layers-Bidragsak_CI, SoapUI-U5-layers-Brevbestilling_CI, SoapUI-U5-layers-Trekk_CI, SoapUI-U5-NAV-Medlemskap_CI, SoapUI-U5-NAV-BehandleMedlemskap_CI, SoapUI-U5-NAV-Journal_CI, SoapUI-U5-NAV-BehandlePerson_CI, SoapUI-U5-NAV-Person_CI, SoapUI-U5-NAV-Journalbehandling_CI, SoapUI-U5-NAV-Statistikk_CI, SoapUI-U5-NAV-Familieforhold_CI, SoapUI-U5-NAV-Enhet_CI, SoapUI-U5-NAV-Personsok_CI, SoapUI-U5-NAV-PensjonSak_CI, SoapUI-U5-NAV-PensjonBeregning_CI, SoapUI-U5-Ekstern-Pensjon-TPTILB_CI, SoapUI-U5-NAV-Arkiv_CI, SoapUI-U5-NAV-ArbeidOgAktivitet_CI, SoapUI-U5-NAV-Fullmakt_CI, SoapUI-U5-NAV-Samhandler_CI, SoapUI-U5-layers-Institusjonsopphold_CI, SoapUI-U5-NAV-Institusjonsopphold_CI, SoapUI-U5-layers-NAVAnsatt_CI, SoapUI-U5-layers-Brukerprofil_CI, SoapUI-U5-layers-Samhandler_CI, SoapUI-U5-layers-Oppgave_CI, SoapUI-U5-Ekstern-Pensjon-Person_CI, SoapUI-U5-layers-Dineutbetalinger_CI, SoapUI-U5-layers-Eresept_CI, SoapUI-U5-layers-fkafp-privat_CI, SoapUI-U5-layers-Fullmakt_CI, SoapUI-U5-NAV-Sak_CI, SoapUI-U5-NAV-Tjenestepensjon_CI, SoapUI-U5-NAV-ArbeidOgAktivitetYtelse_CI, SoapUI-U5-Ekstern-NAVYtelsesinfo_CI, SoapUI-U5-layers-Person_CI, SoapUI-U5-layers-Tjenestepensjon_CI, SoapUI-U5-NAV-BehandleTrekk_CI, SoapUI-U5-NAV-Trekk_CI, SoapUI-U5-Pensjon-Iverksetting_CI, SoapUI-U5-Pensjon-Beregning_CI, SoapUI-U5-Pensjon-Grunnlag_CI, SoapUI-U5-Pensjon-Krav_CI, SoapUI-U5-Ekstern-Pensjon-Beregning_CI, SoapUI-U5-Pensjon-Sak_CI, SoapUI-U5-Pensjon-Vedtak_CI, SoapUI-U5-Pensjon-Samordning_CI, SoapUI-U5-Pensjon-TilbakekrevingHendelse_CI, SoapUI-U5-layers-Rettskilder_CI, SoapUI-U5-NAV-BehandleArbeidsgiver_CI, SoapUI-U5-Ekstern-Arbeidsgiver_CI, SoapUI-U5-layers-Gosys-3.0.0_CI, SoapUI-U5-NAV-Informasjonsgrunnlag_CI, SoapUI-U5-NAV-EESSIBlankett_CI, SoapUI-U5-NAV-Arbeidsgiver_CI, SoapUI-U5-Pensjon-Simulering_CI, SoapUI-U5-NAV-InterntNotat_CI, SoapUI-U5-NAV-Dokumentbehandling_CI, SoapUI-U5-NAV-EUInstitusjon_CI, SoapUI-U5-NAV-Dokumentbestilling_CI, SoapUI-U5-Ekstern-Virkemiddelokonomi-Utbetaling_CI, SoapUI-U5-NAV-Oppholdsstatus_CI, SoapUI-U5-NAV-HPLIVEJournalbehandling_CI, SoapUI-U5-NAV-Endagspassord_CI, SoapUI-U5-Pensjon-UngUfor_CI, SoapUI-U5-Ekstern-Pensjon-ErUngUfor_CI, SoapUI-U5-NAV-TPSProdusent_CI, SoapUI-U5-NAV-Utbetaling_CI</childProjects>
           <threshold>
             <name>SUCCESS</name>
             <ordinal>0</ordinal>
@@ -242,7 +240,7 @@
           </threshold>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -255,13 +253,11 @@
       <string>builders</string>
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
-          <hudson.tasks.Shell>
-            <command>/home/ci/bin/ci_buss_pom_sync.py esb-modules{,-ci}/pom.xml
-/home/ci/bin/ci_buss_pom_sync.py nav-modules{,-ci}/pom.xml
-/home/ci/bin/ci_buss_pom_sync.py pensjon-modules{,-ci}/pom.xml
-/home/ci/bin/ci_buss_pom_sync.py pensjon-prosess-modules{,-ci}/pom.xml
-/home/ci/bin/ci_buss_pom_sync.py ekstern-modules{,-ci}/pom.xml</command>
-          </hudson.tasks.Shell>
+          <hudson.tasks.Maven>
+            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=esb-test-soapui-project.xml -Dsoapui.testsuite=TestSuite -Dsoapui.testcase=StartStubbing -Dsoapui.host=e26apvl059.test.local</targets>
+            <mavenName>(Default)</mavenName>
+            <usePrivateRepository>false</usePrivateRepository>
+          </hudson.tasks.Maven>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
@@ -347,18 +343,20 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-release</remote>
-              <local>.</local>
-              <depthOption>infinity</depthOption>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/esb-soap-tests</remote>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
+          <browser class="hudson.scm.browsers.ViewSVN">
+            <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
+          </browser>
           <excludedRegions></excludedRegions>
           <includedRegions></includedRegions>
           <excludedUsers></excludedUsers>
           <excludedRevprop></excludedRevprop>
           <excludedCommitMessages></excludedCommitMessages>
-          <workspaceUpdater class="hudson.scm.subversion.CheckoutUpdater"/>
+          <useUpdate>true</useUpdate>
+          <doRevert>false</doRevert>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
@@ -374,23 +372,25 @@
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
-          <spec>0 23 * * *</spec>
+          <spec># Hver dag 00:30
+# 30 0 * * *</spec>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
-  <createdBy>n129069</createdBy>
-  <creationTime>1390899172759</creationTime>
-  <properties/>
+  <creationTime>0</creationTime>
+  <properties>
+    <hudson.queueSorter.PrioritySorterJobProperty>
+      <priority>100</priority>
+    </hudson.queueSorter.PrioritySorterJobProperty>
+  </properties>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
-    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.NullSCM"/>
+  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[46]/scm-property/originalValue"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
