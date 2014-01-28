@@ -14,6 +14,7 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.log.MDCOperations;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -45,6 +46,8 @@ public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 	}
 
 	public void close(MessageContext context) {
+		RequestContextSetter.resetRequestContext();
+		MDCOperations.resetMdcProperties();
 	}
 
 	public boolean handleFault(SOAPMessageContext context) {
@@ -76,6 +79,7 @@ public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 				if (log.isDebugEnabled()) {
 					log.debug("RequestContext: " + RequestContextHolder.currentRequestContext());
 				}
+				MDCOperations.setMdcProperties();
 			}
 		} catch (Exception e) {
 			StringWriter sw = new StringWriter();

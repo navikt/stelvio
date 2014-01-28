@@ -662,6 +662,7 @@ app/stelvio-provider-java/src/test/java/no/stelvio/provider/codestable/TestCtpi.
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/codestable/map/AbstractCodesTableItemConverterTest.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/codestable/map/CodesTableItemConverterTest.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/codestable/map/CodesTablePeriodicItemConverterTest.java -text
+app/stelvio-provider-java/src/test/java/no/stelvio/provider/context/StelvioContextHandlerTest.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/context/map/TestDozerMapper.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/strategy/support/ExceptionThrower.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/strategy/support/MorphToSdk14ExceptionHandlerStrategyTest.java -text
