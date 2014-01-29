@@ -216,7 +216,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Maven>
-            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-sak-IT-soapui-project.xml -Dsoapui.endpoint=http://e26apvl059.test.local:9080/nav-tjeneste-sak_v1Web/sca/SakWSEXP</targets>
+            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-sak-IT-soapui-project.xml -Dsoapui.endpoint=http://e34apsl00638.devillo.no:9080/nav-tjeneste-sak_v1Web/sca/SakWSEXP</targets>
             <mavenName>(Default)</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
