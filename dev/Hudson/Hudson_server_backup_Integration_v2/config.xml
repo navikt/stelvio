@@ -256,6 +256,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>2014HL3_8.0_NAV-Tjenestebuss</string>
         <string>TRUNK_NAV-Tjenestebuss</string>
       </jobNames>
       <jobFilters/>

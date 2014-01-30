@@ -935,6 +935,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2013HL4_7.9_tjenestespesifik
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2013HL4_7.9_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2013HL4_7.9_tjenestespesifikasjon_system/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_CheckScripts_Leveransedokumentasjon/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_NAV-Tjenestebuss/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_configuration_bus-authorization/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_configuration_bus-enviroment/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_configuration_bus-nonenviroment/config.xml -text
