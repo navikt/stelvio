@@ -61,12 +61,12 @@ def __startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEn
 		if i % SECONDS_BETWEEN_RECHECKS == 0:
 			clusterState = getClusterState(resolvedCluster)
 			if clusterEndState == clusterState:
-				log.info("The cluster is now %sed and has state [ %s ]" % (clusterOperation, clusterState))
+				log.info("The cluster is now %sed and has state [%s]" % (clusterOperation, clusterState))
 				break
 			elif i % SECONDS_BETWEEN_RETRIES == 0:
 				retryClusterOperation(resolvedCluster, clusterOperation)
 			log.info("The cluster %s is still in state [%s], sleeping for %s seconds." % (
-			clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
+				clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
 		sleep(1)
 
 def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndState):
@@ -78,12 +78,12 @@ def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndSt
 				if i % SECONDS_BETWEEN_RECHECKS == 0:
 					serverState = getServerState(serverName)
 					if serverEndState == serverState:
-						log.info("The server is now %sed and has state [ %s ]" % (clusterOperation, serverState))
+						log.info("The server is now %sed and has state [%s]" % (clusterOperation, serverState))
 						break
 					elif i % SECONDS_BETWEEN_RETRIES == 0:
 						retryClusterOperation(resolvedCluster, clusterOperation)
 					log.info("The server %s is still in state [%s], sleeping for %s seconds." % (
-					serverName, serverState, SECONDS_BETWEEN_RECHECKS))
+						serverName, serverState, SECONDS_BETWEEN_RECHECKS))
 				sleep(1)
 
 def isAllNodesActive():
