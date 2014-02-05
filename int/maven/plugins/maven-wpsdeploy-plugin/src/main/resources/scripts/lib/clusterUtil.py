@@ -8,6 +8,11 @@ from lib.stringUtil import strip
 log = lib.logUtil.getLogger(__name__)
 
 GET_NAME_REGEX = re.compile('[^\(]+')
+GET_NODE_NAME_REGEX = re.compile('(?<=node=)[^,]+')
+IS_APPTARGET_REGEX = re.compile("AppTarget")
+IS_MESSAGING_REGEX = re.compile("Messaging")
+IS_SUPPORT_REGEX = re.compile("Support")
+
 CLUSTER_STOP_OPERATION = "stop"
 CLUSTER_STOPPED_STATE = "websphere.cluster.stopped"
 SERVER_STOPPED_STATE = "STOPPED"
@@ -92,13 +97,13 @@ def isAllNodesActive():
 
 def getRunningNodes():
 	nodes = AdminControl.queryNames("type=NodeAgent,*").splitlines()
-	active_nodes = []
-	for node in nodes:
-		active_nodes.append(node.split(',node=')[1].split(',')[0])
-	return active_nodes
+	return [getNodeName(node) for node in nodes]
+
+def getNodeName(node):
+	return GET_NODE_NAME_REGEX.search(node).group(0)
 
 def getAllNodes():
-	return [node.split('(')[0] for node in AdminConfig.list('Node').splitlines()]
+	return [getStuffBeforeParentheses(node) for node in AdminConfig.list('Node').splitlines()]
 
 def getClusterState(clusterRef):
 	return __getState(clusterRef)
@@ -149,13 +154,13 @@ def getCell():
 def getClusterRefs():
 	clusters = AdminConfig.list("ServerCluster").splitlines()
 	for cluster in clusters:
-		if cluster.find("AppTarget") >= 0:
+		if IS_APPTARGET_REGEX.search(cluster):
 			appTargetRef = cluster
-		elif cluster.find("Messaging") >= 0:
+		elif IS_MESSAGING_REGEX.search(cluster):
 			messagingRef = cluster
-		elif cluster.find("Support") >= 0:
+		elif IS_SUPPORT_REGEX.search(cluster):
 			supportRef = cluster
 		else:
-			log.error("Could not identify " + cluster + ".")
+			log.error("Could not identify cluster:", cluster)
 	return [appTargetRef, messagingRef, supportRef]
 
