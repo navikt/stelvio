@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * Goal that finds and parses the ${fileName}.xml to accumulate a String of rolemappings,
@@ -28,6 +29,11 @@ public class ApplyFasitMojo extends WebsphereUpdaterMojo {
 	private String fasitUsername;
 
 	/**
+	 * @parameter expression="${fasitPasswordBase64}"
+	 */
+	private String fasitPasswordBase64;
+	
+	/**
 	 * @parameter expression="${fasitPassword}"
 	 */
 	private String fasitPassword;
@@ -40,6 +46,10 @@ public class ApplyFasitMojo extends WebsphereUpdaterMojo {
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		String deployInfoPropertiesPath = this.deployProperties;
 		Properties prop = new Properties();
+
+		if (fasitPassword == null){
+			fasitPassword = new String(DatatypeConverter.parseBase64Binary(fasitPasswordBase64));
+		}
 
 		try {
 			prop.load(new FileInputStream(deployInfoPropertiesPath));
