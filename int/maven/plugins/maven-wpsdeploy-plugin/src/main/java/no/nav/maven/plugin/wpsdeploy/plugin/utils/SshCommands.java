@@ -68,7 +68,7 @@ public class SshCommands {
 	public static boolean checkDiskSpace(SshUser sshUser, int minimumFreeSpaceInMegaBytes) {
 		SshClient sshClient = new SshClient(sshUser);
 		String dir = "/opt/";
-		String cmd = "df -m " + dir;
+		String cmd = "df -mP " + dir;
 		logger.info("Checking disk that there is more than " + minimumFreeSpaceInMegaBytes + "MB free space in " + dir);
 		String commandOutput = sshClient.execute(cmd);
 		int spaceAvailable = extractSizeFromDfCommandOutput(commandOutput);
