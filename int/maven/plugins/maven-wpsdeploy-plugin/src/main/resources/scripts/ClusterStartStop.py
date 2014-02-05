@@ -117,26 +117,6 @@ def waitForMessagingEnginesStarted():
 			i=0
 	l.info("All messaging engines are started")
 
-def allNodesActive():
-	active_nodes = getRunningNodes()
-	for node in getAllNodes():
-		if not nodeIsDmgr(node):
-			if not node in active_nodes:
-				return False
-
-	return True
-
-def getAllNodes():
-	return [node.split('(')[0] for node in AdminConfig.list('Node').splitlines()]
-
-def getRunningNodes():
-	nodes = AdminControl.queryNames("type=NodeAgent,*").splitlines()
-	active_nodes = []
-	for node in nodes:
-		active_nodes.append(node.split(',node=')[1].split(',')[0])
-	return active_nodes
-#endDef
-
 def getClusterState(cluster):
 	return AdminControl.getAttribute(cluster, 'state')
 #endDef
@@ -192,6 +172,26 @@ def doClusterOperation(cellName, clusterName, operation):
 						else:
 							l.info("Waiting for " + serverName + " to " + operation + ". Current state is: [" + serverState + "].")
 							sleep(10)
+
+def allNodesActive():
+	active_nodes = getRunningNodes()
+	for node in getAllNodes():
+		if not nodeIsDmgr(node):
+			if not node in active_nodes:
+				return False
+
+	return True
+
+def getAllNodes():
+	return [node.split('(')[0] for node in AdminConfig.list('Node').splitlines()]
+
+def getRunningNodes():
+	nodes = AdminControl.queryNames("type=NodeAgent,*").splitlines()
+	active_nodes = []
+	for node in nodes:
+		active_nodes.append(node.split(',node=')[1].split(',')[0])
+	return active_nodes
+#endDef
 
 if __name__ == "__main__": main()
 
