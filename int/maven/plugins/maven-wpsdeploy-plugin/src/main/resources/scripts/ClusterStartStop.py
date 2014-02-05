@@ -1,5 +1,4 @@
 import sys, re
-from lib.syncUtil import sync
 from lib.IBM.wsadminlib import nodeIsDmgr
 import lib.logUtil as log
 
@@ -78,8 +77,6 @@ def main():
 
 		l.info("All clusters are stopped")
 
-	elif (OPERATION == "synch"):
-		sync()
 	else:
 		l.error("Bad operation: [" + OPERATION + "]")
 
