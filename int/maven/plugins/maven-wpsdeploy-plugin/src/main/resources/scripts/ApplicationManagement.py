@@ -17,7 +17,9 @@ def main():
 	l.info('Getting modules to be installed...')
 	modulesToBeInstalled = sca.getModulesToBeInstalled()
 	l.info('It took', myTimer.reset(), 'to get', len(modulesToBeInstalled), 'modules.')
-	
+
+	sync()
+
 	for scaModule in modulesToBeInstalled:
 		if scaModule.uninstallOldVersion:
 			app.uninstall(scaModule)
