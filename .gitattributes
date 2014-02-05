@@ -958,6 +958,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Automated[!!-~]commit[!!-~]o
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Bygg[!!-~]versjonsoversikt[!!-~]TEST/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-buss-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy-til-U2-WPS-Maven3/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy-til-U2-WPS-Maven3_revision_10633/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT/config.xml -text
