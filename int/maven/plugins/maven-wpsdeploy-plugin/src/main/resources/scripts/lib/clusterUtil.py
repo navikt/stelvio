@@ -18,7 +18,7 @@ SERVER_STARTED_STATE = "STARTED"
 
 SECONDS_TO_RETRY = 900  # 900 seconds is 15 minutes
 SECONDS_BETWEEN_RECHECKS = 10
-SECONDS_BETWEEN_RETRIES = 450  # 450 seconds is 7,5 minutes
+SECONDS_BETWEEN_RETRIES = 600  # 600 seconds is 10 minutes
 
 def startCluster(cellName, clusterRef):
 	doClusterOperation(cellName, clusterRef, CLUSTER_START_OPERATION, CLUSTER_STARTED_STATE, SERVER_STARTED_STATE)
