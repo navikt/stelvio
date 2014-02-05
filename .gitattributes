@@ -8081,6 +8081,9 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ModifyUserNa
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/RemoveOldBPModule.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/RoleMapping.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/SetEnvironmentVariableDmgr.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/__init__.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/environment.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/utils6.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/Utils.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI-LLW.exe -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI32.dll -text
@@ -8094,7 +8097,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/business
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/configurationPaths.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployEnviromentUtil.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environment.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/environmentInfo.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/exceptionUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/ibmfixes.py -text
@@ -8113,7 +8115,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/syncUtil
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/tableUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/testUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/timerUtil.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/utils6.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminAppMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminApplicationMock.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/mocks/AdminAuthorizationsMock.py -text

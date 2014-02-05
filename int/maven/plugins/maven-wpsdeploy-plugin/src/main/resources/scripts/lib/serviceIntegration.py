@@ -1,5 +1,5 @@
 import sys, re
-from lib.utils6 import toggleService
+from lib.IBM.utils6 import toggleService
 from lib.javaPropertiesUtil import PropertiesReader
 from lib.environmentInfo import getBusName
 

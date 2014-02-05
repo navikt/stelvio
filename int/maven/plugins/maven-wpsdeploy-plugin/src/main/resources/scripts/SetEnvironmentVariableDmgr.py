@@ -1,5 +1,5 @@
 import sys
-from lib.environment import createWebSphereVariable
+from lib.IBM.environment import createWebSphereVariable
 from lib.saveUtil import save
 import lib.logUtil as log
 l = log.getLogger(__name__)

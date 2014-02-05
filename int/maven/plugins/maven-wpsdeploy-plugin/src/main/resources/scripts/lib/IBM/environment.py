@@ -9,7 +9,7 @@
 #******************************************************************************
 # File Name:	environment.py
 # Description:	This file contains the following environment procedures:
-#		
+#
 #			createNameSpaceBinding
 #			createReplicationDomain
 #			createReplicator
@@ -18,34 +18,34 @@
 #			removeWebSphereVariable
 #
 #
-# History:		
-#		
+# History:
+#
 #******************************************************************************
-#****************************************************************************** 
+#******************************************************************************
 # Procedure:  	createNameSpaceBinding
 # Description:	Create a name space binding. If it already exists, modify it.
-#****************************************************************************** 
+#******************************************************************************
 import sys
 from lib.javaPropertiesUtil import PropertiesReader
 
-from lib.utils6 import findConfigTargetWithScope, findNode, findScopeEntry, findServer, findServerOnNode, getConfigId, getConfigItemId, wsadminToList
+from lib.IBM.utils6 import findConfigTargetWithScope, findNode, findScopeEntry, findServer, findServerOnNode, getConfigId, getConfigItemId, wsadminToList
 
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
 def createNameSpaceBinding(propertiesPath):
-	
+
 	propReader = PropertiesReader()
 	propReader.load(propertiesPath)
 
 	scope =			propReader.get("SCOPE")
 	scopeName =		propReader.get("SCOPE_NAME")
 	nodeName =		propReader.get("NODE_NAME")
-	
+
 	bindingType =		propReader.get("BINDING_TYPE")
 	bindingId =		propReader.get("BINDING_IDENTIFIER")
 	nameSpace =		propReader.get("NAME_IN_NAMESPACE")
-	
+
 	stringVal =		propReader.get("STRING_VALUE")
 
 	jndiName =		propReader.get("JNDI_NAME")
@@ -63,16 +63,16 @@ def createNameSpaceBinding(propertiesPath):
 	l.info('(createNameSpaceBinding): Create Name Space Binding '+bindingId)
 
 	scopeEntry = findScopeEntry(scope, scopeName )
-	
+
 	if (scopeEntry == 0):
 		l.error("(createNameSpaceBinding): Scope "+scopeName+" does not exist. Namespace Binding will not be created.")
-	#endIf 
+	#endIf
 
 	attrs = []
 	attrs.append(["name", bindingId])
 	attrs.append(["nameInNameSpace", nameSpace])
-	
-	
+
+
 	if (bindingType.lower() == "string"):
 		attrs.append(["stringToBind", stringVal])
 		stringConf= findConfigTargetWithScope(scope, scopeName, bindingId, "StringNameSpaceBinding")
@@ -84,13 +84,13 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception creating string name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		else:
 			# Modify existing string name space binding
-			
+
 			try:
 				_excp_ = 0
 				result = AdminConfig.modify(stringConf, attrs)
@@ -98,10 +98,10 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception modifying string name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 
 	elif (bindingType.lower() == "ejb"):
@@ -109,7 +109,7 @@ def createNameSpaceBinding(propertiesPath):
 		attrs.append(["bindingLocation", ejbLocation])
 		attrs.append(["ejbJndiName", jndiName])
 		if (ejbLocation.lower() == "singleserver"):
-			attrs.append(["applicationNodeName", serverNode]) 
+			attrs.append(["applicationNodeName", serverNode])
 		#endIf
 
 		ejbConf= findConfigTargetWithScope(scope, scopeName, bindingId, "EjbNameSpaceBinding")
@@ -121,10 +121,10 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception creating EJB name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		else:
 
 			# Modify existing EJB name space binding
@@ -135,10 +135,10 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception modifying EJB name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 
 	elif (bindingType.lower() == "corba"):
@@ -154,10 +154,10 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception creating CORBA Object name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		else:
 
 			# Modify existing CORBA object name space binding
@@ -168,10 +168,10 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception modifying CORBA Object name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 
 	elif (bindingType.lower() == "indirect"):
@@ -187,10 +187,10 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception creating Indirect name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		else:
 
 			# Modify existing indirect name space binding
@@ -201,34 +201,34 @@ def createNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(createNameSpaceBinding): Caught Exception modifying Indirect name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 	#endIf
 
 	l.info("(createNameSpaceBinding): Create/Modify of Name Space Binding "+bindingId+" was successful.")
-	
+
 #endDef
 
-#****************************************************************************** 
+#******************************************************************************
 # Procedure:  	deleteNameSpaceBinding
 # Description:	Create a name space binding. If it already exists, modify it.
-#****************************************************************************** 
+#******************************************************************************
 def deleteNameSpaceBinding(propertiesPath):
-	
+
 	propReader = PropertiesReader()
 	propReader.load(propertiesPath)
 
 	scope =			propReader.get("SCOPE")
 	scopeName =		propReader.get("SCOPE_NAME")
 	nodeName =		propReader.get("NODE_NAME")
-	
+
 	bindingType =		propReader.get("BINDING_TYPE")
 	bindingId =		propReader.get("BINDING_IDENTIFIER")
 	nameSpace =		propReader.get("NAME_IN_NAMESPACE")
-	
+
 	stringVal =		propReader.get("STRING_VALUE")
 
 	jndiName =		propReader.get("JNDI_NAME")
@@ -243,19 +243,19 @@ def deleteNameSpaceBinding(propertiesPath):
 
 	global AdminConfig
 	l.info('(deleteNameSpaceBinding): Delete Name Space Binding '+bindingId)
-	scopeEntry = findScopeEntry(scope, scopeName )	
+	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
 		l.error("(deleteNameSpaceBinding): Scope "+scopeName+" does not exist. Namespace Binding will not be deleted.")
-	#endIf 
-	
+	#endIf
+
 	if (bindingType.lower() == "string"):
-		
+
 		stringConf= findConfigTargetWithScope(scope, scopeName, bindingId, "StringNameSpaceBinding")
 		if (stringConf == 0):
 			l.warning("(deleteNameSpaceBinding): No Namespace Binding defined with name: "+bindingId)
 			return 0 #ok if does not exists, keep going and no exit form wsadmin
 		else:
-			# Deleting existing string name space binding		
+			# Deleting existing string name space binding
 			try:
 				_excp_ = 0
 				result = AdminConfig.remove(stringConf)
@@ -263,10 +263,10 @@ def deleteNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(deleteNameSpaceBinding): Caught Exception deleting string name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 	elif (bindingType.lower() == "ejb"):
 		ejbConf= findConfigTargetWithScope(scope, scopeName, bindingId, "EjbNameSpaceBinding")
@@ -283,14 +283,14 @@ def deleteNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(deleteNameSpaceBinding): Caught Exception deleting EJB name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 
 	elif (bindingType.lower() == "corba"):
-		
+
 		corbaConf= findConfigTargetWithScope(scope, scopeName, bindingId, "CORBAObjectNameSpaceBinding")
 		if (corbaConf == 0):
 			l.warning("(deleteNameSpaceBinding): No Namespace Binding defined with name :\n"+bindingId)
@@ -305,14 +305,14 @@ def deleteNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(deleteNameSpaceBinding): Caught Exception deleting CORBA Object name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 
 	elif (bindingType.lower() == "indirect"):
-		
+
 		indConf= findConfigTargetWithScope(scope, scopeName, bindingId, "IndirectLookupNameSpaceBinding")
 		if (indConf == 0):
 			l.warning("(deleteNameSpaceBinding): No Namespace Binding defined with name :\n"+bindingId)
@@ -327,10 +327,10 @@ def deleteNameSpaceBinding(propertiesPath):
 				_type_, _value_, _tbck_ = sys.exc_info()
 				result = `_value_`
 				_excp_ = 1
-        		#endTry 
+        		#endTry
 			if (_excp_ ):
 				l.error("(deleteNameSpaceBinding): Caught Exception deleting Indirect name space binding:\n"+result)
-        		#endIf 
+        		#endIf
 		#endIf
 	#endIf
 
@@ -338,16 +338,16 @@ def deleteNameSpaceBinding(propertiesPath):
 #endDef
 
 
-#****************************************************************************** 
+#******************************************************************************
 
 # Procedure:  	createReplicationDomain
 # Description:	Create a Replication Domain
-#****************************************************************************** 
+#******************************************************************************
 def createReplicationDomain(propertiesPath):
 
 	propReader = PropertiesReader()
 	propReader.load(propertiesPath)
-	
+
 	repName =		propReader.get("REP_NAME")
 	requestTimeout =	propReader.get("REQUEST_TIMEOUT")
 	encryptType =		propReader.get("ENCRYPT_TYPE")
@@ -357,7 +357,7 @@ def createReplicationDomain(propertiesPath):
 	entrySerial =		propReader.get("ENTRY_SERIAL_KIND")
 	propertySerial =	propReader.get("PROPERTY_SERIAL_KIND")
 	poolConn =		propReader.get("POOL_CONNECTIONS")
-	poolSize =		propReader.get("POOL_SIZE") 
+	poolSize =		propReader.get("POOL_SIZE")
 
 	l.info('===== Create Replication Domain '+repName+' if it does not exist  =====')
 
@@ -378,7 +378,7 @@ def createReplicationDomain(propertiesPath):
 	poolConnAttr = ["poolConnections", poolConn]
 	poolSizeAttr = ["size", poolSize]
 	poolAttr = ["pooling", [poolConnAttr, poolSizeAttr]]
-	
+
 	encryptTypeAttr  = ["encryptionType", encryptType]
 	encryptTimeAttr  = ["requestTimeout", requestTimeout]
 	replicaAttr = ["numberOfReplicas", numReplicas]
@@ -398,20 +398,20 @@ def createReplicationDomain(propertiesPath):
 		_type_, _value_, _tbck_ = sys.exc_info()
 		result = `_value_`
 		_excp_ = 1
-       	#endTry 
+       	#endTry
 	if (_excp_ ):
 		l.error("Caught Exception creating a replication domain")
-       	#endIf 
+       	#endIf
 
 	l.info("Create of Replication Domain "+repName+" was successful.")
-	
+
 #endDef
 
 
-#****************************************************************************** 
+#******************************************************************************
 # Procedure:  	createReplicator
 # Description:	Create a Replicator
-#****************************************************************************** 
+#******************************************************************************
 def createReplicator(propertiesPath):
 
 	propReader = PropertiesReader()
@@ -434,16 +434,16 @@ def createReplicator(propertiesPath):
 	if (oNodeToUse == 0):
 		l.error("Node "+nodeName+" does not exist")
 	#endIf
-	
+
 	# Make sure the server exists
 	oServerToUse = findServer(serverName )
 	if (oServerToUse == 0):
 		l.error("Server "+serverName+" does not exist")
-	#endIf 
+	#endIf
 
 	# Check if replicator already exists
 	repConf = getConfigItemId("cell", cellName, "", "MultibrokerDomain", domainName)
-	rep = AdminConfig.showAttribute(repConf, "entries") 
+	rep = AdminConfig.showAttribute(repConf, "entries")
 	if (rep != '[]'):
 		for repEntry in rep:
 			if (AdminConfig.showAttribute(repEntry, "brokerName") == brokerName):
@@ -461,7 +461,7 @@ def createReplicator(propertiesPath):
 	clientAttr = ["clientEndPoint", [clientHostAttr, clientPortAttr]]
 	brokerAttr = ["brokerEndPoint", [brokerHostAttr, brokerPortAttr]]
 	attrs = [nameAttr, clientAttr, brokerAttr]
-	
+
 	try:
 		_excp_ = 0
 		result = AdminConfig.create("MultiBrokerRoutingEntry", repConf, attrs)
@@ -469,17 +469,17 @@ def createReplicator(propertiesPath):
 		_type_, _value_, _tbck_ = sys.exc_info()
 		result = `_value_`
 		_excp_ = 1
-        #endTry 
+        #endTry
 	if (_excp_ ):
 		l.error("Caught Exception creating replicator:\n"+result)
-        #endIf 
+        #endIf
 
 	# configure input server to define this replicator entry
 	attrs1 = []
 	attrs1.append(["domainName", domainName])
 	attrs1.append(["brokerName", brokerName])
 	attrs1.append(["enable", enable])
-	
+
 	serverId = AdminConfig.getid("/Node:"+nodeName+"/Server:"+serverName+"/")
 	try:
 		_excp_ = 0
@@ -488,28 +488,28 @@ def createReplicator(propertiesPath):
 		_type_, _value_, _tbck_ = sys.exc_info()
 		result = `_value_`
 		_excp_ = 1
-       	#endTry 
+       	#endTry
 	if (_excp_ ):
 		l.error("Caught Exception creating system message server:\n"+result)
-       	#endIf 
+       	#endIf
 
 	l.info("Create of Replicator "+brokerName+" was successful.")
-	
+
 #endDef
 
-#****************************************************************************** 
+#******************************************************************************
 # Procedure:  	createSharedLibary
 # Description:	Create a Shared Library, if it exists already, modify it.
-#****************************************************************************** 
+#******************************************************************************
 def createSharedLibrary(propertiesPath):
 
 	propReader = PropertiesReader()
 	propReader.load(propertiesPath)
-	
+
 	scope = 		propReader.get("SCOPE")
 	scopeName =		propReader.get("SCOPE_NAME")
 	nodeName =		propReader.get("NODE_NAME")
-	
+
 	libName =		propReader.get("LIB_NAME")
 	libClassPath =	propReader.get("LIB_CLASSPATH")
 
@@ -529,10 +529,10 @@ def createSharedLibrary(propertiesPath):
 
 	if (scopeEntry == 0):
 		l.error(""+scopeName+" does not exist.")
-	#endIf 
+	#endIf
 
 	nameAttr = ["name", libName]
-	classAttr = ["classPath", libClassPath]	
+	classAttr = ["classPath", libClassPath]
 	descAttr = ["description", libDesc]
 
 	if (nativeLibPath == "_NULL_"):
@@ -552,7 +552,7 @@ def createSharedLibrary(propertiesPath):
 			_type_, _value_, _tbck_ = sys.exc_info()
 			shLib= `_value_`
 			_excp_ = 1
-		#endTry 
+		#endTry
 		if (_excp_ ):
 			l.error("Caught Exception creating Shared Library"+shLib)
 		#endIf
@@ -572,7 +572,7 @@ def createSharedLibrary(propertiesPath):
 			_type_, _value_, _tbck_ = sys.exc_info()
 			shLib= `_value_`
 			_excp_ = 1
-		#endTry 
+		#endTry
 		if (_excp_ ):
 			l.error("Caught Exception modifying Shared Library"+shLib)
 		#endIf
@@ -585,25 +585,25 @@ def createSharedLibrary(propertiesPath):
 			_type_, _value_, _tbck_ = sys.exc_info()
 			shLib= `_value_`
 			_excp_ = 1
-		#endTry 
+		#endTry
 		if (_excp_ ):
 			l.error("Caught Exception modifying Shared Library"+shLib)
 		#endIf
 	#endIf
 
 	l.info("Create/Modify of Shared Library "+libName+" on "+scopeName+" was successful.")
-	
+
 #endDef
 
 #******************************************************************************
 # Procedure:   	createWebSphereVariable
-# Description:	Create a new variable in the variable map.  If it already 
-#			exists, it will modify the value. 
-#****************************************************************************** 
+# Description:	Create a new variable in the variable map.  If it already
+#			exists, it will modify the value.
+#******************************************************************************
 def createWebSphereVariable(scope, scopeName, nodeName, name, value):
 
 	#------------------------------------------------------------------------------
-	# Create variable if it does not exist.  
+	# Create variable if it does not exist.
 	#------------------------------------------------------------------------------
 
 	global AdminConfig
@@ -638,14 +638,14 @@ def createWebSphereVariable(scope, scopeName, nodeName, name, value):
 					_type_, _value_, _tbck_ = sys.exc_info()
 					result = `_value_`
 					_excp_ = 1
-        			#endTry 
+        			#endTry
 				if (_excp_ ):
 					l.error("Caught Exception modifying variable map"+result)
-        			#endIf 
-				break 
-         		#endIf 
-		#endFor 
-	#endIf	
+        			#endIf
+				break
+         		#endIf
+		#endFor
+	#endIf
 	if ( not modifiedOne):
 		l.info("Attempting to create the variable "+name+" on "+scopeName)
 		try:
@@ -656,25 +656,25 @@ def createWebSphereVariable(scope, scopeName, nodeName, name, value):
 			_type_, _value_, _tbck_ = sys.exc_info()
 			result = `_value_`
 			_excp_ = 1
-		#endTry 
+		#endTry
 		if (_excp_ ):
 			l.error("Caught Exception creating variable map")
-		#endIf 
-	#endIf 
+		#endIf
+	#endIf
 
 	l.info("Create/modify variable successful.")
-	
+
 #endDef
 
 #******************************************************************************
 # Procedure:   	removeWebSphereVariable
-# Description:	Remove a variable in the variable map.  If it does not exist, 
-#		      it will report that the value does not exist. 
-#****************************************************************************** 
+# Description:	Remove a variable in the variable map.  If it does not exist,
+#		      it will report that the value does not exist.
+#******************************************************************************
 def removeWebSphereVariable(scope, scopeName, nodeName, name):
 
         #------------------------------------------------------------------------------
-	# Remove variable if it exists.  
+	# Remove variable if it exists.
 	#------------------------------------------------------------------------------
 
 	global AdminConfig
@@ -690,7 +690,7 @@ def removeWebSphereVariable(scope, scopeName, nodeName, name):
 	#endIf
 
 	varMap = getConfigId(scope, scopeName, nodeName, "VariableMap")
-	
+
 	# Check to see if variable already exists
 	entries = AdminConfig.showAttribute(varMap, "entries")
 	entryList = wsadminToList(entries)
@@ -708,19 +708,19 @@ def removeWebSphereVariable(scope, scopeName, nodeName, name):
 					_type_, _value_, _tbck_ = sys.exc_info()
 					result = `_value_`
 					_excp_ = 1
-        			#endTry 
+        			#endTry
 				if (_excp_ ):
 					l.error("Caught Exception removing variable"+result)
-        			#endIf 
-				break 
-         		#endIf 
-		#endFor 
-	#endIf	
+        			#endIf
+				break
+         		#endIf
+		#endFor
+	#endIf
 	if ( not modifiedOne):
 		l.info("No matches found for name "+name+" on "+scopeName)
-	#endIf 
-	
+	#endIf
+
 	l.info("Remove variable successful.")
-	
+
 #endDef
 

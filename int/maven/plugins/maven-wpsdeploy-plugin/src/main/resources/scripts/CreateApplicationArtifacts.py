@@ -35,9 +35,10 @@ from lib.saveUtil import save
 import lib.scaModuleUtil as sca
 from lib.deployEnviromentUtil import getEnviroment
 import lib.logUtil as log
+
 l = log.getLogger(__name__)
 
-from lib.environment import createNameSpaceBinding, createSharedLibrary
+from lib.IBM.environment import createNameSpaceBinding, createSharedLibrary
 from lib.resources import installResourceAdapter, createJ2CConnectionFactory, createDataSource, createJDBCProvider, createJMSActivationSpec, createJMSConnectionFactory, createJMSQueue, createJMSTopic, createMQConnectionFactory, createMQDestination, createSharedLibrary
 from lib.serviceIntegration import createSIBDestination
 

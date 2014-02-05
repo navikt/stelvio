@@ -40,8 +40,8 @@
 #
 #			
 #******************************************************************************
-from lib.utils6 import createJAASAuthAlias, findConfigTarget, findConfigTargetWithScope, findDataSourceWithScope, findJDBCProviderWithScope, findScopeEntry, getConfigId, getConfigItemId
-from lib.environment import createSharedLibrary
+from lib.IBM.utils6 import createJAASAuthAlias, findConfigTarget, findConfigTargetWithScope, findDataSourceWithScope, findJDBCProviderWithScope, findScopeEntry, getConfigId, getConfigItemId
+from lib.IBM.environment import createSharedLibrary
 from lib.javaPropertiesUtil import PropertiesReader
 from lib.environmentInfo import getBusName, isLocalBus
 
