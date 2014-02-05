@@ -1,8 +1,8 @@
 import re, time
 from lib.saveUtil import save
 import lib.exceptionUtil as ex
-import lib.logUtil as log
-l = log.getLogger(__name__)
+import lib.logUtil
+l = lib.logUtil.getLogger(__name__)
 
 
 def sync(pollTimer=10, retriesBeforeResync=30):
@@ -33,8 +33,7 @@ def isSync(node, retries = 5):
 	l.debug("isSync(%s)"%node)
 	for i in xrange(1, retries+1):
 		try:
-			l.debug('AdminControl.completeObjectName("type=NodeSync,node=" + '+node+' + ",*")')
-			nodeSync = AdminControl.completeObjectName("type=NodeSync,node=" + node + ",*")
+			nodeSync = getNodeRef(node)
 			l.debug('AdminControl.invoke("'+nodeSync+'", "isNodeSynchronized")')
 			synched = AdminControl.invoke(nodeSync, "isNodeSynchronized")
 			l.debug("isSync(%s)"%node, "method is finished!")
@@ -45,7 +44,11 @@ def isSync(node, retries = 5):
 			l.info('Retrying %s more time(s)...'% (retries-i))
 	else:
 		l.error('Exceeded the maximum number for allowed retries!')
-	
+
+def getNodeRef(node):
+	l.debug('AdminControl.completeObjectName("type=NodeSync,node="%s",*")' % node)
+	return AdminControl.completeObjectName("type=NodeSync,node=%s,*" % node) or l.error("The one of the nodes you are trying to sync seems to be off, exiting!")
+
 def getDeployentManagerDict():
 	string = AdminControl.completeObjectName("type=DeploymentManager,process=dmgr,*" )
 	dictionary = {}
