@@ -132,6 +132,7 @@ def doClusterOperation(cellName, clusterName, operation):
 		return 1
 	else:
 		if allNodesActive():
+			l.info("All nodes are running, checking individual servers if stopped/started!")
 			if (operation == 'start'):
 				waiting_for_state = "websphere.cluster.running"
 			elif (operation == 'stop'):
@@ -146,12 +147,12 @@ def doClusterOperation(cellName, clusterName, operation):
 					l.info("Waiting for " + re.split('\(', clusterName)[0] + " to " + operation + ". Current state is: [" + current_state + "].")
 					sleep(10)
 		else:
+			l.warning("Not all nodes are running, checking individual servers if stopped/started!")
 			if (operation == 'start'):
 				waiting_for_state = "STARTED"
 			elif (operation == 'stop'):
 				waiting_for_state = "STOPPED"
 
-			l.info("Not all nodes are running, we are entering the Matrix.")
 			members = AdminConfig.showAttribute(clusterName, "members").split(java.lang.System.getProperty(' '))
 			active_nodes = getRunningNodes()
 
