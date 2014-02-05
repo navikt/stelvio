@@ -47,7 +47,7 @@ public class FasitUtil {
 	}
 
 	private static String buildDomainUrl(String environment) {
-		return String.format("http://fasit.adeo.no/conf/environments/%s/applications/bpm/clusters", environment);
+		return String.format("https://fasit.adeo.no/conf/environments/%s/applications/bpm/clusters", environment);
 	}
 
 	private static String buildDmgrResourcesUrl(String environment, String domain) {
