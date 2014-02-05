@@ -70,21 +70,17 @@ public class SshCommands {
 		String cmd = "df -m " + dir;
 		logger.info("Checking disk that there is more than " + minimumFreeSpaceInMegaBytes + "MB free space in " + dir);
 		String commandOutput = SshUtil.executeSshCommand(sshUser, cmd);
+		System.out.println(commandOutput);
 		int spaceAvailable = extractSizeFromDfCommandOutput(commandOutput);
 		return spaceAvailable > minimumFreeSpaceInMegaBytes;
 	}
 
-	private static int extractSizeFromDfCommandOutput(String sizeString){
-		StringBuilder output = new StringBuilder(sizeString.split("\n")[2].trim());
-		int index;
-		while ((index = output.indexOf(" ")) >=0 )
-			output.setCharAt(index, '_');
-		for (int i=0; i<2; i++){
-			output.replace(0, output.indexOf("_"), "");
-			while (output.charAt(0) == '_')
-				output.deleteCharAt(0);
-		}
-		int sizeOfAvailableSpace = Integer.parseInt(output.substring(0,output.indexOf("_")));
-		return sizeOfAvailableSpace;
+	private static int extractSizeFromDfCommandOutput(String sizeString) {
+		String[] lineArray = sizeString.trim().split("\n");
+		String secondLine = lineArray[1];
+		String[] whiteSpaceSplit = secondLine.split("\\s+");
+		String availableSpace = whiteSpaceSplit[3];
+
+		return Integer.parseInt(availableSpace);
 	}
 }
