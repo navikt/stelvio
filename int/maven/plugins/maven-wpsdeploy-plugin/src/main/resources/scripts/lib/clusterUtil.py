@@ -35,36 +35,10 @@ def doClusterOperation(cellName, clusterRef, clusterOperation, clusterEndState, 
 
 	if isAllNodesActive():
 		log.info("All nodes are running, checking individual servers if %sed!" % clusterOperation)
-
-		for i in xrange(1, SECONDS_TO_RETRY):
-			if i % SECONDS_BETWEEN_RECHECKS == 0:
-				clusterState = getClusterState(resolvedCluster)
-				if clusterEndState == clusterState:
-					log.info("The cluster is now %sed and has state [ %s ]" % (clusterOperation, clusterState))
-					break
-				elif i % SECONDS_BETWEEN_RETRIES == 0:
-					log.info("Retrying the %s operation!" % clusterOperation)
-					invokeClusterOperation(resolvedCluster, clusterOperation)
-				log.info("The cluster %s is still in state [%s], sleeping for %s seconds." % (clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
-			sleep(1)
+		__startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEndState)
 	else:
 		log.warning("Not all nodes are running, checking individual servers if %sed!" % clusterOperation)
-		activeNodes = getRunningNodes()
-
-		for nodeMember in getClusterMembers(clusterRef):
-			serverName = getServerName(nodeMember)
-			if isOnActiveNode(activeNodes, nodeMember):
-				for i in xrange(1, SECONDS_TO_RETRY):
-					if i % SECONDS_BETWEEN_RECHECKS == 0:
-						serverState = getServerState(serverName)
-						if serverEndState == serverState:
-							log.info("The server is now %sed and has state [ %s ]" % (clusterOperation, serverState))
-							break
-						elif i % SECONDS_BETWEEN_RETRIES == 0:
-							log.info("Retrying the %s operation!" % clusterOperation)
-							invokeClusterOperation(resolvedCluster, clusterOperation)
-						log.info("The server %s is still in state [%s], sleeping for %s seconds." % (serverName, serverState, SECONDS_BETWEEN_RECHECKS))
-					sleep(1)
+		__startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndState)
 
 def removeParentheses(resource):
 	return GET_NAME_REGEX.match(resource).group(0)
@@ -76,6 +50,36 @@ def resolveCluster(cellName, clusterName):
 def invokeClusterOperation(resolvedCluster, clusterOperation):
 	log.debug('AdminControl.invoke("%s", "%s")' % (resolvedCluster, clusterOperation))
 	AdminControl.invoke(resolvedCluster, clusterOperation)
+
+def __startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEndState):
+	for i in xrange(1, SECONDS_TO_RETRY):
+		if i % SECONDS_BETWEEN_RECHECKS == 0:
+			clusterState = getClusterState(resolvedCluster)
+			if clusterEndState == clusterState:
+				log.info("The cluster is now %sed and has state [ %s ]" % (clusterOperation, clusterState))
+				break
+			elif i % SECONDS_BETWEEN_RETRIES == 0:
+				retryClusterOperation(resolvedCluster, clusterOperation)
+			log.info("The cluster %s is still in state [%s], sleeping for %s seconds." % (
+			clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
+		sleep(1)
+
+def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndState):
+	activeNodes = getRunningNodes()
+	for nodeMember in getClusterMembers(clusterRef):
+		serverName = getServerName(nodeMember)
+		if isOnActiveNode(activeNodes, nodeMember):
+			for i in xrange(1, SECONDS_TO_RETRY):
+				if i % SECONDS_BETWEEN_RECHECKS == 0:
+					serverState = getServerState(serverName)
+					if serverEndState == serverState:
+						log.info("The server is now %sed and has state [ %s ]" % (clusterOperation, serverState))
+						break
+					elif i % SECONDS_BETWEEN_RETRIES == 0:
+						retryClusterOperation(resolvedCluster, clusterOperation)
+					log.info("The server %s is still in state [%s], sleeping for %s seconds." % (
+					serverName, serverState, SECONDS_BETWEEN_RECHECKS))
+				sleep(1)
 
 def isAllNodesActive():
 	active_nodes = getRunningNodes()
