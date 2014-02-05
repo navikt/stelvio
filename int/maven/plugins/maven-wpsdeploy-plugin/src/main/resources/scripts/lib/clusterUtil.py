@@ -9,6 +9,8 @@ log = lib.logUtil.getLogger(__name__)
 
 GET_NAME_REGEX = re.compile('[^\(]+')
 GET_NODE_NAME_REGEX = re.compile('(?<=node=)[^,]+')
+GET_ENGINE_NAME_REGEX = re.compile('(?<=name=)[^,]+')
+
 IS_APPTARGET_REGEX = re.compile("AppTarget")
 IS_MESSAGING_REGEX = re.compile("Messaging")
 IS_SUPPORT_REGEX = re.compile("Support")
@@ -69,6 +71,8 @@ def __startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEn
 				clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
 		sleep(1)
 
+	waitIfThisIsMessagingEngine(clusterName, clusterOperation)
+
 def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndState):
 	activeNodes = getRunningNodes()
 	for nodeMember in getClusterMembers(clusterRef):
@@ -85,6 +89,13 @@ def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndSt
 					log.info("The server %s is still in state [%s], sleeping for %s seconds." % (
 						serverName, serverState, SECONDS_BETWEEN_RECHECKS))
 				sleep(1)
+
+	waitIfThisIsMessagingEngine(clusterRef, clusterOperation)
+
+def waitIfThisIsMessagingEngine(stringContainingTheNameOfTheCluster, clusterOperation):
+	if isMessagingCluster(stringContainingTheNameOfTheCluster):
+		if clusterOperation == CLUSTER_START_OPERATION:
+			waitForMessagingEnginesStarted()
 
 def isAllNodesActive():
 	active_nodes = getRunningNodes()
@@ -154,13 +165,49 @@ def getCell():
 def getClusterRefs():
 	clusters = AdminConfig.list("ServerCluster").splitlines()
 	for cluster in clusters:
-		if IS_APPTARGET_REGEX.search(cluster):
+		if isAppTargetCluster(cluster):
 			appTargetRef = cluster
-		elif IS_MESSAGING_REGEX.search(cluster):
+		elif isMessagingCluster(cluster):
 			messagingRef = cluster
-		elif IS_SUPPORT_REGEX.search(cluster):
+		elif isSupportCluster(cluster):
 			supportRef = cluster
 		else:
 			log.error("Could not identify cluster:", cluster)
 	return [appTargetRef, messagingRef, supportRef]
 
+def isAppTargetCluster(cluster):
+	return IS_APPTARGET_REGEX.search(cluster) is not None
+
+def isMessagingCluster(cluster):
+	return IS_MESSAGING_REGEX.search(cluster) is not None
+
+def isSupportCluster(cluster):
+	return IS_SUPPORT_REGEX.search(cluster) is not None
+
+def waitForMessagingEnginesStarted():
+	engines = AdminControl.queryNames("type=SIBMessagingEngine,*").splitlines()
+
+	for engine in engines:
+		engineName = getEngineName(engine)
+		maxRetries = 10
+
+		started = checkIfEngineIsStarted(engine)
+
+		while started != 'true':
+			log.info('Waiting for', engineName, 'to start.')
+			sleep(10)
+			try:
+				started = checkIfEngineIsStarted(engine)
+			except:
+				log.warning("Got exception when trying to check if", engineName,  " was started!")
+				maxRetries -= 1
+				if maxRetries == 0: log.error("Have tried to check", engineName, maxRetries, "times and are now giving up...")
+
+		log.info(engineName, 'is started')
+	log.info("All messaging engines are started")
+
+def getEngineName(engine):
+	return GET_ENGINE_NAME_REGEX.search(engine).group(0)
+
+def checkIfEngineIsStarted(engine):
+	return AdminControl.invoke(engine, "isStarted")
