@@ -1,5 +1,5 @@
 import lib.logUtil
-from lib.clusterUtil import getCell, getClusterRefs, removeParentheses, stopCluster
+from lib.clusterUtil import getCell, getClusterRefs, getStuffBeforeParentheses, stopCluster
 
 log = lib.logUtil.getLogger(__name__)
 
@@ -7,7 +7,7 @@ def main():
 	cellName, cellRef = getCell()
 
 	for clusterRef in getClusterRefs():
-		clusterName = removeParentheses(clusterRef)
+		clusterName = getStuffBeforeParentheses(clusterRef)
 		log.info("Stopping cluster:", clusterName)
 		stopCluster(cellName, clusterRef)
 

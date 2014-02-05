@@ -28,7 +28,7 @@ def stopCluster(cellName, clusterRef):
 
 def doClusterOperation(cellName, clusterRef, clusterOperation, clusterEndState, serverEndState):
 	log.info("Will wait for the cluster to %s for %s seconds and retry the operation after %s seconds." % (clusterOperation, SECONDS_TO_RETRY, SECONDS_BETWEEN_RETRIES))
-	clusterName = removeParentheses(clusterRef)
+	clusterName = getStuffBeforeParentheses(clusterRef)
 	resolvedCluster = resolveCluster(cellName, clusterName)
 
 	invokeClusterOperation(resolvedCluster, clusterOperation)
@@ -40,7 +40,7 @@ def doClusterOperation(cellName, clusterRef, clusterOperation, clusterEndState, 
 		log.warning("Not all nodes are running, checking individual servers if %sed!" % clusterOperation)
 		__startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndState)
 
-def removeParentheses(resource):
+def getStuffBeforeParentheses(resource):
 	return GET_NAME_REGEX.match(resource).group(0)
 
 def resolveCluster(cellName, clusterName):
@@ -143,7 +143,7 @@ def retryClusterOperation(resolvedCluster, clusterOperation):
 
 def getCell():
 	cellRef = AdminConfig.list("Cell")
-	cellName = removeParentheses(cellRef)
+	cellName = getStuffBeforeParentheses(cellRef)
 	return cellName, cellRef
 
 def getClusterRefs():
