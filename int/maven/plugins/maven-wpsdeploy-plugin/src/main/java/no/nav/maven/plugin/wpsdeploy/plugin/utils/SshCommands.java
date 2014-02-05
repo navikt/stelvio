@@ -8,20 +8,17 @@ import org.slf4j.LoggerFactory;
 public class SshCommands {
 	private static Integer SERVER_ALREADY_STARTED_EXIT_CODE = 255;
 	private static Integer SERVER_ALREADY_STOPPED_EXIT_CODE = 246;
+	private static String BASE_PATH = "/opt/IBM/BPM/profiles/Dmgr01/bin/";
 
 	private final static Logger logger = LoggerFactory.getLogger(SshCommands.class);
 
-	static void checkIfDirExists(SshUser sshUser, String dir) {
-		SshUtil.executeSshCommand(sshUser, "/usr/bin/test -d " + dir);
-	}
 
 	/**
 	 * @throws no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode
 	 */
 	public static void backupConfig(SshUser sshUser) {
-		String baseDir = SshUtil.getBaseDir(sshUser); //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
-		String cmd = baseDir + "backupConfig.sh " + baseDir + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 		SshClient sshClient = new SshClient(sshUser);
+		String cmd = BASE_PATH + "backupConfig.sh " + BASE_PATH + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 		sshClient.execute(cmd);
 	}
 
@@ -36,7 +33,7 @@ public class SshCommands {
 	private static void startDeploymentManager(SshUser sshUser) {
 		SshClient sshClient = new SshClient(sshUser);
 		logger.info("Starting the deployment manager...");
-		String cmd = SshUtil.getBaseDir(sshUser) + "startManager.sh"; //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
+		String cmd = BASE_PATH + "startManager.sh";
 		try {
 			sshClient.execute(cmd);
 		} catch (NonZeroSshExitCode e){
@@ -51,7 +48,7 @@ public class SshCommands {
 	private static void stopDeploymentManager(SshUser sshUser, String dmgrUsername, String dmgrPassword) {
 		SshClient sshClient = new SshClient(sshUser);
 		logger.info("Stopping the deployment manager...");
-		String cmd = SshUtil.getBaseDir(sshUser) + "stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword+" -timeout 600"; //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
+		String cmd = BASE_PATH + "stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword+" -timeout 600";
 		try {
 			sshClient.execute(cmd);
 		} catch (NonZeroSshExitCode e){
