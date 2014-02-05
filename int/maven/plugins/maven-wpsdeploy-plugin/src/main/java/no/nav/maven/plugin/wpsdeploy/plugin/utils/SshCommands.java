@@ -18,7 +18,7 @@ public class SshCommands {
 	 */
 	public static void backupConfig(SshUser sshUser) {
 		SshClient sshClient = new SshClient(sshUser);
-		String cmd = BASE_PATH + "backupConfig.sh " + BASE_PATH + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
+		String cmd = "sudo " + BASE_PATH + "backupConfig.sh " + BASE_PATH + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 		sshClient.execute(cmd);
 	}
 
@@ -33,7 +33,7 @@ public class SshCommands {
 	private static void startDeploymentManager(SshUser sshUser) {
 		SshClient sshClient = new SshClient(sshUser);
 		logger.info("Starting the deployment manager...");
-		String cmd = BASE_PATH + "startManager.sh";
+		String cmd = "sudo service dmgr start";
 		try {
 			sshClient.execute(cmd);
 		} catch (NonZeroSshExitCode e){
@@ -48,7 +48,7 @@ public class SshCommands {
 	private static void stopDeploymentManager(SshUser sshUser, String dmgrUsername, String dmgrPassword) {
 		SshClient sshClient = new SshClient(sshUser);
 		logger.info("Stopping the deployment manager...");
-		String cmd = BASE_PATH + "stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword+" -timeout 600";
+		String cmd = "sudo service dmgr stop";
 		try {
 			sshClient.execute(cmd);
 		} catch (NonZeroSshExitCode e){
