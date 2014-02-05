@@ -8067,7 +8067,8 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/utils/XpathDocumentParser.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ApplicationManagement.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterStartStop.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterStart.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterStop.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/ClusterSync.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateApplicationArtifacts.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/CreateBLAGroups.py -text
@@ -8095,6 +8096,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/__init__
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/applicationUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/assertions.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/businessProcesses.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/clusterUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/color.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/configurationPaths.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/deployEnviromentUtil.py -text

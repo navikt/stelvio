@@ -26,7 +26,7 @@ public class StopClustersMojo extends WebsphereUpdaterMojo {
 
 	private final void stopClusters(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("ClusterStartStop.py stop");
+		arg.setLine("ClusterStop.py");
 		wsadminCommandLine.addArg(arg);
 
 		int attempt = 0;

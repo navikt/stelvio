@@ -1,0 +1,131 @@
+import re
+from time import sleep
+import lib.logUtil
+import lib.exceptionUtil
+from lib.IBM.wsadminlib import nodeIsDmgr
+from lib.stringUtil import strip
+
+log = lib.logUtil.getLogger(__name__)
+
+GET_NAME_REGEX = re.compile('[^\(]+')
+CLUSTER_STOP_OPERATION = "stop"
+CLUSTER_STOPPED_STATE = "websphere.cluster.stopped"
+SERVER_STOPPED_STATE = "STOPPED"
+CLUSTER_START_OPERATION = "start"
+CLUSTER_STARTED_STATE = "websphere.cluster.running"
+SERVER_STARTED_STATE = "STARTED"
+CLUSTER_WAIT_TIME = 10
+SERVER_WAIT_TIME = 10
+
+def startCluster(cellName, clusterRef):
+	doClusterOperation(cellName, clusterRef, CLUSTER_START_OPERATION, CLUSTER_STARTED_STATE, SERVER_STARTED_STATE)
+
+def stopCluster(cellName, clusterRef):
+	doClusterOperation(cellName, clusterRef, CLUSTER_STOP_OPERATION, CLUSTER_STOPPED_STATE, SERVER_STOPPED_STATE)
+
+def doClusterOperation(cellName, clusterRef, clusterOperation, clusterEndState, serverEndState):
+	clusterName = removeParentheses(clusterRef)
+	resolvedCluster = resolveCluster(cellName, clusterName)
+
+	log.debug('AdminControl.invoke("%s", "%s")' % (resolvedCluster, clusterOperation))
+	AdminControl.invoke(resolvedCluster, clusterOperation)
+
+	if isAllNodesActive():
+		log.info("All nodes are running, checking individual servers if %sed!" % clusterOperation)
+		state = getClusterState(resolvedCluster)
+		while clusterEndState != state:
+			log.info(clusterName, " is in state: [", state, "] sleeping for", CLUSTER_WAIT_TIME, "seconds.")
+			sleep(CLUSTER_WAIT_TIME)
+			state = getClusterState(clusterRef)
+	else:
+		log.warning("Not all nodes are running, checking individual servers if %sed!" % clusterOperation)
+		active_nodes = getRunningNodes()
+
+		for nodeMember in getClusterMembers(clusterRef):
+			serverName = getServerName(nodeMember)
+			if isOnActiveNode(active_nodes, nodeMember):
+				state = getServerState(serverName)
+				while serverEndState != state:
+					log.info(serverName, " is in state: [", state, "] sleeping for", CLUSTER_WAIT_TIME, "seconds.")
+					sleep(SERVER_WAIT_TIME)
+					state = getServerState(serverName)
+
+def removeParentheses(resource):
+	return GET_NAME_REGEX.match(resource).group(0)
+
+def resolveCluster(cellName, clusterName):
+	log.debug('AdminControl.completeObjectName("cell=%s,type=Cluster,name=%s,*")' % (cellName, clusterName))
+	return AdminControl.completeObjectName("cell=%s,type=Cluster,name=%s,*" % (cellName, clusterName))
+
+def isAllNodesActive():
+	active_nodes = getRunningNodes()
+	for node in getAllNodes():
+		if not nodeIsDmgr(node):
+			if not node in active_nodes:
+				return False
+
+	return True
+
+def getRunningNodes():
+	nodes = AdminControl.queryNames("type=NodeAgent,*").splitlines()
+	active_nodes = []
+	for node in nodes:
+		active_nodes.append(node.split(',node=')[1].split(',')[0])
+	return active_nodes
+
+def getAllNodes():
+	return [node.split('(')[0] for node in AdminConfig.list('Node').splitlines()]
+
+def getClusterState(clusterRef):
+	return __getState(clusterRef)
+
+def __getState(ref):
+	log.debug('__getState(): AdminControl.getAttribute("%s", "state")' % ref)
+	return AdminControl.getAttribute(ref, "state")
+
+def getServerName(nodeMember):
+	log.debug('getServerName(): AdminConfig.showAttribute("%s", "memberName")' % nodeMember)
+	return AdminConfig.showAttribute(nodeMember, "memberName")
+
+def getServerState(serverName):
+	serverRef = getServerRef(serverName)
+	if not serverRef:
+		log.debug("getServerState(): There was no serverRef, returning default state:", SERVER_STOPPED_STATE)
+		return SERVER_STOPPED_STATE
+	return __getState(serverRef)
+
+def getServerRef(serverName):
+	log.debug('getServerRef(): AdminControl.completeObjectName("type=Server,name=%s,*")' % serverName)
+	return AdminControl.completeObjectName("type=Server,name=%s,*" % serverName)
+
+def getClusterMembers(clusterName):
+	log.debug('getClusterMembers(): AdminConfig.showAttribute("%s", "members")' % clusterName)
+	return [stripBrackets(x) for x in AdminConfig.showAttribute(clusterName, "members").split(' ')]
+
+def stripBrackets(string):
+	return strip(string, '[]')
+
+def isOnActiveNode(activeNodes, nodeMember):
+	log.debug('isOnActiveNode(): AdminConfig.showAttribute("%s", "nodeName")' % nodeMember)
+	nodeName = AdminConfig.showAttribute(nodeMember, "nodeName")
+	return nodeName in activeNodes
+
+def getCell():
+	cellRef = AdminConfig.list("Cell")
+	cellName = removeParentheses(cellRef)
+	return cellName, cellRef
+
+def getClusterRefs():
+	clusters = AdminConfig.list("ServerCluster").splitlines()
+	for cluster in clusters:
+		if cluster.find("AppTarget") >= 0:
+			appTargetRef = cluster
+		elif cluster.find("Messaging") >= 0:
+			messagingRef = cluster
+		elif cluster.find("Support") >= 0:
+			supportRef = cluster
+		else:
+			log.error("Could not identify " + cluster + ".")
+	return [appTargetRef, messagingRef, supportRef]
+
+
