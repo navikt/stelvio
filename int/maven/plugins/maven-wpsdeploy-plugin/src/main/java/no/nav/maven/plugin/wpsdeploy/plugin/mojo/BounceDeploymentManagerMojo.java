@@ -26,7 +26,7 @@ public class BounceDeploymentManagerMojo extends WebsphereUpdaterMojo {
 			getLog().info("You can't run this step without having extracted the bus-configuration. Skipping ...");
 			return;
 		}
-		getLog().info("Bouncing deployment manager");
+		getLog().info("Bouncing deployment manager to force the VERA application to refresh");
 		SshCommands.bounceDeploymentManager(sshUser, dmgrUsername, dmgrPassword);
 		getLog().info(dmgrHostname+" bounced successfully!");
 	}
