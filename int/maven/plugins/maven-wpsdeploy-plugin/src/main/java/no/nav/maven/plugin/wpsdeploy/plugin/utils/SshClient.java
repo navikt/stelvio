@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode;
+import no.nav.maven.plugin.wpsdeploy.plugin.models.SshUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,15 +17,16 @@ public class SshClient {
 	private Session session;
 	private final static Logger log = LoggerFactory.getLogger(SshClient.class);
 
-	public SshClient(String host, String username, String password) {
+	public SshClient(SshUser sshUser) {
 		try {
-			this.conn = new Connection(host);
-			this.conn.connect();
-			this.session = conn.openSession();
-			this.session.requestDumbPTY();
-			boolean authenticated = conn.authenticateWithPassword(username, password);
-			if (!authenticated)
-				throw new RuntimeException("User " + username + " is not authenticated on " + host);
+			conn = new Connection(sshUser.getHostname());
+			conn.connect();
+			boolean authenticated = conn.authenticateWithPassword(sshUser.getUsername(), sshUser.getPassword());
+			if (!authenticated){
+				throw new RuntimeException("User " + sshUser.getUsername() + " is not authenticated on " + sshUser.getHostname());
+			}
+			session = conn.openSession();
+			session.requestDumbPTY();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -40,10 +42,10 @@ public class SshClient {
 
 		try {
 			session.execCommand(sshCommand);
-
 			String output = readInputStream(session.getStdout());
 			String errOutput = readInputStream(session.getStderr());
 
+			waitForSshCommandToFinish(session);
 			int exitCode = session.getExitStatus();
 
 			if(exitCode != 0){
@@ -55,14 +57,12 @@ public class SshClient {
 
 			return output.toString();
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("The SshClient failed to execute the ssh command!", e);
+		} catch (InterruptedException e) {
+			throw new RuntimeException("The SshClient failed to wait for the ssh command to finish!", e);
 		} finally {
 			if (session != null) session.close();
 		}
-	}
-
-	public void close() {
-		this.conn.close();
 	}
 
 	private String readInputStream(InputStream inputStream) {
@@ -74,10 +74,19 @@ public class SshClient {
 			output.append(line);
 			if (scanner.hasNextLine()) {
 				output.append("\n");
-				log.debug(line);
 			}
+			log.info("SSH: " + line);
 		}
 		scanner.close();
 		return output.toString();
+	}
+
+	private void waitForSshCommandToFinish(Session session) throws InterruptedException {
+		Thread.sleep(20);
+		while (session.getExitStatus() == null){
+			int furtherWaitTime = 1000;
+			log.info("Waiting " + furtherWaitTime + " milliseconds for the SSH channel to properly close...");
+			Thread.sleep(furtherWaitTime);
+		}
 	}
 }
