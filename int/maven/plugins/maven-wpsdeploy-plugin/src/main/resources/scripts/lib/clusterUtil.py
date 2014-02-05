@@ -130,6 +130,13 @@ def isOnActiveNode(activeNodes, nodeMember):
 	nodeName = AdminConfig.showAttribute(nodeMember, "nodeName")
 	return nodeName in activeNodes
 
+def retryClusterOperation(resolvedCluster, clusterOperation):
+	log.info("Retrying the %s operation!" % clusterOperation)
+	try:
+		invokeClusterOperation(resolvedCluster, clusterOperation)
+	except:
+		log.info("Retrying resulted in an exception. Won't retry for another %s seconds" % SECONDS_BETWEEN_RETRIES)
+
 def getCell():
 	cellRef = AdminConfig.list("Cell")
 	cellName = removeParentheses(cellRef)
