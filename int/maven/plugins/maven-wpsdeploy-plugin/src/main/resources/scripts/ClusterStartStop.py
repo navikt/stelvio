@@ -1,6 +1,8 @@
 import sys, re
 from lib.syncUtil import sync
+from lib.IBM.wsadminlib import nodeIsDmgr
 import lib.logUtil as log
+
 
 l = log.getLogger(__name__)
 OPERATION = sys.argv[1]
@@ -37,33 +39,26 @@ def waitForMessagingEnginesStarted():
 		else:
 			l.info('Waiting for ' + str(re.split(',', re.split('\=', engine)[1])[0] + ' to be started'))
 			sleep(10)
-						
+
 		i = i+1
 		if(i==count and i!=0):
 			i=0
 	l.info("All messaging engines are started")
 
 def allNodesActive():
-	nodes = AdminControl.queryNames("type=NodeAgent,*").split(java.lang.System.getProperty('line.separator'))
-	active_nodes = []
-	for node in nodes:
-		active_nodes.append(node.split(',node=')[1].split(',')[0])
-		
-		
-	nodes = AdminConfig.list('Node').split(java.lang.System.getProperty('line.separator'))
-	all_nodes_in_cell = []
-	for node in nodes:
-		# Should use getDmgrNode from wsadminlib.py
-		if (node.count('Manager') == 0):
-			all_nodes_in_cell.append(node.split('(')[0])
-			if (active_nodes.count(node.split('(')[0]) == 0):
-				return True
-	
-	return False
-#endDef
+	active_nodes = getRunningNodes()
+	for node in getAllNodes():
+		if not nodeIsDmgr(node):
+			if not node in active_nodes:
+				return False
+
+	return True
+
+def getAllNodes():
+	return [node.split('(')[0] for node in AdminConfig.list('Node').splitlines()]
 
 def getRunningNodes():
-	nodes = AdminControl.queryNames("type=NodeAgent,*").split(java.lang.System.getProperty('line.separator'))
+	nodes = AdminControl.queryNames("type=NodeAgent,*").splitlines()
 	active_nodes = []
 	for node in nodes:
 		active_nodes.append(node.split(',node=')[1].split(',')[0])
@@ -75,16 +70,16 @@ def getClusterState(cluster):
 #endDef
 
 def doClusterOperation(cellName, clusterName, operation):
-	
+
 	cluster = AdminControl.completeObjectName('cell='+cellName+',type=Cluster,name='+re.split('\(', clusterName)[0]+',*')
-	
+
 	try:
 		result = AdminControl.invoke(cluster, operation )
 	except:
 		l.warning("Caught Exception during cluster operation. Retrying...")
 		return 1
 	else:
-		if (allNodesActive() == 0):
+		if allNodesActive():
 			if (operation == 'start'):
 				waiting_for_state = "websphere.cluster.running"
 			elif (operation == 'stop'):

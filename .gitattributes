@@ -8018,7 +8018,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/start.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/startStopApplication.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/troubleshoot.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/versionMBeanInstall.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/Jython[!!-~]Examples/wsadminlib.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/TODO.txt -text
 int/maven/plugins/maven-wpsdeploy-plugin/pom.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/exceptions/ConfigurationException.java -text
@@ -8084,6 +8083,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/SetEnvironme
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/__init__.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/environment.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/utils6.py -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/IBM/wsadminlib.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/Utils.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI-LLW.exe -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/WindowsCmdColors_x64/ANSI32.dll -text
