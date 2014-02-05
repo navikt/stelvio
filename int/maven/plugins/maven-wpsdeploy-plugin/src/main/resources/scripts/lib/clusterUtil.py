@@ -41,7 +41,7 @@ def doClusterOperation(cellName, clusterRef, clusterOperation, clusterEndState, 
 	invokeClusterOperation(resolvedCluster, clusterOperation)
 
 	if isAllNodesActive():
-		log.info("All nodes are running, checking individual servers if %sed!" % clusterOperation)
+		log.info("All nodes are running, checking if the clusters is %sed!" % clusterOperation)
 		__startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEndState)
 	else:
 		log.warning("Not all nodes are running, checking individual servers if %sed!" % clusterOperation)
@@ -67,7 +67,7 @@ def __startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEn
 				break
 			elif i % SECONDS_BETWEEN_RETRIES == 0:
 				retryClusterOperation(resolvedCluster, clusterOperation)
-			log.info("The cluster %s is still in state [%s], sleeping for %s seconds." % (
+			log.info("The cluster %s is still in state [%s], waiting %s seconds before checking again." % (
 				clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
 		sleep(1)
 
@@ -86,7 +86,7 @@ def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndSt
 						break
 					elif i % SECONDS_BETWEEN_RETRIES == 0:
 						retryClusterOperation(resolvedCluster, clusterOperation)
-					log.info("The server %s is still in state [%s], sleeping for %s seconds." % (
+					log.info("The server %s is still in state [%s], waiting %s seconds before checking again." % (
 						serverName, serverState, SECONDS_BETWEEN_RECHECKS))
 				sleep(1)
 
