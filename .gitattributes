@@ -8226,6 +8226,7 @@ int/maven/poms/maven-wps-poms/maven-wps-tests-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
 int/maven/poms/maven-wpsdeploy-ci-pom/pom.xml -text
+int/maven/poms/maven-wpsdeploy-pom/base64Encode.py -text
 int/maven/poms/maven-wpsdeploy-pom/pom.xml -text
 int/maven/poms/pom.xml -text
 int/maven/utilities/custom-enforcer-rules/pom.xml -text
