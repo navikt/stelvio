@@ -21,7 +21,8 @@ public class SshCommands {
 	public static void backupConfig(SshUser sshUser) {
 		String baseDir = SshUtil.getBaseDir(sshUser); //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
 		String cmd = baseDir + "backupConfig.sh " + baseDir + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
-		SshUtil.executeSshCommand(sshUser, cmd);
+		SshClient sshClient = new SshClient(sshUser);
+		sshClient.execute(cmd);
 	}
 
 	/**
@@ -33,10 +34,11 @@ public class SshCommands {
 	}
 
 	private static void startDeploymentManager(SshUser sshUser) {
+		SshClient sshClient = new SshClient(sshUser);
 		logger.info("Starting the deployment manager...");
 		String cmd = SshUtil.getBaseDir(sshUser) + "startManager.sh"; //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
 		try {
-			SshUtil.executeSshCommand(sshUser, cmd);
+			sshClient.execute(cmd);
 		} catch (NonZeroSshExitCode e){
 			if (e.getExitCode() == SERVER_ALREADY_STARTED_EXIT_CODE) {
 				logger.info("Server was already running! (exitcode " + SERVER_ALREADY_STARTED_EXIT_CODE + ")");
@@ -47,10 +49,11 @@ public class SshCommands {
 	}
 
 	private static void stopDeploymentManager(SshUser sshUser, String dmgrUsername, String dmgrPassword) {
+		SshClient sshClient = new SshClient(sshUser);
 		logger.info("Stopping the deployment manager...");
 		String cmd = SshUtil.getBaseDir(sshUser) + "stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword+" -timeout 600"; //TODO: getBaseDir() kan slettes etter at BPM8.5 går i prod
 		try {
-			SshUtil.executeSshCommand(sshUser, cmd);
+			sshClient.execute(cmd);
 		} catch (NonZeroSshExitCode e){
 			if (e.getExitCode() == SERVER_ALREADY_STOPPED_EXIT_CODE){
 				logger.info("Server was already stopped! (exitcode " + SERVER_ALREADY_STOPPED_EXIT_CODE + ")");
@@ -66,11 +69,11 @@ public class SshCommands {
 	 * @throws java.io.IOException
 	 */
 	public static boolean checkDiskSpace(SshUser sshUser, int minimumFreeSpaceInMegaBytes) {
+		SshClient sshClient = new SshClient(sshUser);
 		String dir = "/opt/";
 		String cmd = "df -m " + dir;
 		logger.info("Checking disk that there is more than " + minimumFreeSpaceInMegaBytes + "MB free space in " + dir);
-		String commandOutput = SshUtil.executeSshCommand(sshUser, cmd);
-		System.out.println(commandOutput);
+		String commandOutput = sshClient.execute(cmd);
 		int spaceAvailable = extractSizeFromDfCommandOutput(commandOutput);
 		return spaceAvailable > minimumFreeSpaceInMegaBytes;
 	}
