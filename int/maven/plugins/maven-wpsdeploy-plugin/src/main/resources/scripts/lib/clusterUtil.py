@@ -24,7 +24,7 @@ CLUSTER_STARTED_STATE = "websphere.cluster.running"
 SERVER_STARTED_STATE = "STARTED"
 
 SECONDS_TO_RETRY = 900  # 900 seconds is 15 minutes
-SECONDS_BETWEEN_RECHECKS = 10
+SECONDS_BETWEEN_RECHECKS = 5
 SECONDS_BETWEEN_RETRIES = 600  # 600 seconds is 10 minutes
 
 def startCluster(cellName, clusterRef):
