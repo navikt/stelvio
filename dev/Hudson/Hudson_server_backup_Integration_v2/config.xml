@@ -305,7 +305,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>CI-deploy-til-U2-WPS-Maven3</string>
-        <string>CI-deploy-til-U2-WPS-Maven3_revision_10633</string>
+        <string>CI-deploy-til-U2-WPS-Maven3_revision_10650</string>
         <string>DataPower_deploy_MOD</string>
         <string>DataPower_deploy_TRUNK</string>
         <string>Deploy_WPS_8.0.1</string>

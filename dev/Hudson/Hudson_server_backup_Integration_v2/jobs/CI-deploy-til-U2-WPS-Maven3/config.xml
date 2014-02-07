@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Starter deploy til U2 kl 02.00</description>
+  <description>Starter deploy til U2 kl 02.00&lt;br/&gt;&#xd;
+&lt;b&gt;NB:&lt;/b&gt; Midlertidig disabled på grunn av at nyeste versjon av deployskript kun støtter BPM, mens 2014HL2 (trunk) fortsatt er WPS 7.0</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -278,19 +279,19 @@
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean&#xd;
-deploy&#xd;
--Denvironment=U2&#xd;
--Dbus-configuration-version=0.0.0.1-SNAPSHOT&#xd;
--Dnav-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--Desb-modules-ci-version=0.0.0.1-SNAPSHOT&#xd;
--DinteractiveMode=false&#xd;
--Dskip=backup-config,create-BLA-groups,bounce-dmgr&#xd;
--Desb-authorization-configuration=0.0.0.1-SNAPSHOT&#xd;
--Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT&#xd;
--Desb-enviroment-configuration=0.0.0.1-SNAPSHOT&#xd;
+              <goals>clean
+deploy
+-Denvironment=U2
+-Dbus-configuration-version=0.0.0.1-SNAPSHOT
+-Dnav-modules-ci-version=0.0.0.1-SNAPSHOT
+-Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT
+-Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT
+-Desb-modules-ci-version=0.0.0.1-SNAPSHOT
+-DinteractiveMode=false
+-Dskip=backup-config,create-BLA-groups,bounce-dmgr
+-Desb-authorization-configuration=0.0.0.1-SNAPSHOT
+-Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT
+-Desb-enviroment-configuration=0.0.0.1-SNAPSHOT
 -Dlogging.level=DEBUG</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
@@ -302,12 +303,10 @@ deploy&#xd;
               <verbosity>NORMAL</verbosity>
               <offline>false</offline>
               <snapshotUpdateMode>NORMAL</snapshotUpdateMode>
-              <profiles/>
               <recursive>true</recursive>
               <checksumMode>NORMAL</checksumMode>
               <failMode>NORMAL</failMode>
               <makeMode>NONE</makeMode>
-              <projects/>
               <settingsId>NONE</settingsId>
               <globalSettingsId>NONE</globalSettingsId>
               <toolChainsId>NONE</toolChainsId>
@@ -425,7 +424,7 @@ deploy&#xd;
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
-          <spec># at 02:00 in the morning&#xd;
+          <spec># at 02:00 in the morning
 0 2 * * *</spec>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>

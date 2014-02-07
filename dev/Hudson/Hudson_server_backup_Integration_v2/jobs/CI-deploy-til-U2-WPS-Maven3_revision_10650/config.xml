@@ -287,7 +287,7 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>cd /home/ci/nilssen-terje/deploy
-svn up -r10633
+svn up -r10650
 mvn3 clean deploy -Denvironment=U2 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-ci-version=0.0.0.1-SNAPSHOT -Dpensjon-modules-ci-version=0.0.0.1-SNAPSHOT -Dekstern-modules-ci-version=0.0.0.1-SNAPSHOT -Desb-modules-ci-version=0.0.0.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.0.1-SNAPSHOT -Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT -Desb-enviroment-configuration=0.0.0.1-SNAPSHOT -Dlogging.level=DEBUG</command>
           </hudson.tasks.Shell>
         </originalValue>
