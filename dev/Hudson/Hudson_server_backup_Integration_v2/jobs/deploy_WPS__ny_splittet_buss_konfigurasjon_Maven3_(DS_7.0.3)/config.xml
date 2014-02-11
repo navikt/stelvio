@@ -318,20 +318,22 @@ fi</command>
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean
-${Lifecycle}
--Denvironment=${Environment}
--Desb-modules-version=${ESBVersion}
--Dnav-modules-version=${ESBVersion}
--Dpensjon-modules-version=${ESBVersion}
--Dpensjon-prosess-modules-version=${ESBVersion}
--Dekstern-pensjon-modules-version=${ESBVersion}
--DinteractiveMode=false
--Dskip=backup-config
--Desb-authorization-configuration=${esb_authorization_configuration}
--Desb-nonenviroment-configuration=${esb_nonenvironment_configuration}
--Desb-enviroment-configuration=${esb_environment_configuration}
--Dlogging.level=${logging_level}</goals>
+              <goals>clean&#xd;
+${Lifecycle}&#xd;
+-Denvironment=${Environment}&#xd;
+-Desb-modules-version=${ESBVersion}&#xd;
+-Dnav-modules-version=${ESBVersion}&#xd;
+-Dpensjon-modules-version=${ESBVersion}&#xd;
+-Dpensjon-prosess-modules-version=${ESBVersion}&#xd;
+-Dekstern-pensjon-modules-version=${ESBVersion}&#xd;
+-DinteractiveMode=false&#xd;
+-Dskip=backup-config&#xd;
+-Desb-authorization-configuration=${esb_authorization_configuration}&#xd;
+-Desb-nonenviroment-configuration=${esb_nonenvironment_configuration}&#xd;
+-Desb-enviroment-configuration=${esb_environment_configuration}&#xd;
+-Dlogging.level=${logging_level}&#xd;
+-X&#xd;
+-DfasitPasswordBase64=YWRtaW4=</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
               <pomFile>pom.xml</pomFile>
