@@ -81,6 +81,10 @@ public class WSDLFile {
 		return service.getQName().toString();
 	}
 	
+	public String getServiceName() {
+		return service.getQName().getLocalPart();
+	}
+	
 	public String getFileName() {
 		return fileName;
 	}
