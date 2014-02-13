@@ -430,7 +430,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>CI Trunk - U5</name>
+      <name>CI HL3 Feature Branch - U5</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>

@@ -332,7 +332,8 @@ ${Lifecycle}
 -Desb-nonenviroment-configuration=${esb_nonenvironment_configuration}
 -Desb-enviroment-configuration=${esb_environment_configuration}
 -Dlogging.level=${logging_level}
--DfasitPasswordBase64=YWRtaW4=</goals>
+-DfasitPasswordBase64=YWRtaW4=
+-DfasitUsername=admin</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
               <pomFile>pom.xml</pomFile>

@@ -292,7 +292,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/pensjon/vedtak/pensjon-vedtak-test/integrasjons-test-SoapUI</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_0_0_D20131118_2014HL3/pensjon/vedtak/pensjon-vedtak-test/integrasjons-test-SoapUI</remote>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
