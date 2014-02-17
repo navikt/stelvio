@@ -70,6 +70,8 @@ def __startStopCluster(resolvedCluster, clusterOperation, clusterName, clusterEn
 			log.info("The cluster %s is still in state [%s], waiting %s seconds before checking again." % (
 				clusterName, clusterState, SECONDS_BETWEEN_RECHECKS))
 		sleep(1)
+	else: #This gets called if we don't get a "break" in the above for loop
+		raise Exception('Could not start the cluster:', clusterName)
 
 	waitIfThisIsMessagingEngine(clusterName, clusterOperation)
 
@@ -89,6 +91,9 @@ def __startStopServer(resolvedCluster, clusterOperation, clusterRef, serverEndSt
 					log.info("The server %s is still in state [%s], waiting %s seconds before checking again." % (
 						serverName, serverState, SECONDS_BETWEEN_RECHECKS))
 				sleep(1)
+			else: #This gets called if we don't get a "break" in the above for loop
+				raise Exception('Could not start the server:', serverName)
+
 
 	waitIfThisIsMessagingEngine(clusterRef, clusterOperation)
 
