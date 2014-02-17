@@ -308,6 +308,8 @@
         <string>CI-deploy-til-U2-WPS-Maven3_revision_10650</string>
         <string>DataPower_deploy_MOD</string>
         <string>DataPower_deploy_TRUNK</string>
+        <string>Deploy_BPM_9.0.0</string>
+        <string>Deploy_WPS-BPM_8.0.7</string>
         <string>Deploy_WPS_8.0.1</string>
         <string>deploy_WPS__ny_splittet_buss_konfigurasjon_Maven3_(DS_7.0.3)</string>
       </jobNames>
