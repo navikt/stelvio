@@ -2,6 +2,17 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.1
+---------------------------------- 
+* Changes to improve logging using stelvio properties in MDC (PKIGUAN-485)
+	- Added setting and resetting of MDC in RequestContextFilter
+	- Added setting and resetting of MDC in ExecuteServiceRequestInterceptor
+	- Added after-invoke code in ExecuteServiceRequestInterceptor and added reset of RequestContext there
+	- Renamed Log4jLogger to MDCLogger and moved logic to new class MDCOperations
+	- Fixed some Used+undeclared dependencies as reported by dependency-plugin
+	- Added setting and resetting of MDC in StelvioContextHandler (used by JAX-WS providers)
+	- Added tests (mockitobased) for StelvioContextHandler
+	
 Version 4.1.0
 ---------------------------------- 
 * Code and dependency changes to upgrade from JSF 1.2 to JSF 2.1 (PKIGUAN-355)
