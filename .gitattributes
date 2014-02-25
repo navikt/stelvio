@@ -8111,7 +8111,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/logUtil.
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/models.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/namingConventionLogic.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/parseConfiguration.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/policySetAttachmentUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/resources.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/saveUtil.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/lib/scaModuleUtil.py -text
@@ -8152,7 +8151,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/Modify
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/ModifyUserNameTokenGeneratorTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/XMLUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/__init__.py -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/policySetAttachmentUtilTest.py -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/scripts/tests/scaModuleUtilTest.py -text
 int/maven/plugins/maven-wsdl-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/AddUsingAddressingMojo.java -text

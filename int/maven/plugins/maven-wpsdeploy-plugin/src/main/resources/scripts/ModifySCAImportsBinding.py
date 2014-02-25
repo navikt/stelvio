@@ -3,7 +3,6 @@ import lib.logUtil as log
 from lib.stringUtil import strip
 from lib.parseConfiguration import parseEndpoints
 from lib.saveUtil import save
-from lib.policySetAttachmentUtil import getPolicySetAttachements, createPolicySetAttachements
 import lib.scaModuleUtil as sca
 
 l = log.getLogger(__name__)
@@ -25,28 +24,14 @@ def main():
 		if modulesImports.has_key(shortName):
 			serverAddresses = modulesImports[shortName]
 			scaImportNames = listSCAImports(scaModuleToDeploy)
-
-			policySetAttachements = []
 			for scaImportName in scaImportNames:
 				hasNewServerAddress = serverAddresses.has_key(scaImportName)
-				isWsimport = scaImportName.upper().endswith('WSIMP')
-
-				if isWsimport or hasNewServerAddress:
+				if hasNewServerAddress:
 					endpointUrl = getEndpointUrl(moduleName, scaImportName)
-					if hasNewServerAddress:
-						serverAddress = serverAddresses[scaImportName]
-						newEndpoint = swapServerAddress(endpointUrl, serverAddress)
-						modifySCAImportBinding(moduleName, scaImportName, newEndpoint)
-						l.info("Modified import [" + scaImportName + "] on module [" + moduleName + "] from [ " + endpointUrl + "] to [" + newEndpoint + "].")
-
-					elif isWsimport:
-						modifySCAImportBinding(moduleName, scaImportName, endpointUrl)
-						l.info("Touched import [" + scaImportName + "] on module [" + moduleName + "] with the url [" + endpointUrl + "].") # We do this to make sure the policyset is visible on the import
-
-					policySetAttachements += list(getPolicySetAttachements(applicationName)) #This must be done after each endpoint modification, because if a endpoint in an import has been changed; ONLY that import has policySet and binding.
-
-			l.debug('policySetAttachements:', policySetAttachements)
-			createPolicySetAttachements(policySetAttachements)
+					serverAddress = serverAddresses[scaImportName]
+					newEndpoint = swapServerAddress(endpointUrl, serverAddress)
+					modifySCAImportBinding(moduleName, scaImportName, newEndpoint)
+					l.info("Modified import [" + scaImportName + "] on module [" + moduleName + "] from [ " + endpointUrl + "] to [" + newEndpoint + "].")
 	save()
 
 def listSCAImports(scaModule):
