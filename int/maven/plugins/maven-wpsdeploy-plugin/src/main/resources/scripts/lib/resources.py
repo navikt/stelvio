@@ -253,6 +253,7 @@ def createJ2CConnectionFactory ( propertiesPath ):
 	tpnName				=		propReader.get("TPN_NAME")
 	requestExits	       =      propReader.get("REQUEST_EXITS")
 	tranName			=		propReader.get("TRAN_NAME")
+	xaSupport			=		propReader.get("XA_SUPPORT")
 	
 	l.info('(createJ2CConnectionFactory): Create a new J2C Connection Factory  '+name)
 	if (nodeName == ""):
@@ -279,6 +280,7 @@ def createJ2CConnectionFactory ( propertiesPath ):
 	tpnNameAttr = [["name", "TPNName"], ["type", "java.lang.String"], ["value", tpnName]]
 	requestExitsAttr= [["name", "RequestExits"], ["type", "java.lang.String"], ["value", requestExits]]
 	tranNameAttr = [["name", "TranName"], ["type", "java.lang.String"], ["value", tranName]]
+	xaSupportAttr = [["name", "xaSupport"], ["type", "java.lang.String"], ["value", xaSupport]]
 	
    	newprops = []
    	newprops.append(connAttr)
@@ -300,6 +302,8 @@ def createJ2CConnectionFactory ( propertiesPath ):
 
 	newprops.append(tranNameAttr)
 	
+	if(xaSupport != None and xaSupport != "" ):
+		newprops.append(xaSupportAttr)
 	
   	psAttr = ["propertySet", [["resourceProperties", newprops]]]
   	
