@@ -45,8 +45,8 @@ from lib.IBM.environment import createSharedLibrary
 from lib.javaPropertiesUtil import PropertiesReader
 from lib.environmentInfo import getBusName, isLocalBus
 
-import lib.logUtil as log
-l = log.getLogger(__name__)
+import lib.logUtil as logLib
+log = logLob.getLogger(__name__)
 
 def addDataSourceCustomProperties ( scope, scopeName, dataSourceName, propName, propValue, propValueType, propDesc ):
 
@@ -56,20 +56,20 @@ def addDataSourceCustomProperties ( scope, scopeName, dataSourceName, propName, 
 
 	global AdminConfig
 
-	l.info('====== Add Custom Property '+propName+' to '+dataSourceName+' ======')
+	log.info('====== Add Custom Property '+propName+' to '+dataSourceName+' ======')
 
 	dataSource = findDataSourceWithScope(scope, scopeName, dataSourceName )
 	if (dataSource == 0):
-		l.info("DataSource doesn't exist")
+		log.info("DataSource doesn't exist")
         	return
 	propSet = AdminConfig.showAttribute(dataSource, "propertySet" )
 
 	if (propSet == " "):
 		try:
 			propSet = AdminConfig.create("J2EEResourcePropertySet", dataSource, [] )
-			l.info("Created J2EEResourcePropertySet for DataSource ")
+			log.info("Created J2EEResourcePropertySet for DataSource ")
 		except:
-			l.exception("Caught Exception creating Property Set")
+			log.exception("Caught Exception creating Property Set")
 
 	attrs = [["name", propName], ["type", propValueType], ["value", propValue], ["description", propDesc]]
 
@@ -87,20 +87,20 @@ def addDataSourceCustomProperties ( scope, scopeName, dataSourceName, propName, 
 	for entry in resourcePropsList:
 		if ( entry.find(propName) >= 0):
 			modifiedOne = 1
-			l.info("Modifying "+propName+" values")
+			log.info("Modifying "+propName+" values")
 			try:
 				result = AdminConfig.modify(entry, [["type", propValueType], ["value", propValue], ["description", propDesc]] )
 			except:
-				l.exception("Caught Exception modifying property")
+				log.exception("Caught Exception modifying property")
 			break 
 
 	if ( not modifiedOne ):
 		try:
 			result = AdminConfig.create("J2EEResourceProperty", propSet, attrs )
 		except:
-			l.exception("Caught Exception creating Custom Property")
+			log.exception("Caught Exception creating Custom Property")
 		else:
-			l.info("Added DataSource Property "+propName)
+			log.info("Added DataSource Property "+propName)
 
 
 #******************************************************************************
@@ -163,9 +163,9 @@ def createCFConnectionPool ( cf, type, propertiesPath ):
 			result = AdminConfig.create('ConnectionPool', cf, attrs, 'sessionPool')
 			
 	except:
-		l.exception("(createCFConnectionPool): Caught Exception creating connection pool")
+		log.exception("(createCFConnectionPool): Caught Exception creating connection pool")
 
-	l.info("(createCFConnectionPool): created Connection Pool.")
+	log.info("(createCFConnectionPool): created Connection Pool.")
 	return
 
 #******************************************************************************
@@ -191,9 +191,9 @@ def createJ2CConnectionPool ( cf, type, propertiesPath ):
 	try:
 		result = AdminConfig.create('ConnectionPool', cf, attrs)			
 	except:
-		l.exception("(createJ2CConnectionPool): Caught Exception creating J2C Connection pool")
+		log.exception("(createJ2CConnectionPool): Caught Exception creating J2C Connection pool")
 
-	l.info("(createJ2CConnectionPool): created J2C Connection Pool.")
+	log.info("(createJ2CConnectionPool): created J2C Connection Pool.")
 	return
 
 #******************************************************************************
@@ -209,22 +209,22 @@ def installResourceAdapter (propertiesPath):
 	nodeName =		propReader.get("NODE_NAME")
 	archivePath =		propReader.get("ARCHIVE_PATH")
 	name =			propReader.get("NAME")
-	l.info('(installResourceAdapter): Install a new Resource Adapter '+name)
+	log.info('(installResourceAdapter): Install a new Resource Adapter '+name)
 	
 	# Check if Resource Adapter already exists
 	ra = getConfigItemId(scope, nodeName, "", "J2CResourceAdapter", name)
 	
 	if (len(ra) != 0):
-		l.info("(installResourceAdapter): Resource Adapter "+name+" already exists.")
+		log.info("(installResourceAdapter): Resource Adapter "+name+" already exists.")
 		return
 		
 	try:
 		result = AdminConfig.installResourceAdapter(archivePath, nodeName, "[-rar.desc 'Resource Adapter']")       		     
 		
 	except:
-		l.exception("(installResourceAdapter): Caught Exception creating Resource Adapter")
+		log.exception("(installResourceAdapter): Caught Exception creating Resource Adapter")
 	
-	l.info("(installResourceAdapter): Install of Resource Adapter "+name+" was successful.")
+	log.info("(installResourceAdapter): Install of Resource Adapter "+name+" was successful.")
 
 #******************************************************************************
 # Procedure:  	createJ2CconnectionFactory
@@ -255,14 +255,14 @@ def createJ2CConnectionFactory ( propertiesPath ):
 	tranName			=		propReader.get("TRAN_NAME")
 	xaSupport			=		propReader.get("XA_SUPPORT")
 	
-	l.info('(createJ2CConnectionFactory): Create a new J2C Connection Factory  '+name)
+	log.info('(createJ2CConnectionFactory): Create a new J2C Connection Factory  '+name)
 	if (nodeName == ""):
 		ra = getConfigItemId(scope, scopeName, "", "J2CResourceAdapter", raName)
 	else:
 		ra = getConfigItemId(scope, scopeName, nodeName, "J2CResourceAdapter", raName)
 		
 	if (len(ra) == 0):
-		l.error("(createJ2CConnectionFactory): Resource Adapter "+raName+" does not exists. Aborting creation of J2C Connection Factory. Please install J2C adapter.")
+		log.error("(createJ2CConnectionFactory): Resource Adapter "+raName+" does not exists. Aborting creation of J2C Connection Factory. Please install J2C adapter.")
 		return 1
 		
 	
@@ -271,15 +271,15 @@ def createJ2CConnectionFactory ( propertiesPath ):
 	attrs.append(["jndiName", jndiName])
 	attrs.append(["description", desc])
 	
-	connAttr = [["name", "ConnectionURL"], ["type", "java.lang.String"], ["value", connectionUrl]] 
-	portAttr = [["name", "PortNumber"], ["type", "java.lang.String"], ["value", portNumber]] 
-	servAttr = [["name", "ServerName"], ["type", "java.lang.String"], ["value", serverName]] 
-	timeoutAttr = [["name", "SocketConnectTimeout"], ["type", "java.lang.String"], ["value", socketConnectTimeOut]] 
-	applIdQualifierAttr = [["name", "ApplidQualifier"], ["type", "java.lang.String"], ["value", applIdQualifier]]
-	applIdAttr = [["name", "Applid"], ["type", "java.lang.String"], ["value", applId]]
-	tpnNameAttr = [["name", "TPNName"], ["type", "java.lang.String"], ["value", tpnName]]
-	requestExitsAttr= [["name", "RequestExits"], ["type", "java.lang.String"], ["value", requestExits]]
-	tranNameAttr = [["name", "TranName"], ["type", "java.lang.String"], ["value", tranName]]
+	connAttr = [["name", "connectionURL"], ["type", "java.lang.String"], ["value", connectionUrl]] 
+	portAttr = [["name", "portNumber"], ["type", "java.lang.String"], ["value", portNumber]] 
+	servAttr = [["name", "serverName"], ["type", "java.lang.String"], ["value", serverName]] 
+	timeoutAttr = [["name", "socketConnectTimeout"], ["type", "java.lang.String"], ["value", socketConnectTimeOut]] 
+	applIdQualifierAttr = [["name", "applidQualifier"], ["type", "java.lang.String"], ["value", applIdQualifier]]
+	applIdAttr = [["name", "applid"], ["type", "java.lang.String"], ["value", applId]]
+	tpnNameAttr = [["name", "tPNName"], ["type", "java.lang.String"], ["value", tpnName]]
+	requestExitsAttr= [["name", "requestExits"], ["type", "java.lang.String"], ["value", requestExits]]
+	tranNameAttr = [["name", "tranName"], ["type", "java.lang.String"], ["value", tranName]]
 	xaSupportAttr = [["name", "xaSupport"], ["type", "java.lang.String"], ["value", xaSupport]]
 	
    	newprops = []
@@ -315,17 +315,17 @@ def createJ2CConnectionFactory ( propertiesPath ):
 		j2cjndi = getConfigItemId(scope, scopeName, nodeName, "J2CResourceAdapter", raName + "/J2CConnectionFactory:" + name )
 		
 	if (len(j2cjndi) != 0):
-			l.info("(createJ2CConnectionFactory): J2C Connection Factory "+name+" already exist. Removing J2C Connection Factory...")
+			log.info("(createJ2CConnectionFactory): J2C Connection Factory "+name+" already exist. Removing J2C Connection Factory...")
 			
 			try:
 				result = AdminConfig.remove(j2cjndi)
 			except:
-				l.exception("(createJ2CConnectionFactory): Caught Exception removing J2C Connection Factory ")
+				log.exception("(createJ2CConnectionFactory): Caught Exception removing J2C Connection Factory ")
 	
 	try:
 		result = AdminConfig.create("J2CConnectionFactory", ra, attrs)
 	except:
-		l.exception("(createJ2CConnectionFactory): Caught Exception creating J2C Connection Factory ")
+		log.exception("(createJ2CConnectionFactory): Caught Exception creating J2C Connection Factory ")
 		
 	createJ2CConnectionPool(result, "J2C", propertiesPath)
 	
@@ -334,7 +334,7 @@ def createJ2CConnectionFactory ( propertiesPath ):
 		thePool=AdminConfig.showAttribute(result, "connectionPool")
 		AdminConfig.modify(thePool, [["connectionTimeout", connectionTimeout ]])
 
-	l.info("(createJ2CConnectionFactory): Create of J2C Connection Factory "+name+" was successful.")
+	log.info("(createJ2CConnectionFactory): Create of J2C Connection Factory "+name+" was successful.")
 	return 0
 #******************************************************************************
 # Procedure:  	deleteJ2CconnectionFactory
@@ -360,14 +360,14 @@ def deleteJ2CConnectionFactory ( propertiesPath ):
 	portNumber 	=	propReader.get("PORT_NUMBER")
 	serverName  	=	propReader.get("SERVER_NAME")
 	
-	l.info('(deleteJ2CConnectionFactory): Delete J2C Connection Factory  '+name)
+	log.info('(deleteJ2CConnectionFactory): Delete J2C Connection Factory  '+name)
 	if (nodeName == ""):
 		ra = getConfigItemId(scope, scopeName, "", "J2CResourceAdapter", raName)
 	else:
 		ra = getConfigItemId(scope, scopeName, nodeName, "J2CResourceAdapter", raName)
 		
 	if (len(ra) == 0):
-		l.error("(deleteJ2CConnectionFactory): Resource Adapter "+raName+" does not exists. Aborting... Please install J2C adapter.")
+		log.error("(deleteJ2CConnectionFactory): Resource Adapter "+raName+" does not exists. Aborting... Please install J2C adapter.")
 		return retval
 		
    
@@ -380,13 +380,13 @@ def deleteJ2CConnectionFactory ( propertiesPath ):
 						
 		try:
 			result = AdminConfig.remove(j2cjndi)
-			l.info("(deleteJ2CConnectionFactory): Delete of J2C Connection Factory "+name+" was successful.")
+			log.info("(deleteJ2CConnectionFactory): Delete of J2C Connection Factory "+name+" was successful.")
 			return 0
 		except:
-			l.exception("(deleteJ2CConnectionFactory): Caught Exception removing J2C Connection Factory ")
+			log.exception("(deleteJ2CConnectionFactory): Caught Exception removing J2C Connection Factory ")
 			
 	else:
-		l.error("(deleteJ2CConnectionFactory): J2CConnectionFactory "+name+" does not exists.")
+		log.error("(deleteJ2CConnectionFactory): J2CConnectionFactory "+name+" does not exists.")
 
 #******************************************************************************
 # Procedure:  	createCMPConnectionFactory
@@ -412,14 +412,14 @@ def createCMPConnectionFactory ( dsId, propertiesPath ):
 	
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.info("Unable to find "+scopeName )
+		log.info("Unable to find "+scopeName )
 		return
 
 	# Check if the connection factory already exists
 	objType = "J2CResourceAdapter:"+rraName+"/CMPConnectorFactory"
 	cfId = getConfigItemId(scope, scopeName, nodeName, objType, cfName)
 	if (cfId != ""):
-		l.info(""+cfName+" already exists on "+scope+" "+scopeName)
+		log.info(""+cfName+" already exists on "+scope+" "+scopeName)
 		return
 	else:
 		rraId = getConfigItemId(scope, scopeName, nodeName, "J2CResourceAdapter", rraName)
@@ -433,7 +433,7 @@ def createCMPConnectionFactory ( dsId, propertiesPath ):
 	try:
 		cf = AdminConfig.create("CMPConnectorFactory", rraId,  attrs)
 	except:
-		l.exception("Caught Exception creating CMP connection factory")
+		log.exception("Caught Exception creating CMP connection factory")
 
 	# Mapping Module
 	 
@@ -444,7 +444,7 @@ def createCMPConnectionFactory ( dsId, propertiesPath ):
 	try:
 		map = AdminConfig.create("MappingModule", cf, attrs1)
 	except:
-		l.exception("Caught Exception creating CMP mapping")
+		log.exception("Caught Exception creating CMP mapping")
 
 #******************************************************************************
 # Procedure:   	createDataSource
@@ -496,7 +496,7 @@ def createDataSource ( propertiesPath ):
 
 	global AdminApp, AdminConfig
 
-	l.info('(createDataSource): Create Data Source '+datasourceName+', if it does not exist')
+	log.info('(createDataSource): Create Data Source '+datasourceName+', if it does not exist')
 
 	# DB2 Only CMMisuraca
 	databaseName =		propReader.get("DATABASE_NAME" )
@@ -509,59 +509,59 @@ def createDataSource ( propertiesPath ):
 	oracleId = propReader.get("ORACLE_ID" )
 	
 	ds1 = findDataSourceWithScope(scope, scopeName, datasourceName )
-	l.info(ds1)
+	log.info(ds1)
 	if (ds1 == 0):
 		attrs2 = [["name", datasourceName], ["description", datasourceDesc]]
 		provider = getConfigItemId(scope, scopeName, nodeName, "JDBCProvider", providerName)
 		if (provider == ""):
-			l.error("(createDataSource): JDBC Provider does not exist.")
+			log.error("(createDataSource): JDBC Provider does not exist.")
 			return 1
 
-		l.info("(createDataSource): Creating the data source "+datasourceName)
+		log.info("(createDataSource): Creating the data source "+datasourceName)
 
 		try:
 			datasource = AdminConfig.create("DataSource", provider, attrs2 )
 		except:
-			l.exception("(createDataSource): Caught Exception creating datasource")
+			log.exception("(createDataSource): Caught Exception creating datasource")
 
 		# Set the properties for the data source
 		try:
 			propSet1 = AdminConfig.create("J2EEResourcePropertySet", datasource, [] )
 		except:
-			l.exception("(createDataSource): Caught Exception creating data source properties")
+			log.exception("(createDataSource): Caught Exception creating data source properties")
 
 		if (dbType == "ORACLE"):
 			oraString = "jdbc:oracle:thin:@"+oracleDBHost+":1521:"+oracleId
 			attrs3 = [["name", "URL"], ["type", "java.lang.String"], ["value", oraString]]
 		else:
 			attrs3 = [["name", "databaseName"], ["type", "java.lang.String"], ["value", databaseName]] 
-		l.info("(createDataSource): Create J2EEResourceProperty "+databaseName)
+		log.info("(createDataSource): Create J2EEResourceProperty "+databaseName)
 		try:
 			result = AdminConfig.create("J2EEResourceProperty", propSet1, attrs3 )
 		except:
-			l.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
+			log.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
 
-		l.info("(createDataSource): Create J2EEResourceProperty "+driverType)
+		log.info("(createDataSource): Create J2EEResourceProperty "+driverType)
 		try:
 			createJ2EEResourceProperty(propSet1, "driverType", driverType, "java.lang.Integer") 
 		except:
-			l.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
-		l.info("(createDataSource): Create J2EEResourceProperty "+serverName)
+			log.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
+		log.info("(createDataSource): Create J2EEResourceProperty "+serverName)
 		try:
 			createJ2EEResourceProperty(propSet1, "serverName", serverName, "java.lang.String") 
 		except:
-			l.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
+			log.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
 
 		attrs3 = [["name", "portNumber"], ["type", "java.lang.Integer"], ["value", portNumber]]
 
 
-		l.info("(createDataSource): Create J2EEResourceProperty ")
+		log.info("(createDataSource): Create J2EEResourceProperty ")
 		try:
 			result = AdminConfig.create("J2EEResourceProperty", propSet1, attrs3 )
 		except:
-			l.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
+			log.exception("(createDataSource): Caught Exception creating J2EE ResourceProperty")
 
-		l.info("(createDataSource): Create additional J2EEResourceProperties")
+		log.info("(createDataSource): Create additional J2EEResourceProperties")
 		createJ2EEResourceProperty(propSet1, "enableMultithreadedAccessDetection", enableAccess, "java.lang.Boolean") 
 		createJ2EEResourceProperty(propSet1, "reauthentication", enableDBReauth, "java.lang.Boolean") 
 		createJ2EEResourceProperty(propSet1, "jmsOnePhaseOptimization", enableJMSOpt, "java.lang.Boolean") 
@@ -585,9 +585,9 @@ def createDataSource ( propertiesPath ):
 		try:
 			result = AdminConfig.modify(datasource, attrs4 )
 		except:
-			l.exception("Caught Exception modifying datasource")
+			log.exception("Caught Exception modifying datasource")
 
-		l.info("(createDataSource): Create connection pool")
+		log.info("(createDataSource): Create connection pool")
 
 		attrs5 = []
 		attrs5.append(['connectionTimeout', connectionTimeout])
@@ -602,15 +602,15 @@ def createDataSource ( propertiesPath ):
 		try:
 			result = AdminConfig.create('ConnectionPool', datasource, attrs5)
 		except:
-			l.exception("(createDataSource): Caught Exception creating connection pool")
+			log.exception("(createDataSource): Caught Exception creating connection pool")
 
 		# Check if Container-managed authentication being used
 		if (authAliasName != ""):
-			l.info("(createDataSource): Create JAAS Auth Alias")
+			log.info("(createDataSource): Create JAAS Auth Alias")
 			authDataAlias = createJAASAuthAlias(cellName, authAliasName, user, password, desc )
 
 			# Set the default principal mapping properties to the datasource
-			l.info("Create Container Managed Alias")
+			log.info("Create Container Managed Alias")
 			map_auth_attr = ["authDataAlias", authAliasName]
 			map_configalias_attr = ["mappingConfigAlias", "DefaultPrincipalMapping"]
 			map_attrs = [map_auth_attr, map_configalias_attr]
@@ -620,15 +620,15 @@ def createDataSource ( propertiesPath ):
 			try:
 				result = AdminConfig.modify(datasource, attrs )
 			except:
-				l.exception("(createDataSource): Caught Exception creating container managed alias")
+				log.exception("(createDataSource): Caught Exception creating container managed alias")
 
 		# Create CMP Connection Factory if necessary
 		if (cmPersist == "true"):
-			l.info('(createDataSource):  Create CMP Connection Factory '+datasourceName)
+			log.info('(createDataSource):  Create CMP Connection Factory '+datasourceName)
 			createCMPConnectionFactory(datasource, propertiesPath)
 
 	else:
-		l.info("(createDataSource): "+datasourceName+" already exists on "+scope+" "+scopeName)
+		log.info("(createDataSource): "+datasourceName+" already exists on "+scope+" "+scopeName)
 		return 0
 	#endElse 
 
@@ -651,19 +651,19 @@ def removeDataSource ( propertiesPath):
 
 	global AdminConfig
 
-	l.info('(removeDataSource): Remove datasource '+dsName+', if it exists')
+	log.info('(removeDataSource): Remove datasource '+dsName+', if it exists')
 
 	dataSourceId = findDataSourceWithScope(scope, scopeName, dsName)
 	if (dataSourceId == 0):
-		l.info("(removeDataSource): DataSource "+dsName+" doesn't exist on "+scopeName)
+		log.info("(removeDataSource): DataSource "+dsName+" doesn't exist on "+scopeName)
 		return 0
 
 	try:
 		error = AdminConfig.remove(dataSourceId )
 	except:
-		l.exception("(removeDataSource): Error removing dataSource "+dsName)
+		log.exception("(removeDataSource): Error removing dataSource "+dsName)
 
-	l.info("(removeDataSource): Removed DataSource "+dsName+" from "+scopeName)
+	log.info("(removeDataSource): Removed DataSource "+dsName+" from "+scopeName)
 
 
 
@@ -683,7 +683,7 @@ def modifyResourceProperty (propSet, propName, propValue, propType):
 	try:
 		result = AdminConfig.modify(propSet, attrs )
 	except:
-		l.exception("Caught Exception modifying ResourceProperty")
+		log.exception("Caught Exception modifying ResourceProperty")
 
 #******************************************************************************
 # Procedure:   createJ2EEResourceProperty
@@ -701,7 +701,7 @@ def createJ2EEResourceProperty (propSet, propName, propValue, propType):
 	try:
 		result = AdminConfig.create("J2EEResourceProperty", propSet, attrs )
 	except:
-		l.exception("Caught Exception creating J2EE ResourceProperty")
+		log.exception("Caught Exception creating J2EE ResourceProperty")
 
 
 #******************************************************************************
@@ -732,16 +732,16 @@ def createJDBCProvider ( propertiesPath ):
 
 	global AdminApp, AdminConfig
 
-	l.info("(createJDBCProvider): Create JDBC Provider "+providerName+", if it does not exist ======")
+	log.info("(createJDBCProvider): Create JDBC Provider "+providerName+", if it does not exist ======")
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.error("(createJDBCProvider):"+scopeName+" does not exist.")
+		log.error("(createJDBCProvider):"+scopeName+" does not exist.")
 		return 1 
 
 	objType = "JDBCProvider"
 	jdbcId = getConfigItemId(scope, scopeName, nodeName, objType, providerName)
 	if (jdbcId != ""):
-		l.info("(createJDBCProvider): "+providerName+" already exists on "+scope+" "+scopeName)
+		log.info("(createJDBCProvider): "+providerName+" already exists on "+scope+" "+scopeName)
 		## Do nothing JDBC provider exists. This is ok.
 		return 0
 
@@ -759,9 +759,9 @@ def createJDBCProvider ( propertiesPath ):
 		try:
 			provider1 = AdminConfig.create("JDBCProvider", scopeEntry, attrs1 )
 		except:
-			l.exception("(createJDBCProvider): Caught Exception creating JDBC Provider")
+			log.exception("(createJDBCProvider): Caught Exception creating JDBC Provider")
 
-	l.info("(createJDBCProvider): Created "+providerName+" successfully.")
+	log.info("(createJDBCProvider): Created "+providerName+" successfully.")
 	
 
 
@@ -784,19 +784,19 @@ def removeJDBCProvider ( propertiesPath):
 	#------------------------------------------------------------------------------
 
 	global AdminConfig
-	l.info('(removeJDBCProvider): Remove JDBC Provider '+providerName+', if it exists.')
+	log.info('(removeJDBCProvider): Remove JDBC Provider '+providerName+', if it exists.')
 
 	provider = findJDBCProviderWithScope(scope, scopeName, providerName )
 	if provider == 0:
-		l.error("(removeJDBCProvider): "+providerName+" does not exist on "+scopeName)
+		log.error("(removeJDBCProvider): "+providerName+" does not exist on "+scopeName)
 		return 0 
 
 	try:
 		error = AdminConfig.remove(provider )
 	except:
-		l.exception("(removeJDBCProvider): Error removing JDBCProvider "+providerName)
+		log.exception("(removeJDBCProvider): Error removing JDBCProvider "+providerName)
 
-	l.info("(removeJDBCProvider): Removed JDBCProvider "+providerName+" from "+scopeName)
+	log.info("(removeJDBCProvider): Removed JDBCProvider "+providerName+" from "+scopeName)
 	
 #******************************************************************************
 # Procedure:   	createJ2CActivationSpec
@@ -837,11 +837,11 @@ def createJ2CActivationSpec ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask , AdminConfig
 
-	l.info('(createJ2CActivationSpec): Create '+name+' on the '+busName+' SIBus')
+	log.info('(createJ2CActivationSpec): Create '+name+' on the '+busName+' SIBus')
 
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(createJ2CActivationSpec): Unable to find "+scopeName )
+		log.error("(createJ2CActivationSpec): Unable to find "+scopeName )
 		return 1
 
 	# Check if the activation specification already exists
@@ -854,7 +854,7 @@ def createJ2CActivationSpec ( propertiesPath ):
 	parms += ' -authenticationAlias '+authAlias
 	parms += ' -description '+desc
 
-	l.info('INFO: parms '+parms)
+	log.info('INFO: parms '+parms)
 
 	for item in asList:
 		if (item.find(scopeName) >= 0 and item.find('SPI') >= 0 ):
@@ -863,9 +863,9 @@ def createJ2CActivationSpec ( propertiesPath ):
 	try:
 		as = AdminTask.createJ2CActivationSpec(item, parms)
 	except:
-		l.exception("ERROR: Error creating J2C Activation Spec")
+		log.exception("ERROR: Error creating J2C Activation Spec")
 
-	l.info("INFO: J2C Activation Specification successfully created.")
+	log.info("INFO: J2C Activation Specification successfully created.")
 
 
 	# Set the properties for the data source
@@ -880,81 +880,81 @@ def createJ2CActivationSpec ( propertiesPath ):
 			try:
 				modifyResourceProperty(attrbID, "busName", busName, "java.lang.String") 
 			except:
-				l.exception("ERROR: Caught Exception modifying Act Spec")
+				log.exception("ERROR: Caught Exception modifying Act Spec")
 
 		if (attrbID.find('destinationName') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "destinationName", destName, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('destinationType') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "destinationType", destType, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('durableSubscriptionHome') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "durableSubscriptionHome", durSubHome, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('maxBatchSize') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "maxBatchSize", maxBatch, "java.lang.Integer") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('maxConcurrency') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "maxConcurrency", maxEndpts, "java.lang.Integer") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('messageSelector') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "messageSelector", msgSelector, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('password') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "password", password, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('subscriptionName') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "subscriptionName", subName, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('messageDeletionMode') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "messageDeletionMode", delMode, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('shareDurableSubscriptions') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "shareDurableSubscriptions", shareDurSub, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('userName') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "userName", userName, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 
 		if (attrbID.find('discriminator') >= 0 ):
 			try:
 				modifyResourceProperty(attrbID, "discriminator", discrim, "java.lang.String") 
 			except:
-				l.exception("Caught Exception modifying Act Spec")
+				log.exception("Caught Exception modifying Act Spec")
 	
-	l.info("INFO: J2C Activation Specification Custom Properties successfully created.")
+	log.info("INFO: J2C Activation Specification Custom Properties successfully created.")
 
 
 
@@ -997,11 +997,11 @@ def createJMSActivationSpec ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask
 
-	l.info('(createJMSActivationSpec): Create '+name+' on the '+busName+' SIBus')
+	log.info('(createJMSActivationSpec): Create '+name+' on the '+busName+' SIBus')
 
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(createJMSActivationSpec): Unable to find "+scopeName )
+		log.error("(createJMSActivationSpec): Unable to find "+scopeName )
 		return
 
 	parms  = '-name "'+name+'" -jndiName '+jndiName+' -destinationJndiName '+destJndiName
@@ -1021,7 +1021,7 @@ def createJMSActivationSpec ( propertiesPath ):
 
 	for item in asList:
 		if (item.find(name) >= 0):
-			l.info("(createJMSActivationSpec): "+name+" already exists.")
+			log.info("(createJMSActivationSpec): "+name+" already exists.")
 			j2cActivationSpec = findConfigTarget(name,"J2CActivationSpec")
 			return
 			try:
@@ -1029,14 +1029,14 @@ def createJMSActivationSpec ( propertiesPath ):
 				#TODO: delete or modify SIBJMSActivationSpec
 				#as = AdminTask.deleteSIBJMSActivationSpec('[-name '+name+']')
 			except:
-				l.exception("(createJMSActivationSpec): Error deleting JMS Activation Spec")
+				log.exception("(createJMSActivationSpec): Error deleting JMS Activation Spec")
 	
 	try:
 		as = AdminTask.createSIBJMSActivationSpec(scopeId, parms)
 	except:
-		l.exception("(createJMSActivationSpec): Error creating JMS Activation Spec")
+		log.exception("(createJMSActivationSpec): Error creating JMS Activation Spec")
 
-	l.info("(createJMSActivationSpec): JMS Activation Specification successfully created.")
+	log.info("(createJMSActivationSpec): JMS Activation Specification successfully created.")
 	return 0
 
 #******************************************************************************
@@ -1062,11 +1062,11 @@ def deleteJMSActivationSpec ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask
 
-	l.info('(deleteJMSActivationSpec): Delete '+name+' on the '+busName+' SIBus')
+	log.info('(deleteJMSActivationSpec): Delete '+name+' on the '+busName+' SIBus')
 
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(deleteJMSActivationSpec): Unable to find "+scopeName )
+		log.error("(deleteJMSActivationSpec): Unable to find "+scopeName )
 		return 1
 	
 	idList  = AdminTask.listSIBJMSActivationSpecs(scopeId)
@@ -1081,9 +1081,9 @@ def deleteJMSActivationSpec ( propertiesPath ):
 				print("INFO (deleteJMSActivationSpec): Running command: AdminTask.deleteSIBJMSActivationSpec(%s)")
 				AdminTask.deleteSIBJMSActivationSpec(q)
 	except:
-		l.exception("(deleteJMSActivationSpec): Error deleting JMS Activation Spec")
+		log.exception("(deleteJMSActivationSpec): Error deleting JMS Activation Spec")
 	
-	l.info("(deleteJMSActivationSpec): JMS Activation Specification successfully deleted.")
+	log.info("(deleteJMSActivationSpec): JMS Activation Specification successfully deleted.")
 	return 0
 
 
@@ -1136,12 +1136,12 @@ def createJMSConnectionFactory ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask
 
-	l.info('(createJMSConnectionFactory) Create '+cfName+' on the '+busName+' SIBus')
+	log.info('(createJMSConnectionFactory) Create '+cfName+' on the '+busName+' SIBus')
 
 
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(createJMSConnectionFactory): Unable to find "+scopeName )
+		log.error("(createJMSConnectionFactory): Unable to find "+scopeName )
 		return 1
 
 	# Check if the connection factory already exists
@@ -1149,7 +1149,7 @@ def createJMSConnectionFactory ( propertiesPath ):
 	objType = "J2CResourceAdapter:SIB JMS Resource Adapter/J2CConnectionFactory"
 	cfId = getConfigItemId(scope, scopeName, nodeName, objType, cfName)
 	if (cfId != ""):
-		l.info("(createJMSConnectionFactory): "+cfName+" already exists on "+scope+" "+scopeName + ". Skipping creation.")
+		log.info("(createJMSConnectionFactory): "+cfName+" already exists on "+scope+" "+scopeName + ". Skipping creation.")
 		return 0
 
 	parms  = '-name "'+cfName+'" -jndiName '+cfJndiName+' -busName "'+busName+'"' 
@@ -1168,15 +1168,15 @@ def createJMSConnectionFactory ( propertiesPath ):
 
 	if ( not(cfAuthAlias == "") ):
 		parms += ' -authDataAlias "'+cfAuthAlias+'"'
-	l.info( parms)
+	log.info( parms)
 	try:
 		cf = AdminTask.createSIBJMSConnectionFactory(scopeId, parms)
 	except:
-		l.exception("(createJMSConnectionFactory): ERROR creating JMS Connection Factory")
+		log.exception("(createJMSConnectionFactory): ERROR creating JMS Connection Factory")
 
 	createCFConnectionPool(cf, "JMS", propertiesPath)
 
-	l.info("(createJMSConnectionFactory): SIB JMS Connection Factory successfully created.")
+	log.info("(createJMSConnectionFactory): SIB JMS Connection Factory successfully created.")
 	
 
 
@@ -1198,11 +1198,11 @@ def deleteJMSConnectionFactory ( propertiesPath ):
 	busName = 		getBusName()
 	global AdminTask
 
-	l.info('(deleteJMSConnectionFactory) Delete '+cfName+' on the '+busName+' SIBus')
+	log.info('(deleteJMSConnectionFactory) Delete '+cfName+' on the '+busName+' SIBus')
 
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(deleteJMSConnectionFactory): Unable to find "+scopeName )
+		log.error("(deleteJMSConnectionFactory): Unable to find "+scopeName )
 		return 1
 
 	# Check if the connection factory already exists
@@ -1211,10 +1211,10 @@ def deleteJMSConnectionFactory ( propertiesPath ):
 		cfId = getConfigItemId(scope, scopeName, nodeName, objType, cfName)
 		if (cfId != ""):
 			jmsCF = AdminConfig.remove(cfId)
-			l.info("(deleteJMSConnectionFactory): SIB JMSConnectionFactory  successfully deleted.")
+			log.info("(deleteJMSConnectionFactory): SIB JMSConnectionFactory  successfully deleted.")
 			return 0
 	except:
-		l.exception("(deleteJMSConnectionFactory): Error creating JMS Connection Factory")
+		log.exception("(deleteJMSConnectionFactory): Error creating JMS Connection Factory")
 
 
 #******************************************************************************
@@ -1242,17 +1242,17 @@ def createJMSProvider ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminConfig
 
-	l.info('====== Create Generic JMS Provider '+jmsName+', if it does not exist ======')
+	log.info('====== Create Generic JMS Provider '+jmsName+', if it does not exist ======')
 
 	scopeEntry = findScopeEntry(scope, scopeName)
 	if (scopeEntry == 0):
-		l.info("Unable to find "+scopeName )
+		log.info("Unable to find "+scopeName )
 		return
 
 	objType = "JMSProvider"
 	jmsId = getConfigItemId(scope, scopeName, nodeName, objType, jmsName)
 	if (jmsId != ""):
-		l.info(""+jmsName+" already exists on "+scope+" "+scopeName)
+		log.info(""+jmsName+" already exists on "+scope+" "+scopeName)
 		return
 
 	name = ['name', jmsName]
@@ -1266,9 +1266,9 @@ def createJMSProvider ( propertiesPath ):
 	try:
 		jmsProvider = AdminConfig.create('JMSProvider', scopeEntry, attrs)
 	except:
-		l.exception("Error creating JMS Provider")
+		log.exception("Error creating JMS Provider")
 
-	l.info("Create Generic JMS Provider was successful.")
+	log.info("Create Generic JMS Provider was successful.")
 	
 
 #******************************************************************************
@@ -1301,10 +1301,10 @@ def createJMSQueue ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask
 
-	l.info('(createJMSQueue): Create '+qName+' for default messaging provider on '+scopeName)
+	log.info('(createJMSQueue): Create '+qName+' for default messaging provider on '+scopeName)
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(createJMSQueue): Unable to find scope "+scopeName )
+		log.error("(createJMSQueue): Unable to find scope "+scopeName )
 		return 1
 
 	
@@ -1324,22 +1324,22 @@ def createJMSQueue ( propertiesPath ):
 	qList = AdminTask.listSIBJMSQueues(scopeId).splitlines()
 	for queue in qList:
 		if (queue.find(qName) >= 0):
-			l.info("(createJMSQueue): "+qName+" on "+scopeName+" already exists. Modifying JMS Queue destination....")
+			log.info("(createJMSQueue): "+qName+" on "+scopeName+" already exists. Modifying JMS Queue destination....")
 			j2cadminobj = findConfigTarget(qName,"J2CAdminObject")
 			
 			try:
 				ret = AdminTask.modifySIBJMSQueue(j2cadminobj, parms)
-				l.info("(createJMSQueue): SIB JMS Queue successfully modified.")
+				log.info("(createJMSQueue): SIB JMS Queue successfully modified.")
 				return 0
 			except:
-				l.exception("(createJMSQueue): Error modifying SIB JMS Queue")
+				log.exception("(createJMSQueue): Error modifying SIB JMS Queue")
 	
 	try:
 		newQueue = AdminTask.createSIBJMSQueue(scopeId, parms)
 	except:
-		l.exception("(createJMSQueue): Error creating SIB JMS Queue")
+		log.exception("(createJMSQueue): Error creating SIB JMS Queue")
 
-	l.info("(createJMSQueue): SIB JMS Queue successfully created.")
+	log.info("(createJMSQueue): SIB JMS Queue successfully created.")
 	
 
 #******************************************************************************
@@ -1369,10 +1369,10 @@ def deleteJMSQueue ( propertiesPath ):
 
 	global AdminTask
 
-	l.info('(deleteJMSQueue): Delete '+qName+' for default messaging provider on '+scopeName)
+	log.info('(deleteJMSQueue): Delete '+qName+' for default messaging provider on '+scopeName)
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(deleteJMSQueue): Unable to find scope "+scopeName )
+		log.error("(deleteJMSQueue): Unable to find scope "+scopeName )
 		return 1
 
 	# Check for existence of SIB JMS Queue
@@ -1383,10 +1383,10 @@ def deleteJMSQueue ( propertiesPath ):
 			
 			try:
 				ret = AdminTask.deleteSIBJMSQueue(j2cadminobj)
-				l.info("(deleteJMSQueue): SIB JMS Queue successfully deleted.")
+				log.info("(deleteJMSQueue): SIB JMS Queue successfully deleted.")
 				return 0
 			except:
-				l.exception("(deleteJMSQueue): Error deleting SIB JMS Queue")
+				log.exception("(deleteJMSQueue): Error deleting SIB JMS Queue")
 
 
 #******************************************************************************
@@ -1418,10 +1418,10 @@ def createJMSTopic ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask
 
-	l.info('(createJMSTopic): Create '+name+' for default messaging provider on '+scopeName)
+	log.info('(createJMSTopic): Create '+name+' for default messaging provider on '+scopeName)
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(createJMSTopic): Unable to find scope "+scopeName )
+		log.error("(createJMSTopic): Unable to find scope "+scopeName )
 		return 1
 	#endIF
 
@@ -1440,23 +1440,23 @@ def createJMSTopic ( propertiesPath ):
 	tList = AdminTask.listSIBJMSTopics(scopeId).splitlines()
 	for topic in tList:
 		if (topic.find(name) >= 0):
-			l.info("(createJMSTopic): "+name+" on "+scopeName+" already exists. Modifying JMS Topic destination...")
+			log.info("(createJMSTopic): "+name+" on "+scopeName+" already exists. Modifying JMS Topic destination...")
 			j2cadminobj = findConfigTarget(tName,"J2CAdminObject")
 			try:
 				ret = AdminTask.modifySIBJMSTopic(j2cadminobj, parms)
-				l.info("(createJMSTopic): SIB JMS Topic successfully modified.")
+				log.info("(createJMSTopic): SIB JMS Topic successfully modified.")
 				return 0
 				
 			except:
-				l.exception("(createJMSTopic): Error removing SIB JMS Topic")
+				log.exception("(createJMSTopic): Error removing SIB JMS Topic")
 	
 		
 	try:
 		newTopic = AdminTask.createSIBJMSTopic(scopeId, parms)
 	except:
-		l.exception("(createJMSTopic): Error creating SIB JMS Topic")
+		log.exception("(createJMSTopic): Error creating SIB JMS Topic")
 
-	l.info("(createJMSTopic): SIB JMS Topic successfully created.")
+	log.info("(createJMSTopic): SIB JMS Topic successfully created.")
 	return 0
 	
 
@@ -1490,10 +1490,10 @@ def deleteJMSTopic ( propertiesPath ):
 	#------------------------------------------------------------------------------
 	global AdminTask
 
-	l.info('(deleteJMSTopic): Delete '+name+' for default messaging provider on '+scopeName)
+	log.info('(deleteJMSTopic): Delete '+name+' for default messaging provider on '+scopeName)
 	scopeId = findScopeEntry(scope, scopeName)
 	if (scopeId == 0):
-		l.error("(deleteJMSTopic): Unable to find scope "+scopeName )
+		log.error("(deleteJMSTopic): Unable to find scope "+scopeName )
 		return 1
 	#endIF
 	
@@ -1504,11 +1504,11 @@ def deleteJMSTopic ( propertiesPath ):
 			j2cadminobj = findConfigTarget(tName,"J2CAdminObject")
 			try:
 				ret = AdminTask.deleteSIBJMSTopic(j2cadminobj)
-				l.info("(deleteJMSTopic): SIB JMS Topic successfully deleted.")
+				log.info("(deleteJMSTopic): SIB JMS Topic successfully deleted.")
 				return 0
 				
 			except:
-				l.exception("(deleteJMSTopic): Error deleting SIB JMS Topic")
+				log.exception("(deleteJMSTopic): Error deleting SIB JMS Topic")
 
 
 #******************************************************************************
@@ -1538,7 +1538,7 @@ def createMailSession ( propertiesPath):
 
 	mailSession = findConfigTargetWithScope("cell", cellName, name, "MailSession")
 	if (mailSession != 0):
-		l.info(""+name+" already exists")
+		log.info(""+name+" already exists")
 		return 
 
 	mailProvider = getConfigItemId("cell", cellName, "", "MailProvider", "Built-in Mail Provider")
@@ -1577,9 +1577,9 @@ def createMailSession ( propertiesPath):
 	try:
 		mSession = AdminConfig.create("MailSession", mailProvider, attrs)
 	except:
-		l.exception("Caught Exception creating mail session")
+		log.exception("Caught Exception creating mail session")
 
-	l.info("Creation of mail session "+name+" was successful.")
+	log.info("Creation of mail session "+name+" was successful.")
 	
 
 #******************************************************************************
@@ -1695,21 +1695,21 @@ def createMQConnectionFactory ( propertiesPath ):
 	if (len(MQCF) == 0):
 		# Create MQ Connection Factory
 		try:	
-			l.info("(createMQConnectionFactory): Creating MQCF "+cfName)
+			log.info("(createMQConnectionFactory): Creating MQCF "+cfName)
 			MQCF = AdminConfig.create("MQConnectionFactory", MQJMSProvider , attrs)	
 		except:
-			l.exception("(createMQConnectionFactory): Caught Exception creating MQ Connection Factory")
+			log.exception("(createMQConnectionFactory): Caught Exception creating MQ Connection Factory")
 	else:
 		# Modify MQ Connection Factory
 		try:
-			l.info("(createMQConnectionFactory): Modifying MQCF "+cfName)
+			log.info("(createMQConnectionFactory): Modifying MQCF "+cfName)
 			cf = AdminConfig.modify(MQCF, attrs)
 		except:
-			l.exception("(createMQConnectionFactory):Caught Exception modifying MQ Connection Factory")
+			log.exception("(createMQConnectionFactory):Caught Exception modifying MQ Connection Factory")
 
 	createCFConnectionPool(MQCF, "MQ", propertiesPath)
 	createWebSphereMQCFCustomProperty(MQCF)
-	l.info("(createMQConnectionFactory): MQ Connection Factory was successful created/modified")
+	log.info("(createMQConnectionFactory): MQ Connection Factory was successful created/modified")
 	return 0
 	
 
@@ -1738,9 +1738,9 @@ def deleteMQConnectionFactory ( propertiesPath ):
 		try:
 			cf = AdminConfig.remove(MQCF)
 		except:
-			l.exception("(deleteMQConnectionFactory):Caught Exception modifying MQ Connection Factory")
+			log.exception("(deleteMQConnectionFactory):Caught Exception modifying MQ Connection Factory")
 	
-	l.info("(deleteMQConnectionFactory): Deleation of MQ Connection Factory was successful.")
+	log.info("(deleteMQConnectionFactory): Deleation of MQ Connection Factory was successful.")
 	return 0
 	
 
@@ -1755,7 +1755,7 @@ def createWebSphereMQCFCustomProperty (MQCF):
 	try:
 		propSet = AdminConfig.create("J2EEResourcePropertySet", MQCF, [])
 	except:
-		l.exception("(createWebSphereMQCFCustomProperty): Caught Exception creating property set")
+		log.exception("(createWebSphereMQCFCustomProperty): Caught Exception creating property set")
 	
 	attrs1 = []
 	attrs1.append(["name", "SENDEXIT"])
@@ -1780,7 +1780,7 @@ def createWebSphereMQCFCustomProperty (MQCF):
 		result = AdminConfig.create("J2EEResourceProperty", propSet, attrs3)
 		result = AdminConfig.create("J2EEResourceProperty", propSet, attrs4)
 	except:
-		l.exception("(createWebSphereMQCFCustomProperty): Caught Exception creating WebSphere MQ_CF CustomP Property")
+		log.exception("(createWebSphereMQCFCustomProperty): Caught Exception creating WebSphere MQ_CF CustomP Property")
 
 #******************************************************************************
 # Procedure:  	createMQDestination
@@ -1816,20 +1816,20 @@ def createMQDestination ( propertiesPath ):
 	
 	if (len(MQDES) == 0):
 		try:
-			l.info("(createMQDestination): Creating MQ destination "+name)
+			log.info("(createMQDestination): Creating MQ destination "+name)
 			MQQUEUE = AdminConfig.create("MQQueue", MQJMSProvider , attrs)
 			
 		except:
-			l.exception("(createMQDestination): Caught Exception creating WebSphere MQ Destination")
+			log.exception("(createMQDestination): Caught Exception creating WebSphere MQ Destination")
 	else:
 		# Modify MQ Destination
 		try:
-			l.info("(createMQDestination): Modifying MQ destination "+name)
+			log.info("(createMQDestination): Modifying MQ destination "+name)
 			cf = AdminConfig.modify(MQDES, attrs)
 		except:
-			l.exception("(createMQDestination): Caught Exception modifying MQ Queue Destination")
+			log.exception("(createMQDestination): Caught Exception modifying MQ Queue Destination")
 		
-	l.info("(createMQDestination): MQ Destination was successful created/modified.")
+	log.info("(createMQDestination): MQ Destination was successful created/modified.")
 	return 0
 	
 #******************************************************************************
@@ -1856,9 +1856,9 @@ def deleteMQDestination ( propertiesPath ):
 		try:
 			cf = AdminConfig.remove(MQDES)
 		except:
-			l.exception("(deleteMQDestination): Caught Exception modifying MQ Queue Destination")
+			log.exception("(deleteMQDestination): Caught Exception modifying MQ Queue Destination")
 		
-	l.info("(deleteMQDestination): Delation of  MQ Destination was successful.")
+	log.info("(deleteMQDestination): Delation of  MQ Destination was successful.")
 	return 0
 	
 
@@ -1894,28 +1894,28 @@ def createScheduler ( propertiesPath ):
 
 	global AdminConfig
 
-	l.info('====== Create scheduler '+sName+', if it does not exist ======')
+	log.info('====== Create scheduler '+sName+', if it does not exist ======')
 
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.info(""+scopeName+" does not exist.")
+		log.info(""+scopeName+" does not exist.")
 		return 
 
 	schedConf = findConfigTargetWithScope(scope, scopeName, sName, "SchedulerConfiguration")
 	if (schedConf != 0):
-		l.info(""+sName+" already exists on "+scopeName)
+		log.info(""+sName+" already exists on "+scopeName)
 		return 
 
 	# Get the scheduler provider
 	schedProv = getConfigId(scope, scopeName, nodeName, "SchedulerProvider")
 	if (schedProv == ""):
-		l.info("The scheduler provider could not be found.")
+		log.info("The scheduler provider could not be found.")
 		return
 
 	# Check if the work manager for the scheduler exists
 	workManager = findConfigTargetWithScope(scope, scopeName, workMgr, "WorkManagerInfo")
 	if (workManager == 0):
-		l.info("Work manager "+workMgr+" could not be found.")
+		log.info("Work manager "+workMgr+" could not be found.")
 		return
 
 	# Create the scheduler
@@ -1934,9 +1934,9 @@ def createScheduler ( propertiesPath ):
 	try:
 		newScheduler = AdminConfig.create("SchedulerConfiguration", schedProv, attrs)
 	except:
-		l.exception("Caught Exception creating scheduler")
+		log.exception("Caught Exception creating scheduler")
 
-	l.info("Creation of scheduler "+sName+" on "+scopeName+" was successful.")
+	log.info("Creation of scheduler "+sName+" on "+scopeName+" was successful.")
 	
 
 #******************************************************************************
@@ -1965,18 +1965,18 @@ def createURL ( propertiesPath ):
 
 	global AdminConfig
 
-	l.info('====== Create URL '+urlName+', if it does not exist ======')
+	log.info('====== Create URL '+urlName+', if it does not exist ======')
 
 	
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.info(""+scopeName+" does not exist.")
+		log.info(""+scopeName+" does not exist.")
 		return 
 
 	# Make sure URL Provider exists
 	urlId = getConfigItemId(scope, scopeName, nodeName, "URLProvider", providerName)
 	if (urlId == ""):
-		l.info(""+providerName+" does not exist on "+scope+" "+scopeName)
+		log.info(""+providerName+" does not exist on "+scope+" "+scopeName)
 		return
 
 	nameAttr = ["name", urlName]
@@ -1990,23 +1990,23 @@ def createURL ( propertiesPath ):
 
 	if (theURL == 0):
 		attrs = [nameAttr, jndiAttr, specAttr, descAttr, catAttr]
-		l.info("Creating new URL")
+		log.info("Creating new URL")
 
 		try:
 			url = AdminConfig.create("URL", urlId, attrs)
 		except:
-			l.exception("Caught Exception creating URL")
+			log.exception("Caught Exception creating URL")
 	else:
 		
 		attrs = [jndiAttr, specAttr, descAttr, catAttr]
-		l.info("Modifying existing URL")
+		log.info("Modifying existing URL")
 
 		try:
 			url = AdminConfig.modify(theURL, attrs )
 		except:
-			l.exception("Caught Exception modifying URL")
+			log.exception("Caught Exception modifying URL")
 	
-	l.info("Created/Modified "+urlName+" successfully.")
+	log.info("Created/Modified "+urlName+" successfully.")
 	
 
 #******************************************************************************
@@ -2035,18 +2035,18 @@ def createURLCustomProperty ( propertiesPath ):
 
 	global AdminConfig
 
-	l.info('====== Create URL '+propertyName+', if it does not exist ======')
+	log.info('====== Create URL '+propertyName+', if it does not exist ======')
 
 	
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.info(""+scopeName+" does not exist.")
+		log.info(""+scopeName+" does not exist.")
 		return 
 
 	# Make sure URL Provider exists
 	urlId = getConfigItemId(scope, scopeName, nodeName, "URLProvider", providerName)
 	if (urlId == ""):
-		l.info(""+providerName+" does not exist on "+scope+" "+scopeName)
+		log.info(""+providerName+" does not exist on "+scope+" "+scopeName)
 		return
 
 	# Create a property set if it doesn't exist
@@ -2055,7 +2055,7 @@ def createURLCustomProperty ( propertiesPath ):
 		try:
 			propSet = AdminConfig.create("J2EEResourcePropertySet", urlId, [])
 		except:
-			l.exception("Caught Exception creating property set")
+			log.exception("Caught Exception creating property set")
 
 	# set up attributes
 	nameAttr =  ["name", propertyName]
@@ -2069,11 +2069,11 @@ def createURLCustomProperty ( propertiesPath ):
 	try:
 		result = AdminConfig.create("J2EEResourceProperty", propSet, attrs )
 	except:
-		l.exception("Caught Exception creating Custom URL Property")
+		log.exception("Caught Exception creating Custom URL Property")
 	else:
-		l.info("Added URL Custom Property "+propertyName) 
+		log.info("Added URL Custom Property "+propertyName) 
 
-	l.info("Created/Modified "+propertyName+" successfully.")
+	log.info("Created/Modified "+propertyName+" successfully.")
 	
 
 #******************************************************************************
@@ -2100,16 +2100,16 @@ def createURLProvider ( propertiesPath ):
 
 	global AdminApp, AdminConfig
 
-	l.info('====== Create URL Provider '+providerName+', if it does not exist ======')
+	log.info('====== Create URL Provider '+providerName+', if it does not exist ======')
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.info(""+scopeName+" does not exist.")
+		log.info(""+scopeName+" does not exist.")
 		return 
 
 	objType = "URLProvider"
 	urlId = getConfigItemId(scope, scopeName, nodeName, objType, providerName)
 	if (urlId != ""):
-		l.info(""+providerName+" already exists on "+scope+" "+scopeName)
+		log.info(""+providerName+" already exists on "+scope+" "+scopeName)
 		return
 
 	else:
@@ -2123,9 +2123,9 @@ def createURLProvider ( propertiesPath ):
 		try:
 			provider1 = AdminConfig.create("URLProvider", scopeEntry, attrs1 )
 		except:
-			l.exception("Caught Exception creating URL Provider")
+			log.exception("Caught Exception creating URL Provider")
 
-	l.info("Created "+providerName+" successfully.")
+	log.info("Created "+providerName+" successfully.")
 	
 
 #******************************************************************************
@@ -2160,23 +2160,23 @@ def createWorkManager ( propertiesPath ):
 
 	global AdminConfig
 
-	l.info('====== Create work manager '+wmName+', if it does not exist ======')
+	log.info('====== Create work manager '+wmName+', if it does not exist ======')
 
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.info(""+scopeName+" does not exist.")
+		log.info(""+scopeName+" does not exist.")
 		return 
 
 	# Check if work manager already exists
 	wrkMgr = findConfigTargetWithScope(scope, scopeName, wmName, "WorkManagerInfo")
 	if (wrkMgr != 0):
-		l.info(""+wmName+" already exists on "+scopeName)
+		log.info(""+wmName+" already exists on "+scopeName)
 		return 
 
 	# Get the work manager provider
 	wmProv = getConfigId(scope, scopeName, nodeName, "WorkManagerProvider")
 	if (wmProv == ""):
-		l.info("The work manager provider could not be found.")
+		log.info("The work manager provider could not be found.")
 		return
 
 	# Create the work manager 
@@ -2195,9 +2195,9 @@ def createWorkManager ( propertiesPath ):
 	try:
 		newMgr = AdminConfig.create("WorkManagerInfo", wmProv, attrs)
 	except:
-		l.exception("Caught Exception creating work manager")
+		log.exception("Caught Exception creating work manager")
 
-	l.info("Creation of work manager "+wmName+" was successful.")
+	log.info("Creation of work manager "+wmName+" was successful.")
 	
 
 
@@ -2213,14 +2213,14 @@ def setDBPoolMaxConnections ( scope, scopeName, dataSourceName, value ):
 
 	global AdminApp, AdminConfig
 
-	l.info('====== Set the maximum db pool connections with value '+value+' ======')
+	log.info('====== Set the maximum db pool connections with value '+value+' ======')
 
 	# Too easy to enter the wrong case at command line
 	scope = scope.title()
 
 	dataSource = findDataSourceWithScope(scope, scopeName, dataSourceName )
 	if (dataSource == 0):
-		l.info("DataSource doesn't exist")
+		log.info("DataSource doesn't exist")
 		return 
 
 	connPool = AdminConfig.showAttribute(dataSource, "connectionPool" )
@@ -2230,15 +2230,15 @@ def setDBPoolMaxConnections ( scope, scopeName, dataSourceName, value ):
 			connPool = AdminConfig.create("ConnectionPool", dataSource, [] )
 			result = connPool
 		except:
-			l.exception("Caught Exception creating Connection Pool")
+			log.exception("Caught Exception creating Connection Pool")
 
 	try:
 		maxConn = AdminConfig.modify(connPool, [["maxConnections", value]] )
 		result = maxConn
 	except:
-		l.info("Caught Exception modifying Max Connections")
+		log.info("Caught Exception modifying Max Connections")
 
-	l.info("Max database connections has been set to "+value+" successfully")
+	log.info("Max database connections has been set to "+value+" successfully")
 	
 #******************************************************************************
 # Procedure:   	createSharedLibrary
@@ -2259,11 +2259,11 @@ def createSharedLibrary ( propertiesPath ):
 	description	=	propReader.get("DESCRIPTION")
 
 	global AdminApp, AdminConfig
-	l.info("(createSharedLibrary): Creating Shared Library " + name)
+	log.info("(createSharedLibrary): Creating Shared Library " + name)
 	
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.error("(createSharedLibrary): Scope name "+scopeName+" does not exist. Check properties file!")
+		log.error("(createSharedLibrary): Scope name "+scopeName+" does not exist. Check properties file!")
 		return 
 	attrs = []
 	attrs.append(["name", name])
@@ -2272,7 +2272,7 @@ def createSharedLibrary ( propertiesPath ):
 	lib = getConfigItemId(scope, scopeName, "", "Library", name)
 			
 	if (len(lib) != 0):
-		l.info("(createSharedLibrary): Shared Library "+name+" already exists. Removing...")
+		log.info("(createSharedLibrary): Shared Library "+name+" already exists. Removing...")
 		
 		try:		
 			librefList = AdminConfig.getid("/Deployment:"+APPLICATION_NAME+"/ApplicationDeployment:/Classloader:/LibraryRef:/" )
@@ -2284,18 +2284,18 @@ def createSharedLibrary ( propertiesPath ):
 				for libref in arrayLibRef:
 						removeT = AdminConfig.remove(libref)
 		except:
-			l.exception("(createSharedLibrary): Caught Exception removing Library Ref. for application "+APPLICATION_NAME)
+			log.exception("(createSharedLibrary): Caught Exception removing Library Ref. for application "+APPLICATION_NAME)
 				
 		try:
 			library = AdminConfig.remove(lib)
 		except:
-			l.exception("(createSharedLibrary): Caught Exception removing Shared Library "+ name)
+			log.exception("(createSharedLibrary): Caught Exception removing Shared Library "+ name)
 	
 	try:
 		library = AdminConfig.create("Library", scopeEntry, attrs )
 		
 	except:
-		l.exception("(createSharedLibrary): Caught Exception creating Shared Library "+ name +" for application " + APPLICATION_NAME)
+		log.exception("(createSharedLibrary): Caught Exception creating Shared Library "+ name +" for application " + APPLICATION_NAME)
 	
 	try:	
 		deployment = AdminConfig.getid("/Deployment:"+APPLICATION_NAME+"/" )
@@ -2303,9 +2303,9 @@ def createSharedLibrary ( propertiesPath ):
 		classLoad1 = AdminConfig.showAttribute(appDeploy, 'classloader')
 		libraryRef = AdminConfig.create('LibraryRef', classLoad1, [['libraryName', name],  ['sharedClassloader', 'true']])
 	except:		
-		l.exception("(createSharedLibrary): Caught Exception associate shared library with  application "+APPLICATION_NAME)
+		log.exception("(createSharedLibrary): Caught Exception associate shared library with  application "+APPLICATION_NAME)
 
-	l.info("(createSharedLibrary): Created shared libary "+name+" and associate with application "+APPLICATION_NAME+" successfully.")
+	log.info("(createSharedLibrary): Created shared libary "+name+" and associate with application "+APPLICATION_NAME+" successfully.")
 	return 0
 #******************************************************************************
 # Procedure:   	deleteSharedLibrary
@@ -2326,11 +2326,11 @@ def deleteSharedLibrary ( propertiesPath ):
 	description	=	propReader.get("DESCRIPTION")
 
 	global AdminApp, AdminConfig
-	l.info("(deleteSharedLibrary): Deleting Shared Library " + name)
+	log.info("(deleteSharedLibrary): Deleting Shared Library " + name)
 	
 	scopeEntry = findScopeEntry(scope, scopeName )
 	if (scopeEntry == 0):
-		l.error("(deleteSharedLibrary): Scope name "+scopeName+" does not exist. Check properties file!")
+		log.error("(deleteSharedLibrary): Scope name "+scopeName+" does not exist. Check properties file!")
 		return 
 	attrs = []
 	attrs.append(["name", name])
@@ -2346,12 +2346,12 @@ def deleteSharedLibrary ( propertiesPath ):
 			for libref in arrayLibRef:
 				removeT = AdminConfig.remove(libref)
 		except:
-			l.exception("(createSharedLibrary): Caught Exception removing Library Ref. for application "+APPLICATION_NAME)
+			log.exception("(createSharedLibrary): Caught Exception removing Library Ref. for application "+APPLICATION_NAME)
 				
 		try:
 			library = AdminConfig.remove(lib)
 		except:
-			l.exception("(createSharedLibrary): Caught Exception removing Shared Library "+ name)
+			log.exception("(createSharedLibrary): Caught Exception removing Shared Library "+ name)
 	
-	l.info("(deleteSharedLibrary): Deleted shared libary "+name+" and associate with application "+APPLICATION_NAME+" successfully.")
+	log.info("(deleteSharedLibrary): Deleted shared libary "+name+" and associate with application "+APPLICATION_NAME+" successfully.")
 	return 0
