@@ -46,7 +46,7 @@ from lib.javaPropertiesUtil import PropertiesReader
 from lib.environmentInfo import getBusName, isLocalBus
 
 import lib.logUtil as logLib
-log = logLob.getLogger(__name__)
+log = logLib.getLogger(__name__)
 
 def addDataSourceCustomProperties ( scope, scopeName, dataSourceName, propName, propValue, propValueType, propDesc ):
 
