@@ -63,8 +63,8 @@
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
-          <daysToKeep>1</daysToKeep>
-          <numToKeep>15</numToKeep>
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>10</numToKeep>
           <artifactDaysToKeep>-1</artifactDaysToKeep>
           <artifactNumToKeep>-1</artifactNumToKeep>
         </originalValue>
@@ -72,14 +72,14 @@
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -106,14 +106,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -130,7 +130,7 @@
       <string>hudson-tasks-Mailer</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
+        <modified>false</modified>
       </external-property>
     </entry>
     <entry>
@@ -260,7 +260,7 @@
           <factGenerator/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -285,30 +285,30 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
-find -name ibm-deploy.scaj2ee -print -exec false {} +
-find . -name &quot;*WSIMP.import&quot; -exec FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
-FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/System.out.print_Search.py
-FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
-FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
-FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/cons_xml_check.py FEATURE_BRANCH_8_0_0_D20131118_2014HL3
 FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path FEATURE_BRANCH_8_0_0_D20131118_2014HL3/ --page 68626761
 FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py FEATURE_BRANCH_8_0_0_D20131118_2014HL3/ 68626800
 FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path FEATURE_BRANCH_8_0_0_D20131118_2014HL3/ --page 68626804 --design /home/ci/design2014HL3-FeatureBranch/spesifikasjon/implementasjon/
-FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path FEATURE_BRANCH_8_0_0_D20131118_2014HL3/ --page 68626807</command>
+FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path FEATURE_BRANCH_8_0_0_D20131118_2014HL3/ --page 68626807
+FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/cons_xml_check.py FEATURE_BRANCH_8_0_0_D20131118_2014HL3
+FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/System.out.print_Search.py
+FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name &quot;*WSIMP.import&quot; -exec FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -357,6 +357,7 @@ FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-findRole
     <entry>
       <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
+        <originalValue class="hudson.plugins.cigame.GamePublisher"/>
         <propertyOverridden>false</propertyOverridden>
         <modified>true</modified>
       </external-property>
@@ -365,7 +366,7 @@ FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-findRole
       <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
@@ -412,33 +413,23 @@ FEATURE_BRANCH_8_0_0_D20131118_2014HL3/esb-tools/esb-scripts/bin/HUDSON-findRole
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1363351071234</creationTime>
+  <creationTime>1393585145944</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM">
-    <locations>
-      <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_3_0_D20120130_2012HL2_7_3</remote>
-        <ignoreExternalsOption>false</ignoreExternalsOption>
-      </hudson.scm.SubversionSCM_-ModuleLocation>
-    </locations>
-    <excludedRegions></excludedRegions>
-    <includedRegions></includedRegions>
-    <excludedUsers></excludedUsers>
-    <excludedRevprop></excludedRevprop>
-    <excludedCommitMessages></excludedCommitMessages>
-    <useUpdate>true</useUpdate>
-    <doRevert>false</doRevert>
-  </scm>
-  <canRoam>true</canRoam>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
 </project>

@@ -115,7 +115,6 @@
         <string>TRUNK-esb-modules-ci</string>
         <string>TRUNK-esb-release deploy</string>
         <string>TRUNK-esb-release verify</string>
-        <string>TRUNK-layers</string>
         <string>TRUNK-layers_release</string>
         <string>TRUNK-nav</string>
         <string>TRUNK-nav-modules-ci</string>
@@ -221,7 +220,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>2013HL4_7.9_CheckScripts_Leveransedokumentasjon</string>
-        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
+        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon original</string>
         <string>CI-buss-pom_sync</string>
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>

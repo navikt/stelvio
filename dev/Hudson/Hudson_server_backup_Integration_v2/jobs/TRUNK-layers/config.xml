@@ -250,7 +250,6 @@
     <entry>
       <string>quietPeriod</string>
       <integer-property>
-        <originalValue class="int">10</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </integer-property>
     </entry>
@@ -287,7 +286,6 @@
           <hudson.tasks.Maven>
             <targets>clean deploy</targets>
             <mavenName>(Default)</mavenName>
-            <properties>-XX:MaxPermSize=128M</properties>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
         </originalValue>
@@ -408,7 +406,7 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1386328487424</creationTime>
+  <creationTime>1393588883517</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
@@ -421,7 +419,10 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <builders/>
+  <publishers/>
+  <buildWrappers/>
 </project>
