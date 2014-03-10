@@ -70,6 +70,7 @@
 <#include "WSProxyStaticBackend.ftl">
 <#include "WSProxyStaticBackendLoadBalancing.ftl">
 <#include "WSProxyStaticBackendMTOMEnabled.ftl">
+<#include "WSProxyStaticBackendMultipleFSH.ftl">
 <#include "WSProxyStaticBackendMultipleWsdl.ftl">
 <#include "WSProxyWSADynamicBackend.ftl">
 <#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">

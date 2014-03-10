@@ -7839,6 +7839,7 @@ int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/fre
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/TwoWayCryptoProfile.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/TwoWaySSLProxy.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSEndpointRewritePolicy.ftl -text
+int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSEndpointRewritePolicyMultipleFSH.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSEndpointRewritePolicyMultipleWsdl.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSGateway.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSGatewayLoadBalancing.ftl -text
@@ -7847,6 +7848,7 @@ int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/fre
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackend.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendLoadBalancing.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendMTOMEnabled.ftl -text
+int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendMultipleFSH.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyStaticBackendMultipleWsdl.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyWSADynamicBackend.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/WSProxyWSADynamicBackendMultipleWsdl.ftl -text
