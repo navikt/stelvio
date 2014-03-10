@@ -252,6 +252,8 @@ public class GenerateConfigGenericMojo extends AbstractMojo {
 		 
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_APP, gatewayName);
+		
 		// Fetching
 		EnvConfigResource resource = discovery.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
 		// Extract value from result
