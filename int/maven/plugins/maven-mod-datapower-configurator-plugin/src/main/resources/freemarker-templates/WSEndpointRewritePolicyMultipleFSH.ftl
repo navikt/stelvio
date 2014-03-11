@@ -7,8 +7,10 @@
 	backsideUri>	
 	<WSEndpointRewritePolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
+		<#assign suffix=-1 >
 		<#list wsdlPortBinding as wsdlPortBindingItem>
 			<#list frontsideHandlers as fsh>
+			<#assign suffix=suffix+1 >
 		<WSEndpointLocalRewriteRule>
 			<ServicePortMatchRegexp>^${wsdlPortBindingItem}$</ServicePortMatchRegexp>
 			<LocalEndpointProtocol>default</LocalEndpointProtocol>
@@ -22,7 +24,7 @@
 			<#else>
 			<WSDLBindingProtocol>soap-11</WSDLBindingProtocol>
 			</#if>			
-			<FrontsidePortSuffix/>
+			<FrontsidePortSuffix>${suffix}</FrontsidePortSuffix>
 		</WSEndpointLocalRewriteRule>
 			</#list>
 		</#list>
