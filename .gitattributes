@@ -942,10 +942,6 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_configuration_bu
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_ekstern/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_esb-poms/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_esb-release/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_jobb1_nav-model-update/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_jobb2_nav-model-doc/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_jobb3_nav-model-doc-diagram/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_jobb4_nav-model-doc-chmod/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_layers/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_layers_dryRun/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_nav/config.xml -text
@@ -1191,10 +1187,6 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_NAV-Tjenestebuss/confi
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_configuration_bus-authorization/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_configuration_bus-environment/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_configuration_bus-nonenvironment/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_jobb1_nav-model-update/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_jobb2_nav-model-doc/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_jobb3_nav-model-doc-diagram/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_jobb4_nav-model-doc-chmod/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_service-gw-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_service-gw-maven-service-registry-plugin/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Tjenestebeskrivelsegenerering/config.xml -text

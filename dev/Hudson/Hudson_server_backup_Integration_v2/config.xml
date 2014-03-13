@@ -104,7 +104,9 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>CI-buss-pom_sync</string>
         <string>CI-deploy-til-U2-WPS-Maven3</string>
+        <string>CI-deploy-til-U2-WPS-Maven3_revision_10650</string>
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
@@ -115,6 +117,7 @@
         <string>TRUNK-esb-modules-ci</string>
         <string>TRUNK-esb-release deploy</string>
         <string>TRUNK-esb-release verify</string>
+        <string>TRUNK-layers</string>
         <string>TRUNK-layers_release</string>
         <string>TRUNK-nav</string>
         <string>TRUNK-nav-modules-ci</string>
@@ -128,11 +131,7 @@
         <string>TRUNK_configuration_bus-authorization</string>
         <string>TRUNK_configuration_bus-environment</string>
         <string>TRUNK_configuration_bus-nonenvironment</string>
-        <string>TRUNK_jobb1_nav-model-update</string>
-        <string>TRUNK_jobb2_nav-model-doc</string>
-        <string>TRUNK_jobb3_nav-model-doc-diagram</string>
-        <string>TRUNK_jobb4_nav-model-doc-chmod</string>
-        <string>TRUNK_service-gw-maven-service-registry-plugin</string>
+        <string>TRUNK_NAV-Tjenestebuss</string>
       </jobNames>
       <jobFilters/>
       <columns/>
