@@ -15,7 +15,6 @@ import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.ComponentIdHolder;
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
-import no.stelvio.common.log.MDCOperations;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -70,42 +69,25 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
 		try {
-			// Only import the request context from session if both the session
-			// and a persisted context exists.
-			HttpSession session = request.getSession(false);
-
-			if (null != session) {
-				Object context = session.getAttribute(REQUEST_CONTEXT);
-				if (null != context) {
-					RequestContextSetter.setRequestContext((RequestContext) context);
-					// Add to MDC
-					MDCOperations.setMdcProperties();
-				} else {
-					if (LOG.isInfoEnabled()) {
-						LOG.info("Session exists, but RequestContext was not persisted");
-					}
-				}
-			}
-
 			
-			String componentId = retrieveComponentId();
-			// Always update the module, process and transaction id
-			// -- why do we save it to session if every property is updated?
-			// The screen id can not be set here because the filter runs outside
-			// the JSF and SWF context. Screen id is set through a RequestContextPhaseListener
-			// -- how to find module id? Is this only used when logging?
+			// get componentId from ApplicationContext
+			String componentId = retrieveComponentId();			
+			
+			// Always update the componentId and transaction id, ScreenId and ModuleId is set to null.
 			RequestContext requestContext = new SimpleRequestContext(null, null, String.valueOf(UUID.randomUUID()), 
 					componentId);
-			RequestContextSetter.setRequestContext(requestContext);			
+			RequestContextSetter.setRequestContext(requestContext);
+			
+			// The screen id can not be set here because the filter runs outside
+			// the JSF and SWF context. Screen id is set through a RequestContextPhaseListener (not currently implemented)
 			
 			// Delegate processing to the next filter or resource in the chain
 			chain.doFilter(request, response);			
 			
 			// UserId is set on RequestContext by a SecurityContext-filter
 
-			// Session might have bean constructed, deleted or invalidated during
-			// processing further down the chain, so check again
-			session = request.getSession(false);
+			// Get session so we can write RequestContext to it
+			HttpSession session = request.getSession(false);
 
 			if (null != session) {
 				try {
@@ -121,8 +103,6 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 		} finally {
 			// Always reset the RequestContext, just to be on the safe side
 			RequestContextSetter.resetRequestContext();
-			// Reset MDC
-			MDCOperations.resetMdcProperties();
 		}
 	}
 

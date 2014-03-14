@@ -645,7 +645,6 @@ app/stelvio-provider-java/pom.xml -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/AbstractCodesTableItemConverter.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/CodesTableItemConverter.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/CodesTablePeriodicItemConverter.java -text
-app/stelvio-provider-java/src/main/java/no/stelvio/provider/context/RequestContextSetter.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/context/StelvioContextData.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/context/StelvioContextHandler.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/error/logging/support/DtoExceptionLogger.java -text

@@ -9,6 +9,7 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
 
 import org.junit.After;
 import org.junit.Assert;

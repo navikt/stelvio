@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.error.OperationalException;
+import no.stelvio.common.log.MDCOperations;
 import no.stelvio.common.util.RedeployableThreadLocalSubstitute;
 
 import org.springframework.util.ReflectionUtils;
@@ -34,6 +35,7 @@ public class RequestContextSetter {
 	public static void setRequestContext(RequestContext requestContext) {
 		try {
 			((RedeployableThreadLocalSubstitute<RequestContext>) getRequestContextHolder().get(null)).set(requestContext);
+			MDCOperations.setMdcProperties();
 		} catch (Exception e) {
 			throw new OperationalException("Setting requestContext on RequestContextHolder failed.", e);
 		}
@@ -72,6 +74,7 @@ public class RequestContextSetter {
 	 */
 	public static void resetRequestContext() {
 		setRequestContext(null);
+		MDCOperations.resetMdcProperties();
 	}
 
 }

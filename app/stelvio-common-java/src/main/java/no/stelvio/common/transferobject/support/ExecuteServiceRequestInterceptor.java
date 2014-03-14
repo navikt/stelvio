@@ -7,7 +7,6 @@ import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.support.ComponentIdHolder;
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
-import no.stelvio.common.log.MDCOperations;
 import no.stelvio.common.transferobject.ServiceRequest;
 
 import org.aopalliance.intercept.MethodInterceptor;
@@ -86,10 +85,6 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 					if (log.isDebugEnabled()) {
 						log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
 					}
-					MDCOperations.setMdcProperties();
-					if (log.isDebugEnabled()) {
-						log.debug("MDC was populated with values from RequestContext");
-					}
 					break; // Should not be more than one service request per call
 				} else {
 					if (log.isDebugEnabled()) {
@@ -107,10 +102,6 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 		RequestContextSetter.resetRequestContext();
 		if (log.isDebugEnabled()) {
 			log.debug("RequestContext was reset when exiting interceptor");
-		}
-		MDCOperations.resetMdcProperties();
-		if (log.isDebugEnabled()) {
-			log.debug("MDC was reset when exiting interceptor");
 		}
 		if (log.isDebugEnabled()) {
 			log.debug("Method invoke is about to exit from MethodInvocation");
