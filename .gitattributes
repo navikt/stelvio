@@ -8901,6 +8901,7 @@ int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]NoSec[!!-~]WSExport.zip -text
 int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]UsernameToken[!!-~]WSImport.zip -text
 int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]WSExport.zip -text
 int/stelvio-policy-sets/NAV[!!-~]ESB[!!-~]WSImport.zip -text
+int/stelvio-policy-sets/NAV[!!-~]LTPA[!!-~]WS-A[!!-~]Consumer.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]AAReg[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]Arena[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]Tjenestebuss[!!-~]WSImport[!!-~]Binding.zip -text
