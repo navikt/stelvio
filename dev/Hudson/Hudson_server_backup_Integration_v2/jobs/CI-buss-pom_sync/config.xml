@@ -51,6 +51,15 @@
       </base-property>
     </entry>
     <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
@@ -61,15 +70,6 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
-    </entry>
-    <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
     </entry>
     <entry>
       <string>hudson-plugins-violations-ViolationsPublisher</string>
@@ -129,18 +129,6 @@
     <entry>
       <string>hudson-tasks-Mailer</string>
       <external-property>
-        <originalValue class="hudson.tasks.Mailer">
-          <recipients>test@example.com</recipients>
-          <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-          <sendToIndividuals>true</sendToIndividuals>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
-      </external-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
-      <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -151,6 +139,13 @@
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -202,17 +197,55 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>true</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>customWorkspace</string>
       <string-property>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
+      <external-property>
+        <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
+          <recipientList>test@example.com</recipientList>
+          <configuredTriggers>
+            <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>true</sendToDevelopers>
+                <includeCulprits>true</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>false</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+            <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>true</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>true</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.FixedTrigger>
+          </configuredTriggers>
+          <contentType>default</contentType>
+          <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+          <defaultContent>$DEFAULT_CONTENT</defaultContent>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>true</modified>
+      </external-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -223,9 +256,6 @@
     <entry>
       <string>hudson-plugins-chucknorris-CordellWalkerRecorder</string>
       <external-property>
-        <originalValue class="hudson.plugins.chucknorris.CordellWalkerRecorder">
-          <factGenerator/>
-        </originalValue>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
@@ -335,13 +365,6 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>scm</string>
       <scm-property>
         <originalValue class="hudson.scm.SubversionSCM">
@@ -364,6 +387,13 @@
       </scm-property>
     </entry>
     <entry>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>org-hudsonci-maven-plugin-artifactrecorder-ArtifactFingerprinter</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -382,19 +412,23 @@
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>n129069</createdBy>
-  <creationTime>1390899172759</creationTime>
+  <creationTime>1395160430159</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
-    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
     <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>true</canRoam>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
 </project>

@@ -987,6 +987,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Fixpack[!!-~]repo[!!-~]monit
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/MODTURKIS[!!-~]-[!!-~]SoapUI[!!-~]-[!!-~]U3[!!-~]-[!!-~]Service[!!-~]Gateway/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/MigrateSYSMOD-Step1/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/MigrateSYSMOD-Step2/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/OLD_CI-buss-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Post[!!-~]Data[!!-~]Source[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Post[!!-~]Installed[!!-~]fixpacks[!!-~]overview[!!-~](WPS)[!!-~]to[!!-~]Confluence[!!-~]/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Post[!!-~]JVM[!!-~]config[!!-~](WPS)[!!-~]overview[!!-~]to[!!-~]Confluence/config.xml -text
