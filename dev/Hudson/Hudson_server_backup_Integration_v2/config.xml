@@ -391,7 +391,7 @@
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>Status HL3 (8.0)</name>
-      <description>View som viser 2014HL3-jobbene for feature branch. De fleste av disse er nå deaktivert ettersom trunk er kodestrømmen for 2014HL3.</description>
+      <description>&lt;b&gt;View som viser 2014HL3-jobbene for &lt;i&gt;feature branch&lt;/i&gt;.&lt;/b&gt; Skal erstattes av trunk-viewet etter at Pensjon også har merget sin kode.</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
