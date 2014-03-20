@@ -455,15 +455,6 @@ app/stelvio-example/stelvio-example-consumer-jaxws/pom.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/META-INF/clientPolicyAttachments.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/META-INF/ibm-application-bnd.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/pom.xml -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.classpath -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.project -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/.jsdtscope -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/org.eclipse.jdt.core.prefs -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/org.eclipse.m2e.core.prefs -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/org.eclipse.wst.common.component -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/org.eclipse.wst.jsdt.ui.superType.container -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/.settings/org.eclipse.wst.jsdt.ui.superType.name -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/pom.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/resources/consumer-context.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/WEB-INF/web.xml -text
