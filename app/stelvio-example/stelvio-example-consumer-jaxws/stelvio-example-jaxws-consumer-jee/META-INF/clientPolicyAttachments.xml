@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<psa:PolicySetAttachment xmlns:psa="http://www.ibm.com/xmlns/prod/websphere/200605/policysetattachment" xmlns:ps="http://www.ibm.com/xmlns/prod/websphere/200605/policyset">
-    <psa:PolicySetReference id="1424" name="NAV ESB WSImport">
-        <psa:PolicySetBinding name="NAV ESB WSImport Binding" scope="domain"/>
-        <psa:Resource pattern="WebService:/"/>
-    </psa:PolicySetReference>
-</psa:PolicySetAttachment>
