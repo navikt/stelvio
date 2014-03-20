@@ -471,12 +471,6 @@ app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consume
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/WEB-INF/web.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/index.jsp -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/index_spring.jsp -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/.classpath -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/.project -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/.settings/org.eclipse.jdt.core.prefs -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/.settings/org.eclipse.m2e.core.prefs -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/.settings/org.eclipse.wst.common.component -text
-app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/pom.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/src/main/java/no/stelvio/consumer/virgo/SpringVirgoConsumer.java -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/src/main/java/no/stelvio/consumer/virgo/VirgoConsumer.java -text
