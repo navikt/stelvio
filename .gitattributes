@@ -452,7 +452,6 @@ app/stelvio-dto-java/src/main/java/no/stelvio/dto/transferobject/ServiceRequestD
 app/stelvio-dto-java/src/main/java/no/stelvio/dto/transferobject/ServiceResponseDto.java -text
 app/stelvio-dto-java/src/test/java/no/stelvio/dto/exception/TestUnrevocerableDtoException.java -text
 app/stelvio-example/stelvio-example-consumer-jaxws/.project -text
-app/stelvio-example/stelvio-example-consumer-jaxws/.settings/org.eclipse.m2e.core.prefs -text
 app/stelvio-example/stelvio-example-consumer-jaxws/pom.xml -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/.project -text
 app/stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/.settings/org.eclipse.m2e.core.prefs -text
