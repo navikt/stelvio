@@ -2,10 +2,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>stelvio.example</groupId>
-		<artifactId>stelvio-example-consumer</artifactId>
+		<artifactId>stelvio-example-jaxws-consumer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>stelvio-example-jaxws-consumer</artifactId>
+    <artifactId>stelvio-example-jaxws-consumer-ejb</artifactId>
     <packaging>ejb</packaging>
     <name>${project.artifactId}</name>
 

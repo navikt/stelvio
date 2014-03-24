@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>stelvio.example</groupId>
-		<artifactId>stelvio-example-consumer</artifactId>
+		<artifactId>stelvio-example-jaxws-consumer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -16,7 +16,7 @@
         <!-- Consumer -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>stelvio-example-jaxws-consumer</artifactId>
+            <artifactId>stelvio-example-jaxws-consumer-ejb</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>

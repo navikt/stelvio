@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>stelvio.example</groupId>
-	<artifactId>stelvio-example-consumer</artifactId>
+	<artifactId>stelvio-example-jaxws-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -12,7 +12,7 @@
     </prerequisites>
 
     <modules>
-        <module>stelvio-example-jaxws-consumer</module>
+        <module>stelvio-example-jaxws-consumer-ejb</module>
         <module>stelvio-example-jaxws-consumer-web</module>
         <module>stelvio-example-jaxws-consumer-jee</module>
     </modules>
