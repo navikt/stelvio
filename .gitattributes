@@ -9063,6 +9063,10 @@ maven/settings.xml -text
 release-test/pom.xml -text
 release-test/src/main/resources/versjon -text
 stelvio-example/stelvio-example-consumer-jaxws/pom.xml -text
+stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-ejb/pom.xml -text
+stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-ejb/src/main/java/no/stelvio/consumer/virgo/SpringVirgoConsumer.java -text
+stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-ejb/src/main/java/no/stelvio/consumer/virgo/VirgoConsumer.java -text
+stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-ejb/src/main/java/no/stelvio/consumer/virgo/VirgoConsumerImpl.java -text
 stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/META-INF/clientPolicyAttachments.xml -text
 stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/META-INF/ibm-application-bnd.xml -text
 stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-jee/pom.xml -text
@@ -9071,7 +9075,3 @@ stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-we
 stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/WEB-INF/web.xml -text
 stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/index.jsp -text
 stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer-web/src/main/webapp/index_spring.jsp -text
-stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/pom.xml -text
-stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/src/main/java/no/stelvio/consumer/virgo/SpringVirgoConsumer.java -text
-stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/src/main/java/no/stelvio/consumer/virgo/VirgoConsumer.java -text
-stelvio-example/stelvio-example-consumer-jaxws/stelvio-example-jaxws-consumer/src/main/java/no/stelvio/consumer/virgo/VirgoConsumerImpl.java -text
