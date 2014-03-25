@@ -19,7 +19,7 @@ import no.stelvio.common.context.support.SimpleRequestContext;
 public class VirgoConsumerImpl implements VirgoConsumer {
 
 	@HandlerChain(file="/no/stelvio/consumer/ws/ContextHandlerChain.xml")
-	@WebServiceRef(wsdlLocation = "/wsdl/Virgo_v2.wsdl", value = VirgoV2.class, name="jaxws/VirgoConsumer")
+	@WebServiceRef(wsdlLocation = "/wsdl/Virgo_v2.wsdl", value = VirgoV2.class)
 	private VirgoPortType virgoPortType;
 
     @PostConstruct
@@ -31,7 +31,7 @@ public class VirgoConsumerImpl implements VirgoConsumer {
 	@Override    
     public String echo(String echoRequest) {
 
-		// In a normal stelvio application setting the RequestContext like this would require
+		// In a normal stelvio application setting the RequestContext to this state would require
 		// the use of RequestContextFilter, SecurityContextFilter with the required
 		// Spring config to go along with these
 		// So this one line of cheatcode simplifies a lot
