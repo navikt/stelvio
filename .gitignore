@@ -3109,3 +3109,7 @@ int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/target
 int/stelvio-sibus-mediation/OppdragMediation/target
 int/target
+stelvio-example/stelvio-example-jaxws-consumer/.classpath
+stelvio-example/stelvio-example-jaxws-consumer/.project
+stelvio-example/stelvio-example-jaxws-consumer/.settings
+stelvio-example/stelvio-example-jaxws-consumer/target
