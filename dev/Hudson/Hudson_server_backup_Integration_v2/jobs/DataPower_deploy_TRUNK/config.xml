@@ -354,25 +354,8 @@ elif [ &quot;${DeilveryVerision}&quot; == &quot;2014-HL1&quot; ];
 then
       wget -O pom.xml https://versjonskontroll.adeo.no/svn/nav/branches/datapower/D20140120_2014HL1_DATAPOWER/datapower-deployer/${Gateway}-deployer/pom.xml?
 fi
-##TESTING TESTING
-#rm pom.xml
-#wget -O pom.xml http://maven.adeo.no/nexus/content/repositories/m2internal/test/test/datapower/deploy-util-partner-gw-TEST/7.9.0.3/deploy-util-partner-gw-TEST-7.9.0.3.pom
-
-#wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-#wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/branches/datapower/D20131014_2014ELSAM/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-
-###DEBUG
-#rm -f pom.xml
-#cp /home/ci/petter/feil01/pom.xml pom.xml
-#mkdir ./target/datapower-config/
-#mkdir ./target/datapower-config/partner-gw-u3/
-#mkdir ./target/datapower-config/partner-gw-u3/files/
-#mkdir ./target/datapower-config/partner-gw-u3/files/local/
-#mkdir ./target/datapower-config/partner-gw-u3/files/local/wsdl
-##/DEBUG
 
 EnvironmentClass=${Environment:0:1}
-
 
 #Check if deploy is done for sikkerhetslytter.
 if [ $Gateway = &quot;sikkerhetslytter&quot; ]
