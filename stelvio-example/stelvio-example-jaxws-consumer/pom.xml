@@ -15,6 +15,7 @@
         <module>stelvio-example-jaxws-consumer-ejb</module>
         <module>stelvio-example-jaxws-consumer-web</module>
         <module>stelvio-example-jaxws-consumer-jee</module>
+		<module>stelvio-example-jaxws-consumer-appconfig</module>
     </modules>
     
     <build>
