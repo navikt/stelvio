@@ -3112,4 +3112,8 @@ int/target
 stelvio-example/stelvio-example-jaxws-consumer/.classpath
 stelvio-example/stelvio-example-jaxws-consumer/.project
 stelvio-example/stelvio-example-jaxws-consumer/.settings
+stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/.classpath
+stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/.project
+stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/.settings
+stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/target
 stelvio-example/stelvio-example-jaxws-consumer/target
