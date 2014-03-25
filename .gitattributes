@@ -9063,6 +9063,8 @@ maven/settings.xml -text
 release-test/pom.xml -text
 release-test/src/main/resources/versjon -text
 stelvio-example/stelvio-example-jaxws-consumer/pom.xml -text
+stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-appconfig/pom.xml -text
+stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-appconfig/src/main/resources/app-config.xml -text
 stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/pom.xml -text
 stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/src/main/java/no/stelvio/consumer/virgo/SpringVirgoConsumer.java -text
 stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-ejb/src/main/java/no/stelvio/consumer/virgo/VirgoConsumer.java -text
