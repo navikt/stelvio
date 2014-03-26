@@ -5,7 +5,10 @@
 		<artifactId>stelvio-example-jaxws-consumer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
     </parent>
+    
     <artifactId>stelvio-example-jaxws-consumer-appconfig</artifactId>
 	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
+    <description>Fasit appconfig for stelvio-example-jaxws-consumer</description>
 
 </project>

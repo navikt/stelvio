@@ -10,6 +10,8 @@
 
     <artifactId>stelvio-example-jaxws-consumer-web</artifactId>
     <packaging>war</packaging>
+    <name>${project.artifactId}</name>
+    <description>Simple webapp for testing stelvio jax-ws consumer</description>
 
     <dependencies>
 

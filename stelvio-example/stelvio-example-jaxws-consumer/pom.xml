@@ -6,6 +6,8 @@
 	<artifactId>stelvio-example-jaxws-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>Main pom for ${project.artifactId}</description>
 
     <prerequisites>
         <maven>3.0.4</maven>

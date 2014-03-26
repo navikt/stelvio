@@ -5,9 +5,11 @@
 		<artifactId>stelvio-example-jaxws-consumer</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
     </parent>
+    
     <artifactId>stelvio-example-jaxws-consumer-ejb</artifactId>
     <packaging>ejb</packaging>
     <name>${project.artifactId}</name>
+    <description>JAX-WS consumer implemented as SLSB</description>
 
 	<dependencies>
 

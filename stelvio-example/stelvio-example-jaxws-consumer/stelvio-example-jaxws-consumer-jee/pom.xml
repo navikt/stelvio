@@ -9,6 +9,7 @@
 	<artifactId>stelvio-example-jaxws-consumer-jee</artifactId>
 	<packaging>ear</packaging>
 	<name>${project.artifactId}</name>
+    <description>JEE project for stelvio jax-ws consumer</description>
 	
 	<dependencies>
         <dependency>
