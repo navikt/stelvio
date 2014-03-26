@@ -21,14 +21,16 @@
             <scope>provided</scope>
         </dependency>
         
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>3.2.4.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>provided</scope>
         </dependency>
         
     </dependencies>
+    
     <build>
         <resources>
             <resource>
@@ -45,7 +47,7 @@
                     <exclude>**/*.java</exclude>
                 </excludes>
             </resource>
-        </resources>
+        </resources>        
         <testResources>
             <testResource>
                 <filtering>false</filtering>
@@ -61,7 +63,7 @@
                     <exclude>**/*.java</exclude>
                 </excludes>
             </testResource>
-        </testResources>
+        </testResources>        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -80,5 +82,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>    
 </project>

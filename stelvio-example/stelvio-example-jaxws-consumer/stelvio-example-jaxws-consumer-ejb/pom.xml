@@ -11,10 +11,11 @@
 
 	<dependencies>
 
+		<!-- WebSphere -->
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>
-			<version>8.5.0</version>
+			<version>${websphere-runtime.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -22,14 +23,15 @@
         <dependency>
             <groupId>no.nav.tjenester.fim</groupId>
             <artifactId>nav-fim-virgo-v2-tjenestespesifikasjon</artifactId>
-			<version>0.0.1-alpha007</version>
+			<version>${virgo-tjenestespesifikasjon.version}</version>
             <classifier>jaxws</classifier>
         </dependency>
 
+		<!-- Stelvio -->
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-consumer-java</artifactId>
-			<version>4.1.1</version>
+			<version>${stelvio.version}</version>
 		</dependency>
 		
 	</dependencies>
@@ -39,7 +41,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ejb-plugin</artifactId>
-				<version>2.3</version>
+				<version>${maven-ejb-plugin.version}</version>
 				<configuration>
 					<ejbVersion>3.0</ejbVersion>
 				</configuration>
