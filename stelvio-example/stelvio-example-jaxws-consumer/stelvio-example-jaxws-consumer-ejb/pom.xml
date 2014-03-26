@@ -30,7 +30,7 @@
 		<!-- Stelvio -->
 		<dependency>
 			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-consumer-java</artifactId>
+			<artifactId>stelvio-common-java</artifactId>
 			<version>${stelvio.version}</version>
 		</dependency>
 		
