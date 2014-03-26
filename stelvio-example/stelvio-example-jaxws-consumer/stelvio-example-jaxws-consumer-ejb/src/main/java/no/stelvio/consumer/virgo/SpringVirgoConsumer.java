@@ -10,13 +10,12 @@ public class SpringVirgoConsumer implements VirgoConsumer {
 
 	@Override
 	public String echo(String echoRequest) {
-		// TODO Auto-generated method stub
 		return virgoService.echo(echoRequest);
 	}
 
 	@Override
 	public void ping() {
-		// TODO Auto-generated method stub
+		virgoService.ping();
 
 	}
 
