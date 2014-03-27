@@ -289,13 +289,13 @@ find -name ibm-deploy.scaj2ee -print -exec false {} +
 find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
 esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
 esb/esb-tools/esb-scripts/bin/cons_xml_check.py esb
-esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 68626761
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 68626807 --path esb/
+esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
 esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
-esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 68626800
+esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/
-esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 68626804 --path esb/ --design /home/ci/designTrunk/spesifikasjon/implementasjon/</command>
+esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/ --design /home/ci/designTrunk/spesifikasjon/implementasjon/</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
@@ -436,7 +436,7 @@ esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 6862
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
