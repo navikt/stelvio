@@ -32,8 +32,8 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<bean id="error.strategy" class="no.stelvio.common.error.strategy.support.ExceptionHandlerStrategyChain">
 		<property name="strategies">
 			<set>
-				<ref local="error.logStrategy"/>
-				<ref local="error.rethrowStrategy"/>
+				<ref bean="error.logStrategy"/>
+				<ref bean="error.rethrowStrategy"/>
 			</set>
 		</property>
 	</bean>

@@ -13,8 +13,8 @@
        <bean id="test.error.chainedstrategyset" class="no.stelvio.common.error.strategy.support.ExceptionHandlerStrategyChain">
        	<property name="strategies">
        		<set>
-       			<ref local="test.error.morpherstrategy"/>
-       			<ref local="test.error.fallbackstrategy"/>       			
+       			<ref bean="test.error.morpherstrategy"/>
+       			<ref bean="test.error.fallbackstrategy"/>       			
        		</set>
        	</property>
        </bean>       
@@ -28,8 +28,8 @@
        <bean id="test.error.chainedstrategy" class="no.stelvio.common.error.strategy.support.ExceptionHandlerStrategyChain">
        	<property name="strategies">
        		<list>
-       			<ref local="test.error.morpherstrategy"/>
-       			<ref local="test.error.fallbackstrategy"/>       			
+       			<ref bean="test.error.morpherstrategy"/>
+       			<ref bean="test.error.fallbackstrategy"/>       			
        		</list>
        	</property>
        </bean>

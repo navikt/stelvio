@@ -13,7 +13,7 @@
 		<property name="urlPkgPrefixes"><value>com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming</value></property>
 		<property name="cacheable"><value>true</value></property>
 	</bean>
-	<bean id="TestBean2" class="no.stelvio.common.ejb.RemoteServiceDescription" singleton="false">
+	<bean id="TestBean2" class="no.stelvio.common.ejb.RemoteServiceDescription" scope="singleton">
 		<property name="jndiName"><value>ejb/business/bidrag/BusinessFacadeHome</value></property>
 		<property name="providerUrl"><value>iiop://localhost:2809/</value></property>
 		<property name="initialContextFactory"><value>com.ibm.websphere.naming.WsnInitialContextFactory</value></property>

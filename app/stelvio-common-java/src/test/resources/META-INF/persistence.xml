@@ -5,9 +5,9 @@
    version="1.0">
    <persistence-unit name="menu" transaction-type="RESOURCE_LOCAL">
 
-	<class>no.stelvio.common.menu.domain.Menu</class>
-	<class>no.stelvio.common.menu.domain.Permission</class>
-	<class>no.stelvio.common.menu.domain.Screen</class>	
+	<class>no.stelvio.domain.menu.MenuItem</class>
+	<class>no.stelvio.domain.menu.MenuItemPermission</class>
+	<class>no.stelvio.domain.menu.MenuItemScreen</class>	
 
    </persistence-unit>
 </persistence>
