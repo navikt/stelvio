@@ -2,6 +2,17 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.2
+----------------------------------
+PKIGUAN-485/PKIGUAN-761:
+- Bugfix: Different transactionId is logged for single request when logging contents of MDC
+- Moved set/reset of MDC to RequestContextSetter
+- Removed duplicate class RequestContextSetter from stelvio-provider (is in common and provider already has a dependency to common)
+- Simplified logic in RequestContextFilter (before doFilter part)
+
+Other:
+- Updated some old spring config for tests
+
 Version 4.1.1
 ---------------------------------- 
 * Changes to improve logging using stelvio properties in MDC (PKIGUAN-485)
