@@ -973,6 +973,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy-til-U2-WPS-Maven3_
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-wpsdeploy-pom_sync/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Create[!!-~]new[!!-~]service/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/DataPower_SoapUI-test_service-gw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/DataPower_TestServiceGateway_fault-handling/config.xml -text
@@ -1088,6 +1089,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U3-prosess-PPEN004-Be
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U3-prosess-PPEN006-BehandleAFPPrivat_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U3-prosess-PPEN009-BehandleTilbakekrevingVedDodsfall_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI[!!-~]test/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U3-prosess-PPEN015-IverksettVedtak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U5-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U5-Ekstern-NAVYtelsesinfo_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/SoapUI-U5-Ekstern-Pensjon-Beregning_CI/config.xml -text
@@ -1188,6 +1190,8 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-CheckScripts/config.xm
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-ekstern-modules-ci/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-ekstern/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-esb-modules-ci/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-esb-release[!!-~]deploy/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-esb-release[!!-~]verify/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-layers/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-layers_release/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK-nav-modules-ci/config.xml -text
