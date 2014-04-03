@@ -271,17 +271,31 @@ def createJ2CConnectionFactory ( propertiesPath ):
 	attrs.append(["jndiName", jndiName])
 	attrs.append(["description", desc])
 	
-	connAttr = [["name", "connectionURL"], ["type", "java.lang.String"], ["value", connectionUrl]] 
-	portAttr = [["name", "portNumber"], ["type", "java.lang.String"], ["value", portNumber]] 
-	servAttr = [["name", "serverName"], ["type", "java.lang.String"], ["value", serverName]] 
-	timeoutAttr = [["name", "socketConnectTimeout"], ["type", "java.lang.String"], ["value", socketConnectTimeOut]] 
-	applIdQualifierAttr = [["name", "applidQualifier"], ["type", "java.lang.String"], ["value", applIdQualifier]]
-	applIdAttr = [["name", "applid"], ["type", "java.lang.String"], ["value", applId]]
-	tpnNameAttr = [["name", "tPNName"], ["type", "java.lang.String"], ["value", tpnName]]
-	requestExitsAttr= [["name", "requestExits"], ["type", "java.lang.String"], ["value", requestExits]]
-	tranNameAttr = [["name", "tranName"], ["type", "java.lang.String"], ["value", tranName]]
-	xaSupportAttr = [["name", "xaSupport"], ["type", "java.lang.String"], ["value", xaSupport]]
-	
+	# If using the old CICS adapters use upper case for first character in custom properties
+	if (raName == "ECIResourceAdapter" or raName == "ECIXAResourceAdapter"):
+		connAttr = [["name", "ConnectionURL"], ["type", "java.lang.String"], ["value", connectionUrl]] 
+		portAttr = [["name", "PortNumber"], ["type", "java.lang.String"], ["value", portNumber]] 
+		servAttr = [["name", "ServerName"], ["type", "java.lang.String"], ["value", serverName]] 
+		timeoutAttr = [["name", "SocketConnectTimeout"], ["type", "java.lang.String"], ["value", socketConnectTimeOut]] 
+		applIdQualifierAttr = [["name", "ApplidQualifier"], ["type", "java.lang.String"], ["value", applIdQualifier]]
+		applIdAttr = [["name", "Applid"], ["type", "java.lang.String"], ["value", applId]]
+		tpnNameAttr = [["name", "TPNName"], ["type", "java.lang.String"], ["value", tpnName]]
+		requestExitsAttr= [["name", "RequestExits"], ["type", "java.lang.String"], ["value", requestExits]]
+		tranNameAttr = [["name", "TranName"], ["type", "java.lang.String"], ["value", tranName]]
+		xaSupportAttr = [["name", "xaSupport"], ["type", "java.lang.String"], ["value", xaSupport]]
+	# USE lover case for first character in custum properties for CICS adapter v9.(CICSECIResourceAdapter)
+	else:
+		connAttr = [["name", "connectionURL"], ["type", "java.lang.String"], ["value", connectionUrl]] 
+		portAttr = [["name", "portNumber"], ["type", "java.lang.String"], ["value", portNumber]] 
+		servAttr = [["name", "serverName"], ["type", "java.lang.String"], ["value", serverName]] 
+		timeoutAttr = [["name", "socketConnectTimeout"], ["type", "java.lang.String"], ["value", socketConnectTimeOut]] 
+		applIdQualifierAttr = [["name", "applidQualifier"], ["type", "java.lang.String"], ["value", applIdQualifier]]
+		applIdAttr = [["name", "applid"], ["type", "java.lang.String"], ["value", applId]]
+		tpnNameAttr = [["name", "tPNName"], ["type", "java.lang.String"], ["value", tpnName]]
+		requestExitsAttr= [["name", "requestExits"], ["type", "java.lang.String"], ["value", requestExits]]
+		tranNameAttr = [["name", "tranName"], ["type", "java.lang.String"], ["value", tranName]]
+		xaSupportAttr = [["name", "xaSupport"], ["type", "java.lang.String"], ["value", xaSupport]]
+		
    	newprops = []
    	newprops.append(connAttr)
    	newprops.append(portAttr)
