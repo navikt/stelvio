@@ -178,7 +178,7 @@ def getClusterRefs():
 			supportRef = cluster
 		else:
 			log.error("Could not identify cluster:", cluster)
-	return [appTargetRef, messagingRef, supportRef]
+	return [appTargetRef, supportRef, messagingRef ]
 
 def isAppTargetCluster(cluster):
 	return IS_APPTARGET_REGEX.search(cluster) is not None
