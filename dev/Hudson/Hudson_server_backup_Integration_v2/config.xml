@@ -161,6 +161,7 @@
         <string>Stelvio-TAI-svn</string>
         <string>stelvio_trunk_incubator_stelvio_example</string>
         <string>stelvio_trunk_int_stelvio-commons-lib_sonar</string>
+        <string>stelvio_trunk_int_wpshelpers</string>
       </jobNames>
       <jobFilters/>
       <columns>

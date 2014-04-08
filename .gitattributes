@@ -1215,6 +1215,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/deploy_WPS__ny_splittet_buss
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/g115484_nav_stubs/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/g115484_test_dokumentbehandling-soapui-stub/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/oppkoblingstest/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/stelvio_branchbpm85_int_wpshelpers/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/stelvio_trunk_incubator_stelvio_example/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/stelvio_trunk_incubator_stelvio_example_echo/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/stelvio_trunk_incubator_stelvio_example_echo_service_specification/config.xml -text
