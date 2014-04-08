@@ -44,8 +44,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wpshelper-common-java</artifactId>
-		</dependency>
-		
+		</dependency>		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -65,16 +64,35 @@
 		<dependency>
 			<groupId>org.ostermiller</groupId>
 			<artifactId>utils</artifactId>
-		</dependency>
-
+		</dependency>		
 		<dependency>
-			<groupId>com.ibm.wps</groupId>
-			<artifactId>process-choreographer-client</artifactId>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>bfmclientmodel</artifactId>
+		</dependency>			
+		<dependency>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>bpcclientcore</artifactId>
+		</dependency>			
+		<dependency>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>bpeapi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>taskapi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>htmclientmodel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.commonj</groupId>
+			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.ejb.thinclient</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
-		</dependency>
 	</dependencies>
 </project>

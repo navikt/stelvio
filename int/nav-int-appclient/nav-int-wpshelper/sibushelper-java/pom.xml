@@ -50,8 +50,25 @@
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.sib.client.thin.jms</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.admin.client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.commonj</groupId>
+			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.sib.server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.runtime</artifactId>
+		</dependency>		
+		
 	</dependencies>
 </project>

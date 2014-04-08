@@ -27,15 +27,18 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>com.ibm.wps</groupId>
-			<artifactId>process-choreographer-client</artifactId>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.admin.client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>bfmclientmodel</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>websphere.bpm</groupId>
+			<artifactId>bpeapi</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
-		</dependency>
 	</dependencies>
 </project>
