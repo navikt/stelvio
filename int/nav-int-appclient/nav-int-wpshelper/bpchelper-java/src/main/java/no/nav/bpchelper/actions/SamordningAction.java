@@ -10,15 +10,30 @@ import no.nav.bpchelper.readers.InputReader;
 import com.ibm.bpe.api.ArchiveUnsupportedOperationException;
 import com.ibm.bpe.api.BusinessFlowManagerService;
 import com.ibm.bpe.api.ClientObjectWrapper;
+import com.ibm.bpe.api.CreateFailedException;
+import com.ibm.bpe.api.EngineAdministratorCannotBeResolvedException;
+import com.ibm.bpe.api.EngineCannotCreateWorkItemException;
+import com.ibm.bpe.api.EngineCannotInitializeVariableException;
+import com.ibm.bpe.api.EngineCannotOpenCompensationSphereException;
+import com.ibm.bpe.api.EngineCannotRunSynchronousException;
 import com.ibm.bpe.api.EngineNotAuthorizedException;
 import com.ibm.bpe.api.EngineParameterNullException;
+import com.ibm.bpe.api.EngineProcessInstanceNameNotUniqueException;
+import com.ibm.bpe.api.EngineProcessModelDoesNotExistException;
+import com.ibm.bpe.api.EngineProcessModelStoppedException;
+import com.ibm.bpe.api.EngineWrongMessageTypeException;
+import com.ibm.bpe.api.FaultReplyException;
 import com.ibm.bpe.api.IdWrongFormatException;
 import com.ibm.bpe.api.IdWrongTypeException;
 import com.ibm.bpe.api.InvalidLengthException;
+import com.ibm.bpe.api.InvalidObjectNameException;
+import com.ibm.bpe.api.MissingPartsException;
 import com.ibm.bpe.api.ObjectDoesNotExistException;
 import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.api.PTID;
 import com.ibm.bpe.api.ProcessException;
+import com.ibm.bpe.api.ProcessInstanceNotUniqueException;
+import com.ibm.bpe.api.ServiceNotUniqueException;
 import com.ibm.bpe.api.UnexpectedFailureException;
 import commonj.sdo.DataObject;
 
@@ -69,16 +84,12 @@ public class SamordningAction extends AbstractAction {
 					logger.debug("Processing process with id=<{}>.", piid);
 				}
 				
-				bfm.skip(piid.toString(), "S150-Vedtak.SettTilIverksettelsesdato");
+				bfm.skip(piid.toString(),
+						"S150-Vedtak.SettTilIverksettelsesdato");
+				bfm.skip(piid.toString(), "S510-Arkiv.BestillBrev");
 				bfm.skip(piid.toString(), "S550-Vedtak.LagreVedtakstatus3");
-				bfm.skip(piid.toString(), "S560-Samordning.OpprettVedtakSamordning");
-
-				// set variable in samordning response to make sure the instance will go into wait mode 
-				ClientObjectWrapper samordneVedtakResponse = new ClientObjectWrapper();
-				samordneVedtakResponse = bfm.createMessage(templateID, "samordneVedtakResponse");
-				DataObject sor = (DataObject) samordneVedtakResponse.getObject();
-				sor.setBoolean("ventPaaSvar", true);
-				bfm.setVariable(piid.toString(), "S560-Samordning.OpprettVedtakSamordning", "samordneVedtakResponse", samordneVedtakResponse);
+				bfm.skip(piid.toString(),
+						"S560-Samordning.OpprettVedtakSamordning");
 
 				bfm.resume(piid);
 				processCount++;
