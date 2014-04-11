@@ -292,7 +292,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_0_0_D20131118_2014HL3/nav/ruting/nav-test-ruting</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/ruting/nav-test-ruting</remote>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>

@@ -340,7 +340,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_0_0_D20131118_2014HL3/nav/endagspassord/nav-endagspassord-test</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/endagspassord/nav-endagspassord-test</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -392,7 +392,7 @@
   <scm class="hudson.scm.SubversionSCM">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_0_0_D20131118_2014HL3/nav/arbeidOgAktivitet/nav-test-arbeidOgAktivitet</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/arbeidOgAktivitet/nav-test-arbeidOgAktivitet</remote>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
