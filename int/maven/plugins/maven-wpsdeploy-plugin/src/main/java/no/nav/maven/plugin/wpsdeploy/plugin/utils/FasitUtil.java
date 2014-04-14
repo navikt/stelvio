@@ -36,6 +36,14 @@ public class FasitUtil {
 		return output;
 	}
 
+	public static void registerApplication(String application, String applicationVersion, String enviroment, String username, String password) {
+		
+		String url = buildRegisterApplicationUrl(enviroment, application);
+		String content = buildRegisterApplicationContent(application, applicationVersion);
+		WebUtil.writeXmlToUrlWithAuth(url, content, username, password);
+		
+	}
+
 	private static String getDomain(String environment) {
 		if (domain == null){
 			String url = buildDomainUrl(environment);
@@ -57,4 +65,13 @@ public class FasitUtil {
 	private static String buildWsadminUserUrl(String environment, String domain) {
 		return String.format("https://fasit.adeo.no/conf/resources/bestmatch?envName=%s&domain=%s&type=Credential&alias=wsadminUser&app=bpm", environment, domain);
 	}
+	
+	private static String buildRegisterApplicationUrl(String environment, String application) {
+		return String.format("http://fasit.adeo.no/conf/environments/%s/applications/%s", environment, application);
+	}
+	
+	private static String buildRegisterApplicationContent(String application, String version) {
+		return String.format("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><deployedApplication xmlns:ns2=\"http://appconfig.aura.nav.no\"><usedResources/><appconfig><ns2:name>%s</ns2:name><ns2:resources/><ns2:exposed-services/><ns2:artifacts/></appconfig><version>%s</version></deployedApplication>", application,version);
+	}
+	
 }

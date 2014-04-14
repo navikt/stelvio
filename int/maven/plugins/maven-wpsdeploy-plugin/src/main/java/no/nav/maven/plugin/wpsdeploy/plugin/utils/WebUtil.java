@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -68,6 +69,43 @@ public class WebUtil {
 			}
 		} catch (IOException e) {
 			throw new ConfigurationException("Exception when reading url with authorization: "+ urlString +"\n"+ e);
+		}
+
+		return outPut.toString();
+	}
+	
+	public static String writeXmlToUrlWithAuth(String urlString, String content,  String username, String password) {
+
+		String outPut;
+		String userpass = username + ":" + password;
+		String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
+
+		logger.debug("Writing to url: "+ urlString);
+
+		try {
+			URL url = new URL(urlString);
+			HttpURLConnection huc =  (HttpURLConnection) url.openConnection();
+			huc.setRequestProperty("Authorization", basicAuth);
+			huc.setRequestMethod("PUT");
+			huc.setRequestProperty("Content-Type", "Application/xml");
+			huc.setDoOutput(true);
+			PrintWriter pw = new PrintWriter(huc.getOutputStream());
+			pw.write(content);
+			pw.flush();
+			int responsecode = huc.getResponseCode();
+			if (responsecode != 404){
+				if (responsecode >= 200 && responsecode < 300){
+					InputStream is = huc.getInputStream();
+					outPut = convertStreamToString(is);
+					is.close();
+				} else {
+					throw new HttpCodeNon2XXException("[writeXmlToUrlWithAuth()]: "+ responsecode +" response code returned from URL (username was " + username + "): " + urlString);
+				}
+			} else {
+				throw new HttpCode404Exception("[writeXmlToUrlWithAuth()]: "+ responsecode +" response code returned from URL: "+ urlString);
+			}
+		} catch (IOException e) {
+			throw new ConfigurationException("Exception when writing to url with authorization: "+ urlString +"\n"+ e);
 		}
 
 		return outPut.toString();
