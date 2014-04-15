@@ -6,19 +6,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SshCommands {
-	private static Integer SERVER_ALREADY_STARTED_EXIT_CODE = 255;
-	private static Integer SERVER_ALREADY_STOPPED_EXIT_CODE = 246;
-	private static String BASE_PATH = "/opt/IBM/BPM/profiles/Dmgr01/bin/";
-
-	private final static Logger logger = LoggerFactory.getLogger(SshCommands.class);
-
+	private static final Integer SERVER_ALREADY_STARTED_EXIT_CODE = 255;
+	private static final Integer SERVER_ALREADY_STOPPED_EXIT_CODE = 246;
+	private static final String BASE_PATH = "/opt/IBM/BPM/profiles/Dmgr01/bin/";
+	private static final String BACKUP_ROOT_DIRECTORY = "/app/backup/";
+	private static final String BACKUP_FILE_PREFIX = "DmgrConfigBackup_";
+	
+	private static final Logger logger = LoggerFactory.getLogger(SshCommands.class);
 
 	/**
 	 * @throws no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode
 	 */
-	public static void backupConfig(SshUser sshUser) {
+	public static void backupConfig(SshUser sshUser, String enviroment) {
 		SshClient sshClient = new SshClient(sshUser);
-		String cmd = "sudo " + BASE_PATH + "backupConfig.sh " + BASE_PATH + "ConfigBackup_`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
+		String cmd = "sudo " + BASE_PATH + "backupConfig.sh " + BACKUP_ROOT_DIRECTORY + enviroment + "/" + BACKUP_FILE_PREFIX +"`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 		sshClient.execute(cmd);
 	}
 
@@ -82,5 +83,36 @@ public class SshCommands {
 		String availableSpace = whiteSpaceSplit[3];
 
 		return Integer.parseInt(availableSpace);
+	}
+	
+	public static void verifyBackupDirectory(SshUser sshUser, String enviroment) {
+		SshClient sshClient = new SshClient(sshUser);
+		String backupDirectory = BACKUP_ROOT_DIRECTORY + enviroment + "/";
+		String cmd = "sudo mkdir -p " + backupDirectory;
+		logger.info("Verifying that the backup directory {" + backupDirectory + "} exists");
+		sshClient.execute(cmd);
+	}
+	public static void deleteOldBackups(SshUser sshUser, String enviroment, int numberOfBackupsToKeep) {
+		SshClient sshClient = new SshClient(sshUser);
+		String backupDirectory = BACKUP_ROOT_DIRECTORY + enviroment + "/";
+		String cmd = "sudo ls " + backupDirectory + " | grep " + BACKUP_FILE_PREFIX + " | grep .zip";
+		logger.info("Getting a list of old backups");
+		try {
+			String commandOutput = sshClient.execute(cmd);
+			String[] lineArray = commandOutput.trim().split("\n");
+			logger.info("There is " + lineArray.length + " old backups in " + backupDirectory);
+			for (int i = lineArray.length - 1 - numberOfBackupsToKeep; i >= 0; i--) {
+				if(lineArray[i].startsWith(BACKUP_FILE_PREFIX) && lineArray[i].endsWith(".zip")){ // Extra check to verify external input before deleting.
+					SshClient sshDeleteClient = new SshClient(sshUser);
+					String deleteCmd = "sudo rm " + backupDirectory + lineArray[i];
+					logger.info("Deleting old backup " + lineArray[i]);
+					sshDeleteClient.execute(deleteCmd);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
 	}
 }
