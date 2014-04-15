@@ -202,7 +202,7 @@
               <hudson.model.StringParameterDefinition>
                 <name>BusPomRevision</name>
                 <description>SVN revisjon av deployer pom</description>
-                <defaultValue>10773</defaultValue>
+                <defaultValue>10836</defaultValue>
               </hudson.model.StringParameterDefinition>
               <hudson.model.ChoiceParameterDefinition>
                 <name>logging_level</name>
@@ -360,7 +360,7 @@ ${Lifecycle}
 -Dpensjon-prosess-modules-version=${ESBVersion}
 -Dekstern-pensjon-modules-version=${ESBVersion}
 -DinteractiveMode=false
--Dskip=backup-config,bounce-dmgr
+-Dskip=bounce-dmgr
 -Desb-authorization-configuration=${esb_authorization_configuration}
 -Desb-nonenviroment-configuration=${esb_nonenvironment_configuration}
 -Desb-enviroment-configuration=${esb_environment_configuration}
