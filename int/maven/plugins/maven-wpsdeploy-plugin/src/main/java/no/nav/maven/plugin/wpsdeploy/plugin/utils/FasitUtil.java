@@ -67,7 +67,7 @@ public class FasitUtil {
 	}
 	
 	private static String buildRegisterApplicationUrl(String environment, String application) {
-		return String.format("http://fasit.adeo.no/conf/environments/%s/applications/%s", environment, application);
+		return String.format("https://fasit.adeo.no/conf/environments/%s/applications/%s", environment, application);
 	}
 	
 	private static String buildRegisterApplicationContent(String application, String version) {
