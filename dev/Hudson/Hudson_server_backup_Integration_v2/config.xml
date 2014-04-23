@@ -193,6 +193,7 @@
         <hudson.views.LastFailureColumn/>
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
       </columns>
       <includeRegex>(SoapUI-U(2|3)-).*</includeRegex>
     </listView>
@@ -432,7 +433,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>CI HL3 Feature Branch - U5</name>
+      <name>CI Trunk - U5</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
