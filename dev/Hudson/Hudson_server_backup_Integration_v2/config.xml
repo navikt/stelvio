@@ -207,7 +207,7 @@
       </jobNames>
       <jobFilters/>
       <columns/>
-      <includeRegex>(?!SoapUI-U.(5)).*</includeRegex>
+      <includeRegex>SoapUI-U5.*</includeRegex>
       <showStable>true</showStable>
       <showStableDetail>true</showStableDetail>
       <highVis>true</highVis>
