@@ -99,7 +99,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 		Object ret =  i.proceed();
 
 		// reset context before returning
-		RequestContextSetter.resetRequestContext();
+		//RequestContextSetter.resetRequestContext();
 		if (log.isDebugEnabled()) {
 			log.debug("RequestContext was reset when exiting interceptor");
 		}

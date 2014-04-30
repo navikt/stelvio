@@ -2,6 +2,13 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.3
+----------------------------------
+PKIGUAN-485/PK-13403:
+- Reverted bugfix: bugfix introduced in 4.1.1 "Added after-invoke code in ExecuteServiceRequestInterceptor and added reset of RequestContext there"
+- The bugfix above caused unexpected behavior for orchestrated services and remote service invocations with no assigned RequestContext. 
+
+
 Version 4.1.2
 ----------------------------------
 PKIGUAN-485/PKIGUAN-761:

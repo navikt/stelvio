@@ -62,7 +62,8 @@ public class ExecuteServiceRequestInterceptorTest {
 
 		// Interceptor should reset requestContext
 		// Subsequently call to currentRequestException should throw IllegalStateException
-		assertThat(callToCurrentRequestContextThrowsException(), is(true));
+		/* Removed for PK-13403 to revert bugfixintroduced in 4.1.1 "Added after-invoke code in ExecuteServiceRequestInterceptor and added reset of RequestContext there"
+		assertThat(callToCurrentRequestContextThrowsException(), is(true)); */
 
 	}
 
@@ -73,7 +74,7 @@ public class ExecuteServiceRequestInterceptorTest {
 	public void testMDCIsUpdated() {
 
 		// RequestContext should only contain null values before interception
-		RequestContext reqCtxBeforePojoCall = RequestContextHolder.currentRequestContext();
+		RequestContext reqCtxBeforePojoCall = RequestContextHolder.currentRequestContext();		
 		assertThat(reqCtxBeforePojoCall.getScreenId(), not(equalTo("screenId123")));
 
 		// This call should be intercepted
@@ -81,11 +82,12 @@ public class ExecuteServiceRequestInterceptorTest {
 
 		assertThat(message, is(equalTo("Hello there, Jens-Petrus")));
 
+		/* Removed for PK-13403 to revert bugfixintroduced in 4.1.1 "Added after-invoke code in ExecuteServiceRequestInterceptor and added reset of RequestContext there"
 		// MDC should be reset after call
 		assertThat(MDC.get(MdcConstants.MDC_SCREEN), nullValue());
 		assertThat(MDC.get(MdcConstants.MDC_MODULE), nullValue());
 		assertThat(MDC.get(MdcConstants.MDC_TRANSACTION), nullValue());		
-		assertThat(MDC.get(MdcConstants.MDC_APPLICATION), nullValue());
+		assertThat(MDC.get(MdcConstants.MDC_APPLICATION), nullValue());*/
 
 	}
 
