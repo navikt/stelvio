@@ -207,9 +207,9 @@
       </jobNames>
       <jobFilters/>
       <columns/>
-      <includeRegex>SoapUI-U5.*</includeRegex>
-      <showStable>true</showStable>
-      <showStableDetail>true</showStableDetail>
+      <includeRegex>SoapUI-U[25].*</includeRegex>
+      <showStable>false</showStable>
+      <showStableDetail>false</showStableDetail>
       <highVis>true</highVis>
       <groupByPrefix>false</groupByPrefix>
     </hudson.model.RadiatorView>
