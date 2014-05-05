@@ -221,14 +221,15 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>2013HL4_7.9_CheckScripts_Leveransedokumentasjon</string>
-        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon original</string>
+        <string>2014HL2_7.10_CheckScripts_Leveransedokumentasjon</string>
+        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
+        <string>CI-buss-pom_sync</string>
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-nonenviroment-0.0.0.1-SNAPSHOT</string>
         <string>CI-wpsdeploy-pom_sync</string>
         <string>ejbdiffer_script</string>
         <string>Fixpack repo monitor</string>
-        <string>OLD_CI-buss-pom_sync</string>
         <string>Post Data Source config (WPS) overview to Confluence</string>
         <string>Post installed fixpacks (WPS) on U2, U3 and U4 to Confluence</string>
         <string>Post Installed fixpacks overview (WPS) to Confluence </string>
