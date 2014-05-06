@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Slår på stubbing på U5 (e34apsl00638.devillo.no)</description>
+  <description>Slår på stubbing på U5 (e34wasl00198.devillo.no)</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -258,7 +258,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Maven>
-            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=esb-test-soapui-project.xml -Dsoapui.testsuite=TestSuite -Dsoapui.testcase=StartStubbing -Dsoapui.host=e34apsl00638.devillo.no</targets>
+            <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=esb-test-soapui-project.xml -Dsoapui.testsuite=TestSuite -Dsoapui.testcase=StartStubbing -Dsoapui.host=e34wasl00198.devillo.no</targets>
             <mavenName>(Default)</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
           </hudson.tasks.Maven>
