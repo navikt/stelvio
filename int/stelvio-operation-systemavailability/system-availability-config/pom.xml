@@ -4,27 +4,27 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-wps-module-pom</artifactId>
-		<version>2.1.5</version>
+		<version>2.1.12</version>
 	</parent>
 
 	<groupId>no.stelvio.int.operation.system-availability</groupId>
 	<artifactId>system-availability-config</artifactId>
 	<name>System Availability Config</name>
 	<packaging>wps-module-ear</packaging>
-	<version>1.4.6-SNAPSHOT</version>
+	<version>1.4.6</version>
 	
 	<dependencies>
 		<dependency>
 			<groupId>no.stelvio.int</groupId>
 			<artifactId>stelvio-commons-lib</artifactId>
 			<type>wps-library-jar</type>
-			<version>4.1.8-SNAPSHOT</version>
+			<version>4.1.10</version>
 		</dependency>
 	</dependencies>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/system-availability-config</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/system-availability-config</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/system-availability-config-1.4.6</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/system-availability-config-1.4.6</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
