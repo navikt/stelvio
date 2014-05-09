@@ -2,6 +2,17 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.4
+----------------------------------
+PKIGUAN-857/PK-12734:
+- Changed no.stelvio.batch.controller.support.SpringBatchEnabledBatchControllerService to put a generated transactionId and componentId on RequestContext. Previously only added userId.
+- Added test of SpringBatchEnabledBatchControllerService's RequestContext.
+
+Other:
+- Updated .../app/stelvio-batch-java/pom.xml to depend on slf4j-log4j12 to remove warnings (SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder")
+- Deleted .../app/version_number.txt
+
+
 Version 4.1.3
 ----------------------------------
 PKIGUAN-485/PK-13403:
