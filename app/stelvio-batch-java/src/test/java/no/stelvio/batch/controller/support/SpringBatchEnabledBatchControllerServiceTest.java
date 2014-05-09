@@ -12,7 +12,7 @@ public class SpringBatchEnabledBatchControllerServiceTest {
 	
 	@Before
 	public void setUp() {
-		ctx = new ClassPathXmlApplicationContext("springBatchEnabledBatchControllerService-test-context.xml");
+		ctx = new ClassPathXmlApplicationContext("springbatchenabledbatchcontrollerservice-test-context.xml");
 		batchController = (SpringBatchEnabledBatchControllerService) ctx.getBean("batchService");
 		batchController.setSpringBatchOperator(new SpringBatchJobOperatorHelper());
 	}

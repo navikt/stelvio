@@ -2,6 +2,12 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.5
+----------------------------------
+PKIGUAN-857/PK-12734:
+- The new test failed due to Linux being case-sensitive on filenames while Windows isn't. Changed the new xml-resource filename to lowercase.
+
+
 Version 4.1.4
 ----------------------------------
 PKIGUAN-857/PK-12734:

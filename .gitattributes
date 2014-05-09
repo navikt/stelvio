@@ -101,11 +101,11 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/TWSExitCodeMapperT
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/TypeConvertingJobParametersValidatorTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/validation/support/BatchParameterValidatorInterceptorTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/validation/support/BatchParameterValidatorTest.java -text
-app/stelvio-batch-java/src/test/resources/SpringBatchEnabledBatchControllerService-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/batchinitrequestcontext-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/batchvalidator-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/btc-testbatch-context.xml -text
 app/stelvio-batch-java/src/test/resources/log4j.properties -text
+app/stelvio-batch-java/src/test/resources/springbatchenabledbatchcontrollerservice-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/tst-stopbatch-context.xml -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
