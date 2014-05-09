@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset>
   <actions/>
-  <description>Kjører mvn clean deploy av [branch]/spesifikasjon/implementasjon/ekstern</description>
+  <description>Kjører mvn clean deploy av branch/spesifikasjon/implementasjon/ekstern</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>blockBuildWhenDownstreamBuilding</string>
@@ -24,6 +24,15 @@
       </base-property>
     </entry>
     <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>logRotator</string>
       <log-rotator-property>
         <originalValue class="hudson.tasks.LogRotator">
@@ -34,15 +43,6 @@
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
-    </entry>
-    <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
-          <priority>100</priority>
-        </originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
     </entry>
     <entry>
       <string>scmCheckoutRetryCount</string>
@@ -95,18 +95,18 @@
       </trigger-property>
     </entry>
     <entry>
-      <string>concurrentBuild</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>jdk</string>
       <string-property>
         <originalValue class="string">(Default)</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </string-property>
+    </entry>
+    <entry>
+      <string>concurrentBuild</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>appointedNode</string>
@@ -120,7 +120,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20131118_2014HL3/spesifikasjon/implementasjon/ekstern</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20140509_2014HL3/spesifikasjon/implementasjon/ekstern</remote>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -168,7 +168,7 @@
     <doRevert>false</doRevert>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>

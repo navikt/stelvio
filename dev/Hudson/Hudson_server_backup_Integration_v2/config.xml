@@ -220,7 +220,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2013HL4_7.9_CheckScripts_Leveransedokumentasjon</string>
         <string>2014HL2_7.10_CheckScripts_Leveransedokumentasjon</string>
         <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
         <string>CI-buss-pom_sync</string>
@@ -394,8 +393,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status HL3 (8.0)</name>
-      <description>&lt;b&gt;View som viser 2014HL3-jobbene for &lt;i&gt;feature branch&lt;/i&gt;.&lt;/b&gt; Skal erstattes av trunk-viewet etter at Pensjon også har merget sin kode.</description>
+      <name>Status 2014HL3 (8.0)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
@@ -415,7 +413,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status HL4 (7.9)</name>
+      <name>Status 2015HL1 (8.2)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
@@ -431,7 +429,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(2013HL4_7\.9_).*</includeRegex>
+      <includeRegex>(2015HL1_8\.2_).*</includeRegex>
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
@@ -457,7 +455,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status HL2 (7.10)</name>
+      <name>Status 2014HL2 (7.10)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
