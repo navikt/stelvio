@@ -19,7 +19,7 @@ import no.stelvio.common.context.support.SimpleRequestContext;
 public class VirgoConsumerImpl implements VirgoConsumer {
 
 	@HandlerChain(file="/no/stelvio/consumer/ws/ContextHandlerChain.xml")
-	@WebServiceRef(wsdlLocation = "/wsdl/Virgo_v2.wsdl", value = VirgoV2.class)
+	@WebServiceRef(wsdlLocation = "wsdl/Virgo_v2.wsdl", value = VirgoV2.class)
 	private VirgoPortType virgoPortType;
 
     @PostConstruct
