@@ -99,7 +99,7 @@
     </hudson.model.AllView>
     <hudson.model.RadiatorView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status TRUNK</name>
+      <name>Status TRUNK (8.1)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
