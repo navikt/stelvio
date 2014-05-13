@@ -237,7 +237,7 @@ public class GenerateConfigGenericMojo extends AbstractMojo {
 		 
 		// Fetching value from envconfig
 		URI envConfigBaseUrl = new URI(envConfigBaseUrlString);
-		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl, username, password);
+		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl);
 		
 		//Splitting envQuery and adding params to bestmatch search
 		ArrayList<String> arrayList =  new ArrayList<String>(Arrays.asList(envQuery.split("&")));

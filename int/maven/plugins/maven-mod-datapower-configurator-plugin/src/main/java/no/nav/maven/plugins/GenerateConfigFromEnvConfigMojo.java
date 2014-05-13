@@ -167,7 +167,7 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
     private void getEnvConfigProperties(Properties properties) throws URISyntaxException, MalformedURLException, IOException  {
 		URI envConfigBaseUrl = new URI(envConfigBaseUrlString);
 
-		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl, username, password);
+		EnvConfigResourceDiscovery discovery = new EnvConfigResourceDiscovery(envConfigBaseUrl);
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "nfs.log");
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
