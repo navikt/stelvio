@@ -63,6 +63,12 @@
     <entry>
       <string>logRotator</string>
       <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>15</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
     </entry>
@@ -244,8 +250,8 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>svn update /home/ci/rsa-models/trunk/design --username svnguest --password Subversion01 --no-auth-cache
-rm -rf /home/ci/rsa-models/trunk/design/tredjegenerasjon
-rm -rf /home/ci/rsa-models/trunk/design/domene-pensjon</command>
+#rm -rf /home/ci/rsa-models/trunk/design/tredjegenerasjon
+#rm -rf /home/ci/rsa-models/trunk/design/domene-pensjon</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
             <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/trunk/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/trunk/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace | tee /home/ci/nilssen-terje/log.txt
