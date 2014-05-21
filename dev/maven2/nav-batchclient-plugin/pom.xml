@@ -9,7 +9,7 @@
   <artifactId>nav-batchclient-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>NAV Maven BatchClient Plugin</name>
-  <version>1.0.7-SNAPSHOT</version>
+  <version>1.0.8-SNAPSHOT</version>
   <prerequisites>
     <maven>2.0.1</maven>
   </prerequisites>
