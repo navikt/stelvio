@@ -200,6 +200,7 @@
     <hudson.model.RadiatorView>
       <owner class="hudson" reference="../../.."/>
       <name>Failed tests</name>
+      <description>Test</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
