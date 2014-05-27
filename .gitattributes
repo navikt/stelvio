@@ -8753,6 +8753,7 @@ int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/commonj.connector.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/mail.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/wbiBiDi.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/pom.xml -text
+int/stelvio-jca-adapters/cicseci/pom.xml -text
 int/stelvio-jca-adapters/cicseciNoTrans/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA/pom.xml -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.classpath -text
