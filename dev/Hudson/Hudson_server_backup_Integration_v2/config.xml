@@ -221,8 +221,6 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2014HL2_7.10_CheckScripts_Leveransedokumentasjon</string>
-        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
         <string>CI-buss-pom_sync</string>
         <string>CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT</string>
@@ -237,7 +235,6 @@
         <string>Post U2 WPS config to Confluence</string>
         <string>Post U3 WPS config to Confluence</string>
         <string>Post U4 WPS config to Confluence</string>
-        <string>TRUNK-CheckScripts</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -260,6 +257,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>2014HL2_7.10_NAV-Tjenestebuss</string>
         <string>2014HL3_8.0_NAV-Tjenestebuss</string>
+        <string>2015HL1_8.2_NAV-Tjenestebuss</string>
         <string>TRUNK_NAV-Tjenestebuss</string>
       </jobNames>
       <jobFilters/>
