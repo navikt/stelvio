@@ -248,7 +248,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>svn update /home/ci/rsa-models/8.0/design --username svnguest --password Subversion01 --no-auth-cache</command>
+            <command>svn update /home/ci/rsa-models/8.2/design --username svnguest --password Subversion01 --no-auth-cache</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Shell>
             <command>DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;/home/ci/rsa-models/8.2/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/rsa-models/8.2/&quot; -outputDirPath &quot;/var/www/html/8.2/&quot; -consoleLog --displaystacktrace | tee /home/ci/nilssen-terje/log2.txt

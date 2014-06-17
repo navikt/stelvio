@@ -952,7 +952,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2015HL1_8.2_NAV-Tjenestebuss
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hudson[!!-~]configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Bygg[!!-~]versjonsoversikt[!!-~]TEST/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-buss-pom_sync/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy-til-U2-WPS-Maven3/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy-til-U2-BPM-Maven3/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy-til-U2-WPS-Maven3_revision_10650/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-authorization-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-deploy_bus-enviroment-0.0.0.1-SNAPSHOT/config.xml -text
