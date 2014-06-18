@@ -72,25 +72,33 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 				}
 
 				RequestContext requestContext = getRequestContext(arg);
+				
+				if (requestContext == null) {
+					if (log.isWarnEnabled()) {
+						log.warn("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
+					}
+					requestContext = new SimpleRequestContext.Builder()
+											.userId("unknown-userId")
+											.componentId("unknown-componentId")
+											.transactionId("unknown-transactionId")
+											.moduleId("unknown-moduleId")
+											.processId("unknown-processId")
+											.screenId("unknown-screenId")
+											.build();
+				}
 
-				if (requestContext != null) {
-					if (overideComponentId) {
-						if (log.isTraceEnabled()) {
-							log.trace("ComponentId passed by ServiceRequest is set to be overridden if possible");
-						}
-						requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
+				if (overideComponentId) {
+					if (log.isTraceEnabled()) {
+						log.trace("ComponentId passed by ServiceRequest is set to be overridden if possible");
 					}
+					requestContext = overrideComponentIdIfPresentInConfiguration(requestContext);
+				}
 
-					RequestContextSetter.setRequestContext(requestContext); // Set requestContext on thread
-					if (log.isDebugEnabled()) {
-						log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
-					}
-					break; // Should not be more than one service request per call
-				} else {
-					if (log.isDebugEnabled()) {
-						log.debug("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
-					}
-				}				
+				RequestContextSetter.setRequestContext(requestContext); // Set requestContext on thread
+				if (log.isDebugEnabled()) {
+					log.debug("RequestContext was retrieved from ServiceRequest and bound to thread");
+				}
+				break; // Should not be more than one service request per call
 			}
 		}
 		if (log.isDebugEnabled()) {

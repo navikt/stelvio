@@ -67,6 +67,7 @@ public class ExecuteServiceRequestInterceptorTest {
 
 	}
 
+
 	/**
 	 * Test that MDC is updated when call is intercepted.
 	 */
@@ -105,6 +106,7 @@ public class ExecuteServiceRequestInterceptorTest {
 		return servReq;
 	}
 
+	
 	/**
 	 * Clean up after test.
 	 */

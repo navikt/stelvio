@@ -369,6 +369,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/validation/supp
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/validation/support/RoleValidatorUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/ws/SecurityHeaderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/transferobject/support/ExecuteServiceRequestInterceptorTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/transferobject/support/ExecuteServiceRequestInterceptorWithoutRequestContextTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/transferobject/support/PrepareServiceRequestInterceptorTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/transferobject/support/SecondPrepareServiceRequestInterceptor.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/transferobject/support/TestExecuteServiceRequestInterceptorService.java -text
