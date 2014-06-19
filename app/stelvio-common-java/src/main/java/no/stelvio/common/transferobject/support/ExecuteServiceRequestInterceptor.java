@@ -106,11 +106,9 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 		}
 		Object ret =  i.proceed();
 
-		// reset context before returning
-		//RequestContextSetter.resetRequestContext();
-		if (log.isDebugEnabled()) {
-			log.debug("RequestContext was reset when exiting interceptor");
-		}
+		/* Should ideally reset context before returning by calling RequestContextSetter.resetRequestContext();
+		 * 
+		 * */
 		if (log.isDebugEnabled()) {
 			log.debug("Method invoke is about to exit from MethodInvocation");
 		}
