@@ -2,6 +2,11 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.6
+----------------------------------
+PK-13845:
+- Introduced fix to better handle remote service invocations with no RequestContext (StelvioContext). A default RequestContext will now be assigned when RequestConetxt is missing.
+
 Version 4.1.5
 ----------------------------------
 PKIGUAN-857/PK-12734:
