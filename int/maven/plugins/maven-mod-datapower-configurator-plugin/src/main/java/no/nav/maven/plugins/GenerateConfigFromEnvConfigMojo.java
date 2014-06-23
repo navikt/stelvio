@@ -171,6 +171,7 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ALIAS, "nfs.log");
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_DOMAIN, envDomain);
 		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_ENV_NAME, env);
+		discovery.addQueryParameter(EnvConfigQueryParameters.QUERY_PARAM_ENTRY_APP, gatewayName);
 		
 		EnvConfigResource resource = discovery.discover(EnvConfigResourceDiscovery.DISCOVERY_MODE_BESTMATCH);
 		URL url = new URL(resource.getPropertyValue("url"));
