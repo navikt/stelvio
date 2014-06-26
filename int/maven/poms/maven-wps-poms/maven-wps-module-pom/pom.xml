@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>2.1.10-SNAPSHOT</version>
+		<version>2.1.13</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
 	<artifactId>maven-wps-module-pom</artifactId>
-  <version>2.1.10-SNAPSHOT</version>
+  <version>2.1.14-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS Module Master POM</name>
 
@@ -34,7 +34,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>2.3</version>
+					<version>2.4</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
@@ -65,20 +65,20 @@
 							<projectnature>com.ibm.ws.sca.rapiddeploy.style.SCAProjectNature</projectnature>
 							<projectnature>com.ibm.wbit.project.generalmodulenature</projectnature>
 						</projectnatures>
-						<runtimeName>WebSphere Process Server v7.0</runtimeName>
+						<runtimeName>IBM Process Server v8.5</runtimeName>
 						<classpathContainers>
 							<classpathContainer>
 								<![CDATA[
-								org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Process Server v7.0 JRE
+								org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/IBM Process Server v8.5 JRE
 								]]>
 							</classpathContainer>
-							<classpathContainer>org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v70.bi/wps.v70</classpathContainer>
+							<classpathContainer>org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v85.bi/wps.v85</classpathContainer>
 						</classpathContainers>
 						<excludes>
 							<exclude>com.ibm.maven.runtimes:wps-runtime</exclude>
 							<exclude>com.ibm.ws.runtime:WS_Server</exclude>
-							<exclude>com.ibm.jaxws.thinclient:WebServicesFeaturePackThinClientRuntime</exclude>
-							<exclude>com.ibm.ws.admin.client:WebSphereClientServices</exclude>
+							<exclude>websphere:com.ibm.jaxws.thinclient</exclude>
+							<exclude>websphere:com.ibm.ws.admin.client</exclude>
 						</excludes>
 						<additionalConfig>
 							<file>

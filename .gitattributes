@@ -7982,6 +7982,7 @@ int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/CreateP
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidCleanMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidPlugin.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/utils/IdeDependencyFactory.java -text svneol=unset#text/plain
+int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/utils/ScaLibaryFileGenerator.java -text
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/writers/WidWtpComponentWriter.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/writers/WidWtpFacetsWriter.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/resources/ibm-deploy.scaj2ee -text
@@ -8348,6 +8349,8 @@ int/maven/utilities/pom.xml -text
 int/maven/utilities/sca-attributes-builder/pom.xml -text
 int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/BORuntimeFramework.java -text
 int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/ScaAttributesBuilder.java -text
+int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/ScaLibraryBuilder.java -text
+int/maven/utilities/sca-attributes-builder/src/test/java/no/nav/maven/utilities/sca/ScaLibraryBuilderTest.java -text
 int/maven/ws-clients/datapower-management-client/pom.xml -text
 int/maven/ws-clients/datapower-management-client/src/main/wsdl/amp/app-mgmt-protocol.wsdl -text
 int/maven/ws-clients/datapower-management-client/src/main/wsdl/amp/app-mgmt-protocol.xsd -text
@@ -8371,7 +8374,6 @@ int/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/moduleconfig.xsd -text
 int/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/xml.xsd -text
 int/maven/xmlbeans/moduleconfig-xmlbeans/src/test/resources/example.xml -text svneol=unset#text/plain
 int/maven/xmlbeans/pom.xml -text
-int/nav-int-appclient/nav-int-wpshelper-bundle/.project -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/README.txt -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/assembly/assembly.xml -text
@@ -8385,26 +8387,8 @@ int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusKoedybde.doc -
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/WPSHelpers.doc -text svneol=unset#application/octet-stream
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/python/SibusQueuesDepth.py -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/resources/localhost_helper.properties -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/.project -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/META-INF/application.xml -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/commons-cli-1.2.jar -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/commons-lang-2.4.jar -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/pom.xml -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/process-choreographer-client-7.0.0.3.jar -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/slf4j-api-1.5.8.jar -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/slf4j-jdk14-1.5.8.jar -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/utils-1.07.00.jar -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.classpath -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.factorypath -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.project -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/org.eclipse.jdt.apt.core.prefs -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/org.eclipse.jdt.core.prefs -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/org.eclipse.jdt.ui.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/pom.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/META-INF/MANIFEST.MF -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/META-INF/application-client.xml -text
@@ -8434,27 +8418,8 @@ int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpch
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/readers/InputReader.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/utils/ReflectionUtils.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/.project -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/META-INF/application.xml -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/commons-cli-1.2.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/commons-collections-3.2.1.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/commons-lang-2.4.jar -text
 int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/pom.xml -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/process-choreographer-client-7.0.0.2.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/process-choreographer-client-7.0.0.3.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/slf4j-api-1.5.8.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/slf4j-jdk14-1.5.8.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/utils-1.07.00.jar -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.classpath -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.factorypath -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.project -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/org.eclipse.jdt.apt.core.prefs -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/pom.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/META-INF/application-client.xml -text svneol=unset#text/plain
@@ -8481,21 +8446,8 @@ int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/Argum
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/PropertyUtil.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/SDOFormatter.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/pom.xml -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/.project -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/META-INF/application.xml -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/commons-cli-1.2.jar -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/commons-lang-2.4.jar -text
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/pom.xml -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.classpath -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.factorypath -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.project -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.jdt.apt.core.prefs -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/application-client.xml -text svneol=unset#text/plain
@@ -8531,17 +8483,6 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/si
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/ServerConfigurationProperties.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/ServerInfo.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/sibus.properties -text
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.classpath -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.compatibility -text
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.factorypath -text
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.project -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.settings/org.eclipse.jdt.apt.core.prefs -text
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/maven-eclipse.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/pom.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/adapter/BFMConnectionAdapter.java -text svneol=unset#text/plain

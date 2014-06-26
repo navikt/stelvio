@@ -1,12 +1,24 @@
+Message-ID: <test@example.com>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_177786_688088976.1398250980708"
+
+------=_Part_177786_688088976.1398250980708
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
 <html>
     <head>
-        <!-- MS Word on Windows doesn't realise the encoding is UTF-8 unless this meta tag is present -->
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <base href="http://confluence.adeo.no" />
+        <!-- MS Word on Windows doesn't realise the encoding is UTF-8 unles=
+s this meta tag is present -->
+        <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Du=
+tf-8">
         <title>WPS helpers</title>
         <style>
             body, p, td, table, tr, .bodytext, .stepfield {
-	            font-family: Verdana, arial, sans-serif;
+=09            font-family: Arial, Helvetica, FreeSans, sans-serif;
             }
             .panel {
                 margin: 10px;
@@ -14,13 +26,18 @@
                 border: 1px solid #999;
                 background-color: #f0f0f0;
             }
-            .noteMacro { border-style: solid; border-width: 1px; border-color: #F0C000; background-color: #FFFFCE; text-align:left;}
-            .warningMacro { border-style: solid; border-width: 1px; border-color: #c00; background-color: #fcc; text-align:left;}
-            .infoMacro { border-style: solid; border-width: 1px; border-color: #69c; background-color: #D8E4F1; text-align:left;}
-            .tipMacro { border-style: solid; border-width: 1px; border-color: #090; background-color: #dfd; text-align:left;}
+            .noteMacro { border-style: solid; border-width: 1px; border-col=
+or: #F0C000; background-color: #FFFFCE; text-align:left;}
+            .warningMacro { border-style: solid; border-width: 1px; border-=
+color: #c00; background-color: #fcc; text-align:left;}
+            .infoMacro { border-style: solid; border-width: 1px; border-col=
+or: #69c; background-color: #D8E4F1; text-align:left;}
+            .tipMacro { border-style: solid; border-width: 1px; border-colo=
+r: #090; background-color: #dfd; text-align:left;}
             .informationMacroPadding { padding: 5px 0 0 5px; }
 
-            table.infoMacro td, table.warningMacro td, table.tipMacro td, table.noteMacro td, table.sectionMacro td {
+            table.infoMacro td, table.warningMacro td, table.tipMacro td, t=
+able.noteMacro td, table.sectionMacro td {
                 border: none;
             }
 
@@ -37,387 +54,314 @@
             .grid td  {
                 border: 1px solid #ccc;
                 padding: 3px 4px 3px 4px;
-            }            
+            }           =20
         </style>
     </head>
 
-    <body style="background-color: white; padding: 10px;">
+    <body style=3D"background-color: white; padding: 10px;">
         <h1>WPS helpers</h1>
-        <p>Dokumentasjon for WPS Helpers - oppdatert per versjon 2.0.0, 2011-04-01</p>
-
-<p>Originalen for denne siden finnes på: <a href="http://confluence.adeo.no/x/qlUB">&#104;ttp://confluence.adeo.no/x/qlUB</a></p>
-
-<h2><a name="WPShelpers-HensiktenmedWPShelpers"></a>Hensikten med WPS helpers</h2>
-
-<p>WPS helpers er en pakke med hjelpeverktøy som er ment å forenkle drift av WPS. De leveres alle i samme pakke, har noe felles kode og konfigurasjon, men kan kjøres uavhengig av hverandre. For tiden omfatter helperne:</p>
-<ul>
-	<li><a href="http://confluence.adeo.no/pages/viewpage.action?pageId=79308" title="FEM Helper kommandolinjeverktøy">FEM Helper kommandolinjeverktøy</a></li>
-	<li><a href="http://confluence.adeo.no/pages/viewpage.action?pageId=78896" title="BPC Helper kommandolinjeverktøy">BPC Helper kommandolinjeverktøy</a></li>
-	<li><a href="http://confluence.adeo.no/pages/viewpage.action?pageId=84087" title="SIBus Helper kommandolinjeverktøy">SIBus Helper kommandolinjeverktøy</a></li>
-	<li><a href="http://confluence.adeo.no/pages/viewpage.action?pageId=79459" title="SIBus Kødybde kommandolinjeverktøy">SIBus Kødybde kommandolinjeverktøy</a></li>
-</ul>
-
-
-<h2><a name="WPShelpers-Tekniskbeskrivelse"></a>Teknisk beskrivelse</h2>
-
-<p>Applikasjonene kjører som en J2EE Application Client for å forenkle tilgangen til interne ressurser i applikasjonsserveren, og for å slippe unna typiske problemer knyttet til f.eks. CLASSPATH. I en WAS-kontekst betyr det at man benytter <em>launchClient</em> for å starte applikasjonene. Det betyr også at man nesten utelukkende konfigurerer verktøyet v.h.a. standard launchClient-parametere som er godt dokumentert på <a href="#WPShelpers-launchClientReference">IBM InfoCenter</a>. Blant annet benytter J2EE Application Clients samme syntaks for å konfigurere logging som WAS. Dette er nærmere illustrert i eksemplene på undersidene for de enkelte verktøyene.</p>
-
-<p>Verktøyet for SIBus kødybde er et Jython-script som kjøres ved hjelp av wsadmin-kommandoen, som leveres med WAS/WPS.</p>
-
-<h2><a name="WPShelpers-Distribusjon"></a>Distribusjon</h2>
-
-<p>Helperapplikasjonene er pakket som en komplett zip-fil, og både siste og tidligere versjoner er tilgjengelige for nedlasting NAVs interne Maven-repository. Helperne leveres samlet i en pakke, og ikke enkeltvis.<br/>
-<a href="http://maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-bundle/">&#104;ttp://maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-bundle/</a></p>
-
-<p>For eksempel kan versjon 2.0.0 hentes fra følgende link:<br/>
-<a href="http://maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-bundle/2.0.0/wpshelper-bundle-2.0.0.zip">&#104;ttp://maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-bundle/2.0.0/wpshelper-bundle-2.0.0.zip</a></p>
-
-<p>Ved leveranser vil zip-filen normalt sett også distribueres med leveransepakken.</p>
-
-<p><a href="http://confluence.adeo.no/download/attachments/87466/localhost_properties.properties?version=1&modificationDate=1229074672000">Eksempel-fil</a> er også vedlagt denne siden.</p>
-
-<h2><a name="WPShelpers-Installasjon"></a>Installasjon</h2>
-
-
-<h3><a name="WPShelpers-Terminologi"></a>Terminologi</h3>
-
-<p>For å gjøre dokumentasjonen mer konsistent, og enklere å holde oppdatert, benyttes noen variabler i det etterfølgende:</p>
-<div class='table-wrap'>
-<table class='confluenceTable'><tbody>
-<tr>
-<th class='confluenceTh'> Navn </th>
-<th class='confluenceTh'> Beskrivelse </th>
-<th class='confluenceTh'> Typisk verdi </th>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>H_INSTALL_DIR</tt> </td>
-<td class='confluenceTd'> Installasjonskatalog for helperpakken </td>
-<td class='confluenceTd'> <tt>/was_app/tools/esb/wpshelpers/</tt> </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>H_HOME</tt> </td>
-<td class='confluenceTd'> Hjemmekatalog til helpere </td>
-<td class='confluenceTd'> <tt>/was_app/tools/esb/wpshelpers/wpshelpers-&lt;VERSION&gt;</tt> </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>LC_HOME</tt> </td>
-<td class='confluenceTd'> Katalog hvor launchClient.sh (eventuelt launchClient.bat) ligger </td>
-<td class='confluenceTd'> <tt>/opt/IBM/WebSphere/ProcServer/profiles/wps01/bin</tt> </td>
-</tr>
-</tbody></table>
-</div>
-
-<p><b>Merk:</b> Disse variablene vil ikke være definert i miljøene applikasjonen skal installeres i. Variablene er kun ment som kryss-referanser i dokumentasjonen - for å gjøre den mer konsistent og kompakt.</p>
-
-<h3><a name="WPShelpers-Stegforstegbeskrivelse"></a>Steg-for-steg-beskrivelse</h3>
-
-<p>Applikasjonen skal installeres på, og kjøres fra WPS' deployment manager. Dette er ikke et teknisk krav, men Pensjonsprogrammet ønsker lik installasjon i alle miljøer.</p>
-
-<p>For å installere applikasjonen gjør man følgende (dette gjøres kun en gang per miljø applikasjonen skal installeres til):</p>
-<ul>
-	<li>Last ned/kopier zip-filen inneholdende applikasjonen til <tt>H_INSTALL_DIR</tt>.</li>
-	<li>Pakk ut filen (unzip); ear-, properties&#45; og tilhørende script havner havner da i katalogen <tt>H_HOME</tt></li>
-	<li>Tilpass properties-filen med korrekte verdier for det aktuelle miljøet. Benytt eventuelt properties-fil fra forrige versjon, men pass på å kontrollere om det har kommet til nye verdier. Properties-filen skal ha navn på formen <tt>&lt;MILJØ&gt;_helper.properties</tt>.</li>
-</ul>
-
-
-<p><b>Merk:</b> En korrekt konfigurert properties-fil skal kunne benyttes av både FEM-, BPC&#45; og SIBus Helper.</p>
-
-<h3><a name="WPShelpers-Skriptetkj%C3%B8ring"></a>Skriptet kjøring</h3>
-
-<p>Kjøring av WPS helpers krever rettigheter tilsvarende brukeren wasadm. Kjøring med en annen bruker, for eksempel for skriptet kjøring, må gjøres ved hjelp av sudo-mekanismene. Sudo gir en bruker rettigheter å kjøre en kommando som en annen bruker, men det er mulig å begrense rettighetene til å gjelde spesifikke kommandoer. Det bør gis tilgang til et så snevert sett med kommandoer som mulig.</p>
-
-<p>Eksempel på oppsett for å gi tilgang til å kjøre FEM helper STATUS som twsadm:</p>
-<ol>
-	<li>Logg inn som root</li>
-	<li>Kjør kommandoen "visudo"&nbsp;</li>
-	<li>Legg til en linje: "twsadm ALL=(wasadm) NOPASSWD: /opt/IBM/WebSphere/ProcServer/bin/launchClient.sh /was_app/esb/wpshelpers-2.0.0/femhelper-ear.ear &#45;cf /was_app/esb/wpshelpers-2.0.0/helper.properties &#45;a STATUS</li>
-	<li>Lagre og avslutt visudo</li>
-	<li>Logg ut av shellet</li>
-	<li>Kjør kommandoen "sudo &#45;u wasadm /opt/IBM/WebSphere/ProcServer/bin/launchClient.sh /was_app/esb/wpshelpers-2.0.0/femhelper-ear.ear &#45;cf /was_app/esb/wpshelpers-2.0.0/helper.properties &#45;a STATUS" som twsadm</li>
-</ol>
-
-
-<p>For å gjøre kommandoen enklere kan den legges i et skript, og det kan gis tilgang til skriptet. Husk da på å sjekke at skrivetilgangen til skriptet er begrenset til wasadm.</p>
-
-<h2><a name="WPShelpers-Konfigurasjon"></a>Konfigurasjon</h2>
-
-<p>Miljøspesifikke parametere legges i en properties-fil, og en referanse (stien) til denne properties-filen sendes inn som parameter til verktøyet. For et gitt miljø skal man benytte samme properties-fil for både BPC-, FEM&#45; og SIBus Helper. SIBus Helper krever i tillegg parametre for å kommunisere med MessageEngine på WPS, men disse angis i samme fil.</p>
-
-<p>Parametrene er:</p>
-<div class='table-wrap'>
-<table class='confluenceTable'><tbody>
-<tr>
-<th class='confluenceTh'> Property-navn </th>
-<th class='confluenceTh'> Beskrivelse </th>
-<th class='confluenceTh'> Default-verdi </th>
-<th class='confluenceTh'> Benyttes av <br class="atl-forced-newline" /> </th>
-<th class='confluenceTh'> Kommentar </th>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>CONNECTOR_HOST</tt> </td>
-<td class='confluenceTd'> Admin connector host </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Host hvor deployment manager kjører </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>CONNECTOR_PORT</tt> </td>
-<td class='confluenceTd'> Admin connector port </td>
-<td class='confluenceTd'> 2809 </td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Avhengig av CONNECTOR_TYPE; SOAP:SOAP port til DMGR, RMI:Boostrap port til DMGR </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>CONNECTOR_TYPE</tt> </td>
-<td class='confluenceTd'> Admin connector type [RMI/SOAP] </td>
-<td class='confluenceTd'> RMI </td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> SOAP skal brukes når FEM Helper ikke kjører på DMGR eller server </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>CONNECTOR_SECURITY_ENABLED</tt> </td>
-<td class='confluenceTd'> Er admin connector kommunikasjon <em>secure</em> (SSL) [true/false] </td>
-<td class='confluenceTd'> true </td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Gjelder bare for admin connector type SOAP&nbsp; </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>SSL_KEYSTORE</tt> </td>
-<td class='confluenceTd'> SSL keystore </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Gjelder bare for admin connector type SOAP (&lt;profile&gt;/etc/key.p12) </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>SSL_KEYSTORE_PASSWORD</tt> </td>
-<td class='confluenceTd'> SSL keystore passord </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Gjelder bare for admin connector type SOAP </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>SSL_TRUSTSTORE</tt> </td>
-<td class='confluenceTd'> SSL truststore </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Gjelder bare for admin connector type SOAP (&lt;profile&gt;/etc/trust.p12) </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>SSL_TRUSTSTORE_PASSWORD</tt> </td>
-<td class='confluenceTd'> SSL truststore passord </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B, S<br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Gjelder bare for admin connector type SOAP </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>BootstrapHost</tt> </td>
-<td class='confluenceTd'> (standard launchClient parameter) hvilken host man skal kjøre mot </td>
-<td class='confluenceTd'> localhost </td>
-<td class='confluenceTd'> F, B <br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Brukes for BPC tilknytning </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>BootstrapPort</tt> </td>
-<td class='confluenceTd'> (standard launchClient parameter) hvilken port man skal kjøre mot </td>
-<td class='confluenceTd'> 2809 </td>
-<td class='confluenceTd'> F, B </td>
-<td class='confluenceTd'> Brukes for BPC tilknytning </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>username</tt> </td>
-<td class='confluenceTd'> bruker man skal kjøre som </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B , S <br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Bruker må ha tilordnet rolle <em>BPESystemAdministrator</em> </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>password</tt> </td>
-<td class='confluenceTd'> passordet til bruker man skal kjøre som </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> F, B , S <br class="atl-forced-newline" /> </td>
-<td class='confluenceTd'> Passord bør ikke ligge i klar-tekst, og applikasjonen benytter derfor <em>PropFilePasswordEncoder</em> for å XOR-enkode passordet første gang konfigurasjonen leses </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>meEngineHost</tt> </td>
-<td class='confluenceTd'> hvilken message engine host man skal kjøre mot </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Vanlighvis host av XXXXMEMember01 </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>meEnginePort</tt> </td>
-<td class='confluenceTd'> Message engine SIB_ENDPOINT_ADDRESS or SIB_ENDPOINT_SECURE_ADDRESS </td>
-<td class='confluenceTd'> 7276 </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Vanlighvis SIB_ENDPOINT_ADDRESS&nbsp; port&nbsp; av XXXXMEMember01 </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>meEngineUserAlternateUserName</tt> </td>
-<td class='confluenceTd'> alternate bruker som har tilgang til SI busser </td>
-<td class='confluenceTd'> false </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Hvis sikkerhet krever dette kan man lagre en egen group, bruker&nbsp;til alle SI busser </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>meEngineUserName</tt> </td>
-<td class='confluenceTd'> alternate message engine bruker som er under buss konfigurasjon "Security". </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Gjelder bare for meEngineUserAlternateUserName = true </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>meEnginePassword</tt> </td>
-<td class='confluenceTd'> passordet til alternate message engine&nbsp; </td>
-<td class='confluenceTd'>&nbsp;</td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Gjelder bare for meEngineUserAlternateUserName = true </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>meEngineChain</tt> </td>
-<td class='confluenceTd'> BootstrapBasicMessaging eller BootstrapSecureMessaging </td>
-<td class='confluenceTd'> BootstrapBasicMessaging </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Transport chain SIBus Helper skal benytte </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>autoRefresh</tt> </td>
-<td class='confluenceTd'> true eller false </td>
-<td class='confluenceTd'> true </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Refresh av object definisjoner når verktøy kjører </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>viewTempObjs</tt> </td>
-<td class='confluenceTd'> true eller false </td>
-<td class='confluenceTd'> false </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Skal status for temporære køer vises? </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>viewSystemObjs</tt> </td>
-<td class='confluenceTd'> true eller false </td>
-<td class='confluenceTd'> true </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Skal system objects vises? </td>
-</tr>
-<tr>
-<td class='confluenceTd'> <tt>serverName</tt> </td>
-<td class='confluenceTd'> f.e. Q1 </td>
-<td class='confluenceTd'> &lt;miljø&gt; </td>
-<td class='confluenceTd'> S </td>
-<td class='confluenceTd'> Benyttes av reporting </td>
-</tr>
-</tbody></table>
-</div>
-
-<p>Referanse til properties-filen må sendes inn to ganger på kommando-linje (en gang til launchClient, og en gang til applikasjonen) - dette er en feature ved <em>applicationclient</em>.<br/>
-Eksempel: <tt>%LC_HOME%/launchClient.sh %H_HOME%/femhelper-ear.ear &#45;CCpropfile=%H_HOME%/myhost_helper.properties &#45;-configFile=%H_HOME%/myhost_helper.properties</tt>.<br/>
-Eksempel: {{%LC_HOME%/launchClient.sh %H_HOME%/sibushelper-ear.ear &#45;CCpropfile=%H_HOME%/&lt;miljø&gt;_helper.properties &#45;cf %H_HOME%/&lt;miljø&gt;_helper.properties &#45;a STATUS &#45;co sibus</p>
-
-<p><b>Merk:</b> Det er p.t. en svakhet i applikasjonen som gjør at eventuelle kommentarer i properties-filen vil bli fjernet når applikasjonen kjører hvis ikke alle passordene allerede er encoded.</p>
-
-<h2><a name="WPShelpers-Vedlikeholdavkodeogleveransepakke"></a>Vedlikehold av kode og leveransepakke</h2>
-
-<p>Kildekoden til modulene er under versjonskontroll i stelvio-repositoryet i Subversion:<br/>
-<a href="https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/">&#104;ttps://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/</a></p>
-
-<p>De ulike helperne bygges med Maven 2, som et "multimodule-prosjekt".</p>
-
-<p>Maven-assembly brukes for å pakke leveransen; ear-filer, konfigurasjon, tilhørende shell-script og dokumentasjon.<br/>
-<a href="https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle/">&#104;ttps://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle/</a></p>
-
-<p>Nye shell-script for å pakke inn ofte brukte kjøremønstre bør legges til i riktig katalog i Subversion-modulen, slik at disse kommer med i fremtidige leveranser:<br/>
-<a href="https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/">&#104;ttps://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/</a></p>
-
-<h2><a name="WPShelpers-Releaseprosess"></a>Releaseprosess</h2>
-
-<p>WPS helpers pakkes og releases ved bruk av maven release-plugin. Rutinen består kort i fortalt i å kjøre <em>mvn release:prepare</em> etterfulgt av <em>mvn release:perform</em>, først på selve helper-modulen, deretter på leveransemodulen. Se <a href="http://confluence.adeo.no/display/nduj2eefrmforv/Prosess+for+migrering+av+kode" title="Prosess for migrering av kode">Prosess for migrering av kode</a> for fullstendig beskrivelse av denne rutinen.</p>
-
-<h2><a name="WPShelpers-Referanser"></a>Referanser</h2>
-
-
-<h3><a name="WPShelpers-launchClient"></a><a name="WPShelpers-launchClientReference"></a> launchClient</h3>
-
-<p>Mer informasjon om launchClient for WebSphere Application Server finnes her:<br/>
-<a href="http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/rcli_javacmd.html">&#104;ttp://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/rcli_javacmd.html</a></p>
-
-<h2><a name="WPShelpers-Releasenotes"></a>Release notes</h2>
-
-<div class='table-wrap'>
-<table class='confluenceTable'><tbody>
-<tr>
-<th class='confluenceTh'> Version </th>
-<th class='confluenceTh'> Application </th>
-<th class='confluenceTh'> Problems solved </th>
-</tr>
-<tr>
-<td class='confluenceTd'> 2.0.0 </td>
-<td class='confluenceTd'> SIBus Helper </td>
-<td class='confluenceTd'><ul class="alternate" type="square">
-	<li>PA-27: Oppgradert til WPS 7.0 API</li>
-	<li>PA-64/CR163189: Mulighet for å ta ut rapport for meldinger på alle køer på alle busser</li>
-	<li>Fikset rapportutskrifter slik at ikke lange meldinger overstiger en linje i rapporten</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td class='confluenceTd'> 2.0.0 </td>
-<td class='confluenceTd'> BPC Helper </td>
-<td class='confluenceTd'><ul class="alternate" type="square">
-	<li>PA-27: Oppgradert til WPS 7.0 API</li>
-	<li>PA-26: Migrering av prosesser fra WPS6.1 -&gt; 7.0 (Lagt til action SAMORDNING for å sende vedtak med status TIL_SAMORDN rett til VentPaaSvarFraSamordning)</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td class='confluenceTd'> 2.0.0 </td>
-<td class='confluenceTd'> FEM Helper </td>
-<td class='confluenceTd'><ul class="alternate" type="square">
-	<li>PA-27: Oppgradert til WPS 7.0 API</li>
-	<li>Fikset rapportutskrifter slik at ikke lange meldinger overstiger en linje i rapporten</li>
-	<li>Lagt til støtte for BPC og JMS events i tillegg til SCA (MQ Events benyttes ikke i dag, og støttes heller ikke i 2.0.0). Merk at det nå er kobling mellom Failed BPC Events og tilhørende prosessinstanser. Det betyr at dersom man kjører DISCARD og sletter BPC Events ved bruk av FEM Helper så vil tilhørende prosesser også bli slettet uten varsel.</li>
-	<li>Lagt til feltene EventType og ResubmitDestination i rapportene</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.1 </td>
-<td class='confluenceTd'> SIBus Helper </td>
-<td class='confluenceTd'> CR NAV00142779 Filter for å matche meldinger med utgangspunkt i hvilken kø meldingen i utgangspunktet var ment for </td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.1 </td>
-<td class='confluenceTd'> BPC Helper </td>
-<td class='confluenceTd'> CR NAV00143838 Filter for å matche alle prosess&#45; og aktivitetstilstander. SIR NAV00125143 forceTerminate() error in WPS log </td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.1 </td>
-<td class='confluenceTd'> FEM Helper </td>
-<td class='confluenceTd'> CR NAV00094023 Filter på messageId, sessionId og destinationMethod, konfigurerbar delimiter, skrive ut større del av dataobjektet, ny action COUNT </td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.1 </td>
-<td class='confluenceTd'> FEM Helper </td>
-<td class='confluenceTd'> Incident NAV00086931 NPE dersom kjørende bruker ikke har tilgang til rapport/log folder </td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.0.5 </td>
-<td class='confluenceTd'> SIBus Helper </td>
-<td class='confluenceTd'> SIR NAV000132785 Klarer ikke lage rapport på en stor mengde meldinger + håndtering av køer som inneholder / </td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.0.4 </td>
-<td class='confluenceTd'> FEM Helper </td>
-<td class='confluenceTd'> SIR NAV00091816 FEM helper har feil i søkefunksjonalitet (Paging implementation) </td>
-</tr>
-<tr>
-<td class='confluenceTd'> 1.0.3 </td>
-<td class='confluenceTd'> FEM Helper </td>
-<td class='confluenceTd'> Rettet problemer med struktur i CSV fil </td>
-</tr>
-</tbody></table>
-</div>
-
+        <p>Dokumentasjon for WPS Helpers - oppdatert per versjon 3.0.0, 201=
+4-04-10</p><p>Originalen for denne siden finnes p=C3=A5: <a href=3D"http://=
+confluence.adeo.no/x/qlUB" rel=3D"nofollow">http://confluence.adeo.no/x/qlU=
+B</a></p><h2 id=3D"WPShelpers-HensiktenmedWPShelpers">Hensikten med WPS hel=
+pers</h2><p>WPS helpers er en pakke med hjelpeverkt=C3=B8y som er ment =C3=
+=A5 forenkle drift. De leveres alle i samme pakke, har noe felles kode og k=
+onfigurasjon, men kan kj=C3=B8res uavhengig av hverandre. For tiden omfatte=
+r helperne:</p><ul><li><a href=3D"/pages/viewpage.action?pageId=3D79308">FE=
+M Helper kommandolinjeverkt&oslash;y</a></li><li><a href=3D"/pages/viewpage=
+.action?pageId=3D78896">BPC Helper kommandolinjeverkt&oslash;y</a></li><li>=
+<a href=3D"/pages/viewpage.action?pageId=3D84087">SIBus Helper kommandolinj=
+everkt&oslash;y</a></li><li><a href=3D"/pages/viewpage.action?pageId=3D7945=
+9">SIBus K&oslash;dybde kommandolinjeverkt&oslash;y</a></li></ul><h2 id=3D"=
+WPShelpers-Tekniskbeskrivelse">Teknisk beskrivelse</h2><p>Applikasjonene kj=
+=C3=B8rer som en J2EE Application Client for =C3=A5 forenkle tilgangen til =
+interne ressurser i applikasjonsserveren, og for =C3=A5 slippe unna typiske=
+ problemer knyttet til f.eks. CLASSPATH. I en WAS-kontekst betyr det at man=
+ benytter <em>launchClient</em> for =C3=A5 starte applikasjonene. Det betyr=
+ ogs=C3=A5 at man nesten utelukkende konfigurerer verkt=C3=B8yet v.h.a. sta=
+ndard launchClient-parametere som er godt dokumentert p=C3=A5 <a href=3D"#W=
+PShelpers-launchClientReference">IBM InfoCenter</a>. Blant annet benytter J=
+2EE Application Clients samme syntaks for =C3=A5 konfigurere logging som WA=
+S. Dette er n=C3=A6rmere illustrert i eksemplene p=C3=A5 undersidene for de=
+ enkelte verkt=C3=B8yene.</p><p>Verkt=C3=B8yet for SIBus k=C3=B8dybde er et=
+ Jython-script som kj=C3=B8res ved hjelp av wsadmin-kommandoen, som leveres=
+ med WAS.</p><h2 id=3D"WPShelpers-Distribusjon">Distribusjon</h2><p>Helpera=
+pplikasjonene er pakket som en komplett zip-fil, og b=C3=A5de siste og tidl=
+igere versjoner er tilgjengelige for nedlasting NAVs interne Maven-reposito=
+ry. Helperne leveres samlet i en pakke, og ikke enkeltvis.<br /> <a href=3D=
+"http://maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-b=
+undle/" class=3D"external-link" rel=3D"nofollow">http://maven.adeo.no/m2int=
+ernal/no/nav/int/appclient/wpshelper/wpshelper-bundle/</a></p><p>For eksemp=
+el kan versjon 2.0.0 hentes fra f=C3=B8lgende link:<br /> <a href=3D"http:/=
+/maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-bundle/2=
+.0.0/wpshelper-bundle-2.0.0.zip" class=3D"external-link" rel=3D"nofollow">h=
+ttp://maven.adeo.no/m2internal/no/nav/int/appclient/wpshelper/wpshelper-bun=
+dle/2.0.0/wpshelper-bundle-2.0.0.zip</a></p><p>Ved leveranser vil zip-filen=
+ normalt sett ogs=C3=A5 distribueres med leveransepakken.</p><p><a href=3D"=
+attach_8ba4c1f168aeceddadf0c10d7f0346ae">Eksempel-fil</a> er ogs=C3=A5 vedl=
+agt denne siden.</p><h2 id=3D"WPShelpers-Installasjon">Installasjon</h2><h3=
+ id=3D"WPShelpers-Terminologi">Terminologi</h3><p>For =C3=A5 gj=C3=B8re dok=
+umentasjonen mer konsistent, og enklere =C3=A5 holde oppdatert, benyttes no=
+en variabler i det etterf=C3=B8lgende:</p><div class=3D"table-wrap"><table =
+class=3D"confluenceTable"><tbody><tr><th class=3D"confluenceTh"><p>Navn</p>=
+</th><th class=3D"confluenceTh"><p>Beskrivelse</p></th><th class=3D"conflue=
+nceTh"><p>Typisk verdi</p></th></tr><tr><td class=3D"confluenceTd"><p><code=
+>H_INSTALL_DIR</code></p></td><td class=3D"confluenceTd"><p>Installasjonska=
+talog for helperpakken</p></td><td class=3D"confluenceTd"><p><code>/app/too=
+ls/bpmhelpers/</code></p></td></tr><tr><td class=3D"confluenceTd"><p><code>=
+H_HOME</code></p></td><td class=3D"confluenceTd"><p>Hjemmekatalog til helpe=
+re</p></td><td class=3D"confluenceTd"><p><code>/app/tools/bpmhelpers/wpshel=
+pers-&lt;VERSION&gt;</code></p></td></tr><tr><td class=3D"confluenceTd"><p>=
+<code>LC_HOME</code></p></td><td class=3D"confluenceTd"><p>Katalog hvor lau=
+nchClient.sh (eventuelt launchClient.bat) ligger</p></td><td class=3D"confl=
+uenceTd"><p><code>/opt/IBM/BPM/profiles/Dmgr01/bin eller <code>/opt/IBM/BPM=
+/profiles/bpm01/bin</code><br /></code></p></td></tr></tbody></table></div>=
+<p><strong>Merk:</strong> Disse variablene vil ikke v=C3=A6re definert i mi=
+lj=C3=B8ene applikasjonen skal installeres i. Variablene er kun ment som kr=
+yss-referanser i dokumentasjonen - for =C3=A5 gj=C3=B8re den mer konsistent=
+ og kompakt.</p><h3 id=3D"WPShelpers-Steg-for-steg-beskrivelse">Steg-for-st=
+eg-beskrivelse</h3><p>Applikasjonen skal installeres p=C3=A5, og kj=C3=B8re=
+s fra deployment manager. Dette er ikke et teknisk krav, men Pensjonsprogra=
+mmet =C3=B8nsker lik installasjon i alle milj=C3=B8er.</p><p>For =C3=A5 ins=
+tallere applikasjonen gj=C3=B8r man f=C3=B8lgende (dette gj=C3=B8res kun en=
+ gang per milj=C3=B8 applikasjonen skal installeres til):</p><ul><li>Last n=
+ed/kopier zip-filen inneholdende applikasjonen til <code>H_INSTALL_DIR</cod=
+e>.</li><li>Pakk ut filen (unzip); ear-, properties- og tilh=C3=B8rende scr=
+ipt havner havner da i katalogen <code>H_HOME</code></li><li>Tilpass proper=
+ties-filen med korrekte verdier for det aktuelle milj=C3=B8et. Benytt event=
+uelt properties-fil fra forrige versjon, men pass p=C3=A5 =C3=A5 kontroller=
+e om det har kommet til nye verdier. Properties-filen skal ha navn p=C3=A5 =
+formen <code>&lt;MILJ=C3=98&gt;_helper.properties</code>.</li></ul><p><stro=
+ng>Merk:</strong> En korrekt konfigurert properties-fil skal kunne benyttes=
+ av b=C3=A5de FEM-, BPC- og SIBus Helper.</p><h3 id=3D"WPShelpers-Skriptetk=
+j=C3=B8ring">Skriptet kj=C3=B8ring</h3><p>Kj=C3=B8ring av WPS helpers kreve=
+r rettigheter tilsvarende brukeren som kj=C3=B8rer BPM JVM prosessene. Kj=
+=C3=B8ring med en annen bruker, for eksempel for skriptet kj=C3=B8ring, m=
+=C3=A5 gj=C3=B8res ved hjelp av sudo-mekanismene. Sudo gir en bruker rettig=
+heter =C3=A5 kj=C3=B8re en kommando som en annen bruker, men det er mulig =
+=C3=A5 begrense rettighetene til =C3=A5 gjelde spesifikke kommandoer. Det b=
+=C3=B8r gis tilgang til et s=C3=A5 snevert sett med kommandoer som mulig.</=
+p><p>Eksempel p=C3=A5 oppsett for =C3=A5 gi tilgang til =C3=A5 kj=C3=B8re F=
+EM helper STATUS som twsadm:</p><ol><li>Logg inn som root</li><li>Kj=C3=B8r=
+ kommandoen &quot;visudo&quot;=C2=A0</li><li>Legg til en linje: &quot;twsad=
+m ALL=3D(wasadm) NOPASSWD: /opt/IBM/BPM/bin/launchClient.sh /app/tools/bpmh=
+elpers/wpshelpers-3.0.0/femhelper-ear.ear -cf /app/tools/bpmhelpers/wpshelp=
+ers-3.0.0/helper.properties -a STATUS</li><li>Lagre og avslutt visudo</li><=
+li>Logg ut av shellet</li><li>Kj=C3=B8r kommandoen &quot;sudo -u wasadm /op=
+t/IBM/BPM/bin/launchClient.sh /app/tools/bpmhelpers/wpshelpers-3.0.0/femhel=
+per-ear.ear -cf /app/tools/bpmhelpers/wpshelpers-3.0.0/helper.properties -a=
+ STATUS&quot; som twsadm</li></ol><p>For =C3=A5 gj=C3=B8re kommandoen enkle=
+re kan den legges i et skript, og det kan gis tilgang til skriptet. Husk da=
+ p=C3=A5 =C3=A5 sjekke at skrivetilgangen til skriptet er begrenset til bru=
+keren som kj=C3=B8rer BPM JVM prosessene.</p><h2 id=3D"WPShelpers-Konfigura=
+sjon">Konfigurasjon</h2><p>Milj=C3=B8spesifikke parametere legges i en prop=
+erties-fil, og en referanse (stien) til denne properties-filen sendes inn s=
+om parameter til verkt=C3=B8yet. For et gitt milj=C3=B8 skal man benytte sa=
+mme properties-fil for b=C3=A5de BPC-, FEM- og SIBus Helper. SIBus Helper k=
+rever i tillegg parametre for =C3=A5 kommunisere med MessageEngine, men dis=
+se angis i samme fil.</p><p>Parametrene er:</p><div class=3D"table-wrap"><t=
+able class=3D"confluenceTable"><tbody><tr><th class=3D"confluenceTh"><p>Pro=
+perty-navn</p></th><th class=3D"confluenceTh"><p>Beskrivelse</p></th><th cl=
+ass=3D"confluenceTh"><p>Default-verdi</p></th><th class=3D"confluenceTh"><p=
+>Benyttes av</p></th><th class=3D"confluenceTh"><p>Kommentar</p></th></tr><=
+tr><td class=3D"confluenceTd"><p><code>CONNECTOR_HOST</code></p></td><td cl=
+ass=3D"confluenceTd"><p>Admin connector host</p></td><td class=3D"confluenc=
+eTd"><p>=C2=A0</p></td><td class=3D"confluenceTd"><p>F, B, S</p></td><td cl=
+ass=3D"confluenceTd"><p>Host hvor deployment manager kj=C3=B8rer</p></td></=
+tr><tr><td class=3D"confluenceTd"><p><code>CONNECTOR_PORT</code></p></td><t=
+d class=3D"confluenceTd"><p>Admin connector port</p></td><td class=3D"confl=
+uenceTd"><p>2809</p></td><td class=3D"confluenceTd"><p>F, B, S</p></td><td =
+class=3D"confluenceTd"><p>Avhengig av CONNECTOR_TYPE; SOAP:SOAP port til DM=
+GR, RMI:Boostrap port til DMGR</p></td></tr><tr><td class=3D"confluenceTd">=
+<p><code>CONNECTOR_TYPE</code></p></td><td class=3D"confluenceTd"><p>Admin =
+connector type [RMI/SOAP]</p></td><td class=3D"confluenceTd"><p>RMI</p></td=
+><td class=3D"confluenceTd"><p>F, B, S</p></td><td class=3D"confluenceTd"><=
+p>SOAP skal brukes n=C3=A5r FEM Helper ikke kj=C3=B8rer p=C3=A5 DMGR eller =
+server</p></td></tr><tr><td class=3D"confluenceTd"><p><code>CONNECTOR_SECUR=
+ITY_ENABLED</code></p></td><td class=3D"confluenceTd"><p>Er admin connector=
+ kommunikasjon <em>secure</em> (SSL) [true/false]</p></td><td class=3D"conf=
+luenceTd"><p>true</p></td><td class=3D"confluenceTd"><p>F, B, S</p></td><td=
+ class=3D"confluenceTd"><p>Gjelder bare for admin connector type SOAP=C2=A0=
+</p></td></tr><tr><td class=3D"confluenceTd"><p><code>SSL_KEYSTORE</code></=
+p></td><td class=3D"confluenceTd"><p>SSL keystore</p></td><td class=3D"conf=
+luenceTd"><p>=C2=A0</p></td><td class=3D"confluenceTd"><p>F, B, S</p></td><=
+td class=3D"confluenceTd"><p>Gjelder bare for admin connector type SOAP (&l=
+t;profile&gt;/etc/key.p12)</p></td></tr><tr><td class=3D"confluenceTd"><p><=
+code>SSL_KEYSTORE_PASSWORD</code></p></td><td class=3D"confluenceTd"><p>SSL=
+ keystore passord</p></td><td class=3D"confluenceTd"><p>=C2=A0</p></td><td =
+class=3D"confluenceTd"><p>F, B, S</p></td><td class=3D"confluenceTd"><p>Gje=
+lder bare for admin connector type SOAP</p></td></tr><tr><td class=3D"confl=
+uenceTd"><p><code>SSL_TRUSTSTORE</code></p></td><td class=3D"confluenceTd">=
+<p>SSL truststore</p></td><td class=3D"confluenceTd"><p>=C2=A0</p></td><td =
+class=3D"confluenceTd"><p>F, B, S</p></td><td class=3D"confluenceTd"><p>Gje=
+lder bare for admin connector type SOAP (&lt;profile&gt;/etc/trust.p12)</p>=
+</td></tr><tr><td class=3D"confluenceTd"><p><code>SSL_TRUSTSTORE_PASSWORD</=
+code></p></td><td class=3D"confluenceTd"><p>SSL truststore passord</p></td>=
+<td class=3D"confluenceTd"><p>=C2=A0</p></td><td class=3D"confluenceTd"><p>=
+F, B, S</p></td><td class=3D"confluenceTd"><p>Gjelder bare for admin connec=
+tor type SOAP</p></td></tr><tr><td class=3D"confluenceTd"><p><code>Bootstra=
+pHost</code></p></td><td class=3D"confluenceTd"><p>(standard launchClient p=
+arameter) hvilken host man skal kj=C3=B8re mot</p></td><td class=3D"conflue=
+nceTd"><p>localhost</p></td><td class=3D"confluenceTd"><p>F, B</p></td><td =
+class=3D"confluenceTd"><p>Brukes for BPC tilknytning</p></td></tr><tr><td c=
+lass=3D"confluenceTd"><p><code>BootstrapPort</code></p></td><td class=3D"co=
+nfluenceTd"><p>(standard launchClient parameter) hvilken port man skal kj=
+=C3=B8re mot</p></td><td class=3D"confluenceTd"><p>2809</p></td><td class=
+=3D"confluenceTd"><p>F, B</p></td><td class=3D"confluenceTd"><p>Brukes for =
+BPC tilknytning</p></td></tr><tr><td class=3D"confluenceTd"><p><code>userna=
+me</code></p></td><td class=3D"confluenceTd"><p>bruker man skal kj=C3=B8re =
+som</p></td><td class=3D"confluenceTd"><p>=C2=A0</p></td><td class=3D"confl=
+uenceTd"><p>F, B , S</p></td><td class=3D"confluenceTd"><p>Bruker m=C3=A5 h=
+a tilordnet rolle <em>BPESystemAdministrator</em></p></td></tr><tr><td clas=
+s=3D"confluenceTd"><p><code>password</code></p></td><td class=3D"confluence=
+Td"><p>passordet til bruker man skal kj=C3=B8re som</p></td><td class=3D"co=
+nfluenceTd"><p>=C2=A0</p></td><td class=3D"confluenceTd"><p>F, B , S</p></t=
+d><td class=3D"confluenceTd"><p>Passord b=C3=B8r ikke ligge i klar-tekst, o=
+g applikasjonen benytter derfor <em>PropFilePasswordEncoder</em> for =C3=A5=
+ XOR-enkode passordet f=C3=B8rste gang konfigurasjonen leses</p></td></tr><=
+tr><td class=3D"confluenceTd"><p><code>meEngineHost</code></p></td><td clas=
+s=3D"confluenceTd"><p>hvilken message engine host man skal kj=C3=B8re mot</=
+p></td><td class=3D"confluenceTd"><p>=C2=A0</p></td><td class=3D"confluence=
+Td"><p>S</p></td><td class=3D"confluenceTd"><p>Vanlighvis host av XXXX.Mess=
+aging.1</p></td></tr><tr><td class=3D"confluenceTd"><p><code>meEnginePort</=
+code></p></td><td class=3D"confluenceTd"><p>Message engine SIB_ENDPOINT_ADD=
+RESS or SIB_ENDPOINT_SECURE_ADDRESS</p></td><td class=3D"confluenceTd"><p>7=
+276</p></td><td class=3D"confluenceTd"><p>S</p></td><td class=3D"confluence=
+Td"><p>Vanlighvis SIB_ENDPOINT_ADDRESS=C2=A0 port=C2=A0 av XXXX.Messaging.1=
+</p></td></tr><tr><td class=3D"confluenceTd"><p><code>meEngineUserAlternate=
+UserName</code></p></td><td class=3D"confluenceTd"><p>alternate bruker som =
+har tilgang til SI busser</p></td><td class=3D"confluenceTd"><p>false</p></=
+td><td class=3D"confluenceTd"><p>S</p></td><td class=3D"confluenceTd"><p>Hv=
+is sikkerhet krever dette kan man lagre en egen group, bruker=C2=A0til alle=
+ SI busser</p></td></tr><tr><td class=3D"confluenceTd"><p><code>meEngineUse=
+rName</code></p></td><td class=3D"confluenceTd"><p>alternate message engine=
+ bruker som er under buss konfigurasjon &quot;Security&quot;.</p></td><td c=
+lass=3D"confluenceTd"><p>=C2=A0</p></td><td class=3D"confluenceTd"><p>S</p>=
+</td><td class=3D"confluenceTd"><p>Gjelder bare for meEngineUserAlternateUs=
+erName =3D true</p></td></tr><tr><td class=3D"confluenceTd"><p><code>meEngi=
+nePassword</code></p></td><td class=3D"confluenceTd"><p>passordet til alter=
+nate message engine=C2=A0</p></td><td class=3D"confluenceTd"><p>=C2=A0</p><=
+/td><td class=3D"confluenceTd"><p>S</p></td><td class=3D"confluenceTd"><p>G=
+jelder bare for meEngineUserAlternateUserName =3D true</p></td></tr><tr><td=
+ class=3D"confluenceTd"><p><code>meEngineChain</code></p></td><td class=3D"=
+confluenceTd"><p>BootstrapBasicMessaging eller BootstrapSecureMessaging</p>=
+</td><td class=3D"confluenceTd"><p>BootstrapBasicMessaging</p></td><td clas=
+s=3D"confluenceTd"><p>S</p></td><td class=3D"confluenceTd"><p>Transport cha=
+in SIBus Helper skal benytte</p></td></tr><tr><td class=3D"confluenceTd"><p=
+><code>autoRefresh</code></p></td><td class=3D"confluenceTd"><p>true eller =
+false</p></td><td class=3D"confluenceTd"><p>true</p></td><td class=3D"confl=
+uenceTd"><p>S</p></td><td class=3D"confluenceTd"><p>Refresh av object defin=
+isjoner n=C3=A5r verkt=C3=B8y kj=C3=B8rer</p></td></tr><tr><td class=3D"con=
+fluenceTd"><p><code>viewTempObjs</code></p></td><td class=3D"confluenceTd">=
+<p>true eller false</p></td><td class=3D"confluenceTd"><p>false</p></td><td=
+ class=3D"confluenceTd"><p>S</p></td><td class=3D"confluenceTd"><p>Skal sta=
+tus for tempor=C3=A6re k=C3=B8er vises?</p></td></tr><tr><td class=3D"confl=
+uenceTd"><p><code>viewSystemObjs</code></p></td><td class=3D"confluenceTd">=
+<p>true eller false</p></td><td class=3D"confluenceTd"><p>true</p></td><td =
+class=3D"confluenceTd"><p>S</p></td><td class=3D"confluenceTd"><p>Skal syst=
+em objects vises?</p></td></tr><tr><td class=3D"confluenceTd"><p><code>serv=
+erName</code></p></td><td class=3D"confluenceTd"><p>f.e. Q1</p></td><td cla=
+ss=3D"confluenceTd"><p>&lt;milj=C3=B8&gt;</p></td><td class=3D"confluenceTd=
+"><p>S</p></td><td class=3D"confluenceTd"><p>Benyttes av reporting</p></td>=
+</tr></tbody></table></div><p>Referanse til properties-filen m=C3=A5 sendes=
+ inn to ganger p=C3=A5 kommando-linje (en gang til launchClient, og en gang=
+ til applikasjonen) - dette er en feature ved <em>applicationclient</em>.<b=
+r /> Eksempel: <code>%LC_HOME%/launchClient.sh %H_HOME%/femhelper-ear.ear -=
+CCpropfile=3D%H_HOME%/myhost_helper.properties --configFile=3D%H_HOME%/myho=
+st_helper.properties</code>.<br /> Eksempel: {{%LC_HOME%/launchClient.sh %H=
+_HOME%/sibushelper-ear.ear -CCpropfile=3D%H_HOME%/&lt;milj=C3=B8&gt;_helper=
+.properties -cf %H_HOME%/&lt;milj=C3=B8&gt;_helper.properties -a STATUS -co=
+ sibus</p><p><strong>Merk:</strong> Det er p.t. en svakhet i applikasjonen =
+som gj=C3=B8r at eventuelle kommentarer i properties-filen vil bli fjernet =
+n=C3=A5r applikasjonen kj=C3=B8rer hvis ikke alle passordene allerede er en=
+coded.</p><h2 id=3D"WPShelpers-Vedlikeholdavkodeogleveransepakke">Vedlikeho=
+ld av kode og leveransepakke</h2><p>Kildekoden til modulene er under versjo=
+nskontroll i stelvio-repositoryet i Subversion:<br /> <a href=3D"https://ve=
+rsjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpsh=
+elper/" class=3D"external-link" rel=3D"nofollow">https://versjonskontroll.a=
+deo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/</a></p><p=
+>De ulike helperne bygges med Maven 3, som et &quot;multimodule-prosjekt&qu=
+ot;.</p><p>Maven-assembly brukes for =C3=A5 pakke leveransen; ear-filer, ko=
+nfigurasjon, tilh=C3=B8rende shell-script og dokumentasjon.<br /> <a href=
+=3D"https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclien=
+t/nav-int-wpshelper-bundle/" class=3D"external-link" rel=3D"nofollow">https=
+://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int=
+-wpshelper-bundle/</a></p><p>Nye shell-script for =C3=A5 pakke inn ofte bru=
+kte kj=C3=B8rem=C3=B8nstre b=C3=B8r legges til i riktig katalog i Subversio=
+n-modulen, slik at disse kommer med i fremtidige leveranser:<br /> <a href=
+=3D"https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclien=
+t/nav-int-wpshelper-bundle/src/main/bin/" class=3D"external-link" rel=3D"no=
+follow">https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appc=
+lient/nav-int-wpshelper-bundle/src/main/bin/</a></p><h2 id=3D"WPShelpers-Re=
+leaseprosess">Releaseprosess</h2><p>WPS helpers pakkes og releases ved bruk=
+ av maven release-plugin. Rutinen best=C3=A5r kort i fortalt i =C3=A5 kj=C3=
+=B8re <em>mvn release:prepare</em> etterfulgt av <em>mvn release:perform</e=
+m>, f=C3=B8rst p=C3=A5 selve helper-modulen, deretter p=C3=A5 leveransemodu=
+len. Se <a href=3D"/display/nduj2eefrmforv/Prosess+for+migrering+av+kode">P=
+rosess for migrering av kode</a> for fullstendig beskrivelse av denne rutin=
+en.</p><h2 id=3D"WPShelpers-Referanser">Referanser</h2><h3 id=3D"WPShelpers=
+-launchClientReferencelaunchClient"><span class=3D"confluence-anchor-link" =
+id=3D"WPShelpers-launchClientReference"></span>launchClient</h3><p>Mer info=
+rmasjon om launchClient for WebSphere Application Server finnes her:<br /> =
+<a href=3D"http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?=
+topic=3D/com.ibm.websphere.express.doc/info/exp/ae/rcli_javacmd.html" class=
+=3D"external-link" rel=3D"nofollow">http://publib.boulder.ibm.com/infocente=
+r/wasinfo/v6r0/index.jsp?topic=3D/com.ibm.websphere.express.doc/info/exp/ae=
+/rcli_javacmd.html</a></p><h2 id=3D"WPShelpers-Releasenotes">Release notes<=
+/h2><div class=3D"table-wrap"><table class=3D"confluenceTable"><tbody><tr><=
+th class=3D"confluenceTh"><p>Version</p></th><th class=3D"confluenceTh"><p>=
+Application</p></th><th class=3D"confluenceTh"><p>Problems solved</p></th><=
+/tr><tr><td colspan=3D"1" class=3D"confluenceTd">3.0.0</td><td colspan=3D"1=
+" class=3D"confluenceTd">Alle</td><td colspan=3D"1" class=3D"confluenceTd">=
+PK-5936: Oppdatert ifm oppgradering til BPM 8.5</td></tr><tr><td class=3D"c=
+onfluenceTd"><p>2.0.1</p></td><td class=3D"confluenceTd"><p>FEM Helper</p><=
+/td><td class=3D"confluenceTd"><p>IRPORT-277: Bugfix - Rettet datoformatet =
+slik at timeframes=C3=B8k fungerer som det skal (Hour in day 0-23)</p></td>=
+</tr><tr><td class=3D"confluenceTd"><p>2.0.0</p></td><td class=3D"confluenc=
+eTd"><p>SIBus Helper</p></td><td class=3D"confluenceTd"><ul class=3D"altern=
+ate"><li>PA-27: Oppgradert til WPS 7.0 API</li><li>PA-64/CR163189: Mulighet=
+ for =C3=A5 ta ut rapport for meldinger p=C3=A5 alle k=C3=B8er p=C3=A5 alle=
+ busser</li><li>Fikset rapportutskrifter slik at ikke lange meldinger overs=
+tiger en linje i rapporten</li></ul></td></tr><tr><td class=3D"confluenceTd=
+"><p>2.0.0</p></td><td class=3D"confluenceTd"><p>BPC Helper</p></td><td cla=
+ss=3D"confluenceTd"><ul class=3D"alternate"><li>PA-27: Oppgradert til WPS 7=
+.0 API</li><li>PA-26: Migrering av prosesser fra WPS6.1 -&gt; 7.0 (Lagt til=
+ action SAMORDNING for =C3=A5 sende vedtak med status TIL_SAMORDN rett til =
+VentPaaSvarFraSamordning)</li></ul></td></tr><tr><td class=3D"confluenceTd"=
+><p>2.0.0</p></td><td class=3D"confluenceTd"><p>FEM Helper</p></td><td clas=
+s=3D"confluenceTd"><ul class=3D"alternate"><li>PA-27: Oppgradert til WPS 7.=
+0 API</li><li>Fikset rapportutskrifter slik at ikke lange meldinger oversti=
+ger en linje i rapporten</li><li>Lagt til st=C3=B8tte for BPC og JMS events=
+ i tillegg til SCA (MQ Events benyttes ikke i dag, og st=C3=B8ttes heller i=
+kke i 2.0.0). Merk at det n=C3=A5 er kobling mellom Failed BPC Events og ti=
+lh=C3=B8rende prosessinstanser. Det betyr at dersom man kj=C3=B8rer DISCARD=
+ og sletter BPC Events ved bruk av FEM Helper s=C3=A5 vil tilh=C3=B8rende p=
+rosesser ogs=C3=A5 bli slettet uten varsel.</li><li>Lagt til feltene EventT=
+ype og ResubmitDestination i rapportene</li></ul></td></tr><tr><td class=3D=
+"confluenceTd"><p>1.1</p></td><td class=3D"confluenceTd"><p>SIBus Helper</p=
+></td><td class=3D"confluenceTd"><p>CR NAV00142779 Filter for =C3=A5 matche=
+ meldinger med utgangspunkt i hvilken k=C3=B8 meldingen i utgangspunktet va=
+r ment for</p></td></tr><tr><td class=3D"confluenceTd"><p>1.1</p></td><td c=
+lass=3D"confluenceTd"><p>BPC Helper</p></td><td class=3D"confluenceTd"><p>C=
+R NAV00143838 Filter for =C3=A5 matche alle prosess- og aktivitetstilstande=
+r. SIR NAV00125143 forceTerminate() error in WPS log</p></td></tr><tr><td c=
+lass=3D"confluenceTd"><p>1.1</p></td><td class=3D"confluenceTd"><p>FEM Help=
+er</p></td><td class=3D"confluenceTd"><p>CR NAV00094023 Filter p=C3=A5 mess=
+ageId, sessionId og destinationMethod, konfigurerbar delimiter, skrive ut s=
+t=C3=B8rre del av dataobjektet, ny action COUNT</p></td></tr><tr><td class=
+=3D"confluenceTd"><p>1.1</p></td><td class=3D"confluenceTd"><p>FEM Helper</=
+p></td><td class=3D"confluenceTd"><p>Incident NAV00086931 NPE dersom kj=C3=
+=B8rende bruker ikke har tilgang til rapport/log folder</p></td></tr><tr><t=
+d class=3D"confluenceTd"><p>1.0.5</p></td><td class=3D"confluenceTd"><p>SIB=
+us Helper</p></td><td class=3D"confluenceTd"><p>SIR NAV000132785 Klarer ikk=
+e lage rapport p=C3=A5 en stor mengde meldinger + h=C3=A5ndtering av k=C3=
+=B8er som inneholder /</p></td></tr><tr><td class=3D"confluenceTd"><p>1.0.4=
+</p></td><td class=3D"confluenceTd"><p>FEM Helper</p></td><td class=3D"conf=
+luenceTd"><p>SIR NAV00091816 FEM helper har feil i s=C3=B8kefunksjonalitet =
+(Paging implementation)</p></td></tr><tr><td class=3D"confluenceTd"><p>1.0.=
+3</p></td><td class=3D"confluenceTd"><p>FEM Helper</p></td><td class=3D"con=
+fluenceTd"><p>Rettet problemer med struktur i CSV fil</p></td></tr></tbody>=
+</table></div>
     </body>
 </html>
+------=_Part_177786_688088976.1398250980708--

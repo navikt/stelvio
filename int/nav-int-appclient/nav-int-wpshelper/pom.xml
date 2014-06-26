@@ -4,13 +4,13 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
-		<version>1.2.2</version>
+		<version>1.2.5</version>
 	</parent>
 
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
 	<artifactId>wpshelper</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.2-SNAPSHOT</version>
+	<version>3.0.1-SNAPSHOT</version>
 	<name>WPS Helper POM Module</name>
 
 	<modules>
@@ -32,6 +32,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5</version>
 					<configuration>
 						<autoVersionSubmodules>
 							true
@@ -43,6 +44,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>1.0</version>
+            </extension>
+        </extensions>
 	</build>
 
 	<dependencyManagement>
@@ -121,29 +129,95 @@
 
 
 			<dependency>
-				<groupId>com.ibm.wps</groupId>
-				<artifactId>process-choreographer-client</artifactId>
-				<version>7.0.0.3</version>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.ejb.thinclient</artifactId>
+				<version>8.5.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.sib.client.thin.jms</artifactId>
+				<version>8.5.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.admin.client</artifactId>
+				<version>8.5.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.sib.server</artifactId>
+				<version>8.5.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.ws.runtime</artifactId>
+				<version>8.5.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere</groupId>
+				<artifactId>com.ibm.wbicmn.runtime</artifactId>
+				<version>8.5.0</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
-				<groupId>com.ibm.maven.runtimes</groupId>
-				<artifactId>wps-runtime</artifactId>
-				<version>7.0.0.3</version>
+				<groupId>org.eclipse.emf.commonj</groupId>
+				<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+				<version>2.1.0.v200609210005</version>
 				<scope>provided</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>websphere.bpm</groupId>
+				<artifactId>bfmclientmodel</artifactId>
+				<version>8.5.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere.bpm</groupId>
+				<artifactId>bpcclientcore</artifactId>
+				<version>8.5.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere.bpm</groupId>
+				<artifactId>bpeapi</artifactId>
+				<version>8.5.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere.bpm</groupId>
+				<artifactId>taskapi</artifactId>
+				<version>8.5.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>websphere.bpm</groupId>
+				<artifactId>htmclientmodel</artifactId>
+				<version>8.5.0</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper</developerConnection>
+		<connection>${scm.root}</connection>
+		<developerConnection>${scm.root}</developerConnection>
 	</scm>
 	<properties>
 		<slf4j.version>1.6.0</slf4j.version>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/branches/2013.11.05-WPS_to_BPM/nav-int-appclient/nav-int-wpshelper
 		</scm.root>
-		<scm.connection>${scm.root}</scm.connection>
 	</properties>
+
 </project>

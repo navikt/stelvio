@@ -66,11 +66,6 @@ public class ServiceDeployMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * @parameter
-	 */
-	private String fileEncoding;
-
-	/**
 	 * @parameter default-value="false"
 	 */
 	private boolean freeform;
@@ -93,12 +88,17 @@ public class ServiceDeployMojo extends AbstractMojo {
 	/**
 	 * @parameter default-value="false"
 	 */
-	private boolean noJ2eeDeploy;
-
+	private boolean novalidate;
+	
 	/**
 	 * @parameter default-value="false"
 	 */
-	private boolean skipXsdValidate;
+	private boolean libraryMode;
+	
+	/**
+	 * @parameter default-value=""
+	 */
+	private String uniqueCellId="";
 
 	/**
 	 * @parameter default-value="${project.build.directory}/service-deploy"
@@ -120,9 +120,6 @@ public class ServiceDeployMojo extends AbstractMojo {
 		StringBuilder argLineBuilder = new StringBuilder();
 		argLineBuilder.append(input);
 		argLineBuilder.append(" -outputApplication ").append(output);
-		if (fileEncoding != null && fileEncoding.length() > 0) {
-			argLineBuilder.append(" -fileEncoding ").append(fileEncoding);
-		}
 		if (freeform) {
 			argLineBuilder.append(" -freeform");
 		}
@@ -135,21 +132,24 @@ public class ServiceDeployMojo extends AbstractMojo {
 		if (keep) {
 			argLineBuilder.append(" -keep");
 		}
-		if (noJ2eeDeploy) {
-			argLineBuilder.append(" -noJ2eeDeploy");
+		if (novalidate) {
+			argLineBuilder.append(" -novalidate");
 		}
-		if (skipXsdValidate) {
-			argLineBuilder.append(" -skipXsdValidate");
+		if (libraryMode) {
+			argLineBuilder.append(" -libraryMode");
+		}
+		if (!uniqueCellId.isEmpty()) {
+			argLineBuilder.append(" -uniqueCellId ").append(uniqueCellId);
 		}
 		workingDirectory.mkdirs();
 		argLineBuilder.append(" -workingDirectory '").append(workingDirectory.getAbsolutePath()).append("'");
-		List<Artifact> providedArtifacts = getProvidedArtifacts();
-		if (!providedArtifacts.isEmpty()) {
+		/*List<Artifact> providedArtifacts = getProvidedArtifacts();
+		if (!providedArtifacts.isEmpty()) {*/
 			// TODO Since the WPS runtime is defined as a provided dependency,
 			// it will always be included in the list of provided artifacts.
 			// This means that the WPS runtime will be supplied with the
 			// classpath attribute - which may be a problem.
-			StringBuilder classpathBuilder = new StringBuilder();
+			/*StringBuilder classpathBuilder = new StringBuilder();
 			for (Artifact providedArtifact : providedArtifacts) {
 				if (classpathBuilder.length() > 0) {
 					classpathBuilder.append(";");
@@ -157,7 +157,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 				classpathBuilder.append("'").append(providedArtifact.getFile().getAbsolutePath()).append("'");
 			}
 			argLineBuilder.append(" -classpath ").append(classpathBuilder);
-		}
+		}*/
 
 		commandLine.setWorkingDirectory(targetDirectory.getAbsolutePath());
 		commandLine.createArg().setLine(argLineBuilder.toString());

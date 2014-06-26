@@ -1,6 +1,8 @@
 package no.nav.maven.plugin.wid;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
@@ -17,7 +19,10 @@ import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Model;
 import org.apache.maven.model.Parent;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -31,6 +36,7 @@ import org.apache.maven.shared.invoker.Invoker;
 import org.apache.maven.shared.invoker.MavenInvocationException;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 /**
  * Generates the wid configuration files.
@@ -45,6 +51,9 @@ public class CreateProjectsMojo extends AbstractMojo {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 	private static final String PACKAGING_SERVICE_SPECIFICATION = "service-specification";
+	
+	private static final Object OLD_SERVICE_SPECIFICATION_POM_GROUP_ID = "no.nav.tjenester";
+	private static final Object OLD_SERVICE_SPECIFICATION_POM_ARTIFACT_ID = "service-specification-pom";
 
 	/**
 	 * Artifact repository factory component.
@@ -178,6 +187,7 @@ public class CreateProjectsMojo extends AbstractMojo {
 					artifact.getVersion(), artifact.getType(), "sources");
 				artifact = resolveArtifact(remoteRepos, sourceArtifact);
 		}
+		
 		File extractDirectory = extractArtifact(artifact);
 		if (PACKAGING_SERVICE_SPECIFICATION.equals(artifact.getType())) {
 			// Create temporary pom.xml based on the service-specification pom
@@ -199,8 +209,87 @@ public class CreateProjectsMojo extends AbstractMojo {
 			} catch (IOException e) {
 				throw new MojoExecutionException("Unable to write temporary project pom " + tempPom.getAbsolutePath(), e);
 			}
+		} else if (PACKAGING_WPS_LIBRARY_JAR.equals(artifact.getType())) {
+			// If artifact is a library then we want to run the latest wid plugin on it. 
+			Model libraryModel = readModelFromPomFileIn(extractDirectory);
+			if (isParentOldServiceSpecification(libraryModel)) {
+				// Many old service specification are never changed and use the old wid plugin. 
+				// This part forces the old service specifications to use the wps-library parent defined in  
+				// wid plugin configuration so that they can run newer wid plugin, just as newer service specifications
+				getLog().info("Found old service specification, setting parent to "+wpsLibraryParent.getId());
+				libraryModel.setParent(wpsLibraryParent);
+				writeModelToPomFile(libraryModel,extractDirectory);
+			} else {
+				
+				///For other libraries latest wid plugin is achieved by simply updating to latest parent pom. 
+				getLog().info("Updating library to latest parent pom");
+				invokeUpdateParent(extractDirectory);
+			}
+
 		}
+		
+		
 		invokeWidPlugin(extractDirectory);
+	}
+
+	private boolean isParentOldServiceSpecification(Model model) {
+		Parent parent = model.getParent();
+		return parent.getArtifactId().equals(OLD_SERVICE_SPECIFICATION_POM_ARTIFACT_ID) &&
+				parent.getGroupId().equals(OLD_SERVICE_SPECIFICATION_POM_GROUP_ID);
+	}
+
+	private void invokeUpdateParent(File baseDirectory) throws MojoExecutionException {
+		try {
+			InvocationRequest request = new DefaultInvocationRequest();
+			request.setBaseDirectory(baseDirectory);
+			request.setGoals(Collections.singletonList("versions:update-parent"));
+			invoker.execute(request);
+		} catch (MavenInvocationException e) {
+			throw new MojoExecutionException("Error invoking Maven", e);
+		}		
+	}
+
+	private Model readModelFromPomFileIn(File directory) throws MojoExecutionException {
+		FileReader fileReader = null;
+		try {
+			File pomFile = new File(directory, "pom.xml");
+			Model model = null;
+			try {
+				fileReader = new FileReader(pomFile);
+				model = new MavenXpp3Reader().read(fileReader);
+			} catch (XmlPullParserException e) {
+				throw new MojoExecutionException("Unable to read or write to parse pom file in "+directory , e);
+			} finally {
+				fileReader.close();
+			}
+			
+			return model;
+
+			
+		} catch (FileNotFoundException e) {
+			throw new MojoExecutionException("Unable to find pom file in "+directory , e);
+		} catch (IOException e) {
+			throw new MojoExecutionException("Unable to read pom file in "+directory , e);
+		} 
+	}
+
+	private void writeModelToPomFile(Model model, File directory) throws MojoExecutionException{
+		FileWriter fileWriter = null;
+		try {
+			try {
+				File pomFile = new File(directory, "pom.xml");
+				fileWriter = new FileWriter(pomFile);
+				new MavenXpp3Writer().write(fileWriter, model);
+				
+			} finally {
+				fileWriter.close();
+			}
+			
+		} catch (FileNotFoundException e) {
+			throw new MojoExecutionException("Unable to find pom file in "+directory , e);
+		} catch (IOException e) {
+			throw new MojoExecutionException("Unable to write to pom file in "+directory , e);
+		} 
 	}
 
 	private void invokeWidPlugin(File baseDirectory) throws MojoExecutionException {
@@ -208,7 +297,6 @@ public class CreateProjectsMojo extends AbstractMojo {
 			InvocationRequest request = new DefaultInvocationRequest();
 			request.setBaseDirectory(baseDirectory);
 			request.setGoals(Collections.singletonList("wid:wid"));
-
 			invoker.execute(request);
 		} catch (MavenInvocationException e) {
 			throw new MojoExecutionException("Error invoking Maven", e);

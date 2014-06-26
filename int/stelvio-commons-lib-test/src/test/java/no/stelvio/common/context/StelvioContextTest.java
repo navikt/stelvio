@@ -47,7 +47,7 @@ public class StelvioContextTest {
 	private void assertDefaults(UserWorkArea workArea) {
 		StelvioContext context = new StelvioContext(workArea);
 		Assert.assertEquals(StelvioContext.DEFAULT_APPLICATION_NAME, context.getApplicationId());
-		Assert.assertNull(context.getCorrelationId());
+		Assert.assertNotNull(context.getCorrelationId());
 		Assert.assertEquals(StelvioContext.DEFAULT_LANGUAGE, context.getLanguageId());
 		Assert.assertEquals(StelvioContext.DEFAULT_USER_NAME, context.getNavUserId());
 		Assert.assertEquals(StelvioContext.DEFAULT_USER_NAME, context.getUserId());

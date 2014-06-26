@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
-		<version>1.2.2</version>
+		<version>1.2.5</version>
 		
 	</parent>
 
@@ -25,7 +25,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
-				<version>2.1</version>
+				<version>3.3</version>
 				<configuration>
 					<workspaceCodeStylesURL>
 						${eclipse.workspaceCodeStylesURL}
@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.ibm.maven.runtimes</groupId>
 			<artifactId>wps-runtime</artifactId>
-			<version>7.0.0.3</version>
+			<version>8.5.0</version>
 			<scope>test</scope>
 		</dependency>
 

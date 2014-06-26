@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <document>
 	<properties>
 		<title>stelvio-commons-lib changelog</title>
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="4.1.9" date="xx-xx-2014" description="Maintenance release">
+			<action dev="h103841" type="update">PKIGUAN-353: Removed use of deprecated API when generating StelvioContext.correlationId</action>
+		</release>
 		<release version="4.1.8" date="15-03-2012" description="Maintenance release">
 			<action dev="CIA2990" type="fix">IRPORT-1457: save stubbing data with unique filenames, not based on timestamp</action>
 		</release>

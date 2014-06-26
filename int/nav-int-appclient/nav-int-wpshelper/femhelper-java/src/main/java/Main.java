@@ -43,7 +43,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		System.out.println(getSeparatorLine(100));
-		System.out.println("FEM Helper for WPS 7");
+		System.out.println("FEM Helper for BPM");
 		System.out.println(getSeparatorLine(100));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
@@ -70,7 +70,7 @@ public class Main {
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("Sample usage:");
 			System.out
-					.println("launchClient.sh <FEMHelper application> --configFile=/was_app/config/fem/fem.properties --action=REPORT");
+					.println("launchClient.sh <FEMHelper application> --configFile=host.properties --action=REPORT");
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("All filter by attributes might in certain circumstances be empty. "
 					+ "If this occurs you might make use of the --sessionIdWildCard parameter");

@@ -106,7 +106,7 @@ public class SIBUSHelper {
 	public int invokeHelper() {
 		System.out.println();
 		System.out.println(getSeparatorLine(112));
-		System.out.println(" SIBUS Helper for WPS 7 (c) IBM Corp., 1997-2011");
+		System.out.println(" SIBUS Helper for BPM ");
 		System.out.println(getSeparatorLine(112));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
@@ -133,7 +133,7 @@ public class SIBUSHelper {
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("Sample usage:");
 			System.out
-					.println("launchClient.sh <SIBUSHelper application> --configFile=/was_app/config/sibus/sibus.properties --action=REPORT --component=queue [select options]");
+					.println("launchClient.sh <SIBUSHelper application> --configFile=host.properties --action=REPORT --component=queue [select options]");
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("Filter by API message id only supported.");
 			formatter.printHelp("SIBUSHelper", options);

@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.int.appclient.wpshelper</groupId>
 		<artifactId>wpshelper</artifactId>
-		<version>2.0.2-SNAPSHOT</version>
+		<version>3.0.1-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
@@ -13,8 +13,8 @@
 	<name>SI Bus Helper Application Client</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/sibushelper-java</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/sibushelper-java</developerConnection>
+		<connection>${scm.root}/sibushelper-java</connection>
+		<developerConnection>${scm.root}/sibushelper-java</developerConnection>
 	</scm>
 
 	<build>
@@ -50,8 +50,25 @@
 			<artifactId>commons-lang</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.sib.client.thin.jms</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.admin.client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.commonj</groupId>
+			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.sib.server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>websphere</groupId>
+			<artifactId>com.ibm.ws.runtime</artifactId>
+		</dependency>		
+		
 	</dependencies>
 </project>

@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import no.nav.maven.plugin.wid.utils.ScaLibaryFileGenerator;
 import no.nav.maven.plugin.wid.writers.WidWtpComponentWriter;
 import no.nav.maven.plugin.wid.writers.WidWtpFacetsWriter;
 import no.nav.maven.utilities.sca.ScaAttributesBuilder;
@@ -70,12 +71,17 @@ public class WidPlugin extends EclipsePlugin {
 
 			writeScaAttributes();
 			
+			if (PACKAGING_WPS_LIBRARY_JAR.equals(packaging)) {
+				ScaLibaryFileGenerator.createScaLibraryFile(project.getArtifactId(),getEclipseProjectDir(),getLog());
+			}
+			
 			if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
 				createRoleMapping();
 			}
 		}
 	}
 
+	
 	private void writeScaAttributes() throws MojoExecutionException {
 		try {
 			ScaAttributesBuilder scaAttributesBuilder = new ScaAttributesBuilder(getProject());

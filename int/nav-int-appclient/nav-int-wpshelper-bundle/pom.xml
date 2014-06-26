@@ -4,25 +4,25 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
-		<version>1.2.2</version>
+		<version>1.2.5</version>
 	</parent>
 	
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
 	<artifactId>wpshelper-bundle</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.2-SNAPSHOT</version>
+	<version>3.0.1-SNAPSHOT</version>
 	<name>WPS Helper Bundle Module</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</developerConnection>
+		<connection>${scm.root}/nav-int-wpshelper-bundle</connection>
+		<developerConnection>${scm.root}/nav-int-wpshelper-bundle</developerConnection>
 	</scm>
 
 	<properties>
-		<launchClient.home>
-			/opt/IBM/WebSphere/ProcServer/profiles/wps01/bin
-		</launchClient.home>
-		<artifacts.version>2.0.0</artifacts.version>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle
+		</scm.root>
+		<artifacts.version>3.0.0</artifacts.version>
 	</properties>
 
 	<build>
@@ -51,6 +51,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5</version>
 					<configuration>
 						<preparationGoals>
 							clean install
@@ -65,6 +66,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>1.0</version>
+            </extension>
+        </extensions>
 	</build>
 
 	<dependencies>
