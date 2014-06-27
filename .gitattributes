@@ -950,6 +950,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_tjenestespesifik
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2014HL3_8.0_tjenestespesifikasjon_system/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2015HL1_8.2_NAV-Tjenestebuss/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Hudson[!!-~]configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Bygg[!!-~]versjonsoversikt[!!-~]TEST/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/CI-buss-pom_sync/config.xml -text
