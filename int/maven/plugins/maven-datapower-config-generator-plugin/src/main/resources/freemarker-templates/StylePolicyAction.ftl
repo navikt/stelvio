@@ -4,6 +4,7 @@
 <#include "StylePolicyActionFetch.ftl"/>
 <#include "StylePolicyActionFilter.ftl"/>
 <#include "StylePolicyActionLog.ftl"/>
+<#include "StylePolicyActionOnError.ftl"/>
 <#include "StylePolicyActionResult.ftl"/>
 <#include "StylePolicyActionParameterizedResult.ftl"/>
 <#include "StylePolicyActionSign.ftl"/>
@@ -79,6 +80,14 @@
 		name="${actionNamePrefix}${action.name}"
 		destination="${action.destination}"
 		input="${action.input}"/>
+	<#--
+		LOG Message Action
+	-->
+	<#elseif action.type == "on-error">
+	<@StylePolicyActionOnError
+		name="${actionNamePrefix}${action.name}"
+		errorMode="${action.errorMode}"
+		rule="${action.rule}"/>	
 	<#--
 		Result Action
 	-->
