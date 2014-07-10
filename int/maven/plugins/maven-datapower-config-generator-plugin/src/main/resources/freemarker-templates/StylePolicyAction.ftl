@@ -103,7 +103,7 @@
 		Set Variable Action
 	-->
 	<#elseif action.type == "setvar">
-	<@StylePolicyActionSetVariable name input variable value
+	<@StylePolicyActionSetVariable
 		name="${actionNamePrefix}${action.name}"
 		input="${action.input}"
 		variable="${action.variable}"
