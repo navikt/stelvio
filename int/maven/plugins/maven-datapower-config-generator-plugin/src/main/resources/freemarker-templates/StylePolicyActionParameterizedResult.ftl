@@ -8,7 +8,7 @@
 	<#if destination != ''>
 		<Destination>${destination}</Destination>
 	</#if>
-		<OutputType>default</OutputType>
+		<OutputType>${outputType}</OutputType>
 		<Transactional>off</Transactional>
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>
