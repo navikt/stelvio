@@ -121,7 +121,8 @@
 		destination="${action.destination!''}"
 		retryCount="${action.retryCount}"
 		retryInterval="${action.retryInterval}"
-		timeout="${action.timeout}"/>
+		timeout="${action.timeout}"
+		outputType="${action.outputType!default}"/>
 	<#--
 		Add WS-Security Signature Action
 	-->
