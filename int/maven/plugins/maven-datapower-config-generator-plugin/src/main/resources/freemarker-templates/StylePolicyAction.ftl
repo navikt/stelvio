@@ -13,6 +13,7 @@
 <#include "StylePolicyActionTransformParameterized.ftl"/>
 <#include "StylePolicyActionVerify.ftl"/>
 <#include "StylePolicyActionValidate.ftl"/>
+<#include "StylePolicyActionValidateFromWSDL.ftl"/>
 <#include "StylePolicyActionRoute.ftl"/>
 <#macro StylePolicyAction actionNamePrefix action>
 	<#--
@@ -130,6 +131,15 @@
 		name="${actionNamePrefix}${action.name}"
 		input="${action.input}"
 		schemaURL="${action.schemaURL}"/>
+		
+	<#--
+		Validate from WSDL Action
+	-->
+	<#elseif action.type == "validateFromWSDL">
+	<@StylePolicyActionValidateFromWSDL
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		wsdlURL="${action.wsdlURL}"/>
 	<#--
 		SLM Action
 	-->
