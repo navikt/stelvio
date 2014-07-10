@@ -133,7 +133,7 @@
 		schemaURL="${action.schemaURL}"/>
 		
 	<#--
-		Validate from WSDL Action
+		Validate from WSDL Action 
 	-->
 	<#elseif action.type == "validateFromWSDL">
 	<@StylePolicyActionValidateFromWSDL
