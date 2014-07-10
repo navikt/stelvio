@@ -7,6 +7,7 @@
 <#include "StylePolicyActionOnError.ftl"/>
 <#include "StylePolicyActionResult.ftl"/>
 <#include "StylePolicyActionParameterizedResult.ftl"/>
+<#include "StylePolicyActionSetVariable.ftl"/>
 <#include "StylePolicyActionSign.ftl"/>
 <#include "StylePolicyActionSignXpath.ftl"/>
 <#include "StylePolicyActionSLM.ftl"/>
@@ -98,6 +99,16 @@
 		output="${action.output}"
 		async="${action.async!'off'}"
 		destination="${action.destination!''}"/>
+	<#--
+		Set Variable Action
+	-->
+	<#elseif action.type == "setvar">
+	<@StylePolicyActionResult name input variable value
+		name="${actionNamePrefix}${action.name}"
+		input="${action.input}"
+		variable="${action.variable}"
+		value="${action.value}"
+		/>
 	<#--
 		Parameterized Result Action
 	-->
