@@ -79,3 +79,4 @@
 <#include "XMLFirewallServiceLoopback.ftl">
 <#include "XMLFirewallServiceSTSLoopback.ftl">
 <#include "XMLManager.ftl">
+<#include "XMLManagerExternalReferences.ftl">
