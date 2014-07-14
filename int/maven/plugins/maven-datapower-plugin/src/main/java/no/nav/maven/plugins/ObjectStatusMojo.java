@@ -12,13 +12,13 @@ import org.apache.maven.plugin.MojoFailureException;
  * 
  * @goal testObjects
  * 
- * @author person4fdbf4cece95, Petter Solberg
+ * @author person4fdbf4cece95, Petter Solberg, Christian Askeland
  *
  */
 public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 
 	private final static String ADMIN_STATE_ENABLED = "enabled";
-	private final static String ADMIN_STATE_DISABLED = "disabled";
+	//private final static String ADMIN_STATE_DISABLED = "disabled";
 	
 	private final static long WAIT_TIME_MAXIMUM = 90000; // 1,5min
 	private final static long WAIT_TIME = 10000; // 10s
@@ -27,6 +27,8 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 	private final static String OBJECT_LIST_DOWN_PATTERN = "<OpState>down</OpState>";
 	
 	private final static String OBJECT_LOG_NAME_POSTFIX = "-log";
+	private final static String OBJECT_GW_NAME_PREFIX = "_gp_";
+	private final static String OBJECT_QMGR_NAME_PREFIX = "QMGR";
 	
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		getLog().info("Executing ObjectStatusMojo");
@@ -42,6 +44,9 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 				int objectsDown = 0;
 				boolean shouldStop = false;
 				boolean logDown = false;
+				boolean gwDown = false;
+				boolean mqDown = false;
+				String waitError = "";
 				
 				for (String object : objects){
 					if (object.contains(OBJECT_LIST_DOWN_PATTERN)){
@@ -49,6 +54,15 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 						
 						if(getName(object).endsWith(OBJECT_LOG_NAME_POSTFIX)){
 							logDown = true;
+							waitError += "At least one log object is down, indicating that NFS is down. ";
+						}
+						if(getName(object).startsWith(OBJECT_GW_NAME_PREFIX)){
+							gwDown = true;
+							waitError += "At least one Gateway object is down, indicating that not all objects in that gateway are up. ";
+						}
+						if(getName(object).startsWith(OBJECT_QMGR_NAME_PREFIX)){
+							gwDown = true;
+							waitError += "At least one MQ Queue Manager object is down, indicating that the connection with the MQ is not up yet.";
 						}
 						String adminState = getAdminState(object);
 						// If object is down and is enabled, set stop flag
@@ -71,8 +85,8 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 				}
 				
 				getLog().info("Total number of objects down: " + objectsDown);
-				if(logDown){
-					getLog().info("At least one log object is down, indicating that NFS is down.");
+				if(logDown || gwDown || mqDown){
+					getLog().info(waitError);
 					getLog().info("Waiting for " + WAIT_TIME/1000 + " seconds. Retry " + (i + 1) + " of " + (numberOfMaximunRetries - 1));
 					Thread.sleep(WAIT_TIME);
 				}
