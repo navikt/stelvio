@@ -140,27 +140,27 @@
 						<artifacts>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>pensjon-modules-ci</artifactId>
-								<version>${pensjon-modules-ci-version}</version>
+								<artifactId>pensjon-modules</artifactId>
+								<version>${pensjon-modules-version}</version>
 								<variableName>PENSJON_MODULES_VERSION</variableName>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>nav-modules-ci</artifactId>
-								<version>${nav-modules-ci-version}</version>
+								<artifactId>nav-modules</artifactId>
+								<version>${nav-modules-version}</version>
 								<variableName>NAV_MODULES_VERSION</variableName>
 							</artifact>
 							
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>esb-modules-ci</artifactId>
-								<version>${esb-modules-ci-version}</version>
+								<artifactId>esb-modules</artifactId>
+								<version>${esb-modules-version}</version>
 								<variableName>ESB_MODULES_VERSION</variableName>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>ekstern-modules-ci</artifactId>
-								<version>${ekstern-modules-ci-version}</version>
+								<artifactId>ekstern-modules</artifactId>
+								<version>${ekstern-modules-version}</version>
 								<variableName>EKSTERN_MODULES_VERSION</variableName>
 							</artifact>
 						</artifacts>
