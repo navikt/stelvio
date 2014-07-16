@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>synker maven-wpsdeploy-ci-pom ifra maven-wpsdeploy-pom&lt;br&gt;&lt;br&gt;&#xd;
+  <description>Synker maven-wpsdeploy-ci-pom ifra maven-wpsdeploy-pom&lt;br&gt;&lt;br&gt;&#xd;
 &#xd;
-Erstattet av &lt;a href=&quot;http://e34wasl00228.devillo.no/jenkins/job/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/&quot;&gt;http://e34wasl00228.devillo.no/jenkins/job/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/&lt;/a&gt;</description>
+Erstattet av &lt;a href=&quot;http://e34wasl00228.devillo.no/jenkins/job/CI-Deploy_wpsdeploy-pom_sync/&quot;&gt;http://e34wasl00228.devillo.no/jenkins/job/CI-Deploy_wpsdeploy-pom_sync/&lt;/a&gt;</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -208,7 +208,7 @@ Erstattet av &lt;a href=&quot;http://e34wasl00228.devillo.no/jenkins/job/CI-depl
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
-          <recipientList>test@example.com,test@example.com</recipientList>
+          <recipientList>test@example.com</recipientList>
           <configuredTriggers>
             <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
               <email>
@@ -220,6 +220,16 @@ Erstattet av &lt;a href=&quot;http://e34wasl00228.devillo.no/jenkins/job/CI-depl
                 <sendToRecipientList>true</sendToRecipientList>
               </email>
             </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+            <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+              <email>
+                <recipientList></recipientList>
+                <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+                <body>$PROJECT_DEFAULT_CONTENT</body>
+                <sendToDevelopers>false</sendToDevelopers>
+                <includeCulprits>false</includeCulprits>
+                <sendToRecipientList>false</sendToRecipientList>
+              </email>
+            </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
             <hudson.plugins.emailext.plugins.trigger.FixedTrigger>
               <email>
                 <recipientList></recipientList>
@@ -236,7 +246,7 @@ Erstattet av &lt;a href=&quot;http://e34wasl00228.devillo.no/jenkins/job/CI-depl
           <defaultContent>$DEFAULT_CONTENT</defaultContent>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>

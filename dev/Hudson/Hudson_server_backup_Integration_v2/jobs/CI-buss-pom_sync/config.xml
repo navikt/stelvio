@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>synker *-ci/pom.xml´ene hver dag kl 23.00</description>
+  <description>synker *-ci/pom.xml´ene hver dag kl 23.00&lt;br&gt;&lt;br&gt;&#xd;
+&#xd;
+Erstattet av &lt;a href=&quot;http://e34wasl00228.devillo.no/jenkins/job/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/&quot;&gt;http://e34wasl00228.devillo.no/jenkins/job/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/&lt;/a&gt;</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
