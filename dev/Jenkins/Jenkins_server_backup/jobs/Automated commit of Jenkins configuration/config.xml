@@ -34,7 +34,8 @@ SVN_COMMENT=&quot;$JOB_NAME: $JENKINS_HOME&quot;
 
 cd $JENKINS_HOME
 
-svn add --force -q --parents config.xml jobs/*/config.xml 
+#svn add --force -q --parents config.xml jobs/*/config.xml 
+svn add --force -q --parents *.xml jobs/*/config.xml
 
 svn st |grep &apos;^!&apos; |while read notation folder
 do
@@ -51,6 +52,12 @@ fi
 </command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.Mailer plugin="test@example.com">
+      <recipients>test@example.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
   <buildWrappers/>
 </project>
