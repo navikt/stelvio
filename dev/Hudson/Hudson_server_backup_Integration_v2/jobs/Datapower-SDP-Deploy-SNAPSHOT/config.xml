@@ -241,7 +241,7 @@
 Environment=u3
 EnvironmentConfigVersion=0.0.0.1-SNAPSHOT
 NonenvironmentConfigVersion=0.0.0.1-SNAPSHOT
-DeployerPomRevision=283856
+DeployerPomRevision=283882
 DataPowerInstance=https://dp-tst-12.adeo.no:5550
 Debug=false
 
