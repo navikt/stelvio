@@ -1709,11 +1709,12 @@ dev/Jenkins/Jenkins_server_backup/.owner
 dev/Jenkins/Jenkins_server_backup/builds
 dev/Jenkins/Jenkins_server_backup/de.fspengler.hudson.pview.PViewProjectProperty.xml
 dev/Jenkins/Jenkins_server_backup/global-build-stats.xml
-dev/Jenkins/Jenkins_server_backup/hudson*.xml
+dev/Jenkins/Jenkins_server_backup/jenkins*.xml
 dev/Jenkins/Jenkins_server_backup/maven*.xml
 dev/Jenkins/Jenkins_server_backup/modules
 dev/Jenkins/Jenkins_server_backup/nextBuildNumber
 dev/Jenkins/Jenkins_server_backup/nodeMonitors.xml
+dev/Jenkins/Jenkins_server_backup/queue.xml.bak
 dev/Jenkins/Jenkins_server_backup/rest-plugin.xml
 dev/Jenkins/Jenkins_server_backup/secret.key
 dev/Jenkins/Jenkins_server_backup/sonar.xml
