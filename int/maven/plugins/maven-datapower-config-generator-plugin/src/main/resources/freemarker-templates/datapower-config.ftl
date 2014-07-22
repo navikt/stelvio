@@ -83,4 +83,4 @@
 <#include "XMLManager.ftl">
 <#include "XMLManagerExternalReferences.ftl">
 
-<#include "NFSStaticMount-v2.ftl">
+<#include "NFSStaticMountV2.ftl">
