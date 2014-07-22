@@ -1,4 +1,4 @@
-<#macro NFSStaticMountV2 name uri version="4">
+<#macro NFSStaticMountV2 name uri version>
 	<NFSStaticMount name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<remote>${uri}</remote>
