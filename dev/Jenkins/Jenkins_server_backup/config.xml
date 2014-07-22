@@ -253,13 +253,6 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
         <string>Buss_Deploy_BPM</string>
-        <string>CI-Deploy-ESB-U2</string>
-        <string>CI-Deploy-ESB-U5</string>
-        <string>CI-deploy_2014HL3_bus-config-0.0.2014.3-SNAPSHOT</string>
-        <string>CI-deploy_2014HL3_buss-pom-0.0.2014.3-SNAPSHOT</string>
-        <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
-        <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
-        <string>CI-Deploy_wpsdeploy-pom_sync</string>
         <string>Datapower_Deploy_1og2Gen</string>
         <string>Datapower_Deploy_3Gen</string>
       </jobNames>
@@ -273,6 +266,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
+      <includeRegex>CI-(d|D)eploy(_|\-).*</includeRegex>
       <recurse>true</recurse>
       <groupingRules/>
       <categorizationCriteria/>
@@ -340,14 +334,13 @@
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
     <hudson.model.RadiatorView plugin="test@example.com">
       <owner class="hudson" reference="../../.."/>
-      <name>Byggskjerm</name>
+      <name>Byggskjerm CI</name>
       <description>Viser status for alle CI-jobbene</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
-        <string>SoapUI-U2-AAMAL_CI</string>
         <string>SoapUI-U2-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U2-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U2-Ekstern-Pensjon-Beregning_CI</string>
@@ -431,7 +424,6 @@
         <string>SoapUI-U2-Pensjon-Vedtak_CI</string>
         <string>SoapUI-U2-StartStubbing_CI</string>
         <string>SoapUI-U2-StoppStubbing_CI</string>
-        <string>SoapUI-U5-AAMAL_CI</string>
         <string>SoapUI-U5-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U5-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U5-Ekstern-Pensjon-Beregning_CI</string>
@@ -583,7 +575,7 @@
         <string>TRUNK-configuration_bus-environment</string>
         <string>TRUNK-configuration_bus-nonenvironment</string>
         <string>TRUNK-ekstern</string>
-        <string>TRUNK-esb-release_verify</string>
+        <string>TRUNK-esb-release</string>
         <string>TRUNK-esb_poms</string>
         <string>TRUNK-layers</string>
         <string>TRUNK-layers_dryRun</string>
@@ -606,6 +598,47 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
+      <recurse>false</recurse>
+    </listView>
+    <hudson.model.RadiatorView plugin="test@example.com">
+      <owner class="hudson" reference="../../.."/>
+      <name>Byggskjerm</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns/>
+      <includeRegex>^201\dHL\d.*|^TRUNK.*</includeRegex>
+      <recurse>false</recurse>
+      <showStable>false</showStable>
+      <showStableDetail>false</showStableDetail>
+      <showBuildStability>true</showBuildStability>
+      <highVis>true</highVis>
+      <groupByPrefix>false</groupByPrefix>
+    </hudson.model.RadiatorView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 2014HL2 (7.10)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2014HL2_7\.10_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>

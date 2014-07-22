@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>mvn clean deploy av design tjenestespesifikasjon for nav (virksomhet)</description>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20140509_2015HL1/spesifikasjon/implementasjon/virksomhet</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_10_0_D17032014_2014HL2/layers</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>

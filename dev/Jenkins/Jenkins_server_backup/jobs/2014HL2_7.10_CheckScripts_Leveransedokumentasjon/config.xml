@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>mvn clean deploy av design tjenestespesifikasjon for nav (virksomhet)</description>
+  <description>Samlejobb som kjører alle skriptjobber vi har for å sjekke koden og dokumentere leveransen.</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>5</numToKeep>
+    <numToKeep>10</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -17,8 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20140509_2015HL1/spesifikasjon/implementasjon/virksomhet</remote>
-        <local>.</local>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_7_10_0_D17032014_2014HL2</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -32,7 +31,6 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
-  <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -46,14 +44,20 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Maven>
-      <targets>clean deploy</targets>
-      <mavenName>(Default)</mavenName>
-      <jvmOptions>-Xmx2048m -XX:MaxPermSize=256m</jvmOptions>
-      <usePrivateRepository>false</usePrivateRepository>
-      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
-      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
-    </hudson.tasks.Maven>
+    <hudson.tasks.Shell>
+      <command>if ! wget --spider http://confluence.adeo.no 2>/dev/zero; then echo -e '\nConfluence er nede, avslutter!\n' ; exit 0 ;fi
+find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name "*WSIMP.import" -exec R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/System.out.print_Search.py
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/cons_xml_check.py R_7_10_0_D17032014_2014HL2
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_7_10_0_D17032014_2014HL2/ --page 73169855
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 73169888 --path R_7_10_0_D17032014_2014HL2/
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_7_10_0_D17032014_2014HL2/ 73169876
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/
+R_7_10_0_D17032014_2014HL2/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 73169883 --path R_7_10_0_D17032014_2014HL2/ --design &quot;$HOME/svn-repos/2014HL2/tjenester/spesifikasjon/implementasjon/&quot;</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
