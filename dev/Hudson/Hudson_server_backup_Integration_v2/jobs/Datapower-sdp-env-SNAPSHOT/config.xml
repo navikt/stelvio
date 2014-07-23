@@ -219,13 +219,24 @@
     <entry>
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
+        <originalValue class="hudson.tasks.BuildTrigger">
+          <childProjects>Datapower-SDP-Deploy-SNAPSHOT</childProjects>
+          <threshold>
+            <name>SUCCESS</name>
+            <ordinal>0</ordinal>
+            <color>BLUE</color>
+          </threshold>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
+        <modified>true</modified>
       </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-SCMTrigger</string>
       <trigger-property>
+        <originalValue class="hudson.triggers.SCMTrigger">
+          <spec>* * * * *</spec>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
     </entry>
@@ -234,35 +245,7 @@
       <describable-list-property>
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
-            <command>/home/ci/cleanRepo.sh</command>
-          </hudson.tasks.Shell>
-          <hudson.tasks.Shell>
-            <command>Gateway=sdp-gw
-Environment=u3
-EnvironmentConfigVersion=0.0.0.1-SNAPSHOT
-NonenvironmentConfigVersion=0.0.0.1-SNAPSHOT
-DeployerPomRevision=283882
-DataPowerInstance=https://dp-tst-12.adeo.no:5550
-Debug=false
-Node=2
-
-EnvironmentClass=u
-
-wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
-
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
-
-
-echo &quot;Datapower bygget med:&quot;
-echo &quot;   Gateway:     ${Gateway}&quot;
-echo &quot;   Kodebase:    ${DeilveryVerision}&quot;
-echo &quot;   Env:         ${Environment}&quot;
-echo &quot;   Env-class:   ${EnvironmentClass}&quot;
-echo &quot;   DP-env:      ${EnvironmentConfigVersion}&quot;
-echo &quot;   DP-non-env:  ${NonenvironmentConfigVersion}&quot;
-echo &quot;   DP-pom:      ${DeployerPomRevision}&quot;
-echo &quot;   Boks:        ${DataPowerInstance}&quot;
-echo &quot;   Node:        ${Node}&quot;</command>
+            <command>mvn clean deploy</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
@@ -339,7 +322,22 @@ echo &quot;   Node:        ${Node}&quot;</command>
     <entry>
       <string>scm</string>
       <scm-property>
-        <originalValue class="hudson.scm.NullSCM"/>
+        <originalValue class="hudson.scm.SubversionSCM">
+          <locations>
+            <hudson.scm.SubversionSCM_-ModuleLocation>
+              <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/configuration/datapower-environment/sdp-gw</remote>
+              <local>.</local>
+              <depthOption>infinity</depthOption>
+              <ignoreExternalsOption>false</ignoreExternalsOption>
+            </hudson.scm.SubversionSCM_-ModuleLocation>
+          </locations>
+          <excludedRegions></excludedRegions>
+          <includedRegions></includedRegions>
+          <excludedUsers></excludedUsers>
+          <excludedRevprop></excludedRevprop>
+          <excludedCommitMessages></excludedCommitMessages>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
@@ -366,7 +364,7 @@ echo &quot;   Node:        ${Node}&quot;</command>
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <createdBy>S140744</createdBy>
-  <creationTime>1404986553615</creationTime>
+  <creationTime>1406115024933</creationTime>
   <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">

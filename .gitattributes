@@ -969,6 +969,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/DataPower_provisioning/confi
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/DataPower_release-configuration/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Datapower-SDP-Deploy-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Datapower-config-generator-SNAPSHOT/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Datapower-sdp-env-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Datapower-sdp-nonevn-SNAPSHOT/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Deploy_BPM_9.0.0/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Deploy_WPS-BPM_8.0.7/config.xml -text
