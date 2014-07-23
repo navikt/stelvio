@@ -82,5 +82,3 @@
 <#include "XMLFirewallServiceSTSLoopback.ftl">
 <#include "XMLManager.ftl">
 <#include "XMLManagerExternalReferences.ftl">
-
-<#include "NFSStaticMountV2.ftl">
