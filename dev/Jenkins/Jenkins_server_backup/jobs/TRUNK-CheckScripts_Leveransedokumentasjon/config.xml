@@ -55,7 +55,7 @@ esb/esb-tools/esb-scripts/bin/cons_xml_check.py esb
 # Sjekker om confluence er oppe:
 if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
 # Skript som genererer automatisk dokumentasjon:
-python2.7 esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
+esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
 esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
 esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/ --design /home/ci/svn/designTrunk/spesifikasjon/implementasjon/
