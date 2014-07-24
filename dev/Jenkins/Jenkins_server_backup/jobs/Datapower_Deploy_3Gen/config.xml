@@ -68,6 +68,7 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>oera-t.local</string>
+              <string>test.local</string>
               <string>devillo-t.local</string>
             </a>
           </choices>
@@ -87,9 +88,6 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>wget -qO - &quot;$@&quot; &quot;http://e34apsl00136.devillo.no:8080/conf/resources/bestmatch?alias=openam&amp;domain=oera-t.local&amp;envName=t9&amp;app=sts&quot;</command>
-    </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/var/lib/jenkins/scripts/cleanRepo3gen.sh</command>
     </hudson.tasks.Shell>
