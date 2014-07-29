@@ -3354,6 +3354,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_configuration_bus-authorizati
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_configuration_bus-environment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_configuration_bus-nonenvironment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_esb-release/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_esb_poms/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_layers/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL3_8.0_layers_dryRun/config.xml -text
@@ -3370,6 +3371,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-authorizati
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-environment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-nonenvironment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_esb-release/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_esb_poms/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_layers/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_layers_dryRun/config.xml -text
@@ -3394,6 +3396,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSH
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Pensjon-Beregning_CI/config.xml -text
@@ -3567,6 +3570,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-configuration_bus-authorization/con
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-configuration_bus-environment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-configuration_bus-nonenvironment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-esb-release/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-esb_poms/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-layers/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-layers_dryRun/config.xml -text
