@@ -34,8 +34,29 @@ SVN_COMMENT=&quot;$JOB_NAME: $JENKINS_HOME&quot;
 
 cd $JENKINS_HOME
 
-#svn add --force -q --parents config.xml jobs/*/config.xml 
-svn add --force -q --parents *.xml jobs/*/config.xml
+svn add --force -q *.xml
+
+svn st |grep &apos;^!&apos; |while read notation folder
+do
+   svn up &quot;$folder&quot;
+   svn rm &quot;$folder&quot;
+   rm -rf &quot;$folder&quot;
+done
+
+if svn st |grep -v &apos;^?&apos; ;then
+   svn ci --non-interactive -m &quot;$SVN_COMMENT&quot;
+else
+   echo &quot;No changes, no commit will be performed!&quot;
+fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>JENKINS_HOME=&quot;/home/jenkins/jobs/&quot;
+SVN_COMMENT=&quot;$JOB_NAME: $JENKINS_HOME&quot;
+
+cd $JENKINS_HOME
+
+svn add --force -q --parents */config.xml
 
 svn st |grep &apos;^!&apos; |while read notation folder
 do
