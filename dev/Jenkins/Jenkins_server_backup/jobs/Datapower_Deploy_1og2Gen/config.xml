@@ -108,8 +108,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>java -version
-mvn -v</command>
+      <command>/home/ci/scripts/cleanRepo.sh</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>echo &quot;Getting deployer-pom from ${DeilveryVerision} repository.&quot;
