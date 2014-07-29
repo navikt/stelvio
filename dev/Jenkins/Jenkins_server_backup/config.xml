@@ -255,6 +255,7 @@
         <string>Buss_Deploy_BPM</string>
         <string>Datapower_Deploy_1og2Gen</string>
         <string>Datapower_Deploy_3Gen</string>
+        <string>Datapower_Service_Registry_Update</string>
       </jobNames>
       <jobFilters/>
       <columns>
