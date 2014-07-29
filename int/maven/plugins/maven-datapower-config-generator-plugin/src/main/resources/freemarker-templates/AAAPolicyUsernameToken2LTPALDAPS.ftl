@@ -1,4 +1,11 @@
-<#macro AAAPolicyUsernameToken2LTPALDAPS name aaaFileName auLdapHost auLdapPort auLdapBindDN auLdapBindPwd auLdapSearchParameters auSSLProxyProfile ppLtpaKeyFile ppLtpaKeyFilePwd>
+<#-- 
+    Incoming ldap object is supposed to have following fields:
+    * host
+    * port
+    * dnprefix
+    * dnsuffix
+ -->
+<#macro AAAPolicyUsernameToken2LTPALDAPS name aaaFileName ldap ldapSSLProfile ppLtpaKeyFile ppLtpaKeyFilePwd>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
@@ -41,8 +48,8 @@
 			<AUMethod>ldap</AUMethod>
 			<AUCustomURL/>
 			<AUMapURL/>
-			<AUHost>${auLdapHost}</AUHost>
-			<AUPort>${auLdapPort}</AUPort>
+			<AUHost>${ldap.host}</AUHost>
+			<AUPort>${ldap.port}</AUPort>
 			<AUSSLValcred/>
 			<AUCacheAllow>absolute</AUCacheAllow>
 			<AUCacheTTL>3</AUCacheTTL>
@@ -55,18 +62,18 @@
 			<AUNetegrityBaseURI/>
 			<AUSAMLAuthQueryServer/>
 			<AUSAMLVersion>1.1</AUSAMLVersion>
-			<AULDAPPrefix>cn=</AULDAPPrefix>
-			<AULDAPSuffix/>
+			<AULDAPPrefix>${ldap.dnprefix}</AULDAPPrefix>
+			<AULDAPSuffix>${ldap.dnsuffix}</AULDAPSuffix>
 			<AULDAPLoadBalanceGroup/>
 			<AUKerberosKeytab/>
 			<AUWSTrustURL/>
 			<AUSAML2Issuer/>
 			<AUSignerValcred/>
 			<AUSignedXPath/>
-			<AUSSLProxyProfile class="SSLProxyProfile">${auSSLProxyProfile}</AUSSLProxyProfile>
+			<AUSSLProxyProfile class="SSLProxyProfile">${ldapSSLProfile}</AUSSLProxyProfile>
 			<AUNetegrityConfig/>
-			<AULDAPBindDN>${auLdapBindDN}</AULDAPBindDN>
-			<AULDAPBindPassword>${auLdapBindPwd}</AULDAPBindPassword>
+			<AULDAPBindDN/>
+			<AULDAPBindPassword/>
 			<AULDAPSearchAttribute>userPassword</AULDAPSearchAttribute>
 			<AULTPATokenVersionsBitmap>
 				<LTPA>off</LTPA>
@@ -81,8 +88,8 @@
 			<AUAllowRemoteTokenReference>off</AUAllowRemoteTokenReference>
 			<AURemoteTokenProcessService/>
 			<AUWSTrustVersion>1.2</AUWSTrustVersion>
-			<AULDAPSearchForDN>on</AULDAPSearchForDN>
-			<AULDAPSearchParameters class="LDAPSearchParameters">${auLdapSearchParameters}</AULDAPSearchParameters>
+			<AULDAPSearchForDN>off</AULDAPSearchForDN>
+			<AULDAPSearchParameters/>
 			<AUWSTrustRequireClientEntropy>off</AUWSTrustRequireClientEntropy>
 			<AUWSTrustClientEntropySize>32</AUWSTrustClientEntropySize>
 			<AUWSTrustRequireServerEntropy>off</AUWSTrustRequireServerEntropy>
@@ -92,6 +99,9 @@
 			<AUWSTrustAppliesToHeader/>
 			<AUWSTrustEncryptionCertificate/>
 			<AUZOSNSSConfig/>
+            <AULDAPAttributes/>
+            <AUSkewTime>0</AUSkewTime>
+            <AUTAMPACReturn>off</AUTAMPACReturn>
 		</Authenticate>
 		<MapCredentials>
 			<MCMethod>xmlfile</MCMethod>
