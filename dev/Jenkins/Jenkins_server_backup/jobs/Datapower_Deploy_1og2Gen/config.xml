@@ -168,5 +168,9 @@ echo &quot;   Node:        ${Node}&quot;</command>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
   </publishers>
-  <buildWrappers/>
+  <buildWrappers>
+    <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
+      <template>#${BUILD_NUMBER}: ${ENV,var=&quot;Gateway&quot;}-${ENV,var=&quot;Environment&quot;}</template>
+    </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
+  </buildWrappers>
 </project>

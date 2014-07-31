@@ -3340,6 +3340,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_ekstern/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_esb-release/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_esb_poms/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_layers/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_layers_dryRun/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_nav/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL2_7.10_tjenestespesifikasjon_ekstern/config.xml -text
