@@ -241,7 +241,7 @@
 Environment=u3
 EnvironmentConfigVersion=0.0.0.1-SNAPSHOT
 NonenvironmentConfigVersion=0.0.0.1-SNAPSHOT
-DeployerPomRevision=283882
+DeployerPomRevision=284189
 DataPowerInstance=https://dp-tst-12.adeo.no:5550
 Debug=false
 Node=2
@@ -250,7 +250,7 @@ EnvironmentClass=u
 
 wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+mvn3 clean install -U -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
 
 
 echo &quot;Datapower bygget med:&quot;
