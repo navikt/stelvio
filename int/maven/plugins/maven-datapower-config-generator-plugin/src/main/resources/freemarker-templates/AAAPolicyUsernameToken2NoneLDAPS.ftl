@@ -2,8 +2,9 @@
     Incoming ldap object is supposed to have following fields:
     * host
     * port
-    * dnprefix
-    * dnsuffix
+	* bindDN
+	* bindPwd
+	* searchParameters
  -->
 <#macro AAAPolicyUsernameToken2NoneLDAPS name aaaFileName ldap ldapSSLProfile>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
@@ -62,8 +63,8 @@
             <AUNetegrityBaseURI/>
             <AUSAMLAuthQueryServer/>
             <AUSAMLVersion>1.1</AUSAMLVersion>
-            <AULDAPPrefix>${ldap.dnprefix}</AULDAPPrefix>
-			<AULDAPSuffix>${ldap.dnsuffix}</AULDAPSuffix>
+            <AULDAPPrefix>cn=</AULDAPPrefix>
+			<AULDAPSuffix/>
             <AULDAPLoadBalanceGroup/>
             <AUKerberosKeytab/>
             <AUWSTrustURL/>
@@ -72,8 +73,8 @@
             <AUSignedXPath/>
             <AUSSLProxyProfile class="SSLProxyProfile">${ldapSSLProfile}</AUSSLProxyProfile>
             <AUNetegrityConfig/>
-            <AULDAPBindDN/>
-            <AULDAPBindPassword/>
+			<AULDAPBindDN>${ldap.bindDN}</AULDAPBindDN>
+			<AULDAPBindPassword>${ldap.bindPwd}</AULDAPBindPassword>
             <AULDAPSearchAttribute>userPassword</AULDAPSearchAttribute>
             <AULTPATokenVersionsBitmap>
                 <LTPA>off</LTPA>
@@ -88,8 +89,8 @@
             <AUAllowRemoteTokenReference>off</AUAllowRemoteTokenReference>
             <AURemoteTokenProcessService/>
             <AUWSTrustVersion>1.2</AUWSTrustVersion>
-            <AULDAPSearchForDN>off</AULDAPSearchForDN>
-			<AULDAPSearchParameters/>
+            <AULDAPSearchForDN>on</AULDAPSearchForDN>
+			<AULDAPSearchParameters>${ldap.searchParameters}</AULDAPSearchParameters>
             <AUWSTrustRequireClientEntropy>off</AUWSTrustRequireClientEntropy>
             <AUWSTrustClientEntropySize>32</AUWSTrustClientEntropySize>
             <AUWSTrustRequireServerEntropy>off</AUWSTrustRequireServerEntropy>
@@ -99,9 +100,6 @@
             <AUWSTrustAppliesToHeader/>
             <AUWSTrustEncryptionCertificate/>
             <AUZOSNSSConfig/>
-            <AULDAPAttributes/>
-            <AUSkewTime>0</AUSkewTime>
-            <AUTAMPACReturn>off</AUTAMPACReturn>
         </Authenticate>
 		<MapCredentials>
 			<MCMethod>none</MCMethod>
