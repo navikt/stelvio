@@ -2,9 +2,9 @@
     Incoming ldap object is supposed to have following fields:
     * host
     * port
-	* bindDN
-	* bindPwd
-	* searchParameters
+    * bindDN
+    * bindPwd
+    * searchParameters
  -->
 <#macro AAAPolicyUsernameToken2NoneLDAPS name aaaFileName ldap ldapSSLProfile>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
@@ -45,7 +45,7 @@
 			<EIPasswordRetrievalAAAInfoURL/>
 			<EISSLProxyProfile/>
 		</ExtractIdentity>
-		        <Authenticate>
+		<Authenticate>
             <AUMethod>ldap</AUMethod>
             <AUCustomURL/>
             <AUMapURL/>
@@ -90,7 +90,7 @@
             <AURemoteTokenProcessService/>
             <AUWSTrustVersion>1.2</AUWSTrustVersion>
             <AULDAPSearchForDN>on</AULDAPSearchForDN>
-			<AULDAPSearchParameters>${ldap.searchParameters}</AULDAPSearchParameters>
+			<AULDAPSearchParameters class="LDAPSearchParameters">${ldap.searchParameters}</AULDAPSearchParameters>
             <AUWSTrustRequireClientEntropy>off</AUWSTrustRequireClientEntropy>
             <AUWSTrustClientEntropySize>32</AUWSTrustClientEntropySize>
             <AUWSTrustRequireServerEntropy>off</AUWSTrustRequireServerEntropy>
