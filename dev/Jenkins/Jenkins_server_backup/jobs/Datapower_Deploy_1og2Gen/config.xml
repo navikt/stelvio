@@ -16,6 +16,7 @@
               <string>portal-gw</string>
               <string>tms-gw</string>
               <string>sikkerhetslytter</string>
+              <string>sdp-gw</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -125,8 +126,8 @@ fi
 
 EnvironmentClass=${Environment:0:1}
 
-#Check if deploy is done for sikkerhetslytter.
-if [ $Gateway = &quot;sikkerhetslytter&quot; ]
+#Check if deploy is done with a proxy with MQ.
+if [ $Gateway = &quot;sikkerhetslytter&quot; ] || [ $Gateway = &quot;sdp-gw&quot; ]
 then
       #Set node to the instance number
       if [[ $DataPowerInstance =~ &quot;-12.&quot; ]]
