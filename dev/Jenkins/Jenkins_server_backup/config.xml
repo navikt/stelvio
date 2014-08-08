@@ -339,6 +339,16 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
         <string>Buss_Deploy_BPM</string>
+        <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
+        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL1)</string>
+        <string>CI-Automatisk_Deploy-ESB-U5_(2014HL3)</string>
+        <string>CI-deploy_2014HL3_bus-config-0.0.2014.3-SNAPSHOT</string>
+        <string>CI-deploy_2014HL3_buss-pom-0.0.2014.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
+        <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
+        <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
+        <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
+        <string>CI-Deploy_wpsdeploy-pom_sync</string>
         <string>Datapower_Deploy_1og2Gen</string>
         <string>Datapower_Deploy_3Gen</string>
         <string>Datapower_Service_Registry_Update</string>
