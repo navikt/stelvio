@@ -5,12 +5,8 @@
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
-  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
-  <securityRealm class="hudson.plugins.active_directory.ActiveDirectorySecurityRealm" plugin="test@example.com">
-    <domain>adeo.no</domain>
-    <bindName>srvciintegrasjon</bindName>
-    <bindPassword>s+FJWmSZ85sSGbE/Bl8UStET4WTI0KHFiFnsV+y2wK4=</bindPassword>
-  </securityRealm>
+  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+  <securityRealm class="hudson.security.SecurityRealm$None"/>
   <disableRememberMe>false</disableRememberMe>
   <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
   <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
@@ -705,6 +701,77 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <string>2014HL2_7.10_CheckScripts_Leveransedokumentasjon</string>
+        <string>2014HL2_7.10_configuration_bus-authorization</string>
+        <string>2014HL2_7.10_configuration_bus-environment</string>
+        <string>2014HL2_7.10_configuration_bus-nonenvironment</string>
+        <string>2014HL2_7.10_ekstern</string>
+        <string>2014HL2_7.10_esb-release</string>
+        <string>2014HL2_7.10_esb_poms</string>
+        <string>2014HL2_7.10_layers</string>
+        <string>2014HL2_7.10_layers_dryRun</string>
+        <string>2014HL2_7.10_nav</string>
+        <string>2014HL2_7.10_NAV-Tjenestebuss</string>
+        <string>2014HL2_7.10_pensjon</string>
+        <string>2014HL2_7.10_tjenestespesifikasjon_ekstern</string>
+        <string>2014HL2_7.10_tjenestespesifikasjon_nav</string>
+        <string>2014HL2_7.10_tjenestespesifikasjon_pensjon</string>
+        <string>2014HL2_7.10_tjenestespesifikasjon_system</string>
+        <string>2014HL2_7.10_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
+        <string>2014HL3_8.0_configuration_bus-authorization</string>
+        <string>2014HL3_8.0_configuration_bus-environment</string>
+        <string>2014HL3_8.0_configuration_bus-nonenvironment</string>
+        <string>2014HL3_8.0_ekstern</string>
+        <string>2014HL3_8.0_esb-release</string>
+        <string>2014HL3_8.0_esb_poms</string>
+        <string>2014HL3_8.0_layers</string>
+        <string>2014HL3_8.0_layers_dryRun</string>
+        <string>2014HL3_8.0_nav</string>
+        <string>2014HL3_8.0_NAV-Tjenestebuss</string>
+        <string>2014HL3_8.0_pensjon</string>
+        <string>2014HL3_8.0_tjenestespesifikasjon_ekstern</string>
+        <string>2014HL3_8.0_tjenestespesifikasjon_nav</string>
+        <string>2014HL3_8.0_tjenestespesifikasjon_pensjon</string>
+        <string>2014HL3_8.0_tjenestespesifikasjon_system</string>
+        <string>2014HL3_8.0_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL1_8.2_configuration_bus-authorization</string>
+        <string>2015HL1_8.2_configuration_bus-environment</string>
+        <string>2015HL1_8.2_configuration_bus-nonenvironment</string>
+        <string>2015HL1_8.2_ekstern</string>
+        <string>2015HL1_8.2_esb-release</string>
+        <string>2015HL1_8.2_esb_poms</string>
+        <string>2015HL1_8.2_layers</string>
+        <string>2015HL1_8.2_layers_dryRun</string>
+        <string>2015HL1_8.2_nav</string>
+        <string>2015HL1_8.2_NAV-Tjenestebuss</string>
+        <string>2015HL1_8.2_pensjon</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_nav</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_system</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
+        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL1)</string>
+        <string>CI-Automatisk_Deploy-ESB-U5_(2014HL3)</string>
+        <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
+        <string>TRUNK-configuration_bus-authorization</string>
+        <string>TRUNK-configuration_bus-environment</string>
+        <string>TRUNK-configuration_bus-nonenvironment</string>
+        <string>TRUNK-ekstern</string>
+        <string>TRUNK-esb-release</string>
+        <string>TRUNK-esb_poms</string>
+        <string>TRUNK-layers</string>
+        <string>TRUNK-layers_dryRun</string>
+        <string>TRUNK-nav</string>
+        <string>TRUNK-pensjon</string>
+        <string>TRUNK_NAV-Tjenestebuss</string>
+        <string>TRUNK_tjenestespesifikasjon_ekstern</string>
+        <string>TRUNK_tjenestespesifikasjon_nav</string>
+        <string>TRUNK_tjenestespesifikasjon_pensjon</string>
+        <string>TRUNK_tjenestespesifikasjon_system</string>
+        <string>TRUNK_tjenestespesifikasjon_tredjegenerasjon</string>
       </jobNames>
       <jobFilters/>
       <columns/>
