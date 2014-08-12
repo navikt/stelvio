@@ -14,7 +14,8 @@
 						<id>default</id>
 						<phases>
 							<validate>
-								org.apache.maven.plugins:maven-resources-plugin:resources
+								org.apache.maven.plugins:maven-resources-plugin:resources,
+								org.apache.maven.plugins:maven-dependency-plugin:copy
 							</validate>
 							<initialize>
 								no.nav.maven.plugins:maven-wsdl-plugin:remove-placeholders,
