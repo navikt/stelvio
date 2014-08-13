@@ -164,7 +164,7 @@ echo &quot;   Node:        ${Node}&quot;</command>
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com</recipients>
+      <recipients>test@example.com, test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>

@@ -112,7 +112,13 @@ fi</command>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.Mailer plugin="test@example.com">
+      <recipients>test@example.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>true</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
   <buildWrappers>
     <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
       <template>#${BUILD_NUMBER}: v.${ENV,var=&quot;ESBVersion&quot;} @${ENV,var=&quot;Environment&quot;}</template>

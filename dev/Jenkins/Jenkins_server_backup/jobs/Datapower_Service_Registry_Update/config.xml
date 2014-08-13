@@ -75,6 +75,12 @@ scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-FSS.xml tes
 scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.Mailer plugin="test@example.com">
+      <recipients>test@example.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
   <buildWrappers/>
 </project>
