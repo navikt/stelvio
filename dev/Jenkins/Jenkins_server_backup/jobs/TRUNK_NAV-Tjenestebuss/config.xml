@@ -69,7 +69,7 @@ echo &quot;FERDIG MED SVN1&quot;
 #xvfb-run
 #Xvfb :1 -screen 0 1024x768x24 +extension RANDR&amp;
 # DISPLAY=:0
-xvfb-run /opt/IBM/SDP/eclipse -data &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace | tee $HOME/scripts/tempFiles/TRUNK_NAV-Tjenestebuss.log
+xvfb-run /opt/IBM/SDP2/eclipse -data &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog --displaystacktrace | tee $HOME/scripts/tempFiles/TRUNK_NAV-Tjenestebuss.log
 echo &quot;FERDIG MED ECLIPSE1&quot;
 sleep 1s
 
@@ -85,7 +85,7 @@ else
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>#DISPLAY=:0 /opt/IBM/SDP/eclipse -data &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog | tee $HOME/scripts/tempFiles/TRUNK_NAV-Tjenestebuss.log
+      <command>#DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;$HOME/svn-repos/TRUNK/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/&quot; -consoleLog | tee $HOME/scripts/tempFiles/TRUNK_NAV-Tjenestebuss.log
 sleep 1s</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
