@@ -87,11 +87,13 @@ public class SetSoapActionMojo extends AbstractMojo {
 								// This is to overcome an interoperability issue between WAS and jBoss. A WAS consumer when using WS-Addresssing
 								// sets a default value in SOAPAction if SOAPAction is blank "" in the WSDL. A jBoss provider fails when the request 
 								// contains the WAS default value while the WSDL contains a blank value "".
-								getLog().info("Operation is: " + binding.getPortType().getOperation(bindingOperation.getName(), null, null).getInput().getMessage().getQName().getLocalPart());
+								//getLog().info("Operation is: " + binding.getPortType().getOperation(bindingOperation.getName(), null, null).getInput().getMessage().getQName().getLocalPart());
 								//String actionURI = definition.getTargetNamespace() +
-								String actionURI = binding.getPortType().getQName().getNamespaceURI() +
-								"/" +
-								binding.getPortType().getQName().getLocalPart() +
+								String actionURI = binding.getPortType().getQName().getNamespaceURI();
+								if (!actionURI.endsWith("/"))  {
+									actionURI += "/"; 
+								}	
+								actionURI += binding.getPortType().getQName().getLocalPart() +
 								"/" +
 								binding.getPortType().getOperation(bindingOperation.getName(), null, null).getInput().getMessage().getQName().getLocalPart();
 								((SOAPOperation) extensibilityElement).setSoapActionURI(actionURI);
