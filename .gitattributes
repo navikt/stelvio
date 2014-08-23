@@ -3405,6 +3405,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-ArbeidOgAktivitetYtelse_CI/
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-ArbeidOgAktivitet_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Arkiv_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Avstemming_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandleArbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandleMedlemskap_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandlePerson_CI/config.xml -text
