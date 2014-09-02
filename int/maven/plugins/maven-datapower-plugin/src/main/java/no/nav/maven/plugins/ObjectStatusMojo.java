@@ -12,7 +12,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * 
  * @goal testObjects
  * 
- * @author person4fdbf4cece95, Petter Solberg, Christian Askeland
+ * @author person4fdbf4cece95, Petter Solberg, Christian Askeland, personab5e855575df
  *
  */
 public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
@@ -52,17 +52,17 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 					if (object.contains(OBJECT_LIST_DOWN_PATTERN)){
 						objectsDown++;
 						
-						if(getName(object).endsWith(OBJECT_LOG_NAME_POSTFIX)){
+						if(!logDown && getName(object).endsWith(OBJECT_LOG_NAME_POSTFIX)){
 							logDown = true;
 							waitError += "At least one log object is down, indicating that NFS is down. ";
 						}
-						if(getName(object).startsWith(OBJECT_GW_NAME_PREFIX)){
+						if(!gwDown && getName(object).startsWith(OBJECT_GW_NAME_PREFIX)){
 							gwDown = true;
-							waitError += "At least one Gateway object is down, indicating that not all objects in that gateway are up. ";
+							waitError += "At least one Gateway object is down, indicating that not all objects in the gateway are up. " ;
 						}
-						if(getName(object).startsWith(OBJECT_QMGR_NAME_PREFIX)){
-							gwDown = true;
-							waitError += "At least one MQ Queue Manager object is down, indicating that the connection with the MQ is not up yet.";
+						if(!mqDown && getName(object).startsWith(OBJECT_QMGR_NAME_PREFIX)){
+							mqDown = true;
+							waitError += "At least one MQ Queue Manager object is down, indicating that the connection with the MQ is not up. ";
 						}
 						String adminState = getAdminState(object);
 						// If object is down and is enabled, set stop flag
