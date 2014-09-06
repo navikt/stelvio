@@ -46,7 +46,7 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DeployerPomRevision</name>
-          <description> Datapower deployer pom svn revision number</description>
+          <description>Datapower deployer pom svn revision number</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>

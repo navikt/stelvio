@@ -45,8 +45,8 @@
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DeployerPomRevision</name>
-          <description> Datapower deployer pom svn revision number</description>
+          <name>DeployerPomVersion</name>
+          <description>Datapower-deployer-pom versjonsnummer</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
@@ -95,7 +95,9 @@
       <command>java -version</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/datapower/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+      <command>wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2internal/content/no/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
+
+unzip -p tempFolder.jar deploy/deploy.xml &gt; ./pom.xml
 
 EnvironmentClass=${Environment:0:1}
 

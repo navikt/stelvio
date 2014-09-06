@@ -8,46 +8,61 @@
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
           <name>Gateway</name>
-          <description></description>
+          <description>Gateway som konfigurasjon skal deployes til</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>dialog-gw</string>
-              <string>service-gw</string>
-              <string>sts</string>
-              <string>test-gw</string>
+              <string>partner-gw</string>
+              <string>secgw</string>
+              <string>portal-gw</string>
+              <string>tms-gw</string>
+              <string>sikkerhetslytter</string>
+              <string>sdp-gw</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>Environment</name>
-          <description></description>
+          <description>Miljø som gatewayen skal deployes til</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>u3</string>
-              <string>u2</string>
+              <string>u5</string>
+              <string>t0</string>
+              <string>t1</string>
+              <string>t2</string>
+              <string>t3</string>
               <string>t4</string>
               <string>t5</string>
               <string>t6</string>
               <string>t8</string>
               <string>t9</string>
               <string>t11</string>
+              <string>q0</string>
+              <string>q1</string>
+              <string>q3</string>
+              <string>q4</string>
+              <string>q5</string>
+              <string>q6</string>
+              <string>q8</string>
+              <string>q9</string>
+              <string>p</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>EnvironmentConfigVersion</name>
           <description></description>
-          <defaultValue></defaultValue>
+          <defaultValue>7.10.0.6</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>NonenvironmentConfigVersion</name>
           <description></description>
-          <defaultValue></defaultValue>
+          <defaultValue>7.10.0.3</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>DeployerPomRevision</name>
-          <description> Datapower deployer pom svn revision number</description>
-          <defaultValue></defaultValue>
+          <name>DeployerPomVersion</name>
+          <description>Deployer-pom versjonsnummer</description>
+          <defaultValue>8.1.0.0</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>DataPowerInstance</name>
@@ -56,23 +71,17 @@
             <a class="string-array">
               <string>https://dp-tst-01.adeo.no:5550</string>
               <string>https://dp-tst-02.adeo.no:5550</string>
-              <string></string>
               <string>https://dp-tst-11.adeo.no:5550</string>
               <string>https://dp-tst-12.adeo.no:5550</string>
+              <string>test</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>envConfigDomain</name>
-          <description>Sone gateway skal deployes til</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>oera-t.local</string>
-              <string>test.local</string>
-              <string>devillo-t.local</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>Debug</name>
+          <description>Set the loglevel to debug for maven</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -84,22 +93,54 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>Oracle JDK 1.7</jdk>
+  <jdk>(Default)</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>/var/lib/jenkins/scripts/cleanRepo3gen.sh</command>
+      <command>/home/ci/scripts/cleanRepo.sh</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>java -version</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/datapower/configuration/datapower-deployer/${Gateway}-deployer/pom.xml?op=dl\&amp;rev=${DeployerPomRevision}
+      <command>echo &quot;Getting deployer-pom version: ${DeployerPomVersion}.&quot;
+
+wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2internal/content/no/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
+
+unzip -p tempFolder.jar deploy/deploy.xml &gt; ./pom.xml
+
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=https://fasit.adeo.no/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
+#Check if deploy is done with a proxy with MQ.
+if [ $Gateway = &quot;sikkerhetslytter&quot; ] || [ $Gateway = &quot;sdp-gw&quot; ]
+then
+      #Set node to the instance number
+      if [[ $DataPowerInstance =~ &quot;-12.&quot; ]]
+      then
+            Node=2
+      else
+            Node=1
+      fi
+fi
+
+if [ &quot;${Debug}&quot; == &quot;true&quot; ]
+then
+      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+
+else
+      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+fi
+
+
+echo &quot;Datapower bygget med:&quot;
+echo &quot;   Gateway:     ${Gateway}&quot;
+echo &quot;   Kodebase:    ${DeilveryVerision}&quot;
+echo &quot;   Env:         ${Environment}&quot;
+echo &quot;   Env-class:   ${EnvironmentClass}&quot;
+echo &quot;   DP-env:      ${EnvironmentConfigVersion}&quot;
+echo &quot;   DP-non-env:  ${NonenvironmentConfigVersion}&quot;
+echo &quot;   DP-pom:      ${DeployerPomRevision}&quot;
+echo &quot;   Boks:        ${DataPowerInstance}&quot;
+echo &quot;   Node:        ${Node}&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
@@ -107,7 +148,7 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com</recipients>
+      <recipients>test@example.com, test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>

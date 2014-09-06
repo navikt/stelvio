@@ -3392,7 +3392,11 @@ dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNA
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_old_version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_old_version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
