@@ -350,7 +350,11 @@
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
         <string>Datapower_Deploy_1og2Gen</string>
+        <string>Datapower_Deploy_1og2Gen_new_version</string>
+        <string>Datapower_Deploy_1og2Gen_old_version</string>
         <string>Datapower_Deploy_3Gen</string>
+        <string>Datapower_Deploy_3Gen_new_version</string>
+        <string>Datapower_Deploy_3Gen_old_version</string>
         <string>Datapower_Service_Registry_Update</string>
       </jobNames>
       <jobFilters/>
