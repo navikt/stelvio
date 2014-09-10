@@ -103,9 +103,9 @@
     <hudson.tasks.Shell>
       <command>echo &quot;Getting deployer-pom version: ${DeployerPomVersion}.&quot;
 
-wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2internal/content/no/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
+wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2snapshot/content/no/nav/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
 
-unzip -p tempFolder.jar deploy.xml &gt; ./pom.xml
+unzip -p tempFolder.jar deploy.xml &gt; pom.xml
 
 
 EnvironmentClass=${Environment:0:1}
@@ -148,7 +148,7 @@ echo &quot;   Node:        ${Node}&quot;</command>
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com, test@example.com</recipients>
+      <recipients></recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
