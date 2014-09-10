@@ -351,6 +351,7 @@
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
         <string>Datapower_Deploy_1og2Gen</string>
         <string>Datapower_Deploy_1og2Gen_new_version</string>
+        <string>Datapower_Deploy_1og2Gen_new_version_SNAPSHOT</string>
         <string>Datapower_Deploy_1og2Gen_old_version</string>
         <string>Datapower_Deploy_3Gen</string>
         <string>Datapower_Deploy_3Gen_new_version</string>
