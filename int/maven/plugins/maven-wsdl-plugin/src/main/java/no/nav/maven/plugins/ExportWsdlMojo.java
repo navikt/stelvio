@@ -309,7 +309,8 @@ public class ExportWsdlMojo extends AbstractMojo {
 						for (Collection<SchemaImport> schemaImports : (Collection<Collection<SchemaImport>>) schema
 								.getImports().values()) {
 							for (SchemaImport schemaImport : schemaImports) {
-								addSchema(documentUris, schemaImport.getReferencedSchema());
+								if (null != schemaImport.getReferencedSchema()) 
+									addSchema(documentUris, schemaImport.getReferencedSchema());
 							}
 						}
 						for (SchemaReference schemaInclude : (Collection<SchemaReference>) schema.getIncludes()) {
