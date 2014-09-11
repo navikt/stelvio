@@ -105,7 +105,7 @@
 
 wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2internal/content/no/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
 
-unzip -p tempFolder.jar deploy.xml &gt; ./pom.xml
+unzip -p tempFolder.jar deploy.xml &gt; pom.xml
 
 
 EnvironmentClass=${Environment:0:1}
