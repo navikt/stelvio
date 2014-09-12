@@ -3,7 +3,10 @@
   <actions/>
   <description>Deploy-jobb for å deploye til et ønsket BPM U-miljø.&#xd;
 &#xd;
-Vær oppmerksom på at jobbene &quot;CI-Deploy-ESB-U2&quot; og &quot;CI-Deploy-ESB-U5&quot; kjører deploy automatisk hver natt!</description>
+Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd;
+- CI-Automatisk_Deploy-ESB-U5_(2014HL3)&#xd;
+- CI-Automatisk_Deploy-ESB-U2_(TRUNK)&#xd;
+- CI-Automatisk_Deploy-ESB-U4_(2015HL1)</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>15</numToKeep>
