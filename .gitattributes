@@ -8099,6 +8099,7 @@ int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/Impo
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ObjectStatusMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/WriteConfigVersionMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-generateConfig-pom.xml -text svneol=unset#text/plain
