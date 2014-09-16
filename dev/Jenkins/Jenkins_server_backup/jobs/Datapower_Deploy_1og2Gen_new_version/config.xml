@@ -124,10 +124,10 @@ fi
 
 if [ &quot;${Debug}&quot; == &quot;true&quot; ]
 then
-      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
 
 else
-      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
 fi
 
 
@@ -138,7 +138,7 @@ echo &quot;   Env:         ${Environment}&quot;
 echo &quot;   Env-class:   ${EnvironmentClass}&quot;
 echo &quot;   DP-env:      ${EnvironmentConfigVersion}&quot;
 echo &quot;   DP-non-env:  ${NonenvironmentConfigVersion}&quot;
-echo &quot;   DP-pom:      ${DeployerPomRevision}&quot;
+echo &quot;   DP-pom:      ${DeployerPomVersion}&quot;
 echo &quot;   Boks:        ${DataPowerInstance}&quot;
 echo &quot;   Node:        ${Node}&quot;</command>
     </hudson.tasks.Shell>
