@@ -1201,6 +1201,7 @@ dev/Hudson/Hudson_server_backup_Integration_v2/jobs/TRUNK_service-gw-maven-servi
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Tjenestebeskrivelsegenerering/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/Tjenesteforsyning_v1.0_Enhetstester/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/deploy_WPS__ny_splittet_buss_konfigurasjon_Maven3_(DS_7.0.3)/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration_v2/jobs/ehandel-kanal/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/ejbdiffer_script/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/g115484_nav_stubs/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration_v2/jobs/g115484_test_dokumentbehandling-soapui-stub/config.xml -text
