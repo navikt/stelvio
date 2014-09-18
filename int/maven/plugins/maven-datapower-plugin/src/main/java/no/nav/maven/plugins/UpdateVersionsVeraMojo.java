@@ -72,10 +72,6 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
         The application names for a domain are dp-domain-env, dp-domain-nonenv, dp-domain-pom.
         Vera is updated by three HTTP Post call, where the body is JSON.
          */
-        if(testRun){
-            environment = "t1";
-            testApplication = "vera-test";
-        }
         //Identify the sone, and decide if the application name should contain the sone.
         String veraApplicationPrefix = buildVeraApplicationPrefix(thisDomain,envDomain);
 
@@ -88,20 +84,36 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
 
         //Iterate the map allVersions and for each iteration make a POST
         for(Map.Entry<String, String> entry : allVersions.entrySet()){
-
-            //Build the application name
-            String application = veraApplicationPrefix + "-" + entry.getKey();
+            ////////////////////  TEST  start/////////////////////////
             if(testRun){
-                application = testApplication;
+                //Create the JSON string as if it was not a test, but do not make the post call
+                String application = veraApplicationPrefix + "-" + entry.getKey();
+                //Create the body in JSON as if not a test
+                Map<String,String> deployInfo = createMap(application, entry.getValue(), environment, deployedBy);
+                String deployInfoJson = createJsonFromMap(deployInfo);
+                getLog().debug("Actual domain info: " + deployInfoJson);
+
+                //Create JSON string for test
+                environment = "t1";
+                testApplication = "vera-test";
+                //Create the testbody in JSON
+                Map<String,String> deployInfoTest = createMap(testApplication, entry.getValue(), environment, deployedBy);
+                String deployInfoTestJson = createJsonFromMap(deployInfoTest);
+                getLog().debug(deployInfoTestJson);
+
+                //Do the POST call
+                connectToURLAndPost(deployInfoTestJson, veraURL);
+             ////////////////////  TEST  stop/////////////////////////
+            }else{
+                //Build the application name
+                String application = veraApplicationPrefix + "-" + entry.getKey();
+                //Create the body in JSON
+                Map<String,String> deployInfo = createMap(application, entry.getValue(), environment, deployedBy);
+                String deployInfoJson = createJsonFromMap(deployInfo);
+                getLog().debug(deployInfoJson);
+                //Do the POST call
+                connectToURLAndPost(deployInfoJson, veraURL);
             }
-
-            //Create the body in JSON
-            Map<String,String> deployInfo = createMap(application, entry.getValue(), environment, deployedBy);
-            String deployInfoJson = createJsonFromMap(deployInfo);
-            getLog().debug(deployInfoJson);
-
-            //Do the POST call
-            connectToURLAndPost(deployInfoJson, veraURL);
         }
     }
 
