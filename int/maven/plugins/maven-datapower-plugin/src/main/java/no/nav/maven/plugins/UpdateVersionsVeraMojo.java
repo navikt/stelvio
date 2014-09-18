@@ -14,6 +14,8 @@ import org.json.simple.JSONValue;
  * Goal which updates Vera with version numbers.
  *
  * @goal updateVersionsVera
+ *
+ * @author Mathilde Nygaard Kamperud
  * 
  */
 public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
@@ -94,10 +96,10 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
                 getLog().debug("Actual domain info: " + deployInfoJson);
 
                 //Create JSON string for test
-                environment = "t1";
+                String testEnvironment = "t1";
                 testApplication = "vera-test";
                 //Create the testbody in JSON
-                Map<String,String> deployInfoTest = createMap(testApplication, entry.getValue(), environment, deployedBy);
+                Map<String,String> deployInfoTest = createMap(testApplication, entry.getValue(), testEnvironment, deployedBy);
                 String deployInfoTestJson = createJsonFromMap(deployInfoTest);
                 getLog().debug(deployInfoTestJson);
 
