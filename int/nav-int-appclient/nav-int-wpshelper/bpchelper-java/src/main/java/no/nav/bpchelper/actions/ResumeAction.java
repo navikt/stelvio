@@ -11,7 +11,7 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 public class ResumeAction extends AbstractReportAction {
 	@Override
 	public String getName() {
-		return "suspend";
+		return "resume";
 	}
 
 	@Override
