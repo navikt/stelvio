@@ -1,0 +1,86 @@
+Started by user [8mha:AAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz+EgZe/dLi1CJ9H0MTQ1MTCwChfa+swgAAAA==[0mLien, Knut Olaf
+Building in workspace /var/lib/jenkins/jobs/SoapUI-U2-NAV-Helsepersonell_CI/workspace
+Checking out a fresh workspace because /home/jenkins/jobs/SoapUI-U2-NAV-Helsepersonell_CI/workspace/nav-test-helsepersonell doesn't exist
+Cleaning local Directory nav-test-helsepersonell
+Checking out https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/nav/helsepersonell/nav-test-helsepersonell at revision '2014-09-19T09:12:38.641 +0200'
+A         nav-tjeneste-helsepersonell-soapui-project.xml
+A         pom.xml
+At revision 286576
+[nav-test-helsepersonell] $ mvn eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-helsepersonell-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00223.devillo.no:9080/nav-tjeneste-helsepersonell_v1Web/sca/HelsepersonellWSEXP
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Unnamed - no.nav.esb.test:soapui:jar:1.0-SNAPSHOT
+[INFO]    task-segment: [eviware:maven-soapui-plugin:test]
+[INFO] ------------------------------------------------------------------------
+[8mha:AAAAYx+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vJLE4u1gvPjexLDVPzxdEhicW5WXmpfvll6S2fNly5fzGzauYGBgqihikoFqS8/OK83NS9ZwhNEghAwQwghQWAACwxA+XYgAAAA==[0m[WARNING] While downloading easymock:easymock:2.0
+  This artifact has been relocated to org.easymock:easymock:2.0.
+
+
+[8mha:AAAAXx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [soapui:test {execution: default-cli}]
+soapUI 3.5.1 Maven2 TestCase Runner
+log4j:WARN No such property [maxFileSize] in org.apache.log4j.FileAppender.
+log4j:WARN No such property [maxBackupIndex] in org.apache.log4j.FileAppender.
+09:12:56,329 WARN  [DefaultSoapUICore] Missing folder [/home/jenkins/jobs/SoapUI-U2-NAV-Helsepersonell_CI/workspace/nav-test-helsepersonell/./ext] for external libraries
+09:12:56,359 INFO  [DefaultSoapUICore] Creating new settings at [/home/ci/soapui-settings.xml]
+09:12:59,740 INFO  [WsdlProject] Loaded project from [file:/home/jenkins/jobs/SoapUI-U2-NAV-Helsepersonell_CI/workspace/nav-test-helsepersonell/nav-tjeneste-helsepersonell-soapui-project.xml]
+09:12:59,741 WARN  [WsdlProject] Project 'Helsepersonell' is from a newer version (4.6.0) of soapUI than this (3.5.1) and parts of it may be incompatible or incorrect. Saving this project with this version of soapUI may cause it to function differently.
+09:13:02,574 INFO  [SoapUITestCaseRunner] Running soapUI tests in project [Helsepersonell]
+09:13:02,582 INFO  [SoapUITestCaseRunner] Running Project [Helsepersonell], runType = SEQUENTIAL
+09:13:02,724 INFO  [SoapUITestCaseRunner] Running soapUI testcase [TestCase]
+09:13:02,727 INFO  [SoapUITestCaseRunner] running step [Disable TestSteps]
+09:13:04,648 INFO  [log] -------- DISABLE START --------
+09:13:05,041 INFO  [log] TestSuite Systemtest * is disabled.
+09:13:05,045 INFO  [log] -------- DISABLE END ----------
+09:13:05,110 INFO  [SoapUITestCaseRunner] Finished running soapUI testcase [TestCase], time taken: 2309ms, status: FINISHED
+09:13:05,143 INFO  [SoapUITestCaseRunner] Running soapUI testcase [hentRegisterendringer TestCase]
+09:13:05,145 INFO  [SoapUITestCaseRunner] running step [hentRegisterendringer - med lister]
+09:13:10,251 INFO  [SoapUITestCaseRunner] Assertion [SOAP Response] has status VALID
+09:13:10,251 INFO  [SoapUITestCaseRunner] Assertion [Not SOAP Fault] has status VALID
+09:13:10,252 INFO  [SoapUITestCaseRunner] Assertion [Contains] has status VALID
+09:13:10,252 INFO  [SoapUITestCaseRunner] running step [hentRegisterendringer - tom response]
+09:13:10,272 INFO  [SoapUITestCaseRunner] Assertion [SOAP Response] has status VALID
+09:13:10,272 INFO  [SoapUITestCaseRunner] Assertion [Not SOAP Fault] has status VALID
+09:13:10,272 INFO  [SoapUITestCaseRunner] Assertion [Contains] has status VALID
+09:13:10,272 INFO  [SoapUITestCaseRunner] running step [hentRegisterendringer - bruker ikke i påkrevd rolle]
+09:13:11,929 INFO  [SoapUITestCaseRunner] Assertion [SOAP Response] has status VALID
+09:13:11,931 INFO  [SoapUITestCaseRunner] Assertion [SOAP Fault] has status VALID
+09:13:11,931 INFO  [SoapUITestCaseRunner] Assertion [Contains] has status VALID
+09:13:11,931 INFO  [SoapUITestCaseRunner] running step [hentRegisterendringer - uten brukernavn eller passord]
+09:13:11,952 INFO  [SoapUITestCaseRunner] Assertion [SOAP Response] has status VALID
+09:13:11,952 INFO  [SoapUITestCaseRunner] Assertion [SOAP Fault] has status VALID
+09:13:11,952 INFO  [SoapUITestCaseRunner] Assertion [Contains] has status VALID
+09:13:11,952 INFO  [SoapUITestCaseRunner] running step [hentRegisterendringer - ugyldig request]
+09:13:12,449 INFO  [SoapUITestCaseRunner] Assertion [SOAP Response] has status VALID
+09:13:12,449 INFO  [SoapUITestCaseRunner] Assertion [SOAP Fault] has status VALID
+09:13:12,449 INFO  [SoapUITestCaseRunner] Assertion [Contains] has status VALID
+09:13:12,450 INFO  [SoapUITestCaseRunner] Finished running soapUI testcase [hentRegisterendringer TestCase], time taken: 7293ms, status: FINISHED
+09:13:12,455 INFO  [SoapUITestCaseRunner] Running soapUI testcase [HentRegisterEndringer TestCase]
+09:13:12,457 INFO  [SoapUITestCaseRunner] running step [HentRegisterEndringer]
+09:13:12,939 INFO  [SoapUITestCaseRunner] Finished running soapUI testcase [HentRegisterEndringer TestCase], time taken: 481ms, status: FINISHED
+09:13:12,947 INFO  [SoapUITestCaseRunner] Running soapUI testcase [TestCase]
+09:13:12,947 INFO  [SoapUITestCaseRunner] running step [Enable TestSteps]
+09:13:13,051 INFO  [log] -------- ENABLE START --------
+09:13:13,054 INFO  [log] TestSuite Systemtest * is enabled.
+09:13:13,055 INFO  [log]  -------- ENABLE END ----------
+09:13:13,057 INFO  [SoapUITestCaseRunner] Finished running soapUI testcase [TestCase], time taken: 107ms, status: FINISHED
+09:13:13,057 INFO  [SoapUITestCaseRunner] Project [Helsepersonell] finished with status [FINISHED] in 10466ms
+
+SoapUI 3.5.1 TestCaseRunner Summary
+-----------------------------
+Time Taken: 10482ms
+Total TestSuites: 4
+Total TestCases: 4 (0 failed)
+Total TestSteps: 8
+Total Request Assertions: 15
+Total Failed Assertions: 0
+Total Exported Results: 0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 30 seconds
+[INFO] Finished at: Fri Sep 19 09:13:13 CEST 2014
+[INFO] Final Memory: 32M/423M
+[INFO] ------------------------------------------------------------------------
+Recording test results
+Notifying upstream projects of job completion
+Finished: SUCCESS
