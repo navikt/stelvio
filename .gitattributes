@@ -8782,8 +8782,10 @@ int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpch
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/ProcessInstancePropertyAccessor.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/ReportAction.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/ReportColumnSpec.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/ResumeAction.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/SamordningAction.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/StatusAction.java -text
+int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/actions/SuspendAction.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text

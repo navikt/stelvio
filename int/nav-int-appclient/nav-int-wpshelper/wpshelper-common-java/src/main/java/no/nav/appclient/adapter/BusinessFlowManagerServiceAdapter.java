@@ -95,6 +95,34 @@ public class BusinessFlowManagerServiceAdapter {
 		PIID piid = getProcessInstanceIdByActivityId(activityId);
 		delete(piid, false);
 	}
+	
+	public void suspend(PIID piid) {
+		try {
+			if (logger.isDebugEnabled()) {
+				logger.debug("Attempting to suspend process instance with id=<{}>", piid);
+			}
+			adaptee.suspend(piid);
+			if (logger.isDebugEnabled()) {
+				logger.debug("Successfully suspended process instance with id=<{}>", piid);
+			}
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	public void resume(PIID piid) {
+		try {
+			if (logger.isDebugEnabled()) {
+				logger.debug("Attempting to resume process instance with id=<{}>", piid);
+			}
+			adaptee.resume(piid);
+			if (logger.isDebugEnabled()) {
+				logger.debug("Successfully resumed process instance with id=<{}>", piid);
+			}
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+	}
 
 	public void restart(PIID piid) {
 		try {
