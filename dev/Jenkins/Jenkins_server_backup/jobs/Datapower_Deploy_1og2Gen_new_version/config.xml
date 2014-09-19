@@ -121,13 +121,16 @@ then
             Node=1
       fi
 fi
+#get the username/deployedBy
+wget -O build-info.xml -nv --no-proxy &quot;${BUILD_URL}/api/xml&quot;
+deployedBy=&quot;$(grep -o -P &apos;(?&lt;=&lt;userName&gt;).*(?=&lt;\/userName&gt;)&apos; build-info.xml)&quot;
 
 if [ &quot;${Debug}&quot; == &quot;true&quot; ]
 then
-      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;
 
 else
-      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node}
+      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;
 fi
 
 

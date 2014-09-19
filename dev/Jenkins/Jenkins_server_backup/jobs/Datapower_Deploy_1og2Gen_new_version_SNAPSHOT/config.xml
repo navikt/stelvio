@@ -131,7 +131,7 @@ then
       mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;
 
 else
-      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=$deployedBy
+      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;
 fi
 
 
