@@ -47,30 +47,22 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
      * @parameter
      */
     private String envDomain;
-
-
     /**
      * @parameter
      */
     private String deployedBy;
 
-    /**
-     * @parameter
-     */
-    private Boolean testRun;
-
-    private String testApplication;
 
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		try {
-            updateVera(getDomain(), envConfigVersion, nonEnvConfigVersion, deployPomVersion, environment, deployedBy, veraURL, envDomain, testRun);
+            updateVera(getDomain(), envConfigVersion, nonEnvConfigVersion, deployPomVersion, environment, deployedBy, veraURL, envDomain);
 		} catch (Exception e) {
 			throw new MojoExecutionException("Failed to write config version for domain " + getDomain() + "'",e);
 		}
 	}
-    protected void updateVera(String thisDomain, String envConfigVersion, String nonEnvConfigVersion, String deployPomVersion, String environment, String deployedBy, String veraURL, String envDomain, boolean testRun){
+    protected void updateVera(String thisDomain, String envConfigVersion, String nonEnvConfigVersion, String deployPomVersion, String environment, String deployedBy, String veraURL, String envDomain){
         /*
-        This method updates three rows in Vera, one for each of the versionnumbers (environment-config-version, nonenvironment-config-version, deploy-pom-version).
+        This method updates three rows in Vera, one for each of the version number (environment-config-version, nonenvironment-config-version, deploy-pom-version).
         The application names for a domain are dp-domain-env, dp-domain-nonenv, dp-domain-pom.
         Vera is updated by three HTTP Post call, where the body is JSON.
          */
@@ -86,36 +78,16 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
 
         //Iterate the map allVersions and for each iteration make a POST
         for(Map.Entry<String, String> entry : allVersions.entrySet()){
-            ////////////////////  TEST  start/////////////////////////
-            if(testRun){
-                //Create the JSON string as if it was not a test, but do not make the post call
-                String application = veraApplicationPrefix + "-" + entry.getKey();
-                //Create the body in JSON as if not a test
-                Map<String,String> deployInfo = createMap(application, entry.getValue(), environment, deployedBy);
-                String deployInfoJson = createJsonFromMap(deployInfo);
-                getLog().debug("Actual domain info: " + deployInfoJson);
+            String versionType = entry.getKey(); // env, nonenv or pom
+            String versionNumber = entry.getValue();
+            //Build the application name
+            String application = veraApplicationPrefix + "-" + versionType;
+            //Create the body in JSON
+            Map<String,String> deployInfo = createMap(application, versionNumber, environment, deployedBy);
+            String deployInfoJson = createJsonFromMap(deployInfo);
+            //Do the POST call
+            connectToURLAndPost(deployInfoJson, veraURL);
 
-                //Create JSON string for test
-                String testEnvironment = "t1";
-                testApplication = "vera-test";
-                //Create the testbody in JSON
-                Map<String,String> deployInfoTest = createMap(testApplication, entry.getValue(), testEnvironment, deployedBy);
-                String deployInfoTestJson = createJsonFromMap(deployInfoTest);
-                getLog().debug(deployInfoTestJson);
-
-                //Do the POST call
-                connectToURLAndPost(deployInfoTestJson, veraURL);
-             ////////////////////  TEST  stop/////////////////////////
-            }else{
-                //Build the application name
-                String application = veraApplicationPrefix + "-" + entry.getKey();
-                //Create the body in JSON
-                Map<String,String> deployInfo = createMap(application, entry.getValue(), environment, deployedBy);
-                String deployInfoJson = createJsonFromMap(deployInfo);
-                getLog().debug(deployInfoJson);
-                //Do the POST call
-                connectToURLAndPost(deployInfoJson, veraURL);
-            }
         }
     }
 
@@ -128,44 +100,35 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
         The 3gen domains can be in both sones (sbs and fss).
         The 1or2gen domains get the name "dp-domain", the 3gen domains get the name "dp-domain-sone".
          */
-        boolean domainIs3Gen = checkIfDomainIs3Gen(envDomain);
         String veraPrefix = "dp-" + thisDomain;
-        if(domainIs3Gen){
-            String sone = identifySone(thisDomain, envDomain);
-            veraPrefix += "-" + sone;
-        }
+        String nameAddition = getNameAdditionSone(envDomain); //if the domain exists in both sones
+        veraPrefix += nameAddition;
+
         return veraPrefix;
     }
 
-    protected boolean checkIfDomainIs3Gen(String envDomain){
-        boolean domainIs3Gen = (envDomain != null);
-        return domainIs3Gen;
-    }
-    protected String identifySone(String thisDomain, String envDomain){
-        /*
-        This method identifies which sone the domain is deployed to. Either fss or sbs.
-         */
-        String sone = "";
-        boolean domainIs3Gen = (envDomain != null);
 
+    protected String getNameAdditionSone(String envDomain){
+        /*
+            This method identifies which sone the domain is deployed to, and decides if the application name
+            should contain the sone as a suffix.
+            Either "-fss", "-sbs" or "".
+         */
+        String nameAddition = "";
+        boolean domainIs3Gen = (envDomain != null);
         // only 3gen domains can be in both sones, have to check envDomain
         if(domainIs3Gen){
             //check if envDomain contains the word oera
             if(envDomain.toLowerCase().contains("oera".toLowerCase())){
-                sone = "sbs";
+                nameAddition = "-sbs";
             }else{
-                sone = "fss";
-            }
-        }else{
-            //sikkerhetslytter is the only 1or2gen domain in fss sone
-            if((thisDomain.toLowerCase()).equals("sikkerhetslytter")){
-                sone = "fss";
-            }else{
-                sone = "sbs";
+                nameAddition = "-fss";
             }
         }
-        return sone;
+        return nameAddition;
+
     }
+
 
     protected Map<String,String> createMap(String application, String version, String environment, String deployedBy){
         /*
@@ -223,7 +186,13 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
             wr.flush();
             wr.close();
 
-            getLog().debug("Made a Http-post towards " + path + ". Response code = " + conn.getResponseCode() + ", Response message = " + conn.getResponseMessage());
+            getLog().debug("Made a Http-post towards " + path);
+            getLog().debug("    JSON-body:" + generatedJsonString);
+            getLog().debug("    Response code: " + conn.getResponseCode());
+            getLog().debug("    Response message: " + conn.getResponseMessage());
+
+
+            conn.disconnect();
         }catch(IOException e){
             e.printStackTrace();
         }
