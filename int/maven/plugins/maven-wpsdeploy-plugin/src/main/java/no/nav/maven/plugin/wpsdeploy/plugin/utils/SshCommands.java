@@ -1,13 +1,10 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.utils;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode;
 import no.nav.maven.plugin.wpsdeploy.plugin.models.SshUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SshCommands {
-	private static final Integer SERVER_ALREADY_STARTED_EXIT_CODE = 255;
-	private static final Integer SERVER_ALREADY_STOPPED_EXIT_CODE = 246;
 	private static final String BASE_PATH = "/opt/IBM/BPM/profiles/Dmgr01/bin/";
 	private static final String BACKUP_ROOT_DIRECTORY = "/app/backup/";
 	private static final String BACKUP_FILE_PREFIX = "DmgrConfigBackup_";
@@ -21,44 +18,6 @@ public class SshCommands {
 		SshClient sshClient = new SshClient(sshUser);
 		String cmd = "sudo " + BASE_PATH + "backupConfig.sh " + BACKUP_ROOT_DIRECTORY + enviroment + "/" + BACKUP_FILE_PREFIX +"`date +%Y.%m.%d-%H.%M.%S`.zip -nostop";
 		sshClient.execute(cmd);
-	}
-
-	/**
-	 * @throws no.nav.maven.plugin.wpsdeploy.plugin.exceptions.NonZeroSshExitCode
-	 */
-	public static void bounceDeploymentManager(SshUser sshUser, String dmgrUsername, String dmgrPassword) {
-		stopDeploymentManager(sshUser, dmgrUsername, dmgrPassword);
-		startDeploymentManager(sshUser);
-	}
-
-	private static void startDeploymentManager(SshUser sshUser) {
-		SshClient sshClient = new SshClient(sshUser);
-		logger.info("Starting the deployment manager...");
-		String cmd = "sudo service dmgr start";
-		try {
-			sshClient.execute(cmd);
-		} catch (NonZeroSshExitCode e){
-			if (e.getExitCode() == SERVER_ALREADY_STARTED_EXIT_CODE) {
-				logger.info("Server was already running! (exitcode " + SERVER_ALREADY_STARTED_EXIT_CODE + ")");
-			} else {
-				throw e;
-			}
-		}
-	}
-
-	private static void stopDeploymentManager(SshUser sshUser, String dmgrUsername, String dmgrPassword) {
-		SshClient sshClient = new SshClient(sshUser);
-		logger.info("Stopping the deployment manager...");
-		String cmd = "sudo service dmgr stop";
-		try {
-			sshClient.execute(cmd);
-		} catch (NonZeroSshExitCode e){
-			if (e.getExitCode() == SERVER_ALREADY_STOPPED_EXIT_CODE){
-				logger.info("Server was already stopped! (exitcode " + SERVER_ALREADY_STOPPED_EXIT_CODE + ")");
-			} else {
-				throw e;
-			}
-		}
 	}
 
 	/**

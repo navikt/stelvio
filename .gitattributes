@@ -8428,7 +8428,6 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsde
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyUsernameTokenDetailsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyWSEndpointsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BackupWebsphereConfigMojo.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BounceDeploymentManagerMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/CreateBlaGroupsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeleteBlaGroupsMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DependencyIdentifierMojo.java -text
