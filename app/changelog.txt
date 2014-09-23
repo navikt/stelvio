@@ -2,6 +2,11 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.7
+----------------------------------
+PK-16186:
+- Amended stopBatch with capability to terminate multiple concurrent job instances.
+
 Version 4.1.6
 ----------------------------------
 PK-13845:
