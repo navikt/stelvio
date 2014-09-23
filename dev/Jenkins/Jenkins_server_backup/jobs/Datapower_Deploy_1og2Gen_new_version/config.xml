@@ -50,19 +50,19 @@
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
+          <name>DeployerPomVersion</name>
+          <description>Deployer-pom versjonsnummer</description>
+          <defaultValue>8.1.0.0</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>EnvironmentConfigVersion</name>
-          <description></description>
+          <description>Environment-configuration versjonsnummer</description>
           <defaultValue>7.10.0.6</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>NonenvironmentConfigVersion</name>
-          <description></description>
+          <description>Nonenvironment-configuration versjonsnummer</description>
           <defaultValue>7.10.0.3</defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DeployerPomVersion</name>
-          <description>Deployer-pom versjonsnummer</description>
-          <defaultValue>8.1.0.0</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>DataPowerInstance</name>

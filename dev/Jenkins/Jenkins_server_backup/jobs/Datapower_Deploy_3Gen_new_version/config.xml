@@ -35,18 +35,18 @@
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
+          <name>DeployerPomVersion</name>
+          <description>Deployer-pom versjonsnummer</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>EnvironmentConfigVersion</name>
-          <description></description>
+          <description>Environment-configuration versjonsnummer</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>NonenvironmentConfigVersion</name>
-          <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DeployerPomVersion</name>
-          <description>Datapower-deployer-pom versjonsnummer</description>
+          <description>Nonenvironment-configuration versjonsnummer</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
@@ -113,7 +113,7 @@ mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -
       <factGenerator/>
     </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com</recipients>
+      <recipients>test@example.com; test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>

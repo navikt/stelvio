@@ -3398,7 +3398,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_SNAP
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version_virtuell/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_old_version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_virtuell/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text

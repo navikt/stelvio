@@ -35,6 +35,11 @@
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
+          <name>DeployerPomRevision</name>
+          <description>Deployer-pom svn revision number</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>EnvironmentConfigVersion</name>
           <description></description>
           <defaultValue></defaultValue>
@@ -42,11 +47,6 @@
         <hudson.model.StringParameterDefinition>
           <name>NonenvironmentConfigVersion</name>
           <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>DeployerPomRevision</name>
-          <description> Datapower deployer pom svn revision number</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
