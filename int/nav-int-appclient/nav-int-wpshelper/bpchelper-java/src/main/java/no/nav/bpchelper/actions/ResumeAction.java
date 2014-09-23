@@ -24,7 +24,7 @@ public class ResumeAction extends AbstractReportAction {
 			}
 
 			public String getValue(ProcessInstanceBean processInstance) {
-				if (processInstance.getExecutionState() == 2) //Checks and aborts if the process is already running (2 = running)
+				if (!(processInstance.getExecutionState() == 11)) //Checks and aborts if the process is not suspended (11 = suspended)
 					return "OK";
 				PIID piid = processInstance.getID();
 				try {
