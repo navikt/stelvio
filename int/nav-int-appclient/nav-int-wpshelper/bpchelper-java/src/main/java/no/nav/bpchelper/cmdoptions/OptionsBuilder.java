@@ -45,7 +45,7 @@ public class OptionsBuilder {
 		options.addOption(reportFilenameOption);
 		
 		Option inputFilenameOption = OptionBuilder.withLongOpt(OptionOpts.INPUT_FILENAME).hasArg().create("if");
-		inputFilenameOption.setDescription("input filename (mandatory with action SAMORDNING");
+		inputFilenameOption.setDescription("input filename (mandatory with action SAMORDNING)");
 		inputFilenameOption.setArgName("input filename");
 		options.addOption(inputFilenameOption);
 		
@@ -78,6 +78,11 @@ public class OptionsBuilder {
 		options.addOption(activityNameOption);
 
 		options.addOption(new Option("as", "allStates", false, "filter matching all process and activity states (default: failed/terminated/stopped)"));
+		
+		Option limitOption = OptionBuilder.withLongOpt(OptionOpts.LIMIT).hasArg().create("l");
+		limitOption.setDescription("limits the number of process instances to perform the operation on");
+		limitOption.setArgName("positive int number");
+		options.addOption(limitOption);
 
 		return options;
 	}

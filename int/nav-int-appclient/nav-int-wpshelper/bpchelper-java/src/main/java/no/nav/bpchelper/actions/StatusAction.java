@@ -9,10 +9,11 @@ public class StatusAction extends AbstractAction {
 	}
 
 	public int execute() {
-		String selectClause = "COUNT(DISTINCT PROCESS_INSTANCE.PIID)";
-		String whereClause = getCriteria().toSqlString();
-
-		QueryResultSet rs = getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
+		QueryResultSet rs = getBFMConnection().getBusinessFlowManagerService().queryAll(
+				"COUNT(DISTINCT PROCESS_INSTANCE.PIID)",
+				getCriteria().toSqlString(),
+				null,
+				getCriteria().getResultRowLimit());
 
 		rs.next();
 		int stoppedProcessCount = rs.getInteger(1);

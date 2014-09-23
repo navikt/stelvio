@@ -106,6 +106,18 @@ public class OptionsValidator {
 				validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY);
 			}
 		}
+		
+		if (commandLine.hasOption(OptionOpts.LIMIT)) {
+			try {
+				int limitCountInt = Integer.parseInt(commandLine.getOptionValue(OptionOpts.LIMIT));
+				if (limitCountInt < 1) {
+					validationErrors.add("Illegal argument for option: The limit number is either zero or negative");
+				}
+			}
+			catch (NumberFormatException e) {
+				validationErrors.add("Illegal argument for option - NumberFormatException: Only ints are valid arguments for this option");
+			}			
+		}
 
 		return validationErrors;
 	}

@@ -24,7 +24,7 @@ public class SuspendAction extends AbstractReportAction {
 			}
 
 			public String getValue(ProcessInstanceBean processInstance) {
-				if (!(processInstance.getExecutionState() == 2)) //Checks and aborts if the process is not running (2 = running)
+				if (!(processInstance.getExecutionState() == ProcessInstanceBean.STATE_RUNNING)) //Checks and aborts if the process is not running
 					return "OK";
 				PIID piid = processInstance.getID();
 				try {

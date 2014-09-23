@@ -93,10 +93,12 @@ public abstract class AbstractReportAction extends AbstractAction {
 	}
 
 	protected Collection<PIID> executeQuery() {
-		String selectClause = "DISTINCT PROCESS_INSTANCE.PIID";
-		String whereClause = getCriteria().toSqlString();
 
-		QueryResultSet rs = getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
+		QueryResultSet rs = getBFMConnection().getBusinessFlowManagerService().queryAll(
+				"DISTINCT PROCESS_INSTANCE.PIID", 
+				getCriteria().toSqlString(), 
+				null, 
+				getCriteria().getResultRowLimit());
 
 		Collection<PIID> result = new ArrayList<PIID>(rs.size());
 		while (rs.next()) {

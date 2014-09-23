@@ -24,4 +24,6 @@ public interface OptionOpts {
 	String FILTER_ACTIVITY_NAME = "activityName";
 	
 	String ALL_STATES = "allStates";
+	
+	String LIMIT = "limit";
 }

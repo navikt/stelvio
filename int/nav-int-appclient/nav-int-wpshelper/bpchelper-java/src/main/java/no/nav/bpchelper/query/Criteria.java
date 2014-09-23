@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Criteria {
 	private List<Criterion> criterions = new ArrayList<Criterion>();
+	private Integer resultRowLimit = null;
 
 	public Criteria add(Criterion criterion) {
 		criterions.add(criterion);
@@ -20,5 +21,13 @@ public class Criteria {
 			sb.append("(").append(criterion.toSqlString()).append(")");
 		}
 		return sb.toString();
+	}
+
+	public Integer getResultRowLimit() {	
+		return resultRowLimit;
+	}
+
+	public void setResultRowLimit(int limitCountInt) {
+		resultRowLimit = limitCountInt;
 	}
 }

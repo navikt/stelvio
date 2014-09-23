@@ -80,6 +80,15 @@ public class CriteriaBuilder {
 				criteria.add(Restrictions.eq("ACTIVITY.TEMPLATE_NAME", activityName));
 			}
 		}
+		
+		if (commandLine.hasOption(OptionOpts.LIMIT)) {
+			criteria.setResultRowLimit(Integer.parseInt(commandLine.getOptionValue(OptionOpts.LIMIT)));
+			if(commandLine.getOptionValue(OptionOpts.ACTION).toUpperCase().equals("RESUME"))
+				criteria.add(Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_SUSPENDED));
+			
+			if(commandLine.getOptionValue(OptionOpts.ACTION).toUpperCase().equals("SUSPEND"))
+				criteria.add(Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_RUNNING));
+		}
 
 		return criteria;
 	}
