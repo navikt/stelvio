@@ -10,7 +10,7 @@
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
 	<artifactId>wpshelper-bundle</artifactId>
 	<packaging>pom</packaging>
-	<version>3.0.1-SNAPSHOT</version>
+	<version>3.0.2-SNAPSHOT</version>
 	<name>WPS Helper Bundle Module</name>
 
 	<scm>
@@ -22,7 +22,7 @@
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle
 		</scm.root>
-		<artifacts.version>3.0.0</artifacts.version>
+		<artifacts.version>3.0.2</artifacts.version>
 	</properties>
 
 	<build>
