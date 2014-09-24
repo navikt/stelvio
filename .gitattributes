@@ -9246,11 +9246,11 @@ int/stelvio-policy-sets/NAV[!!-~]LTPA[!!-~]WS-A[!!-~]Consumer.zip -text
 int/stelvio-policy-sets/NAV[!!-~]UsernameToken[!!-~]WS-A[!!-~]WSImport.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]AAReg[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]Arena[!!-~]WSImport[!!-~]Binding.zip -text
+int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]HPR[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]Tjenestebuss[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]UR[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSExport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSImport[!!-~]Binding.zip -text
-int/stelvio-policy-sets/bindings/NAV[!!-~]UsernameToken[!!-~]WS-A[!!-~]WSImport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/readme.txt -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.factorypath -text
