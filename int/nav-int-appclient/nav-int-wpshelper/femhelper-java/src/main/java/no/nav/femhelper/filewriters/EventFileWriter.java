@@ -142,14 +142,26 @@ public class EventFileWriter {
 			StringBuilder sb = new StringBuilder();
 			try {
 				List paramList = null;
+				
+				/**
+				 * PKFEIL-4692:
+				 * I forbindelse med plattformoppgraderingen fra WPS 7.0 til BPM 8.5 ser det ut som disse kallene med
+				 * adminClient.getConnectorProperties() sendt inn, bruker altfor lang tid i tillegg til å kaste exception.
+				 * Ved å kalle getFailedEventParameters uten parametere, går kallet like fort som før, men kaster fortsatt exception.
+				 * Avventer svar fra IBM gjennom PMR.
+				 */
 				if ((Constants.EVENT_TYPE_SCA).equals(event.getType())) {
-					paramList = ((SCAEvent) failedEvent).getFailedEventParameters(adminClient.getConnectorProperties());
+					//paramList = ((SCAEvent) failedEvent).getFailedEventParameters(adminClient.getConnectorProperties());
+					paramList = ((SCAEvent) failedEvent).getFailedEventParameters();
 				} else if ((Constants.EVENT_TYPE_BPC).equals(event.getType())) {
-					paramList = ((BPCEvent) failedEvent).getInputMessage(adminClient.getConnectorProperties());
+					//paramList = ((BPCEvent) failedEvent).getInputMessage(adminClient.getConnectorProperties());
+					paramList = ((BPCEvent) failedEvent).getInputMessage();
 				} else if ((Constants.EVENT_TYPE_JMS).equals(event.getType())) {
-					paramList = ((JMSEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
+					//paramList = ((JMSEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
+					paramList = ((JMSEvent) failedEvent).getPayload();
 				} else if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
-					paramList = ((MQEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
+					//paramList = ((MQEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
+					paramList = ((MQEvent) failedEvent).getPayload();
 				}
 
 				if (paramList != null) {
@@ -210,6 +222,8 @@ public class EventFileWriter {
 					resultString.append(", ");
 				}
 				if (child instanceof DataObject) {
+					resultString.append(name);
+					resultString.append("=");
 					toString((DataObject) child, resultString);
 				} else if (child instanceof List) {
 					resultString.append(name);

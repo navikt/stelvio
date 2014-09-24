@@ -14,13 +14,15 @@
 	<name>WPS Helper POM Module</name>
 
 	<modules>
-		<module>wpshelper-common-java</module>
+	<!--
+		<module>wpshelper-common-java</module>-->
 		<module>femhelper-java</module>
 		<module>femhelper-ear</module>
+		<!--
 		<module>bpchelper-java</module>
 		<module>bpchelper-ear</module>
 		<module>sibushelper-java</module>
-		<module>sibushelper-ear</module>
+		<module>sibushelper-ear</module>-->
 	</modules>
 
 	<build>
@@ -55,11 +57,13 @@
 
 	<dependencyManagement>
 		<dependencies>
+		<!--
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>wpshelper-common-java</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+		-->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>femhelper-client</artifactId>
@@ -71,6 +75,7 @@
 				<version>${project.version}</version>
 				<type>ear</type>
 			</dependency>
+			<!--
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>bpchelper-client</artifactId>
@@ -93,7 +98,7 @@
 				<version>${project.version}</version>
 				<type>ear</type>
 			</dependency>
-
+-->
 
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -216,7 +221,7 @@
 	<properties>
 		<slf4j.version>1.6.0</slf4j.version>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/branches/2013.11.05-WPS_to_BPM/nav-int-appclient/nav-int-wpshelper
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper
 		</scm.root>
 	</properties>
 
