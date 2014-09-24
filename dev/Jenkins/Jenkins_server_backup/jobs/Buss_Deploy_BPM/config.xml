@@ -108,7 +108,22 @@ else
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
-      <targets>clean ${Lifecycle} -Denvironment=${Environment} -Desb-modules-version=${ESBVersion} -Dnav-modules-version=${ESBVersion} -Dpensjon-modules-version=${ESBVersion} -Dpensjon-prosess-modules-version=${ESBVersion} -Dekstern-pensjon-modules-version=${ESBVersion} -DinteractiveMode=false -Dskip=bounce-dmgr -Desb-authorization-configuration=${esb_authorization_configuration} -Desb-nonenviroment-configuration=${esb_nonenvironment_configuration} -Desb-enviroment-configuration=${esb_environment_configuration} -Dlogging.level=${logging_level} -DfasitPasswordBase64=YWRtaW4= -DfasitUsername=admin</targets>
+      <targets>clean
+${Lifecycle}
+-Denvironment=${Environment}
+-Desb-modules-version=${ESBVersion}
+-Dnav-modules-version=${ESBVersion}
+-Dpensjon-modules-version=${ESBVersion}
+-Dpensjon-prosess-modules-version=${ESBVersion}
+-Dekstern-pensjon-modules-version=${ESBVersion}
+-DinteractiveMode=false
+-Dskip=bounce-dmgr
+-Desb-authorization-configuration=${esb_authorization_configuration}
+-Desb-nonenviroment-configuration=${esb_nonenvironment_configuration}
+-Desb-enviroment-configuration=${esb_environment_configuration}
+-Dlogging.level=${logging_level}
+-DfasitPasswordBase64=YWRtaW4=
+-DfasitUsername=admin</targets>
       <mavenName>Maven 3</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
