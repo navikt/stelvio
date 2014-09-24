@@ -10,7 +10,7 @@
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
 	<artifactId>wpshelper</artifactId>
 	<packaging>pom</packaging>
-	<version>3.0.1</version>
+	<version>3.0.2-SNAPSHOT</version>
 	<name>WPS Helper POM Module</name>
 
 	<modules>
@@ -215,8 +215,8 @@
 	</dependencyManagement>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-3.0.1</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-3.0.1</developerConnection>
+		<connection>${scm.root}</connection>
+		<developerConnection>${scm.root}</developerConnection>
 	</scm>
 	<properties>
 		<slf4j.version>1.6.0</slf4j.version>
