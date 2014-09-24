@@ -13,7 +13,7 @@ public abstract class AbstractAction implements Action {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private Properties properties;
-	private Criteria criteria;
+	protected Criteria criteria;
 	private File reportFile;
 	private File inputFile;
 	private boolean interactiveMode = true;

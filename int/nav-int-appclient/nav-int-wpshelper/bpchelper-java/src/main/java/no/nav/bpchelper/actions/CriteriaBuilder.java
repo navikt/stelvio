@@ -82,13 +82,10 @@ public class CriteriaBuilder {
 		}
 		
 		if (commandLine.hasOption(OptionOpts.LIMIT)) {
-			criteria.setResultRowLimit(Integer.parseInt(commandLine.getOptionValue(OptionOpts.LIMIT)));
-			if(commandLine.getOptionValue(OptionOpts.ACTION).toUpperCase().equals("RESUME"))
-				criteria.add(Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_SUSPENDED));
-			
-			if(commandLine.getOptionValue(OptionOpts.ACTION).toUpperCase().equals("SUSPEND"))
-				criteria.add(Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_RUNNING));
+			//This parses the int-value from the command line, the argument for the filter limit, and adds it to the threshold argument in the database/API query
+			criteria.setResultRowLimit(Integer.parseInt(commandLine.getOptionValue(OptionOpts.LIMIT)));	
 		}
+		
 
 		return criteria;
 	}
