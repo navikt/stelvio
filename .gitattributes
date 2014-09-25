@@ -3491,6 +3491,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Institusjonsopphold_CI/c
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-NAVAnsatt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-NAVOrgEnhet_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Oppgave_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-PENtjenester_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Person_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Rettskilder_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Samhandler_CI/config.xml -text
