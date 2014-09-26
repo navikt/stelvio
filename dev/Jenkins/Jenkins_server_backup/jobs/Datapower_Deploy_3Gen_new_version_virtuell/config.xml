@@ -102,7 +102,7 @@ EnvironmentClass=${Environment:0:1}
 wget -O build-info.xml -nv --no-proxy &quot;${BUILD_URL}/api/xml&quot;
 deployedBy=&quot;$(grep -o -P &apos;(?&lt;=&lt;userName&gt;).*(?=&lt;\/userName&gt;)&apos; build-info.xml)&quot;
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=https://fasit.adeo.no/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy -DdeployedBy=&quot;$deployedBy&quot;</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=https://fasit.adeo.no/conf -DenvDomain=${envConfigDomain} -Dusername=sysadmin -Dpassword=poc1234 -DdeployedBy=&quot;$deployedBy&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

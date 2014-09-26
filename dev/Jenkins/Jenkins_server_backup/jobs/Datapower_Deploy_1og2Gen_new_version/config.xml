@@ -25,6 +25,7 @@
           <description>Miljø som gatewayen skal deployes til</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>u2</string>
               <string>u3</string>
               <string>u5</string>
               <string>t0</string>

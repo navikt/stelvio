@@ -96,7 +96,7 @@
 
 EnvironmentClass=${Environment:0:1}
 
-mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=https://fasit.adeo.no/conf -DenvDomain=${envConfigDomain} -Dusername=dummy -Dpassword=dummy</command>
+mvn3 clean install -e -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddatapower.baseurl=${DataPowerInstance} -DenvConfigBaseUrlString=http://e34apsl00136.devillo.no:8080/conf -DenvDomain=${envConfigDomain} -Dusername=sysadmin -Dpassword=poc1234</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
