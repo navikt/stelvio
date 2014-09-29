@@ -283,7 +283,7 @@
           <maven-builder>
             <config>
               <installationId>Maven 3</installationId>
-              <goals>clean verify</goals>
+              <goals>clean install</goals>
               <privateRepository>false</privateRepository>
               <privateTmpdir>false</privateTmpdir>
               <pomFile>pom.xml</pomFile>
@@ -381,7 +381,7 @@
         <originalValue class="hudson.scm.SubversionSCM">
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
-              <remote>https://versjonskontroll.adeo.no/svn/kes/ehandel-kanal</remote>
+              <remote>https://versjonskontroll.adeo.no/svn/kes/ehandel-kanal/trunk/nav-ehandel-kanal</remote>
               <local>.</local>
               <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
