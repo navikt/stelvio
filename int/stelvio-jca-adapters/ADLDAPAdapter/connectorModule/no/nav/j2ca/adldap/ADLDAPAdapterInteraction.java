@@ -114,14 +114,14 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 			
 		} catch (NamingException e) {
 			log.logp(Level.SEVERE, CLASSNAME, "execute()", "Exception searching directory: " + e);
+		} finally {
+			try {
+					log.logp(Level.FINE, CLASSNAME, "execute()", "Trying to close connection");
+					context.close();
+				} catch (NamingException sc) {
+					log.logp(Level.SEVERE, CLASSNAME, "execute()", "LDAP session close failed with: " + sc);
+				}
 		}
-
-		try {
-			context.close();
-		} catch (NamingException sc) {
-			log.logp(Level.SEVERE, CLASSNAME, "execute()", "LDAP session close failed with: " + sc);
-		}
-
 		
 		log.logp(Level.FINE, CLASSNAME, "execute()", "Exit.");
 		return outRecord;
