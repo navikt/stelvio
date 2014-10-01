@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
+      <autoRebuild>false</autoRebuild>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>dmgr=`ssh -tt test@example.com &quot;/usr/bin/sudo /sbin/service dmgr status&quot;`
+apptarget=`ssh -tt test@example.com &quot;/usr/bin/sudo /sbin/service bpm-app AppTarget status&quot;`
+support=`ssh -tt test@example.com &quot;/usr/bin/sudo /sbin/service bpm-app Support status&quot;`
+messaging=`ssh -tt test@example.com &quot;/usr/bin/sudo /sbin/service bpm-app Messaging status&quot;`
+
+if [ $dmgr -neq 0 ] || [ $apptarget -neq 0 || [ $messaging -neq 0 ]
+then
+  echo &quot;Fucked&quot;
+  exit 1
+fi
+exit 0</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
