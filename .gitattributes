@@ -3663,6 +3663,9 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_pensjon/confi
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_maven/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_oppdragmediation/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_stelvio-commons-lib-test/config.xml -text
