@@ -357,6 +357,7 @@
         <string>Datapower_Deploy_3Gen_new_version</string>
         <string>Datapower_Deploy_3Gen_old_version</string>
         <string>Datapower_Service_Registry_Update</string>
+        <string>kontaktregister-difi</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -802,6 +803,31 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Datapower_Deploy_3Gen_new_version_virtuell</string>
         <string>Datapower_Deploy_3Gen_virtuell</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>SDP</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>kontaktregister-difi</string>
+        <string>kontaktregister-difi-site</string>
+        <string>kontaktregister-difi-site2</string>
+        <string>sdpkanal-site</string>
       </jobNames>
       <jobFilters/>
       <columns>
