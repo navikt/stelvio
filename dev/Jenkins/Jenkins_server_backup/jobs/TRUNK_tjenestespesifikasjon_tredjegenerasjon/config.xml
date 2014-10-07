@@ -32,7 +32,7 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
-  <quietPeriod>10</quietPeriod>
+  <quietPeriod>15</quietPeriod>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
