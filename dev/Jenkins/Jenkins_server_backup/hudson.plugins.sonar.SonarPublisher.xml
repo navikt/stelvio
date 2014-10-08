@@ -6,7 +6,7 @@
       <disabled>false</disabled>
       <serverUrl>http://sonar.devillo.no/sonar/</serverUrl>
       <mojoVersion></mojoVersion>
-      <databaseUrl>jdbc:oracle:thin:@dm01db04.adeo.no:1521:nav05</databaseUrl>
+      <databaseUrl>jdbc:oracle:thin:@a01dbfl023.adeo.no:1521:sonar</databaseUrl>
       <databaseDriver>oracle.jdbc.driver.OracleDriver</databaseDriver>
       <databaseLogin>srvsonar_p</databaseLogin>
       <databasePassword>VnF6eHNDeHZFUFpR</databasePassword>
