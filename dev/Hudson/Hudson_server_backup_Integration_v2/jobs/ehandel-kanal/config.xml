@@ -33,10 +33,10 @@
           </thresholds>
           <shouldDetectModules>false</shouldDetectModules>
           <dontComputeNew>true</dontComputeNew>
-          <high>TODO</high>
-          <normal>FIX</normal>
-          <low>FIXME</low>
-          <ignoreCase>false</ignoreCase>
+          <high>FIXME</high>
+          <normal>TODO</normal>
+          <low>XXX</low>
+          <ignoreCase>true</ignoreCase>
           <pattern></pattern>
           <excludePattern></excludePattern>
         </originalValue>
