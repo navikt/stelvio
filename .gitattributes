@@ -3658,6 +3658,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-nav/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_NAV-Tjenestebuss/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_meldingsdefinisjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_nav/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config.xml -text
