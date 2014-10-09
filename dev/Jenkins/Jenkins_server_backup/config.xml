@@ -686,6 +686,7 @@
         <string>TRUNK-pensjon</string>
         <string>TRUNK_NAV-Tjenestebuss</string>
         <string>TRUNK_tjenestespesifikasjon_ekstern</string>
+        <string>TRUNK_tjenestespesifikasjon_meldingsdefinisjon</string>
         <string>TRUNK_tjenestespesifikasjon_nav</string>
         <string>TRUNK_tjenestespesifikasjon_pensjon</string>
         <string>TRUNK_tjenestespesifikasjon_system</string>
