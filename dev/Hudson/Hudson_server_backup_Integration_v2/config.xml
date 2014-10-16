@@ -477,6 +477,29 @@
       </columns>
       <includeRegex>(2014HL2_7\.10_).*</includeRegex>
     </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>eHandel</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>ehandel-kanal</string>
+        <string>ehandel-kanal-juridisk-arkiv-klient</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
+    </listView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
