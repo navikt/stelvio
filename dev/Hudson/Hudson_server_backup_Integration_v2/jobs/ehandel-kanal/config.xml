@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Hudson er erstattet med Jenkins. Se ci.devillo.no i utvikler-image.</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>hudson-plugins-clearcase-ClearCasePublisher</string>
@@ -183,7 +183,7 @@
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
       <external-property>
         <originalValue class="hudson.tasks.junit.JUnitResultArchiver">
-          <testResults>nav-ehandel-kanal-juridisk-arkiv-klient\target\surefire-reports\*.xml, nav-ehandel-kanal-web/target/surefire-reports/*.xml, */target/surefire-reports/*.xml</testResults>
+          <testResults>nav-ehandel-kanal-web/target/surefire-reports/*.xml, */target/surefire-reports/*.xml</testResults>
           <keepLongStdio>false</keepLongStdio>
           <testDataPublishers/>
         </originalValue>
@@ -434,7 +434,7 @@
   </cascading-job-properties>
   <scm class="hudson.scm.NullSCM"/>
   <canRoam>false</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers class="vector"/>

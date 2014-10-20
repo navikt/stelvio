@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>This project is necessary for ehandel-kanal to work properly.&#xd;
+  <description>Hudson er erstattet av Jenkins. Se ci.devillo.no i utvikler-image.&lt;br&gt;&#xd;
+&lt;br&gt;&#xd;
+This project is necessary for ehandel-kanal to work properly.&#xd;
 The project nav-ehandel-kanal-juridisk-arkiv-klient must exist in Nexus (in version 1.0) and in Hudson.</description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
@@ -402,7 +404,7 @@ The project nav-ehandel-kanal-juridisk-arkiv-klient must exist in Nexus (in vers
   </cascading-job-properties>
   <scm class="hudson.scm.NullSCM"/>
   <canRoam>false</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <concurrentBuild>false</concurrentBuild>
