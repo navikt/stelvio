@@ -31,7 +31,12 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>Oracle JDK 1.7</jdk>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/15 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
@@ -42,6 +47,16 @@
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>kontaktregister-difi-site</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
+  </publishers>
   <buildWrappers/>
 </project>

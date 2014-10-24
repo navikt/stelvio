@@ -31,12 +31,7 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>Oracle JDK 1.7</jdk>
-  <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>no.nav.sdp-kanal</groupId>
