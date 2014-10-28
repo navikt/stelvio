@@ -3479,6 +3479,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Tjenestepensjon_CI/confi
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Trekk_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-Vedtak_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-layers-fkafp-privat_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-Avstemming_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-Ekstern-NAVYtelsesinfo_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-Ekstern-Pensjon-Beregning_CI/config.xml -text
