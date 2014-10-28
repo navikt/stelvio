@@ -134,6 +134,7 @@
         <string>SoapUI-U2-Pensjon-Vedtak_CI</string>
         <string>SoapUI-U2-StartStubbing_CI</string>
         <string>SoapUI-U2-StoppStubbing_CI</string>
+        <string>SoapUI-U4-Avstemming_CI</string>
         <string>SoapUI-U4-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U4-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U4-Ekstern-Pensjon-Beregning_CI</string>
