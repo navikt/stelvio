@@ -3623,7 +3623,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-Pensjon-Simulering_CI/config.xm
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-Pensjon-TilbakekrevingHendelse_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-Pensjon-UngUfor_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-Pensjon-Vedtak_CI/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-Prosess-PPEN002_behandleDodsmeldinger_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-StartStubbing_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-StoppStubbing_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Arena-2.0.0_CI/config.xml -text
