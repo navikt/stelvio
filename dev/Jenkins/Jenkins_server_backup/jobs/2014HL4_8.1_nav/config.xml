@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Denne jobben bygger en 0.0.0.1-SNAPSHOT versjon av bus-authorization, bus-environment og bus-nonenvironment fra TRUNK.&#xd;
-Kjøres automatisk rundt kl 23.</description>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -18,7 +17,7 @@ Kjøres automatisk rundt kl 23.</description>
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/configuration</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_1_0_D20141106_2014HL4/nav</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -33,49 +32,31 @@ Kjøres automatisk rundt kl 23.</description>
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
+  <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
   <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec>H 23 * * *</spec>
-    </hudson.triggers.TimerTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>@monthly</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; bus-authorization/pom.xml
-cd bus-authorization
-mvn clean deploy
-cd ..
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; bus-enviroment/pom.xml
-cd bus-enviroment
-mvn clean deploy
-cd ..
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; bus-nonenviroment/pom.xml
-cd bus-nonenviroment
-mvn clean deploy
-cd ..</command>
-    </hudson.tasks.Shell>
+    <hudson.tasks.Maven>
+      <targets>clean deploy</targets>
+      <mavenName>(Default)</mavenName>
+      <jvmOptions>-Xmx2048m -XX:MaxPermSize=256m</jvmOptions>
+      <usePrivateRepository>false</usePrivateRepository>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+    </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
-      <tasks>
-        <hudson.plugins.postbuildtask.TaskProperties>
-          <logTexts>
-            <hudson.plugins.postbuildtask.LogProperties>
-              <logText></logText>
-              <operator>AND</operator>
-            </hudson.plugins.postbuildtask.LogProperties>
-          </logTexts>
-          <EscalateStatus>false</EscalateStatus>
-          <RunIfJobSuccessful>false</RunIfJobSuccessful>
-          <script>svn revert */pom.xml</script>
-        </hudson.plugins.postbuildtask.TaskProperties>
-      </tasks>
-    </hudson.plugins.postbuildtask.PostbuildTask>
+    <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
