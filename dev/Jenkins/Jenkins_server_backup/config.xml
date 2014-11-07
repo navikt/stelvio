@@ -340,11 +340,14 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
         <string>Buss_Deploy_BPM</string>
+        <string>CI-Automatisk_Deploy-ESB-U2_(2014HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL1)</string>
         <string>CI-Automatisk_Deploy-ESB-U5_(2014HL3)</string>
         <string>CI-deploy_2014HL3_bus-config-0.0.2014.3-SNAPSHOT</string>
         <string>CI-deploy_2014HL3_buss-pom-0.0.2014.3-SNAPSHOT</string>
+        <string>CI-deploy_2014HL4_bus-config-0.0.2014.4-SNAPSHOT</string>
+        <string>CI-deploy_2014HL4_buss-pom-0.0.2014.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
         <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
@@ -668,7 +671,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status TRUNK (8.1)</name>
+      <name>Status TRUNK</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -842,6 +845,28 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 2014HL4 (8.1)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[5]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2014HL4_8\.1_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>
