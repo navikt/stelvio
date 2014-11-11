@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>mvn clean deploy av design tjenestespesifikasjon for ekstern</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>10</numToKeep>
+    <numToKeep>5</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -17,7 +17,8 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_1_0_D20141106_2014HL4</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20141110_2015HL2/spesifikasjon/implementasjon/system</remote>
+        <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -31,6 +32,7 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
+  <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -44,27 +46,31 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
-find . -name &quot;*WSIMP.import&quot; -exec R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/System.out.print_Search.py
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/cons_xml_check.py R_8_1_0_D20141106_2014HL4
-
-# Sjekker om confluence er oppe:
-if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
-# Skript som genererer automatisk dokumentasjon:
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_8_1_0_D20141106_2014HL4/ --page 90546562
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 90546584 --path R_8_1_0_D20141106_2014HL4/
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_8_1_0_D20141106_2014HL4/ 90546566
-R_8_1_0_D20141106_2014HL4/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 90546569 --path R_8_1_0_D20141106_2014HL4/ --design /home/ci/svn-repos/2014HL4/tjenester/spesifikasjon/implementasjon/</command>
-    </hudson.tasks.Shell>
+    <hudson.tasks.Maven>
+      <targets>clean deploy</targets>
+      <mavenName>(Default)</mavenName>
+      <usePrivateRepository>false</usePrivateRepository>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+    </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="test@example.com">
-      <factGenerator/>
-    </hudson.plugins.chucknorris.CordellWalkerRecorder>
+    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
+      <tasks>
+        <hudson.plugins.postbuildtask.TaskProperties>
+          <logTexts>
+            <hudson.plugins.postbuildtask.LogProperties>
+              <logText></logText>
+              <operator>AND</operator>
+            </hudson.plugins.postbuildtask.LogProperties>
+          </logTexts>
+          <EscalateStatus>false</EscalateStatus>
+          <RunIfJobSuccessful>false</RunIfJobSuccessful>
+          <script>mvn clean</script>
+        </hudson.plugins.postbuildtask.TaskProperties>
+      </tasks>
+    </hudson.plugins.postbuildtask.PostbuildTask>
+    <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>

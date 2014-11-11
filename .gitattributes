@@ -3384,6 +3384,11 @@ dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_nav/con
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_nav/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_pensjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_system/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Jenkins[!!-~]configuration/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U2_(2014HL4)/config.xml -text
