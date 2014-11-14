@@ -633,6 +633,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Moduloversikt_script</string>
       </jobNames>
       <jobFilters/>
       <columns>
