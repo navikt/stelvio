@@ -72,6 +72,7 @@
         <string>SoapUI-U2-layers-NAVAnsatt_CI</string>
         <string>SoapUI-U2-layers-NAVOrgEnhet_CI</string>
         <string>SoapUI-U2-layers-Oppgave_CI</string>
+        <string>SoapUI-U2-layers-PENtjenester_CI</string>
         <string>SoapUI-U2-layers-Person_CI</string>
         <string>SoapUI-U2-layers-Rettskilder_CI</string>
         <string>SoapUI-U2-layers-Samhandler_CI</string>
@@ -83,6 +84,7 @@
         <string>SoapUI-U2-NAV-ArbeidOgAktivitetYtelse_CI</string>
         <string>SoapUI-U2-NAV-Arbeidsgiver_CI</string>
         <string>SoapUI-U2-NAV-Arkiv_CI</string>
+        <string>SoapUI-U2-NAV-Avstemming_CI</string>
         <string>SoapUI-U2-NAV-BehandleArbeidsgiver_CI</string>
         <string>SoapUI-U2-NAV-BehandleMedlemskap_CI</string>
         <string>SoapUI-U2-NAV-BehandlePerson_CI</string>
@@ -95,6 +97,7 @@
         <string>SoapUI-U2-NAV-EUInstitusjon_CI</string>
         <string>SoapUI-U2-NAV-Familieforhold_CI</string>
         <string>SoapUI-U2-NAV-Fullmakt_CI</string>
+        <string>SoapUI-U2-NAV-Helsepersonell_CI</string>
         <string>SoapUI-U2-NAV-Henvendelse_CI</string>
         <string>SoapUI-U2-NAV-Henvendelsebehandling_CI</string>
         <string>SoapUI-U2-NAV-HPLIVEJournalbehandling_CI</string>
@@ -326,7 +329,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U4</groupRegex>
-          <namingRule>U4_2015HL1</namingRule>
+          <namingRule>U4_2014HL4</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
       </categorizationCriteria>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
@@ -878,6 +881,18 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[5]/jobNames/comparator"/>
+        <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL2_8.3_configuration_bus-authorization</string>
+        <string>2015HL2_8.3_configuration_bus-environment</string>
+        <string>2015HL2_8.3_configuration_bus-nonenvironment</string>
+        <string>2015HL2_8.3_ekstern</string>
+        <string>2015HL2_8.3_esb-release</string>
+        <string>2015HL2_8.3_esb_poms</string>
+        <string>2015HL2_8.3_layers</string>
+        <string>2015HL2_8.3_layers_dryRun</string>
+        <string>2015HL2_8.3_nav</string>
+        <string>2015HL2_8.3_NAV-Tjenestebuss</string>
+        <string>2015HL2_8.3_pensjon</string>
       </jobNames>
       <jobFilters/>
       <columns>
