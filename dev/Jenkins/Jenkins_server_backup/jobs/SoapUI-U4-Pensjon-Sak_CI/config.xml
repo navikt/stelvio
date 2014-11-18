@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_R_8_2_0_D20140509_2015HL1/pensjon/sak/pensjon-sak-test</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_1_0_D20141106_2014HL4/pensjon/sak/pensjon-sak-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Samlejobb som kjører alle skriptjobber vi har for å sjekke koden og dokumentere leveransen.</description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
+      <autoRebuild>false</autoRebuild>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_3_0_D20141114_2015HL2</remote>
+        <depthOption>infinity</depthOption>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
+    <ignoreDirPropChanges>false</ignoreDirPropChanges>
+    <filterChangelog>false</filterChangelog>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>@monthly</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path FEATURE_BRANCH_8_3_0_D20141114_2015HL2/ --page 80150748
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py FEATURE_BRANCH_R_8_2_0_D20140509_2015HL1/ 80150755
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path FEATURE_BRANCH_R_8_2_0_D20140509_2015HL1/ --page 80150759 --design &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/implementasjon/&quot;
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path FEATURE_BRANCH_R_8_2_0_D20140509_2015HL1/ --page 80150762
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/cons_xml_check.py FEATURE_BRANCH_R_8_2_0_D20140509_2015HL1
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/System.out.print_Search.py
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name &quot;*WSIMP.import&quot; -exec FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
+    <hudson.tasks.Mailer plugin="test@example.com">
+      <recipients>test@example.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>true</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
+  <buildWrappers/>
+</project>
