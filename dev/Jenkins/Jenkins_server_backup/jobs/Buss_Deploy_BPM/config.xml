@@ -132,7 +132,7 @@ ${Lifecycle}
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com; test@example.com</recipients>
+      <recipients>test@example.com, test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
