@@ -325,7 +325,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U5</groupRegex>
-          <namingRule>U5_2014HL3</namingRule>
+          <namingRule>U5_2015HL2</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U4</groupRegex>
