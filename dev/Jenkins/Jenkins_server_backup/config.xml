@@ -159,6 +159,7 @@
         <string>SoapUI-U4-layers-NAVAnsatt_CI</string>
         <string>SoapUI-U4-layers-NAVOrgEnhet_CI</string>
         <string>SoapUI-U4-layers-Oppgave_CI</string>
+        <string>SoapUI-U4-layers-PENtjenester_CI</string>
         <string>SoapUI-U4-layers-Person_CI</string>
         <string>SoapUI-U4-layers-Rettskilder_CI</string>
         <string>SoapUI-U4-layers-Samhandler_CI</string>
@@ -242,6 +243,7 @@
         <string>SoapUI-U5-layers-NAVAnsatt_CI</string>
         <string>SoapUI-U5-layers-NAVOrgEnhet_CI</string>
         <string>SoapUI-U5-layers-Oppgave_CI</string>
+        <string>SoapUI-U5-layers-PENtjenester_CI</string>
         <string>SoapUI-U5-layers-Person_CI</string>
         <string>SoapUI-U5-layers-Rettskilder_CI</string>
         <string>SoapUI-U5-layers-Samhandler_CI</string>
