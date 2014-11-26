@@ -3367,7 +3367,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_nav/con
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_CheckScripts_Leveransedokumentasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_NAV-Tjenestebuss/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-authorization/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-environment/config.xml -text
@@ -3590,6 +3589,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Institusjonsopphold_CI/c
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-NAVAnsatt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-NAVOrgEnhet_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Oppgave_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-PENtjenester_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Person_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Rettskilder_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Samhandler_CI/config.xml -text
@@ -3673,6 +3673,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Institusjonsopphold_CI/c
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-NAVAnsatt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-NAVOrgEnhet_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Oppgave_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-PENtjenester_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Person_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Rettskilder_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Samhandler_CI/config.xml -text
