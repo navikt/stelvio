@@ -3702,6 +3702,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_pensjon/confi
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/ejbdiffer_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/openam-site/config.xml -text
