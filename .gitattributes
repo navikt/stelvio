@@ -3708,6 +3708,15 @@ dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/openam-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-site-spring2-maintenance/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-site-spring3-maintenance/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-site-trunk/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-spring2-maintenance/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-spring3-maintenance/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-trunk/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-example-jaxws-consumer/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-tai-site-trunk/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/stelvio-tai-trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_maven/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_oppdragmediation/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_stelvio-commons-lib-test/config.xml -text
