@@ -895,6 +895,43 @@
       <includeRegex>(2015HL2_8\.3_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Stelvio</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>stelvio-app-site-spring2-maintenance</string>
+        <string>stelvio-app-site-spring3-maintenance</string>
+        <string>stelvio-app-site-trunk</string>
+        <string>stelvio-app-spring2-maintenance</string>
+        <string>stelvio-app-spring3-maintenance</string>
+        <string>stelvio-app-trunk</string>
+        <string>stelvio-example-jaxws-consumer</string>
+        <string>stelvio-tai-site-trunk</string>
+        <string>stelvio-tai-trunk</string>
+        <string>stelvio_trunk_int_maven</string>
+        <string>stelvio_trunk_int_oppdragmediation</string>
+        <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
+        <string>stelvio_trunk_int_stelvio-commons-lib_NEW</string>
+        <string>stelvio_trunk_int_stelvio-commons-lib_sonar</string>
+        <string>stelvio_trunk_int_systemavailability</string>
+        <string>stelvio_trunk_int_wpshelpers</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
