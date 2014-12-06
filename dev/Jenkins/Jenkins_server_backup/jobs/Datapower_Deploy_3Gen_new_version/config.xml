@@ -95,7 +95,16 @@
       <command>java -version</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2internal/content/no/nav/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
+      <command>#Check if version of deployer pom is a snapshot.
+if [ $DeployerPomVersion =~ &quot;SNAPSHOT&quot; ]
+then
+    #Set MVN_REPO
+	MVN_REPO=&quot;http://maven.adeo.no/nexus/service/local/repositories/m2internal/content&quot;
+else	
+	MVN_REPO=&quot;http://maven.adeo.no/nexus/service/local/repositories/m2snapshot/content&quot;  
+fi
+
+wget -O tempFolder.jar ${MVN_REPO}/no/nav/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
 
 unzip -p tempFolder.jar deploy.xml &gt; ./pom.xml
 
