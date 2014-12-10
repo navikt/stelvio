@@ -46,9 +46,14 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>mvn clean -e release:clean release:prepare -DdryRun=true</command>
-    </hudson.tasks.Shell>
+    <hudson.tasks.Maven>
+      <targets>clean -e release:clean release:prepare -DdryRun=true</targets>
+      <mavenName>(Default)</mavenName>
+      <jvmOptions>-Xmx2048m -Xms512m -XX:MaxPermSize=256m</jvmOptions>
+      <usePrivateRepository>false</usePrivateRepository>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+    </hudson.tasks.Maven>
   </builders>
   <publishers>
     <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
