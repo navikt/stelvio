@@ -49,7 +49,7 @@ ln -s /var/www/html/moduloversikter/moduloversikt-`date %Y%m%d`.csv /var/www/htm
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>joakim.kartveit.nav@no</recipients>
+      <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
