@@ -719,29 +719,6 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 2015HL1 (8.2)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>Moduloversikt_script</string>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2015HL1_8\.2_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>Status 2014HL3 (8.0)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -769,7 +746,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
         <string>TRUNK-configuration_bus-authorization</string>
         <string>TRUNK-configuration_bus-environment</string>
@@ -808,7 +785,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>2014HL2_7.10_CheckScripts_Leveransedokumentasjon</string>
         <string>2014HL2_7.10_configuration_bus-authorization</string>
         <string>2014HL2_7.10_configuration_bus-environment</string>
@@ -947,7 +924,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[5]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -969,7 +946,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[5]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
       </jobNames>
       <jobFilters/>
       <columns>
