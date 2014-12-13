@@ -786,23 +786,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>2014HL2_7.10_CheckScripts_Leveransedokumentasjon</string>
-        <string>2014HL2_7.10_configuration_bus-authorization</string>
-        <string>2014HL2_7.10_configuration_bus-environment</string>
-        <string>2014HL2_7.10_configuration_bus-nonenvironment</string>
-        <string>2014HL2_7.10_ekstern</string>
-        <string>2014HL2_7.10_esb-release</string>
-        <string>2014HL2_7.10_esb_poms</string>
-        <string>2014HL2_7.10_layers</string>
-        <string>2014HL2_7.10_layers_dryRun</string>
-        <string>2014HL2_7.10_nav</string>
-        <string>2014HL2_7.10_NAV-Tjenestebuss</string>
-        <string>2014HL2_7.10_pensjon</string>
-        <string>2014HL2_7.10_tjenestespesifikasjon_ekstern</string>
-        <string>2014HL2_7.10_tjenestespesifikasjon_nav</string>
-        <string>2014HL2_7.10_tjenestespesifikasjon_pensjon</string>
-        <string>2014HL2_7.10_tjenestespesifikasjon_system</string>
-        <string>2014HL2_7.10_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
         <string>2014HL3_8.0_configuration_bus-authorization</string>
         <string>2014HL3_8.0_configuration_bus-environment</string>
@@ -820,26 +803,44 @@
         <string>2014HL3_8.0_tjenestespesifikasjon_pensjon</string>
         <string>2014HL3_8.0_tjenestespesifikasjon_system</string>
         <string>2014HL3_8.0_tjenestespesifikasjon_tredjegenerasjon</string>
-        <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL1_8.2_configuration_bus-authorization</string>
-        <string>2015HL1_8.2_configuration_bus-environment</string>
-        <string>2015HL1_8.2_configuration_bus-nonenvironment</string>
-        <string>2015HL1_8.2_ekstern</string>
-        <string>2015HL1_8.2_esb-release</string>
-        <string>2015HL1_8.2_esb_poms</string>
-        <string>2015HL1_8.2_layers</string>
-        <string>2015HL1_8.2_layers_dryRun</string>
-        <string>2015HL1_8.2_nav</string>
-        <string>2015HL1_8.2_NAV-Tjenestebuss</string>
-        <string>2015HL1_8.2_pensjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_nav</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_system</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2014HL4_8.1_CheckScripts_Leveransedokumentasjon</string>
+        <string>2014HL4_8.1_configuration_bus-authorization</string>
+        <string>2014HL4_8.1_configuration_bus-environment</string>
+        <string>2014HL4_8.1_configuration_bus-nonenvironment</string>
+        <string>2014HL4_8.1_ekstern</string>
+        <string>2014HL4_8.1_esb-release</string>
+        <string>2014HL4_8.1_esb_poms</string>
+        <string>2014HL4_8.1_layers</string>
+        <string>2014HL4_8.1_layers_dryRun</string>
+        <string>2014HL4_8.1_nav</string>
+        <string>2014HL4_8.1_NAV-Tjenestebuss</string>
+        <string>2014HL4_8.1_pensjon</string>
+        <string>2014HL4_8.1_tjenestespesifikasjon_ekstern</string>
+        <string>2014HL4_8.1_tjenestespesifikasjon_nav</string>
+        <string>2014HL4_8.1_tjenestespesifikasjon_pensjon</string>
+        <string>2014HL4_8.1_tjenestespesifikasjon_system</string>
+        <string>2014HL4_8.1_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL2_8.3_configuration_bus-authorization</string>
+        <string>2015HL2_8.3_configuration_bus-environment</string>
+        <string>2015HL2_8.3_configuration_bus-nonenvironment</string>
+        <string>2015HL2_8.3_ekstern</string>
+        <string>2015HL2_8.3_esb-release</string>
+        <string>2015HL2_8.3_esb_poms</string>
+        <string>2015HL2_8.3_layers</string>
+        <string>2015HL2_8.3_layers_dryRun</string>
+        <string>2015HL2_8.3_nav</string>
+        <string>2015HL2_8.3_NAV-Tjenestebuss</string>
+        <string>2015HL2_8.3_pensjon</string>
+        <string>2015HL2_8.3_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL2_8.3_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2015HL2_8.3_tjenestespesifikasjon_nav</string>
+        <string>2015HL2_8.3_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL2_8.3_tjenestespesifikasjon_system</string>
+        <string>2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
-        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL1)</string>
-        <string>CI-Automatisk_Deploy-ESB-U5_(2014HL3)</string>
+        <string>CI-Automatisk_Deploy-ESB-U4_(2014HL4)</string>
+        <string>CI-Automatisk_Deploy-ESB-U5_(2015HL2)</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
         <string>TRUNK-configuration_bus-authorization</string>
         <string>TRUNK-configuration_bus-environment</string>
@@ -853,6 +854,7 @@
         <string>TRUNK-pensjon</string>
         <string>TRUNK_NAV-Tjenestebuss</string>
         <string>TRUNK_tjenestespesifikasjon_ekstern</string>
+        <string>TRUNK_tjenestespesifikasjon_meldingsdefinisjon</string>
         <string>TRUNK_tjenestespesifikasjon_nav</string>
         <string>TRUNK_tjenestespesifikasjon_pensjon</string>
         <string>TRUNK_tjenestespesifikasjon_system</string>
