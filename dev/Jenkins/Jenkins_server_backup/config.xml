@@ -711,7 +711,7 @@
       <columns/>
       <includeRegex>SoapUI-U[245].*</includeRegex>
       <recurse>false</recurse>
-      <showStable>false</showStable>
+      <showStable>true</showStable>
       <showStableDetail>false</showStableDetail>
       <showBuildStability>true</showBuildStability>
       <highVis>true</highVis>
