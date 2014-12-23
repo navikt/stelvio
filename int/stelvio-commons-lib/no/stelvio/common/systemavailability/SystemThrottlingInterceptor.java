@@ -2,6 +2,10 @@ package no.stelvio.common.systemavailability;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.naming.InitialContext;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
@@ -23,8 +27,25 @@ public class SystemThrottlingInterceptor extends GenericInterceptor {
 		SystemAvailabilityStorage storage = new SystemAvailabilityStorage();
 		AvailabilityRecord availRecord = storage.getAvailabilityRecord(systemName);
 		int maxSimultaneousInvocations = AvailabilityRecord.DEFAULT_MAX_SIMULTANEOUS_INVOCATIONS;
-		if (availRecord != null && availRecord.maxSimultaneousInvocations > 0) {
-			maxSimultaneousInvocations = availRecord.maxSimultaneousInvocations;
+
+		// Prøv å slå opp JNDI binding variabel maxSimultaneousInvocations for systemet
+		try {
+			InitialContext ctx = new InitialContext();
+			
+			maxSimultaneousInvocations = Integer.parseInt((String) ctx.lookup("cell/persistent/binding/stelvio-commons-lib/maxSimultaneousInvocations_" + systemName));
+			System.out.println("Getting JNDI binding variable for " + systemName + ", retrieved value " + maxSimultaneousInvocations);
+		}  catch (Exception e) {
+			Logger.getAnonymousLogger().logp(Level.SEVERE, systemName, "Get configuration values", "JNDI-resouce for maxSimultaneousInvocations is not set up on BPM! Using hard coded values from SystemAvailability Java code");
+		}
+
+		// Prøv å slå opp JNDI binding variabel defaultMaxSimultaneoutInvocations
+		try {
+			InitialContext ctx = new InitialContext();
+			
+			maxSimultaneousInvocations = Integer.parseInt((String) ctx.lookup("cell/persistent/binding/stelvio-commons-lib/defaultMaxSimultaneousInvocations"));
+			System.out.println("Getting defaultMaxSimultaneous JNDI binding variable, retrieved value " + maxSimultaneousInvocations);
+		}  catch (Exception e) {
+			Logger.getAnonymousLogger().logp(Level.SEVERE, systemName, "Get configuration values", "JNDI-resouce for maxSimultaneousInvocations is not set up on BPM! Using hard coded values from SystemAvailability Java code");
 		}
 		synchronized (currentExecutionMap) {
 			Integer currentNumber = currentExecutionMap.get(systemName);
@@ -48,7 +69,5 @@ public class SystemThrottlingInterceptor extends GenericInterceptor {
 				currentExecutionMap.put(systemName, currentNumber - 1);
 			}
 		}
-
 	}
-
 }
