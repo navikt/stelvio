@@ -719,7 +719,7 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 2014HL3 (8.0)</name>
+      <name>Status 2015HL3 (8.4)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -736,7 +736,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(2014HL3_8\.0_).*</includeRegex>
+      <includeRegex>(2015HL3_8\.4_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>
