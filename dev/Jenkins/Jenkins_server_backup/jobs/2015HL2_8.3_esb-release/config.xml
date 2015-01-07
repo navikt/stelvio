@@ -55,6 +55,9 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="test@example.com">
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>

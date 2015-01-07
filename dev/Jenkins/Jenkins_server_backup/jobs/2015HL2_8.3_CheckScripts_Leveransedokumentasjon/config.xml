@@ -59,6 +59,9 @@ find . -name &quot;*WSIMP.import&quot; -exec FEATURE_BRANCH_8_3_0_D20141114_2015
     </hudson.tasks.Shell>
   </builders>
   <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="test@example.com">
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>

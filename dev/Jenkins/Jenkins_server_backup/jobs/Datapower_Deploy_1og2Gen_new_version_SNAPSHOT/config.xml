@@ -126,9 +126,16 @@ fi
 wget -O build-info.xml -nv --no-proxy &quot;${BUILD_URL}/api/xml&quot;
 deployedBy=&quot;$(grep -o -P &apos;(?&lt;=&lt;userName&gt;).*(?=&lt;\/userName&gt;)&apos; build-info.xml)&quot;
 
+#get esb-version from Fasit
+wget -O esb-app-info.xml -nv --no-proxy --no-check-certificate &quot;https://fasit.adeo.no/conf/environments/t4/applications/esb&quot;
+esbVersion=&quot;$(grep -o -P &apos;(?&lt;=&lt;version&gt;).*(?=&lt;\/version&gt;)&apos; esb-app-info.xml)&quot;
+
 if [ &quot;${Debug}&quot; == &quot;true&quot; ]
 then
-      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;
+#disabled for POC of PK-17332
+#      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;
+
+      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DesbVersion=&quot;$esbVersion&quot; -DdeployedBy=&quot;$deployedBy&quot;
 
 else
       mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot;

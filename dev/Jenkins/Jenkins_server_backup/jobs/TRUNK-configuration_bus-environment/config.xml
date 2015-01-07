@@ -55,6 +55,9 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="test@example.com">
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
       <tasks>
         <hudson.plugins.postbuildtask.TaskProperties>
