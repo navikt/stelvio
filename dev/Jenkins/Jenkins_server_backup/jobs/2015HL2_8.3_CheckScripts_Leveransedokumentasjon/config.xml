@@ -49,7 +49,7 @@
 FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path FEATURE_BRANCH_8_3_0_D20141114_2015HL2/ --page 80150748
 FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py FEATURE_BRANCH_8_3_0_D20141114_2015HL2/ 80150755
 FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path FEATURE_BRANCH_8_3_0_D20141114_2015HL2/ --page 80150759 --design &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/implementasjon/&quot;
-FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path FEATURE_BRANCH_8_3_0_D20141114_2015HL2/ --page 80150762
+FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path FEATURE_BRANCH_8_3_0_D20141114_2015HL2/ --page 96169761
 FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/cons_xml_check.py FEATURE_BRANCH_8_3_0_D20141114_2015HL2
 FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/System.out.print_Search.py
 FEATURE_BRANCH_8_3_0_D20141114_2015HL2/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
