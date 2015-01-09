@@ -880,6 +880,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Datapower_Deploy_3Gen_new_version_virtuell</string>
         <string>Datapower_Deploy_3Gen_virtuell</string>
+        <string>Miljøstatus</string>
       </jobNames>
       <jobFilters/>
       <columns>
