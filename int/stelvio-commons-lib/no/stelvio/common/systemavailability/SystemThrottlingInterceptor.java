@@ -43,6 +43,8 @@ public class SystemThrottlingInterceptor extends GenericInterceptor {
 				Logger.getAnonymousLogger().logp(Level.SEVERE, systemName, "Get configuration values", "JNDI-resouce for maxSimultaneousInvocations is not set up on BPM! Using hard coded values from SystemAvailability Java code");
 			}
 		}
+		String infomessage = "JNDI-resouce lookup: Setting maximum allowed simultaneous invocations to " + maxSimultaneousInvocations;
+		Logger.getAnonymousLogger().logp(Level.FINE, systemName, "Get configuration valies", infomessage);
 
 		synchronized (currentExecutionMap) {
 			Integer currentNumber = currentExecutionMap.get(systemName);
