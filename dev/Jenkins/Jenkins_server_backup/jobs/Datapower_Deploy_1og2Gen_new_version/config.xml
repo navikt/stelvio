@@ -108,8 +108,8 @@ wget -O tempFolder.jar http://maven.adeo.no/nexus/service/local/repositories/m2i
 
 unzip -p tempFolder.jar deploy.xml &gt; pom.xml
 
-
 EnvironmentClass=${Environment:0:1}
+
 
 #Check if deploy is done with a proxy with MQ.
 if [ $Gateway = &quot;sikkerhetslytter&quot; ] || [ $Gateway = &quot;sdp-gw&quot; ]
