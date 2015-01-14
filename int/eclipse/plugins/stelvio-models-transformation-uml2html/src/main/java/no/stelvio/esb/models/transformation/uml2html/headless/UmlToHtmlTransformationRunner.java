@@ -29,6 +29,7 @@ public class UmlToHtmlTransformationRunner implements IApplication
 	// Argument constants
 	private final String ARGUMENT_INPUT_DIR_PATH = "-inputDirPath";
 	private final String ARGUMENT_OUTPUT_DIR_PATH = "-outputDirPath";
+	private final String ARGUMENT_SERVICEMODEL = "-servicemodel";
 	
 	private final String LOG_DIR_NAME = "logs";
 	private final String SITE_DIR_NAME = "site";
@@ -36,6 +37,7 @@ public class UmlToHtmlTransformationRunner implements IApplication
 	// Argument values
 	private File inputDirectory = null;
 	private File outputDirectory = null;
+	private Boolean skipServicemodel = null;
 	
 	@Override
 	public Object start(IApplicationContext context) throws Exception 
@@ -50,22 +52,31 @@ public class UmlToHtmlTransformationRunner implements IApplication
 		// 0 c). Configre the logger
 		File logFile = getLogFile();
 		configureLog(logFile);
-		
+
 		logger.debug("**************** Starting uml-to-html transformation ****************");
-		// 1. get uml models from input directory
-		logger.debug("1a. Searching after UML models in the input directory: " + inputDirectory.getAbsolutePath());
-		List<File> inputModelFiles = listFilesRecursive(inputDirectory, new UmlModelFilter());
-		logger.debug("1b. Found following UML models: " + inputModelFiles);
 		
-		// 2. call the uml-to-servicemodel transformation
-		logger.debug("2. Calling the uml-to-servicemodel transformation runner");
-		UmlToServicemodelTransformationRunner umlToServicemodelRunner = new UmlToServicemodelTransformationRunner();
-		File servicemodelTempFile = umlToServicemodelRunner.run(inputModelFiles);
+		File servicemodelTempFile = null;
+		
+		if (skipServicemodel == null || skipServicemodel.booleanValue() == false) {
+			// 1. get uml models from input directory
+			logger.debug("1a. Searching after UML models in the input directory: " + inputDirectory.getAbsolutePath());
+			List<File> inputModelFiles = listFilesRecursive(inputDirectory, new UmlModelFilter());
+			logger.debug("1b. Found following UML models: " + inputModelFiles);
+			
+			// 2. call the uml-to-servicemodel transformation
+			logger.debug("2. Calling the uml-to-servicemodel transformation runner");
+			UmlToServicemodelTransformationRunner umlToServicemodelRunner = new UmlToServicemodelTransformationRunner();
+			servicemodelTempFile = umlToServicemodelRunner.run(inputModelFiles);
+		}
+		
+		else {
+			logger.debug("Skipping uml-to-servicemodel transformation, using value from inputDirPath as servicemodel.");
+			servicemodelTempFile = inputDirectory;
+		}
 
 		// 3. call the servicemodel-to-html transformation
 		logger.debug("3. Calling the servicemodel-to-html transformation runner");
 		ServicemodelToHtmlTransformationRunner servicemodelToHtmlRunner = new ServicemodelToHtmlTransformationRunner();
-		//File servicemodelTempFile = new File("C:/DOCUME~1/utvikler/LOKALE~1/Temp/serviceModel3092244307676463523.tmp");
 		servicemodelToHtmlRunner.run(servicemodelTempFile, outputDirForSite.toFile());
 		
 		logger.debug("**************** Finished uml-to-html transformation ****************");
@@ -121,6 +132,7 @@ public class UmlToHtmlTransformationRunner implements IApplication
 		
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void readArguments(IApplicationContext context)
 	{
 		Map arguments = context.getArguments();
@@ -128,6 +140,7 @@ public class UmlToHtmlTransformationRunner implements IApplication
 		
 		String inputDirPath = null;
 		String outputFilePath = null;
+		skipServicemodel = new Boolean(false);
 		try
 		{
 			for (int i = 0; i < arg.length; i++) 
@@ -139,6 +152,10 @@ public class UmlToHtmlTransformationRunner implements IApplication
 				else if(arg[i].equals(ARGUMENT_OUTPUT_DIR_PATH))
 				{
 					outputFilePath = arg[i+1];
+				}
+				else if(arg[i].equals(ARGUMENT_SERVICEMODEL))
+				{
+					skipServicemodel = new Boolean(true);
 				}
 			}
 		}
@@ -154,10 +171,16 @@ public class UmlToHtmlTransformationRunner implements IApplication
 
 	private void validateArguments() 
 	{
-    	if(inputDirectory == null)
+    	if (inputDirectory == null)
     		throw new IllegalArgumentException("The input directory is null");
-    	else if(!inputDirectory.exists() || !inputDirectory.isDirectory())
-    		throw new IllegalArgumentException("The input directory " + inputDirectory.getAbsolutePath() + "  is either not existing or is not a directory.");
+    	if (inputDirectory.exists()) {
+    		if (skipServicemodel != null && skipServicemodel.booleanValue() == true && !inputDirectory.isFile())
+    			throw new IllegalArgumentException("The argument " + ARGUMENT_INPUT_DIR_PATH + "(" + inputDirectory.getAbsolutePath() + ") is not a file.");
+    		else if (!inputDirectory.isDirectory() && (skipServicemodel == null || skipServicemodel.booleanValue() == false))
+    			throw new IllegalArgumentException("The input directory " + inputDirectory.getAbsolutePath() + "  is not a directory.");
+    	}
+    	else
+    		throw new IllegalArgumentException("The input directory " + inputDirectory.getAbsolutePath() + "  does not exist.");
 	}
     
 	/**

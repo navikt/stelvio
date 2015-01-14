@@ -3,7 +3,6 @@ package no.stelvio.esb.models.transformation.diagram2img.utils;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -30,7 +29,7 @@ public class PublishFileUtils {
 		IPath diagramFilePath = getDiagramFilePath(outputDirectory, diagramUUID);
 		
 		File diagramFile = diagramFilePath.toFile();
-		File diagramDir = new File(FilenameUtils.getFullPath(diagramFilePath.toString()));
+		File diagramDir = new File(FileUtils.getFullPath(diagramFilePath.toString()));
 		
 		if(!diagramDir.isDirectory())
 		{

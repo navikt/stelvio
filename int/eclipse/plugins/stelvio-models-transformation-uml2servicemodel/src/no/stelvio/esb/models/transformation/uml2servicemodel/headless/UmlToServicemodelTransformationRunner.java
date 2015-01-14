@@ -8,14 +8,9 @@ import java.util.List;
 
 import no.stelvio.esb.models.transformation.uml2servicemodel.Activator;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.RollingFileAppender;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.Bundle;
 
 import com.ibm.xtools.transform.core.ITransformContext;
 import com.ibm.xtools.transform.core.TransformController;
@@ -38,7 +33,7 @@ public class UmlToServicemodelTransformationRunner
 	
 	public File run(List<File> inputUmlModels) 
 		throws IllegalArgumentException, TransformationValidationException, IOException
-	{	
+	{
 		logger.debug("**************** Starting uml-to-servicemodel transformation ****************");
 		
 		// 0. assign the input model list to the global variable
@@ -46,14 +41,14 @@ public class UmlToServicemodelTransformationRunner
 		this.inputUmlModels = inputUmlModels;
 		
 		// 1. validate that all uml model files from input exists and get their uri's
-		logger.debug("Validating that UML input models exists");
+		logger.debug("a. Validating that UML input models exists");
 		validateInputUmlModels();
 				
-		// 2. load transformation configuratsion file
-		URL fileUrl = Activator.getDefault().getBundle().getResource(transformationConfigFilename);		
+		// 2. load transformation configuration file
+		URL fileUrl = Activator.getDefault().getBundle().getResource(transformationConfigFilename);
 		URL boundleFileUrl = FileLocator.toFileURL(fileUrl);
 		
-		logger.debug("Loading the transformaton configuration from file: " + boundleFileUrl.getPath());
+		logger.debug("b. Loading the transformaton configuration from file: " + boundleFileUrl.getPath());
 		//Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
 		//URL fileURL = bundle.getEntry(transformationConfigFilename);
 		ITransformConfig config = TransformConfigUtil.loadConfiguration(boundleFileUrl);
@@ -62,24 +57,32 @@ public class UmlToServicemodelTransformationRunner
 		ITransformContext context = config.getForwardContext();
 
 		// 4. source has to be set, even if not used. We are setting it to ArrayList containing one empty string
-		logger.debug("Setting the source for the transformation configuration");
+		logger.debug("c. Setting the source for the transformation configuration");
 		setSource(context);
 		
 		// 5. set auxiliary properties (source, target and checks) to the context
-		logger.debug("Setting the auxiliary properties for the transformation configuration");
+		logger.debug("d. Setting the auxiliary properties for the transformation configuration");
 		setAuxiliaryProperties(context);
 		
 		// 6. run the transformation with modified context (source and target)
-		logger.debug("Validating the transformation configuration");
+		logger.debug("e. Validating the transformation configuration");
 		validateContext(config, context);
 		
+		//saveConfigToFile(config, context);
+		
 		// 7. Running the transformation
-		logger.debug("Executing the transformation");
+		logger.debug("f. Executing the transformation");
 		TransformController controller = TransformController.getInstance();
 		IStatus status = controller.execute(config, context, false, false, null);
+		
+		
 		logger.debug("Transformation execution went ok: " + status.isOK());
-		if(!status.isOK())
+		if (!status.isOK())
 			throw new RuntimeException("Transformation did not complete; " + status.getMessage());
+		
+		logger.debug("File size: " + outputTempModelFile.length());
+		if (outputTempModelFile.length() == 0)
+			throw new RuntimeException("Transformation did not complete; Temp file size was 0!");
 
 		logger.debug("Transformation result is placed in file: " + outputTempModelFile.getAbsolutePath());
 		
@@ -152,7 +155,7 @@ public class UmlToServicemodelTransformationRunner
 			
 	private void createOutputTempModelFile() throws IOException 
 	{
-		outputTempModelFile = File.createTempFile(outputTempModelName, null);		
+		outputTempModelFile = File.createTempFile(outputTempModelName, null);
 	}
 	
 	private File getOrCreateOutputTempModelFile() throws IOException

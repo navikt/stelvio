@@ -2,7 +2,7 @@
 <feature
       id="no.stelvio.esb.models.transformation.uml2html"
       label="Stelvio uml2html transformation"
-      version="1.0.4"
+      version="1.0.5"
       provider-name="Ismar Slomic">
 
    <plugin
@@ -28,13 +28,6 @@
 
    <plugin
          id="no.stelvio.esb.models.transformation.uml2servicemodel"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.io"
          download-size="0"
          install-size="0"
          version="0.0.0"

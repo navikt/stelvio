@@ -6,8 +6,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
@@ -176,7 +174,7 @@ public class PublishFileUtils {
 				interfaceNamespace, interfaceName, operationName);
 		
 		File operationFile = operationFilePath.toFile();
-		File operationDir = new File(FilenameUtils.getFullPath(operationFilePath.toString()));
+		File operationDir = new File(FileUtils.getFullPath(operationFilePath.toString()));
 		
 		if(!operationDir.isDirectory())
 		{
@@ -220,7 +218,7 @@ public class PublishFileUtils {
 		IPath complextypeFilePath = getComplextypeFilePath(outputDirectory, namespace, name);
 		
 		File complextypeFile = complextypeFilePath.toFile();
-		File complextypeDir = new File(FilenameUtils.getFullPath(complextypeFilePath.toString()));
+		File complextypeDir = new File(FileUtils.getFullPath(complextypeFilePath.toString()));
 		
 		if(!complextypeDir.isDirectory())
 		{
@@ -259,7 +257,7 @@ public class PublishFileUtils {
 		IPath diagramFilePath = getDiagramFilePath(outputDirectory, diagramUUID);
 		
 		File diagramFile = diagramFilePath.toFile();
-		File diagramDir = new File(FilenameUtils.getFullPath(diagramFilePath.toString()));
+		File diagramDir = new File(FileUtils.getFullPath(diagramFilePath.toString()));
 		
 		if(!diagramDir.isDirectory())
 		{
@@ -338,7 +336,7 @@ public class PublishFileUtils {
 		IPath frontpageFilePath = getFrontpageFilePath(outputDirectory);
 		
 		File frontpageFile = frontpageFilePath.toFile();
-		File frontpageDir = new File(FilenameUtils.getFullPath(frontpageFilePath.toString()));
+		File frontpageDir = new File(FileUtils.getFullPath(frontpageFilePath.toString()));
 		
 		if(!frontpageDir.isDirectory())
 		{
@@ -363,7 +361,7 @@ public class PublishFileUtils {
 		IPath frontpageFilePath = getServicemodelFrontpageFilePath(outputDirectory);
 		
 		File frontpageFile = frontpageFilePath.toFile();
-		File frontpageDir = new File(FilenameUtils.getFullPath(frontpageFilePath.toString()));
+		File frontpageDir = new File(FileUtils.getFullPath(frontpageFilePath.toString()));
 		
 		if(!frontpageDir.isDirectory())
 		{
@@ -387,7 +385,7 @@ public class PublishFileUtils {
 		IPath frontpageFilePath = getInformationmodelFrontpageFilePath(outputDirectory);
 		
 		File frontpageFile = frontpageFilePath.toFile();
-		File frontpageDir = new File(FilenameUtils.getFullPath(frontpageFilePath.toString()));
+		File frontpageDir = new File(FileUtils.getFullPath(frontpageFilePath.toString()));
 		
 		if(!frontpageDir.isDirectory())
 		{

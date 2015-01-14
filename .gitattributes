@@ -7737,6 +7737,7 @@ int/eclipse/plugins/stelvio-models-transformation-diagram2img/src/main/java/no/s
 int/eclipse/plugins/stelvio-models-transformation-diagram2img/src/main/java/no/stelvio/esb/models/transformation/diagram2img/headless/DiagramToImageFileTransformation.java -text
 int/eclipse/plugins/stelvio-models-transformation-diagram2img/src/main/java/no/stelvio/esb/models/transformation/diagram2img/headless/DiagramToImageFileTransformationRunner.java -text
 int/eclipse/plugins/stelvio-models-transformation-diagram2img/src/main/java/no/stelvio/esb/models/transformation/diagram2img/headless/UmlModelFilter.java -text
+int/eclipse/plugins/stelvio-models-transformation-diagram2img/src/main/java/no/stelvio/esb/models/transformation/diagram2img/utils/FileUtils.java -text
 int/eclipse/plugins/stelvio-models-transformation-diagram2img/src/main/java/no/stelvio/esb/models/transformation/diagram2img/utils/PublishFileUtils.java -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/META-INF/MANIFEST.MF -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/build.properties -text
@@ -7748,6 +7749,7 @@ int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/jav
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/java/no/stelvio/esb/models/transformation/servicemodel2html/WebPublishOperations.java -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/java/no/stelvio/esb/models/transformation/servicemodel2html/utils/DateUtils.java -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/java/no/stelvio/esb/models/transformation/servicemodel2html/utils/DependencyUtils.java -text
+int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/java/no/stelvio/esb/models/transformation/servicemodel2html/utils/FileUtils.java -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/java/no/stelvio/esb/models/transformation/servicemodel2html/utils/PublishFileUtils.java -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/resources/html-template/ComplexTypes-template.html -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/resources/html-template/Frontpage-informationmodel-template.html -text
