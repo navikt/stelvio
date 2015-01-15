@@ -45,6 +45,9 @@
 										<li class="package">no.nav
 											<xsl:apply-templates select="//childPackages[../@name='no.nav' and ../../@name = 'tjenestemodell']" mode="servicemodel"/>
 										</li>
+										<li class="package">no
+											<xsl:apply-templates select="//childPackages[../@name='no' and ../../@name = 'tjenestemodell']" mode="servicemodel"/>
+										</li>
 									</ul>
 								</div>
 							</div>
