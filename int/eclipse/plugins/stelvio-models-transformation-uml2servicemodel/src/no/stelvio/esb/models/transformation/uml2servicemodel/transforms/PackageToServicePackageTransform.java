@@ -20,7 +20,6 @@ import com.ibm.xtools.transform.authoring.SubmapExtractor;
 import com.ibm.xtools.transform.core.AbstractContentExtractor;
 import com.ibm.xtools.transform.core.AbstractRule;
 import com.ibm.xtools.transform.core.TransformException;
-
 import no.stelvio.esb.models.service.metamodel.ComplexType;
 import no.stelvio.esb.models.service.metamodel.Diagram;
 import no.stelvio.esb.models.service.metamodel.ServiceInterface;
@@ -32,6 +31,7 @@ import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemod
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ComplexTypeToComplexTypeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.DiagramToDiagramTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.EnumerationToComplexTypeTransform;
+import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.InterfaceToServiceInterfaceForComponentTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.InterfaceToServiceInterfaceTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.PackageToServicePackageTransform;
 
@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.query.conditions.Condition;
 
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -144,6 +145,16 @@ public class PackageToServicePackageTransform extends MapTransform {
       + "_EAnnotations$ContentsToDiagrams_UsingDiagramToDiagram_Extractor";//$NON-NLS-1$
 
   /**
+   * The 'PackageToServicePackage PackagedElement$OwnedElement To
+   * ServiceInterface Using InterfaceToServiceInterfaceForComponent Extractor'
+   * id <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static final String PACKAGETOSERVICEPACKAGE_PACKAGED_ELEMENT$OWNED_ELEMENT_TO_SERVICE_INTERFACE_USING_INTERFACETOSERVICEINTERFACEFORCOMPONENT_EXTRACTOR = PACKAGETOSERVICEPACKAGE_TRANSFORM
+      + "_PackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor";//$NON-NLS-1$
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -193,6 +204,7 @@ public class PackageToServicePackageTransform extends MapTransform {
     add(getPackagedElementToComplexTypes_UsingComplexTypeToComplexType_Extractor(registry));
     add(getPackagedElementToComplexTypes_UsingEnumerationToComplexType_Extractor(registry));
     add(getEAnnotations$ContentsToDiagrams_UsingDiagramToDiagram_Extractor(registry));
+    add(getPackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor(registry));
   }
 
 	/**
@@ -480,6 +492,63 @@ public class PackageToServicePackageTransform extends MapTransform {
             EcorePackage.Literals.EMODEL_ELEMENT__EANNOTATIONS,
             "contents"));
     return extractor;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected AbstractContentExtractor getPackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor(
+      Registry registry) {
+    SubmapExtractor extractor = new SubmapExtractor(
+        PACKAGETOSERVICEPACKAGE_PACKAGED_ELEMENT$OWNED_ELEMENT_TO_SERVICE_INTERFACE_USING_INTERFACETOSERVICEINTERFACEFORCOMPONENT_EXTRACTOR,
+        Uml2servicemodelMessages.PackageToServicePackage_Transform_PackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor,
+        registry.get(
+            InterfaceToServiceInterfaceForComponentTransform.class,
+            new DirectFeatureAdapter(
+                ServiceMetamodelPackage.Literals.SERVICE_PACKAGE__SERVICE_INTERFACE)),
+        new DirectFeatureAdapter(
+            UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT,
+            "ownedElement"));
+    extractor.setAcceptCondition(new Condition() {
+      public boolean isSatisfied(Object object) {
+        return acceptPackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor((org.eclipse.uml2.uml.Package) object);
+      }
+    });
+    return extractor;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected boolean acceptPackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor(
+      org.eclipse.uml2.uml.Package Package_src) {
+    try {
+      org.eclipse.emf.common.util.EList<org.eclipse.uml2.uml.Element> liste1 = Package_src
+          .getOwnedElements();
+      for (org.eclipse.uml2.uml.Element e : liste1) {
+        org.eclipse.emf.common.util.EList<org.eclipse.uml2.uml.Stereotype> liste2 = e
+            .getAppliedStereotypes();
+        for (org.eclipse.uml2.uml.Stereotype s : liste2) {
+          if ("Definition".equals(s.getName())) {
+            return true;
+          }
+        }
+      }
+      return false;
+    } catch (Exception e) {
+      String message = MessageFormat
+          .format(Uml2servicemodelMessages.exception_extractor_accept,
+              new String[] {
+                  Uml2servicemodelMessages.PackageToServicePackage_Transform,
+                  Uml2servicemodelMessages.PackageToServicePackage_Transform_PackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor,
+                  Package_src == null ? null : Package_src
+                      .getQualifiedName() });
+      throw new TransformException(message, e, null);
+    }
   }
 
 }

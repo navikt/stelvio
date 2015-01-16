@@ -43,14 +43,10 @@ public class WebPublishFrontpage {
 		File xsltFile = PublishFileUtils.getBoundleFileForPath(xsltFrontpageFilePath);
 		Transformer transformer = tFactory.newTransformer(new StreamSource(xsltFile));
 
-		transformer.setParameter(paramOutputDirPath,
-				outputDirectory.getAbsolutePath());
-		transformer.setParameter(paramCurrentFilePath,
-				frontpageFile.getAbsolutePath());
-		transformer.setParameter(paramInformationmodelFilePath,
-				frontpageServicemodelFile.getAbsolutePath());
-		transformer.setParameter(paramServicemodelcurrentFilePath,
-				frontpageInformationmodelFile.getAbsolutePath());
+		transformer.setParameter(paramOutputDirPath, outputDirectory.getAbsolutePath());
+		transformer.setParameter(paramCurrentFilePath, frontpageFile.getAbsolutePath());
+		transformer.setParameter(paramInformationmodelFilePath, frontpageServicemodelFile.getAbsolutePath());
+		transformer.setParameter(paramServicemodelcurrentFilePath, frontpageInformationmodelFile.getAbsolutePath());
 		
 		transformer.transform(new StreamSource(inputFile),
 				new StreamResult(new FileOutputStream(frontpageFile)));

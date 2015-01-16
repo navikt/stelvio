@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--xtools2_universal_type_manager--><mappingRoot com.ibm.xtools.transform.authoring.mapping.featureFilterMode="advanced" domainID="com.ibm.xtools.transform.authoring.mapping.ecore2ecore" targetNamespace="http://no.stelvio.esb.models.transformation.uml2servicemodel.Uml2servicemodel/1.0.0" xmlns="http://www.ibm.com/2006/ccl/Mapping" xmlns:ext="http://www.ibm.com/xtools/transform/authoring/mapping/model/extensions" xmlns:map="http://no.stelvio.esb.models.transformation.uml2servicemodel.Uml2servicemodel/1.0.0">
+<?xml version="1.0" encoding="UTF-8"?><!--xtools2_universal_type_manager--><mappingRoot xmlns="http://www.ibm.com/2006/ccl/Mapping" com.ibm.xtools.transform.authoring.mapping.featureFilterMode="advanced" domainID="com.ibm.xtools.transform.authoring.mapping.ecore2ecore" targetNamespace="http://no.stelvio.esb.models.transformation.uml2servicemodel.Uml2servicemodel/1.0.0" xmlns:ext="http://www.ibm.com/xtools/transform/authoring/mapping/model/extensions" xmlns:map="http://no.stelvio.esb.models.transformation.uml2servicemodel.Uml2servicemodel/1.0.0">
     <input path="/plugin/org.eclipse.uml2.uml/model/UML.ecore" var="src"/>
     <input genModelUri="" path="/resource/stelvio-models-service-uml-profile/profiles/NAV_UML_Profile.epx" var="src2"/>
     <input genModelUri="" path="pathmap://XSD_PROFILES/XSDProfile.epx" var="src3"/>
@@ -70,6 +70,23 @@ return stereotype != null;</code>
             <input path="eAnnotations[-1]/contents" var="contents_src"/>
             <output path="diagrams" var="diagrams_tgt"/>
             <submap ref="map:DiagramToDiagram"/>
+        </mapping>
+        <mapping>
+            <input path="packagedElement[-1]/ownedElement" var="ownedElement_src"/>
+            <output path="serviceInterface" var="serviceInterface_tgt"/>
+            <submap ref="map:InterfaceToServiceInterfaceForComponent"/>
+            <condition>
+                <code language="java">org.eclipse.emf.common.util.EList&lt;org.eclipse.uml2.uml.Element&gt; liste1 = Package_src.getOwnedElements();&#13;
+for (org.eclipse.uml2.uml.Element e : liste1) {&#13;
+	org.eclipse.emf.common.util.EList&lt;org.eclipse.uml2.uml.Stereotype&gt; liste2 = e.getAppliedStereotypes();&#13;
+	for (org.eclipse.uml2.uml.Stereotype s : liste2) {&#13;
+		if ("Definition".equals(s.getName())) {&#13;
+			return true;&#13;
+		}&#13;
+	}&#13;
+}&#13;
+return false;</code>
+            </condition>
         </mapping>
     </mappingDeclaration>
     <mappingDeclaration name="ComplexTypeToComplexType">
@@ -158,6 +175,14 @@ for (org.eclipse.uml2.uml.Comment comment : comments) &#13;
             <input path="generalization[-1]/target" var="target_src"/>
             <output path="generalizations" var="generalizations_tgt"/>
             <submap ref="map:ComplexTypeToComplexType"/>
+            <condition com.ibm.xtools.transform.authoring.mapping.conditionUsage="srcFilter">
+                <code language="java">for (Stereotype stereotype : target_src.getAppliedStereotypes()) {&#13;
+	if (stereotype.getName() == "complexType") {&#13;
+		return true;&#13;
+	}&#13;
+}&#13;
+return false;</code>
+            </condition>
         </mapping>
     </mappingDeclaration>
     <mappingDeclaration name="EnumerationToComplexType">
@@ -760,6 +785,221 @@ Attachment_tgt.setUUID(xmiURI);</code>
         <mapping>
             <input path="tilFeltNavn" var="tilFeltNavn_src"/>
             <output path="mappingToAttributeName" var="mappingToAttributeName_tgt"/>
+        </mapping>
+    </mappingDeclaration>
+    <mappingDeclaration name="InterfaceToServiceInterfaceForComponent">
+        <input path="$src/type('Interface')" var="Interface_src"/>
+        <output path="type('ServiceInterface')" var="ServiceInterface_tgt"/>
+        <mapping>
+            <input path="name" var="name_src"/>
+            <output path="name" var="name_tgt"/>
+        </mapping>
+        <mapping>
+            <input path="ownedComment[-1]/body" var="body_src"/>
+            <output path="description" var="description_tgt"/>
+            <custom>
+                <code language="java">org.eclipse.emf.common.util.EList&lt;org.eclipse.uml2.uml.Comment&gt; comments = Interface_src.getOwnedComments();&#13;
+for (org.eclipse.uml2.uml.Comment comment : comments) &#13;
+{&#13;
+	org.eclipse.uml2.uml.Stereotype docStereotype = comment.getAppliedStereotype("Default::Documentation");&#13;
+	if (docStereotype != null) &#13;
+	{&#13;
+		ServiceInterface_tgt.setDescription(comment.getBody());&#13;
+	}&#13;
+}</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <output path="UUID" var="UUID_tgt"/>
+            <custom>
+                <code language="java">String xmiURI = Interface_src.eResource().getURIFragment(Interface_src);&#13;
+ServiceInterface_tgt.setUUID(xmiURI);</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <output path="namespace" var="namespace_tgt"/>
+            <custom>
+                <code language="java">org.eclipse.uml2.uml.Element eier = Interface_src.getOwner();&#13;
+if (eier != null) {&#13;
+	org.eclipse.emf.common.util.EList&lt;org.eclipse.uml2.uml.Stereotype&gt; liste = eier.getAppliedStereotypes();&#13;
+	for (org.eclipse.uml2.uml.Stereotype s : liste) {&#13;
+		if ("Definition".equals(s.getName())) {&#13;
+			String targetNamespace = (String) eier.getValue(s, "targetNamespace");&#13;
+			ServiceInterface_tgt.setNamespace(targetNamespace);&#13;
+			break;&#13;
+		}&#13;
+	}&#13;
+}</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <output path="version" var="version_tgt"/>
+            <custom>
+                <code language="java">String version = null;&#13;
+org.eclipse.uml2.uml.Package interfacePackage = Interface_src.getNearestPackage();&#13;
+if (interfacePackage != null) {&#13;
+	org.eclipse.uml2.uml.Stereotype stereotype = interfacePackage.getAppliedStereotype("XSDProfile::schema");&#13;
+	if (stereotype != null) {&#13;
+		version = (String) interfacePackage.getValue(stereotype, "version");&#13;
+	}&#13;
+	else {&#13;
+		// NearestPackage er normalt sett en vX-mappe uten "schema", så vi må enda en package opp (getNestingPackage)&#13;
+		interfacePackage = interfacePackage.getNestingPackage();&#13;
+		if (interfacePackage != null) {&#13;
+			stereotype = interfacePackage.getAppliedStereotype("XSDProfile::schema");&#13;
+			if (stereotype != null) {&#13;
+				version = (String) interfacePackage.getValue(stereotype, "version");&#13;
+			}&#13;
+		}&#13;
+	}&#13;
+}&#13;
+&#13;
+if (version != null) {&#13;
+	ServiceInterface_tgt.setVersion(version);&#13;
+}</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <input path="ownedOperation" var="ownedOperation_src"/>
+            <output path="serviceOperations" var="serviceOperations_tgt"/>
+            <submap ref="map:OperationToServiceOperationForComponent"/>
+        </mapping>
+    </mappingDeclaration>
+    <mappingDeclaration name="OperationToServiceOperationForComponent">
+        <input path="$src/type('Operation')stereotype[$src2/type('Tjeneste')]" var="Operation_src"/>
+        <output path="type('ServiceOperation')" var="ServiceOperation_tgt"/>
+        <mapping>
+            <input path="ownedParameter[-1]" var="ownedParameter_src"/>
+            <output path="inputMessage" var="inputMessage_tgt"/>
+            <submap ref="map:ParameterToMessage"/>
+            <condition com.ibm.xtools.transform.authoring.mapping.conditionUsage="customExtractor">
+                <code language="java">java.util.Collection l = new java.util.ArrayList();&#13;
+      &#13;
+      org.eclipse.emf.common.util.EList&lt;Parameter&gt; parameters = Operation_src.getOwnedParameters();&#13;
+      for (Parameter parameter : parameters) &#13;
+      {&#13;
+    	  boolean isInParameter = parameter.getDirection().getValue() == org.eclipse.uml2.uml.ParameterDirectionKind.IN;&#13;
+    	  boolean isException = parameter.isException();&#13;
+    	  if(isInParameter &amp;&amp; !isException)&#13;
+    	  {&#13;
+    		  l.add(parameter);&#13;
+    		  return l;&#13;
+    	  }&#13;
+      }&#13;
+      return l;</code>
+            </condition>
+        </mapping>
+        <mapping>
+            <input path="name" var="name_src"/>
+            <output path="name" var="name_tgt"/>
+        </mapping>
+        <mapping>
+            <output path="UUID" var="UUID_tgt"/>
+            <custom>
+                <code language="java">String xmiURI = Operation_src.eResource().getURIFragment(Operation_src);&#13;
+ServiceOperation_tgt.setUUID(xmiURI);</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <output path="namespace" var="namespace_tgt"/>
+            <custom>
+                <code language="java">org.eclipse.uml2.uml.Package interfacePackage = Operation_src.getNearestPackage();&#13;
+org.eclipse.emf.common.util.EList&lt;org.eclipse.uml2.uml.Element&gt; liste1 = interfacePackage.getOwnedElements();&#13;
+&#13;
+for (org.eclipse.uml2.uml.Element e : liste1) {&#13;
+	org.eclipse.emf.common.util.EList&lt;org.eclipse.uml2.uml.Stereotype&gt; liste2 = e.getAppliedStereotypes();&#13;
+	&#13;
+	for (org.eclipse.uml2.uml.Stereotype s : liste2) {&#13;
+		if ("Definition".equals(s.getName())) {&#13;
+			// Vi er på en &lt;Component&gt; stereotypet "Definition"&#13;
+			String targetNamespace = (String) e.getValue(s, "targetNamespace");&#13;
+			ServiceOperation_tgt.setNamespace(targetNamespace);&#13;
+			break;&#13;
+		}&#13;
+	}&#13;
+}</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <output path="version" var="version_tgt"/>
+            <custom>
+                <code language="java">String version = null;&#13;
+&#13;
+org.eclipse.uml2.uml.Package interfacePackage = Operation_src.getNearestPackage();&#13;
+if (interfacePackage != null) {&#13;
+	org.eclipse.uml2.uml.Stereotype stereotype = interfacePackage.getAppliedStereotype("XSDProfile::schema");&#13;
+	if (stereotype != null) {&#13;
+		version = (String) interfacePackage.getValue(stereotype, "version");&#13;
+	} else {&#13;
+		// NearestPackage er normalt sett en vX-mappe uten "schema", så vi må enda en package opp (getNestingPackage)&#13;
+		interfacePackage = interfacePackage.getNestingPackage();&#13;
+		if (interfacePackage != null) {&#13;
+			stereotype = interfacePackage.getAppliedStereotype("XSDProfile::schema");&#13;
+			if (stereotype != null) {&#13;
+				version = (String) interfacePackage.getValue(stereotype, "version");&#13;
+			}&#13;
+		}&#13;
+	}&#13;
+}&#13;
+&#13;
+if (version != null) {&#13;
+	ServiceOperation_tgt.setVersion(version);&#13;
+}</code>
+            </custom>
+        </mapping>
+        <mapping>
+            <input path="tjenestemetadata/kortBeskrivelse" var="kortBeskrivelse_src"/>
+            <output path="description" var="description_tgt"/>
+        </mapping>
+        <mapping>
+            <input path="$Operation_src" var="Operation_src"/>
+            <output path="serviceMetadata" var="serviceMetadata_tgt"/>
+            <submap ref="map:OperationToOperationMetadata"/>
+        </mapping>
+        <mapping>
+            <input path="ownedParameter[-1]" var="ownedParameter_src"/>
+            <output path="outputMessage" var="outputMessage_tgt"/>
+            <submap ref="map:ParameterToMessage"/>
+            <condition com.ibm.xtools.transform.authoring.mapping.conditionUsage="customExtractor">
+                <code language="java">java.util.Collection l = new java.util.ArrayList();&#13;
+      &#13;
+      org.eclipse.emf.common.util.EList&lt;Parameter&gt; parameters = Operation_src.getOwnedParameters();&#13;
+      for (Parameter parameter : parameters) &#13;
+      {&#13;
+    	  boolean isOutParameter = parameter.getDirection().getValue() == org.eclipse.uml2.uml.ParameterDirectionKind.OUT;&#13;
+    	  boolean isException = parameter.isException();&#13;
+    	  if(isOutParameter &amp;&amp; !isException)&#13;
+    	  {&#13;
+    		  l.add(parameter);&#13;
+    		  return l;&#13;
+    	  }&#13;
+      }&#13;
+      return l;</code>
+            </condition>
+        </mapping>
+        <mapping>
+            <input path="ownedParameter" var="ownedParameter_src"/>
+            <output path="faults" var="faults_tgt"/>
+            <submap ref="map:ParameterToFault"/>
+            <condition com.ibm.xtools.transform.authoring.mapping.conditionUsage="srcFilter">
+                <code language="java">boolean isOutParameter = ownedParameter_src.getDirection().getValue() == org.eclipse.uml2.uml.ParameterDirectionKind.OUT;&#13;
+boolean isException = ownedParameter_src.isException();&#13;
+return isOutParameter &amp;&amp; isException;</code>
+            </condition>
+        </mapping>
+        <mapping>
+            <input path="ownedComment" var="ownedComment_src"/>
+            <output path="attachments" var="attachments_tgt"/>
+            <submap ref="map:UrlToAttachment"/>
+        </mapping>
+        <mapping>
+            <input path="ownedComment[-1]/body" var="body_src"/>
+            <output path="behaviourRules" var="behaviourRules_tgt"/>
+        </mapping>
+        <mapping>
+            <input path="endringslogg" var="endringslogg_src"/>
+            <output path="changelog" var="changelog_tgt"/>
+            <submap ref="map:EndringsloggToChangelog"/>
         </mapping>
     </mappingDeclaration>
 </mappingRoot>

@@ -15,14 +15,11 @@ import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemod
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ComplexTypeToComplexTypeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.PropertyToAttributeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.UrlToAttachmentTransform;
-
-import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.query.conditions.Condition;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -50,7 +47,6 @@ import com.ibm.xtools.transform.core.TransformException;
  * @generated
  */
 public class ComplexTypeToComplexTypeTransform extends MapTransform {
-	//private Logger logger = Logger.getLogger(ComplexTypeToComplexTypeTransform.class);
 
 	/**
    * The transform id <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -600,83 +596,47 @@ public class ComplexTypeToComplexTypeTransform extends MapTransform {
    * @generated
    */
   protected AbstractContentExtractor getGeneralization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor(Registry registry) {
-	    SubmapExtractor extractor = new SubmapExtractor(
-	        COMPLEXTYPETOCOMPLEXTYPE_GENERALIZATION$TARGET_TO_GENERALIZATIONS_USING_COMPLEXTYPETOCOMPLEXTYPE_EXTRACTOR,
-	        Uml2servicemodelMessages.ComplexTypeToComplexType_Transform_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor,
-	        registry.get(
-	            ComplexTypeToComplexTypeTransform.class,
-	            new DirectFeatureAdapter(
-	                ServiceMetamodelPackage.Literals.COMPLEX_TYPE__GENERALIZATIONS)),
-	        new DirectFeatureAdapter(
-	            UMLPackage.Literals.CLASSIFIER__GENERALIZATION,
-	            "target"));
-		
-		// TEST: Ikke map primitive typer
-		extractor.setFilterCondition(new Condition() {
-	      public boolean isSatisfied(Object object) {
-	        return filterTargetToGeneralizations_UsingComplexTypeToComplexType_Extractor((Element) object);
-	      }
-	    });
-		
-	    return extractor;
-	  }
-	  
-	  
-	  protected boolean filterTargetToGeneralizations_UsingComplexTypeToComplexType_Extractor(
-	      Element element_src) {
-	    try {
-	      //org.eclipse.uml2.uml.Stereotype stereotype = element_src.getAppliedStereotype("XSDProfile::complexType");
-	      //return stereotype != null;
-	    	
-	    	/*
-	    	if (element_src != null) {
-	    		logger.debug("-----");
-	    		
-	    		// Stereotypes:
-	    		int i = 1;
-		    	for (Stereotype stereotype : element_src.getAppliedStereotypes()) {
-		    		logger.debug("TKN - stereotype-name "+i+": " + stereotype.getName());
-		    		logger.debug("TKN - stereotype-label "+i+": " + stereotype.getLabel());
-		    		logger.debug("TKN - stereotype-qualified name "+i+": " + stereotype.getQualifiedName());
-		    	}
-		    	
-		    	// Modell:
-		    	if (element_src.getModel() != null) {
-		    		logger.debug("TKN - Modell-Name: " + element_src.getModel().getName());
-		    		logger.debug("TKN - Modell-Label: " + element_src.getModel().getLabel());
-		    		logger.debug("TKN - Modell-getQualifiedName: " + element_src.getModel().getQualifiedName());
-		    		if (element_src.getModel().getNamespace() != null) {
-		    			logger.debug("TKN - Modell-getNamespace-getQualifiedName: " + element_src.getModel().getNamespace().getQualifiedName());
-		    		}
-		    	}
-		    	
-		    	// Keywords:
-		    	i = 1;
-		    	for (String keyword : element_src.getKeywords()) {
-		    		logger.debug("TKN - Nokkelord " + i + ": " + keyword);
-		    		i++;
-		    	}
-	    	}
-	    	else {
-	    		logger.debug("TKN - element_src er null");
-	    	}
-	    	*/
+    SubmapExtractor extractor = new SubmapExtractor(
+        COMPLEXTYPETOCOMPLEXTYPE_GENERALIZATION$TARGET_TO_GENERALIZATIONS_USING_COMPLEXTYPETOCOMPLEXTYPE_EXTRACTOR,
+        Uml2servicemodelMessages.ComplexTypeToComplexType_Transform_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor,
+        registry.get(
+            ComplexTypeToComplexTypeTransform.class,
+            new DirectFeatureAdapter(
+                ServiceMetamodelPackage.Literals.COMPLEX_TYPE__GENERALIZATIONS)),
+        new DirectFeatureAdapter(
+            UMLPackage.Literals.CLASSIFIER__GENERALIZATION,
+            "target"));
+    extractor.setFilterCondition(new Condition() {
+      public boolean isSatisfied(Object object) {
+        return filterGeneralization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor((Element) object);
+      }
+    });
+    return extractor;
+  }
 
-	    	for (Stereotype stereotype : element_src.getAppliedStereotypes()) {
-	    		if (stereotype.getName() == "complexType") {
-	    			return true;
-	    		}
-	    	}
-	    	return false;
-	    } catch (Exception e) {
-	      String message = MessageFormat
-	          .format(Uml2servicemodelMessages.exception_extractor_source_filter,
-	              new String[] {
-	                  Uml2servicemodelMessages.ComplexTypeToComplexType_Transform,
-	                  Uml2servicemodelMessages.ComplexTypeToComplexType_Transform_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor,
-	                  element_src == null ? null
-	                      : element_src.toString() });
-	      throw new TransformException(message, e, null);
-	    }
-	  }
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected boolean filterGeneralization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor(
+      Element target_src) {
+    try {
+      for (Stereotype stereotype : target_src.getAppliedStereotypes()) {
+        if (stereotype.getName() == "complexType") {
+          return true;
+        }
+      }
+      return false;
+    } catch (Exception e) {
+      String message = MessageFormat
+          .format(Uml2servicemodelMessages.exception_extractor_source_filter,
+              new String[] {
+                  Uml2servicemodelMessages.ComplexTypeToComplexType_Transform,
+                  Uml2servicemodelMessages.ComplexTypeToComplexType_Transform_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor,
+                  target_src == null ? null : target_src
+                      .toString() });
+      throw new TransformException(message, e, null);
+    }
+  }
 }

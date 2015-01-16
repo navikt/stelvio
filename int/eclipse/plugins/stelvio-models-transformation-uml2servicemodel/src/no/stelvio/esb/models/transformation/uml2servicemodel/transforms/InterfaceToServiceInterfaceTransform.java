@@ -4,8 +4,22 @@
  */
 package no.stelvio.esb.models.transformation.uml2servicemodel.transforms;
 
-import com.ibm.icu.text.MessageFormat;
+import no.stelvio.esb.models.service.metamodel.ServiceInterface;
+import no.stelvio.esb.models.service.metamodel.ServiceMetamodelPackage;
+import no.stelvio.esb.models.service.metamodel.ServiceOperation;
+import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemodelMessages;
 
+import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.OperationToServiceOperationTransform;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.query.conditions.Condition;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.UMLPackage;
+
+import com.ibm.icu.text.MessageFormat;
 import com.ibm.xtools.transform.authoring.CreateRule;
 import com.ibm.xtools.transform.authoring.CustomRule;
 import com.ibm.xtools.transform.authoring.DirectFeatureAdapter;
@@ -16,26 +30,9 @@ import com.ibm.xtools.transform.authoring.MoveRule;
 import com.ibm.xtools.transform.authoring.Registry;
 import com.ibm.xtools.transform.authoring.RuleExtension;
 import com.ibm.xtools.transform.authoring.SubmapExtractor;
-
 import com.ibm.xtools.transform.core.AbstractContentExtractor;
 import com.ibm.xtools.transform.core.AbstractRule;
 import com.ibm.xtools.transform.core.TransformException;
-
-import no.stelvio.esb.models.service.metamodel.ServiceInterface;
-import no.stelvio.esb.models.service.metamodel.ServiceMetamodelPackage;
-import no.stelvio.esb.models.service.metamodel.ServiceOperation;
-
-import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemodelMessages;
-
-import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.OperationToServiceOperationTransform;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.query.conditions.Condition;
-
-import org.eclipse.uml2.uml.Interface;
-import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.UMLPackage;
 
 /**
  * An implementation of the 'InterfaceToServiceInterfaceTransform' from the

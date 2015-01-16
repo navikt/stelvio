@@ -7800,10 +7800,12 @@ int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvi
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/EndringsloggToChangelogTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/EnumerationToComplexTypeTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/FaultMetaDataToFaultTransform.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/InterfaceToServiceInterfaceForComponentTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/InterfaceToServiceInterfaceTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/MainTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/NokkelindikatorToOperationMetadataTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/OperationToOperationMetadataTransform.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/OperationToServiceOperationForComponentTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/OperationToServiceOperationTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/PackageToServicePackageTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/ParameterToComplexTypeTransform.java -text

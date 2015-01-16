@@ -28,8 +28,7 @@ public class ServicemodelToHtmlTransformationRunner {
 		// TODO: validate
 
 		// 1. create output directory if it does not exists
-		logger.debug("1. Creating output directory "
-				+ outputDirectory.getAbsolutePath());
+		logger.debug("1. Creating output directory " + outputDirectory.getAbsolutePath());
 		outputDirectory.mkdir();
 
 		// 2. copy shared stylesheet directory to the output directory

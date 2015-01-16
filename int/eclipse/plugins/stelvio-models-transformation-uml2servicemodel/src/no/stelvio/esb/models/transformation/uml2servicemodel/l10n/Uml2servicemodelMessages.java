@@ -203,6 +203,13 @@ public class Uml2servicemodelMessages extends NLS {
    * 
    * @generated
    */
+  public static String PackageToServicePackage_Transform_PackagedElement$OwnedElementToServiceInterface_UsingInterfaceToServiceInterfaceForComponent_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
 	public static String ComplexTypeToComplexType_Transform;
 
 	/**
@@ -1044,6 +1051,160 @@ public class Uml2servicemodelMessages extends NLS {
    * @generated
    */
   public static String PropertyMappingToAttribute_Transform_TilFeltNavnToMappingToAttributeName_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_Create_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_NameToName_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_OwnedComment$BodyToDescription_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_ToUUID_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_ToNamespace_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_ToVersion_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String InterfaceToServiceInterfaceForComponent_Transform_OwnedOperationToServiceOperations_UsingOperationToServiceOperationForComponent_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_Create_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_OwnedParameterToInputMessage_UsingParameterToMessage_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_NameToName_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_ToUUID_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_ToNamespace_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_ToVersion_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_Tjenestemetadata$KortBeskrivelseToDescription_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_Operation_TjenesteToServiceMetadata_UsingOperationToOperationMetadata_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_OwnedParameterToOutputMessage_UsingParameterToMessage_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_OwnedParameterToFaults_UsingParameterToFault_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_OwnedCommentToAttachments_UsingUrlToAttachment_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_OwnedComment$BodyToBehaviourRules_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperationForComponent_Transform_EndringsloggToChangelog_UsingEndringsloggToChangelog_Extractor;
 
   /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

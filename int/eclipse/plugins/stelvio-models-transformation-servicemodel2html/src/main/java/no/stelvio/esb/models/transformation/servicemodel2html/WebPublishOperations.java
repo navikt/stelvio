@@ -77,8 +77,7 @@ public class WebPublishOperations {
 		serializer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
 		// Use the simple XPath API to select a nodeIterator.
-		NodeIterator nl = XPathAPI
-				.selectNodeIterator(doc, "//serviceInterface");
+		NodeIterator nl = XPathAPI.selectNodeIterator(doc, "//serviceInterface");
 
 		List<ServiceInterface> serviceInterfaceList = new ArrayList<ServiceInterface>();
 		Node n;
@@ -89,8 +88,7 @@ public class WebPublishOperations {
 			String uuid = nnm.getNamedItem("UUID").getNodeValue();
 			String namespace = nnm.getNamedItem("namespace").getNodeValue();
 
-			ServiceInterface serviceInterface = factory
-					.createServiceInterface();
+			ServiceInterface serviceInterface = factory.createServiceInterface();
 			serviceInterface.setName(name);
 			serviceInterface.setUUID(uuid);
 			serviceInterface.setNamespace(namespace);
@@ -107,9 +105,35 @@ public class WebPublishOperations {
 			List<ServiceOperation> serviceOperationList = new ArrayList<ServiceOperation>();
 			while ((operationNode = operationsIterator.nextNode()) != null) {
 				NamedNodeMap nnm = operationNode.getAttributes();
-				String name = nnm.getNamedItem("name").getNodeValue();
-				String uuid = nnm.getNamedItem("UUID").getNodeValue();
-				String namespace = nnm.getNamedItem("namespace").getNodeValue();
+				String name = null;
+				String uuid = null;
+				String namespace = null;
+				try {
+					name = nnm.getNamedItem("name").getNodeValue();
+					uuid = nnm.getNamedItem("UUID").getNodeValue();
+					namespace = nnm.getNamedItem("namespace").getNodeValue();
+				}
+				catch (Exception e) {
+					String feilmelding = "";
+					if (name == null) {
+						feilmelding += "Name var null";
+					} else {
+						feilmelding += "Name: " + name;
+					}
+					
+					if (uuid == null) {
+						feilmelding += ", uuid var null";
+					} else {
+						feilmelding += ", UUID: " + uuid;
+					}
+
+					if (namespace == null) {
+						feilmelding += ", namespace var null";
+					} else {
+						feilmelding += ", namespace: " + namespace;
+					}
+					logger.debug("FEIL! " + feilmelding + " (" + e.getMessage() + ")");
+				}
 
 				ServiceOperation serviceOperation = factory
 						.createServiceOperation();
