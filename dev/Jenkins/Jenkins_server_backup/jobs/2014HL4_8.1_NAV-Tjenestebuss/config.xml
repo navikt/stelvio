@@ -34,7 +34,7 @@ http://e34wasl00228.devillo.no/8.1/site/</description>
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -53,8 +53,8 @@ echo &quot;FERDIG MED SVN1&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>echo $DISPLAY
-# DISPLAY=:0
-xvfb-run /opt/IBM/SDP2/eclipse -data &quot;$HOME/svn-repos/2014HL4/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;$HOME/svn-repos/2014HL4/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.1/&quot; -consoleLog --displaystacktrace | tee $HOME/scripts/tempFiles/2014HL4_NAV-Tjenestebuss.log
+# xvfb-run
+DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;$HOME/RSA/workspace/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;$HOME/svn-repos/2014HL4/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.1/&quot; -consoleLog --displaystacktrace | tee $HOME/scripts/tempFiles/2014HL4_NAV-Tjenestebuss.log
 
 echo &quot;FERDIG MED ECLIPSE1&quot;
 sleep 1s</command>
@@ -67,7 +67,7 @@ else
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;$HOME/svn-repos/2014HL4/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;$HOME/svn-repos/2014HL4/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.1/&quot; -consoleLog | tee $HOME/scripts/tempFiles/2014HL4_NAV-Tjenestebuss.log
+      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;$HOME/RSA/workspace/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;$HOME/svn-repos/2014HL4/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.1/&quot; -consoleLog | tee $HOME/scripts/tempFiles/2014HL4_NAV-Tjenestebuss.log
 
 echo &quot;FERDIG MED ECLIPSE2&quot;
 sleep 1s</command>
