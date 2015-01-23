@@ -4,9 +4,11 @@
   <description>Deploy-jobb for å deploye til et ønsket BPM U-miljø.&#xd;
 &#xd;
 Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd;
-- CI-Automatisk_Deploy-ESB-U5_(2014HL3)&#xd;
-- CI-Automatisk_Deploy-ESB-U2_(TRUNK)&#xd;
-- CI-Automatisk_Deploy-ESB-U4_(2015HL1)</description>
+- CI-Automatisk_Deploy-ESB-U4_(2014HL4)&#xd;
+- CI-Automatisk_Deploy-ESB-U2_(TRUNK -2015HL1)&#xd;
+- CI-Automatisk_Deploy-ESB-U5_(2015HL2)&#xd;
+- CI-Automatisk_Deploy-ESB-U3_(2015HL3)&#xd;
+</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>15</numToKeep>
@@ -23,9 +25,9 @@ Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>u2</string>
+              <string>u3</string>
               <string>u4</string>
               <string>u5</string>
-              <string>u15</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
