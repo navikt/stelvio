@@ -877,23 +877,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>2014HL3_8.0_CheckScripts_Leveransedokumentasjon</string>
-        <string>2014HL3_8.0_configuration_bus-authorization</string>
-        <string>2014HL3_8.0_configuration_bus-environment</string>
-        <string>2014HL3_8.0_configuration_bus-nonenvironment</string>
-        <string>2014HL3_8.0_ekstern</string>
-        <string>2014HL3_8.0_esb-release</string>
-        <string>2014HL3_8.0_esb_poms</string>
-        <string>2014HL3_8.0_layers</string>
-        <string>2014HL3_8.0_layers_dryRun</string>
-        <string>2014HL3_8.0_nav</string>
-        <string>2014HL3_8.0_NAV-Tjenestebuss</string>
-        <string>2014HL3_8.0_pensjon</string>
-        <string>2014HL3_8.0_tjenestespesifikasjon_ekstern</string>
-        <string>2014HL3_8.0_tjenestespesifikasjon_nav</string>
-        <string>2014HL3_8.0_tjenestespesifikasjon_pensjon</string>
-        <string>2014HL3_8.0_tjenestespesifikasjon_system</string>
-        <string>2014HL3_8.0_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>2014HL4_8.1_CheckScripts_Leveransedokumentasjon</string>
         <string>2014HL4_8.1_configuration_bus-authorization</string>
         <string>2014HL4_8.1_configuration_bus-environment</string>
@@ -929,7 +912,25 @@
         <string>2015HL2_8.3_tjenestespesifikasjon_pensjon</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_system</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2015HL3_8.4_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL3_8.4_configuration_bus-authorization</string>
+        <string>2015HL3_8.4_configuration_bus-environment</string>
+        <string>2015HL3_8.4_configuration_bus-nonenvironment</string>
+        <string>2015HL3_8.4_ekstern</string>
+        <string>2015HL3_8.4_esb-release</string>
+        <string>2015HL3_8.4_esb_poms</string>
+        <string>2015HL3_8.4_layers</string>
+        <string>2015HL3_8.4_layers_dryRun</string>
+        <string>2015HL3_8.4_nav</string>
+        <string>2015HL3_8.4_NAV-Tjenestebuss</string>
+        <string>2015HL3_8.4_pensjon</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_nav</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_system</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
+        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2014HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U5_(2015HL2)</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
