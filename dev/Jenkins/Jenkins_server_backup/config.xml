@@ -51,6 +51,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Miljøoversikt_autogenret_side</string>
         <string>SoapUI-U2-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U2-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U2-Ekstern-Pensjon-Beregning_CI</string>
@@ -933,6 +934,14 @@
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2014HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U5_(2015HL2)</string>
+        <string>CI-deploy_2014HL4_bus-config-0.0.2014.4-SNAPSHOT</string>
+        <string>CI-deploy_2014HL4_buss-pom-0.0.2014.4-SNAPSHOT</string>
+        <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
+        <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
+        <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
         <string>TRUNK-configuration_bus-authorization</string>
         <string>TRUNK-configuration_bus-environment</string>
