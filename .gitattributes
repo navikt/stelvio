@@ -3386,6 +3386,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version_virtuel
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_virtuell/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Miljøoversikt_autogenret_side/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Miljøstatus/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Server[!!-~]status/config.xml -text
