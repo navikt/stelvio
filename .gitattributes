@@ -7768,6 +7768,7 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpServiceLocator.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/Verifikasjon.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerifikasjonProxy.java -text svneol=unset#text/plain
+int/eclipse/plugins/pom.xml -text
 int/eclipse/plugins/stelvio-models-service-metamodel/META-INF/MANIFEST.MF -text
 int/eclipse/plugins/stelvio-models-service-metamodel/build.properties -text
 int/eclipse/plugins/stelvio-models-service-metamodel/model/ServiceMetamodel.ecore -text
