@@ -51,7 +51,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>Miljøoversikt_autogenret_side</string>
         <string>SoapUI-U2-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U2-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U2-Ekstern-Pensjon-Beregning_CI</string>
@@ -412,7 +411,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U5</groupRegex>
-          <namingRule>U5_2015HL2</namingRule>
+          <namingRule>U5_2015HL1</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U4</groupRegex>
@@ -901,6 +900,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>2015HL3 8.4 tjenestespesifikasjon_meldingsdefinisjon</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -917,7 +917,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 2015HL1 (8.2)</name>
+      <name>Status Trunk (8.3)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1129,28 +1129,6 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status Trunk (8.3)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2015HL2_8\.3_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>Stelvio</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -1186,6 +1164,47 @@
       </columns>
       <recurse>false</recurse>
     </listView>
+    <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 2015 HL1 (8.2)</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>2015HL1_8.2 NAV_Tjenestebuss</string>
+        <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL1_8.2_configuration_bus-authorization</string>
+        <string>2015HL1_8.2_configuration_bus-environment</string>
+        <string>2015HL1_8.2_configuration_bus-nonenvironment</string>
+        <string>2015HL1_8.2_ekstern</string>
+        <string>2015HL1_8.2_esb-release</string>
+        <string>2015HL1_8.2_esb_poms</string>
+        <string>2015HL1_8.2_layers</string>
+        <string>2015HL1_8.2_layers_dryRun</string>
+        <string>2015HL1_8.2_nav</string>
+        <string>2015HL1_8.2_pensjon</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_nav</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_system</string>
+        <string>2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <org.jenkinsci.plugins.categorizedview.IndentedJobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>true</recurse>
+      <groupingRules/>
+      <categorizationCriteria/>
+    </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
