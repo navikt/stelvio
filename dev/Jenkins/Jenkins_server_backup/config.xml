@@ -917,7 +917,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status TRUNK (8.2)</name>
+      <name>Status 2015HL1 (8.2)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1129,7 +1129,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 2015HL2 (8.3)</name>
+      <name>Status Trunk (8.3)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
