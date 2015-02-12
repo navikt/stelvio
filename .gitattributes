@@ -3350,7 +3350,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_nav/con
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2014HL4_8.1_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2[!!-~]NAV_Tjenestebuss/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_CheckScripts_Leveransedokumentasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-authorization/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-environment/config.xml -text
@@ -3368,14 +3367,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_nav/con
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_NAV-Tjenestebuss/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_nav/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_pensjon/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_ekstern/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_nav/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_pensjon/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_tjenestespesifikasjon_system/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL3[!!-~]8.4[!!-~]tjenestespesifikasjon_meldingsdefinisjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Jenkins[!!-~]configuration/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U3_(2015HL3)/config.xml -text
