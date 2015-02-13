@@ -50,7 +50,7 @@ find . -name &quot;*WSIMP.import&quot; -exec R_8_2_0_D20150209_2015HL1/esb-tools
 R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/System.out.print_Search.py
 R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
 R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
-R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/cons_xml_check.py esb
+R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/cons_xml_check.py R_8_2_0_D20150209_2015HL1
 
 # Sjekker om confluence er oppe:
 if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
@@ -58,10 +58,10 @@ if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;
 R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_8_2_0_D20150209_2015HL1/ --page 96146505
 R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 96146525 --path R_8_2_0_D20150209_2015HL1/
 R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_8_2_0_D20150209_2015HL1/ 96146509
-R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 96146517 --path R_8_2_0_D20150209_2015HL1/ --design /home/ci/svn-repos/design2015HL1/tjenester/spesifikasjon/implementasjon/
+R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 96146517 --path R_8_2_0_D20150209_2015HL1/ --design /home/ci/svn-repos/2015HL1/tjenester/D20150210_2015HL1/spesifikasjon/implementasjon/
 
 # Oppdaterer http://confluence.adeo.no/display/stelvio/Scripts+in+use+in+the+Integration+team+%28Hudson+server%29:
-esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/</command>
+R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py R_8_2_0_D20150209_2015HL1/esb-tools/esb-scripts/bin/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
