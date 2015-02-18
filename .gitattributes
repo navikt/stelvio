@@ -3319,6 +3319,7 @@ dev/Jenkins/Jenkins_server_backup/hudson.maven.MavenModuleSet.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.model.UpdateCenter.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.analysis.core.GlobalSettings.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.cigame.GamePublisher.xml -text
+dev/Jenkins/Jenkins_server_backup/hudson.plugins.git.GitTool.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.sonar.SonarPublisher.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.sonar.SonarRunnerInstallation.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.scm.CVSSCM.xml -text
