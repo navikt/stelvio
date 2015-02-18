@@ -3759,7 +3759,9 @@ dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml 
 dev/Jenkins/Jenkins_server_backup/jobs/ejbdiffer_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/nav-datapower-lib/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/openam-site/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/poc-aura-datapower-maven-plugin/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-site-spring2-maintenance/config.xml -text
