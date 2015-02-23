@@ -58,7 +58,7 @@
             <version>0.3-incubating</version>
         </dependency>
 	</dependencies>
-	
+
 	<scm>
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-datapower-plugin</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-datapower-plugin</developerConnection>
