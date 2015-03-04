@@ -3376,6 +3376,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2014HL4_bus-config-0.0.2014.4-S
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2014HL4_buss-pom-0.0.2014.4-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower[!!-~]AURA[!!-~]deploy[!!-~]simpleloopbackservice/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_SNAPSHOT/config.xml -text
