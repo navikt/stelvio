@@ -3433,6 +3433,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Journal_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Journalbehandling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Medlemskap_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Oppgave_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Oppgave_v1_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Oppgavebehandling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Oppholdsstatus_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Opptjening_CI/config.xml -text
