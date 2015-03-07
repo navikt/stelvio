@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>mvn clean deploy av design tjenestespesifikasjon for system</description>
+  <description>mvn clean verify av design tjenestespesifikasjon for system</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -47,7 +47,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean deploy</targets>
+      <targets>clean verify</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
