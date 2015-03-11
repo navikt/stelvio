@@ -1,15 +1,17 @@
 package no.nav.datapower.xmlmgmt.command;
 
+import java.util.ArrayList;
+
 import no.nav.datapower.xmlmgmt.DeviceFileStore;
 
 public class CreateDirCommand extends AbstractDoActionCommand {
 
 	private final DeviceFileStore location;
-	private final String dirPath;
+	private final ArrayList<String> dirPaths;
 	
-	public CreateDirCommand(final DeviceFileStore location, final String dirPath) {
+	public CreateDirCommand(final DeviceFileStore location, final ArrayList<String> dirPaths) {
 		this.location = location;
-		this.dirPath = dirPath;
+		this.dirPaths = dirPaths;
 	}
 /*	
 	public String format() {
@@ -26,9 +28,11 @@ public class CreateDirCommand extends AbstractDoActionCommand {
 */
 	protected void addCommandBody(StringBuffer builder) {
 		builder.append("<CreateDir>\r\n");
-		builder.append("<Dir>");
-		builder.append(location.getDevicePath(dirPath));
-		builder.append("</Dir>\r\n");
+        for(String dirPath : dirPaths) {
+            builder.append("<Dir>");
+            builder.append(location.getDevicePath(dirPath));
+            builder.append("</Dir>\r\n");
+        }
 		builder.append("</CreateDir>\r\n");
 	}
 }
