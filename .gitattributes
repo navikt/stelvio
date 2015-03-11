@@ -8827,9 +8827,17 @@ int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/co
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SaveConfigCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SetFileCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/XMLMgmtCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/resources/logback.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigIntTest.java -text
 int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
 int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
 int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
+int/maven/utilities/datapower-xml-mgmt/src/test/resources/configuration.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/test/resources/deployment-policy.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/test/resources/logback.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/test/resources/minconfig.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/test/resources/testconfig.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/test/resources/testdeploymentpolicy.xml -text
 int/maven/utilities/maven-configuration-common/pom.xml -text
 int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
 int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain

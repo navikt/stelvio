@@ -32,7 +32,6 @@ public class XMLMgmtSessionTester {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**
