@@ -1,6 +1,8 @@
 package no.nav.datapower.xmlmgmt;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,9 +34,12 @@ public class XMLMgmtRequest {
 	}
 		
 	public void addCreateDirCommands(DeviceFileStore location, List<String> dirs) {
+
+        List<File> fileList = new ArrayList<File>();
 		for (String dir : dirs) {
-			addCommand(new CreateDirCommand(location, dir));
+            fileList.add(new File(dir));
 		}
+        addCommand(new CreateDirCommand(location, fileList));
 	}
 	
 	public void addSetFileCommands(DeviceFileStore location, Map<String, String> files) {
