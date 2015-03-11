@@ -29,12 +29,12 @@ public class CreateDirCommand extends AbstractDoActionCommand {
 	}
 */
 	protected void addCommandBody(StringBuffer builder) {
-		builder.append("<CreateDir>\r\n");
         for(File dirPath : dirPaths) {
+            builder.append("<CreateDir>\r\n");
             builder.append("<Dir>");
             builder.append(location.getDevicePath(DPFileUtils.replaceSeparator(dirPath, '/')));
             builder.append("</Dir>\r\n");
+            builder.append("</CreateDir>\r\n");
         }
-		builder.append("</CreateDir>\r\n");
 	}
 }
