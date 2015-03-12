@@ -263,7 +263,7 @@ public class XMLMgmtSession {
         } catch (IOException e) {
             throw new XMLMgmtException("Failed to Base64 encode file data", e);
         }
-        log.debug("ImportFile request: \n" + request);
+        log.trace("ImportFile request: \n" + request);
         return doRequest(request);
     }
 
@@ -290,7 +290,7 @@ public class XMLMgmtSession {
         XMLMgmtRequest request = createRequest();
         DoImportWithDeploymentPolicyCommand command = new DoImportWithDeploymentPolicyCommand.Builder(format, base64Config, deploymentPolicy).build();
         request.addCommand(command);
-        log.info(request.toString());
+        log.debug(request.toString());
         String response = doRequest(request);
         log.debug(response);
 //        validateResult(extractResult(response));
