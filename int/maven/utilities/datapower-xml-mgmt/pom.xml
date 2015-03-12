@@ -52,31 +52,6 @@
         </dependency>
 	</dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>.</directory>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-xml-mgmt</tagBase>
-                    <goals>deploy</goals>
-                </configuration>
-            </plugin>
-        </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav-jackrabbit</artifactId>
-                <version>${jackrabbit.version}</version>
-            </extension>
-        </extensions>
-    </build>
-
     <scm>
         <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/datapower-xml-mgmt</connection>
         <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/datapower-xml-mgmt</developerConnection>
