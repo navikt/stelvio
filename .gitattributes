@@ -3386,6 +3386,9 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version_virtuell/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_virtuell/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_4Gen/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_4Gen_2/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_4Gen_3/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
@@ -3406,6 +3409,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandleArbeidsgiver_CI/con
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandleMedlemskap_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandlePerson_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-BehandleTrekk_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Bisys-Journal-Oppdatering_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Dokumentbehandling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Dokumentbestilling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-EESSIBlankett_CI/config.xml -text
@@ -3761,6 +3765,8 @@ dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml 
 dev/Jenkins/Jenkins_server_backup/jobs/ejbdiffer_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x-site/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/nav-datapower-lib/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/openam-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/poc-aura-datapower-maven-plugin/config.xml -text
