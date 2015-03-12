@@ -89,6 +89,7 @@
         <string>SoapUI-U2-NAV-BehandleMedlemskap_CI</string>
         <string>SoapUI-U2-NAV-BehandlePerson_CI</string>
         <string>SoapUI-U2-NAV-BehandleTrekk_CI</string>
+        <string>SoapUI-U2-NAV-Bisys-Journal-Oppdatering_CI</string>
         <string>SoapUI-U2-NAV-Dokumentbehandling_CI</string>
         <string>SoapUI-U2-NAV-Dokumentbestilling_CI</string>
         <string>SoapUI-U2-NAV-EESSIBlankett_CI</string>
@@ -481,6 +482,8 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
+        <string>modig-security-1.0.x</string>
+        <string>modig-security-1.0.x-site</string>
         <string>stelvio_trunk_int_maven</string>
         <string>stelvio_trunk_int_oppdragmediation</string>
         <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
@@ -1066,6 +1069,9 @@
         <string>Datapower AURA deploy</string>
         <string>Datapower_Deploy_3Gen_new_version_virtuell</string>
         <string>Datapower_Deploy_3Gen_virtuell</string>
+        <string>Datapower_Deploy_4Gen</string>
+        <string>Datapower_Deploy_4Gen_2</string>
+        <string>Datapower_Deploy_4Gen_3</string>
         <string>Miljøstatus</string>
         <string>nav-datapower-lib</string>
         <string>poc-aura-datapower-maven-plugin</string>
