@@ -35,7 +35,7 @@
     <groupId>no.nav.modig</groupId>
     <artifactId>modig-security</artifactId>
   </rootModule>
-  <goals>clean verify site -P itest</goals>
+  <goals>clean verify site</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

@@ -38,7 +38,7 @@
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>no.nav.maven.plugins.support</groupId>
-    <artifactId>poc-nav-datapower-lib</artifactId>
+    <artifactId>nav-datapower-lib</artifactId>
   </rootModule>
   <goals>clean verify</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>

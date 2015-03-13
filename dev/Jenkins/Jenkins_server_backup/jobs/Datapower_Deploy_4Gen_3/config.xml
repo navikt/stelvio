@@ -38,7 +38,7 @@
           <defaultValue>true</defaultValue>
         </hudson.model.BooleanParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
-          <name>auraPluginVersion</name>
+          <name>deployerPluginVersion</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -80,7 +80,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean no.nav.maven.plugins:poc-aura-datapower-maven-plugin:${auraPluginVersion}:deploy -e -B</targets>
+      <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B</targets>
       <mavenName>Maven 3</mavenName>
       <pom>${WORKSPACE}/pom.xml</pom>
       <properties>apps=${Applications}
