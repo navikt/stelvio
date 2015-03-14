@@ -44,6 +44,17 @@
             <a class="string-array">
               <string>RELEASE</string>
               <string>0.0.1-SNAPSHOT</string>
+              <string>0.0.1</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>EnvConfig</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>http://fasit.adeo.no/conf</string>
+              <string>http://e34apsl00136.devillo.no:8080/conf</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -88,7 +99,7 @@ env=${Environment}
 username=${User}
 password=${Password}
 debug=${debug}
-envConfigUrl=http://e34apsl00136.devillo.no:8080/conf</properties>
+envConfigUrl=${EnvConfig}</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
