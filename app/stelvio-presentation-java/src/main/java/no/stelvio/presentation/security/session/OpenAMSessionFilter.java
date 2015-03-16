@@ -74,7 +74,10 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
                 Subject subject = WSSubject.getCallerSubject();
                 String ssoSubjectCookie = getSubjectEksternSsoToken(subject);
                 if (ssoSubjectCookie != null && !ssoRequestCookie.equals(ssoSubjectCookie)) {
-                    // invalidate session, ltpa and logout subject
+                	// Additional step to revoke SSOcookie because ibm_security_logout did not work properly anymore.
+                	// Should really be replaced with HttpServletRequest.logout()
+                	WSSecurityHelper.revokeSSOCookies(req, res);
+                	// invalidate session, ltpa and logout subject                	
                     logoutService.logout(req, res);
                     return;
                 }                

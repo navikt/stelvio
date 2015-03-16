@@ -2,6 +2,11 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.8
+----------------------------------
+PEN-7860:
+- Added step to revoke SSO cookie when Subject-bound nav-esso differs with request-bound nav-esso
+
 Version 4.1.7
 ----------------------------------
 PK-16186:
