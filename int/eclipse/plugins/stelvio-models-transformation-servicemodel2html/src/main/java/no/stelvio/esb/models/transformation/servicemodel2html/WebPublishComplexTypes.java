@@ -104,9 +104,36 @@ public class WebPublishComplexTypes {
 			List<ComplexType> complexTypeList = new ArrayList<ComplexType>();
 			while ((complexTypeNode = complexTypesIterator.nextNode()) != null) {
 				NamedNodeMap nnm = complexTypeNode.getAttributes();
-				String name = nnm.getNamedItem("name").getNodeValue();
-				String uuid = nnm.getNamedItem("UUID").getNodeValue();
-				String namespace = nnm.getNamedItem("namespace").getNodeValue();
+				
+				String name = null;
+				String uuid = null;
+				String namespace = null;
+				try {
+					name = nnm.getNamedItem("name").getNodeValue();
+					uuid = nnm.getNamedItem("UUID").getNodeValue();
+					namespace = nnm.getNamedItem("namespace").getNodeValue();
+				}
+				catch (Exception e) {
+					String feilmelding = "";
+					if (name == null) {
+						feilmelding += "Name var null";
+					} else {
+						feilmelding += "Name: " + name;
+					}
+					
+					if (uuid == null) {
+						feilmelding += ", uuid var null";
+					} else {
+						feilmelding += ", UUID: " + uuid;
+					}
+
+					if (namespace == null) {
+						feilmelding += ", namespace var null";
+					} else {
+						feilmelding += ", namespace: " + namespace;
+					}
+					logger.debug("FEIL i WebPublishComplexTypes.parseAndGetServicePackageList! " + feilmelding + " (" + e.getMessage() + ")");
+				}
 
 				ComplexType complexType = factory.createComplexType();
 				complexType.setName(name);

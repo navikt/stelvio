@@ -132,7 +132,7 @@ public class WebPublishOperations {
 					} else {
 						feilmelding += ", namespace: " + namespace;
 					}
-					logger.debug("FEIL! " + feilmelding + " (" + e.getMessage() + ")");
+					logger.debug("FEIL i WebPublishOperations.parseAndGetServiceInterfaceList! " + feilmelding + " (" + e.getMessage() + ")");
 				}
 
 				ServiceOperation serviceOperation = factory
