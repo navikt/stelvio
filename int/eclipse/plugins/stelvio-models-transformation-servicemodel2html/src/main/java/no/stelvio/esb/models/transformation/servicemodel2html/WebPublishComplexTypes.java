@@ -57,8 +57,7 @@ public class WebPublishComplexTypes {
 
 		for (ServicePackage servicePackage : servicePackageList) {
 			for (ComplexType complexType : servicePackage.getComplexTypes()) {
-				publishComplexType(inputFile, outputDirectory, complexType,
-						servicePackage);
+				publishComplexType(inputFile, outputDirectory, complexType, servicePackage);
 			}
 		}
 	}
@@ -156,29 +155,34 @@ public class WebPublishComplexTypes {
 		String complextypeNamespace = complexType.getNamespace();
 		String complextypeName = complexType.getName();
 
-		File complextypeFile = PublishFileUtils.createComplextypeFile(
-				outputDirectory, complextypeNamespace, complextypeName);
-
-		TransformerFactory tFactory = TransformerFactory.newInstance();
-		File xsltFile = PublishFileUtils.getBoundleFileForPath(xsltFilePath);
-		Transformer transformer = tFactory.newTransformer(new StreamSource(xsltFile));
-
-		// Sending required input parameters to the xsl transformation
-		transformer.setParameter(paramComplexTypeUUID, complexType.getUUID());
-		transformer.setParameter(paramComplexTypeName, complexType.getName());
-		transformer.setParameter(paramServicePackageUUID,
-				servicePackage.getUUID());
-		transformer.setParameter(paramServicePackageName,
-				servicePackage.getName());
-
-		transformer.setParameter(paramOutputDirPath,
-				outputDirectory.getAbsolutePath());
-		transformer.setParameter(paramCurrentFilePath,
-				complextypeFile.getAbsolutePath());
-
-		transformer.transform(new StreamSource(inputFile), new StreamResult(
-				new FileOutputStream(complextypeFile)));
-
-		logger.debug("Creating new service operation file: " + complextypeFile.getAbsolutePath());
+		if (null == complextypeNamespace || complextypeNamespace.trim().equals("")) {
+			logger.warn("FEIL! Objektet \"" + complextypeName + "\" har ingen namespace! HTML-side for dette objektet er derfor ikke generert.");
+		} 
+		else {
+			File complextypeFile = PublishFileUtils.createComplextypeFile(
+					outputDirectory, complextypeNamespace, complextypeName);
+	
+			TransformerFactory tFactory = TransformerFactory.newInstance();
+			File xsltFile = PublishFileUtils.getBoundleFileForPath(xsltFilePath);
+			Transformer transformer = tFactory.newTransformer(new StreamSource(xsltFile));
+	
+			// Sending required input parameters to the xsl transformation
+			transformer.setParameter(paramComplexTypeUUID, complexType.getUUID());
+			transformer.setParameter(paramComplexTypeName, complexType.getName());
+			transformer.setParameter(paramServicePackageUUID,
+					servicePackage.getUUID());
+			transformer.setParameter(paramServicePackageName,
+					servicePackage.getName());
+	
+			transformer.setParameter(paramOutputDirPath,
+					outputDirectory.getAbsolutePath());
+			transformer.setParameter(paramCurrentFilePath,
+					complextypeFile.getAbsolutePath());
+	
+			transformer.transform(new StreamSource(inputFile), new StreamResult(
+					new FileOutputStream(complextypeFile)));
+	
+			logger.debug("Creating new service operation file: " + complextypeFile.getAbsolutePath());
+		}
 	}
 }
