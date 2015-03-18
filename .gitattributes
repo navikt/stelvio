@@ -3384,11 +3384,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_v2/c
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_v2_SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version_virtuell/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_virtuell/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_4Gen/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_4Gen_2/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_4Gen_3/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
@@ -3769,7 +3764,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x-site/config.xml -tex
 dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/nav-datapower-lib/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/openam-site/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/poc-aura-datapower-maven-plugin/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio-app-site-spring2-maintenance/config.xml -text
