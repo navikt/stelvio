@@ -41,6 +41,9 @@ import no.nav.datapower.xmlmgmt.command.SetFileCommand;
 public class XMLMgmtSession {
     final Logger log = LoggerFactory.getLogger(XMLMgmtSession.class);
 
+
+    private final String MGMGT_INTERFACE_PATH_V3 = "service/mgmt/3.0";
+
     private final String host;
     private final String domain;
     private final String user;
@@ -291,7 +294,7 @@ public class XMLMgmtSession {
         DoImportWithDeploymentPolicyCommand command = new DoImportWithDeploymentPolicyCommand.Builder(format, base64Config, deploymentPolicy).build();
         request.addCommand(command);
         log.debug(request.toString());
-        String response = doRequest(request);
+        String response = doRequest(request, host + MGMGT_INTERFACE_PATH_V3);
         log.debug(response);
 //        validateResult(extractResult(response));
         return response;
@@ -371,9 +374,20 @@ public class XMLMgmtSession {
         return response;
     }
 
+    private String doRequest(XMLMgmtRequest request, String hostOverride) throws XMLMgmtException {
+        String content = request.toString();
+        try {
+            log.debug("Request to host: {}", hostOverride);
+            return DPHttpUtils.doPostRequest(hostOverride, user, password, content, 10);
+        } catch (IOException e) {
+            throw new XMLMgmtException("Post request failed, content:\n" + content, e);
+        }
+    }
+
     private String doRequest(XMLMgmtRequest request) throws XMLMgmtException {
         String content = request.toString();
         try {
+            log.debug("Request to host: {}", host);
             return DPHttpUtils.doPostRequest(host, user, password, content, 10);
         } catch (IOException e) {
             throw new XMLMgmtException("Post request failed, content:\n" + content, e);
@@ -399,8 +413,11 @@ public class XMLMgmtSession {
     }
 
     public String importHSMKey(String keyName, String keyFilePath, String keyPassword, boolean kWKExportable) throws XMLMgmtException {
+
         XMLMgmtRequest request = createRequest();
         request.addCommand(new ImportHSMKeyCommand(keyName, keyFilePath, keyPassword, kWKExportable));
+        log.debug(request.toString());
+
         return doRequest(request);
     }
 

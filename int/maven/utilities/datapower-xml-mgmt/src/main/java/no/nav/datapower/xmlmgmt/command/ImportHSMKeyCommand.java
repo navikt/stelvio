@@ -35,14 +35,14 @@ public class ImportHSMKeyCommand extends AbstractDoActionCommand {
 		builder.append(keyPassword);
 		builder.append("</ImportPassword>\r\n");
 // Removed in Firmware:XI52.7.0.0.5 and mgmt version 3.0
-//		builder.append("<KwkExportable>");
-//		if(kWKExportable){
-//			builder.append("on");
-//		}
-//		else{
-//			builder.append("off");
-//		}
-//		builder.append("</KwkExportable>\r\n");
+		builder.append("<KwkExportable>");
+		if(kWKExportable){
+			builder.append("on");
+		}
+		else{
+			builder.append("off");
+		}
+		builder.append("</KwkExportable>\r\n");
 		
 		builder.append("</CryptoImport>\r\n");
 	}
