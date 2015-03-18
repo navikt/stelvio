@@ -2687,6 +2687,7 @@ int/maven/utilities/datapower-utils/.project
 int/maven/utilities/datapower-utils/.settings
 int/maven/utilities/datapower-utils/bin
 int/maven/utilities/datapower-utils/target
+int/maven/utilities/datapower-xml-mgmt/*.iml
 int/maven/utilities/datapower-xml-mgmt/.classpath
 int/maven/utilities/datapower-xml-mgmt/.project
 int/maven/utilities/datapower-xml-mgmt/.settings
