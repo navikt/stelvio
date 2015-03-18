@@ -1066,15 +1066,9 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>Datapower AURA deploy</string>
-        <string>Datapower_Deploy_3Gen_new_version_virtuell</string>
-        <string>Datapower_Deploy_3Gen_virtuell</string>
-        <string>Datapower_Deploy_4Gen</string>
-        <string>Datapower_Deploy_4Gen_2</string>
-        <string>Datapower_Deploy_4Gen_3</string>
-        <string>Miljøstatus</string>
+        <string>Deploy_Datapower_KONS</string>
+        <string>maven-datapower-deploy-plugin</string>
         <string>nav-datapower-lib</string>
-        <string>poc-aura-datapower-maven-plugin</string>
       </jobNames>
       <jobFilters/>
       <columns>
