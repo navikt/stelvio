@@ -109,6 +109,7 @@
         <string>SoapUI-U2-NAV-Journalbehandling_CI</string>
         <string>SoapUI-U2-NAV-Medlemskap_CI</string>
         <string>SoapUI-U2-NAV-Oppgave_CI</string>
+        <string>SoapUI-U2-NAV-Oppgave_v1_CI</string>
         <string>SoapUI-U2-NAV-Oppgavebehandling_CI</string>
         <string>SoapUI-U2-NAV-Oppholdsstatus_CI</string>
         <string>SoapUI-U2-NAV-Opptjening_CI</string>
@@ -222,7 +223,6 @@
         <string>SoapUI-U3-Pensjon-Vedtak_CI</string>
         <string>SoapUI-U3-StartStubbing_CI</string>
         <string>SoapUI-U3-StoppStubbing_CI</string>
-        <string>SoapUI-U4-Avstemming_CI</string>
         <string>SoapUI-U4-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U4-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U4-Ekstern-Pensjon-Beregning_CI</string>
@@ -239,7 +239,6 @@
         <string>SoapUI-U4-layers-fkafp-privat_CI</string>
         <string>SoapUI-U4-layers-Fullmakt_CI</string>
         <string>SoapUI-U4-layers-Gosys-3.0.0_CI</string>
-        <string>SoapUI-U4-layers-Infotrygd_CI</string>
         <string>SoapUI-U4-layers-Institusjonsopphold_CI</string>
         <string>SoapUI-U4-layers-NAVAnsatt_CI</string>
         <string>SoapUI-U4-layers-NAVOrgEnhet_CI</string>
@@ -256,6 +255,7 @@
         <string>SoapUI-U4-NAV-ArbeidOgAktivitetYtelse_CI</string>
         <string>SoapUI-U4-NAV-Arbeidsgiver_CI</string>
         <string>SoapUI-U4-NAV-Arkiv_CI</string>
+        <string>SoapUI-U4-NAV-Avstemming_CI</string>
         <string>SoapUI-U4-NAV-BehandleArbeidsgiver_CI</string>
         <string>SoapUI-U4-NAV-BehandleMedlemskap_CI</string>
         <string>SoapUI-U4-NAV-BehandlePerson_CI</string>
@@ -416,11 +416,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U4</groupRegex>
-          <namingRule>U4_2014HL4</namingRule>
-        </org.jenkinsci.plugins.categorizedview.GroupingRule>
-        <org.jenkinsci.plugins.categorizedview.GroupingRule>
-          <groupRegex>^SoapUI-U3</groupRegex>
-          <namingRule>U3_2015HL3</namingRule>
+          <namingRule>U4_2015HL2</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
       </categorizationCriteria>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
@@ -436,14 +432,14 @@
         <string>Buss_Deploy_BPM</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
-        <string>CI-Automatisk_Deploy-ESB-U4_(2014HL4)</string>
-        <string>CI-Automatisk_Deploy-ESB-U5_(2015HL2)</string>
-        <string>CI-deploy_2014HL3_bus-config-0.0.2014.3-SNAPSHOT</string>
-        <string>CI-deploy_2014HL3_buss-pom-0.0.2014.3-SNAPSHOT</string>
-        <string>CI-deploy_2014HL4_bus-config-0.0.2014.4-SNAPSHOT</string>
-        <string>CI-deploy_2014HL4_buss-pom-0.0.2014.4-SNAPSHOT</string>
-        <string>CI-deploy_2015HL1_bus-config-0.0.2015.2-SNAPSHOT</string>
+        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
+        <string>CI-Automatisk_Deploy-ESB-U5_(2015HL1)</string>
+        <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
+        <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
+        <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
@@ -455,7 +451,6 @@
         <string>Datapower_Deploy_3Gen</string>
         <string>Datapower_Deploy_3Gen_new_version</string>
         <string>Datapower_Service_Registry_Update</string>
-        <string>deprecated_CI-Automatisk_Deploy-ESB-U5_(2014HL3)</string>
         <string>kontaktregister-difi</string>
       </jobNames>
       <jobFilters/>
@@ -897,13 +892,12 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 2015HL3 (8.4)</name>
+      <name>Status 2015 HL2 (8.3)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2015HL3 8.4 tjenestespesifikasjon_meldingsdefinisjon</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -1106,28 +1100,6 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 2014HL4 (8.1)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2014HL4_8\.1_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>
