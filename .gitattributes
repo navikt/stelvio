@@ -3335,6 +3335,7 @@ dev/Jenkins/Jenkins_server_backup/jenkins.model.JenkinsLocationConfiguration.xml
 dev/Jenkins/Jenkins_server_backup/jenkins.mvn.GlobalMavenConfig.xml -text
 dev/Jenkins/Jenkins_server_backup/jenkins.security.QueueItemAuthenticatorConfiguration.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_CheckScripts_Leveransedokumentasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_NAV_Tjenestebuss/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-authorization/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-environment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL1_8.2_configuration_bus-nonenvironment/config.xml -text
@@ -3390,11 +3391,15 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version/conf
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_v2/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_v2_SNAPSHOT/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_old/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_old/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Deploy_Datapower_KONS/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Restart-BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Server[!!-~]status/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
@@ -3681,9 +3686,11 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_pensjon/confi
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/deprecated_CI-Automatisk_Deploy-ESB-U5_(2015HL2)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/ejbdiffer_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/maven-datapower-deploy-plugin/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/nav-datapower-lib/config.xml -text
