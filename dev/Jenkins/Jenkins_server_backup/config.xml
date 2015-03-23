@@ -909,12 +909,12 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(2015HL3_8\.4_).*</includeRegex>
+      <includeRegex>(2015HL2_8\.3_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status Trunk (8.3)</name>
+      <name>Status Trunk (8.4)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
