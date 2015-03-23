@@ -8146,6 +8146,7 @@ int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/Rest
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/UpdateVersionsVeraMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/UpdateVersionsVeraMojoTest.java -text
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-generateConfig-pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-importConfig-pom.xml -text svneol=unset#text/plain

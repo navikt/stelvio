@@ -5,6 +5,7 @@ import org.apache.maven.plugin.MojoFailureException;
 
 import java.io.*;
 import java.net.*;
+import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.json.simple.JSONValue;
@@ -179,12 +180,12 @@ public class UpdateVersionsVeraMojo extends AbstractDeviceMgmtMojo {
             //header
             conn.setRequestProperty("Content-Type", "application/json");
 
-
             //send HTTP-request
-            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-            wr.writeBytes(generatedJsonString);
-            wr.flush();
-            wr.close();
+            conn.getOutputStream().write(generatedJsonString.getBytes());
+            conn.getOutputStream().flush();
+            conn.getOutputStream().close();
+
+
 
             getLog().debug("Made a Http-post towards " + path);
             getLog().debug("    JSON-body:" + generatedJsonString);
