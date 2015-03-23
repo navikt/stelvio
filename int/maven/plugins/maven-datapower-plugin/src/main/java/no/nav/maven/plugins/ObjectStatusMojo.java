@@ -27,7 +27,8 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 	private final static String OBJECT_LIST_DOWN_PATTERN = "<OpState>down</OpState>";
 	
 	private final static String OBJECT_LOG_NAME_POSTFIX = "-log";
-	private final static String OBJECT_GW_NAME_PREFIX = "_gp_";
+	private final static String OBJECT_GW_NAME_PREFIX_SINGLE_UNDERSCORE = "_gp_";
+    private final static String OBJECT_GW_NAME_PREFIX_DOUBLE_UNDERSCORE = "__gp_";
 	private final static String OBJECT_QMGR_NAME_PREFIX = "QMGR";
 	
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
@@ -56,7 +57,7 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 							logDown = true;
 							waitError += "At least one log object is down, indicating that NFS is down. ";
 						}
-						if(!gwDown && getName(object).startsWith(OBJECT_GW_NAME_PREFIX)){
+						if(!gwDown && (getName(object).startsWith(OBJECT_GW_NAME_PREFIX_SINGLE_UNDERSCORE) || getName(object).startsWith(OBJECT_GW_NAME_PREFIX_DOUBLE_UNDERSCORE))){
 							gwDown = true;
 							waitError += "At least one Gateway object is down, indicating that not all objects in the gateway are up. " ;
 						}
