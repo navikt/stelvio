@@ -3480,6 +3480,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-BehandleArbeidsgiver_CI/con
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-BehandleMedlemskap_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-BehandlePerson_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-BehandleTrekk_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Bisys-Journal-Oppdatering_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Dokumentbehandling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Dokumentbestilling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-EESSIBlankett_CI/config.xml -text

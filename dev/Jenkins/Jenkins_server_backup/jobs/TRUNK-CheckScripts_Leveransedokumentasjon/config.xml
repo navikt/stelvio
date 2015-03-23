@@ -47,18 +47,20 @@
     <hudson.tasks.Shell>
       <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
 find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+esb/esb-tools/esb-scripts/bin/cons_xml_check.py esb
 esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
 esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
 esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
-esb/esb-tools/esb-scripts/bin/cons_xml_check.py esb
 
 # Sjekker om confluence er oppe:
 if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
+
 # Skript som genererer automatisk dokumentasjon:
 esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
 esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
 esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/ --design /home/ci/svn/designTrunk/spesifikasjon/implementasjon/
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design /home/ci/svn/designTrunk
 
 # Oppdaterer http://confluence.adeo.no/display/stelvio/Scripts+in+use+in+the+Integration+team+%28Hudson+server%29:
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/</command>

@@ -1,14 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>U3-miljøet blir benyttet til å kjøre automatiske tester for 2015HL3-kodestrømmen.&#xd;
-&#xd;
----&#xd;
-Jobben kjøres automatisk hver natt kl 23.00.&#xd;
----</description>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>20</numToKeep>
+    <numToKeep>10</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -21,12 +17,14 @@ Jobben kjøres automatisk hver natt kl 23.00.&#xd;
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
-        <local>.</local>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_3_0_D20150323_2015HL2/nav/bisysJournalOppdatering/nav-bisysJournalOppdatering-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
+    <browser class="hudson.scm.browsers.ViewSVN">
+      <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
+    </browser>
     <excludedRegions></excludedRegions>
     <includedRegions></includedRegions>
     <excludedUsers></excludedUsers>
@@ -37,26 +35,29 @@ Jobben kjøres automatisk hver natt kl 23.00.&#xd;
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
-  <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec># at 23:00 in the morning
-0 23 * * *</spec>
-    </hudson.triggers.TimerTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>#Deploy:
-mvn3 clean deploy -e -X -Denvironment=U3 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.2015.3-SNAPSHOT -Dnav-modules-version=0.0.2015.3-SNAPSHOT -Dpensjon-modules-version=0.0.2015.3-SNAPSHOT -Dekstern-modules-version=0.0.2015.3-SNAPSHOT -Desb-modules-version=0.0.2015.3-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.2015.3-SNAPSHOT -Desb-nonenviroment-configuration=0.0.2015.3-SNAPSHOT -Desb-enviroment-configuration=0.0.2015.3-SNAPSHOT -Dlogging.level=DEBUG</command>
-    </hudson.tasks.Shell>
+    <hudson.tasks.Maven>
+      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=BisysJournalOppdatering-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-bisysJournalOppdatering_v1Web/sca/BisysJournalOppdateringWSEXP</targets>
+      <mavenName>(Default)</mavenName>
+      <usePrivateRepository>false</usePrivateRepository>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+    </hudson.tasks.Maven>
   </builders>
   <publishers>
+    <hudson.tasks.junit.JUnitResultArchiver>
+      <testResults>nav-bisysJournalOppdatering-test/reports/TEST-*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com, test@example.com</recipients>
+      <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
