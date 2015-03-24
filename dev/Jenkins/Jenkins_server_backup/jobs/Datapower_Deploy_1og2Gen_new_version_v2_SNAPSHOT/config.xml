@@ -125,6 +125,7 @@ fi
 wget -O build-info.xml -nv --no-proxy &quot;${BUILD_URL}/api/xml&quot;
 deployedBy=&quot;$(grep -o -P &apos;(?&lt;=&lt;userName&gt;).*(?=&lt;\/userName&gt;)&apos; build-info.xml)&quot;
 
+
 #get esbVersion from fasit for partner-gw and secgw
 if [ $Gateway = &quot;partner-gw&quot; ] || [ $Gateway = &quot;secgw&quot; ]
 then
@@ -137,9 +138,9 @@ fi
 
 if [ &quot;${Debug}&quot; == &quot;true&quot; ]
 then
-      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot; -DesbVersion=&quot;$esbVersion&quot;
+      mvn3 clean install -e -X -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot; -DesbVersion=&quot;$esbVersion&quot; -DveraUrl=http://vera.adeo.no/version
 else
-      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot; -DesbVersion=&quot;$esbVersion&quot;
+      mvn3 clean install -e -U -Dgateway-name=${Gateway} -Denvclass=${EnvironmentClass} -Denv=${Environment} -Denvironment-configuration-version=${EnvironmentConfigVersion} -Dnonenvironment-configuration-version=${NonenvironmentConfigVersion} -Ddeployer-pom-version=${DeployerPomVersion} -Ddatapower.baseurl=${DataPowerInstance} -Dnode=${Node} -DdeployedBy=&quot;$deployedBy&quot; -DesbVersion=&quot;$esbVersion&quot; -DveraUrl=http://vera.adeo.no/version
 fi
 
 
