@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Midlertidig deaktivert på grunn av at trunk foreløpig fortsatt er 2015HL2-kode, mens denne jobben har blitt endret til å oppdatere confluence-sider for 2015HL3.</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>10</numToKeep>
@@ -32,7 +32,7 @@
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -57,10 +57,12 @@ if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;
 
 # Skript som genererer automatisk dokumentasjon:
 esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
-esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/ --design /home/ci/svn/designTrunk/spesifikasjon/implementasjon/
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design /home/ci/svn/designTrunk
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
+
+svn up /home/ci/svn-repos/TRUNK/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
+esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/ --design /home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design /home/ci/svn-repos/TRUNK/tjenester
 
 # Oppdaterer http://confluence.adeo.no/display/stelvio/Scripts+in+use+in+the+Integration+team+%28Hudson+server%29:
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/</command>

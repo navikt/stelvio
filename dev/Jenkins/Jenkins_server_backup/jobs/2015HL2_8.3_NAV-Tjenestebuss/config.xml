@@ -47,33 +47,33 @@ http://e34wasl00228.devillo.no/8.3/site/</description>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>svn update $HOME/svn-repos/2015HL2/tjenester/spesifikasjon/design --username svnguest --password Subversion01 --no-auth-cache
+      <command>svn update /home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/design --username svnguest --password Subversion01 --no-auth-cache
 
 echo &quot;FERDIG MED SVN1&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>echo $DISPLAY
 # xvfb-run
-DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.3/&quot; -consoleLog --displaystacktrace | tee $HOME/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log
+DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;/home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.3/&quot; -consoleLog --displaystacktrace | tee /home/ci/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log
 
 echo &quot;FERDIG MED ECLIPSE1&quot;
 sleep 1s</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>if grep -q &quot;MESSAGE Application error&quot; $HOME/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log; then
+      <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log; then
   exit 1;
 else
   exit 0;
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.3/&quot; -consoleLog | tee $HOME/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log
+      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;/home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;/home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.3/&quot; -consoleLog | tee /home/ci/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log
 
 echo &quot;FERDIG MED ECLIPSE2&quot;
 sleep 1s</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>if grep -q &quot;MESSAGE Application error&quot; $HOME/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log; then
+      <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/scripts/tempFiles/2015HL2_NAV-Tjenestebuss.log; then
   exit 1;
 else
   exit 0;

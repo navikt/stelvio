@@ -58,10 +58,11 @@ if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;
 # Skript som genererer automatisk dokumentasjon:
 R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_8_3_0_D20150323_2015HL2/ --page 103004239
 R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_8_3_0_D20150323_2015HL2/ 103004631
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_8_3_0_D20150323_2015HL2/ --page 103004651 --design &quot;$HOME/svn-repos/2015HL2/tjenester/spesifikasjon/implementasjon/&quot;
 R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_8_3_0_D20150323_2015HL2/ --page 103004713
-/home/ci/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_3_0_D20150323_2015HL2/ --design &quot;$HOME/svn-repos/tjenester&quot; --envT 103004903 --envQ 103004898 --envP 103004894
 
+svn up /home/ci/svn-repos/2015HL2/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
+R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_8_3_0_D20150323_2015HL2/ --page 103004651 --design &quot;/home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/implementasjon/&quot;
+R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_3_0_D20150323_2015HL2/ --design &quot;/home/ci/svn-repos/2015HL2/tjenester&quot; --envT 103004903 --envQ 103004898 --envP 103004894
 </command>
     </hudson.tasks.Shell>
   </builders>
