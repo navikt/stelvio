@@ -914,7 +914,8 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status Trunk (8.4)</name>
+      <name>Status Trunk (8.3)</name>
+      <description>Bygger trunk, som pr nå er 8.3 (2015HL2).</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
