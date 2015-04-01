@@ -8234,6 +8234,7 @@ int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/fre
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/SSLCertificate.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/STSProxy.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/SigningCertificate.ftl -text
+int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/Statistics.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/StylePolicyAction.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/StylePolicyActionAAA.ftl -text
 int/maven/plugins/maven-mod-datapower-configurator-plugin/src/main/resources/freemarker-templates/StylePolicyActionAntiVirusScan.ftl -text

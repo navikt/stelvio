@@ -51,6 +51,7 @@
 <#include "SAMLAttributes.ftl">
 <#include "SAMLProxy.ftl">
 <#include "SLMPolicy.ftl">
+<#include "Statistics.ftl">
 <#include "STSProxy.ftl">
 <#include "StylePolicyActionAAA.ftl">
 <#include "StylePolicyActionAntiVirusScan.ftl">
