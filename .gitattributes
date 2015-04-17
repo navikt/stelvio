@@ -3427,15 +3427,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Enhet_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Familieforhold_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Fullmakt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-HPLIVEJournalbehandling_CI/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/builds/lastFailedBuild -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/builds/lastStableBuild -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/builds/lastSuccessfulBuild -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/builds/lastUnstableBuild -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/builds/lastUnsuccessfulBuild -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/lastStable -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/lastSuccessful -text
-dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Helsepersonell_CI/nextBuildNumber -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Henvendelse_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Henvendelsebehandling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-NAV-Informasjonsgrunnlag_CI/config.xml -text
