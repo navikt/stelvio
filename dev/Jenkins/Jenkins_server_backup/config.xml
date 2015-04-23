@@ -4,13 +4,7 @@
   <version>1.558</version>
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
-  <useSecurity>true</useSecurity>
-  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
-  <securityRealm class="hudson.plugins.active_directory.ActiveDirectorySecurityRealm" plugin="test@example.com">
-    <domain>adeo.no</domain>
-    <bindName>srvciintegrasjon</bindName>
-    <bindPassword>s+FJWmSZ85sSGbE/Bl8UStET4WTI0KHFiFnsV+y2wK4=</bindPassword>
-  </securityRealm>
+  <useSecurity>false</useSecurity>
   <disableRememberMe>false</disableRememberMe>
   <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
   <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
