@@ -11,6 +11,7 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>u3</string>
               <string>t1</string>
               <string>t4</string>
               <string>t10</string>
