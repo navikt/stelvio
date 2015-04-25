@@ -18,11 +18,16 @@
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
           <name>Applications</name>
           <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>pepgwsbs:1.0.4</string>
+              <string>pepgwsbs:1.0.5-SNAPSHOT</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>User</name>
           <description></description>
@@ -43,12 +48,8 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>RELEASE</string>
-              <string>0.0.3</string>
-              <string>0.0.2</string>
-              <string>0.0.1</string>
-              <string>0.0.1-SNAPSHOT</string>
-              <string>0.0.4-SNAPSHOT</string>
+              <string>0.0.6</string>
+              <string>0.0.7-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -62,6 +63,12 @@
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>dpHostnameFilter</name>
+          <description>Hvis man ønsker å deploye bare til èn node kan man bruke denne parameteren.
+Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. </description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -103,7 +110,8 @@ env=${Environment}
 username=${User}
 password=${Password}
 debug=${debug}
-envConfigUrl=${EnvConfig}</properties>
+envConfigUrl=${EnvConfig}
+dpHostnameFilter=${dpHostnameFilter}</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
