@@ -118,5 +118,7 @@ dpHostnameFilter=${dpHostnameFilter}</properties>
     </hudson.tasks.Maven>
   </builders>
   <publishers/>
-  <buildWrappers/>
+  <buildWrappers>
+    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
+  </buildWrappers>
 </project>
