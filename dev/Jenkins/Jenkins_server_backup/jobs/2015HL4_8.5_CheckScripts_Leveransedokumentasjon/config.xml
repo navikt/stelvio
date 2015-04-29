@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_3_0_D20150323_2015HL2</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_5_0_D20150427_2015HL4</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -46,23 +46,23 @@
   <builders>
     <hudson.tasks.Shell>
       <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
-find . -name &quot;*WSIMP.import&quot; -exec R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/cons_xml_check.py R_8_3_0_D20150323_2015HL2
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/System.out.print_Search.py
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+find . -name &quot;*WSIMP.import&quot; -exec FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/cons_xml_check.py FEATURE_BRANCH_8_5_0_D20150427_2015HL4
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/System.out.print_Search.py
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
 
 # Sjekker om confluence er oppe:
 if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
 
 # Skript som genererer automatisk dokumentasjon:
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_8_3_0_D20150323_2015HL2/ --page 103004239
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_8_3_0_D20150323_2015HL2/ 103005617
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_8_3_0_D20150323_2015HL2/ --page 103004713
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path FEATURE_BRANCH_8_5_0_D20150427_2015HL4/ --page 108973753
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py FEATURE_BRANCH_8_5_0_D20150427_2015HL4/ 108973910
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path FEATURE_BRANCH_8_5_0_D20150427_2015HL4/ --page 108973924
 
-svn up /home/ci/svn-repos/2015HL2/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_8_3_0_D20150323_2015HL2/ --page 103004651 --design &quot;/home/ci/svn-repos/2015HL2/tjenester/spesifikasjon/implementasjon/&quot;
-R_8_3_0_D20150323_2015HL2/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_3_0_D20150323_2015HL2/ --design &quot;/home/ci/svn-repos/2015HL2/tjenester&quot; --envT 103004903 --envQ 103004898 --envP 103004894
+svn up /home/ci/svn-repos/2015HL4_featurebranch/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path FEATURE_BRANCH_8_5_0_D20150427_2015HL4/ --page 108973914 --design &quot;/home/ci/svn-repos/2015HL4_featurebranch/tjenester/spesifikasjon/implementasjon/&quot;
+FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path FEATURE_BRANCH_8_5_0_D20150427_2015HL4/ --design &quot;/home/ci/svn-repos/2015HL4_featurebranch/tjenester&quot; --envT 108973943 --envQ 108973939 --envP 108973935
 </command>
     </hudson.tasks.Shell>
   </builders>
