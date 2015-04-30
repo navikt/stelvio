@@ -47,7 +47,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean verify</targets>
+      <targets>clean deploy</targets>
       <mavenName>(Default)</mavenName>
       <jvmOptions>-Xmx2048m -Xms64m -XX:MaxPermSize=1024m</jvmOptions>
       <usePrivateRepository>false</usePrivateRepository>

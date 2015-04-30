@@ -50,7 +50,7 @@
       <command></command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
-      <targets>clean verify</targets>
+      <targets>clean deploy</targets>
       <mavenName>(Default)</mavenName>
       <jvmOptions>-Xmx2048m -Xms512m -XX:MaxPermSize=1024m</jvmOptions>
       <usePrivateRepository>false</usePrivateRepository>
