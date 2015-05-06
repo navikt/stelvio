@@ -4,13 +4,9 @@
   <version>1.558</version>
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
-  <useSecurity>false</useSecurity>
-  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
-  <securityRealm class="hudson.plugins.active_directory.ActiveDirectorySecurityRealm" plugin="test@example.com">
-    <domain>adeo.no</domain>
-    <bindName>srvciintegrasjon</bindName>
-    <bindPassword>s+FJWmSZ85sSGbE/Bl8UStET4WTI0KHFiFnsV+y2wK4=</bindPassword>
-  </securityRealm>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+  <securityRealm class="hudson.security.SecurityRealm$None"/>
   <disableRememberMe>false</disableRememberMe>
   <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
   <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
@@ -432,6 +428,7 @@
         <string>Buss_Deploy_BPM</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
+        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
         <string>CI-Automatisk_Deploy-ESB-U5_(2015HL1)</string>
         <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
@@ -439,7 +436,9 @@
         <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_bus-config-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
@@ -915,7 +914,7 @@
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>Status Trunk (8.4)</name>
-      <description>Bygger trunk, som pr nå er 8.4 (2015HL3).</description>
+      <description>Jobber som bygger trunk, som pr nå er leveransen 8.4 (2015HL3)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -996,16 +995,34 @@
         <string>2015HL2_8.3_tjenestespesifikasjon_pensjon</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_system</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL4_8.5_configuration_bus-authorization</string>
+        <string>2015HL4_8.5_configuration_bus-environment</string>
+        <string>2015HL4_8.5_configuration_bus-nonenvironment</string>
+        <string>2015HL4_8.5_ekstern</string>
+        <string>2015HL4_8.5_esb-release</string>
+        <string>2015HL4_8.5_esb_poms</string>
+        <string>2015HL4_8.5_layers</string>
+        <string>2015HL4_8.5_layers_dryRun</string>
+        <string>2015HL4_8.5_nav</string>
+        <string>2015HL4_8.5_NAV-Tjenestebuss</string>
+        <string>2015HL4_8.5_pensjon</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_nav</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_system</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
-        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
+        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
         <string>CI-Automatisk_Deploy-ESB-U5_(2015HL1)</string>
         <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
         <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
-        <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
-        <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
+        <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>

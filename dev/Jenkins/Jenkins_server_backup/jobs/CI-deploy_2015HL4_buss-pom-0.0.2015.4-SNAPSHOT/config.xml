@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Denne jobben bygger en 0.0.2015.3-SNAPSHOT-versjon av bussen i kodestrømmen for 2015 HL3, for bruk til automatisk, nattlig deploy.&#xd;
+  <description>Denne jobben bygger en 0.0.2015.4-SNAPSHOT-versjon av bussen i featurebranch-kodestrømmen for 2015 HL4, for bruk til automatisk, nattlig deploy.&#xd;
 Kjøres hver dag kl 19.57</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
@@ -18,7 +18,7 @@ Kjøres hver dag kl 19.57</description>
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_4_0_D20150106_2015HL3/esb-release</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-release</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -46,12 +46,12 @@ Kjøres hver dag kl 19.57</description>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; ekstern-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; esb-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; nav-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; pensjon-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; pensjon-prosess-modules/pom.xml</command>
+      <command>sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.4-SNAPSHOT&lt;/version&gt;@&apos; pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.4-SNAPSHOT&lt;/version&gt;@&apos; ekstern-modules/pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.4-SNAPSHOT&lt;/version&gt;@&apos; esb-modules/pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.4-SNAPSHOT&lt;/version&gt;@&apos; nav-modules/pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.4-SNAPSHOT&lt;/version&gt;@&apos; pensjon-modules/pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.4-SNAPSHOT&lt;/version&gt;@&apos; pensjon-prosess-modules/pom.xml</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>mvn clean deploy</command>
@@ -61,12 +61,7 @@ sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]
     <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
       <tasks>
         <hudson.plugins.postbuildtask.TaskProperties>
-          <logTexts>
-            <hudson.plugins.postbuildtask.LogProperties>
-              <logText></logText>
-              <operator>AND</operator>
-            </hudson.plugins.postbuildtask.LogProperties>
-          </logTexts>
+          <logTexts/>
           <EscalateStatus>false</EscalateStatus>
           <RunIfJobSuccessful>false</RunIfJobSuccessful>
           <script>svn revert pom.xml&#xd;
