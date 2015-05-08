@@ -168,10 +168,12 @@
         <string>SoapUI-U3-NAV-ArbeidOgAktivitetYtelse_CI</string>
         <string>SoapUI-U3-NAV-Arbeidsgiver_CI</string>
         <string>SoapUI-U3-NAV-Arkiv_CI</string>
+        <string>SoapUI-U3-NAV-Avstemming_CI</string>
         <string>SoapUI-U3-NAV-BehandleArbeidsgiver_CI</string>
         <string>SoapUI-U3-NAV-BehandleMedlemskap_CI</string>
         <string>SoapUI-U3-NAV-BehandlePerson_CI</string>
         <string>SoapUI-U3-NAV-BehandleTrekk_CI</string>
+        <string>SoapUI-U3-NAV-Bisys-Journal-Oppdatering_CI</string>
         <string>SoapUI-U3-NAV-Dokumentbehandling_CI</string>
         <string>SoapUI-U3-NAV-Dokumentbestilling_CI</string>
         <string>SoapUI-U3-NAV-EESSIBlankett_CI</string>
@@ -399,7 +401,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>SoapUI-U[245].*</includeRegex>
+      <includeRegex>SoapUI-U[2345].*</includeRegex>
       <recurse>true</recurse>
       <groupingRules/>
       <categorizationCriteria>

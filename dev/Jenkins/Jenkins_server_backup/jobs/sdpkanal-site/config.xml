@@ -56,7 +56,7 @@
       <branch></branch>
       <language></language>
       <mavenOpts></mavenOpts>
-      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/no/nav/emottak/**/*.java,src/main/java/org/apache/**/*.java</jobAdditionalProperties>
+      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/no/nav/kanal/selftest/**/*.java,src/main/java/org/apache/**/*.java,src/main/java/no/nav/kanal/*.java,src/main/java/no/nav/kanal/mq/*.java,src/main/java/no/nav/emottak/**/*.java</jobAdditionalProperties>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
       <usePrivateRepository>false</usePrivateRepository>
