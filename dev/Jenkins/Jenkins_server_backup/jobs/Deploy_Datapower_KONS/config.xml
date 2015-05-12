@@ -25,6 +25,8 @@
             <a class="string-array">
               <string>pepgwsbs:1.0.4</string>
               <string>pepgwsbs:1.0.5-SNAPSHOT</string>
+              <string></string>
+              <string>pepgwsbs:1.0.2-R142043-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
