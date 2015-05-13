@@ -516,11 +516,14 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
-        <string>2013HL4_7.9_jobb1_nav-model-update</string>
-        <string>2013HL4_7.9_jobb2_nav-model-doc</string>
-        <string>2013HL4_7.9_jobb3_nav-model-doc-diagram</string>
-        <string>2013HL4_7.9_jobb4_nav-model-doc-chmod</string>
-        <string>2014HL3_8.0_NAV-Tjenestebuss</string>
+        <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL1_8.2_NAV_Tjenestebuss</string>
+        <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL2_8.3_NAV-Tjenestebuss</string>
+        <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL4_8.5_NAV-Tjenestebuss</string>
+        <string>Tjenestebeskrivelsegenerering</string>
+        <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
         <string>TRUNK_NAV-Tjenestebuss</string>
       </jobNames>
       <jobFilters/>
