@@ -43,7 +43,7 @@ Jobben kjøres automatisk hver natt kl 22.00&#xd;
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec># at 22:00 in the morning
+      <spec># kl 22.00 om kvelden
 00 22 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
@@ -65,7 +65,7 @@ mvn3 clean deploy -e -X -Denvironment=U5 -DfasitUsername=admin -DfasitPasswordBa
       </threshold>
     </hudson.tasks.BuildTrigger>
     <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com, test@example.com</recipients>
+      <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>

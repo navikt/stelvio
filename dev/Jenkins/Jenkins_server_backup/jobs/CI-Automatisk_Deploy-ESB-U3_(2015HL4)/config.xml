@@ -43,7 +43,7 @@ Jobben kjøres automatisk hver natt kl 23.00.&#xd;
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec># at 23:00 in the morning
+      <spec># kl 23.00 om kvelden
 0 23 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
