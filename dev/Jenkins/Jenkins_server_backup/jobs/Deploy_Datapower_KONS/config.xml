@@ -16,6 +16,7 @@
               <string>t4</string>
               <string>t10</string>
               <string>u2</string>
+              <string>u55</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>

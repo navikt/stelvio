@@ -64,8 +64,8 @@ sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]
           <logTexts/>
           <EscalateStatus>false</EscalateStatus>
           <RunIfJobSuccessful>false</RunIfJobSuccessful>
-          <script>svn revert pom.xml&#xd;
-svn revert */pom.xml</script>
+          <script>svn revert * */*&#xd;
+rm -rf ./pom.xmlr ./*/pom.xmlr</script>
         </hudson.plugins.postbuildtask.TaskProperties>
       </tasks>
     </hudson.plugins.postbuildtask.PostbuildTask>
