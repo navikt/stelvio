@@ -27,6 +27,7 @@
             <a class="string-array">
               <string>pepgwsbs:1.0.4</string>
               <string>pepgwsbs:1.0.5-SNAPSHOT</string>
+              <string>pepgwsbs:1.1.0-SNAPSHOT</string>
               <string>simpleloopbackservice:0.0.1-SNAPSHOT</string>
             </a>
           </choices>
@@ -53,6 +54,7 @@
             <a class="string-array">
               <string>0.0.7</string>
               <string>0.0.8</string>
+              <string>0.0.9-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
