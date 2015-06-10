@@ -128,5 +128,8 @@ dpHostnameFilter=${dpHostnameFilter}</properties>
   <publishers/>
   <buildWrappers>
     <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
+    <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
+      <template>#${BUILD_NUMBER}: ${ENV,var=&quot;Applications&quot;}@${ENV,var=&quot;Environment&quot;}</template>
+    </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
   </buildWrappers>
 </project>
