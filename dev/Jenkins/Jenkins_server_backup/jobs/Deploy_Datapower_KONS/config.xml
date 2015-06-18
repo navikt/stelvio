@@ -52,9 +52,8 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>0.0.7</string>
-              <string>0.0.8</string>
-              <string>0.0.9-SNAPSHOT</string>
+              <string>0.0.9</string>
+              <string>0.0.10-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
