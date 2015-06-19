@@ -7,16 +7,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xml.sax.InputSource;
 
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPHttpUtils;
@@ -37,6 +33,16 @@ import no.nav.datapower.xmlmgmt.command.RemoveDirCommand;
 import no.nav.datapower.xmlmgmt.command.RestartThisDomainCommand;
 import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
 import no.nav.datapower.xmlmgmt.command.SetFileCommand;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public class XMLMgmtSession {
     final Logger log = LoggerFactory.getLogger(XMLMgmtSession.class);
@@ -225,6 +231,41 @@ public class XMLMgmtSession {
             throw new XMLMgmtException("Expected result 'OK', but received: '" + result + "'");
         }
     }
+    
+
+	private void validateCfgResult(String response) throws XMLMgmtException {
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder;
+		Document doc;
+		InputSource inputSource = new InputSource(new StringReader(response));
+
+		try {
+			dBuilder = dbFactory.newDocumentBuilder();
+			doc = dBuilder.parse(inputSource);
+		} catch (Exception e) {
+			throw new XMLMgmtException("Failed during parsing of response '" + response + "'", e);
+		}
+
+		NodeList nList = doc.getElementsByTagName("cfg-result");
+
+		for (int i = 0; i < nList.getLength(); i++) {
+			Node nNode = nList.item(i);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				String objectStatusLogMessage = "Object of {class=\""	+ eElement.getAttribute("class") + "\", name=\"" 
+						+ eElement.getAttribute("name") + "\"} was imported with status: "	+ eElement.getAttribute("status")+ "";
+
+				if (!"SUCCESS".equals(eElement.getAttribute("status")) || !"skipped".equals(eElement.getAttribute("status"))) {
+					log.error(objectStatusLogMessage);
+					log.error("Message returned was: \"" + eElement.getTextContent() + "\"");
+					throw new XMLMgmtException("Object " + eElement.getAttribute("name") + " was imported, but returned with the unexpected status: '"	+ eElement.getAttribute("status") + "'");
+				} else {
+					log.debug(objectStatusLogMessage);
+				}
+			}
+		}
+	}
 
     /**
      * Deprecated; The new mgmt interface does not support importing of multiple files
@@ -285,6 +326,7 @@ public class XMLMgmtSession {
         DoImportCommand command = new DoImportCommand.Builder(format, base64Config).build();
         request.addCommand(command);
         String response = doRequest(request);
+		validateCfgResult(response);
 //		validateResult(extractResult(response));
         return response;
     }
@@ -296,7 +338,8 @@ public class XMLMgmtSession {
         log.debug(request.toString());
         String response = doRequest(request, host + MGMGT_INTERFACE_PATH_V3);
         log.debug(response);
-//        validateResult(extractResult(response));
+		validateCfgResult(response);
+//      validateResult(extractResult(response));
         return response;
     }
 
