@@ -256,7 +256,7 @@ public class XMLMgmtSession {
 				String objectStatusLogMessage = "Object of {class=\""	+ eElement.getAttribute("class") + "\", name=\"" 
 						+ eElement.getAttribute("name") + "\"} was imported with status: "	+ eElement.getAttribute("status")+ "";
 
-				if (!"SUCCESS".equals(eElement.getAttribute("status")) || !"skipped".equals(eElement.getAttribute("status"))) {
+				if (!"SUCCESS".equals(eElement.getAttribute("status")) && !"skipped".equals(eElement.getAttribute("status"))) {
 					log.error(objectStatusLogMessage);
 					log.error("Message returned was: \"" + eElement.getTextContent() + "\"");
 					throw new XMLMgmtException("Object " + eElement.getAttribute("name") + " was imported, but returned with the unexpected status: '"	+ eElement.getAttribute("status") + "'");
