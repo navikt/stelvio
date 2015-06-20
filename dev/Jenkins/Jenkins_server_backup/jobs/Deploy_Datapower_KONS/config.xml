@@ -52,8 +52,8 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>0.0.9</string>
-              <string>0.0.10-SNAPSHOT</string>
+              <string>0.0.10</string>
+              <string>0.0.11-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -69,7 +69,7 @@
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>dpHostnameFilter</name>
-          <description>Hvis man ønsker å deploye bare til èn node kan man bruke denne parameteren.
+          <description>Hvis man ønsker å deploye bare til én node kan man bruke dette parameteret.
 Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. </description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
