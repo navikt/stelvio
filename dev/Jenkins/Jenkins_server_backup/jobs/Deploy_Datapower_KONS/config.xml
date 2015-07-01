@@ -27,6 +27,10 @@
             <a class="string-array">
               <string>pepgwsbs:1.1.3</string>
               <string>pepgwsbs:1.1.4-SNAPSHOT</string>
+              <string></string>
+              <string>servicegwpepsbs:0.0.1</string>
+              <string>servicegwpepsbs:0.0.1-SNAPSHOT</string>
+              <string></string>
               <string>simpleloopbackservice:0.0.1-SNAPSHOT</string>
             </a>
           </choices>
