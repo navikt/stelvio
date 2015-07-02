@@ -1073,6 +1073,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Deploy_Datapower_KONS</string>
+        <string>Forsyn WSRR</string>
         <string>maven-datapower-deploy-plugin</string>
         <string>nav-datapower-lib</string>
       </jobNames>

@@ -3415,6 +3415,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_old/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Deploy_Datapower_KONS/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Forsyn[!!-~]WSRR/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Restart-BPM/config.xml -text
