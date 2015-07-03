@@ -55,7 +55,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>(Default)</jdk>
+  <jdk>Oracle JDK 1.7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
