@@ -62,6 +62,7 @@
     <hudson.tasks.Maven>
       <targets>no.nav.wsrr:wsrr-supplier-maven-plugin:${deployerPluginVersion}:wsrrprovision -e -B -U</targets>
       <mavenName>(Default)</mavenName>
+      <pom>${WORKSPACE}/pom.xml</pom>
       <properties>env=${Environment}
 username=${User}
 password=${Password}
