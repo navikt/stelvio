@@ -1,4 +1,6 @@
-<#macro SAMLProxy cfgHost port>
+<#include "SAMLAttributes.ftl"/>
+
+<#macro SAMLProxy cfgHost port certificateName keyName samlAttributes>
     <HTTPSSourceProtocolHandler name="SAMLProxy_FrontSideHandler" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
         <mAdminState>enabled</mAdminState>
         <LocalAddress>${cfgHost}</LocalAddress>
@@ -79,36 +81,10 @@
         <MethodType>POST</MethodType>
         <MethodType2>POST</MethodType2>
     </StylePolicyAction>
-    <SAMLAttributes name="SAML_Attributes_Definition" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-        <mAdminState>enabled</mAdminState>
-        <SAMLAttribute>
-            <SourceType>static</SourceType>
-            <Name>authenticationLevel</Name>
-            <Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
-            <XPath/>
-            <ValueData>11</ValueData>
-            <SubValueData/>
-            <FriendlyName>authenticationLevel</FriendlyName>
-        </SAMLAttribute>
-        <SAMLAttribute>
-            <SourceType>static</SourceType>
-            <Name>identType</Name>
-            <Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
-            <XPath/>
-            <ValueData>external</ValueData>
-            <SubValueData/>
-            <FriendlyName>identType</FriendlyName>
-        </SAMLAttribute>
-        <SAMLAttribute>
-            <SourceType>static</SourceType>
-            <Name>consumerId</Name>
-            <Format>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</Format>
-            <XPath/>
-            <ValueData>virgo</ValueData>
-            <SubValueData/>
-            <FriendlyName>consumerId</FriendlyName>
-        </SAMLAttribute>
-    </SAMLAttributes>
+	<@SAMLAttributes
+        name="SAML_Attributes_Definition"
+        attributes=samlAttributes
+    />
     <AAAPolicy name="AAA_Policy" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
         <mAdminState>enabled</mAdminState>
         <NamespaceMapping>
@@ -424,11 +400,11 @@
         </StylesheetParameters>
         <StylesheetParameters>
             <ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
-            <ParameterValue>${cfgHost}</ParameterValue>
+            <ParameterValue>${certificateName}</ParameterValue>
         </StylesheetParameters>
         <StylesheetParameters>
             <ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
-            <ParameterValue>${cfgHost}</ParameterValue>
+            <ParameterValue>${keyName}</ParameterValue>
         </StylesheetParameters>
         <OutputType>default</OutputType>
         <Transactional>off</Transactional>
@@ -530,11 +506,11 @@
         </StylesheetParameters>
         <StylesheetParameters>
             <ParameterName>{http://www.datapower.com/param/config}keypair-cert</ParameterName>
-            <ParameterValue>${cfgHost}</ParameterValue>
+            <ParameterValue>${certificateName}</ParameterValue>
         </StylesheetParameters>
         <StylesheetParameters>
             <ParameterName>{http://www.datapower.com/param/config}keypair-key</ParameterName>
-            <ParameterValue>${cfgHost}</ParameterValue>
+            <ParameterValue>${keyName}</ParameterValue>
         </StylesheetParameters>
         <OutputType>default</OutputType>
         <Transactional>off</Transactional>
