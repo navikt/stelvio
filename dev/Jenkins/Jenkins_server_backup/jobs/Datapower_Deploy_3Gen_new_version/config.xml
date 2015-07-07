@@ -98,12 +98,12 @@
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>#Check if version of deployer pom is a snapshot and set MVN_REPO
-#if [ $DeployerPomVersion =~ &quot;SNAPSHOT&quot; ]
-#then
+if [[ $DeployerPomVersion =~ &quot;SNAPSHOT&quot; ]]
+then
+MVN_REPO=&quot;http://maven.adeo.no/nexus/service/local/repositories/m2snapshot/content&quot;  
+else	
 MVN_REPO=&quot;http://maven.adeo.no/nexus/service/local/repositories/m2internal/content&quot;
-#else	
-#	MVN_REPO=&quot;http://maven.adeo.no/nexus/service/local/repositories/m2snapshot/content&quot;  
-#fi
+fi
 
 wget -O tempFolder.jar ${MVN_REPO}/no/nav/maven/support/${Gateway}-deployer-pom/${DeployerPomVersion}/${Gateway}-deployer-pom-${DeployerPomVersion}.jar
 
