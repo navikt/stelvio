@@ -3811,6 +3811,8 @@ dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_stelvio-commons-lib_son
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_systemavailability/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/stelvio_trunk_int_wpshelpers/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/test123/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/varseltjeneste-site/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/varseltjeneste/config.xml -text
 dev/Jenkins/Jenkins_server_backup/nodeMonitors.xml -text
 dev/Jenkins/Jenkins_server_backup/sonar.xml -text
 dev/ant-projectSetTask/pom.xml -text

@@ -1099,7 +1099,6 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>kontaktregister-difi</string>
         <string>kontaktregister-difi-site</string>
-        <string>kontaktregister-difi-site2</string>
         <string>sdpkanal</string>
         <string>sdpkanal-site</string>
       </jobNames>
@@ -1213,6 +1212,29 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>(2015HL4_8\.5_).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>varseltjeneste</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>varseltjeneste</string>
+        <string>varseltjeneste-site</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
       <recurse>false</recurse>
     </listView>
   </views>
