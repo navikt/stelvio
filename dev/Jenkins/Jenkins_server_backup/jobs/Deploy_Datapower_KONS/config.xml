@@ -31,6 +31,9 @@
               <string>servicegwpepsbs:0.0.1</string>
               <string>servicegwpepsbs:0.0.1-SNAPSHOT</string>
               <string></string>
+              <string>stssbs:0.0.1</string>
+              <string>stssbs:0.0.1-SNAPSHOT</string>
+              <string></string>
               <string>simpleloopbackservice:0.0.1-SNAPSHOT</string>
             </a>
           </choices>
