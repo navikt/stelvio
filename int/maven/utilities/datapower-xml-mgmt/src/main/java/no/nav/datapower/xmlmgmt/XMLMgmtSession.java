@@ -33,6 +33,7 @@ import no.nav.datapower.xmlmgmt.command.RemoveDirCommand;
 import no.nav.datapower.xmlmgmt.command.RestartThisDomainCommand;
 import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
 import no.nav.datapower.xmlmgmt.command.SetFileCommand;
+import no.nav.datapower.xmlmgmt.command.SynchronizeWSRRSubscriptionCommand;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
@@ -462,6 +463,14 @@ public class XMLMgmtSession {
         log.debug(request.toString());
 
         return doRequest(request);
+    }
+    
+    public String synchronizeWSRRSubscription(String subscription) throws XMLMgmtException{
+        XMLMgmtRequest request = createRequest();
+        request.addCommand(new SynchronizeWSRRSubscriptionCommand(subscription));
+        String response = doRequest(request);
+        validateResult(extractResult(response));
+        return response;
     }
 
 //	private void scanFilesAndFolders(File root, File parent, XMLMgmtRequest request, DeviceFileStore location) throws IOException {

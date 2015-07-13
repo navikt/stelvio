@@ -3,7 +3,14 @@ package no.nav.datapower.xmlmgmt;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
+
+
+
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 
 import no.nav.datapower.util.DPFileUtils;
 
@@ -56,7 +63,21 @@ public class XMLMgmtSessionTester {
 		getXMLMgmtSession(domain).createDirs(wsdlDirectory, DeviceFileStore.LOCAL);				
 	}
 	
-	private XMLMgmtSession getXMLMgmtSession(String domain) {
-		return new XMLMgmtSession.Builder("https://secgw-01.utv.internsone.local:5550").user("mavendeployer").password("Test1234").domain(domain).build();
-	}
+	
+    @Test
+    public void testSynchronizeWSRRSubscription() throws URISyntaxException, XMLMgmtException {
+
+        String domain = "u3_servicegwpepsbs";
+        String response;
+
+        XMLMgmtSession xmlMgmtSession = getXMLMgmtSession(domain);
+        response = xmlMgmtSession.synchronizeWSRRSubscription("WSRRSavedSearchSubscripton");
+        Assert.assertTrue("Response should include OK", response.contains("OK"));
+    }
+
+
+    private XMLMgmtSession getXMLMgmtSession(String domain) {
+        return new XMLMgmtSession.Builder("https://dp-utv-02.adeo.no:5550/service/mgmt/3.0").user("mavendeployer").password("Test1234").domain(domain).build();
+//        return new XMLMgmtSession.Builder("https://a34dpva001.devillo.no:5550/service/mgmt/3.0").user("sysadmin").password("poc1234").domain(domain).build();
+    }
 }
