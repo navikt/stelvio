@@ -115,7 +115,14 @@ Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. <
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>/var/lib/jenkins/scripts/cleanRepo3gen.sh</command>
+      <command>/var/lib/jenkins/scripts/cleanRepo3gen.sh
+
+#Oppretter mappe for NFS logging og restarter NFS Serveren på Jenkins (kun for U!)
+app=$(echo $Applications | cut -d&quot;:&quot; -f1)
+folder=&quot;/tmp/nfsshare/datapower/${Environment}_${app}&quot;
+mkdir -p ${folder}
+echo &quot;$folder 10.33.68.41(rw,sync,no_root_squash)&quot; &gt;&gt; /etc/exports
+sudo service nfs restart</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
       <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B -U</targets>

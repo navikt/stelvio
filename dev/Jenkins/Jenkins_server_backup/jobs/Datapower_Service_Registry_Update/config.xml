@@ -58,7 +58,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B</targets>
+      <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:routerprovision -e -B -DdpDomainApplication=u3_servicegwpepsbs -DdpDomainRouter=u3_servicegwroutersbs</targets>
       <mavenName>Maven 3</mavenName>
       <properties>envConfigUrlString=https://fasit.adeo.no/conf
 env=${Environment}
