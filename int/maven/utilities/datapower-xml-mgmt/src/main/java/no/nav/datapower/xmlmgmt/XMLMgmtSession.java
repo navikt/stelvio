@@ -14,6 +14,16 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPHttpUtils;
 import no.nav.datapower.xmlmgmt.command.AddHostAliasCommand;
@@ -35,19 +45,8 @@ import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
 import no.nav.datapower.xmlmgmt.command.SetFileCommand;
 import no.nav.datapower.xmlmgmt.command.SynchronizeWSRRSubscriptionCommand;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-
 public class XMLMgmtSession {
     final Logger log = LoggerFactory.getLogger(XMLMgmtSession.class);
-
 
     private final String MGMGT_INTERFACE_PATH_V3 = "service/mgmt/3.0";
 
@@ -87,10 +86,10 @@ public class XMLMgmtSession {
     }
 
     private XMLMgmtSession(Builder builder) {
-        this.host = builder.host;
-        this.domain = builder.domain;
-        this.user = builder.user;
-        this.password = builder.password;
+        host = builder.host;
+        domain = builder.domain;
+        user = builder.user;
+        password = builder.password;
     }
 
     public XMLMgmtRequest createRequest() {
@@ -232,45 +231,47 @@ public class XMLMgmtSession {
             throw new XMLMgmtException("Expected result 'OK', but received: '" + result + "'");
         }
     }
-    
 
-	private void validateCfgResult(String response) throws XMLMgmtException {
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder;
-		Document doc;
-		InputSource inputSource = new InputSource(new StringReader(response));
+    private void validateCfgResult(String response) throws XMLMgmtException {
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        Document doc;
+        InputSource inputSource = new InputSource(new StringReader(response));
 
-		try {
-			dBuilder = dbFactory.newDocumentBuilder();
-			doc = dBuilder.parse(inputSource);
-		} catch (Exception e) {
-			throw new XMLMgmtException("Failed during parsing of response '" + response + "'", e);
-		}
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse(inputSource);
+        } catch (Exception e) {
+            throw new XMLMgmtException("Failed during parsing of response '" + response + "'", e);
+        }
 
-		NodeList nList = doc.getElementsByTagName("cfg-result");
+        NodeList nList = doc.getElementsByTagName("cfg-result");
 
-		for (int i = 0; i < nList.getLength(); i++) {
-			Node nNode = nList.item(i);
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
 
-			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-				Element eElement = (Element) nNode;
-				String objectStatusLogMessage = "Object of {class=\""	+ eElement.getAttribute("class") + "\", name=\"" 
-						+ eElement.getAttribute("name") + "\"} was imported with status: "	+ eElement.getAttribute("status")+ "";
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                String objectStatusLogMessage = "Object of {class=\"" + eElement.getAttribute("class") + "\", name=\""
+                        + eElement.getAttribute("name") + "\"} was imported with status: " + eElement.getAttribute("status") + "";
 
-				if (!"SUCCESS".equals(eElement.getAttribute("status")) && !"skipped".equals(eElement.getAttribute("status"))) {
-					log.error(objectStatusLogMessage);
-					log.error("Message returned was: \"" + eElement.getTextContent() + "\"");
-					throw new XMLMgmtException("Object " + eElement.getAttribute("name") + " was imported, but returned with the unexpected status: '"	+ eElement.getAttribute("status") + "'");
-				} else {
-					log.debug(objectStatusLogMessage);
-				}
-			}
-		}
-	}
+                if (!"SUCCESS".equals(eElement.getAttribute("status")) && !"skipped".equals(eElement.getAttribute("status"))) {
+                    log.error(objectStatusLogMessage);
+                    log.error("Message returned was: \"" + eElement.getTextContent() + "\"");
+                    throw new XMLMgmtException("Object " + eElement.getAttribute("name")
+                            + " was imported, but returned with the unexpected status: '"
+                            + eElement.getAttribute("status")
+                            + "'");
+                } else {
+                    log.debug(objectStatusLogMessage);
+                }
+            }
+        }
+    }
 
     /**
      * Deprecated; The new mgmt interface does not support importing of multiple files
-     *
+     * 
      * @param fileList
      * @param root
      * @param location
@@ -293,7 +294,7 @@ public class XMLMgmtSession {
     /**
      * To support mgmgt interface v3 you need to import files one by one
      * Imports one file
-     *
+     * 
      * @param file File ref to import
      * @param root Path
      * @param location Location on device
@@ -327,7 +328,7 @@ public class XMLMgmtSession {
         DoImportCommand command = new DoImportCommand.Builder(format, base64Config).build();
         request.addCommand(command);
         String response = doRequest(request);
-		validateCfgResult(response);
+        validateCfgResult(response);
 //		validateResult(extractResult(response));
         return response;
     }
@@ -339,7 +340,7 @@ public class XMLMgmtSession {
         log.debug(request.toString());
         String response = doRequest(request, host + MGMGT_INTERFACE_PATH_V3);
         log.debug(response);
-		validateCfgResult(response);
+        validateCfgResult(response);
 //      validateResult(extractResult(response));
         return response;
     }
@@ -444,6 +445,28 @@ public class XMLMgmtSession {
         return doRequest(request);
     }
 
+    public String getFileContent(DeviceFileStore location, final String fileName, final String domain) throws XMLMgmtException {
+        String response = getFile(location, fileName, domain);
+        return extractFileContent(response);
+    }
+
+    private String extractFileContent(String response) throws XMLMgmtException {
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        xpath.setNamespaceContext(new DatapowerManagementNamespaceContext());
+        InputSource inputSource = new InputSource(new StringReader(response));
+        try {
+            String fileContent = (String) xpath.evaluate("//" + DatapowerManagementNamespaceContext.DEFAULT_PREFIX + ":file", inputSource, XPathConstants.STRING);
+            log.debug("B64encoded file content returned from XML management call: " + fileContent);
+            try {
+                return new String(Base64.decodeBase64(fileContent.getBytes("UTF-8")));
+            } catch (UnsupportedEncodingException e) {
+                throw new XMLMgmtException("Failed to Base64 decode file data", e);
+            }
+        } catch (XPathExpressionException e) {
+            throw new XMLMgmtException("Did not find expected element 'file' in response message", e);
+        }
+    }
+
     public String flushDocumentCache(final String XMLManager, final String domain) throws XMLMgmtException {
         XMLMgmtRequest request = createRequest(domain);
         request.addCommand(new FlushDocumentCacheCommand(XMLManager));
@@ -464,8 +487,8 @@ public class XMLMgmtSession {
 
         return doRequest(request);
     }
-    
-    public String synchronizeWSRRSubscription(String subscription) throws XMLMgmtException{
+
+    public String synchronizeWSRRSubscription(String subscription) throws XMLMgmtException {
         XMLMgmtRequest request = createRequest();
         request.addCommand(new SynchronizeWSRRSubscriptionCommand(subscription));
         String response = doRequest(request);
