@@ -92,7 +92,7 @@ Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. <
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
         <remote>https://versjonskontroll.adeo.no/svn/aura/trunk/maven/poms/nav-init-pom</remote>
-        <local>.</local>
+        <local>nav-init-pom</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -139,6 +139,15 @@ dpHostnameFilter=${dpHostnameFilter}</properties>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
+    <hudson.tasks.Shell>
+      <command>app=$(echo $Applications | cut -d&quot;:&quot; -f1)
+if [ $app == &quot;servicegwroutersbs&quot; ];
+  then
+    echo &quot;Updating service registry file...&quot;
+    cd ${WORKSPACE}/nav-init-pom &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=${Environment} -Dusername=${User} -Dpassword=${Password} -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_servicegwpepsbs&quot;
+fi
+</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>

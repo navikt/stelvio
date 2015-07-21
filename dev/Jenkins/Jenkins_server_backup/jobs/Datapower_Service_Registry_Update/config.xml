@@ -58,7 +58,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -DdpDomainApplication=u3_servicegwpepsbs -DdpDomainRouter=u3_servicegwroutersbs</targets>
+      <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B</targets>
       <mavenName>Maven 3</mavenName>
       <properties>envConfigUrlString=https://fasit.adeo.no/conf
 env=${Environment}
@@ -82,5 +82,7 @@ scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-stylesheet.
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
   </publishers>
-  <buildWrappers/>
+  <buildWrappers>
+    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
+  </buildWrappers>
 </project>
