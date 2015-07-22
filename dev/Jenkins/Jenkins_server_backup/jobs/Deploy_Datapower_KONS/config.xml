@@ -92,7 +92,7 @@ Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. <
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
         <remote>https://versjonskontroll.adeo.no/svn/aura/trunk/maven/poms/nav-init-pom</remote>
-        <local>nav-init-pom</local>
+        <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -122,7 +122,7 @@ app=$(echo $Applications | cut -d&quot;:&quot; -f1)
 folder=&quot;/tmp/nfsshare/datapower/${Environment}_${app}&quot;
 mkdir -p ${folder}
 echo &quot;$folder 10.33.68.41(rw,sync,no_root_squash)&quot; &gt;&gt; /etc/exports
-sudo service nfs restart</command>
+sudo service nfs restart 2&gt; /dev/null</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
       <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B -U</targets>
@@ -144,7 +144,7 @@ dpHostnameFilter=${dpHostnameFilter}</properties>
 if [ $app == &quot;servicegwroutersbs&quot; ];
   then
     echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE}/nav-init-pom &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=${Environment} -Dusername=${User} -Dpassword=${Password} -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_servicegwpepsbs&quot;
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_servicegwpepsbs&quot;
 fi
 </command>
     </hudson.tasks.Shell>
