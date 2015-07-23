@@ -118,10 +118,14 @@ Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. <
       <command>/var/lib/jenkins/scripts/cleanRepo3gen.sh
 
 #Oppretter mappe for NFS logging og restarter NFS Serveren på Jenkins (kun for U!)
+#Må gjøres ofte siden Puppet overskriver endringene hver dag :&apos;(
+sudo chown root:ci /etc/exports
+sudo chmod g+w /etc/exports
 app=$(echo $Applications | cut -d&quot;:&quot; -f1)
 folder=&quot;/tmp/nfsshare/datapower/${Environment}_${app}&quot;
 mkdir -p ${folder}
 echo &quot;$folder 10.33.68.41(rw,sync,no_root_squash)&quot; &gt;&gt; /etc/exports
+#Skjuler feilmeldinger pga. duplikatlinjer
 sudo service nfs restart 2&gt; /dev/null</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
