@@ -56,13 +56,13 @@ esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
 if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
 
 # Skript som genererer automatisk dokumentasjon:
-esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
-esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
+esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 108973753
+esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 108973910
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 108973924 --path esb/
 
 svn up /home/ci/svn-repos/TRUNK/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
-esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795 --path esb/ --design /home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design /home/ci/svn-repos/TRUNK/tjenester
+esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 108973914 --path esb/ --design /home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design /home/ci/svn-repos/TRUNK/tjenester --envT 108973943 --envQ 108973939 --envP 108973935
 
 # Oppdaterer http://confluence.adeo.no/display/stelvio/Scripts+in+use+in+the+Integration+team+%28Hudson+server%29:
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/</command>

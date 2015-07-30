@@ -22,7 +22,7 @@ Mulig denne kan rettes opp i ved å innstalere Hermes.</description>
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_5_0_D20150427_2015HL4/esb-soap-tests</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_4_0_D20150727_2015HL3/esb-soap-tests</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>

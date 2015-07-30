@@ -182,6 +182,7 @@
         <string>SoapUI-U3-NAV-EUInstitusjon_CI</string>
         <string>SoapUI-U3-NAV-Familieforhold_CI</string>
         <string>SoapUI-U3-NAV-Fullmakt_CI</string>
+        <string>SoapUI-U3-NAV-Helsepersonell_CI</string>
         <string>SoapUI-U3-NAV-Henvendelse_CI</string>
         <string>SoapUI-U3-NAV-Henvendelsebehandling_CI</string>
         <string>SoapUI-U3-NAV-HPLIVEJournalbehandling_CI</string>
@@ -419,7 +420,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U3</groupRegex>
-          <namingRule>U3_2015HL4</namingRule>
+          <namingRule>U3_2015HL3</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
       </categorizationCriteria>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
@@ -923,8 +924,8 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status Trunk (8.4)</name>
-      <description>Jobber som bygger trunk, som pr nå er leveransen 8.4 (2015HL3)</description>
+      <name>Status Trunk (8.5)</name>
+      <description>Jobber som bygger trunk, som pr nå er leveransen 8.5 (2015HL4)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -969,24 +970,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL1_8.2_configuration_bus-authorization</string>
-        <string>2015HL1_8.2_configuration_bus-environment</string>
-        <string>2015HL1_8.2_configuration_bus-nonenvironment</string>
-        <string>2015HL1_8.2_ekstern</string>
-        <string>2015HL1_8.2_esb-release</string>
-        <string>2015HL1_8.2_esb_poms</string>
-        <string>2015HL1_8.2_layers</string>
-        <string>2015HL1_8.2_layers_dryRun</string>
-        <string>2015HL1_8.2_nav</string>
         <string>2015HL1_8.2_NAV_Tjenestebuss</string>
-        <string>2015HL1_8.2_pensjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_nav</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_system</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
         <string>2015HL2_8.3_configuration_bus-authorization</string>
         <string>2015HL2_8.3_configuration_bus-environment</string>
@@ -1005,24 +989,24 @@
         <string>2015HL2_8.3_tjenestespesifikasjon_pensjon</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_system</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon</string>
-        <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL4_8.5_configuration_bus-authorization</string>
-        <string>2015HL4_8.5_configuration_bus-environment</string>
-        <string>2015HL4_8.5_configuration_bus-nonenvironment</string>
-        <string>2015HL4_8.5_ekstern</string>
-        <string>2015HL4_8.5_esb-release</string>
-        <string>2015HL4_8.5_esb_poms</string>
-        <string>2015HL4_8.5_layers</string>
-        <string>2015HL4_8.5_layers_dryRun</string>
-        <string>2015HL4_8.5_nav</string>
-        <string>2015HL4_8.5_NAV-Tjenestebuss</string>
-        <string>2015HL4_8.5_pensjon</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_nav</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_system</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2015HL3_8.4_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL3_8.4_configuration_bus-authorization</string>
+        <string>2015HL3_8.4_configuration_bus-environment</string>
+        <string>2015HL3_8.4_configuration_bus-nonenvironment</string>
+        <string>2015HL3_8.4_ekstern</string>
+        <string>2015HL3_8.4_esb-release</string>
+        <string>2015HL3_8.4_esb_poms</string>
+        <string>2015HL3_8.4_layers</string>
+        <string>2015HL3_8.4_layers_dryRun</string>
+        <string>2015HL3_8.4_nav</string>
+        <string>2015HL3_8.4_NAV_Tjenestebuss</string>
+        <string>2015HL3_8.4_pensjon</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_nav</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_system</string>
+        <string>2015HL3_8.4_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
@@ -1031,8 +1015,8 @@
         <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
-        <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
-        <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
@@ -1153,30 +1137,12 @@
     </listView>
     <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
       <owner class="hudson" reference="../../.."/>
-      <name>Status 2015 HL1 (8.2)</name>
+      <name>Status 2015 HL3 (8.4)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2015HL1_8.2 NAV_Tjenestebuss</string>
-        <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL1_8.2_configuration_bus-authorization</string>
-        <string>2015HL1_8.2_configuration_bus-environment</string>
-        <string>2015HL1_8.2_configuration_bus-nonenvironment</string>
-        <string>2015HL1_8.2_ekstern</string>
-        <string>2015HL1_8.2_esb-release</string>
-        <string>2015HL1_8.2_esb_poms</string>
-        <string>2015HL1_8.2_layers</string>
-        <string>2015HL1_8.2_layers_dryRun</string>
-        <string>2015HL1_8.2_nav</string>
-        <string>2015HL1_8.2_pensjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_nav</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_system</string>
-        <string>2015HL1_8.2_tjenestespesifikasjon_tredjegenerasjon</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -1188,32 +1154,11 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
+      <includeRegex>(2015HL3_8\.4_).*</includeRegex>
       <recurse>true</recurse>
       <groupingRules/>
       <categorizationCriteria/>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 2015 HL4 (8.5)</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2015HL4_8\.5_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>varseltjeneste</name>
