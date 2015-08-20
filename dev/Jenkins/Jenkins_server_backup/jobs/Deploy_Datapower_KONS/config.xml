@@ -133,7 +133,7 @@ sudo service nfs restart 2&gt; /dev/null</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
       <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B -U</targets>
-      <mavenName>Maven 3</mavenName>
+      <mavenName>Maven 3.3.1</mavenName>
       <pom>${WORKSPACE}/pom.xml</pom>
       <properties>apps=${Applications}
 env=${Environment}

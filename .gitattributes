@@ -3313,12 +3313,14 @@ dev/Hudson/integration_var_lib_hudson/rest-plugin.xml -text
 dev/Hudson/integration_var_lib_hudson/sonar.xml -text
 dev/Hudson/integration_var_lib_hudson/userContent/readme.txt -text
 dev/Hudson/integration_var_lib_hudson/users/srvsvnldap/config.xml -text
+dev/Jenkins/Jenkins_server_backup/com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsConfig.xml -text
 dev/Jenkins/Jenkins_server_backup/com.sonyericsson.rebuild.RebuildDescriptor.xml -text
 dev/Jenkins/Jenkins_server_backup/config.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.maven.MavenModuleSet.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.model.UpdateCenter.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.analysis.core.GlobalSettings.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.cigame.GamePublisher.xml -text
+dev/Jenkins/Jenkins_server_backup/hudson.plugins.git.GitSCM.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.git.GitTool.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.sonar.SonarPublisher.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.sonar.SonarRunnerInstallation.xml -text
@@ -3795,6 +3797,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/test123/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/varseltjeneste-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/varseltjeneste/config.xml -text
 dev/Jenkins/Jenkins_server_backup/nodeMonitors.xml -text
+dev/Jenkins/Jenkins_server_backup/org.jenkinsci.plugins.gitclient.JGitTool.xml -text
 dev/Jenkins/Jenkins_server_backup/sonar.xml -text
 dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
