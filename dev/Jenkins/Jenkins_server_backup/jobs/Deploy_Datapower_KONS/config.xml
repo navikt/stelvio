@@ -29,7 +29,8 @@
               <string>pepgwsbs:1.1.3</string>
               <string>pepgwsbs:1.1.4</string>
               <string>pepgwsbs:1.1.5</string>
-              <string>pepgwsbs:1.1.6-SNAPSHOT</string>
+              <string>pepgwsbs:1.1.6</string>
+              <string>pepgwsbs:1.1.7-SNAPSHOT</string>
               <string></string>
               <string>servicegwpepsbs:0.0.1</string>
               <string>servicegwpepsbs:0.0.1-SNAPSHOT</string>
@@ -65,7 +66,9 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>0.0.11</string>
+              <string>0.0.12</string>
               <string>0.0.12-SNAPSHOT</string>
+              <string>0.0.13-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -84,6 +87,11 @@
           <description>Hvis man ønsker å deploye bare til én node kan man bruke dette parameteret.
 Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. </description>
           <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>dpAliasesE</name>
+          <description>Hvilke bokser som skal bli deployet til</description>
+          <defaultValue>dp-01,dp-02</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -132,7 +140,7 @@ echo &quot;$folder 10.33.68.41(rw,sync,no_root_squash)&quot; &gt;&gt; /etc/expor
 sudo service nfs restart 2&gt; /dev/null</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
-      <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B -U</targets>
+      <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B -U -X</targets>
       <mavenName>Maven 3.3.1</mavenName>
       <pom>${WORKSPACE}/pom.xml</pom>
       <properties>apps=${Applications}
@@ -141,7 +149,8 @@ username=${User}
 password=${Password}
 debug=${debug}
 envConfigUrl=${EnvConfig}
-dpHostnameFilter=${dpHostnameFilter}</properties>
+dpHostnameFilter=${dpHostnameFilter}
+dpAliases=${dpAliasesE}</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
