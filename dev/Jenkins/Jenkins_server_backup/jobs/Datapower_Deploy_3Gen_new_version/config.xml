@@ -23,8 +23,9 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>u3</string>
               <string>u2</string>
+              <string>u3</string>
+              <string>u42</string>
               <string>t4</string>
               <string>t5</string>
               <string>t6</string>

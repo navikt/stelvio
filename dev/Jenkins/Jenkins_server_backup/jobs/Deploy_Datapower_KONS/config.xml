@@ -12,6 +12,9 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>u3</string>
+              <string>u7</string>
+              <string>u8</string>
+              <string>u42</string>
               <string>t1</string>
               <string>t4</string>
               <string>t5</string>
@@ -26,20 +29,38 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>-- SBS --</string>
               <string>pepgwsbs:1.1.3</string>
               <string>pepgwsbs:1.1.4</string>
               <string>pepgwsbs:1.1.5</string>
               <string>pepgwsbs:1.1.6</string>
               <string>pepgwsbs:1.1.7-SNAPSHOT</string>
               <string></string>
-              <string>servicegwpepsbs:0.0.1</string>
+              <string>service-gw-pep-sbs:0.0.1-SNAPSHOT</string>
+              <string>service-gw-pep-sbs:0.0.1</string>
+              <string></string>
+              <string>service-gw-router-sbs:0.0.1-SNAPSHOT</string>
+              <string>service-gw-router-sbs:0.0.1</string>
+              <string></string>
+              <string>sts-sbs:0.0.1-SNAPSHOT</string>
+              <string>sts-sbs:0.0.1</string>
+              <string></string>
+              <string>-- FSS --</string>
+              <string>service-gw-pep-fss:0.0.1-SNAPSHOT</string>
+              <string>service-gw-pep-fss:0.0.1</string>
+              <string></string>
+              <string>service-gw-router-fss:0.0.1-SNAPSHOT</string>
+              <string>service-gw-router-fss:0.0.1</string>
+              <string></string>
+              <string>-- LEGACY --</string>
               <string>servicegwpepsbs:0.0.1-SNAPSHOT</string>
+              <string>servicegwpepsbs:0.0.1</string>
               <string></string>
-              <string>servicegwroutersbs:0.0.1</string>
               <string>servicegwroutersbs:0.0.1-SNAPSHOT</string>
+              <string>servicegwroutersbs:0.0.1</string>
               <string></string>
-              <string>stssbs:0.0.1</string>
               <string>stssbs:0.0.1-SNAPSHOT</string>
+              <string>stssbs:0.0.1</string>
               <string></string>
               <string>simpleloopbackservice:0.0.1-SNAPSHOT</string>
             </a>
@@ -157,10 +178,16 @@ dpAliases=${dpAliasesE}</properties>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
       <command>app=$(echo $Applications | cut -d&quot;:&quot; -f1)
-if [ $app == &quot;servicegwroutersbs&quot; ];
+if [ $app == &quot;service-gw-router-sbs&quot; ];
   then
     echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_servicegwpepsbs&quot;
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-sbs&quot;
+fi
+
+if [ $app == &quot;service-gw-router-fss&quot; ];
+  then
+    echo &quot;Updating service registry file...&quot;
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-fss&quot;
 fi
 </command>
     </hudson.tasks.Shell>
