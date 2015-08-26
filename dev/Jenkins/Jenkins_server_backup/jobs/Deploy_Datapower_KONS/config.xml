@@ -31,6 +31,8 @@
             <a class="string-array">
               <string>-- SBS --</string>
               <string>pepgwsbs:1.1.3</string>
+              <string>pepgwsbs:1.3.1.0-SNAPSHOT</string>
+              <string>pepgwsbs:1.3.1.0</string>
               <string>pepgwsbs:1.1.4</string>
               <string>pepgwsbs:1.1.5</string>
               <string>pepgwsbs:1.1.6</string>
