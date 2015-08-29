@@ -183,13 +183,13 @@ dpAliases=${dpAliasesE}</properties>
 if [ $app == &quot;service-gw-router-sbs&quot; ];
   then
     echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-sbs&quot;
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-sbs&quot;
 fi
 
 if [ $app == &quot;service-gw-router-fss&quot; ];
   then
     echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.11-SNAPSHOT:router-provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-fss&quot;
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-fss&quot;
 fi
 </command>
     </hudson.tasks.Shell>
