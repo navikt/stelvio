@@ -9,7 +9,7 @@
 
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>datapower-xml-mgmt</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.4-SNAPSHOT</version>
 
     <properties>
         <jackrabbit.version>1.0</jackrabbit.version>
@@ -53,7 +53,7 @@
 	</dependencies>
 
     <scm>
-        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-xml-mgmt-2.0.4</connection>
-        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-xml-mgmt-2.0.4</developerConnection>
+        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/datapower-xml-mgmt</connection>
+        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/datapower-xml-mgmt</developerConnection>
     </scm>
 </project>
