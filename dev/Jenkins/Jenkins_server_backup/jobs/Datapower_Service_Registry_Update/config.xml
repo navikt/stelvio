@@ -63,7 +63,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -U -X</targets>
+      <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -U </targets>
       <mavenName>Maven 3</mavenName>
       <properties>envConfigUrlString=https://fasit.adeo.no/conf
 env=${Environment}
@@ -76,7 +76,7 @@ logback.debug=${debug}</properties>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
-      <command>#scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
+      <command>scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
 scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
 scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/</command>
     </hudson.tasks.Shell>
