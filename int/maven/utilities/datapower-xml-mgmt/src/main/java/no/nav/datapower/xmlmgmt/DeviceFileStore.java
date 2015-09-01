@@ -7,7 +7,8 @@ public enum DeviceFileStore {
 	PUBCERT("pubcert"),
 	SHAREDCERT("sharedcert"),
 	LOCAL("local"),
-	TEMPORARY("temporary");
+	TEMPORARY("temporary"),
+	STORE("store");
 	
 	private final String location;
 	

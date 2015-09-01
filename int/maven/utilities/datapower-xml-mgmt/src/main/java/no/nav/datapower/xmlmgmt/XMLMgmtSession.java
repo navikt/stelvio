@@ -165,6 +165,28 @@ public class XMLMgmtSession {
         log.debug(request.toString());
         return doRequest(request);
     }
+    
+    public String createDirsInDomain(String domain, File rootDir, DeviceFileStore location) throws XMLMgmtException {
+        XMLMgmtRequest request = createRequest(domain);
+//		System.out.println("Scanning archive for files and folders");
+        List<File> directories;
+        try {
+            directories = DPFileUtils.getFolderListExcludeRoot(rootDir);
+        } catch (IOException e) {
+            throw new XMLMgmtException("Failed to get folder list from '" + rootDir + "'", e);
+        }
+        List<File> relativePaths = DPFileUtils.getRelativePathList(directories, rootDir);
+//		System.out.println("XMLMgmtSession.createDirs(), list of directories:");
+//		IOUtils.writeLines(directories, IOUtils.LINE_SEPARATOR, System.out);
+//        DPCollectionUtils.printLines(directories, log, Level.DEBUG, "Creating directory: ");
+
+        log.debug("Creating directories: ");
+        log.debug(directories.toString());
+
+        request.addCommand(new CreateDirCommand(location, relativePaths));
+        log.debug(request.toString());
+        return doRequest(request);
+    }
 
     public String removeDir(String path, DeviceFileStore location) throws XMLMgmtException {
         XMLMgmtRequest request = createRequest();
@@ -310,7 +332,23 @@ public class XMLMgmtSession {
             throw new XMLMgmtException("Failed to Base64 encode file data", e);
         }
         log.trace("ImportFile request: \n" + request);
-        return doRequest(request);
+        String response = doRequest(request);
+        validateResult(extractResult(response));
+        return response;
+    }
+    
+    public String importFileToDomain(String domain, File file, File root, DeviceFileStore location) throws XMLMgmtException {
+        XMLMgmtRequest request = createRequest(domain);
+        try {
+            String relativePath = DPFileUtils.getRelativePath(file, root).getPath();
+            request.addCommand(new SetFileCommand(location, relativePath, DPFileUtils.base64EncodeFile(file)));
+        } catch (IOException e) {
+            throw new XMLMgmtException("Failed to Base64 encode file data", e);
+        }
+        log.trace("ImportFile request: \n" + request);
+        String response = doRequest(request);
+        validateResult(extractResult(response));
+        return response;
     }
 
     public String importFile(String fileName, String fileContent, DeviceFileStore location) throws XMLMgmtException {
@@ -320,7 +358,9 @@ public class XMLMgmtSession {
         } catch (UnsupportedEncodingException e) {
             throw new XMLMgmtException("Failed to Base64 encode file data", e);
         }
-        return doRequest(request);
+        String response = doRequest(request);
+        validateResult(extractResult(response));
+        return response;
     }
 
     public String importConfig(String base64Config, ImportFormat format) throws XMLMgmtException {
