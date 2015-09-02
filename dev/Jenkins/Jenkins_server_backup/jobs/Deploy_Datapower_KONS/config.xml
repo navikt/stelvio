@@ -19,6 +19,7 @@
               <string>t4</string>
               <string>t5</string>
               <string>t10</string>
+              <string>t11</string>
               <string>u2</string>
               <string>u55</string>
             </a>
@@ -180,19 +181,27 @@ dpAliases=${dpAliasesE}</properties>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
-      <command>app=$(echo $Applications | cut -d&quot;:&quot; -f1)
-if [ $app == &quot;service-gw-router-sbs&quot; ];
-  then
-    echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-sbs&quot;
-fi
-
-if [ $app == &quot;service-gw-router-fss&quot; ];
-  then
-    echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-fss&quot;
-fi
+      <command>#app=$(echo $Applications | cut -d&quot;:&quot; -f1)
+#if [ $app == &quot;service-gw-router-sbs&quot; ];
+#  then
+#    echo &quot;Updating service registry file...&quot;
+#    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -#Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-sbs&quot;
+#fi
+#
+#if [ $app == &quot;service-gw-router-fss&quot; ];
+#  then
+#    echo &quot;Updating service registry file...&quot;
+#    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -#Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-fss&quot;
+#fi
 </command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>echo &quot;Updating service registry file...&quot;
+cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE
+
+#scp -r ${WORKSPACE}/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
+scp -r ${WORKSPACE}/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
+scp -r ${WORKSPACE}/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
