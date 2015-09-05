@@ -34,7 +34,8 @@
               <string>pepgwsbs:1.1.3</string>
               <string>pepgwsbs:1.3.1.0</string>
               <string>pepgwsbs:1.1.6</string>
-              <string>pepgwsbs:1.1.7-SNAPSHOT</string>
+              <string>pepgwsbs:1.1.7</string>
+              <string>pepgwsbs:1.1.8-SNAPSHOT</string>
               <string></string>
               <string>service-gw-pep-sbs:0.0.1-SNAPSHOT</string>
               <string>service-gw-pep-sbs:0.0.1</string>
