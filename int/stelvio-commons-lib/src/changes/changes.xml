@@ -5,6 +5,12 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="4.1.15" date="07-09-2014" description="Bugfix release">
+			<action dev="l135479" type="fix">PK-26037: Endring på loggnivå for forskjellige hendelser i forbindelse med System Throttling Interceptor</action>
+		</release>
+		<release version="4.1.14" date="09-01-2015" description="Maintenance release">
+			<action dev="L141548" type="update">PK-18038: La til JNDI lookup, fjernet systemName.xml property verdi innlesing</action>
+		</release>
 		<release version="4.1.9" date="xx-xx-2014" description="Maintenance release">
 			<action dev="h103841" type="update">PKIGUAN-353: Removed use of deprecated API when generating StelvioContext.correlationId</action>
 		</release>
