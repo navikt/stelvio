@@ -36,6 +36,7 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>dp-01,dp-02</string>
               <string>dp-01</string>
               <string>dp-02</string>
             </a>

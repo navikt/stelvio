@@ -32,7 +32,7 @@
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -62,7 +62,7 @@ R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengi
 
 svn up /home/ci/svn-repos/2015HL3/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
 R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 96167106 --path R_8_4_0_D20150727_2015HL3/ --design /home/ci/svn-repos/2015HL3/tjenester/spesifikasjon/implementasjon/
-R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_4_0_D20150727_2015HL3/ --design "/home/ci/svn-repos/2015HL3/tjenester" --envT 134496368 --envQ 134496365 --envP 134496360
+R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_4_0_D20150727_2015HL3/ --design &quot;/home/ci/svn-repos/2015HL3/tjenester&quot; --envT 134496368 --envQ 134496365 --envP 134496360
 </command>
     </hudson.tasks.Shell>
   </builders>

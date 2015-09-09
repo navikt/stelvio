@@ -18,6 +18,7 @@
               <string>t1</string>
               <string>t4</string>
               <string>t5</string>
+              <string>t6</string>
               <string>t10</string>
               <string>t11</string>
               <string>u2</string>
@@ -37,7 +38,7 @@
               <string>pepgwsbs:1.1.7</string>
               <string>pepgwsbs:1.1.8-SNAPSHOT</string>
               <string></string>
-              <string>service-gw-pep-sbs:1.0.1-SNAPSHOT</string>
+              <string>service-gw-pep-sbs:1.0.0-SNAPSHOT</string>
               <string>service-gw-pep-sbs:1.0.0</string>
               <string></string>
               <string>service-gw-router-sbs:1.0.2-SNAPSHOT</string>
