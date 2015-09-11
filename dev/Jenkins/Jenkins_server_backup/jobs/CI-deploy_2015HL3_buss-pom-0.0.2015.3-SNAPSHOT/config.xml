@@ -46,7 +46,11 @@ Kjøres hver dag kl 19.57</description>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; pom.xml
+      <command>svn revert * */*
+rm -rf ./pom.xmlr ./*/pom.xmlr
+svn up
+
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; pom.xml
 sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; ekstern-modules/pom.xml
 sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; esb-modules/pom.xml
 sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2015.3-SNAPSHOT&lt;/version&gt;@&apos; nav-modules/pom.xml
@@ -58,17 +62,6 @@ sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
-      <tasks>
-        <hudson.plugins.postbuildtask.TaskProperties>
-          <logTexts/>
-          <EscalateStatus>false</EscalateStatus>
-          <RunIfJobSuccessful>false</RunIfJobSuccessful>
-          <script>svn revert * */*&#xd;
-rm -rf ./pom.xmlr ./*/pom.xmlr</script>
-        </hudson.plugins.postbuildtask.TaskProperties>
-      </tasks>
-    </hudson.plugins.postbuildtask.PostbuildTask>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>

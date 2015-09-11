@@ -38,21 +38,21 @@
               <string>pepgwsbs:1.1.7</string>
               <string>pepgwsbs:1.1.8-SNAPSHOT</string>
               <string></string>
-              <string>service-gw-pep-sbs:1.0.0-SNAPSHOT</string>
-              <string>service-gw-pep-sbs:1.0.0</string>
+              <string>service-gw-pep-sbs:1.0.2-SNAPSHOT</string>
+              <string>service-gw-pep-sbs:1.0.1</string>
               <string></string>
-              <string>service-gw-router-sbs:1.0.2-SNAPSHOT</string>
-              <string>service-gw-router-sbs:1.0.1</string>
+              <string>service-gw-router-sbs:1.0.3-SNAPSHOT</string>
+              <string>service-gw-router-sbs:1.0.2</string>
               <string></string>
               <string>sts-sbs:1.0.2-SNAPSHOT</string>
               <string>sts-sbs:1.0.1</string>
               <string></string>
               <string>-- FSS --</string>
-              <string>service-gw-pep-fss:1.0.0-SNAPSHOT</string>
-              <string>service-gw-pep-fss:1.0.0</string>
+              <string>service-gw-pep-fss:1.0.2-SNAPSHOT</string>
+              <string>service-gw-pep-fss:1.0.1</string>
               <string></string>
-              <string>service-gw-router-fss:1.0.2-SNAPSHOT</string>
-              <string>service-gw-router-fss:1.0.1</string>
+              <string>service-gw-router-fss:1.0.3-SNAPSHOT</string>
+              <string>service-gw-router-fss:1.0.2</string>
               <string></string>
               <string>-- ANNET --</string>
               <string>simpleloopbackservice:0.0.1-SNAPSHOT</string>
