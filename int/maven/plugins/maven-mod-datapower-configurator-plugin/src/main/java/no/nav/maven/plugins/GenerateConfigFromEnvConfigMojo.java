@@ -243,8 +243,7 @@ public class GenerateConfigFromEnvConfigMojo extends AbstractMojo {
             // MULIG FOR 2 TJENESTER Å FÅ SAMME FRONTSIDE URI
             getLog().info("Frontside URI: " + webServiceResource.getEndpointUrl().getPath());
             wsdlFile.setFrontsideURI(webServiceResource.getEndpointUrl().getPath());
-            
-            
+
             wsdlFiles.add(wsdlFile);
         }
 
