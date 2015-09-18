@@ -114,8 +114,15 @@ Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. <
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
           <name>provision</name>
-          <description>Kjøre provisjoneringsjobben?</description>
+          <description>Provisjonere WSRR-tjenesteregister og service-gw?</description>
           <defaultValue>true</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>routerProvision</name>
+          <description>Provisjonere &lt;b&gt;kun&lt;/b&gt; router-domene?
+Kjøres automatisk hvis  WSRR-tjenesteregister og service-gw provisjoneres (provision==true).
+</description>
+          <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -180,21 +187,6 @@ dpAliases=${dpAliasesE}</properties>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
-      <command>#app=$(echo $Applications | cut -d&quot;:&quot; -f1)
-#if [ $app == &quot;service-gw-router-sbs&quot; ];
-#  then
-#    echo &quot;Updating service registry file...&quot;
-#    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -#Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-sbs&quot;
-#fi
-#
-#if [ $app == &quot;service-gw-router-fss&quot; ];
-#  then
-#    echo &quot;Updating service registry file...&quot;
-#    cd ${WORKSPACE} &amp;&amp; /usr/maven/apache-maven-3.0.5/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.0.12-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -#Dpassword=$Password -DdpAliases=dp-01,dp-02 -DdpDomainRouter=&quot;${Environment}_${app}&quot; -DdpDomainApplications=&quot;${Environment}_service-gw-pep-fss&quot;
-#fi
-</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
       <command>if [ $provision == &quot;true&quot; ];
   then
     echo &quot;Updating service registry file...&quot;
@@ -204,6 +196,33 @@ dpAliases=${dpAliasesE}</properties>
     scp -r ${WORKSPACE}/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
     scp -r ${WORKSPACE}/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/
 fi</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>if [ $provision == &quot;false&quot; -a $routerProvision == &quot;true&quot; ];
+  then
+    app=$(echo $Applications | cut -d&quot;:&quot; -f1)
+    domainSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
+    if [ $domainSuffix == &quot;-p&quot; -o $domainSuffix == &quot;-P&quot; ];
+      then
+        domainSuffix=&quot;&quot;
+    fi
+
+    if [ $app == &quot;service-gw-router-sbs&quot; ];
+      then
+        dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
+    elif [ $app == &quot;service-gw-router-fss&quot; ];
+      then
+        dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
+    elif [ $app == &quot;partner-gw-router-sbs&quot; ];
+      then
+        #dpDomainApplication=&quot;nhn-gw${domainSuffix}&quot;
+        dpDomainApplication=&quot;nhn-gw-t&quot;
+    fi
+
+    echo &quot;Provisioning $app with services from $dpDomainApplication&quot;
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.1.1-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE -DrouterAppName=$app -DdpDomainApplications=$dpDomainApplication
+fi
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
