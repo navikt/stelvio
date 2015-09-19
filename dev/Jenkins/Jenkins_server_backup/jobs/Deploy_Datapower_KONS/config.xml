@@ -40,8 +40,8 @@
               <string>partner-gw-pep-sbs:1.0.0-SNAPSHOT</string>
               <string>partner-gw-pep-sbs:1.0.0</string>
               <string></string>
-              <string>partner-gw-router-sbs:1.0.0-SNAPSHOT</string>
-              <string>partner-gw-router-sbs:1.0.0</string>
+              <string>partner-gw-router-sbs:1.0.1-SNAPSHOT</string>
+              <string>partner-gw-router-sbs:1.0.1</string>
               <string></string>
               <string>service-gw-pep-sbs:1.0.2-SNAPSHOT</string>
               <string>service-gw-pep-sbs:1.0.1</string>
@@ -85,8 +85,8 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>0.0.13</string>
               <string>0.0.14</string>
+              <string>0.0.13</string>
               <string>0.0.15-SNAPSHOT</string>
             </a>
           </choices>
@@ -102,21 +102,10 @@
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>dpHostnameFilter</name>
-          <description>Hvis man ønsker å deploye bare til én node kan man bruke dette parameteret.
-Det gjøres en String.contains på hostnavnet på datapower-boksen ved deploy. </description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>dpAliasesE</name>
           <description>Hvilke bokser som skal bli deployet til</description>
           <defaultValue>dp-01,dp-02</defaultValue>
         </hudson.model.StringParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>provision</name>
-          <description>Provisjonere WSRR-tjenesteregister og service-gw?</description>
-          <defaultValue>true</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
           <name>routerProvision</name>
           <description>Provisjonere &lt;b&gt;kun&lt;/b&gt; router-domene?
@@ -124,6 +113,16 @@ Kjøres automatisk hvis  WSRR-tjenesteregister og service-gw provisjoneres (prov
 </description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>provision</name>
+          <description>Provisjonere WSRR-tjenesteregister og service-gw?</description>
+          <defaultValue>true</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>pluginVersion</name>
+          <description>Provisioning plugin version (for forsyning av service-gw 2.0 og oppdatering av router-domener)</description>
+          <defaultValue>1.1.1</defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -187,42 +186,44 @@ dpAliases=${dpAliasesE}</properties>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
+      <command>if [ $routerProvision == &quot;true&quot; ];
+   then
+
+routerAppName=$(echo $Applications | cut -d&quot;:&quot; -f1)
+ 
+if [[ $routerAppName == *router* ]]
+then
+   domainClassSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
+   if [ $domainClassSuffix == &quot;-p&quot; -o $domainClassSuffix == &quot;-P&quot; ];
+      then
+         domainClassSuffix=&quot;&quot;
+   fi
+   if [ $routerAppName == &quot;partner-gw-router-sbs&quot; ];
+      then
+         dpDomainApplication=&quot;nhn-gw${domainClassSuffix}&quot;
+   elif [ $routerAppName == &quot;service-gw-router-sbs&quot; ];
+      then
+        dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
+   elif [ $routerAppName == &quot;service-gw-router-fss&quot; ];
+      then
+        dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
+   fi
+   echo &quot;Provisioning $routerAppName with services from $dpDomainApplication&quot;
+
+   cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:$pluginVersion:router-provision -e -B -U -DenvConfigUrlString=$EnvConfig -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE -DrouterAppName=$routerAppName -DdpDomainApplications=$dpDomainApplication
+fi
+fi</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
       <command>if [ $provision == &quot;true&quot; ];
   then
     echo &quot;Updating service registry file...&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.1.0:provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE
+    cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE
 
     #scp -r ${WORKSPACE}/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
     scp -r ${WORKSPACE}/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
     scp -r ${WORKSPACE}/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/
 fi</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>if [ $provision == &quot;false&quot; -a $routerProvision == &quot;true&quot; ];
-  then
-    app=$(echo $Applications | cut -d&quot;:&quot; -f1)
-    domainSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
-    if [ $domainSuffix == &quot;-p&quot; -o $domainSuffix == &quot;-P&quot; ];
-      then
-        domainSuffix=&quot;&quot;
-    fi
-
-    if [ $app == &quot;service-gw-router-sbs&quot; ];
-      then
-        dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
-    elif [ $app == &quot;service-gw-router-fss&quot; ];
-      then
-        dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
-    elif [ $app == &quot;partner-gw-router-sbs&quot; ];
-      then
-        #dpDomainApplication=&quot;nhn-gw${domainSuffix}&quot;
-        dpDomainApplication=&quot;nhn-gw-t&quot;
-    fi
-
-    echo &quot;Provisioning $app with services from $dpDomainApplication&quot;
-    cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:1.1.1-SNAPSHOT:router-provision -e -B -U -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE -DrouterAppName=$app -DdpDomainApplications=$dpDomainApplication
-fi
-</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
