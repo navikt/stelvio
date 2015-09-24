@@ -38,6 +38,7 @@
     <artifactId>kontaktregister-difi</artifactId>
   </rootModule>
   <goals>clean site</goals>
+  <mavenName>Maven 3</mavenName>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
@@ -56,7 +57,7 @@
       <branch></branch>
       <language></language>
       <mavenOpts></mavenOpts>
-      <jobAdditionalProperties></jobAdditionalProperties>
+      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/no/nav/kontaktregister/selftest/**/*.java</jobAdditionalProperties>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
       <usePrivateRepository>false</usePrivateRepository>
