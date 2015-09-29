@@ -35,7 +35,8 @@
     <groupId>no.nav.modig</groupId>
     <artifactId>modig-security</artifactId>
   </rootModule>
-  <goals>clean verify site</goals>
+  <goals>clean verify site -Dchanges.jira.skip=true</goals>
+  <mavenName>Maven 3</mavenName>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
@@ -48,7 +49,18 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.plugins.sonar.SonarPublisher plugin="test@example.com">
+      <jdk>(Inherit From Job)</jdk>
+      <branch>modig-security-1.0.x</branch>
+      <language></language>
+      <mavenOpts></mavenOpts>
+      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/org/json/**/*.java</jobAdditionalProperties>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+      <usePrivateRepository>false</usePrivateRepository>
+    </hudson.plugins.sonar.SonarPublisher>
+  </publishers>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>
