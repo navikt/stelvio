@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>mvn clean verify av design tjenestespesifikasjon for nav (virksomhet)</description>
+  <description>mvn clean deploy av bus-authorization</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20150323_2015HL2/spesifikasjon/implementasjon/virksomhet</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_6_0_D20150922_2016HL1/configuration/bus-authorization</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -47,9 +47,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean verify</targets>
+      <targets>clean deploy</targets>
       <mavenName>(Default)</mavenName>
-      <jvmOptions>-Xmx2048m -Xms512m -XX:MaxPermSize=1024m</jvmOptions>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>

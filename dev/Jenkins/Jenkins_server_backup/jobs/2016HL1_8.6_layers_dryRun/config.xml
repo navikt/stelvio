@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>mvn clean deploy av bus-environment</description>
+  <description>Starter kl 22.00</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>5</numToKeep>
+    <numToKeep>7</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_3_0_D20150323_2015HL2/configuration/bus-enviroment</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_6_0_D20150922_2016HL1/layers</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -34,28 +34,38 @@
   </scm>
   <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>@monthly</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
+    <hudson.triggers.TimerTrigger>
+      <spec># at 22:00 in the evening
+0 22 * * *</spec>
+    </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean deploy</targets>
+      <targets>clean -e release:clean release:prepare -DdryRun=true</targets>
       <mavenName>(Default)</mavenName>
+      <jvmOptions>-Xmx2048m -Xms64m -XX:MaxPermSize=1024m</jvmOptions>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
+    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
+      <tasks>
+        <hudson.plugins.postbuildtask.TaskProperties>
+          <logTexts/>
+          <EscalateStatus>false</EscalateStatus>
+          <RunIfJobSuccessful>false</RunIfJobSuccessful>
+          <script>mvn clean</script>
+        </hudson.plugins.postbuildtask.TaskProperties>
+      </tasks>
+    </hudson.plugins.postbuildtask.PostbuildTask>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>

@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_3_0_D20150323_2015HL2/esb-poms</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_6_0_D20150922_2016HL1/ekstern</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -32,7 +32,7 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
-  <quietPeriod>5</quietPeriod>
+  <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>

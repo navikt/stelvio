@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>mvn clean verify av design tjenestespesifikasjon for system</description>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20150323_2015HL2/spesifikasjon/implementasjon/system</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_6_0_D20150922_2016HL1/esb-release</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -47,7 +47,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean verify</targets>
+      <targets>clean deploy</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
@@ -55,6 +55,9 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="test@example.com">
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
     <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
