@@ -40,8 +40,8 @@
               <string>partner-gw-pep-sbs:1.0.5-SNAPSHOT</string>
               <string>partner-gw-pep-sbs:1.0.4</string>
               <string></string>
-              <string>partner-gw-router-sbs:1.0.4-SNAPSHOT</string>
-              <string>partner-gw-router-sbs:1.0.3</string>
+              <string>partner-gw-router-sbs:1.0.5-SNAPSHOT</string>
+              <string>partner-gw-router-sbs:1.0.4</string>
               <string></string>
               <string>service-gw-pep-sbs:1.0.5-SNAPSHOT</string>
               <string>service-gw-pep-sbs:1.0.4</string>
@@ -121,7 +121,7 @@ Kjøres automatisk hvis  WSRR-tjenesteregister og service-gw provisjoneres (prov
         <hudson.model.StringParameterDefinition>
           <name>pluginVersion</name>
           <description>Provisioning plugin version (for forsyning av service-gw 2.0 og oppdatering av router-domener)</description>
-          <defaultValue>1.1.6</defaultValue>
+          <defaultValue>1.1.9</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
