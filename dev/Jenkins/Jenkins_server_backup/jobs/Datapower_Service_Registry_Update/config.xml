@@ -42,6 +42,27 @@
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SyncStrategy</name>
+          <description>Default er onDemand</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>onDemand</string>
+              <string>force</string>
+              <string>disabled</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>BareSynkroniser</name>
+          <description>Settes til true hvis en bare skal synkronisere PEP&apos;ene</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>WSRRSavedSearchFilter</name>
+          <description>WSRRSavedSearchProxy&apos;er legges til i en kommaseparert liste for å redusere hvilke WSRRSavedSearchProxy&apos;er som skal oppdateres</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -81,7 +102,10 @@ env=${Environment}
 username=${Username}
 password=${Password}
 dpAliases=${dpFilter}
-logback.debug=${debug}</properties>
+logback.debug=${debug}
+dpSyncStrategy=${SyncStrategy}
+syncOnlyPep=${BareSynkroniser}
+dpWSRRSavedSearchFilter=${WSRRSavedSearchFilter}</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
