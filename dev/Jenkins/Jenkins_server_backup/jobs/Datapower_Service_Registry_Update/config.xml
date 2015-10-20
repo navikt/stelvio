@@ -38,6 +38,7 @@
             <a class="string-array">
               <string>dp-01,dp-02</string>
               <string>dp-01</string>
+              <string></string>
               <string>dp-02</string>
             </a>
           </choices>
@@ -47,15 +48,15 @@
           <description>Default er onDemand</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>onDemand</string>
+              <string>onWSDLChange</string>
               <string>force</string>
               <string>disabled</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
-          <name>BareSynkroniser</name>
-          <description>Settes til true hvis en bare skal synkronisere PEP&apos;ene</description>
+          <name>SyncOnlySGW2PepAndRouter</name>
+          <description>Settes til true hvis en skal hoppe over å forsyne WSRR.</description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -63,6 +64,16 @@
           <description>WSRRSavedSearchProxy&apos;er legges til i en kommaseparert liste for å redusere hvilke WSRRSavedSearchProxy&apos;er som skal oppdateres</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>SecurityZoneFilter</name>
+          <description>Settes til enten SBS eller FSS for å bare deploye til den ene sikkerhetssonen</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>EnableParallelism</name>
+          <description>Gjør WSRR og Datapower operasjoner i paralell</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -104,8 +115,10 @@ password=${Password}
 dpAliases=${dpFilter}
 logback.debug=${debug}
 dpSyncStrategy=${SyncStrategy}
-syncOnlyPep=${BareSynkroniser}
-dpWSRRSavedSearchFilter=${WSRRSavedSearchFilter}</properties>
+syncOnlySGW2PepAndRouter=${SyncOnlySGW2PepAndRouter}
+dpWSRRSavedSearchFilter=${WSRRSavedSearchFilter}
+securityZone=${SecurityZoneFilter}
+enableParallelism=${EnableParallelism}</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
