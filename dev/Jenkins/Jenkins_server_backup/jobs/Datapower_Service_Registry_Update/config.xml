@@ -61,7 +61,7 @@
         </hudson.model.BooleanParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>WSRRSavedSearchFilter</name>
-          <description>WSRRSavedSearchProxy&apos;er legges til i en kommaseparert liste for å redusere hvilke WSRRSavedSearchProxy&apos;er som skal oppdateres</description>
+          <description>WSRRSavedSearchSubscription&apos;er legges til i en kommaseparert liste for å redusere hvilke WSRRSavedSearchSubscription&apos;er som skal oppdateres</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -74,6 +74,18 @@
           <description>Gjør WSRR og Datapower operasjoner i paralell</description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>SecurityZoneFilter-v2</name>
+          <description>Kan brukes til å deploye kun til én sikkerhetssone: SBS eller FSS.
+Default er ALL - altså begge soner.</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>ALL</string>
+              <string>SBS</string>
+              <string>FSS</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -124,9 +136,16 @@ enableParallelism=${EnableParallelism}</properties>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
-      <command>#scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
-scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
-scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/</command>
+      <command>environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+registryDestinationFolder=/data/service-registry/$environmentUpperCase
+#ssh test@example.com &quot;rm -r /data/service-registry/U42&quot;
+ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+scp -r ${WORKSPACE}/init-maven-pom/target/output/* test@example.com:$registryDestinationFolder
+
+##GAMMEL JOBB##
+##scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
+#scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
+#scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
