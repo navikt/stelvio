@@ -212,6 +212,14 @@ then
    echo &quot;Provisioning $routerAppName with services from $dpDomainApplication&quot;
 
    cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:$pluginVersion:router-provision -e -B -U -DenvConfigUrlString=$EnvConfig -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE -DrouterAppName=$routerAppName -DdpDomainApplications=$dpDomainApplication
+   ### Upload service-registry if the outputfolder exists
+   environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+   registryDestinationFolder=/data/service-registry/$environmentUpperCase
+   registrySourceFolder=${WORKSPACE}/target/output
+   if [ -d &quot;$registrySourceFolder&quot; ]; then
+      ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+      scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+   fi
 fi
 fi</command>
     </hudson.tasks.Shell>
@@ -221,9 +229,13 @@ fi</command>
     echo &quot;Updating service registry file...&quot;
     cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -DenvConfigUrlString=https://fasit.adeo.no/conf -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE
 
-    #scp -r ${WORKSPACE}/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
-    scp -r ${WORKSPACE}/output/published/service-registry-FSS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-FSS
-    scp -r ${WORKSPACE}/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/
+    environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+    registryDestinationFolder=/data/service-registry/$environmentUpperCase
+    registrySourceFolder=${WORKSPACE}/target/output
+    if [ -d &quot;$registrySourceFolder&quot; ]; then
+        ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+        scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+    fi
 fi</command>
     </hudson.tasks.Shell>
   </builders>

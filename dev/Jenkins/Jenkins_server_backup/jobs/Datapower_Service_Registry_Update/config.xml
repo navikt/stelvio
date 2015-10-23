@@ -136,11 +136,23 @@ disableParallelism=${DisableParallelism}</properties>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
-      <command>environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+      <command>### Upload service-registry if the outputfolder exists
+environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
 registryDestinationFolder=/data/service-registry/$environmentUpperCase
-#ssh test@example.com &quot;rm -r /data/service-registry/U42&quot;
-ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
-scp -r ${WORKSPACE}/init-maven-pom/target/output/* test@example.com:$registryDestinationFolder
+registrySourceFolder=${WORKSPACE}/init-maven-pom/target/output
+if [ -d &quot;$registrySourceFolder&quot; ]; then
+	ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+	scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+fi
+
+
+
+
+#environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+#registryDestinationFolder=/data/service-registry/$environmentUpperCase
+##ssh test@example.com &quot;rm -r /data/service-registry/U42&quot;
+#ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+#scp -r ${WORKSPACE}/init-maven-pom/target/output/* test@example.com:$registryDestinationFolder
 
 ##GAMMEL JOBB##
 ##scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-SBS.xml test@example.com:/data/service-registry/`echo $Environment | awk &apos;{print toupper($0)}&apos;`-SBS
