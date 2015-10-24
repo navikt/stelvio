@@ -37,8 +37,8 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>dp-01,dp-02</string>
-              <string>dp-01</string>
               <string></string>
+              <string>dp-01</string>
               <string>dp-02</string>
             </a>
           </choices>
@@ -74,18 +74,6 @@
           <description>Deaktivierer paraliellitet</description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>SecurityZoneFilter-v2</name>
-          <description>Kan brukes til å deploye kun til én sikkerhetssone: SBS eller FSS.
-Default er ALL - altså begge soner.</description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>ALL</string>
-              <string>SBS</string>
-              <string>FSS</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -119,7 +107,7 @@ Default er ALL - altså begge soner.</description>
   <builders>
     <hudson.tasks.Maven>
       <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -U </targets>
-      <mavenName>Maven 3</mavenName>
+      <mavenName>Maven 3.3.1</mavenName>
       <properties>envConfigUrlString=https://fasit.adeo.no/conf
 env=${Environment}
 username=${Username}
