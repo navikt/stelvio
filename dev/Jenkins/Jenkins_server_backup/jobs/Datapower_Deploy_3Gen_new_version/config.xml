@@ -25,6 +25,7 @@
             <a class="string-array">
               <string>u2</string>
               <string>u3</string>
+              <string>u32</string>
               <string>u42</string>
               <string>t4</string>
               <string>t5</string>
