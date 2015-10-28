@@ -107,7 +107,7 @@
   <builders>
     <hudson.tasks.Maven>
       <targets>clean no.nav.maven.plugins:service-provisioning-maven-plugin:${pluginVersion}:provision -e -B -U </targets>
-      <mavenName>Maven 3.3.1</mavenName>
+      <mavenName>Maven 3</mavenName>
       <properties>envConfigUrlString=https://fasit.adeo.no/conf
 env=${Environment}
 username=${Username}
