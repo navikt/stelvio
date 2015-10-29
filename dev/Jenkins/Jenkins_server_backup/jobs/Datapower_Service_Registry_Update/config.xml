@@ -1,30 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Denne jobben brukes til å manuelt provisjonere WSRR og synkronisere Datapower.&#xd;
+Mer dokumentasjon finnes her: http://confluence.adeo.no/display/KES/Forsyningsprosessen+for+WSRR+og+service-gw</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
           <name>Environment</name>
-          <description>Miljø som skal oppdateres</description>
+          <description>Miljø som skal oppdateres.</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>Username</name>
-          <description>Adeo-ident til bruker som har tilgang til Fasit</description>
+          <description>Adeo-ident til bruker som har tilgang til Fasit.</description>
           <defaultValue>admin</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
           <name>Password</name>
-          <description>Passord til bruker som har tilgang til Fasit</description>
+          <description>Passord til bruker som har tilgang til Fasit.</description>
           <defaultValue>MD/1AS7GIw6dGgbLiVMJxBNHij3CRV1ID5x2Xo0Ozwc=</defaultValue>
         </hudson.model.PasswordParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>pluginVersion</name>
-          <description></description>
-          <defaultValue>1.0.5</defaultValue>
+          <description>Versjon av service-provisioning-maven-plugin.</description>
+          <defaultValue>1.2.0</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
           <name>debug</name>
@@ -33,7 +34,7 @@
         </hudson.model.BooleanParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>dpFilter</name>
-          <description></description>
+          <description>Liste over hvilke Datapower-ressurser som synkroniseres/forsynes.</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>dp-01,dp-02</string>
@@ -45,7 +46,15 @@
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>SyncStrategy</name>
-          <description>Default er onDemand</description>
+          <description>* onWSDLChange:
+** Hvis det er endringer i WSDL-filer eller endepunktet på tjenester vil WS-Proxyer knyttet til tjenestene blir synkronisert mot WSRR.
+
+* force:
+** Alle WS-Proxyer som skal eksponere tjenester synkroniseres mot WSRR.
+** Pluginet spør WSRR hvilke partition keys som er knyttet er lagt på SLD-er. På denne måten slipper man å synke en tom WS-Proxy og få en error-melding.
+
+* disabled:
+** Ingen WS-Proxyer synkroniseres mot WSRR.</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>onWSDLChange</string>
@@ -56,22 +65,34 @@
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
           <name>SyncOnlySGW2PepAndRouter</name>
-          <description>Settes til true hvis en skal hoppe over å forsyne WSRR.</description>
+          <description>* Hvis true, blir ingen tjenester forsynt til WSRR-tjenesteregister eller til Service-gw 1.0. 
+** Det gjøres kun synkronisering mellom WS-Proxyer og WSRR basert på synkroniseringsstrategien og oppdatering av service-gw-router.</description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>WSRRSavedSearchFilter</name>
-          <description>WSRRSavedSearchSubscription&apos;er legges til i en kommaseparert liste for å redusere hvilke WSRRSavedSearchSubscription&apos;er som skal oppdateres</description>
+          <description>Kommaseparert liste av WSRRSavedSearchSubscription-objekter.
+F.eks. WSRRSavedSearchSubscription-1,WSRRSavedSearchSubscription-5
+
+Denne lista fungerer som et filter for hvilke WS-Proxyer som skal synkroniseres mot WSRR.
+
+* Hvis lista ikke er tom, vil kun WS-Proxyer tilknyttet objekter i denne lista synkroniseres. Selv med synkroniseringsstrategi = &apos;force&apos;.
+* Hvis lista er tom, endrer ikke dette parameteret oppførselen til pluginet</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>SecurityZoneFilter</name>
-          <description>Settes til enten SBS eller FSS for å bare deploye til den ene sikkerhetssonen</description>
+          <description>Gir mulighet til å kjøre forsyning og synkronisering mot kun én sikkerhetssone.
+
+* Hvis satt til SBS, skal kun tjenester som er eksponert på service-gw i SBS forsynes og eventuelt synkroniseres fra Datapower.
+* Hvis satt til FSS, skal kun tjenester som er eksponert på service-gw i FSS forsynes og eventuelt synkroniseres fra Datapower.
+* Ellers skal det forsynes og synkroniseres til begge soner. Både SBS og FSS.</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
           <name>DisableParallelism</name>
-          <description>Deaktivierer paraliellitet</description>
+          <description>* Hvis true, kjøres alt sekvensielt.
+* Hvis false, kjøres det flere tråder parallelt.</description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
