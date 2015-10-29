@@ -46,9 +46,6 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command></command>
-    </hudson.tasks.Shell>
     <hudson.tasks.Maven>
       <targets>clean deploy</targets>
       <mavenName>(Default)</mavenName>

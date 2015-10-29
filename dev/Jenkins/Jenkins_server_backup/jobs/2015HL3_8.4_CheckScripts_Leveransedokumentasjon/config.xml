@@ -57,7 +57,7 @@ if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;
 
 # Skript som genererer automatisk dokumentasjon:
 R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_8_4_0_D20150727_2015HL3/ --page 96167068
-R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 96167126 --path R_8_4_0_D20150727_2015HL3/
+R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_8_4_0_D20150727_2015HL3/ --page 142001225
 R_8_4_0_D20150727_2015HL3/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_8_4_0_D20150727_2015HL3/ 96167099
 
 svn up /home/ci/svn-repos/2015HL3/tjenester/ --username svnguest --password Subversion01 --no-auth-cache

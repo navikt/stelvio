@@ -417,7 +417,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U4</groupRegex>
-          <namingRule>U4_2015HL2</namingRule>
+          <namingRule>U4_2015HL4</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U3</groupRegex>
@@ -437,17 +437,16 @@
         <string>Buss_Deploy_BPM</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
-        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL4)</string>
-        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
+        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U5_(2015HL1)</string>
-        <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
-        <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
-        <string>CI-deploy_2015HL3_bus-config-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
+        <string>CI-deploy_2016HL1_bus-config-0.0.2016.1-SNAPSHOT</string>
+        <string>CI-deploy_2016HL1_buss-pom-0.0.2016.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
@@ -925,8 +924,8 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.5 2015HL4 (Trunk)</name>
-      <description>Jobber som bygger trunk, som pr nå er leveransen 8.5 (2015HL4)</description>
+      <name>Status 8.6 2016HL1 (Trunk)</name>
+      <description>Jobber som bygger trunk, som pr nå er leveransen 8.6 (2016HL1)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1203,7 +1202,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.6 2016HL1</name>
+      <name>Status 8.5 2015HL4</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1220,7 +1219,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(2016HL1_8\.6_).*</includeRegex>
+      <includeRegex>(2015HL4_8\.5_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>

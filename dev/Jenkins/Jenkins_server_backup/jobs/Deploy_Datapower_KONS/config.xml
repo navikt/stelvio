@@ -55,6 +55,7 @@
               <string>sts-sbs:1.0.3</string>
               <string></string>
               <string>-- FSS --</string>
+              <string>service-gw-pep-fss:1.0.5</string>
               <string>service-gw-pep-fss:1.0.5-SNAPSHOT</string>
               <string>service-gw-pep-fss:1.0.4</string>
               <string></string>
