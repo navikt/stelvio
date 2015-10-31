@@ -10,7 +10,7 @@ Mer dokumentasjon finnes her: http://confluence.adeo.no/display/KES/Forsyningspr
         <hudson.model.StringParameterDefinition>
           <name>Environment</name>
           <description>Miljø som skal oppdateres.</description>
-          <defaultValue></defaultValue>
+          <defaultValue>u42</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>Username</name>
@@ -57,8 +57,8 @@ Mer dokumentasjon finnes her: http://confluence.adeo.no/display/KES/Forsyningspr
 ** Ingen WS-Proxyer synkroniseres mot WSRR.</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>onWSDLChange</string>
               <string>force</string>
+              <string>onWSDLChange</string>
               <string>disabled</string>
             </a>
           </choices>
@@ -95,11 +95,6 @@ Denne lista fungerer som et filter for hvilke WS-Proxyer som skal synkroniseres 
 * Hvis false, kjøres det flere tråder parallelt.</description>
           <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>Applications</name>
-          <description></description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -128,7 +123,11 @@ Denne lista fungerer som et filter for hvilke WS-Proxyer som skal synkroniseres 
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>Oracle JDK 1.7</jdk>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H/2 * * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
@@ -139,7 +138,6 @@ env=${Environment}
 username=${Username}
 password=${Password}
 dpAliases=${dpFilter}
-applications=${Applications}
 logback.debug=${debug}
 dpSyncStrategy=${SyncStrategy}
 syncOnlySGW2PepAndRouter=${SyncOnlySGW2PepAndRouter}
@@ -152,18 +150,18 @@ disableParallelism=${DisableParallelism}</properties>
     </hudson.tasks.Maven>
     <hudson.tasks.Shell>
       <command>### Upload service-registry if the output folder exists
-environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
-registryDestinationFolder=/data/service-registry/$environmentUpperCase
-registrySourceFolder=${WORKSPACE}/init-maven-pom/target/output
-xslReferenceString=&quot;&lt;?xml-stylesheet type=&apos;text/xsl&apos; href=&apos;../../service-registry-stylesheet_v2.xsl&apos;?&gt;&quot;
-
-if [ -d &quot;$registrySourceFolder&quot; ]; then
-	sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
-	ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
-	scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
-fi
-
-scp -r ${WORKSPACE}/service-registry-stylesheet_v2.xsl test@example.com:/data/service-registry/
+#environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+#registryDestinationFolder=/data/service-registry/$environmentUpperCase
+#registrySourceFolder=${WORKSPACE}/init-maven-pom/target/output
+#xslReferenceString=&quot;&lt;?xml-stylesheet type=&apos;text/xsl&apos; href=&apos;../../service-registry-stylesheet_v2.xsl&apos;?&gt;&quot;
+#
+#if [ -d &quot;$registrySourceFolder&quot; ]; then
+#	sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
+#	ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+#	scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+#fi
+#
+#scp -r ${WORKSPACE}/service-registry-stylesheet_v2.xsl test@example.com:/data/service-registry/
 
 #environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
 #registryDestinationFolder=/data/service-registry/$environmentUpperCase

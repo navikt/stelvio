@@ -1060,6 +1060,7 @@
         <string>maven-datapower-deploy-plugin</string>
         <string>nav-datapower-lib</string>
         <string>NUKE WSRR</string>
+        <string>Stabilitetstest av forsyning mot WSRR</string>
       </jobNames>
       <jobFilters/>
       <columns>

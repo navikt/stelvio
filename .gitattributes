@@ -3743,6 +3743,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Tjenestepensjon_CI/confi
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Trekk_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-Vedtak_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U5-layers-fkafp-privat_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Stabilitetstest[!!-~]av[!!-~]forsyning[!!-~]mot[!!-~]WSRR/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TEST-Java-version/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-CheckScripts_Leveransedokumentasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-configuration_bus-authorization/config.xml -text
