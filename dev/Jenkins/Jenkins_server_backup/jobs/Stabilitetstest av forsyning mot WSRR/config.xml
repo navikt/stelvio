@@ -175,13 +175,7 @@ disableParallelism=${DisableParallelism}</properties>
 #scp -r ${WORKSPACE}/init-maven-pom/output/published/service-registry-stylesheet.xsl test@example.com:/data/service-registry/</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers>
-    <hudson.tasks.Mailer plugin="test@example.com">
-      <recipients>test@example.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
-  </publishers>
+  <publishers/>
   <buildWrappers>
     <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
   </buildWrappers>
