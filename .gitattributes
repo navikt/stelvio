@@ -3385,15 +3385,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNA
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower[!!-~]AURA[!!-~]deploy[!!-~]simpleloopbackservice/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_v2/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_new_version_v2_SNAPSHOT/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_1og2Gen_old/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_new_version/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Deploy_3Gen_old/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Deploy_Datapower_KONS/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text

@@ -428,7 +428,7 @@
     <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
       <owner class="hudson" reference="../../.."/>
       <name>Deploy</name>
-      <description>Deploy-jobber for buss og datapower</description>
+      <description>Deployjobber for buss og datapower</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -438,26 +438,17 @@
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL4)</string>
-        <string>CI-Automatisk_Deploy-ESB-U5_(2015HL1)</string>
-        <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
-        <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
         <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
         <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
         <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
-        <string>CI-deploy_2016HL1_bus-config-0.0.2016.1-SNAPSHOT</string>
-        <string>CI-deploy_2016HL1_buss-pom-0.0.2016.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
-        <string>Datapower_Deploy_1og2Gen</string>
-        <string>Datapower_Deploy_1og2Gen_new_version</string>
-        <string>Datapower_Deploy_1og2Gen_new_version_SNAPSHOT</string>
         <string>Datapower_Deploy_1og2Gen_new_version_v2</string>
-        <string>Datapower_Deploy_1og2Gen_new_version_v2_SNAPSHOT</string>
-        <string>Datapower_Deploy_3Gen</string>
-        <string>Datapower_Deploy_3Gen_new_version</string>
         <string>Datapower_Service_Registry_Update</string>
+        <string>Deploy_Datapower_1og2Gen</string>
+        <string>Deploy_Datapower_3Gen</string>
         <string>kontaktregister-difi</string>
       </jobNames>
       <jobFilters/>
