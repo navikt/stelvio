@@ -1,7 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Brukes ved deploy av følgende domener:&#xd;
+* pepgwsbs&#xd;
+* partner-gw-pep-sbs&#xd;
+* partner-gw-router-sbs&#xd;
+* service-gw-pep-sbs&#xd;
+* service-gw-router-sbs&#xd;
+* service-gw-pep-fss&#xd;
+* service-gw-router-fss&#xd;
+* sts-sbs</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -27,47 +35,12 @@
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>Applications</name>
-          <description></description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>-- SBS --</string>
-              <string>pepgwsbs:1.1.3</string>
-              <string>pepgwsbs:1.3.1.0</string>
-              <string>pepgwsbs:1.1.7</string>
-              <string>pepgwsbs:1.1.8-SNAPSHOT</string>
-              <string></string>
-              <string>partner-gw-pep-sbs:1.0.6-SNAPSHOT</string>
-              <string>partner-gw-pep-sbs:1.0.5</string>
-              <string></string>
-              <string>partner-gw-router-sbs:1.0.5-SNAPSHOT</string>
-              <string>partner-gw-router-sbs:1.0.4</string>
-              <string></string>
-              <string>service-gw-pep-sbs:1.0.5</string>
-              <string>service-gw-pep-sbs:1.0.5-SNAPSHOT</string>
-              <string>service-gw-pep-sbs:1.0.4</string>
-              <string></string>
-              <string>service-gw-router-sbs:1.0.6-SNAPSHOT</string>
-              <string>service-gw-router-sbs:1.0.5</string>
-              <string></string>
-              <string>sts-sbs:1.0.4-SNAPSHOT</string>
-              <string>sts-sbs:1.0.3</string>
-              <string></string>
-              <string>-- FSS --</string>
-              <string>service-gw-pep-fss:1.0.5</string>
-              <string>service-gw-pep-fss:1.0.5-SNAPSHOT</string>
-              <string>service-gw-pep-fss:1.0.4</string>
-              <string></string>
-              <string>service-gw-router-fss:1.0.5-SNAPSHOT</string>
-              <string>service-gw-router-fss:1.0.4</string>
-              <string></string>
-              <string>-- ANNET --</string>
-              <string>simpleloopbackservice:0.0.1-SNAPSHOT</string>
-              <string>service-gw-pep-sbs:1.0.0-R14204</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
+          <description>Syntaks: Applikasjonsnavn:versjonsnummer
+F.eks. partner-gw-router-sbs:1.0.5 eller sts-sbs:0.0.2-SNAPSHOT</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>User</name>
           <description></description>
