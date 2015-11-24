@@ -510,7 +510,6 @@
         <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
         <string>2015HL1_8.2_NAV_Tjenestebuss</string>
         <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL2_8.3_NAV-Tjenestebuss</string>
         <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
         <string>2015HL4_8.5_NAV-Tjenestebuss</string>
         <string>Tjenestebeskrivelsegenerering</string>
@@ -892,35 +891,13 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.3 2015HL2</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2015HL2_8\.3_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>Status 8.6 2016HL1 (Trunk)</name>
       <description>Jobber som bygger trunk, som pr nå er leveransen 8.6 (2016HL1)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
         <string>TRUNK-configuration_bus-authorization</string>
         <string>TRUNK-configuration_bus-environment</string>
@@ -971,7 +948,6 @@
         <string>2015HL2_8.3_layers</string>
         <string>2015HL2_8.3_layers_dryRun</string>
         <string>2015HL2_8.3_nav</string>
-        <string>2015HL2_8.3_NAV-Tjenestebuss</string>
         <string>2015HL2_8.3_pensjon</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_ekstern</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_meldingsdefinisjon</string>
@@ -1211,6 +1187,50 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>(2015HL4_8\.5_).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 8.7 2016HL2</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2016HL2_8\.7_).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 8.8 2016HL4</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[7]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2016HL4_8\.8_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>

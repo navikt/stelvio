@@ -3336,7 +3336,6 @@ dev/Jenkins/Jenkins_server_backup/jenkins.model.DownloadSettings.xml -text
 dev/Jenkins/Jenkins_server_backup/jenkins.model.JenkinsLocationConfiguration.xml -text
 dev/Jenkins/Jenkins_server_backup/jenkins.mvn.GlobalMavenConfig.xml -text
 dev/Jenkins/Jenkins_server_backup/jenkins.security.QueueItemAuthenticatorConfiguration.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/2015HL2_8.3_NAV-Tjenestebuss/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL3_8.4_CheckScripts_Leveransedokumentasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL3_8.4_NAV_Tjenestebuss/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL3_8.4_configuration_bus-authorization/config.xml -text
@@ -3373,6 +3372,18 @@ dev/Jenkins/Jenkins_server_backup/jobs/2015HL4_8.5_tjenestespesifikasjon_nav/con
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL4_8.5_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL4_8.5_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2015HL4_8.5_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL2_8.7_tjenestespesifikasjon_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL2_8.7_tjenestespesifikasjon_meldingsdefinisjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL2_8.7_tjenestespesifikasjon_nav/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL2_8.7_tjenestespesifikasjon_pensjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL2_8.7_tjenestespesifikasjon_system/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL2_8.7_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.8_tjenestespesifikasjon_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.8_tjenestespesifikasjon_meldingsdefinisjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.8_tjenestespesifikasjon_nav/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.8_tjenestespesifikasjon_pensjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.8_tjenestespesifikasjon_system/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.8_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Jenkins[!!-~]configuration/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U2_(TRUNK)/config.xml -text
