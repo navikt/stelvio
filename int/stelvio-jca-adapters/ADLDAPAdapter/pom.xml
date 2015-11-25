@@ -9,7 +9,8 @@
 	<groupId>no.stelvio.int.jca-adapters</groupId>
 	<artifactId>ADLDAPAdapter</artifactId>
 	<packaging>rar</packaging>
-	<version>7.0.5</version>
+	<!-- Remove snapshot manually before release (through mvn deploy:deploy-file) -->
+	<version>7.0.6-SNAPSHOT</version>
 	
 	<!--
 		Dependencies from the WPS runtime have been copied to the project under connectorModule\.

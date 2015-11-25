@@ -1,5 +1,6 @@
 package no.nav.j2ca.adldap;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +17,7 @@ import javax.resource.cci.InteractionSpec;
 import javax.resource.cci.Record;
 
 import no.nav.j2ca.adldap.exception.ADLDAPAdapterConnectionFailedException;
+import no.nav.j2ca.adldap.exception.ADLDAPAdapterException;
 
 import com.ibm.j2ca.base.DataObjectRecord;
 import com.ibm.j2ca.base.WBIInteraction;
@@ -103,6 +105,10 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 				ADLDAPAdapterRecord result = executeNDUAD(context, record);
 				outRecord.setDataObject(result.getDataObject());
 				log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP with " + result.getSAMAccountName());
+			} else if ("ndulist".equals(provider)) {
+				NDUListADLDAPAdapterRecord result = executeNDUListAD(context, record);
+				outRecord.setDataObject(result.getDataObject());
+				log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP with a list of account IDs");
 			} else if ("minside".equals(provider)) {
 				MinsideAdapterRecord result = executeMinside(context, record);
 				outRecord.setDataObject(result.getDataObject());
@@ -222,6 +228,165 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 			}
 		}
 		return boOutRecord;
+	}
+	
+	/**
+	 * This method is a delegate method for the inherited method execute(). As this adapter is used
+	 * for several directory provides, each of the provides will need some custom logics. Both for
+	 * handling with different kinds of business object, but as well for various kind of exception
+	 * handling based on different business logic (e.g. is an empty result the cause of a exception?)
+	 * 
+	 * @param context
+	 * @param record
+	 * @return
+	 * @throws NamingException
+	 * @throws ADLDAPAdapterException
+	 * @throws ServiceBusinessException if no users is returned
+	 */
+	private NDUListADLDAPAdapterRecord executeNDUListAD(LdapContext context, Record record) throws NamingException, ADLDAPAdapterException {
+		NDUListADLDAPAdapterRecord boInRecord = new NDUListADLDAPAdapterRecord(record);
+		NDUListADLDAPAdapterRecord boOutRecord = new NDUListADLDAPAdapterRecord();
+		
+        log.logp(Level.FINE, CLASSNAME, "executeNDUListAD()", "Got request record with name=" + boInRecord.getRecordName());
+        //log.logp(Level.FINE, CLASSNAME, "executeNDUListAD()", "Use RequestObj "+ ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME + "=" + s1);
+        
+        // Fault handling if query data is missing:
+        if (boInRecord == null || boInRecord.getAnsattListe() == null || boInRecord.getAnsattListe().isEmpty()) {
+        	log.logp(Level.FINE, CLASSNAME, "executeNDUListAD()", "Raised fault ADLDAPAdapterException because query were empty.");
+			throw new ADLDAPAdapterException("Missing query data", null);
+		}
+		
+        // Building up a query:
+		String searchFilter = "";
+		ArrayList idents = new ArrayList();
+		
+		// If only one account is requested:
+		if (boInRecord.getAnsattListe().size() == 1) {
+			//ADLDAPAdapterRecord request = (ADLDAPAdapterRecord) boInRecord.getAnsattListe().get(0);
+			ADLDAPAdapterRecord request = getADRecord(boInRecord, 0);
+			idents.add(request.getSAMAccountName());
+			searchFilter = "(&(" + request.getADobjectClass() + ")(" + ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME+ "=" + request.getSAMAccountName() + "))";
+			log.logp(Level.FINE, CLASSNAME, "executeNDUListAD()", "Use RequestObj " + ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME + "=" + request.getSAMAccountName());
+		}
+		
+		// Otherwise: search filter is built up containing all requested accounts
+		else {
+			searchFilter = "(&(objectClass=user)(|(";
+			
+			for (int i = 0; i < boInRecord.getAnsattListe().size(); i++) {
+				//ADLDAPAdapterRecord request = (ADLDAPAdapterRecord) boInRecord.getAnsattListe().get(i);
+				ADLDAPAdapterRecord request = getADRecord(boInRecord, i);
+				idents.add(request.getSAMAccountName());
+				searchFilter = searchFilter.concat("(" + ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME+ "=" + request.getSAMAccountName() + ")");
+			}
+			searchFilter = searchFilter.concat(")))");
+			log.logp(Level.FINE, CLASSNAME, "executeNDUListAD()", "Use RequestObj with a list of " + boInRecord.getAnsattListe().size() + " account IDs");
+		}
+
+        
+		Attributes attrs = context.getAttributes(adldapMngConnFac.getServerBasedDistinguishedName());	
+		
+		//Create the search controls 
+		SearchControls searchCtls = new SearchControls();
+	
+		//Specify the attributes to return
+		String returnedAtts[]={ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME, ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME, ADLDAPAdapterConstants.NDU_BO_GIVENNAME, ADLDAPAdapterConstants.NDU_BO_SN, ADLDAPAdapterConstants.NDU_BO_MAIL};
+		searchCtls.setReturningAttributes(returnedAtts);
+	
+		//Specify the search scope
+		searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+		
+		//Specify the Base for the search
+		String searchBase = adldapMngConnFac.getServerSearchBaseContext(); 
+
+		log.logp(Level.FINE, CLASSNAME, "executeNDUListAD()", "Query: searchBase="+searchBase+" searchFilter="+searchFilter+" searchCtls="+searchCtls);
+		
+		//Search for objects using the filter
+		NamingEnumeration answer = context.search(searchBase, searchFilter, searchCtls);
+		
+		ArrayList adList = new ArrayList();
+		//Loop through the search results
+		while (answer.hasMoreElements()) {
+			SearchResult sr = (SearchResult)answer.next();
+	        ADLDAPAdapterRecord accountData = new ADLDAPAdapterRecord();
+
+			// Print out some of the attributes, catch the exception if the attributes have no values
+			attrs = sr.getAttributes();
+			if (attrs != null) {
+				String sAction = "";
+				try {
+					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME) != null ) {
+						sAction = ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME;
+						accountData.setSAMAccountName((String)attrs.get(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME).get());
+				for (int i=0; i < idents.size(); i++) {
+					if (accountData.getSAMAccountName().toLowerCase().equals(((String)idents.get(i)).toLowerCase())) {
+						idents.remove(i);
+						break;
+					}
+				}
+					}
+					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME) != null ) {
+						sAction = ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME;
+						accountData.setDisplayName((String)attrs.get(ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME).get());
+					}
+					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_GIVENNAME) != null ) {
+						sAction = ADLDAPAdapterConstants.NDU_BO_GIVENNAME;
+						accountData.setGivenName((String)attrs.get(ADLDAPAdapterConstants.NDU_BO_GIVENNAME).get());
+					}
+					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_SN) != null ) {
+						sAction = ADLDAPAdapterConstants.NDU_BO_SN;
+						accountData.setSn((String)attrs.get(ADLDAPAdapterConstants.NDU_BO_SN).get());
+					}
+					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_MAIL) != null ) {
+						sAction = ADLDAPAdapterConstants.NDU_BO_MAIL;
+						accountData.setMail((String)attrs.get(ADLDAPAdapterConstants.NDU_BO_MAIL).get());
+					}
+					
+					// only add to adList if one of the if statements above executed:
+					if ("".equals(sAction) == false) {
+						adList.add(accountData.getDataObject());
+					}
+					
+				} catch (NullPointerException e) {
+					log.logp(Level.SEVERE, CLASSNAME, "executeNDUListAD()", "Catch NullPointerException at attribute="+sAction);
+					throw new ServiceRuntimeException(ADLDAPAdapterConstants.ERR_MSG03 + " #attribute=" + sAction);
+				}	
+			}
+		}
+		
+		boOutRecord.setAnsattListe(adList);
+		boOutRecord.setIkkeFunnetListe(idents);
+		
+		return boOutRecord;
+	}
+
+	private ADLDAPAdapterRecord getADRecord(NDUListADLDAPAdapterRecord boInRecord, int index) {
+		Object o = boInRecord.getAnsattListe().get(index);
+		
+		if (o instanceof ADLDAPAdapterRecord) {
+			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "The object was an instance of ADLDAPAdapterRecord");
+			return (ADLDAPAdapterRecord) o;
+		}
+		else if (o instanceof DataObject) {
+			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "The object was an instance of DataObject");
+			ADLDAPAdapterRecord response = new ADLDAPAdapterRecord();
+			response.setDataObject((DataObject)o);
+			return response;
+		}
+		else if (o instanceof com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl) {
+			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "The object was an instance of DynamicBusinessObjectImpl");
+			com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl bo = (com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl)o;
+			ADLDAPAdapterRecord response = new ADLDAPAdapterRecord();
+			response.setSAMAccountName(bo.getString(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME));
+			response.setGivenName(bo.getString(ADLDAPAdapterConstants.NDU_BO_GIVENNAME));
+			response.setDisplayName(bo.getString(ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME));
+			response.setSn(bo.getString(ADLDAPAdapterConstants.NDU_BO_SN));
+			return response;
+		}
+		else {
+			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "None of the if statements executed, this will probably crash!");
+			return new ADLDAPAdapterRecord((Record)o);
+		}
 	}
 	
 	/**

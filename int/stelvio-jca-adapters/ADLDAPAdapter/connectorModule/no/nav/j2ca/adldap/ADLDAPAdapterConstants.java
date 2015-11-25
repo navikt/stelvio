@@ -21,11 +21,16 @@ public interface ADLDAPAdapterConstants
 	public final static String NDU_FAULT_BASE 		= "FaultADBase";
 	public final static String NDU_MODULE_NAME 		= "nav-prod-sik-ad";
 	
-	public final static String NDU_BO_SAMACCOUNTNAME = "sAMAccountName";
+	public final static String NDU_BO_SAMACCOUNTNAME= "sAMAccountName";
 	public final static String NDU_BO_DISPLAYNAME 	= "displayName";
 	public final static String NDU_BO_GIVENNAME 	= "givenName";
 	public final static String NDU_BO_SN 			= "sn";
 	public final static String NDU_BO_MAIL 			= "mail";
+	
+	// Constants related to the directory provider NDULIST
+	public final static String NDULIST_BO_NAME 			= "adNAVAnsattListe";
+	public final static String NDULIST_BO_LIST 			= "ansattListe";
+	public final static String NDULIST_BO_NOT_FOUND_LIST= "ikkeFunnetListe";
 	
 	// Constants related to the directory provider MinSide
 	public final static String MINSIDE_FAULT_NS 	= "http://nav-lib-sto-minside/nav/lib/sto/minside/fault"; 

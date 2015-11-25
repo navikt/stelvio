@@ -2841,6 +2841,8 @@ int/stelvio-commons-lib/src/changes/target
 int/stelvio-commons-lib/src/gen
 int/stelvio-commons-lib/src/target
 int/stelvio-commons-lib/target
+int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/*.class
+int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/*.class
 int/stelvio-jca-adapters/websphere_default_messaging_provider/target
 int/stelvio-jmsprovider-systemavailability/*.class
 int/stelvio-jmsprovider-systemavailability/*.cmt

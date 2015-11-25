@@ -9162,7 +9162,6 @@ int/stelvio-jca-adapters/ADLDAPAdapter/.j2ee -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.project -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/com.ibm.ws.ast.st.migration.prefs -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.wst.common.component -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/CWYBS_AdapterFoundation.jar -text
@@ -9171,6 +9170,7 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/META-INF/MANIFEST.MF -tex
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/META-INF/ra.xml -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/commonj.connector.jar -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/nav/lib/sik/ad/asbo/adNAVAnsatt.xsd -text
+int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/nav/lib/sik/ad/asbo/adNAVAnsattListe.xsd -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/nav/lib/sik/ad/fault/FaultADBase.xsd -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterConnection.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterConnectionFactory.java -text
@@ -9187,6 +9187,7 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAP
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterResourceAdapter.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterResourceAdapterMetaData.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/MinsideAdapterRecord.java -text svneol=unset#text/plain
+int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/NDUListADLDAPAdapterRecord.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterConnectionFailedException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text
