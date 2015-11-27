@@ -318,12 +318,12 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME) != null ) {
 						sAction = ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME;
 						accountData.setSAMAccountName((String)attrs.get(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME).get());
-				for (int i=0; i < idents.size(); i++) {
-					if (accountData.getSAMAccountName().toLowerCase().equals(((String)idents.get(i)).toLowerCase())) {
-						idents.remove(i);
-						break;
-					}
-				}
+						for (int i=0; i < idents.size(); i++) {
+							if (accountData.getSAMAccountName().toLowerCase().equals(((String)idents.get(i)).toLowerCase())) {
+								idents.remove(i);
+								break;
+							}
+						}
 					}
 					if ( attrs.get(ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME) != null ) {
 						sAction = ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME;
@@ -360,33 +360,19 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 		return boOutRecord;
 	}
 
+	/**
+	 * Helping method for getting a ADLDAPAdapterRecord object from the request list.
+	 * 
+	 * @param boInRecord
+	 * @param index
+	 * @return
+	 */
 	private ADLDAPAdapterRecord getADRecord(NDUListADLDAPAdapterRecord boInRecord, int index) {
 		Object o = boInRecord.getAnsattListe().get(index);
-		
-		if (o instanceof ADLDAPAdapterRecord) {
-			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "The object was an instance of ADLDAPAdapterRecord");
-			return (ADLDAPAdapterRecord) o;
-		}
-		else if (o instanceof DataObject) {
-			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "The object was an instance of DataObject");
-			ADLDAPAdapterRecord response = new ADLDAPAdapterRecord();
-			response.setDataObject((DataObject)o);
-			return response;
-		}
-		else if (o instanceof com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl) {
-			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "The object was an instance of DynamicBusinessObjectImpl");
-			com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl bo = (com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl)o;
-			ADLDAPAdapterRecord response = new ADLDAPAdapterRecord();
-			response.setSAMAccountName(bo.getString(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME));
-			response.setGivenName(bo.getString(ADLDAPAdapterConstants.NDU_BO_GIVENNAME));
-			response.setDisplayName(bo.getString(ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME));
-			response.setSn(bo.getString(ADLDAPAdapterConstants.NDU_BO_SN));
-			return response;
-		}
-		else {
-			log.logp(Level.FINE, CLASSNAME, "getAnsattRecord()", "None of the if statements executed, this will probably crash!");
-			return new ADLDAPAdapterRecord((Record)o);
-		}
+		ADLDAPAdapterRecord response = new ADLDAPAdapterRecord();
+		response.setDataObject((DataObject)o);
+		return response;
+	
 	}
 	
 	/**
