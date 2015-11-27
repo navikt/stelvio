@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Denne jobben brukes til å manuelt provisjonere WSRR og synkronisere Datapower.&#xd;
+  <description>*** Deaktivert av R142043 ***&#xd;
+Denne jobben brukes til å manuelt provisjonere WSRR og synkronisere Datapower.&#xd;
 Mer dokumentasjon finnes her: http://confluence.adeo.no/display/KES/Forsyningsprosessen+for+WSRR-tjenesteregister+og+Service+Gateway</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
@@ -125,7 +126,7 @@ Denne lista fungerer som et filter for hvilke WS-Proxyer som skal synkroniseres 
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>Oracle JDK 1.7</jdk>
