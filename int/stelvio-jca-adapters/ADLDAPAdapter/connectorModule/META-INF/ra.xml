@@ -3,7 +3,7 @@
 	<display-name>ADLDAPAdapter</display-name>
  	<vendor-name>NAV</vendor-name>
   	<eis-type>LDAP Integration</eis-type>
-  	<resourceadapter-version>7.0.6</resourceadapter-version>
+  	<resourceadapter-version>7.0.7</resourceadapter-version>
 	<license>
 		<description>Read from AD LDAP information</description>
 		<license-required>false</license-required>
@@ -83,7 +83,7 @@
 				</config-property>
 				
 				<config-property>
-					<description>Directory provider [ndu | ndulist | minside]</description>
+					<description>Directory provider [ndu | minside]</description>
 					<config-property-name>directoryProvider</config-property-name>
 					<config-property-type>java.lang.String</config-property-type>
 					<config-property-value></config-property-value>

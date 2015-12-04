@@ -100,15 +100,33 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 		try {
 			String provider = adldapMngConnFac.getDirectoryProvider();
 			log.logp(Level.FINE, CLASSNAME, "execute()", "Working with provider " + provider);
-			
+						
 			if ("ndu".equals(provider)) {
-				ADLDAPAdapterRecord result = executeNDUAD(context, record);
-				outRecord.setDataObject(result.getDataObject());
-				log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP with " + result.getSAMAccountName());
-			} else if ("ndulist".equals(provider)) {
-				NDUListADLDAPAdapterRecord result = executeNDUListAD(context, record);
-				outRecord.setDataObject(result.getDataObject());
-				log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP with a list of account IDs");
+				DataObject input = ((DataObjectRecord)record).getDataObject();
+				
+				// Feilhåndtering hvis input ikke er sendt inn:
+				if (null == input || null == input.getType()) {
+					log.logp(Level.WARNING, CLASSNAME, "execute()", "Raising NotSupportedException. Input is empty");
+					throw new NotSupportedException("The input to ADLDAPAdapter.ndu is null!");
+				}
+				// hentNAVAnsatt
+				if ("adNAVAnsatt".equals(input.getType().getName())) {
+					ADLDAPAdapterRecord result = executeNDUAD(context, record);
+					outRecord.setDataObject(result.getDataObject());
+					log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP with " + result.getSAMAccountName());
+				}
+				// hentNAVAnsattListe
+				else if ("adNAVAnsattListe".equals(input.getType().getName())) {
+					NDUListADLDAPAdapterRecord result = executeNDUListAD(context, record);
+					outRecord.setDataObject(result.getDataObject());
+					log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP with a list of account IDs");
+				}
+				// ukjent input
+				else {
+					log.logp(Level.WARNING, CLASSNAME, "execute()", "Raising NotSupportedException: Input is of unknown type!");
+					throw new NotSupportedException("The input to ADLDAPAdapter.ndu is of unknown type! Expected: \"adNAVAnsatt\" or \"adNAVAnsattListe\", was \"" + input.getType().getName() + "\"");
+				}
+				
 			} else if ("minside".equals(provider)) {
 				MinsideAdapterRecord result = executeMinside(context, record);
 				outRecord.setDataObject(result.getDataObject());
