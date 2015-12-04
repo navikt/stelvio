@@ -3,7 +3,7 @@
 	<display-name>ADLDAPAdapter</display-name>
  	<vendor-name>NAV</vendor-name>
   	<eis-type>LDAP Integration</eis-type>
-  	<resourceadapter-version>7.0.6-SNAPSHOT</resourceadapter-version>
+  	<resourceadapter-version>7.0.6</resourceadapter-version>
 	<license>
 		<description>Read from AD LDAP information</description>
 		<license-required>false</license-required>
