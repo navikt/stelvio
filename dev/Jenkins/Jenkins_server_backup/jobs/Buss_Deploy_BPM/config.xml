@@ -111,7 +111,7 @@ else
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
-      <targets>clean
+      <targets>clean -U
 ${Lifecycle}
 -Denvironment=${Environment}
 -Desb-modules-version=${ESBVersion}

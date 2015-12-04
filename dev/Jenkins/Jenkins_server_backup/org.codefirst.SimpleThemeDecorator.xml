@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <org.codefirst.SimpleThemeDecorator plugin="test@example.com">
   <cssUrl>http://e34wasl00228.devillo.no/test.css</cssUrl>
-  <jsUrl></jsUrl>
+  <jsUrl>http://e34wasl00228.devillo.no/test.js</jsUrl>
 </org.codefirst.SimpleThemeDecorator>
