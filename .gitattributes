@@ -9379,7 +9379,7 @@ int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]UR[!!-~]WSImport[!!-~]Binding
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSExport[!!-~]Binding[!!-~]v2.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSExport[!!-~]Binding.zip -text
 int/stelvio-policy-sets/bindings/NAV[!!-~]ESB[!!-~]WSImport[!!-~]Binding.zip -text
-int/stelvio-policy-sets/bindings/SAML[!!-~]Bearer[!!-~]Binding[!!-~]Propagation.zip -text
+int/stelvio-policy-sets/bindings/SAML[!!-~]Bearer[!!-~]Propagation[!!-~]Binding.zip -text
 int/stelvio-policy-sets/readme.txt -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.factorypath -text
