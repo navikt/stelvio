@@ -955,24 +955,6 @@
         <string>2015HL2_8.3_tjenestespesifikasjon_pensjon</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_system</string>
         <string>2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon</string>
-        <string>2015HL3_8.4_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL3_8.4_configuration_bus-authorization</string>
-        <string>2015HL3_8.4_configuration_bus-environment</string>
-        <string>2015HL3_8.4_configuration_bus-nonenvironment</string>
-        <string>2015HL3_8.4_ekstern</string>
-        <string>2015HL3_8.4_esb-release</string>
-        <string>2015HL3_8.4_esb_poms</string>
-        <string>2015HL3_8.4_layers</string>
-        <string>2015HL3_8.4_layers_dryRun</string>
-        <string>2015HL3_8.4_nav</string>
-        <string>2015HL3_8.4_NAV_Tjenestebuss</string>
-        <string>2015HL3_8.4_pensjon</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_nav</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_system</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2015HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
@@ -1102,48 +1084,6 @@
       </columns>
       <recurse>false</recurse>
     </listView>
-    <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 8.4 2015HL3</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2015HL3_8.4_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL3_8.4_configuration_bus-authorization</string>
-        <string>2015HL3_8.4_configuration_bus-environment</string>
-        <string>2015HL3_8.4_configuration_bus-nonenvironment</string>
-        <string>2015HL3_8.4_ekstern</string>
-        <string>2015HL3_8.4_esb-release</string>
-        <string>2015HL3_8.4_esb_poms</string>
-        <string>2015HL3_8.4_layers</string>
-        <string>2015HL3_8.4_layers_dryRun</string>
-        <string>2015HL3_8.4_nav</string>
-        <string>2015HL3_8.4_NAV_Tjenestebuss</string>
-        <string>2015HL3_8.4_pensjon</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_nav</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_system</string>
-        <string>2015HL3_8.4_tjenestespesifikasjon_tredjegenerasjon</string>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <org.jenkinsci.plugins.categorizedview.IndentedJobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2015HL3_8\.4_).*</includeRegex>
-      <recurse>true</recurse>
-      <groupingRules/>
-      <categorizationCriteria/>
-    </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>varseltjeneste</name>

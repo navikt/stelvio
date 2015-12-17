@@ -32,7 +32,7 @@
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -64,7 +64,7 @@ svn up /home/ci/svn-repos/TRUNK/tjenester/ --username svnguest --password Subver
 esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 140648504 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
 esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 140648517 --envQ 140648515 --envP 140648513
 
-# Oppdaterer http://confluence.adeo.no/display/stelvio/Scripts+in+use+in+the+Integration+team+%28Hudson+server%29:
+# Oppdaterer http://confluence.adeo.no/pages/viewpage.action?pageId=161786740:
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/
 
 
