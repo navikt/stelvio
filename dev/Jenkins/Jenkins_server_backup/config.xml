@@ -435,10 +435,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
         <string>Buss_Deploy_BPM</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
-        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL3)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL4)</string>
-        <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
-        <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
         <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
@@ -937,34 +934,40 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>2015HL1_8.2_NAV_Tjenestebuss</string>
-        <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL2_8.3_configuration_bus-authorization</string>
-        <string>2015HL2_8.3_configuration_bus-environment</string>
-        <string>2015HL2_8.3_configuration_bus-nonenvironment</string>
-        <string>2015HL2_8.3_ekstern</string>
-        <string>2015HL2_8.3_esb-release</string>
-        <string>2015HL2_8.3_esb_poms</string>
-        <string>2015HL2_8.3_layers</string>
-        <string>2015HL2_8.3_layers_dryRun</string>
-        <string>2015HL2_8.3_nav</string>
-        <string>2015HL2_8.3_pensjon</string>
-        <string>2015HL2_8.3_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL2_8.3_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL2_8.3_tjenestespesifikasjon_nav</string>
-        <string>2015HL2_8.3_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL2_8.3_tjenestespesifikasjon_system</string>
-        <string>2015HL2_8.3_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
+        <string>2015HL4_8.5_configuration_bus-authorization</string>
+        <string>2015HL4_8.5_configuration_bus-environment</string>
+        <string>2015HL4_8.5_configuration_bus-nonenvironment</string>
+        <string>2015HL4_8.5_ekstern</string>
+        <string>2015HL4_8.5_esb-release</string>
+        <string>2015HL4_8.5_esb_poms</string>
+        <string>2015HL4_8.5_layers</string>
+        <string>2015HL4_8.5_layers_dryRun</string>
+        <string>2015HL4_8.5_nav</string>
+        <string>2015HL4_8.5_NAV_Tjenestebuss</string>
+        <string>2015HL4_8.5_pensjon</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_ekstern</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_nav</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_pensjon</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_system</string>
+        <string>2015HL4_8.5_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2016HL2_8.7_tjenestespesifikasjon_ekstern</string>
+        <string>2016HL2_8.7_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2016HL2_8.7_tjenestespesifikasjon_nav</string>
+        <string>2016HL2_8.7_tjenestespesifikasjon_pensjon</string>
+        <string>2016HL2_8.7_tjenestespesifikasjon_system</string>
+        <string>2016HL2_8.7_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2016HL4_8.8_tjenestespesifikasjon_ekstern</string>
+        <string>2016HL4_8.8_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2016HL4_8.8_tjenestespesifikasjon_nav</string>
+        <string>2016HL4_8.8_tjenestespesifikasjon_pensjon</string>
+        <string>2016HL4_8.8_tjenestespesifikasjon_system</string>
+        <string>2016HL4_8.8_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
-        <string>CI-Automatisk_Deploy-ESB-U3_(2015HL4)</string>
-        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL2)</string>
-        <string>CI-Automatisk_Deploy-ESB-U5_(2015HL1)</string>
-        <string>CI-deploy_2015HL1_bus-config-0.0.2015.1-SNAPSHOT</string>
-        <string>CI-deploy_2015HL1_buss-pom-0.0.2015.1-SNAPSHOT</string>
-        <string>CI-deploy_2015HL2_bus-config-0.0.2015.2-SNAPSHOT</string>
-        <string>CI-deploy_2015HL2_buss-pom-0.0.2015.2-SNAPSHOT</string>
-        <string>CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT</string>
-        <string>CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT</string>
+        <string>CI-Automatisk_Deploy-ESB-U4_(2015HL4)</string>
+        <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
+        <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>

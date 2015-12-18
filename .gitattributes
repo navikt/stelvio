@@ -3371,8 +3371,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U2_(TRUNK)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U4_(2015HL4)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Deploy_wpsdeploy-pom_sync/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2015HL3_bus-config-0.0.2015.3-SNAPSHOT/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2015HL3_buss-pom-0.0.2015.3-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT/config.xml -text
