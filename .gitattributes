@@ -3316,6 +3316,7 @@ dev/Hudson/integration_var_lib_hudson/users/srvsvnldap/config.xml -text
 dev/Jenkins/Jenkins_server_backup/com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsConfig.xml -text
 dev/Jenkins/Jenkins_server_backup/com.sonyericsson.rebuild.RebuildDescriptor.xml -text
 dev/Jenkins/Jenkins_server_backup/config.xml -text
+dev/Jenkins/Jenkins_server_backup/credentials.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.maven.MavenModuleSet.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.model.UpdateCenter.xml -text
 dev/Jenkins/Jenkins_server_backup/hudson.plugins.analysis.core.GlobalSettings.xml -text
@@ -3746,6 +3747,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_pensjon/confi
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/WSRR-2-Neo4j-2-CSV/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/deprecated_CI-Automatisk_Deploy-ESB-U5_(2015HL2)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/ejbdiffer_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
