@@ -1184,7 +1184,8 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>WSRR-2-Neo4j-2-CSV</string>
+        <string>Neo4j2CSV</string>
+        <string>WSRR2Neo4j</string>
       </jobNames>
       <jobFilters/>
       <columns>

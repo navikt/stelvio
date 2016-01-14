@@ -3381,6 +3381,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.
 dev/Jenkins/Jenkins_server_backup/jobs/Deploy_Datapower_KONS/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Neo4j2CSV/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Restart-BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
@@ -3747,7 +3748,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_pensjon/confi
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/WSRR-2-Neo4j-2-CSV/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/deprecated_CI-Automatisk_Deploy-ESB-U5_(2015HL2)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/ejbdiffer_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi-site/config.xml -text
