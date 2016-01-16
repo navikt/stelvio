@@ -2,6 +2,12 @@
 <project>
   <actions/>
   <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>5</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -13,7 +19,7 @@
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
         <name>origin</name>
-        <url>http://stash.devillo.no/scm/eis/wsrr-csv-exports.git</url>
+        <url>ssh://test@example.com:7999/eis/wsrr-csv-exports.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -38,23 +44,23 @@
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d ; -o ${WORKSPACE}/relationships.csv match o-[r]-&gt;o2 return o.bsrURI, o.name,type(r), o2.bsrURI, o2.name&quot;
 </command>
     </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/rh/git19/root/usr/bin/git add --all &amp;&amp; set +e /opt/rh/git19/root/usr/bin/git commit -m &quot;Latest CSV exports&quot;</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
-      <tasks>
-        <hudson.plugins.postbuildtask.TaskProperties>
-          <logTexts>
-            <hudson.plugins.postbuildtask.LogProperties>
-              <logText></logText>
-              <operator>AND</operator>
-            </hudson.plugins.postbuildtask.LogProperties>
-          </logTexts>
-          <EscalateStatus>false</EscalateStatus>
-          <RunIfJobSuccessful>true</RunIfJobSuccessful>
-          <script>/opt/rh/git19/root/usr/bin/git add --all &amp;&amp; /opt/rh/git19/root/usr/bin/git commit -m &quot;Latest CSV exports&quot; &amp;&amp; /opt/rh/git19/root/usr/bin/git push origin master</script>
-        </hudson.plugins.postbuildtask.TaskProperties>
-      </tasks>
-    </hudson.plugins.postbuildtask.PostbuildTask>
+    <hudson.plugins.git.GitPublisher plugin="test@example.com">
+      <configVersion>2</configVersion>
+      <pushMerge>true</pushMerge>
+      <pushOnlyIfSuccess>true</pushOnlyIfSuccess>
+      <forcePush>true</forcePush>
+      <branchesToPush>
+        <hudson.plugins.git.GitPublisher_-BranchToPush>
+          <targetRepoName>origin</targetRepoName>
+          <branchName>master</branchName>
+        </hudson.plugins.git.GitPublisher_-BranchToPush>
+      </branchesToPush>
+    </hudson.plugins.git.GitPublisher>
   </publishers>
   <buildWrappers/>
 </project>
