@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Genererer følgende side (basert på RSA fra 2015HL4-kodestrømmen):&#xd;
-http://e34wasl00228.devillo.no/8.5/site/</description>
+  <description>Genererer følgende side (basert på RSA fra 2016HL2-kodestrømmen):&#xd;
+http://e34wasl00228.devillo.no/8.7/site/</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>15</numToKeep>
@@ -18,7 +18,7 @@ http://e34wasl00228.devillo.no/8.5/site/</description>
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20151029_2015HL4/spesifikasjon/design</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20151117_2016HL2/spesifikasjon/design</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -47,40 +47,40 @@ http://e34wasl00228.devillo.no/8.5/site/</description>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>svn update /home/ci/svn-repos/2015HL4/tjenester/spesifikasjon/design --username svnguest --password Subversion01 --no-auth-cache
+      <command>svn update /home/ci/svn-repos/2016HL2/tjenester/spesifikasjon/design --username svnguest --password Subversion01 --no-auth-cache
 
 echo &quot;FERDIG MED SVN1&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;/home/ci/svn-repos/2015HL4/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/svn-repos/2015HL4/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.5/&quot; -consoleLog --displaystacktrace | tee /home/ci/scripts/tempFiles/2015HL4_NAV-Tjenestebuss.log
+      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;/home/ci/svn-repos/2016HL2/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.uml2html.transformationRunner -inputDirPath &quot;/home/ci/svn-repos/2016HL2/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.7/&quot; -consoleLog --displaystacktrace | tee /home/ci/scripts/tempFiles/2016HL2_NAV-Tjenestebuss.log
 
 echo &quot;FERDIG MED ECLIPSE1&quot;
 sleep 1s</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/scripts/tempFiles/2015HL4_NAV-Tjenestebuss.log; then
+      <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/scripts/tempFiles/2016HL2_NAV-Tjenestebuss.log; then
   exit 1;
 else
   exit 0;
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;/home/ci/svn-repos/2015HL4/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;/home/ci/svn-repos/2015HL4/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.5/&quot; -consoleLog | tee /home/ci/scripts/tempFiles/2015HL4_NAV-Tjenestebuss.log
+      <command>DISPLAY=:0 /opt/IBM/SDP2/eclipse -data &quot;/home/ci/svn-repos/2016HL2/tjenester/spesifikasjon/&quot; -application no.stelvio.esb.models.transformation.diagram2img.transformationRunner -inputDirPath &quot;/home/ci/svn-repos/2016HL2/tjenester/spesifikasjon/design/&quot; -outputDirPath &quot;/var/www/html/8.7/&quot; -consoleLog | tee /home/ci/scripts/tempFiles/2016HL2_NAV-Tjenestebuss.log
 
 echo &quot;FERDIG MED ECLIPSE2&quot;
 sleep 1s</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/scripts/tempFiles/2015HL4_NAV-Tjenestebuss.log; then
+      <command>if grep -q &quot;MESSAGE Application error&quot; /home/ci/scripts/tempFiles/2016HL2_NAV-Tjenestebuss.log; then
   exit 1;
 else
   exit 0;
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>svn export --force https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20151029_2015HL4/arkitekturmodeller/bildefiler/esb_tjenestemodell.jpeg /var/www/html/8.5/site/images/esb_tjenestemodell_v0.91.jpeg
-svn export --force https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20151029_2015HL4/arkitekturmodeller/bildefiler/esb_informasjonsmodell.jpeg /var/www/html/8.5/site/images/esb_informasjonsmodell_v1.1.jpeg
-chmod -Rc 775 /var/www/html/8.5/site/</command>
+      <command>svn export --force https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20151117_2016HL2/arkitekturmodeller/bildefiler/esb_tjenestemodell.jpeg /var/www/html/8.7/site/images/esb_tjenestemodell_v0.91.jpeg
+svn export --force https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/FEATURE_BRANCH_D20151117_2016HL2/arkitekturmodeller/bildefiler/esb_informasjonsmodell.jpeg /var/www/html/8.7/site/images/esb_informasjonsmodell_v1.1.jpeg
+chmod -Rc 775 /var/www/html/8.7/site/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
