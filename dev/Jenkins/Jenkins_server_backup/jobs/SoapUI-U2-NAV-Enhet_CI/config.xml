@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Midlertidig disabled, krever trolig nyere versjon av maven-soapui-plugin enn 4.5.1.</description>
+  <description>Endret maven-plugin på denne for å se om testen kjører i grønt:&#xd;
+Før: eviware:maven-soapui-plugin&#xd;
+Etter: com.smartbear.soapui:soapui-maven-plugin</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>10</numToKeep>
@@ -35,7 +37,7 @@
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -43,7 +45,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Enhet-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00223.devillo.no:9080/nav-tjeneste-enhet_v1Web/sca/EnhetWSEXP</targets>
+      <targets>com.smartbear.soapui:soapui-maven-plugin:test -Dsoapui.projectfile=Enhet-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00223.devillo.no:9080/nav-tjeneste-enhet_v1Web/sca/EnhetWSEXP</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>

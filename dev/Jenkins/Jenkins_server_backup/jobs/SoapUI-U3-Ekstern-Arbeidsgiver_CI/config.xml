@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_4_0_D20150727_2015HL3/ekstern/arbeidsgiver/ekstern-test-arbeidsgiver</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/FEATURE_BRANCH_8_7_0_D20160119_2016HL2/ekstern/arbeidsgiver/ekstern-test-arbeidsgiver</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -51,25 +51,11 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
-      <tasks>
-        <hudson.plugins.postbuildtask.TaskProperties>
-          <logTexts>
-            <hudson.plugins.postbuildtask.LogProperties>
-              <logText>Last Build : #(\d+)</logText>
-              <operator>OR</operator>
-            </hudson.plugins.postbuildtask.LogProperties>
-          </logTexts>
-          <EscalateStatus>false</EscalateStatus>
-          <RunIfJobSuccessful>false</RunIfJobSuccessful>
-          <script></script>
-        </hudson.plugins.postbuildtask.TaskProperties>
-      </tasks>
-    </hudson.plugins.postbuildtask.PostbuildTask>
-    <hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="test@example.com">
       <testResults>ekstern-test-arbeidsgiver/reports/TEST-*.xml</testResults>
       <keepLongStdio>false</keepLongStdio>
       <testDataPublishers/>
+      <healthScaleFactor>1.0</healthScaleFactor>
     </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
