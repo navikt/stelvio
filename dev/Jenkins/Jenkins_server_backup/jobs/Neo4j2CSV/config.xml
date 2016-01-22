@@ -47,7 +47,13 @@
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>/opt/rh/git19/root/usr/bin/git status &amp;&amp; /opt/rh/git19/root/usr/bin/git commit -a -m &quot;Latest CSV exports&quot;</command>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d ; -o ${WORKSPACE}/properties.csv MATCH (n) UNWIND keys(n) AS Property RETURN LABELS(n) as Type, n.bsrURI as URI, n.name as Name, Property, n[Property] as Value&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d ; -o ${WORKSPACE}/sgw.csv MATCH (n:ServiceLevelDefinition) RETURN n.name, case &apos;http://nav.no/soagov/taxonomies/security/availabilityZone#SBS&apos; in n.classifiers when true then &apos;SBS&apos; else case &apos;http://nav.no/soagov/taxonomies/security/availabilityZone#FSS&apos; in n.classifiers when true then &apos;FSS&apos; else &apos;None&apos; END END as Zone, case &apos;http://nav.no/soagov/taxonomies/platform/service#SGW2.0&apos; IN n.classifiers when true then &apos;SGW2.0&apos; else case &apos;http://nav.no/soagov/taxonomies/platform/service#SGW1.0&apos; IN n.classifiers when true then &apos;SGW1.0&apos; else &apos;None&apos; end end as SGW&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/rh/git19/root/usr/bin/git status &amp;&amp; /opt/rh/git19/root/usr/bin/git add . &amp;&amp; /opt/rh/git19/root/usr/bin/git commit -m &quot;Latest CSV exports&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
