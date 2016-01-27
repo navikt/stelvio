@@ -51,7 +51,7 @@ Mer dokumentasjon finnes her: http://confluence.adeo.no/display/KES/Forsyningspr
 
 * force:
 ** Alle WS-Proxyer som skal eksponere tjenester synkroniseres mot WSRR.
-** Pluginet spør WSRR hvilke partition keys som er knyttet er lagt på SLD-er. På denne måten slipper man å synke en tom WS-Proxy og få en error-melding.
+** Pluginet spør WSRR hvilke partition keys som er lagt på SLD-er. På denne måten slipper man å synke en tom WS-Proxy og få en error-melding.
 
 * disabled:
 ** Ingen WS-Proxyer synkroniseres mot WSRR.</description>
@@ -97,7 +97,8 @@ Denne lista fungerer som et filter for hvilke WS-Proxyer som skal synkroniseres 
         </hudson.model.BooleanParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>Applications</name>
-          <description></description>
+          <description>Kommaseparert liste av applikasjoner. Oppdaterer kun tjenester som blir eksponert av disse applikasjonene.
+F.eks. sdpkanal:1.0.0,emottak-asynch:1.0.1</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
