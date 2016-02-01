@@ -108,6 +108,8 @@ public class EventFileWriter {
 	 * @throws IOException
 	 */
 	public void writeCSVEvent(FailedEvent failedEvent, Event event, AdminClient adminClient) throws IOException {
+
+		LOGGER.log(Level.FINE, "ENTERING writeCSVEvent");
 		// Write information about this event
 		if (failedEvent != null) {
 			csvPrinter.write(failedEvent.getMsgId());
@@ -122,10 +124,13 @@ public class EventFileWriter {
 			csvPrinter.write(failedEvent.getResubmitDestination());
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 			csvPrinter.write(sdf.format(failedEvent.getFailureDateTime()));
+			
+			LOGGER.log(Level.FINE, "GETTING failureMessage");
 			String failureMessage = failedEvent.getFailureMessage();
 
 			// Truncating the failure message if it is larger than the maximum cell length
 			if (failureMessage != null) {
+				LOGGER.log(Level.FINE, "SHRINKING failureMessage");
 				if (failureMessage.length() > Constants.REPORT_MAX_CELL_LENGTH) {
 
 					failureMessage = failureMessage.substring(0, getMaximumReportCellSubstringSize()).concat(
@@ -141,6 +146,7 @@ public class EventFileWriter {
 			// Write parameters from the failed event
 			StringBuilder sb = new StringBuilder();
 			try {
+				LOGGER.log(Level.FINE, "GETTING paramList");
 				List paramList = null;
 				
 				/**
@@ -149,31 +155,96 @@ public class EventFileWriter {
 				 * adminClient.getConnectorProperties() sendt inn, bruker altfor lang tid i tillegg til å kaste exception.
 				 * Ved å kalle getFailedEventParameters uten parametere, går kallet like fort som før, men kaster fortsatt exception.
 				 * Avventer svar fra IBM gjennom PMR.
+				 * 
+				 * Update januar 2016:
+				 * Skrevet workaround som setter et privat felt i en IBM-klasse til aksesserbar.
+				 * Dette feltet inneholder input-dataobjektet i ren tekstformat. 
 				 */
 				if ((Constants.EVENT_TYPE_SCA).equals(event.getType())) {
+					LOGGER.log(Level.FINE, "TYPE SCA - getting paramList");
 					//paramList = ((SCAEvent) failedEvent).getFailedEventParameters(adminClient.getConnectorProperties());
-					paramList = ((SCAEvent) failedEvent).getFailedEventParameters();
-				} else if ((Constants.EVENT_TYPE_BPC).equals(event.getType())) {
+					//paramList = ((SCAEvent) failedEvent).getFailedEventParameters();
+					SCAEvent scaEvent = (SCAEvent) failedEvent;  
+					paramList = getParams(scaEvent, event.getType());
+					if (paramList == null) {
+						LOGGER.log(Level.FINE, "Trying again - the original way");
+						paramList = scaEvent.getFailedEventParameters();
+					}
+				}
+				
+				else if ((Constants.EVENT_TYPE_BPC).equals(event.getType())) {
+					LOGGER.log(Level.FINE, "TYPE BPC - getting paramList");
 					//paramList = ((BPCEvent) failedEvent).getInputMessage(adminClient.getConnectorProperties());
-					paramList = ((BPCEvent) failedEvent).getInputMessage();
-				} else if ((Constants.EVENT_TYPE_JMS).equals(event.getType())) {
+					//paramList = ((BPCEvent) failedEvent).getInputMessage();
+					BPCEvent bpcEvent = (BPCEvent) failedEvent;
+					paramList = getParams(bpcEvent, event.getType());
+					if (paramList == null) {
+						LOGGER.log(Level.FINE, "Trying again - the original way");
+						paramList = bpcEvent.getInputMessage();
+					}
+				}
+				
+				else if ((Constants.EVENT_TYPE_JMS).equals(event.getType())) {
+					LOGGER.log(Level.FINE, "TYPE JMS - getting paramList");
 					//paramList = ((JMSEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
-					paramList = ((JMSEvent) failedEvent).getPayload();
-				} else if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
+					//paramList = ((JMSEvent) failedEvent).getPayload();
+					JMSEvent jmsEvent = (JMSEvent) failedEvent;
+					paramList = getParams(jmsEvent, event.getType());
+					if (paramList == null) {
+						LOGGER.log(Level.FINE, "Trying again - the original way");
+						paramList = jmsEvent.getPayload();
+					}
+				}
+				
+				else if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
+					LOGGER.log(Level.FINE, "TYPE MQ - getting paramList");
 					//paramList = ((MQEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
-					paramList = ((MQEvent) failedEvent).getPayload();
+					//paramList = ((MQEvent) failedEvent).getPayload();
+					MQEvent mqEvent = (MQEvent) failedEvent;
+					paramList = getParams(mqEvent, event.getType());
+					if (paramList == null) {
+						LOGGER.log(Level.FINE, "Trying again - the original way");
+						paramList = mqEvent.getPayload();
+					}
 				}
 
 				if (paramList != null) {
+					LOGGER.log(Level.FINE, "ITERATE paramList");
 					for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
 						// Each parameter is know as a type of FailedEventParameter.
 						FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
 
 						if (failedEventParameter.getValue() instanceof DataObject) {
+							LOGGER.log(Level.FINE, "INSTANCE OF DataObject");
 							toString((DataObject) failedEventParameter.getValue(), sb);
-						} else if (failedEventParameter.getValue() instanceof String) {
+						}
+						
+						else if (failedEventParameter.getValue() instanceof String) {
+							LOGGER.log(Level.FINE, "INSTANCE OF String");
 							sb.append(failedEventParameter.getValue().toString());
-						} else {
+						}
+						
+						else if (failedEventParameter.getValue() instanceof byte[]) {
+							// TODO: Hvordan forbedre denne? Det er ikke alltid gitt at tegnsett er av typen IBM-277
+							LOGGER.log(Level.FINE, "INSTANCE OF byte[] - trying to convert with IBM-277");
+							try {
+								byte[] byteArray = (byte[])failedEventParameter.getValue();
+								String convertedByteArray = new String(byteArray, "IBM-277");
+								sb.append("BYTE-ARRAY CONVERTED WITH IBM-277 CHARACTER SET: " + convertedByteArray);
+								LOGGER.log(Level.FINE, " - Converting byte-array with IBM-277 success.");
+							} catch (RuntimeException e) {
+								LOGGER.log(Level.FINE, " - Converting byte-array with IBM-277 failed.");
+								sb.append("Unable to convert byte array");
+							}
+						}
+						
+						else {
+							LOGGER.log(Level.FINE, "UNKNOWN INSTANCE - unable to convert");
+							try {
+								LOGGER.log(Level.FINE, " - Instance: " + failedEventParameter.getValue() + "(" + failedEventParameter.getValue().getClass().getSimpleName() + ")");
+							} catch (RuntimeException e) {
+								LOGGER.log(Level.FINE, " - Logging with extra info failed");
+							}
 							sb.append("Unable to convert");
 						}
 						// Ensure all 'cells' are filled to improve make the view even more easy to read
@@ -182,7 +253,7 @@ public class EventFileWriter {
 				}
 
 			} catch (RuntimeException e) {
-				String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName() + "("
+				String errormsg = "RuntimeException caught during retrieval of business object " + e.getClass().getName() + "("
 						+ e.getMessage() + ")";
 				sb.append(errormsg);
 				sb.append(EMPTY);
@@ -192,6 +263,8 @@ public class EventFileWriter {
 
 			// Write PIID / CorrelationId
 			csvPrinter.writeln(failedEvent.getCorrelationId());
+			
+			LOGGER.log(Level.FINE, "EXIT writeCSVEvent");
 		}
 	}
 
@@ -288,4 +361,34 @@ public class EventFileWriter {
 		return Constants.REPORT_MAX_CELL_LENGTH - Constants.REPORT_TRUNCATE_STRING.length();
 	}
 
+	/**
+	 * Method to get dataobject from a private field in one of IBMs classes.
+	 * 
+	 * @param event
+	 * @param eventType
+	 * @return
+	 */
+	private List getParams(FailedEvent event, String eventType) {
+		List params = null;
+		String fieldName = "failedEventParameters";
+		if ((Constants.EVENT_TYPE_BPC).equals(eventType)) {
+			fieldName = "parameters";
+		}
+		
+		try {
+			LOGGER.log(Level.FINE, "Use reflect for accessing private field");
+			java.lang.reflect.Field f = event.getClass().getDeclaredField(fieldName);
+			f.setAccessible(true);
+			params = (List) f.get(event);
+			LOGGER.log(Level.FINE, "Success using reflect!");
+		} catch (NoSuchFieldException e) {
+			LOGGER.log(Level.FINE, "Reflect gave NoSuchFieldException: " + e.getMessage());
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			LOGGER.log(Level.FINE, "Reflect gave IllegalAccessException: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return params;
+	}
 }
