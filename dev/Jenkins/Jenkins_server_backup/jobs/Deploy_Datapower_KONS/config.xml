@@ -9,7 +9,8 @@
 * service-gw-router-sbs&#xd;
 * service-gw-pep-fss&#xd;
 * service-gw-router-fss&#xd;
-* sts-sbs</description>
+* sts-sbs&#xd;
+* sts-fss</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -219,7 +220,9 @@ fi</command>
   </builders>
   <publishers/>
   <buildWrappers>
-    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
+    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper>
+      <varPasswordPairs/>
+    </com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper>
     <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
       <template>#${BUILD_NUMBER}: ${ENV,var=&quot;Applications&quot;}@${ENV,var=&quot;Environment&quot;}</template>
     </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
