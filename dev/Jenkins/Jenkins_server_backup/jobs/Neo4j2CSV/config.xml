@@ -43,17 +43,84 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d ; -o ${WORKSPACE}/relationships.csv match o-[r]-&gt;o2 return o.bsrURI, o.name,type(r), o2.bsrURI, o2.name&quot;
-</command>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/relationships.csv 
+match o-[r]-&gt;o2-[r2]-&gt;o3 
+return HEAD(LABELS(o)) as SourceType, o.bsrURI as SourceURI, o.name as SourceName,type(r) as Relationship, HEAD(LABELS(o2)) as TargetType, o2.bsrURI as TargetURI, o2.name as TargetName, type(r2) as Relationship2, HEAD(LABELS(o3)) as Target2Type, o3.bsrURI as Target2URI, o3.name as Target2Name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d ; -o ${WORKSPACE}/properties.csv MATCH (n) UNWIND keys(n) AS Property RETURN LABELS(n) as Type, n.bsrURI as URI, n.name as Name, Property, n[Property] as Value&quot;</command>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/properties.csv 
+MATCH (n) 
+UNWIND keys(n) AS Property 
+RETURN HEAD(LABELS(n)) as Type, n.bsrURI as URI, n.name as Name, Property, n[Property] as Value&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d ; -o ${WORKSPACE}/sgw.csv MATCH (n:ServiceLevelDefinition) RETURN n.name, case &apos;http://nav.no/soagov/taxonomies/security/availabilityZone#SBS&apos; in n.classifiers when true then &apos;SBS&apos; else case &apos;http://nav.no/soagov/taxonomies/security/availabilityZone#FSS&apos; in n.classifiers when true then &apos;FSS&apos; else &apos;None&apos; END END as Zone, case &apos;http://nav.no/soagov/taxonomies/platform/service#SGW2.0&apos; IN n.classifiers when true then &apos;SGW2.0&apos; else case &apos;http://nav.no/soagov/taxonomies/platform/service#SGW1.0&apos; IN n.classifiers when true then &apos;SGW1.0&apos; else &apos;None&apos; end end as SGW&quot;</command>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/sgw.csv 
+MATCH (n:ServiceLevelDefinition) RETURN n.name, 
+case &apos;http://nav.no/soagov/taxonomies/security/availabilityZone#SBS&apos; in n.classifiers 
+when true then &apos;SBS&apos; 
+else 
+case &apos;http://nav.no/soagov/taxonomies/security/availabilityZone#FSS&apos; in n.classifiers 
+when true then &apos;FSS&apos; 
+else &apos;None&apos; 
+END 
+END 
+as Zone, 
+case &apos;http://nav.no/soagov/taxonomies/platform/service#SGW2.0&apos; IN n.classifiers 
+when true then &apos;SGW2.0&apos; 
+else case &apos;http://nav.no/soagov/taxonomies/platform/service#SGW1.0&apos; IN n.classifiers 
+when true then &apos;SGW1.0&apos; 
+else &apos;None&apos; 
+end 
+end as SGW&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>/opt/rh/git19/root/usr/bin/git status &amp;&amp; /opt/rh/git19/root/usr/bin/git add . &amp;&amp; /opt/rh/git19/root/usr/bin/git commit -m &quot;Latest CSV exports&quot;</command>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/organizations.csv 
+MATCH (n:Organization) 
+RETURN n.name as Name, n.bsrURI as bsrURI&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/businesscapabilities.csv 
+MATCH (bs:BusinessService) 
+OPTIONAL MATCH (bs)-[gep63_capabilityVersions]-&gt;(cv)
+RETURN bs.bsrURI as bsrURI, HEAD(LABELS(bs)) as Type, bs.name as Name, COLLECT(bs.bsrURI) as Versions
+UNION
+MATCH (bs:BusinessApplication) 
+OPTIONAL MATCH (bs)-[gep63_capabilityVersions]-&gt;(cv)
+RETURN bs.bsrURI as bsrURI, HEAD(LABELS(bs)) as Type, bs.name as Name, COLLECT(bs.bsrURI) as Versions&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/serviceinterfacespecifications.csv 
+MATCH (n:ServiceInterfaceSpecification) 
+RETURN n.bsrURI as bsrURI, HEAD(LABELS(n)) as Type, n.name as Name, n.gep63_versionNamespace as gep63_versionNamespace&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/capabilityverisons.csv 
+MATCH (cv:ServiceVersion) 
+OPTIONAL MATCH (cv)-[gep63_interfaceSpecifications]-&gt;(sis:ServiceInterfaceSpecification)
+OPTIONAL MATCH (cv)-[gep63_provides]-&gt;(sld:ServiceLevelDefinition)
+OPTIONAL MATCH (cv)-[gep63_consumes]-&gt;(sla:ServiceLevelAgreement)
+RETURN cv.bsrURI as bsrURI, HEAD(LABELS(cv)) as Type, cv.name as Name, cv.version as version, cv.gep63_consumerIdentifier as gep63_consumerIdentifier, cv.classifiers as classifications, COLLECT(sis.bsrURI) as gep63_interfaceSpecifications, COLLECT(sld.bsrURI) as gep63_provides, COLLECT(sla.bsrURI)as gep63_consumes
+UNION
+MATCH (cv:ApplicationVersion) 
+OPTIONAL MATCH (cv)-[gep63_interfaceSpecifications]-&gt;(sis:ServiceInterfaceSpecification)
+OPTIONAL MATCH (cv)-[gep63_provides]-&gt;(sld:ServiceLevelDefinition)
+OPTIONAL MATCH (cv)-[gep63_consumes]-&gt;(sla:ServiceLevelAgreement)
+RETURN cv.bsrURI as bsrURI, HEAD(LABELS(cv)) as Type, cv.name as Name, cv.version as version, cv.gep63_consumerIdentifier as gep63_consumerIdentifier, cv.classifiers as classifications, COLLECT(sis.bsrURI) as gep63_interfaceSpecifications, COLLECT(sld.bsrURI) as gep63_provides, COLLECT(sla.bsrURI)as gep63_consumes&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/serviceleveldefinitions.csv 
+MATCH (sld:ServiceLevelDefinition) 
+OPTIONAL MATCH (sld)-[gep63_anonymousSLA]-&gt;(anon:ServiceLevelAgreement)
+RETURN sld.bsrURI as bsrURI, HEAD(LABELS(sld)) as Type, sld.name as name, sld.classifiers as Classifications, sld.version as Version, sld.gep63_developmentVersion as gep63_developmentVersion, sld.gep63_consumerIdentifierLocationInfo as gep63_consumerIdentifierLocationInfo, COLLECT(anon.bsrURI) as gep63_anonymousSLA&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/servicelevelagreements.csv 
+MATCH (sla:ServiceLevelAgreement)
+OPTIONAL MATCH (sla)-[gep63_agreedEndpoints]-&gt;(sld:ServiceLevelDefinition)
+RETURN sla.bsrURI as bsrURI, HEAD(LABELS(sla)) as Type, sla.name as name, COLLECT(sld.bsrURI) as gep63_agreedEndpoints&quot;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>/opt/rh/git19/root/usr/bin/git status &amp;&amp; /opt/rh/git19/root/usr/bin/git add . &amp;&amp; /opt/rh/git19/root/usr/bin/git commit -m &apos;Latest CSV exports&apos; || echo &apos;Commit failed. Probably nothing to commit.&apos;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
