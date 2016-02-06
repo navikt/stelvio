@@ -76,48 +76,58 @@ end as SGW&quot;</command>
     <hudson.tasks.Shell>
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/organizations.csv 
 MATCH (n:Organization) 
-RETURN n.name as Name, n.bsrURI as bsrURI&quot;</command>
+RETURN n.name as Name, n.bsrURI as bsrURI
+ORDER BY n.name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/businesscapabilities.csv 
 MATCH (bs:BusinessService) 
-OPTIONAL MATCH (bs)-[gep63_capabilityVersions]-&gt;(cv)
-RETURN bs.bsrURI as bsrURI, HEAD(LABELS(bs)) as Type, bs.name as Name, COLLECT(cv.bsrURI) as Versions
+OPTIONAL MATCH (bs)-[:gep63_capabilityVersions]-&gt;(cv)
+OPTIONAL MATCH (bs)-[:ale63_owningOrganization]-&gt;(org)
+RETURN bs.bsrURI as bsrURI, HEAD(LABELS(bs)) as Type, bs.name as Name, COLLECT(cv.bsrURI) as Versions, COLLECT(org.bsrURI) as OwningOrganization
+ORDER BY bs.name
 UNION
 MATCH (bs:BusinessApplication) 
-OPTIONAL MATCH (bs)-[gep63_capabilityVersions]-&gt;(cv)
-RETURN bs.bsrURI as bsrURI, HEAD(LABELS(bs)) as Type, bs.name as Name, COLLECT(cv.bsrURI) as Versions&quot;</command>
+OPTIONAL MATCH (bs)-[:gep63_capabilityVersions]-&gt;(cv)
+OPTIONAL MATCH (bs)-[:ale63_owningOrganization]-&gt;(org)
+RETURN bs.bsrURI as bsrURI, HEAD(LABELS(bs)) as Type, bs.name as Name, COLLECT(cv.bsrURI) as Versions, COLLECT(org.bsrURI) as OwningOrganization
+ORDER BY bs.name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/serviceinterfacespecifications.csv 
 MATCH (n:ServiceInterfaceSpecification) 
-RETURN n.bsrURI as bsrURI, HEAD(LABELS(n)) as Type, n.name as Name, n.gep63_versionNamespace as gep63_versionNamespace&quot;</command>
+RETURN n.bsrURI as bsrURI, HEAD(LABELS(n)) as Type, n.name as Name, n.gep63_versionNamespace as gep63_versionNamespace
+ORDER BY n.name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/capabilityverisons.csv 
 MATCH (cv:ServiceVersion) 
-OPTIONAL MATCH (cv)-[gep63_interfaceSpecifications]-&gt;(sis:ServiceInterfaceSpecification)
-OPTIONAL MATCH (cv)-[gep63_provides]-&gt;(sld:ServiceLevelDefinition)
-OPTIONAL MATCH (cv)-[gep63_consumes]-&gt;(sla:ServiceLevelAgreement)
+OPTIONAL MATCH (cv)-[:gep63_interfaceSpecifications]-&gt;(sis:ServiceInterfaceSpecification)
+OPTIONAL MATCH (cv)-[:gep63_provides]-&gt;(sld:ServiceLevelDefinition)
+OPTIONAL MATCH (cv)-[:gep63_consumes]-&gt;(sla:ServiceLevelAgreement)
 RETURN cv.bsrURI as bsrURI, HEAD(LABELS(cv)) as Type, cv.name as Name, cv.version as version, cv.gep63_consumerIdentifier as gep63_consumerIdentifier, cv.classifiers as classifications, COLLECT(sis.bsrURI) as gep63_interfaceSpecifications, COLLECT(sld.bsrURI) as gep63_provides, COLLECT(sla.bsrURI)as gep63_consumes
+ORDER BY cv.name
 UNION
 MATCH (cv:ApplicationVersion) 
-OPTIONAL MATCH (cv)-[gep63_interfaceSpecifications]-&gt;(sis:ServiceInterfaceSpecification)
-OPTIONAL MATCH (cv)-[gep63_provides]-&gt;(sld:ServiceLevelDefinition)
-OPTIONAL MATCH (cv)-[gep63_consumes]-&gt;(sla:ServiceLevelAgreement)
-RETURN cv.bsrURI as bsrURI, HEAD(LABELS(cv)) as Type, cv.name as Name, cv.version as version, cv.gep63_consumerIdentifier as gep63_consumerIdentifier, cv.classifiers as classifications, COLLECT(sis.bsrURI) as gep63_interfaceSpecifications, COLLECT(sld.bsrURI) as gep63_provides, COLLECT(sla.bsrURI)as gep63_consumes&quot;</command>
+OPTIONAL MATCH (cv)-[:gep63_interfaceSpecifications]-&gt;(sis:ServiceInterfaceSpecification)
+OPTIONAL MATCH (cv)-[:gep63_provides]-&gt;(sld:ServiceLevelDefinition)
+OPTIONAL MATCH (cv)-[:gep63_consumes]-&gt;(sla:ServiceLevelAgreement)
+RETURN cv.bsrURI as bsrURI, HEAD(LABELS(cv)) as Type, cv.name as Name, cv.version as version, cv.gep63_consumerIdentifier as gep63_consumerIdentifier, cv.classifiers as classifications, COLLECT(sis.bsrURI) as gep63_interfaceSpecifications, COLLECT(sld.bsrURI) as gep63_provides, COLLECT(sla.bsrURI)as gep63_consumes
+ORDER BY cv.name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/serviceleveldefinitions.csv 
 MATCH (sld:ServiceLevelDefinition) 
-OPTIONAL MATCH (sld)-[gep63_anonymousSLA]-&gt;(anon:ServiceLevelAgreement)
-RETURN sld.bsrURI as bsrURI, HEAD(LABELS(sld)) as Type, sld.name as name, sld.classifiers as Classifications, sld.version as Version, sld.gep63_developmentVersion as gep63_developmentVersion, sld.gep63_consumerIdentifierLocationInfo as gep63_consumerIdentifierLocationInfo, COLLECT(anon.bsrURI) as gep63_anonymousSLA&quot;</command>
+OPTIONAL MATCH (sld)-[:gep63_anonymousSLA]-&gt;(anon:ServiceLevelAgreement)
+RETURN sld.bsrURI as bsrURI, HEAD(LABELS(sld)) as Type, sld.name as name, sld.classifiers as Classifications, sld.version as Version, sld.gep63_developmentVersion as gep63_developmentVersion, sld.gep63_consumerIdentifierLocationInfo as gep63_consumerIdentifierLocationInfo, COLLECT(anon.bsrURI) as gep63_anonymousSLA
+ORDER BY sld.name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/opt/neo4j-community-2.3.1/bin/neo4j-shell -c &quot;import-cypher -d , -o ${WORKSPACE}/exportedcsv/servicelevelagreements.csv 
 MATCH (sla:ServiceLevelAgreement)
-OPTIONAL MATCH (sla)-[gep63_agreedEndpoints]-&gt;(sld:ServiceLevelDefinition)
-RETURN sla.bsrURI as bsrURI, HEAD(LABELS(sla)) as Type, sla.name as name, COLLECT(sld.bsrURI) as gep63_agreedEndpoints&quot;</command>
+OPTIONAL MATCH (sla)-[:gep63_agreedEndpoints]-&gt;(sld:ServiceLevelDefinition)
+RETURN sla.bsrURI as bsrURI, HEAD(LABELS(sla)) as Type, sla.name as name, COLLECT(sld.bsrURI) as gep63_agreedEndpoints
+ORDER BY sla.name&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>python convertArrays.py</command>

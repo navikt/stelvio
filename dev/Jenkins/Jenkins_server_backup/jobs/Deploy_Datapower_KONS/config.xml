@@ -62,11 +62,9 @@ F.eks. partner-gw-router-sbs:1.0.5 eller sts-sbs:0.0.2-SNAPSHOT</description>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>0.0.18-SNAPSHOT</string>
               <string>0.0.17</string>
-              <string>0.0.16</string>
-              <string>0.0.14</string>
-              <string>0.0.13</string>
-              <string>0.0.15-SNAPSHOT</string>
+              <string>RELEASE</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -220,9 +218,7 @@ fi</command>
   </builders>
   <publishers/>
   <buildWrappers>
-    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper>
-      <varPasswordPairs/>
-    </com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper>
+    <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
     <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
       <template>#${BUILD_NUMBER}: ${ENV,var=&quot;Applications&quot;}@${ENV,var=&quot;Environment&quot;}</template>
     </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
