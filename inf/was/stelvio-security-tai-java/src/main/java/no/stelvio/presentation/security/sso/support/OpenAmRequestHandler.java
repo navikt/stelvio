@@ -46,8 +46,10 @@ public class OpenAmRequestHandler implements SSORequestHandler {
             log.finer("Listing values in request.");
             if (requestValueType == RequestValueType.COOKIE) {
                 Cookie[] cookies = request.getCookies();
-                for (int i = 0; i < cookies.length; i++) {
-                    log.finer("Found cookie:" + cookies[i].getName() + " - " + cookies[i].getValue());
+                if(cookies != null) {
+	                for (int i = 0; i < cookies.length; i++) {
+	                    log.finer("Found cookie:" + cookies[i].getName() + " - " + cookies[i].getValue());
+	                }
                 }
             }
 
@@ -199,7 +201,7 @@ public class OpenAmRequestHandler implements SSORequestHandler {
         String value = null;
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
-                if (cookies[i].getName().equals(requestValueKeys.getCookieKey())) {
+                if (cookies[i].getName().equals(key)) {
                     value = cookies[i].getValue();
                     break;
                 }

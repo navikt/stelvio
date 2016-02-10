@@ -1,11 +1,5 @@
 package no.stelvio.presentation.security.sso.accessmanager.support;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +35,8 @@ public class OpenAmAccessManager implements StelvioAccessManager {
     private static final String PARAMETER_AUTH_TYPE = "AuthType";
     private static final String PARAMETER_AUTH_METHOD = "AuthMethod";
     private static final String VALID_AUTH_METHOD = "NAV-OneDayPw";
-    private static final String VALID_AUTH_TYPE = "Federation";
+    private static final String VALID_AUTH_TYPE_FEDERATION = "Federation";
+    private static final String VALID_AUTH_TYPE_LDAP = "LDAP";
 
     private StelvioPrincipal principal;
     private Logger log = Logger.getLogger("no.stelvio.presentation.security.sso.accessmanager.OpenAmAccessManager");
@@ -181,10 +176,20 @@ public class OpenAmAccessManager implements StelvioAccessManager {
         if (log.isLoggable(Level.FINE)) {
             log.fine("AuthMethod=" + authMethod + ", AuthType=" + authType);
         }
+        
+        if(authType == null || authMethod == null) {
+        	throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod + ". AuthType was " + authType);
+        }
+        
         // check for valid authMethod or authType
-        if ( !(authType.contains(VALID_AUTH_TYPE) || authMethod.contains(VALID_AUTH_METHOD))) {
+        if ( !( authType.contains(VALID_AUTH_TYPE_FEDERATION) || 
+        		authType.contains(VALID_AUTH_TYPE_LDAP) ||
+        		authMethod.contains(VALID_AUTH_METHOD))
+        		) {
             throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod +
-                    ", expected " + VALID_AUTH_METHOD + ". AuthType was " + authType + ", expected " + VALID_AUTH_TYPE);
+                    ", expected " + VALID_AUTH_METHOD + ". AuthType was " + authType +
+                    ", expected " + VALID_AUTH_TYPE_FEDERATION + " or " + VALID_AUTH_TYPE_LDAP +
+                    ". One of these must match expected values.");
         }
         
         String userId = attributeMap.get(PARAMETER_UID);

@@ -17,30 +17,6 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 public abstract class AbstractTaiTest {
 	
-	/*protected SubjectMapper mapper = new SubjectMapper() {
-				
-		public Subject createSubject(StelvioPrincipal principal) throws Exception {
-			Subject subject = new Subject();
-			List<String> ldapGroups = new ArrayList<String>();
-			//just for test purposes
-			ldapGroups.add(principal.getAuthLevel());
-			
-			String uniqueid = principal.getUserId();
-			//Use this + a timpestamp as cache_key
-			String userId = principal.getUserId();
-			
-			String key = uniqueid + ldapGroups.toString();
-			
-			Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
-			hashtable.put(AttributeNameConstants.WSCREDENTIAL_UNIQUEID, uniqueid);
-			hashtable.put(AttributeNameConstants.WSCREDENTIAL_SECURITYNAME, userId);
-			hashtable.put(AttributeNameConstants.WSCREDENTIAL_GROUPS, ldapGroups);			
-			hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, key);
-			subject.getPublicCredentials().add(hashtable);
-			return subject;
-		}
-		
-	};*/
 	protected MockWebsphereSubjectMapper mapper;
 	protected WebSealRequestHandler webSealrequestHandler;
 	protected WebSealAccessManager webSealaccessManager;

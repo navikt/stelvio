@@ -7700,10 +7700,12 @@ inf/was/stelvio-security-tai-java/src/main/java/org/json/README -text
 inf/was/stelvio-security-tai-java/src/main/resources/stelvio-tai-common.properties -text
 inf/was/stelvio-security-tai-java/src/main/resources/stelvio-tai-ldap-groups.properties -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/AbstractTaiTest.java -text
+inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/accessmanager/support/OpenAMRestAPIImplTest.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/accessmanager/support/OpenAmAccessManagerTest.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/ibm/MockWebsphereSubjectMapper.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/ibm/StelvioTaiWebSealTest.java -text
 inf/was/stelvio-security-tai-java/src/test/java/no/stelvio/presentation/security/sso/openam/StelvioTaiOpenAmTest.java -text
+inf/was/stelvio-security-tai-java/src/test/resources/__files/openam_ok.json -text
 inf/was/stelvio-security-tai-java/src/test/resources/test-stelvio-tai-common.properties -text
 inf/was/stelvio-security-tai-java/src/test/resources/test-stelvio-tai-ldap-groups.properties -text
 inf/was/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text

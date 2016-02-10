@@ -46,7 +46,6 @@ public class StelvioTaiWebSealTest extends AbstractTaiTest{
 	
 	public MockTaiHttpServletRequest getRequest(WebSealRequestHandler handler) {
 		
-		//Properties requestvalues = handler.getRequestValueKeyConfig();
 		RequestValueType valueType = handler.getRequestValueType();
 		RequestValueKeys keys = handler.getRequestValueKeys();
 		MockTaiHttpServletRequest request = new MockTaiHttpServletRequest();

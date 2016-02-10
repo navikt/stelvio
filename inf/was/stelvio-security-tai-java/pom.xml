@@ -15,38 +15,40 @@
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.admin.client</artifactId>
-			<version>7.0.0</version>
+			<version>8.5.5.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
+  			<groupId>javax.servlet</groupId>
+  			<artifactId>javax.servlet-api</artifactId>
+  			<version>3.0.1</version>
 		</dependency>
 		<dependency>
-			<artifactId>spring-mock</artifactId>
+			<artifactId>spring-test</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>2.0.4</version>
+			<version>4.2.4.RELEASE</version>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>struts</artifactId>
-					<groupId>struts</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<artifactId>spring-core</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>2.0.4</version>
+			<version>4.2.4.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <scope>test</scope>
+            <artifactId>mockito-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock</artifactId>
+			<scope>test</scope>
+			<version>1.57</version>
+		</dependency>
 	</dependencies>
 
 </project>

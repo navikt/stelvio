@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>websphere</groupId>
 			<artifactId>com.ibm.ws.admin.client</artifactId>
-			<version>7.0.0</version>
+			<version>8.5.5.2</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,12 +38,13 @@ public class OpenAMRestAPIImpl {
                         "Error from openAM: " + conn.getResponseCode() + " " + conn.getResponseMessage());
                 throw new RuntimeException("Failed: HTTP error code : " + conn.getResponseCode());
             }
-            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
 
             String output;
             while ((output = br.readLine()) != null) {
                 result.append(output);
             }
+            br.close();
             conn.disconnect();
         } catch (MalformedURLException e) {
             log.logp(Level.SEVERE, getClass().getName(), "invokeOpenAmRestApi", e.getMessage(), e);

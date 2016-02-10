@@ -84,7 +84,7 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig {
     }
 
     /**
-     * Gets the StelvioAccessManager. If no access-manager is present a <code>WebSealAccessManager</code> will be created.
+     * Gets the StelvioAccessManager. If no access-manager is present a <code>OpenAmAccessManager</code> will be created.
      * 
      * @return the StelvioAccessManager
      */
@@ -109,7 +109,7 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig {
     }
 
     /**
-     * Gets the SSORequestHandler. If no request-handler is present a <code>WebSealRequestHandler</code> will be created from
+     * Gets the SSORequestHandler. If no request-handler is present a <code>OpenAmRequestHandler</code> will be created from
      * the common properties file.
      * 
      * @return the SSORequestHandler
@@ -122,7 +122,7 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig {
     }
 
     /**
-     * Private helper method which creates a WebSealRequestHandler from the properties in the common properties file.
+     * Private helper method which creates a OpenAmRequestHandler from the properties in the common properties file.
      * 
      * @return a new OpenAmRequestHandler
      */

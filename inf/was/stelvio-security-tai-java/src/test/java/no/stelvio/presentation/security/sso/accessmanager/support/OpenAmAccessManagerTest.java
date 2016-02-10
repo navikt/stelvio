@@ -47,9 +47,30 @@ public class OpenAmAccessManagerTest {
     }
     
     @Test
-    public void testPrincipalRepresentationWithValidAuthType() throws PrincipalNotValidException, IOException {
+    public void testPrincipalRepresentationWithValidAuthTypeFederation() throws PrincipalNotValidException, IOException {
         OpenAMRestAPIImpl openAMRestAPIMock = Mockito.mock(OpenAMRestAPIImpl.class);
         String openAMResponse = "{\"token\":{\"tokenId\":\"12345678901-4\"},\"roles\":[],\"attributes\":[{\"values\":[\"12345678901\"],\"name\":\"uid\"},{\"values\":[\"4\"],\"name\":\"SecurityLevel\"},{\"values\":[\"somevalue\"],\"name\":\"AuthMethod\"},{\"values\":[\"Federation\"],\"name\":\"AuthType\"}]}";
+        Mockito.when(openAMRestAPIMock.invokeOpenAmRestApi(Mockito.anyString(), Mockito.anyString())).thenReturn(openAMResponse);
+
+        OpenAmAccessManager openAmAccessManager = new OpenAmAccessManager();
+        openAmAccessManager.setOpenAMRestAPI(openAMRestAPIMock);
+
+        openAmAccessManager.setGroupMap(props);
+
+        String openamSession = "someopenamsession";
+        openAmAccessManager.setPrincipalRepresentation(openamSession);
+
+        StelvioPrincipal principal = openAmAccessManager.getPrincipal();
+        assertEquals("12345678901", principal.getAuthorizedAs());
+        assertEquals(openamSession, principal.getSsoToken());
+        assertEquals("12345678901", principal.getUserId());
+        assertEquals("0000-GA-PENSJON_HOY", principal.getGroupIds().iterator().next());
+    }
+    
+    @Test
+    public void testPrincipalRepresentationWithValidAuthTypeLDAP() throws PrincipalNotValidException, IOException {
+        OpenAMRestAPIImpl openAMRestAPIMock = Mockito.mock(OpenAMRestAPIImpl.class);
+        String openAMResponse = "{\"token\":{\"tokenId\":\"12345678901-4\"},\"roles\":[],\"attributes\":[{\"values\":[\"12345678901\"],\"name\":\"uid\"},{\"values\":[\"4\"],\"name\":\"SecurityLevel\"},{\"values\":[\"somevalue\"],\"name\":\"AuthMethod\"},{\"values\":[\"LDAP\"],\"name\":\"AuthType\"}]}";
         Mockito.when(openAMRestAPIMock.invokeOpenAmRestApi(Mockito.anyString(), Mockito.anyString())).thenReturn(openAMResponse);
 
         OpenAmAccessManager openAmAccessManager = new OpenAmAccessManager();
@@ -80,7 +101,7 @@ public class OpenAmAccessManagerTest {
         openAmAccessManager.setPrincipalRepresentation(openamSession);
     }
     
-    @Test(expected=NullPointerException.class)
+    @Test(expected=PrincipalNotValidException.class)
     public void testPrincipalRepresentationWithNullAuthTypeAndAuthMethod() throws PrincipalNotValidException, IOException {
         OpenAMRestAPIImpl openAMRestAPIMock = Mockito.mock(OpenAMRestAPIImpl.class);
         String openAMResponse = "{\"token\":{\"tokenId\":\"12345678901-4\"},\"roles\":[],\"attributes\":[{\"values\":[\"12345678901\"],\"name\":\"uid\"},{\"values\":[\"4\"],\"name\":\"SecurityLevel\"}]}";
