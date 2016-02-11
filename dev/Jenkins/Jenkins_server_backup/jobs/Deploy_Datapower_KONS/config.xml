@@ -208,10 +208,12 @@ fi</command>
 
     environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
     registryDestinationFolder=/data/service-registry/$environmentUpperCase
-    registrySourceFolder=${WORKSPACE}/target/output
-    if [ -d &quot;$registrySourceFolder&quot; ]; then
-        ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
-        scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+    registrySourceFolder=${WORKSPACE}/nav-init-pom/target/output
+    xslReferenceString=&quot;&lt;?xml-stylesheet type=&apos;text/xsl&apos; href=&apos;../../service-registry-stylesheet_v2.xsl&apos;?&gt;&quot;
+if [ -d &quot;$registrySourceFolder&quot; ]; then
+    sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
+    ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+    scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
     fi
 fi</command>
     </hudson.tasks.Shell>

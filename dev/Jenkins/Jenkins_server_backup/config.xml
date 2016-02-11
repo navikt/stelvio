@@ -23,6 +23,11 @@
       <home>/usr/java/jdk1.7.0_51/</home>
       <properties/>
     </jdk>
+    <jdk>
+      <name>IBM Java 1.7.0</name>
+      <home>/opt/IBM/java_1.7_64/</home>
+      <properties/>
+    </jdk>
   </jdks>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>

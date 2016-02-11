@@ -159,9 +159,9 @@ registrySourceFolder=${WORKSPACE}/init-maven-pom/target/output
 xslReferenceString=&quot;&lt;?xml-stylesheet type=&apos;text/xsl&apos; href=&apos;../../service-registry-stylesheet_v2.xsl&apos;?&gt;&quot;
 
 if [ -d &quot;$registrySourceFolder&quot; ]; then
-	sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
-	ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
-	scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+    sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
+    ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+    scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
 fi
 
 scp -r ${WORKSPACE}/service-registry-stylesheet_v2.xsl test@example.com:/data/service-registry/
