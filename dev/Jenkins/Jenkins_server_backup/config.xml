@@ -960,7 +960,25 @@
         <string>2015HL4_8.5_tjenestespesifikasjon_pensjon</string>
         <string>2015HL4_8.5_tjenestespesifikasjon_system</string>
         <string>2015HL4_8.5_tjenestespesifikasjon_tredjegenerasjon</string>
+        <string>2016HL1_8.6_CheckScripts_Leveransedokumentasjon</string>
+        <string>2016HL1_8.6_configuration_bus-authorization</string>
+        <string>2016HL1_8.6_configuration_bus-environment</string>
+        <string>2016HL1_8.6_configuration_bus-nonenvironment</string>
+        <string>2016HL1_8.6_ekstern</string>
+        <string>2016HL1_8.6_esb-release</string>
+        <string>2016HL1_8.6_esb_poms</string>
+        <string>2016HL1_8.6_layers</string>
+        <string>2016HL1_8.6_layers_dryRun</string>
+        <string>2016HL1_8.6_nav</string>
+        <string>2016HL1_8.6_pensjon</string>
+        <string>2016HL1_8.6_tjenestespesifikasjon_ekstern</string>
+        <string>2016HL1_8.6_tjenestespesifikasjon_meldingsdefinisjon</string>
+        <string>2016HL1_8.6_tjenestespesifikasjon_nav</string>
+        <string>2016HL1_8.6_tjenestespesifikasjon_pensjon</string>
+        <string>2016HL1_8.6_tjenestespesifikasjon_system</string>
+        <string>2016HL1_8.6_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>2016HL2_8.7_FB_Design_FEIL</string>
+        <string>2016HL2_8.7_FB_ESB_FEIL</string>
         <string>2016HL4_8.8_tjenestespesifikasjon_ekstern</string>
         <string>2016HL4_8.8_tjenestespesifikasjon_meldingsdefinisjon</string>
         <string>2016HL4_8.8_tjenestespesifikasjon_nav</string>
@@ -968,9 +986,12 @@
         <string>2016HL4_8.8_tjenestespesifikasjon_system</string>
         <string>2016HL4_8.8_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
+        <string>CI-Automatisk_Deploy-ESB-U3_(2016HL1)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL4)</string>
         <string>CI-deploy_2015HL4_bus-config-0.0.2015.4-SNAPSHOT</string>
         <string>CI-deploy_2015HL4_buss-pom-0.0.2015.4-SNAPSHOT</string>
+        <string>CI-deploy_2016HL1_bus-config-0.0.2016.1-SNAPSHOT</string>
+        <string>CI-deploy_2016HL1_buss-pom-0.0.2016.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
