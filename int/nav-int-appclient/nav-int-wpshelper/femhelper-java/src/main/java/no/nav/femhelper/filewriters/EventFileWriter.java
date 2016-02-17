@@ -159,6 +159,9 @@ public class EventFileWriter {
 				 * Update januar 2016:
 				 * Skrevet workaround som setter et privat felt i en IBM-klasse til aksesserbar.
 				 * Dette feltet inneholder input-dataobjektet i ren tekstformat. 
+				 * 
+				 * FIXME: Vær oppmerksom på at dette er en workaround som fungerer fra og med BPM 8.5,
+				 * og som ikke er garantert til å fungere i nyere versjoner av BPM.
 				 */
 				if ((Constants.EVENT_TYPE_SCA).equals(event.getType())) {
 					LOGGER.log(Level.FINE, "TYPE SCA - getting paramList");
@@ -225,7 +228,8 @@ public class EventFileWriter {
 						}
 						
 						else if (failedEventParameter.getValue() instanceof byte[]) {
-							// TODO: Hvordan forbedre denne? Det er ikke alltid gitt at tegnsett er av typen IBM-277
+							// TODO: Hvordan forbedre denne? Det er ikke alltid gitt at tegnsett er av typen IBM-277.
+							// Ved andre tegnsett vil dataobject-kolonnen være uleselig (skrabbel), mens det vil være leselig for de byte-array som benytter IBM-277.
 							LOGGER.log(Level.FINE, "INSTANCE OF byte[] - trying to convert with IBM-277");
 							try {
 								byte[] byteArray = (byte[])failedEventParameter.getValue();
@@ -370,6 +374,8 @@ public class EventFileWriter {
 	 */
 	private List getParams(FailedEvent event, String eventType) {
 		List params = null;
+		// FIXME: Variabelen fieldName er altså en variabel i en IBM-klasse.
+		// Denne gjøres aksessérbar gjennom bruk av reflect, og betyr jo samtidig at metoden vil returnere null hvis feltnavnet endres av IBM!
 		String fieldName = "failedEventParameters";
 		if ((Constants.EVENT_TYPE_BPC).equals(eventType)) {
 			fieldName = "parameters";
