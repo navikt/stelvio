@@ -63,7 +63,6 @@ Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>INFO</string>
-              <string></string>
               <string>DEBUG</string>
               <string>INFO</string>
               <string>WARNING</string>
