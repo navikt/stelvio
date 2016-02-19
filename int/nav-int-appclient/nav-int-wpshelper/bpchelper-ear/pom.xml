@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.int.appclient.wpshelper</groupId>
 		<artifactId>wpshelper</artifactId>
-		<version>3.0.3-SNAPSHOT</version>
+		<version>3.0.3</version>
 		<relativePath>../</relativePath>
 	</parent>
 	
@@ -13,8 +13,8 @@
 	<name>BPC Helper Application Client EAR</name>
 
 	<scm>
-		<connection>${scm.root}/bpchelper-ear</connection>
-		<developerConnection>${scm.root}/bpchelper-ear</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-3.0.3/bpchelper-ear</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-3.0.3/bpchelper-ear</developerConnection>
 	</scm>
 
 	<build>
