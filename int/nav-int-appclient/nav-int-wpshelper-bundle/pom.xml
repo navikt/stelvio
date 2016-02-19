@@ -22,7 +22,7 @@
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient
 		</scm.root>
-		<artifacts.version>3.0.2</artifacts.version>
+		<artifacts.version>3.0.3</artifacts.version>
 	</properties>
 
 	<build>
