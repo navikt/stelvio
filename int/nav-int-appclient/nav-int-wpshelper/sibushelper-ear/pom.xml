@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.int.appclient.wpshelper</groupId>
 		<artifactId>wpshelper</artifactId>
-		<version>3.0.3</version>
+		<version>3.0.4-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
@@ -13,8 +13,8 @@
 	<name>SI Bus Helper Application Client EAR</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-3.0.3/sibushelper-ear</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-3.0.3/sibushelper-ear</developerConnection>
+		<connection>${scm.root}/sibushelper-ear</connection>
+		<developerConnection>${scm.root}/sibushelper-ear</developerConnection>
 	</scm>
 
 	<build>
