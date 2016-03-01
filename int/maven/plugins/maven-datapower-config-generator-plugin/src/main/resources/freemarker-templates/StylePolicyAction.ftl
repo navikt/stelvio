@@ -98,7 +98,9 @@
 		input="${action.input}"
 		output="${action.output}"
 		async="${action.async!'off'}"
-		destination="${action.destination!''}"/>
+		destination="${action.destination!''}"
+		retryCount="${action.retryCount!'0'}"
+		retryInterval="${action.retryInterval!'1000'}"/>
 	<#--
 		Set Variable Action
 	-->
