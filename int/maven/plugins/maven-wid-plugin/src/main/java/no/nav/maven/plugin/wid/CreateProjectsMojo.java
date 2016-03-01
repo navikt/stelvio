@@ -51,6 +51,7 @@ public class CreateProjectsMojo extends AbstractMojo {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 	private static final String PACKAGING_SERVICE_SPECIFICATION = "service-specification";
+	private static final String PACKAGING_MESSAGE_SPECIFICATION = "message-specification";
 	
 	private static final Object OLD_SERVICE_SPECIFICATION_POM_GROUP_ID = "no.nav.tjenester";
 	private static final Object OLD_SERVICE_SPECIFICATION_POM_ARTIFACT_ID = "service-specification-pom";
@@ -145,20 +146,22 @@ public class CreateProjectsMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		Collection<String> reactorProjectIds = new HashSet<String>(reactorProjects.size());
 		for (MavenProject reactorProject : reactorProjects) {
+			getLog().info("TKN - execute() - reactorProject.getId(): " + reactorProject.getId());
 			reactorProjectIds.add(reactorProject.getId());
 		}
-
+		
 		// Using a HashSet to eliminate any duplicate artifacts (relying on Artifact.hashCode)
 		Collection<Artifact> dependencyArtifacts = new HashSet<Artifact>();
 		for (MavenProject reactorProject : reactorProjects) {
 			String packaging = reactorProject.getPackaging();
-			if (PACKAGING_WPS_MODULE_EAR.equals(packaging) || PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_SERVICE_SPECIFICATION.equals(packaging)) {
+			if (PACKAGING_WPS_MODULE_EAR.equals(packaging) || PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_SERVICE_SPECIFICATION.equals(packaging) || PACKAGING_MESSAGE_SPECIFICATION.equals(packaging)) {
 				for (Artifact dependencyArtifact : (Collection<Artifact>) reactorProject.getArtifacts()) {
-					// TODO: For now we only support dependencies of type wps-library-jar and service-specification
-					if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyArtifact.getType()) || PACKAGING_SERVICE_SPECIFICATION.equals(dependencyArtifact.getType())) {
+					// TODO: For now we only support dependencies of type wps-library-jar, service-specification and message-spesification
+					if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyArtifact.getType()) || PACKAGING_SERVICE_SPECIFICATION.equals(dependencyArtifact.getType()) || PACKAGING_MESSAGE_SPECIFICATION.equals(dependencyArtifact.getType())) {
 						String dependencyArtifactId = dependencyArtifact.getId();
 						// Only add dependency artifacts that are not part of the reactor
 						if (!reactorProjectIds.contains(dependencyArtifactId)) {
+							getLog().info("TKN - execute() - !reactorProjectIds.contains(dependencyArtifactId): " + dependencyArtifactId);
 							dependencyArtifacts.add(dependencyArtifact);
 						}
 					}
@@ -182,6 +185,8 @@ public class CreateProjectsMojo extends AbstractMojo {
 	}
 
 	private void createProject(List remoteRepos, Artifact artifact) throws MojoExecutionException {
+		getLog().info("TKN - createProject() - artifact.getType(): " + artifact.getType());
+		
 		if (PACKAGING_WPS_LIBRARY_JAR.equals(artifact.getType())) {
 			Artifact sourceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(),
 					artifact.getVersion(), artifact.getType(), "sources");
@@ -189,7 +194,7 @@ public class CreateProjectsMojo extends AbstractMojo {
 		}
 		
 		File extractDirectory = extractArtifact(artifact);
-		if (PACKAGING_SERVICE_SPECIFICATION.equals(artifact.getType())) {
+		if (PACKAGING_SERVICE_SPECIFICATION.equals(artifact.getType()) || PACKAGING_MESSAGE_SPECIFICATION.equals(artifact.getType())) {
 			// Create temporary pom.xml based on the service-specification pom
 			File tempPom = new File(extractDirectory, "pom.xml");
 			try {
@@ -199,7 +204,7 @@ public class CreateProjectsMojo extends AbstractMojo {
 					wpsLibraryParent = new Parent();
 					wpsLibraryParent.setGroupId("no.stelvio.maven.poms");
 					wpsLibraryParent.setArtifactId("maven-wps-library-pom");
-					wpsLibraryParent.setVersion("2.1.5");
+					wpsLibraryParent.setVersion("2.1.14-TKN-SNAPSHOT");
 				}
 				project.getOriginalModel().setParent(wpsLibraryParent);
 				project.getOriginalModel().setPackaging(PACKAGING_WPS_LIBRARY_JAR);
@@ -227,7 +232,6 @@ public class CreateProjectsMojo extends AbstractMojo {
 			}
 
 		}
-		
 		
 		invokeWidPlugin(extractDirectory);
 	}

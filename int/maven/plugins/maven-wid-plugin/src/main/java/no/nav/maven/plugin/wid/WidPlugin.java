@@ -40,6 +40,7 @@ public class WidPlugin extends EclipsePlugin {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 	private static final String PACKAGING_SERVICE_SPECIFICATION = "service-specification";
+	private static final String PACKAGING_MESSAGE_SPECIFICATION = "message-specification";
 	private static final String PACKAGING_RAR = "rar";
 
 	/**
@@ -61,7 +62,7 @@ public class WidPlugin extends EclipsePlugin {
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
 		super.writeConfigurationExtras(eclipseWriterConfig);
 
-		if (PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_WPS_MODULE_EAR.equals(packaging) || PACKAGING_SERVICE_SPECIFICATION.equals(packaging)) {
+		if (PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_WPS_MODULE_EAR.equals(packaging) || PACKAGING_SERVICE_SPECIFICATION.equals(packaging) || PACKAGING_MESSAGE_SPECIFICATION.equals(packaging)) {
 			setSourceDirs(eclipseWriterConfig);
 			setOutputDir(eclipseWriterConfig);
 
@@ -113,7 +114,7 @@ public class WidPlugin extends EclipsePlugin {
 				dependencies.add(dependency);
 			} else {
 				String dependencyType = dependency.getType();
-				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || PACKAGING_SERVICE_SPECIFICATION.equals(dependencyType)) {
+				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || PACKAGING_SERVICE_SPECIFICATION.equals(dependencyType) || PACKAGING_MESSAGE_SPECIFICATION.equals(dependencyType)) {
 					dependency.setReferencedProject(true);
 					dependency.setEclipseProjectName(dependency.getArtifactId());
 					dependency.setFile(null);
