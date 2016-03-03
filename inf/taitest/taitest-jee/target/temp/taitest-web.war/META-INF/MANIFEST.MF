@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: taitest-web
+Implementation-Version: 0.1-SNAPSHOT
+Implementation-Vendor-Id: no.nav.kes
+Class-Path: 
+Build-Jdk: 1.7.0
+Built-By: h103841
+Created-By: Apache Maven 3.3.1
+Specification-Title: taitest-web
+Specification-Version: 0.1-SNAPSHOT
+Archiver-Version: Plexus Archiver
+

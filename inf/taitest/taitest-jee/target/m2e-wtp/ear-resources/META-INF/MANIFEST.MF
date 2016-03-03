@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: taitest-jee
+Implementation-Version: 0.1-SNAPSHOT
+Built-By: h103841
+Specification-Title: taitest-jee
+Implementation-Vendor-Id: no.nav.kes
+Build-Jdk: 1.8.0_73
+Specification-Version: 0.1-SNAPSHOT
+Created-By: Maven Integration for Eclipse
+
