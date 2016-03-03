@@ -3796,6 +3796,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/varseltjeneste/config.xml -text
 dev/Jenkins/Jenkins_server_backup/nodeMonitors.xml -text
 dev/Jenkins/Jenkins_server_backup/org.codefirst.SimpleThemeDecorator.xml -text
 dev/Jenkins/Jenkins_server_backup/org.jenkinsci.plugins.gitclient.JGitTool.xml -text
+dev/Jenkins/Jenkins_server_backup/proxy.xml -text
 dev/Jenkins/Jenkins_server_backup/sonar.xml -text
 dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
