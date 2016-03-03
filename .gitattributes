@@ -7667,17 +7667,8 @@ inf/openam/nav-esso-onedaypw-plugin/src/main/resources/config/auth/default/OneDa
 inf/openam/nav-esso-onedaypw-plugin/src/test/java/no/nav/esso/MockValidator.java -text
 inf/openam/nav-esso-onedaypw-plugin/src/test/java/no/nav/esso/OneDayPwLoginModuleTest.java -text
 inf/taitest/pom.xml -text
-inf/taitest/taitest-appconfig/.classpath -text
-inf/taitest/taitest-appconfig/.project -text
-inf/taitest/taitest-appconfig/.settings/org.eclipse.jdt.core.prefs -text
-inf/taitest/taitest-appconfig/.settings/org.eclipse.m2e.core.prefs -text
 inf/taitest/taitest-appconfig/pom.xml -text
 inf/taitest/taitest-appconfig/src/main/resources/app-config.xml -text
-inf/taitest/taitest-appconfig/target/classes/app-config.xml -text
-inf/taitest/taitest-appconfig/target/maven-archiver/pom.properties -text
-inf/taitest/taitest-appconfig/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst -text
-inf/taitest/taitest-appconfig/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst -text
-inf/taitest/taitest-appconfig/target/taitest-appconfig-0.1-SNAPSHOT.jar -text
 inf/taitest/taitest-jee/.project -text
 inf/taitest/taitest-jee/.settings/org.eclipse.m2e.core.prefs -text
 inf/taitest/taitest-jee/.settings/org.eclipse.wst.common.component -text
