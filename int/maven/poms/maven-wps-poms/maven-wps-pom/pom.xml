@@ -111,12 +111,12 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wid-plugin</artifactId>
-					<version>3.3</version>
+					<version>3.4</version>
 					<configuration>
 						<wpsLibraryParent>
 							<groupId>no.stelvio.maven.poms</groupId>
 							<artifactId>maven-wps-library-pom</artifactId>
-							<version>2.1.13</version>
+							<version>2.1.14</version>
 						</wpsLibraryParent>
 					</configuration>
 				</plugin>

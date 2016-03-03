@@ -123,7 +123,7 @@ eclipse.preferences.version=1
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsdl-plugin</artifactId>
-					<version>1.12</version>
+					<version>1.18</version>
 					<executions>
 						<execution>
 							<phase>package</phase>

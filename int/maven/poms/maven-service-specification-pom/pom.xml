@@ -42,7 +42,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsdl-plugin</artifactId>
-					<version>1.16</version>
+					<version>1.18</version>
 					<configuration>
 						<endpointAddress>${endpointAddress}</endpointAddress>
 						<blankSOAPAction>${blankSOAPAction}</blankSOAPAction>
