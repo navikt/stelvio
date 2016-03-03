@@ -5,4 +5,7 @@
 	<artifacts>
 		<ear groupId="no.nav.kes" artifactId="taitest-jee" />
 	</artifacts>
+	<security>
+    	<roleMapping resourceAlias="taitest.access" toRole="ROLE_WITH_ACCESS"/>
+  </security>
 </application>
