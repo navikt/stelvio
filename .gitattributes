@@ -7666,8 +7666,6 @@ inf/openam/nav-esso-onedaypw-plugin/src/main/resources/amAuthOneDayPwLoginModule
 inf/openam/nav-esso-onedaypw-plugin/src/main/resources/config/auth/default/OneDayPwLoginModule.xml -text
 inf/openam/nav-esso-onedaypw-plugin/src/test/java/no/nav/esso/MockValidator.java -text
 inf/openam/nav-esso-onedaypw-plugin/src/test/java/no/nav/esso/OneDayPwLoginModuleTest.java -text
-inf/taitest/.project -text
-inf/taitest/.settings/org.eclipse.m2e.core.prefs -text
 inf/taitest/pom.xml -text
 inf/taitest/taitest-appconfig/.classpath -text
 inf/taitest/taitest-appconfig/.project -text
