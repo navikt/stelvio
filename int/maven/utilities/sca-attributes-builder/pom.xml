@@ -10,7 +10,7 @@
 
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>sca-attributes-builder</artifactId>
-	<version>2.4-SNAPSHOT</version>
+	<version>2.4</version>
 	<name>Stelvio Integration Framework SCA Attributes Builder</name>
 
 	<dependencies>
@@ -27,8 +27,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/sca-attributes-builder</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/sca-attributes-builder</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/sca-attributes-builder-2.4</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/sca-attributes-builder-2.4</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
