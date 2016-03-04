@@ -10,7 +10,7 @@
   
   
   <artifactId>maven-wps-library-pom</artifactId>
-  <version>2.1.15-SNAPSHOT</version>
+  <version>2.1.15</version>
   <packaging>pom</packaging>
   <name>Stelvio Integration Framework WPS Library Master POM</name>
   <build>
@@ -104,8 +104,8 @@ eclipse.preferences.version=1
     </pluginManagement>
   </build>
   <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-library-pom</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-library-pom</developerConnection>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-library-pom-2.1.15</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-library-pom-2.1.15</developerConnection>
   </scm>
   <properties>
     <scm.root>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-library-pom</scm.root>
