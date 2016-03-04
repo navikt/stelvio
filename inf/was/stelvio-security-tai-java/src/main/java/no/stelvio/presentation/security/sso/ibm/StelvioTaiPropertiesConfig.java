@@ -2,6 +2,8 @@ package no.stelvio.presentation.security.sso.ibm;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
@@ -97,14 +99,42 @@ public class StelvioTaiPropertiesConfig implements StelvioTaiConfig {
 
     private OpenAmAccessManager createAccessManager() {
         OpenAmAccessManager accessManager = new OpenAmAccessManager();
+        
+        // perform various init of OpenAmAccessManager
+        
+        // set mappings of authenticationlevels to groups
         accessManager.setGroupMap(ldapProps);
+        
+        // set the address to OpenAM
         String openamaddress = taiProps.getProperty(ConfigPropertyKeys.OPENAM_URL);
         if (openamaddress != null) {
             accessManager.setOpenAMAddress(openamaddress);
         } else {
             log.logp(Level.SEVERE, this.getClass().getName(), "createAccessManager", "Missing TAI custom property: " + ConfigPropertyKeys.OPENAM_URL);
         }
+        
+        // set the query template for OpenAM requests 
         accessManager.setOpenAMQueryTemplate(getTrimmedProperty(commonProps, ConfigPropertyKeys.OPENAM_QUERY_TEMPLATE));
+        
+        // check if authMethod and authType checking should be disabled
+        String authMethodauthTypeDisabled = taiProps.getProperty(ConfigPropertyKeys.AUTHTYPE_AUTHMETHOD_CHECK_DISABLED);
+        if( authMethodauthTypeDisabled != null && authMethodauthTypeDisabled.equalsIgnoreCase("true") ) {
+        	accessManager.setAuthMethodauthTypeDisabled(true);
+        }
+        
+       // check if valid authMethod values has been overridden 
+        String validAuthMethods = taiProps.getProperty(ConfigPropertyKeys.VALID_AUTHMETHODS);
+        if( validAuthMethods != null ) {
+        	validAuthMethods = validAuthMethods.replaceAll(" ", "");
+        	accessManager.setValidAuthMethods(new HashSet<String>(Arrays.asList(validAuthMethods.split(","))));
+        }
+        
+        // check if valid authType values has been overridden
+        String validAuthTypes = taiProps.getProperty(ConfigPropertyKeys.VALID_AUTHTYPES);
+        if( validAuthTypes != null ) {
+        	validAuthTypes = validAuthTypes.replaceAll(" ", "");
+        	accessManager.setValidAuthTypes(new HashSet<String>(Arrays.asList(validAuthTypes.split(","))));
+        }
         return accessManager;
     }
 

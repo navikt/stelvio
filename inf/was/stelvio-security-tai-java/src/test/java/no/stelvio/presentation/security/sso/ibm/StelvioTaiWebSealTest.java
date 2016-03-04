@@ -14,7 +14,6 @@ import no.stelvio.presentation.security.sso.support.WebSealRequestHandler;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.mock.web.MockHttpServletResponse;
 
 import com.ibm.wsspi.security.token.AttributeNameConstants;
 
@@ -156,7 +155,6 @@ public class StelvioTaiWebSealTest extends AbstractTaiTest{
 		setRequestValues("12345678901", "1", handler.getAccessManagerUser());	
 		
 		MockTaiHttpServletRequest request = getRequest(handler);
-		MockHttpServletResponse response = new MockHttpServletResponse();
 		try {
 			Subject subject = tai.authenticate(request);
 		} catch (Exception unexpected){
@@ -173,7 +171,6 @@ public class StelvioTaiWebSealTest extends AbstractTaiTest{
 		setAuthorizedAsRequestValues("12345678901", "1", handler.getAccessManagerUser(),"22222222222", "FULLMAKT_FULLSTENDIG");
 		
 		MockTaiHttpServletRequest request = getRequest(handler);
-		MockHttpServletResponse response = new MockHttpServletResponse();
 		try {
 			Subject subject = tai.authenticate(request);
 			
@@ -197,7 +194,6 @@ public class StelvioTaiWebSealTest extends AbstractTaiTest{
 		setAuthorizedAsRequestValues("12345678901", "1", handler.getAccessManagerUser(),"22222222222", "DOES_NOT_EXIST_IN_PROPS");
 		
 		MockTaiHttpServletRequest request = getRequest(handler);
-		MockHttpServletResponse response = new MockHttpServletResponse();
 		try {
 			Subject subject = tai.authenticate(request);
 		} catch (Exception expected){
@@ -220,7 +216,6 @@ public class StelvioTaiWebSealTest extends AbstractTaiTest{
 		setRequestValues("12345678901", null , handler.getAccessManagerUser());	
 		
 		MockTaiHttpServletRequest request = getRequest(handler);
-		MockHttpServletResponse response = new MockHttpServletResponse();
 		try {
 			Subject subject = tai.authenticate(request);
 		} catch (PrincipalNotValidException expected){

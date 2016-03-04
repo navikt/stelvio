@@ -1,7 +1,9 @@
 package no.stelvio.presentation.security.sso.accessmanager.support;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -34,18 +36,22 @@ public class OpenAmAccessManager implements StelvioAccessManager {
     private static final String PARAMETER_SECURITY_LEVEL = "SecurityLevel";
     private static final String PARAMETER_AUTH_TYPE = "AuthType";
     private static final String PARAMETER_AUTH_METHOD = "AuthMethod";
-    private static final String VALID_AUTH_METHOD = "NAV-OneDayPw";
+    private static final String VALID_AUTH_METHOD_ONEDAYPW = "NAV-OneDayPw";
     private static final String VALID_AUTH_TYPE_FEDERATION = "Federation";
     private static final String VALID_AUTH_TYPE_LDAP = "LDAP";
 
+	private HashSet<String> validAuthTypes = new HashSet<String>(Arrays.asList(VALID_AUTH_TYPE_FEDERATION, VALID_AUTH_TYPE_LDAP));
+    private HashSet<String> validAuthMethods = new HashSet<String>(Arrays.asList(VALID_AUTH_METHOD_ONEDAYPW));
+    
     private StelvioPrincipal principal;
     private Logger log = Logger.getLogger("no.stelvio.presentation.security.sso.accessmanager.OpenAmAccessManager");
 
     private Properties groupMap;
     private String openAMAddress;
     private String openAMQueryTemplate;
+    private boolean authMethodauthTypeCheckDisabled = false;
 
-    public void setOpenAMRestAPI(OpenAMRestAPIImpl openAMRestAPI) {
+	public void setOpenAMRestAPI(OpenAMRestAPIImpl openAMRestAPI) {
         this.openAMRestAPI = openAMRestAPI;
     }
 
@@ -94,6 +100,39 @@ public class OpenAmAccessManager implements StelvioAccessManager {
     }
 
     /**
+     * Allows disabling of checking AuthMethod and AuthType in OpenAM response 
+     * @return
+     */
+    public boolean isAuthMethodauthTypeDisabled() {
+		return authMethodauthTypeCheckDisabled;
+	}
+
+	/**
+	 * Allows disabling of checking AuthMethod and AuthType in OpenAM response.
+	 * Default is false which will perform the check.
+	 * @param authMethodauthTypeCheckDisabled
+	 */
+    public void setAuthMethodauthTypeDisabled(boolean authMethodauthTypeCheckDisabled) {
+		this.authMethodauthTypeCheckDisabled = authMethodauthTypeCheckDisabled;
+	}
+
+    public HashSet<String> getValidAuthTypes() {
+		return validAuthTypes;
+	}
+
+	public void setValidAuthTypes(HashSet<String> validAuthTypes) {
+		this.validAuthTypes = validAuthTypes;
+	}
+
+	public  HashSet<String> getValidAuthMethods() {
+		return validAuthMethods;
+	}
+
+	public void setValidAuthMethods(HashSet<String> validAuthMethods) {
+		this.validAuthMethods = validAuthMethods;
+	}
+
+    /**
      * Gets the mapping of authentication levels to ldap groups.
      * 
      * @return the mapping of authentication levels to ldap groups
@@ -120,7 +159,7 @@ public class OpenAmAccessManager implements StelvioAccessManager {
      * @return an array of groups mapped to the supplied key.
      */
     private String[] getGroupsFromMap(String key) {
-        String commaseparated = groupMap.getProperty(key);
+        String commaseparated = getGroupMap().getProperty(key);
         String[] props = commaseparated != null ? commaseparated.split(",") : null;
         return props;
     }
@@ -175,21 +214,26 @@ public class OpenAmAccessManager implements StelvioAccessManager {
         String authType = attributeMap.get(PARAMETER_AUTH_TYPE);
         if (log.isLoggable(Level.FINE)) {
             log.fine("AuthMethod=" + authMethod + ", AuthType=" + authType);
+            log.fine("Valid AuthMethods=" + getValidAuthMethods() + ", Valid AuthTypes=" + getValidAuthTypes());
         }
         
-        if(authType == null || authMethod == null) {
-        	throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod + ". AuthType was " + authType);
-        }
-        
-        // check for valid authMethod or authType
-        if ( !( authType.contains(VALID_AUTH_TYPE_FEDERATION) || 
-        		authType.contains(VALID_AUTH_TYPE_LDAP) ||
-        		authMethod.contains(VALID_AUTH_METHOD))
-        		) {
-            throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod +
-                    ", expected " + VALID_AUTH_METHOD + ". AuthType was " + authType +
-                    ", expected " + VALID_AUTH_TYPE_FEDERATION + " or " + VALID_AUTH_TYPE_LDAP +
-                    ". One of these must match expected values.");
+        if(!isAuthMethodauthTypeDisabled()) {
+	        if(authType == null || authMethod == null) {
+	        	throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod + ". AuthType was " + authType);
+	        }
+	        
+	        // check for valid authMethod or authType
+	        if( !(getValidAuthMethods().contains(authMethod) || getValidAuthTypes().contains(authType)) ) {
+	        	throw new PrincipalNotValidException("Invalid AuthMethod or AuthType. AuthMethod was " +authMethod +
+	                    ", expected " + getValidAuthMethods() + ". AuthType was " + authType +
+	                    ", expected " + getValidAuthTypes() +
+	                    ". One of these must match expected values.");	        	
+	        }
+
+        } else {
+        	if (log.isLoggable(Level.FINE)) {
+                log.fine("Skipping check of AuthMethod and AuthType");
+            }
         }
         
         String userId = attributeMap.get(PARAMETER_UID);

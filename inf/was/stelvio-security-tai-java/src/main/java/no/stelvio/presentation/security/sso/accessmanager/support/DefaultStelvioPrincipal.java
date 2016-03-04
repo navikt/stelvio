@@ -41,7 +41,6 @@ public class DefaultStelvioPrincipal implements StelvioPrincipal {
     }
 
     public List<String> getGroupIds() {
-        // TODO Auto-generated method stub
         return this.groupIds;
     }
 

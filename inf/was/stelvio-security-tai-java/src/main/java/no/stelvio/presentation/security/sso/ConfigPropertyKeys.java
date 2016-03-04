@@ -18,4 +18,7 @@ public final class ConfigPropertyKeys {
 
     // TAI custom property
     public static final String OPENAM_URL = "openam.url";
+    public static final String AUTHTYPE_AUTHMETHOD_CHECK_DISABLED = "authtypeauthmetod.check.disabled";
+    public static final String VALID_AUTHTYPES = "valid.authtypes";
+    public static final String VALID_AUTHMETHODS = "valid.authmethods";
 }
