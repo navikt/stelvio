@@ -204,7 +204,7 @@ public class CreateProjectsMojo extends AbstractMojo {
 					wpsLibraryParent = new Parent();
 					wpsLibraryParent.setGroupId("no.stelvio.maven.poms");
 					wpsLibraryParent.setArtifactId("maven-wps-library-pom");
-					wpsLibraryParent.setVersion("2.1.14");
+					wpsLibraryParent.setVersion("2.1.15");
 				}
 				project.getOriginalModel().setParent(wpsLibraryParent);
 				project.getOriginalModel().setPackaging(PACKAGING_WPS_LIBRARY_JAR);
