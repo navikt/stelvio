@@ -7670,6 +7670,7 @@ inf/taitest/pom.xml -text
 inf/taitest/taitest-appconfig/pom.xml -text
 inf/taitest/taitest-appconfig/src/main/resources/app-config.xml -text
 inf/taitest/taitest-jee/pom.xml -text
+inf/taitest/taitest-jee/src/main/application/META-INF/ibm-application-bnd.xml -text
 inf/taitest/taitest-web/pom.xml -text
 inf/taitest/taitest-web/src/main/webapp/WEB-INF/web.xml -text
 inf/taitest/taitest-web/src/main/webapp/subject.jsp -text

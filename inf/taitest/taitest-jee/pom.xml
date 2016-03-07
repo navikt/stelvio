@@ -45,6 +45,11 @@
 					</archive>
 					<defaultLibBundleDir>lib/</defaultLibBundleDir>
 					<skinnyWars>true</skinnyWars>
+					<security>
+						<security-role>
+							<role-name>ROLE_WITH_ACCESS</role-name>
+						</security-role>
+					</security>
 				</configuration>
 			</plugin>
 		</plugins>
