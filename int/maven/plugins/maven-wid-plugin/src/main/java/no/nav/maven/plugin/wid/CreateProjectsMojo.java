@@ -146,7 +146,6 @@ public class CreateProjectsMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		Collection<String> reactorProjectIds = new HashSet<String>(reactorProjects.size());
 		for (MavenProject reactorProject : reactorProjects) {
-			getLog().info("TKN - execute() - reactorProject.getId(): " + reactorProject.getId());
 			reactorProjectIds.add(reactorProject.getId());
 		}
 		
@@ -161,7 +160,6 @@ public class CreateProjectsMojo extends AbstractMojo {
 						String dependencyArtifactId = dependencyArtifact.getId();
 						// Only add dependency artifacts that are not part of the reactor
 						if (!reactorProjectIds.contains(dependencyArtifactId)) {
-							getLog().info("TKN - execute() - !reactorProjectIds.contains(dependencyArtifactId): " + dependencyArtifactId);
 							dependencyArtifacts.add(dependencyArtifact);
 						}
 					}
@@ -185,7 +183,6 @@ public class CreateProjectsMojo extends AbstractMojo {
 	}
 
 	private void createProject(List remoteRepos, Artifact artifact) throws MojoExecutionException {
-		getLog().info("TKN - createProject() - artifact.getType(): " + artifact.getType());
 		
 		if (PACKAGING_WPS_LIBRARY_JAR.equals(artifact.getType())) {
 			Artifact sourceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(),
@@ -204,7 +201,7 @@ public class CreateProjectsMojo extends AbstractMojo {
 					wpsLibraryParent = new Parent();
 					wpsLibraryParent.setGroupId("no.stelvio.maven.poms");
 					wpsLibraryParent.setArtifactId("maven-wps-library-pom");
-					wpsLibraryParent.setVersion("2.1.15");
+					wpsLibraryParent.setVersion("2.1.16");
 				}
 				project.getOriginalModel().setParent(wpsLibraryParent);
 				project.getOriginalModel().setPackaging(PACKAGING_WPS_LIBRARY_JAR);
