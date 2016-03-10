@@ -55,7 +55,7 @@ Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd
         <hudson.model.StringParameterDefinition>
           <name>BusPomRevision</name>
           <description>SVN-revisjon av deployer pom</description>
-          <defaultValue>10955</defaultValue>
+          <defaultValue>11196</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>logging_level</name>
