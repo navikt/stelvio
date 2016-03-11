@@ -4,7 +4,7 @@
 	<name>taitest</name>
 	<loadBalancer>
 		<contextRoot>taitest</contextRoot>
-		<lbHealthMonitor type="HTTP"/>
+		<lbHealthMonitor type="HTTPS"/>
 	</loadBalancer>
 	<artifacts>
 		<ear groupId="no.nav.kes" artifactId="taitest-jee" />
