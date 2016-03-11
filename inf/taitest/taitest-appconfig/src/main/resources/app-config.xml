@@ -2,6 +2,10 @@
 <application xmlns="http://appconfig.aura.nav.no" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://appconfig.aura.nav.no http://maven.adeo.no/xsd/appconfig.xsd">
 	<name>taitest</name>
+	<loadBalancer>
+		<contextRoot>taitest</contextRoot>
+		<lbHealthMonitor type="HTTP"/>
+	</loadBalancer>
 	<artifacts>
 		<ear groupId="no.nav.kes" artifactId="taitest-jee" />
 	</artifacts>

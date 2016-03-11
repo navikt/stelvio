@@ -29,7 +29,9 @@ for(int i=0;i < principals.size();i++) {
     principalstring.append("<br>Principal "  + i + " : "+ principals.get(i).getName());
 }
 for(int i=0;i < privcreds.size();i++) {
-    privcredstring.append("<br>Private credential "  + i + " : "+ ((Token) privcreds.get(i)).getName());
+    privcredstring.append("<br>Private credential Name"  + i + " : "+ ((Token) privcreds.get(i)).getName());
+    privcredstring.append("<br>Private credential UniqueId"  + i + " : "+ ((Token) privcreds.get(i)).getUniqueID());
+    privcredstring.append("<br>Private credential Principal"  + i + " : "+ ((Token) privcreds.get(i)).getPrincipal());
     //subjectstring.append("<br>Private credential "  + i + " : "+ privcreds.get(i));
 }
 for(int i=0;i < pubcreds.size();i++) {
