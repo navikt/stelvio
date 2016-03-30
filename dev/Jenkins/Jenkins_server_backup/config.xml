@@ -1029,6 +1029,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>aura-maven-bpm-plugin</string>
         <string>Deploy_Datapower_KONS</string>
         <string>maven-datapower-deploy-plugin</string>
         <string>nav-datapower-lib</string>
