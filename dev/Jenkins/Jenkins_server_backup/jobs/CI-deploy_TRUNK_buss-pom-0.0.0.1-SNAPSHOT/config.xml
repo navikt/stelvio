@@ -2,7 +2,7 @@
 <project>
   <actions/>
   <description>Denne jobben bygger en 0.0.0.1-SNAPSHOT-versjon av bussen i TRUNK, for bruk til automatisk, nattlig deploy.&#xd;
-Kjøres hver dag kl 19.51</description>
+Kjøres hver dag kl 04.31</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -40,7 +40,7 @@ Kjøres hver dag kl 19.51</description>
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec>51 19 * * *</spec>
+      <spec>31 04 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>

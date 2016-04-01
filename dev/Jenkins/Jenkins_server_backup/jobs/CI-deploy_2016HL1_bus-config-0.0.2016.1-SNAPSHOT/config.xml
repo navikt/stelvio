@@ -2,7 +2,7 @@
 <project>
   <actions/>
   <description>Denne jobben bygger en 0.0.2016.1-SNAPSHOT versjon av bus-authorization, bus-environment og bus-nonenvironment fra 2016HL1-kodestrømmen.&#xd;
-Kjøres automatisk kl 19.54.</description>
+Kjøres automatisk kl 04.32.</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -40,7 +40,7 @@ Kjøres automatisk kl 19.54.</description>
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec>54 19 * * *</spec>
+      <spec>32 04 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>

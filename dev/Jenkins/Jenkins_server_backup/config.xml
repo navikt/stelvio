@@ -515,7 +515,6 @@
         <string>2015HL1_8.2_CheckScripts_Leveransedokumentasjon</string>
         <string>2015HL1_8.2_NAV_Tjenestebuss</string>
         <string>2015HL2_8.3_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
         <string>2015HL4_8.5_NAV-Tjenestebuss</string>
         <string>Tjenestebeskrivelsegenerering</string>
         <string>TRUNK-CheckScripts_Leveransedokumentasjon</string>
@@ -942,24 +941,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>2015HL4_8.5_CheckScripts_Leveransedokumentasjon</string>
-        <string>2015HL4_8.5_configuration_bus-authorization</string>
-        <string>2015HL4_8.5_configuration_bus-environment</string>
-        <string>2015HL4_8.5_configuration_bus-nonenvironment</string>
-        <string>2015HL4_8.5_ekstern</string>
-        <string>2015HL4_8.5_esb-release</string>
-        <string>2015HL4_8.5_esb_poms</string>
-        <string>2015HL4_8.5_layers</string>
-        <string>2015HL4_8.5_layers_dryRun</string>
-        <string>2015HL4_8.5_nav</string>
-        <string>2015HL4_8.5_NAV_Tjenestebuss</string>
-        <string>2015HL4_8.5_pensjon</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_ekstern</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_nav</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_pensjon</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_system</string>
-        <string>2015HL4_8.5_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>2016HL1_8.6_CheckScripts_Leveransedokumentasjon</string>
         <string>2016HL1_8.6_configuration_bus-authorization</string>
         <string>2016HL1_8.6_configuration_bus-environment</string>
@@ -1131,28 +1112,6 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 8.5 2015HL4</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2015HL4_8\.5_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>

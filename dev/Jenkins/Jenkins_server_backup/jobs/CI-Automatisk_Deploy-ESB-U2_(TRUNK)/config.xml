@@ -4,7 +4,7 @@
   <description>U2-miljøet blir benyttet til å kjøre automatiske tester for trunk. Miljøet får deployet siste buss for trunk (eller slik esb-release fremstår). Det deployes altså endelige versjoner, og ikke snapshot-versjoner.&#xd;
 &#xd;
  -----&#xd;
-Kjøres hver natt kl 00.00.&#xd;
+Kjøres hver natt kl 04.37.&#xd;
  -----</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
@@ -43,8 +43,8 @@ Kjøres hver natt kl 00.00.&#xd;
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec># kl 0.00 om natta
-0 0 * * *</spec>
+      <spec># 04.37 o&apos;clock in the morning
+37 04 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
