@@ -99,7 +99,7 @@ Kjøres automatisk hvis  WSRR-tjenesteregister og service-gw provisjoneres (prov
         <hudson.model.StringParameterDefinition>
           <name>pluginVersion</name>
           <description>Provisioning plugin version (for forsyning av service-gw 2.0 og oppdatering av router-domener)</description>
-          <defaultValue>1.1.9</defaultValue>
+          <defaultValue>1.2.4</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
