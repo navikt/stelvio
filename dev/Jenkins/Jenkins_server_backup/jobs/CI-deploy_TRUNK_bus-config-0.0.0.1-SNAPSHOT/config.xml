@@ -46,7 +46,9 @@ Kjøres automatisk kl 04.30.</description>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; bus-authorization/pom.xml
+      <command>svn revert */pom.xml
+svn up
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; bus-authorization/pom.xml
 cd bus-authorization
 mvn clean deploy
 cd ..
@@ -61,16 +63,6 @@ cd ..</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
-      <tasks>
-        <hudson.plugins.postbuildtask.TaskProperties>
-          <logTexts/>
-          <EscalateStatus>false</EscalateStatus>
-          <RunIfJobSuccessful>false</RunIfJobSuccessful>
-          <script>svn revert */pom.xml</script>
-        </hudson.plugins.postbuildtask.TaskProperties>
-      </tasks>
-    </hudson.plugins.postbuildtask.PostbuildTask>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>

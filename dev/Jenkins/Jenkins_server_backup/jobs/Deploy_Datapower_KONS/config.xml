@@ -167,38 +167,55 @@ dpAliases=${dpAliasesE}</properties>
       <command>if [ $routerProvision == &quot;true&quot; ];
    then
 
-routerAppName=$(echo $Applications | cut -d&quot;:&quot; -f1)
- 
-if [[ $routerAppName == *router* ]]
-then
-   domainClassSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
-   if [ $domainClassSuffix == &quot;-p&quot; -o $domainClassSuffix == &quot;-P&quot; ];
-      then
-         domainClassSuffix=&quot;&quot;
-   fi
-   if [ $routerAppName == &quot;partner-gw-router-sbs&quot; ];
-      then
-         #dpDomainApplication=&quot;nhn-gw${domainClassSuffix}&quot;
-         dpDomainApplication=&quot;nhn-gw-t&quot;
-   elif [ $routerAppName == &quot;service-gw-router-sbs&quot; ];
-      then
-        dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
-   elif [ $routerAppName == &quot;service-gw-router-fss&quot; ];
-      then
-        dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
-   fi
-   echo &quot;Provisioning $routerAppName with services from $dpDomainApplication&quot;
-
-   cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:$pluginVersion:router-provision -e -B -U -DenvConfigUrlString=$EnvConfig -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE -DrouterAppName=$routerAppName -DdpDomainApplications=$dpDomainApplication
-   ### Upload service-registry if the outputfolder exists
-   environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
-   registryDestinationFolder=/data/service-registry/$environmentUpperCase
-   registrySourceFolder=${WORKSPACE}/target/output
-   if [ -d &quot;$registrySourceFolder&quot; ]; then
-      ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
-      scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
-   fi
-fi
+    routerAppName=$(echo $Applications | cut -d&quot;:&quot; -f1)
+     
+    if [[ $routerAppName == *router* ]]
+        then
+           domainClassSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
+           
+           if [ $domainClassSuffix == &quot;-p&quot; -o $domainClassSuffix == &quot;-P&quot; ];
+              then
+                 domainClassSuffix=&quot;&quot;
+           fi
+           
+           if [ $routerAppName == &quot;partner-gw-router-sbs&quot; ];
+              then
+                 #dpDomainApplication=&quot;nhn-gw${domainClassSuffix}&quot;
+                 dpDomainApplication=&quot;nhn-gw-t&quot;
+           elif [ $routerAppName == &quot;service-gw-router-sbs&quot; ];
+              then
+                dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
+           elif [ $routerAppName == &quot;service-gw-router-fss&quot; ];
+              then
+                dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
+           fi
+           
+           echo &quot;Provisioning $routerAppName with services from $dpDomainApplication&quot;
+        
+           cd ${WORKSPACE} &amp;&amp; /usr/maven/latest/bin/mvn clean no.nav.maven.plugins:service-provisioning-maven-plugin:$pluginVersion:router-provision -e -B -U -DenvConfigUrlString=$EnvConfig -Denv=$Environment -Dusername=$USER -Dpassword=$Password -DdpAliases=$dpAliasesE -DrouterAppName=$routerAppName -DdpDomainApplications=$dpDomainApplication
+           ### Upload service-registry if the outputfolder exists
+           environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+           registryDestinationFolder=/data/service-registry/$environmentUpperCase
+##           registrySourceFolder=${WORKSPACE}/nav-init-pom/target/output
+	       registrySourceFolder=${WORKSPACE}/target/output
+           xslReferenceString=&quot;&lt;?xml-stylesheet type=&apos;text/xsl&apos; href=&apos;../../service-registry-stylesheet_v2.xsl&apos;?&gt;&quot;
+           
+           if [ -d &quot;$registrySourceFolder&quot; ];
+           	  then
+           		sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
+                ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+                scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+            fi
+           
+           
+           ##   environmentUpperCase=`echo $Environment | awk &apos;{print toupper($0)}&apos;`
+           ##   registryDestinationFolder=/data/service-registry/$environmentUpperCase
+           ##   registrySourceFolder=${WORKSPACE}/target/output
+           ##   if [ -d &quot;$registrySourceFolder&quot; ]; then
+           ##      ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+           ##      scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+           ##   fi 
+    fi
 fi</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -211,10 +228,10 @@ fi</command>
     registryDestinationFolder=/data/service-registry/$environmentUpperCase
     registrySourceFolder=${WORKSPACE}/nav-init-pom/target/output
     xslReferenceString=&quot;&lt;?xml-stylesheet type=&apos;text/xsl&apos; href=&apos;../../service-registry-stylesheet_v2.xsl&apos;?&gt;&quot;
-if [ -d &quot;$registrySourceFolder&quot; ]; then
-    sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
-    ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
-    scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
+    if [ -d &quot;$registrySourceFolder&quot; ]; then
+        sed -i &apos;1 s:$:&apos;&quot;$xslReferenceString&quot;&apos;:&apos; ${registrySourceFolder}/service-gw-2.0/*_service-registry.xml || true
+        ssh test@example.com &quot;mkdir -p $registryDestinationFolder&quot;
+        scp -r $registrySourceFolder/* test@example.com:$registryDestinationFolder
     fi
 fi</command>
     </hudson.tasks.Shell>
