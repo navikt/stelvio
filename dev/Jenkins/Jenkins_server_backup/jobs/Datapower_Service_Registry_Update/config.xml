@@ -146,7 +146,10 @@ dpSyncStrategy=${SyncStrategy}
 syncOnlySGW2PepAndRouter=${SyncOnlySGW2PepAndRouter}
 dpWSRRSavedSearchFilter=${WSRRSavedSearchFilter}
 securityZone=${SecurityZoneFilter}
-disableParallelism=${DisableParallelism}</properties>
+disableParallelism=${DisableParallelism}
+provisioningTimeout=10000000
+provisioningWithoutApplicationTimeout=10000000
+synchronizationTimeout=10000000</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
