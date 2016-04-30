@@ -62,8 +62,8 @@ F.eks. partner-gw-router-sbs:1.0.5 eller sts-sbs:0.0.2-SNAPSHOT</description>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>0.0.20-SNAPSHOT</string>
-              <string>0.0.19</string>
+              <string>0.0.21-SNAPSHOT</string>
+              <string>0.0.20</string>
               <string>RELEASE</string>
             </a>
           </choices>
