@@ -895,8 +895,8 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.7 2016HL2 (Trunk)</name>
-      <description>Jobber som bygger trunk, som pr nå er leveransen 8.6 (2016HL1)</description>
+      <name>Status 8.8 2016HL3 (Trunk)</name>
+      <description>Jobber som bygger trunk, som pr nå er leveransen 8.8 (2016HL3)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -941,29 +941,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
-        <string>2016HL1_8.6_CheckScripts_Leveransedokumentasjon</string>
-        <string>2016HL1_8.6_configuration_bus-authorization</string>
-        <string>2016HL1_8.6_configuration_bus-environment</string>
-        <string>2016HL1_8.6_configuration_bus-nonenvironment</string>
-        <string>2016HL1_8.6_ekstern</string>
-        <string>2016HL1_8.6_esb-release</string>
-        <string>2016HL1_8.6_esb_poms</string>
-        <string>2016HL1_8.6_layers</string>
-        <string>2016HL1_8.6_layers_dryRun</string>
-        <string>2016HL1_8.6_nav</string>
-        <string>2016HL1_8.6_pensjon</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_ekstern</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_nav</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_pensjon</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_system</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_tredjegenerasjon</string>
-        <string>2016HL4_8.8_tjenestespesifikasjon_ekstern</string>
-        <string>2016HL4_8.8_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2016HL4_8.8_tjenestespesifikasjon_nav</string>
-        <string>2016HL4_8.8_tjenestespesifikasjon_pensjon</string>
-        <string>2016HL4_8.8_tjenestespesifikasjon_system</string>
-        <string>2016HL4_8.8_tjenestespesifikasjon_tredjegenerasjon</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2016HL1)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2015HL4)</string>
@@ -1116,7 +1093,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.8 2016HL4</name>
+      <name>Status 8.9 2016HL4</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1133,7 +1110,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(2016HL4_8\.8_).*</includeRegex>
+      <includeRegex>(2016HL4_8\.9_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>
@@ -1161,17 +1138,12 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.6 2016HL1</name>
+      <name>Status 8.7 2016HL2</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>2016HL1_8.6_tjenestespesifikasjon_ekstern</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_meldingsdefinisjon</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_nav</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_system</string>
-        <string>2016HL1_8.6_tjenestespesifikasjon_tredjegenerasjon</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -1183,7 +1155,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>(2016HL1_8\.6_).*</includeRegex>
+      <includeRegex>(2016HL2_8\.7_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>
