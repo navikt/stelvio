@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_6_0_D20160203_2016HL1/ekstern/pensjon/beregning/ekstern-pensjon-beregning-test</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_7_0_D20160513_2016HL2/ekstern/pensjon/beregning/ekstern-pensjon-beregning-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
