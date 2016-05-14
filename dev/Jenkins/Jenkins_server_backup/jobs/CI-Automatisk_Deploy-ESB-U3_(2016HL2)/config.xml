@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>U5-miljøet blir benyttet til å kjøre automatiske tester for 2015HL4-kodestrømmen.&#xd;
+  <description>U3-miljøet blir benyttet til å kjøre automatiske tester for 2016HL2-kodestrømmen.&#xd;
 &#xd;
 ---&#xd;
 Jobben kjøres automatisk hver natt kl 04.37.&#xd;
@@ -37,7 +37,7 @@ Jobben kjøres automatisk hver natt kl 04.37.&#xd;
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -51,7 +51,7 @@ Jobben kjøres automatisk hver natt kl 04.37.&#xd;
   <builders>
     <hudson.tasks.Shell>
       <command>#Deploy:
-mvn3 clean deploy -e -X -Denvironment=U4 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.2015.4-SNAPSHOT -Dnav-modules-version=0.0.2015.4-SNAPSHOT -Dpensjon-modules-version=0.0.2015.4-SNAPSHOT -Dekstern-modules-version=0.0.2015.4-SNAPSHOT -Desb-modules-version=0.0.2015.4-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.2015.4-SNAPSHOT -Desb-nonenviroment-configuration=0.0.2015.4-SNAPSHOT -Desb-enviroment-configuration=0.0.2015.4-SNAPSHOT -Dlogging.level=DEBUG</command>
+mvn3 clean deploy -e -X -Denvironment=U3 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.2016.2-SNAPSHOT -Dnav-modules-version=0.0.2016.2-SNAPSHOT -Dpensjon-modules-version=0.0.2016.2-SNAPSHOT -Dekstern-modules-version=0.0.2016.2-SNAPSHOT -Desb-modules-version=0.0.2016.2-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.2016.2-SNAPSHOT -Desb-nonenviroment-configuration=0.0.2016.2-SNAPSHOT -Desb-enviroment-configuration=0.0.2016.2-SNAPSHOT -Dlogging.level=DEBUG</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
@@ -61,7 +61,7 @@ mvn3 clean deploy -e -X -Denvironment=U4 -DfasitUsername=admin -DfasitPasswordBa
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
     <hudson.tasks.BuildTrigger>
-      <childProjects>SoapUI-U4-StartStubbing_CI</childProjects>
+      <childProjects>SoapUI-U3-StartStubbing_CI</childProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
