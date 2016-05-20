@@ -190,5 +190,8 @@ scp -r ${WORKSPACE}/service-registry-stylesheet_v2.xsl test@example.com:/data/se
   </publishers>
   <buildWrappers>
     <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
+    <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
+      <template>#${BUILD_NUMBER}: ${ENV,var=&quot;dpFilter&quot;}@${ENV,var=&quot;Environment&quot;} ${ENV,var=&quot;SecurityZoneFilter&quot;}</template>
+    </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
   </buildWrappers>
 </project>
