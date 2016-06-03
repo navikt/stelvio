@@ -73,6 +73,7 @@ F.eks. partner-gw-router-sbs:1.0.5 eller sts-sbs:0.0.2-SNAPSHOT</description>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>https://fasit.adeo.no/conf</string>
               <string>http://fasit.adeo.no/conf</string>
               <string>http://e34apsl00136.devillo.no:8080/conf</string>
             </a>
