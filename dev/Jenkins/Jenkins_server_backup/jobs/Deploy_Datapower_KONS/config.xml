@@ -184,10 +184,20 @@ dpAliases=${dpAliasesE}</properties>
                  dpDomainApplication=&quot;nhn-gw-t&quot;
            elif [ $routerAppName == &quot;service-gw-router-sbs&quot; ];
               then
-                dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
+                if [ $Environment == &quot;p&quot; -o $Environment == &quot;P&quot; ];
+                  then 
+                      dpDomainApplication=&quot;service-gw-pep-sbs&quot;
+                  else
+                      dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
+                fi
            elif [ $routerAppName == &quot;service-gw-router-fss&quot; ];
               then
-                dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
+                if [ $Environment == &quot;p&quot; -o $Environment == &quot;P&quot; ];
+                  then 
+                      dpDomainApplication=&quot;service-gw-pep-fss&quot;
+                  else
+                      dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
+                fi
            fi
            
            echo &quot;Provisioning $routerAppName with services from $dpDomainApplication&quot;
