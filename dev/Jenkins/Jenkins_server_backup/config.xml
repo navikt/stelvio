@@ -450,7 +450,6 @@
         <string>Deploy_Datapower_1og2Gen</string>
         <string>Deploy_Datapower_1og2Gen_backup_no_snapshot</string>
         <string>Deploy_Datapower_3Gen</string>
-        <string>kontaktregister-difi</string>
       </jobNames>
       <jobFilters/>
       <columns>
