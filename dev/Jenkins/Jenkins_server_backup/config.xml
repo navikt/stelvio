@@ -891,8 +891,8 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.8 2016HL3 (Trunk)</name>
-      <description>Jobber som bygger trunk, som pr nå er leveransen 8.8 (2016HL3)</description>
+      <name>Status 8.9 2016HL4 (Trunk)</name>
+      <description>Jobber som bygger trunk, som pr nå er leveransen 8.9 (2016HL4)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1083,7 +1083,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.9 2016HL4</name>
+      <name>Status 8.9 2016HL4 (gammel)</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1146,6 +1146,28 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>(2016HL2_8\.7_).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 8.8 2016HL3</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2016HL3_8\.8_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>
