@@ -1,7 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Feiler per 02.07.2014 med følgende feilmelding:&#xd;
+&quot;HermesJMS Home must be set in global preferences&#xd;
+08:55:18,374 ERROR [SoapUI] An error occured [HermesJMS home not specified !!!], see error log for details&#xd;
+java.io.FileNotFoundException: HermesJMS home not specified !!!&quot;&#xd;
+&#xd;
+Mulig denne kan rettes opp i ved å innstalere Hermes.</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>10</numToKeep>
@@ -17,7 +22,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/tjenestepensjon/nav-tjenestepensjon-test</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/esb-soap-tests</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -35,7 +40,7 @@
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
@@ -43,7 +48,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Tjenestepensjon-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-tjenestepensjon_v1Web/sca/TjenestepensjonWSEXP</targets>
+      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Infotrygd-soapui-project.xml</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
@@ -52,7 +57,7 @@
   </builders>
   <publishers>
     <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>nav-tjenestepensjon-test/reports/TEST-*.xml</testResults>
+      <testResults>esb-soap-tests/reports/TEST-*.xml</testResults>
       <keepLongStdio>false</keepLongStdio>
       <testDataPublishers/>
     </hudson.tasks.junit.JUnitResultArchiver>

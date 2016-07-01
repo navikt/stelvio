@@ -1,10 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>U3-miljøet blir benyttet til å kjøre automatiske tester for 2016HL3-kodestrømmen.&#xd;
+&#xd;
+---&#xd;
+Jobben kjøres automatisk hver natt kl 04.37.&#xd;
+---</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>10</numToKeep>
+    <numToKeep>20</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -17,14 +21,12 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/tjenestepensjon/nav-tjenestepensjon-test</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
+        <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
-    <browser class="hudson.scm.browsers.ViewSVN">
-      <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
-    </browser>
     <excludedRegions></excludedRegions>
     <includedRegions></includedRegions>
     <excludedUsers></excludedUsers>
@@ -39,28 +41,34 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec># 04.37 o&apos;clock in the morning
+37 04 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Tjenestepensjon-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-tjenestepensjon_v1Web/sca/TjenestepensjonWSEXP</targets>
-      <mavenName>(Default)</mavenName>
-      <usePrivateRepository>false</usePrivateRepository>
-      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
-      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
-    </hudson.tasks.Maven>
+    <hudson.tasks.Shell>
+      <command>#Deploy:
+mvn3 clean deploy -e -X -Denvironment=U4 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.2016.3-SNAPSHOT -Dnav-modules-version=0.0.2016.3-SNAPSHOT -Dpensjon-modules-version=0.0.2016.3-SNAPSHOT -Dekstern-modules-version=0.0.2016.3-SNAPSHOT -Desb-modules-version=0.0.2016.3-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.2016.3-SNAPSHOT -Desb-nonenviroment-configuration=0.0.2016.3-SNAPSHOT -Desb-enviroment-configuration=0.0.2016.3-SNAPSHOT -Dlogging.level=DEBUG</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>nav-tjenestepensjon-test/reports/TEST-*.xml</testResults>
-      <keepLongStdio>false</keepLongStdio>
-      <testDataPublishers/>
-    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>SoapUI-U4-StartStubbing_CI</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
   </publishers>
   <buildWrappers/>
 </project>

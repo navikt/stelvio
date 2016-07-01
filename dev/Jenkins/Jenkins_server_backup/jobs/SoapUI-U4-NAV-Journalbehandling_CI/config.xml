@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_5_0_D20151029_2015HL4/nav/journalbehandling/nav-journalbehandling-test</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/journalbehandling/nav-journalbehandling-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>

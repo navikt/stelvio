@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Denne jobben bygger en 0.0.2016.3-SNAPSHOT versjon av bus-authorization, bus-environment og bus-nonenvironment fra 2016HL3-kodestrømmen.&#xd;
+Kjøres automatisk kl 04.34.</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>10</numToKeep>
+    <numToKeep>5</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -17,14 +18,12 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/tjenestepensjon/nav-tjenestepensjon-test</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/configuration</remote>
+        <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
-    <browser class="hudson.scm.browsers.ViewSVN">
-      <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
-    </browser>
     <excludedRegions></excludedRegions>
     <includedRegions></includedRegions>
     <excludedUsers></excludedUsers>
@@ -39,23 +38,32 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>34 04 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Tjenestepensjon-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-tjenestepensjon_v1Web/sca/TjenestepensjonWSEXP</targets>
-      <mavenName>(Default)</mavenName>
-      <usePrivateRepository>false</usePrivateRepository>
-      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
-      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
-    </hudson.tasks.Maven>
+    <hudson.tasks.Shell>
+      <command>svn revert --recursive .
+svn up
+
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.3-SNAPSHOT&lt;/version&gt;@&apos; bus-authorization/pom.xml
+cd bus-authorization
+mvn clean deploy
+cd ..
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.3-SNAPSHOT&lt;/version&gt;@&apos; bus-enviroment/pom.xml
+cd bus-enviroment
+mvn clean deploy
+cd ..
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.3-SNAPSHOT&lt;/version&gt;@&apos; bus-nonenviroment/pom.xml
+cd bus-nonenviroment
+mvn clean deploy
+cd ..</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>nav-tjenestepensjon-test/reports/TEST-*.xml</testResults>
-      <keepLongStdio>false</keepLongStdio>
-      <testDataPublishers/>
-    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>

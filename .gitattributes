@@ -3375,9 +3375,12 @@ dev/Jenkins/Jenkins_server_backup/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Jenkin
 dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U2_(TRUNK)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U3_(2016HL2)/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U4_(2016HL3)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Deploy_wpsdeploy-pom_sync/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL2_bus-config-0.0.2016.2-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL2_buss-pom-0.0.2016.2-SNAPSHOT/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL3_bus-config-0.0.2016.3-SNAPSHOT/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL3_buss-pom-0.0.2016.3-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower[!!-~]AURA[!!-~]deploy[!!-~]simpleloopbackservice/config.xml -text
@@ -3634,6 +3637,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Dineutbetalinger_CI/conf
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Eresept_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Fullmakt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Gosys-3.0.0_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Infotrygd_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-Institusjonsopphold_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-NAVAnsatt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-layers-NAVOrgEnhet_CI/config.xml -text

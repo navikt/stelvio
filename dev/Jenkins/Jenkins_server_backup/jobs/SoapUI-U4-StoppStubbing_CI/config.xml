@@ -2,9 +2,9 @@
 <project>
   <actions/>
   <description>Slår av stubbing.&#xd;
-Kjører hver dag kl. 04.30&#xd;
+Kjører hver dag kl. 04.00&#xd;
 &#xd;
-Deaktivert ettersom U4-miljøet kun blir brukt med stubs (altså ikke mot live baksystem). Trenger derfor ikke å skru av stubbingen etter automatiske SoapUI-tester har kjørt.</description>
+Deaktivert ettersom U5-miljøet kun blir brukt med stubs (altså ikke mot live baksystem). Trenger derfor ikke å skru av stubbingen etter automatiske SoapUI-tester har kjørt.</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -14,7 +14,7 @@ Deaktivert ettersom U4-miljøet kun blir brukt med stubs (altså ikke mot live b
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_5_0_D20151029_2015HL4/esb-soap-tests</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/esb-soap-tests</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -38,7 +38,7 @@ Deaktivert ettersom U4-miljøet kun blir brukt med stubs (altså ikke mot live b
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec># Hver dag 04:30
+      <spec># Hver dag 04:00
 30 04 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
