@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>mvn clean deploy av design tjenestespesifikasjon for nav (virksomhet)</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>10</numToKeep>
+    <numToKeep>5</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -17,14 +17,12 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/enhet/nav-enhet-test</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/tjenester/D20160701_2016HL3/spesifikasjon/implementasjon/virksomhet</remote>
+        <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
     </locations>
-    <browser class="hudson.scm.browsers.ViewSVN">
-      <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
-    </browser>
     <excludedRegions></excludedRegions>
     <includedRegions></includedRegions>
     <excludedUsers></excludedUsers>
@@ -34,29 +32,31 @@
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
+  <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>@monthly</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>com.smartbear.soapui:soapui-maven-plugin:test -Dsoapui.projectfile=Enhet-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-enhet_v1Web/sca/EnhetWSEXP</targets>
+      <targets>clean deploy</targets>
       <mavenName>(Default)</mavenName>
+      <jvmOptions>-Xmx2048m -Xms512m -XX:MaxPermSize=1024m</jvmOptions>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver plugin="test@example.com">
-      <testResults>nav-enhet-test/reports/TEST-*.xml</testResults>
-      <keepLongStdio>false</keepLongStdio>
-      <testDataPublishers/>
-      <healthScaleFactor>1.0</healthScaleFactor>
-    </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
