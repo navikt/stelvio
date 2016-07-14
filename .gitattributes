@@ -3392,6 +3392,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower[!!-~]AURA[!!-~]deploy[!!-~]simpleloopbackservice/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower_Service_Registry_Update/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Deploy_Datapower_KONS/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Deploy_aura-bpm/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Neo4j2CSV/config.xml -text

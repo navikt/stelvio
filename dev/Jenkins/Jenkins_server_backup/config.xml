@@ -451,6 +451,7 @@
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
         <string>Datapower AURA deploy simpleloopbackservice</string>
         <string>Datapower_Service_Registry_Update</string>
+        <string>Deploy_aura-bpm</string>
         <string>Deploy_Datapower_1og2Gen</string>
         <string>Deploy_Datapower_1og2Gen_backup_no_snapshot</string>
         <string>Deploy_Datapower_3Gen</string>
