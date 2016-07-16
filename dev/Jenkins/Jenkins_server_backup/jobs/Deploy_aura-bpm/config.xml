@@ -48,7 +48,7 @@ skybpm:0.0.1,virksomhetsbuss:2.0.8</description>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>5.0.15</string>
+              <string>5.0.18</string>
               <string>RELEASE</string>
             </a>
           </choices>
