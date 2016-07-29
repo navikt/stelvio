@@ -62,7 +62,8 @@ F.eks. partner-gw-router-sbs:1.0.5 eller sts-sbs:0.0.2-SNAPSHOT</description>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>0.0.21-SNAPSHOT</string>
+              <string>0.0.21</string>
+              <string>0.0.22-SNAPSHOT</string>
               <string>0.0.20</string>
               <string>RELEASE</string>
             </a>
@@ -168,37 +169,36 @@ dpAliases=${dpAliasesE}</properties>
    then
 
     routerAppName=$(echo $Applications | cut -d&quot;:&quot; -f1)
-     
+    
     if [[ $routerAppName == *router* ]]
-        then
-           domainClassSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
-           
-           if [ $domainClassSuffix == &quot;-p&quot; -o $domainClassSuffix == &quot;-P&quot; ];
-              then
-                 domainClassSuffix=&quot;&quot;
-           fi
-           
-           if [ $routerAppName == &quot;partner-gw-router-sbs&quot; ];
-              then
-                 #dpDomainApplication=&quot;nhn-gw${domainClassSuffix}&quot;
+		then
+			domainClassSuffix=&quot;-$(echo $Environment | head -c 1)&quot;
+		 
+			if [ $domainClassSuffix == &quot;-p&quot; -o $domainClassSuffix == &quot;-P&quot; ];
+			  then
+				 domainClassSuffix=&quot;&quot;
+			fi
+		 
+		 
+			domainClassPrefix=&quot;$(echo $Environment)_&quot;
+			if [ $domainClassPrefix == &quot;p_&quot; -o $domainClassPrefix == &quot;P_&quot; ];
+			  then
+				 domainClassPrefix=&quot;&quot;
+			fi
+		 
+		 
+			if [ $routerAppName == &quot;partner-gw-router-sbs&quot; ];
+			  then
+				 #dpDomainApplication=&quot;nhn-gw${domainClassSuffix}&quot;
                  dpDomainApplication=&quot;nhn-gw-t&quot;
-           elif [ $routerAppName == &quot;service-gw-router-sbs&quot; ];
-              then
-                if [ $Environment == &quot;p&quot; -o $Environment == &quot;P&quot; ];
-                  then 
-                      dpDomainApplication=&quot;service-gw-pep-sbs&quot;
-                  else
-                      dpDomainApplication=&quot;${Environment}_service-gw-pep-sbs&quot;
-                fi
-           elif [ $routerAppName == &quot;service-gw-router-fss&quot; ];
-              then
-                if [ $Environment == &quot;p&quot; -o $Environment == &quot;P&quot; ];
-                  then 
-                      dpDomainApplication=&quot;service-gw-pep-fss&quot;
-                  else
-                      dpDomainApplication=&quot;${Environment}_service-gw-pep-fss&quot;
-                fi
-           fi
+			elif [ $routerAppName == &quot;service-gw-router-sbs&quot; ];
+			  then
+				 dpDomainApplication=&quot;${domainClassPrefix}service-gw-pep-sbs&quot;
+			elif [ $routerAppName == &quot;service-gw-router-fss&quot; ];
+			  then
+				 dpDomainApplication=&quot;${domainClassPrefix}service-gw-pep-fss&quot;
+			fi
+    
            
            echo &quot;Provisioning $routerAppName with services from $dpDomainApplication&quot;
         
