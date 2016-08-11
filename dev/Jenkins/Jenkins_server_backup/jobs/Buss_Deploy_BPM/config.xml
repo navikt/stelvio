@@ -5,8 +5,8 @@
 &#xd;
 Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd;
 - CI-Automatisk_Deploy-ESB-U2_(TRUNK)&#xd;
-- CI-Automatisk_Deploy-ESB-U3_(2015HL3)&#xd;
-- CI-Automatisk_Deploy-ESB-U4_(2015HL2)&#xd;
+- CI-Automatisk_Deploy-ESB-U3_&lt;leveranse&gt;&#xd;
+- CI-Automatisk_Deploy-ESB-U4_&lt;leveranse&gt;&#xd;
 </description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
