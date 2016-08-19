@@ -910,6 +910,7 @@
         <string>TRUNK-configuration_bus-nonenvironment</string>
         <string>TRUNK-ekstern</string>
         <string>TRUNK-esb-release</string>
+        <string>TRUNK-esb-virksomhet-skya</string>
         <string>TRUNK-esb_poms</string>
         <string>TRUNK-layers</string>
         <string>TRUNK-layers_dryRun</string>
