@@ -67,10 +67,14 @@
 
 							<!-- Right column -->
 							<div class="col3">
+							
+								<!-- EIS-1599: Diagrammer og vedlegg tas ut: -->
+								<!--
 								<h3>Diagrammer:</h3>
 								<xsl:apply-templates select="$serviceOperation" mode="createDiagramList" />
 								<h3>Vedlegg:</h3>
 								<xsl:apply-templates select="$serviceOperation" mode="createAttachmentList" />
+								-->
 								<h3>Endringslogg:</h3>
 								<xsl:apply-templates select="$serviceOperation/changelog"  >
 								<xsl:sort select="@version" order="descending"/>
@@ -119,15 +123,13 @@
 			<xsl:choose>
 				<xsl:when test="@UUID = $serviceOperationUUID">
 					<a class="selected-menu-item" title="{@name}">
-						<xsl:attribute name="href"><xsl:value-of
-							select="@name" />.html</xsl:attribute>
+						<xsl:attribute name="href"><xsl:value-of select="@name" />.html</xsl:attribute>
 						<xsl:value-of select="@name" />
 					</a>
 				</xsl:when>
 				<xsl:otherwise>
 					<a title="{@name}">
-						<xsl:attribute name="href"><xsl:value-of
-							select="@name" />.html</xsl:attribute>
+						<xsl:attribute name="href"><xsl:value-of select="@name" />.html</xsl:attribute>
 						<xsl:value-of select="@name" />
 					</a>
 				</xsl:otherwise>
@@ -169,6 +171,9 @@
 					<xsl:value-of select="@namespace" />
 				</td>
 			</tr>
+			
+			<!-- EIS-1599: Kun Id, versjon og navnerom beholdes av metadata, resten fjernes (dokumenteres i confluence) -->
+			<!--
 			<tr>
 				<th scope="row">Produsent</th>
 				<td>
@@ -235,15 +240,20 @@
 					<xsl:value-of select="./serviceMetadata/@security" />
 				</td>
 			</tr>
+			-->
 		</table>
+		
+		<!-- EIS-1599: Behandlingsregler fjernes (dokumenteres i confluence) -->
+		<!--
 		<h2>Behandlingsregler</h2>
 		<xsl:value-of select="@behaviourRules" disable-output-escaping="yes"/>
+		-->
+		
 		<h2>Tjenestegrensesnitt</h2>
 		<h3>Input</h3>
 		<xsl:apply-templates select="./inputMessage" mode="content" />
 		<h3>Output</h3>
-		<xsl:apply-templates select="./outputMessage"
-			mode="content" />
+		<xsl:apply-templates select="./outputMessage" mode="content" />
 		<h3>Deklarerte feiltyper</h3>
 
 		<xsl:choose>
@@ -296,7 +306,12 @@
 					<th>Er liste?</th>
 					<th>Er påkrevd?</th>
 					<th>Beskrivelse</th>
+					
+					<!-- EIS-1599: Mapping utgår -->
+					<!--
 					<th>Mapping</th>
+					-->
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -343,9 +358,13 @@
 						<td>
 							<xsl:value-of select="@description"  disable-output-escaping="yes"/>
 						</td>
+						
+						<!-- EIS-1599: Mapping utgår -->
+						<!--
 						<td>
 							<xsl:value-of select="@mappingToAttributeName" disable-output-escaping="yes"/>
 						</td>
+						-->
 					</tr>
 				</xsl:for-each>
 			</tbody>
@@ -375,7 +394,12 @@
 							<th>Er liste?</th>
 							<th>Er påkrevd?</th>
 							<th>Beskrivelse</th>
+							
+							<!-- EIS-1599: Mapping utgår -->
+							<!--
 							<th>Mapping</th>
+							-->
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -422,9 +446,14 @@
 								<td>
 									<xsl:value-of select="@description"  disable-output-escaping="yes"/>
 								</td>
+								
+								<!-- EIS-1599: Mapping utgår -->
+								<!--
 								<td>
 									<xsl:value-of select="@mappingToAttributeName" disable-output-escaping="yes"/>
 								</td>
+								-->
+								
 							</tr>
 						</xsl:for-each>
 					</tbody>

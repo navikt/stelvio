@@ -47,14 +47,13 @@
 					</h1>
 				</div>
 
-				<div class="colmask threecol">
+				<div class="colmask twocol">
 					<div class="colmid">
 						<div class="colleft">
 							<xsl:variable name="complexType" select="//complexTypes[@UUID=$complexTypeUUID]"></xsl:variable>
 							<!-- Middle column -->
 							<div class="col1">
-								<xsl:apply-templates select="$complexType"
-									mode="content" />
+								<xsl:apply-templates select="$complexType" mode="content" />
 
 							</div>
 
@@ -66,15 +65,19 @@
 								</xsl:apply-templates>
 							</div>
 
-							<!-- Right column -->
+							
+							<!-- Right column -->	
+							<!-- EIS-1599: Diagrammer og vedlegg dokumenteres i confluence -->
+							<!--
 							<div class="col3">
 								<p></p>
-
 								<h3>Diagrammer:</h3>
 								<xsl:apply-templates select="$complexType" mode="createDiagramList" />
 								<h3>Vedlegg:</h3>
 								<xsl:apply-templates select="$complexType" mode="createAttachmentList" />
 							</div>
+							-->
+							
 						</div>
 					</div>
 				</div>
@@ -228,9 +231,13 @@
 					<th>Navn</th>
 					<th>Datatype</th>
 					<th>Er liste?</th>
-					<th>Er påkrevd??</th>
+					<th>Er påkrevd?</th>
 					<th>Beskrivelse</th>
+					
+					<!-- EIS-1599: Mapping utgår -->
+					<!--
 					<th>Mapping</th>
+					-->
 				</tr>
 			</thead>
 			<tbody>
@@ -281,9 +288,13 @@
 			<td class="center">
 				<xsl:value-of select="@description" disable-output-escaping="yes"/>
 			</td>
+			
+			<!-- EIS-1599: Mapping utgår -->
+			<!--
 			<td>
 				<xsl:value-of select="@mappingToAttributeName" disable-output-escaping="yes"/>
 			</td>
+			-->
 		</tr>
 	</xsl:template>
 
