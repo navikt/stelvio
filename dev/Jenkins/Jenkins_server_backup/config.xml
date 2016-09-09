@@ -450,6 +450,7 @@
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
         <string>Datapower AURA deploy simpleloopbackservice</string>
+        <string>Datapower_Service_Registry_PEP_Infopage_Update</string>
         <string>Datapower_Service_Registry_Update</string>
         <string>Deploy_aura-bpm</string>
         <string>Deploy_Datapower_1og2Gen</string>
