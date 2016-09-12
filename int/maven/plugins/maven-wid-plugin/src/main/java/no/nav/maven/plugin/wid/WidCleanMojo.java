@@ -33,6 +33,7 @@ public class WidCleanMojo extends EclipseCleanMojo {
 		delete(new File(getBasedir(), "sca.library.attributes"));
 		delete(new File(getBasedir(), "sca.module.attributes"));
 		
-		delete(new File(getBasedir(), "ibm-deploy.scaj2ee"));
+		// PK-31605: Rollemapping skal nå være en del av modul-bygget, dvs ibm-deploy.scaj2ee kan ikke lenger automatisk slettes
+		//delete(new File(getBasedir(), "ibm-deploy.scaj2ee"));
 	}
 }
