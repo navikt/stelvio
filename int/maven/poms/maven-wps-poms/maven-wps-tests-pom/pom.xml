@@ -25,7 +25,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
-				<version>3.4</version>
+				<version>3.8</version>
 				<configuration>
 					<workspaceCodeStylesURL>
 						${eclipse.workspaceCodeStylesURL}
