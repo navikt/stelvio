@@ -45,7 +45,6 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 				int objectsDown = 0;
 				boolean shouldStop = false;
 				boolean logDown = false;
-				boolean gwDown = false;
 				boolean mqDown = false;
 				String waitError = "";
 				
@@ -57,10 +56,6 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 							logDown = true;
 							waitError += "At least one log object is down, indicating that NFS is down. ";
 						}
-						if(!gwDown && (getName(object).startsWith(OBJECT_GW_NAME_PREFIX_SINGLE_UNDERSCORE) || getName(object).startsWith(OBJECT_GW_NAME_PREFIX_DOUBLE_UNDERSCORE))){
-							gwDown = true;
-							waitError += "At least one Gateway object is down, indicating that not all objects in the gateway are up. " ;
-						}
 						if(!mqDown && getName(object).startsWith(OBJECT_QMGR_NAME_PREFIX)){
 							mqDown = true;
 							waitError += "At least one MQ Queue Manager object is down, indicating that the connection with the MQ is not up. ";
@@ -68,8 +63,12 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 						String adminState = getAdminState(object);
 						// If object is down and is enabled, set stop flag
 						if(adminState.toLowerCase().contains(ADMIN_STATE_ENABLED)){
-							getLog().warn("\tObject is DOWN: " + getName(object) + ", object admin state is " + adminState);
-							shouldStop = true;
+							if(!getName(object).startsWith(OBJECT_GW_NAME_PREFIX_SINGLE_UNDERSCORE) && !getName(object).startsWith(OBJECT_GW_NAME_PREFIX_DOUBLE_UNDERSCORE)){
+							    getLog().warn("\tObject is DOWN: " + getName(object) + ", object admin state is " + adminState);
+							    shouldStop = true;
+							} else {
+							    getLog().info("\t\tObject is DOWN: " + getName(object) + ", object admin state is " + adminState);
+							}
 						}
 						else{
 							getLog().info("\t\tObject is DOWN: " + getName(object) + ", object admin state is " + adminState);
@@ -86,7 +85,7 @@ public class ObjectStatusMojo extends AbstractDeviceMgmtMojo{
 				}
 				
 				getLog().info("Total number of objects down: " + objectsDown);
-				if(logDown || gwDown || mqDown){
+				if(logDown || mqDown){
 					getLog().info(waitError);
 					getLog().info("Waiting for " + WAIT_TIME/1000 + " seconds. Retry " + (i + 1) + " of " + (numberOfMaximunRetries - 1));
 					Thread.sleep(WAIT_TIME);
