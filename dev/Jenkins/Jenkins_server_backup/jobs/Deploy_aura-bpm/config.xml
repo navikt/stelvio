@@ -51,6 +51,7 @@ skybpm:0.0.1,virksomhetsbuss:2.0.8</description>
               <string>5.0.19</string>
               <string>RELEASE</string>
               <string>5.0.20</string>
+              <string>5.0.21-SNAPSHOT</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>

@@ -70,7 +70,7 @@
   <builders>
     <hudson.tasks.Maven>
       <targets>clean
-no.nav.maven.plugins:aura-maven-plugin:RELEASE:deploy
+no.nav.maven.plugins:aura-maven-plugin:6.1.31:deploy
 -e
 -B
 -Dapps=$Applications
