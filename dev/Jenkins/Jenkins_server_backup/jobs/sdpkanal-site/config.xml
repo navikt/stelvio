@@ -38,15 +38,19 @@
     <artifactId>sdp-kanal</artifactId>
   </rootModule>
   <goals>clean site</goals>
+  <mavenName>Maven 3</mavenName>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
+  <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>
   <runHeadless>false</runHeadless>
   <disableTriggerDownstreamProjects>false</disableTriggerDownstreamProjects>
+  <blockTriggerWhenBuilding>true</blockTriggerWhenBuilding>
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
@@ -56,7 +60,7 @@
       <branch></branch>
       <language></language>
       <mavenOpts></mavenOpts>
-      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/no/nav/kanal/selftest/**/*.java,src/main/java/org/apache/**/*.java,src/main/java/no/nav/kanal/*.java,src/main/java/no/nav/kanal/mq/*.java,src/main/java/no/nav/emottak/**/*.java</jobAdditionalProperties>
+      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/no/nav/kanal/selftest/**/*.java,src/main/java/no/nav/kanal/*.java,src/main/java/no/nav/kanal/metrics/*.java</jobAdditionalProperties>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
       <usePrivateRepository>false</usePrivateRepository>
