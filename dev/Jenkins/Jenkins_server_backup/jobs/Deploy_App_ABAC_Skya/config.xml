@@ -76,7 +76,19 @@ no.nav.maven.plugins:aura-maven-plugin:6.1.31:deploy
 -Dapps=$Applications
 -Denv=$Environment
 -Dusername=$Username
--Dpassword=$Password</targets>
+-Dpassword=$Password
+
+no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:clean 
+-Denv=$Environment
+-Dusername=$Username
+-Dpassword=$Password
+-Dmaven.wagon.http.ssl.insecure=true
+
+no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:setup 
+-Denv=$Environment
+-Dusername=$Username
+-Dpassword=$Password
+-Dmaven.wagon.http.ssl.insecure=true</targets>
       <mavenName>Maven 3.3.1</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
