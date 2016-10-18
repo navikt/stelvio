@@ -898,8 +898,9 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.9 2016HL4 (Trunk)</name>
-      <description>Jobber som bygger trunk, som pr nå er leveransen 8.9 (2016HL4)</description>
+      <name>Status 8.10 2017HL1 (Trunk)</name>
+      <description>Jobber som bygger trunk.&#xd;
+For design/RSA er dette 2017HL1-leveransen, for ESB er det 2016HL4 (ikke branchet ut ennå)</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1091,7 +1092,7 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.9 2016HL4 (gammel)</name>
+      <name>Status 8.9 2016HL4</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
