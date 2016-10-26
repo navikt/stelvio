@@ -72,6 +72,11 @@ Eksempel:
 nav-tjeneste-person,pensjon-tjeneste-vedtak,nav-ent-sto-sam</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>reinstallAll</name>
+          <description>Dersom true vil alle moduler bli reinstallert og konfigurert, selv om samme versjon allerede finnes på serveren.</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
