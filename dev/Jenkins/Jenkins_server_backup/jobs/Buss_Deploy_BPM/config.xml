@@ -29,6 +29,7 @@ Vær oppmerksom på at følgende deploy-jobber kjører automatisk hver natt:&#xd
               <string>u5</string>
               <string>u32</string>
               <string>u42</string>
+              <string>u52</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
