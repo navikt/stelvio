@@ -93,7 +93,7 @@ nav-tjeneste-person,pensjon-tjeneste-vedtak,nav-ent-sto-sam</description>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>-U no.nav.maven.plugins:aura-maven-bpm-plugin:${deployerPluginVersion}:deploy</targets>
+      <targets>-U -e no.nav.maven.plugins:aura-maven-bpm-plugin:${deployerPluginVersion}:deploy</targets>
       <mavenName>Maven 3.3.1</mavenName>
       <properties>apps=${Applications}
 env=${Environment}
