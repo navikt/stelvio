@@ -11,7 +11,7 @@
 	<groupId>no.stelvio.int</groupId>
 	<artifactId>stelvio-commons-lib</artifactId>
 	<packaging>wps-library-jar</packaging>
-	<version>4.1.16-SNAPSHOT</version>
+	<version>4.1.16</version>
 	<name>Stelvio Integration Framework : ${artifactId}</name>
 	<description>
 		This servicelibrary contains common java classes and business
@@ -54,8 +54,8 @@
 	</reporting>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-lib</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-lib</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-4.1.16</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-4.1.16</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
