@@ -11,7 +11,7 @@
 	<artifactId>system-availability-config</artifactId>
 	<name>System Availability Config</name>
 	<packaging>wps-module-ear</packaging>
-	<version>1.4.7</version>
+	<version>1.4.8-SNAPSHOT</version>
 	
 	<dependencies>
 		<dependency>
@@ -23,8 +23,8 @@
 	</dependencies>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/system-availability-config-1.4.7</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/system-availability-config-1.4.7</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/system-availability-config</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/system-availability-config</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
