@@ -3354,6 +3354,17 @@ dev/Jenkins/Jenkins_server_backup/jobs/2016HL3_8.8_tjenestespesifikasjon_nav/con
 dev/Jenkins/Jenkins_server_backup/jobs/2016HL3_8.8_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2016HL3_8.8_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2016HL3_8.8_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_CheckScripts_Leveransedokumentasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_configuration_bus-authorization/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_configuration_bus-environment/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_configuration_bus-nonenvironment/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_ekstern/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_esb-release/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_esb_poms/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_layers/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_layers_dryRun/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_nav/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_tjenestespesifikasjon_ekstern/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_tjenestespesifikasjon_meldingsdefinisjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_tjenestespesifikasjon_nav/config.xml -text
