@@ -11,12 +11,12 @@
 	<artifactId>system-availability</artifactId>
 	<name>System Availability</name>
 	<packaging>pom</packaging>
-	<version>1.3.7-SNAPSHOT</version>
+	<version>1.3.7</version>
 	
 	<modules>
 		<module>StelvioSystemAvailabilityWeb</module>
 		<module>StelvioSystemAvailabilityWebEAR</module>
-		<module>system-availability-config</module>
+		<!--<module>system-availability-config</module>-->
 	</modules>
 	
 	<build>
@@ -58,8 +58,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/system-availability-1.3.7</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/system-availability-1.3.7</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>

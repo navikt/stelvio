@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.stelvio.int.operation.system-availability</groupId>
 		<artifactId>system-availability</artifactId>
-		<version>1.3.7-SNAPSHOT</version>
+		<version>1.3.7</version>
 	</parent>
 
 	<artifactId>system-availability-web-ear</artifactId>
