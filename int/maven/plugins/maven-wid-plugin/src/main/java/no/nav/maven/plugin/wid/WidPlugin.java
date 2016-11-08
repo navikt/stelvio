@@ -179,17 +179,21 @@ public class WidPlugin extends EclipsePlugin {
 	private void createRoleMapping() throws MojoExecutionException {
 		InputStream in = this.getClass().getResourceAsStream(IBM_DEPLOYMENT_DESCRIPTOR);
 		File targetFile = new File(getEclipseProjectDir(), IBM_DEPLOYMENT_DESCRIPTOR);
-		try {
-			FileOutputStream out = new FileOutputStream(targetFile);
-			byte buf[] = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
+		
+		// PK-31605: Oppretter kun ibm-deploy.scaj2ee fil HVIS den ikke finnes fra før:
+		if (targetFile.exists() == false) {
+			try {
+				FileOutputStream out = new FileOutputStream(targetFile);
+				byte buf[] = new byte[1024];
+				int len;
+				while ((len = in.read(buf)) > 0) {
+					out.write(buf, 0, len);
+				}
+				out.close();
+				in.close();
+			} catch (IOException e) {
+				throw new MojoExecutionException("An error occured while writing to deployment descriptor " + targetFile);
 			}
-			out.close();
-			in.close();
-		} catch (IOException e) {
-			throw new MojoExecutionException("An error occured while writing to deployment descriptor " + targetFile);
 		}
 	}
 }
