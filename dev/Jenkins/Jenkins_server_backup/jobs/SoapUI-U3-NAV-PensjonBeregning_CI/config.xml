@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description/>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>10</numToKeep>
@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_7_0_D20160513_2016HL2/nav/pensjonBeregning/nav-pensjonBeregning-test</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_9_0_D20161108_2016HL4/nav/pensjonBeregning/nav-pensjonBeregning-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -25,11 +25,11 @@
     <browser class="hudson.scm.browsers.ViewSVN">
       <url>http://versjonskontroll.adeo.no/viewsvn/?root=nav</url>
     </browser>
-    <excludedRegions/>
-    <includedRegions/>
-    <excludedUsers/>
-    <excludedRevprop/>
-    <excludedCommitMessages/>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
     <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>

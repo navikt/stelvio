@@ -440,12 +440,12 @@
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
         <string>Buss_Deploy_BPM</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
-        <string>CI-Automatisk_Deploy-ESB-U3_(2016HL2)</string>
+        <string>CI-Automatisk_Deploy-ESB-U3_(2016HL4)</string>
         <string>CI-Automatisk_Deploy-ESB-U4_(2016HL3)</string>
-        <string>CI-deploy_2016HL2_bus-config-0.0.2016.2-SNAPSHOT</string>
-        <string>CI-deploy_2016HL2_buss-pom-0.0.2016.2-SNAPSHOT</string>
         <string>CI-deploy_2016HL3_bus-config-0.0.2016.3-SNAPSHOT</string>
         <string>CI-deploy_2016HL3_buss-pom-0.0.2016.3-SNAPSHOT</string>
+        <string>CI-deploy_2016HL4_bus-config-0.0.2016.4-SNAPSHOT</string>
+        <string>CI-deploy_2016HL4_buss-pom-0.0.2016.4-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>
@@ -899,8 +899,7 @@
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>Status 8.10 2017HL1 (Trunk)</name>
-      <description>Jobber som bygger trunk.&#xd;
-For design/RSA er dette 2017HL1-leveransen, for ESB er det 2016HL4 (ikke branchet ut ennå)</description>
+      <description>Jobber som bygger trunk.</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -1133,28 +1132,6 @@ For design/RSA er dette 2017HL1-leveransen, for ESB er det 2016HL4 (ikke branche
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 8.7 2016HL2</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2016HL2_8\.7_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>

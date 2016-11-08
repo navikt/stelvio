@@ -63,17 +63,17 @@ if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;
 #################################################
 
 # - EJB Avhengigheter:
-esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 178061978
+esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 194017093
 # - Koblinger mot produsenter:
-esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 178062000
+esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 194017155
 # - Tilgangsstyring:
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path esb/ --page 178062010
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path esb/ --page 194017132
 
 svn up /home/ci/svn-repos/TRUNK/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
 # -  Moduloversikt:
-esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 178062006 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
+esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 194017143 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
 # - Tilgangsstyring per samhandler:
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 178062322 --envQ 178062320 --envP 178062316
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 194017457 --envQ 194017456 --envP 194017455
 
 # Oppdaterer http://confluence.adeo.no/pages/viewpage.action?pageId=161786740:
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/

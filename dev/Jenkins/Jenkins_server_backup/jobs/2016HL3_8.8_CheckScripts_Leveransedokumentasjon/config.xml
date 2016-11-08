@@ -66,9 +66,9 @@ R_8_8_0_D20160627_2016HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py
 ## SVN UP: ##
 svn up /home/ci/svn-repos/2016HL3/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
 # -  Moduloversikt:
-R_8_8_0_D20160627_2016HL3/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_8_8_0_D20160627_2016HL3/ --page 174834494 --design &quot;/home/ci/svn-repos/2016HL3/tjenester/spesifikasjon/implementasjon/&quot;
+R_8_8_0_D20160627_2016HL3/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_8_8_0_D20160627_2016HL3/ --page 174834494 --design &quot;/home/ci/svn-repos/2016HL3/spesifikasjon/implementasjon/&quot;
 # - Tilgangsstyring per samhandler:
-R_8_8_0_D20160627_2016HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_8_0_D20160627_2016HL3/ --design &quot;/home/ci/svn-repos/2016HL3/tjenester&quot; --envT 174834513 --envQ 174834508 --envP 174834506
+R_8_8_0_D20160627_2016HL3/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_8_0_D20160627_2016HL3/ --design &quot;/home/ci/svn-repos/2016HL3&quot; --envT 174834513 --envQ 174834508 --envP 174834506
 </command>
     </hudson.tasks.Shell>
   </builders>
