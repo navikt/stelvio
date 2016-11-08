@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>maven-wps-pom</artifactId>
-	<version>2.1.18-SNAPSHOT</version>
+	<version>2.1.18</version>
 	<packaging>pom</packaging>
 	<name>WPS Artifact Master POM</name>
 
@@ -174,7 +174,7 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-pom-2.1.18</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-pom-2.1.18</developerConnection>
 	</scm>
 </project>
