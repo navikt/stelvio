@@ -3374,11 +3374,13 @@ dev/Jenkins/Jenkins_server_backup/jobs/2016HL4_8.9_tjenestespesifikasjon_tredjeg
 dev/Jenkins/Jenkins_server_backup/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Jenkins[!!-~]configuration/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U2_(TRUNK)/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U3_(2016HL4)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U4_(2016HL3)/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Deploy_wpsdeploy-pom_sync/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL3_bus-config-0.0.2016.3-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL3_buss-pom-0.0.2016.3-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL4_bus-config-0.0.2016.4-SNAPSHOT/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_2016HL4_buss-pom-0.0.2016.4-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Datapower[!!-~]AURA[!!-~]deploy[!!-~]simpleloopbackservice/config.xml -text
