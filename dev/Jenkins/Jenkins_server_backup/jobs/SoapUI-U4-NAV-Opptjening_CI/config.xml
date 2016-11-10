@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/opptjening/nav-opptjening-test</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/trunk/int/esb/nav/opptjening/nav-opptjening-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -42,13 +42,10 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=pensjon-opptjening-soapui-project.xml -Dsoapui.host=e34wasl00224.devillo.no -Dsoapui.project.password=Test</targets>
-      <mavenName>(Default)</mavenName>
-      <usePrivateRepository>false</usePrivateRepository>
-      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
-      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
-    </hudson.tasks.Maven>
+    <hudson.tasks.Shell>
+      <command>cd nav-opptjening-test
+mvn eviware:maven-soapui-plugin:test -Dsoapui.projectfile=pensjon-opptjening-soapui-project.xml -Dsoapui.host=e34wasl00318.devillo.no -Dsoapui.project.password=Test</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.junit.JUnitResultArchiver>

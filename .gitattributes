@@ -3594,6 +3594,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Enhet_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Familieforhold_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Fullmakt_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-HPLIVEJournalbehandling_CI/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Helsepersonell_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Henvendelse_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Henvendelsebehandling_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U4-NAV-Informasjonsgrunnlag_CI/config.xml -text

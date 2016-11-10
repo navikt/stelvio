@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_5_0_D20151029_2015HL4/nav/avstemming/nav-test-avstemming</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/trunk/int/esb/nav/avstemming/nav-test-avstemming</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -43,9 +43,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test
--Dsoapui.projectfile=Avstemming-soapui-project.xml
--Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-avstemming_v1Web/sca/AvstemmingWSEXP</targets>
+      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Avstemming-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00318.devillo.no:9080/nav-tjeneste-avstemming_v1Web/sca/AvstemmingWSEXP</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>

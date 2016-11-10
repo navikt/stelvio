@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_8_0_D20160627_2016HL3/nav/enhet/nav-enhet-test</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/trunk/int/esb/nav/enhet/nav-enhet-test</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -43,7 +43,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>com.smartbear.soapui:soapui-maven-plugin:test -Dsoapui.projectfile=Enhet-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-enhet_v1Web/sca/EnhetWSEXP</targets>
+      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=Enhet-integrasjonstest-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00318.devillo.no:9080/nav-tjeneste-enhet_v1Web/sca/EnhetWSEXP</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
@@ -51,11 +51,10 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver plugin="test@example.com">
+    <hudson.tasks.junit.JUnitResultArchiver>
       <testResults>nav-enhet-test/reports/TEST-*.xml</testResults>
       <keepLongStdio>false</keepLongStdio>
       <testDataPublishers/>
-      <healthScaleFactor>1.0</healthScaleFactor>
     </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>

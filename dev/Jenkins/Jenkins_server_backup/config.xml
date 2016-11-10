@@ -243,6 +243,7 @@
         <string>SoapUI-U4-layers-fkafp-privat_CI</string>
         <string>SoapUI-U4-layers-Fullmakt_CI</string>
         <string>SoapUI-U4-layers-Gosys-3.0.0_CI</string>
+        <string>SoapUI-U4-layers-Infotrygd_CI</string>
         <string>SoapUI-U4-layers-Institusjonsopphold_CI</string>
         <string>SoapUI-U4-layers-NAVAnsatt_CI</string>
         <string>SoapUI-U4-layers-NAVOrgEnhet_CI</string>
@@ -421,11 +422,11 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U4</groupRegex>
-          <namingRule>U4_2016HL3</namingRule>
+          <namingRule>U4_BPMAura</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U3</groupRegex>
-          <namingRule>U3_2016HL2</namingRule>
+          <namingRule>U3_2016HL4</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
       </categorizationCriteria>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>

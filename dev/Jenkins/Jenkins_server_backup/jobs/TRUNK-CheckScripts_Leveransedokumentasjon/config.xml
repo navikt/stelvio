@@ -67,13 +67,13 @@ esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 194017093
 # - Koblinger mot produsenter:
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 194017155
 # - Tilgangsstyring:
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path esb/ --page 194017132
+#esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path esb/ --page 194017132
 
 svn up /home/ci/svn-repos/TRUNK/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
 # -  Moduloversikt:
 esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 194017143 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
 # - Tilgangsstyring per samhandler:
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 194017457 --envQ 194017456 --envP 194017455
+#esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 194017457 --envQ 194017456 --envP 194017455
 
 # Oppdaterer http://confluence.adeo.no/pages/viewpage.action?pageId=161786740:
 esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/
@@ -88,9 +88,9 @@ esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/e
 # Skript som genererer automatisk dokumentasjon:
 esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
+#esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
 esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 18190795 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 51781169 --envQ 51781166 --envP 51776072</command>
+#esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 51781169 --envQ 51781166 --envP 51776072</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
