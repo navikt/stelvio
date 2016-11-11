@@ -43,7 +43,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-helsepersonell-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00318.devillo.no:9080/nav-tjeneste-helsepersonell_v1Web/sca/HelsepersonellWSEXP</targets>
+      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=nav-tjeneste-helsepersonell-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/nav-tjeneste-helsepersonell_v1Web/sca/HelsepersonellWSEXP</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>

@@ -44,7 +44,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>cd nav-opptjening-test
-mvn eviware:maven-soapui-plugin:test -Dsoapui.projectfile=pensjon-opptjening-soapui-project.xml -Dsoapui.host=e34wasl00318.devillo.no -Dsoapui.project.password=Test</command>
+mvn eviware:maven-soapui-plugin:test -Dsoapui.projectfile=pensjon-opptjening-soapui-project.xml -Dsoapui.host=e34wasl00224.devillo.no -Dsoapui.project.password=Test</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
