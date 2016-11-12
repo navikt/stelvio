@@ -150,7 +150,12 @@ echo &quot;$folder 10.33.68.41(rw,sync,no_root_squash)&quot; &gt;&gt; /etc/expor
 sudo service nfs restart 2&gt; /dev/null</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Maven>
-      <targets>clean no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy -e -B -U -X</targets>
+      <targets>clean
+no.nav.maven.plugins:maven-datapower-deploy-plugin:${deployerPluginVersion}:deploy
+-e
+-B
+-U
+</targets>
       <mavenName>Maven 3.3.1</mavenName>
       <pom>${WORKSPACE}/pom.xml</pom>
       <properties>apps=${Applications}
@@ -160,7 +165,8 @@ password=${Password}
 debug=${debug}
 envConfigUrl=${EnvConfig}
 dpHostnameFilter=${dpHostnameFilter}
-dpAliases=${dpAliasesE}</properties>
+dpAliases=${dpAliasesE}
+skipDomainRestart=false</properties>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
