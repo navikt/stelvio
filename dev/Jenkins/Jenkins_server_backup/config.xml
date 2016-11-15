@@ -1203,6 +1203,30 @@
       <includeRegex>(2017HL2_8\.11_).*</includeRegex>
       <recurse>false</recurse>
     </listView>
+    <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
+      <owner class="hudson" reference="../../.."/>
+      <name>AutoBygg</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[9]/jobNames/comparator"/>
+        <string>abac-alfa-attribute-parser</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <org.jenkinsci.plugins.categorizedview.IndentedJobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>true</recurse>
+      <groupingRules/>
+      <categorizationCriteria/>
+    </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
