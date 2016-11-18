@@ -43,7 +43,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=EksternUtbetaling-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/ekstern-virkemiddelokonomi-tjeneste-utbetaling_v1Web/sca/UtbetalingWSEXP -Dsoapui.project.password=ci</targets>
+      <targets>eviware:maven-soapui-plugin:test -Dsoapui.projectfile=EksternUtbetaling-soapui-project.xml -Dsoapui.endpoint=http://e34wasl00224.devillo.no:9080/ekstern-virkemiddelokonomi-tjeneste-utbetaling_v1Web/sca/UtbetalingWSEXP</targets>
       <mavenName>(Default)</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
@@ -51,10 +51,11 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="test@example.com">
       <testResults>ekstern-virkemiddelokonomi-test-utbetaling/reports/TEST-*.xml</testResults>
       <keepLongStdio>false</keepLongStdio>
       <testDataPublishers/>
+      <healthScaleFactor>1.0</healthScaleFactor>
     </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>

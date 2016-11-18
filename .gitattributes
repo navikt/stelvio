@@ -3398,6 +3398,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/Deploy_aura-bpm/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/MOT[!!-~]-[!!-~]release[!!-~]trunk/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Moduloversikt_script/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Neo4j2CSV/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Package_APS/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Restart-BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-Arbeidsgiver_CI/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
