@@ -3769,6 +3769,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_system/config
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Tjenestebeskrivelsegenerering_avansert/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/Upload_APS/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/abac-alfa-attribute-parser/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/asm-deploy-test/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/aura-maven-bpm-plugin/config.xml -text

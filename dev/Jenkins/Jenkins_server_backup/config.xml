@@ -1167,6 +1167,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Deploy_App_ABAC_Skya</string>
         <string>Package_APS</string>
+        <string>Upload_APS</string>
       </jobNames>
       <jobFilters/>
       <columns>
