@@ -1165,6 +1165,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>ABAC policy deploy</string>
         <string>Deploy_App_ABAC_Skya</string>
         <string>Package_APS</string>
         <string>Upload_APS</string>

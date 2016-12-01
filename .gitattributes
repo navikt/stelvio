@@ -3377,6 +3377,7 @@ dev/Jenkins/Jenkins_server_backup/jobs/2017HL2_8.11_tjenestespesifikasjon_nav/co
 dev/Jenkins/Jenkins_server_backup/jobs/2017HL2_8.11_tjenestespesifikasjon_pensjon/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2017HL2_8.11_tjenestespesifikasjon_system/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/2017HL2_8.11_tjenestespesifikasjon_tredjegenerasjon/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/ABAC[!!-~]policy[!!-~]deploy/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Automated[!!-~]commit[!!-~]of[!!-~]Jenkins[!!-~]configuration/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/Buss_Deploy_BPM/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/CI-Automatisk_Deploy-ESB-U2_(TRUNK)/config.xml -text

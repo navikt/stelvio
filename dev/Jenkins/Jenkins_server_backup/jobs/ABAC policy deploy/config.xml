@@ -1,46 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Deploy policy til ABAC miljø</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
           <name>Environment</name>
-          <description>Fasit environment</description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>ApplicationVersion</name>
-          <description>Appconfig ApplicationVersion</description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>Applications</name>
           <description></description>
-          <defaultValue>abacadmin:$ApplicationVersion,abacpdp:$ApplicationVersion</defaultValue>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Policy</name>
+          <description>Nexus artifact containing the policy package to deploy</description>
+          <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>Username</name>
           <description></description>
-          <defaultValue>admin</defaultValue>
+          <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.PasswordParameterDefinition>
           <name>Password</name>
           <description></description>
-          <defaultValue>MD/1AS7GIw6dGgbLiVMJxBNHij3CRV1ID5x2Xo0Ozwc=</defaultValue>
+          <defaultValue>0Gzcr5Rxo1mQN3O12Y7xXg==</defaultValue>
         </hudson.model.PasswordParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
-          <name>debug</name>
-          <description>Check this option to get more verbose logging from the plugin when deployment fails</description>
-          <defaultValue>true</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>policy</name>
-          <description>Nexus artifact containing the policy package to deploy</description>
-          <defaultValue></defaultValue>
-        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <com.sonyericsson.rebuild.RebuildSettings plugin="test@example.com">
@@ -74,25 +59,10 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean 
-no.nav.maven.plugins:aura-maven-plugin:6.1.31:deploy
--U
--e
--B
--Dapps=$Applications
--Denv=$Environment
--Dusername=$Username
--Dpassword=$Password
-
-no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:clean 
--Denv=$Environment
--Dusername=$Username
--Dpassword=$Password
--Dmaven.wagon.http.ssl.insecure=true
-
-no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:setup 
--Denv=$Environment
--Dusername=$Username
+      <targets>no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:policy
+-Denv=$Environment  
+-Dpolicy=$Policy  
+-Dusername=$Username  
 -Dpassword=$Password
 -Dmaven.wagon.http.ssl.insecure=true</targets>
       <mavenName>Maven 3.3.1</mavenName>
@@ -105,7 +75,7 @@ no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:setup
   <buildWrappers>
     <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
     <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
-      <template>#${BUILD_NUMBER}: ${ENV,var=&quot;Applications&quot;}@${ENV,var=&quot;Environment&quot;}</template>
+      <template>#${BUILD_NUMBER}: ${ENV,var=&quot;Policy&quot;}@${ENV,var=&quot;Environment&quot;}</template>
     </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
   </buildWrappers>
 </project>
