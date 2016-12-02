@@ -101,7 +101,11 @@ no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:setup
       <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
     </hudson.tasks.Maven>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="test@example.com">
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
+  </publishers>
   <buildWrappers>
     <com.michelin.cio.hudson.plugins.maskpasswords.MaskPasswordsBuildWrapper/>
     <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="test@example.com">
