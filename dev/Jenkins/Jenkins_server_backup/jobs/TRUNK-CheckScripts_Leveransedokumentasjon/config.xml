@@ -45,7 +45,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#PK-31605: Nå skal rollemapping være med som en del av modulen, så checkScripts skal ikke lenger klage om den finner ibm-deploy.scaj2ee-filer.
+      <command>#PK-31605: To moduler fikk ibm-deploy.scaj2ee-filer før man bestemte seg for at rollemapping likevel skulle ligge i aura buss-config.
 #find -name ibm-deploy.scaj2ee -print -exec false {} +
 
 find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +

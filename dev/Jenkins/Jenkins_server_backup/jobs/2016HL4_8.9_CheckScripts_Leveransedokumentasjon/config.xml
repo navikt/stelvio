@@ -45,7 +45,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
+      <command>#find -name ibm-deploy.scaj2ee -print -exec false {} +
 find . -name &quot;*WSIMP.import&quot; -exec R_8_9_0_D20161108_2016HL4/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
 R_8_9_0_D20161108_2016HL4/esb-tools/esb-scripts/bin/cons_xml_check.py R_8_9_0_D20161108_2016HL4
 R_8_9_0_D20161108_2016HL4/esb-tools/esb-scripts/bin/System.out.print_Search.py
