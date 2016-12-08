@@ -3755,7 +3755,6 @@ dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-configuration_bus-environment/confi
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-configuration_bus-nonenvironment/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-ekstern/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-esb-release/config.xml -text
-dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-esb-virksomhet-skya/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-esb_poms/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-layers/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/TRUNK-layers_dryRun/config.xml -text
