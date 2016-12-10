@@ -1135,28 +1135,6 @@
       </columns>
       <recurse>false</recurse>
     </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 8.8 2016HL3</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2016HL3_8\.8_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
     <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
       <owner class="hudson" reference="../../.."/>
       <name>ABAC</name>
@@ -1213,7 +1191,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[9]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[8]/jobNames/comparator"/>
         <string>abac-alfa-attribute-parser</string>
       </jobNames>
       <jobFilters/>
