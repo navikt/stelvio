@@ -3763,6 +3763,8 @@ dev/Jenkins/Jenkins_server_backup/jobs/kontaktregister-difi/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/maven-datapower-deploy-plugin/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/modig-security-1.0.x/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/modig-security-3.0.x-site/config.xml -text
+dev/Jenkins/Jenkins_server_backup/jobs/modig-security-3.0.x/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/nav-datapower-lib/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/openam-site/config.xml -text
 dev/Jenkins/Jenkins_server_backup/jobs/sdpkanal-site/config.xml -text

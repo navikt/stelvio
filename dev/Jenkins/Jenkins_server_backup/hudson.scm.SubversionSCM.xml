@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson.scm.SubversionSCM_-DescriptorImpl plugin="test@example.com">
-  <generation>322</generation>
+  <generation>371</generation>
   <credentials class="hashtable">
     <entry>
       <string>&lt;https://versjonskontroll.adeo.no:443&gt; NAV Subversion repository</string>

@@ -28,6 +28,11 @@
       <home>/opt/IBM/java_1.7_64/</home>
       <properties/>
     </jdk>
+    <jdk>
+      <name>OpenJDK 1.8.0</name>
+      <home>/etc/alternatives/java_sdk_1.8.0</home>
+      <properties/>
+    </jdk>
   </jdks>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
@@ -485,6 +490,8 @@
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView/jobNames/comparator"/>
         <string>modig-security-1.0.x</string>
         <string>modig-security-1.0.x-site</string>
+        <string>modig-security-3.0.x</string>
+        <string>modig-security-3.0.x-site</string>
         <string>stelvio_trunk_int_maven</string>
         <string>stelvio_trunk_int_oppdragmediation</string>
         <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
