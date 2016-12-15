@@ -452,6 +452,7 @@
         <string>CI-deploy_2016HL3_buss-pom-0.0.2016.3-SNAPSHOT</string>
         <string>CI-deploy_2016HL4_bus-config-0.0.2016.4-SNAPSHOT</string>
         <string>CI-deploy_2016HL4_buss-pom-0.0.2016.4-SNAPSHOT</string>
+        <string>CI-deploy_TRUNK_aura-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-Deploy_wpsdeploy-pom_sync</string>

@@ -1,14 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>U2-miljøet blir benyttet til å kjøre automatiske tester for trunk. Miljøet får deployet siste buss for trunk (eller slik esb-release fremstår). Det deployes altså endelige versjoner, og ikke snapshot-versjoner.&#xd;
-&#xd;
- -----&#xd;
-Kjøres hver natt kl 04.37.&#xd;
- -----</description>
+  <description>Denne jobben bygger en 0.0.0.1-SNAPSHOT-versjon av bussen i TRUNK, for bruk til automatisk, nattlig deploy.&#xd;
+Kjøres hver dag kl 04.31</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>20</numToKeep>
+    <numToKeep>5</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -21,7 +18,7 @@ Kjøres hver natt kl 04.37.&#xd;
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/configuration/bpm-skya</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -43,36 +40,42 @@ Kjøres hver natt kl 04.37.&#xd;
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec># 04.37 o&apos;clock in the morning
-37 04 * * *</spec>
+      <spec>31 04 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#Deploy:
-mvn3 clean deploy -e -X -Denvironment=U2 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.0.1-SNAPSHOT -Dnav-modules-version=0.0.0.1-SNAPSHOT -Dpensjon-modules-version=0.0.0.1-SNAPSHOT -Dekstern-modules-version=0.0.0.1-SNAPSHOT -Desb-modules-version=0.0.0.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.0.1-SNAPSHOT -Desb-nonenviroment-configuration=0.0.0.1-SNAPSHOT -Desb-enviroment-configuration=0.0.0.1-SNAPSHOT -Dlogging.level=DEBUG</command>
+      <command>svn revert * */*
+rm -rf ./pom.xmlr ./*/pom.xmlr
+svn up
+
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; esb-legacy-appconfig/pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; esb-virksomhet-appconfig/pom.xml
+#sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; esb-pensjon-appconfig/pom.xml
+sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.0.1-SNAPSHOT&lt;/version&gt;@&apos; prosess-pensjon-appconfig/pom.xml</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>cd ..
-/usr/maven/apache-maven-3.3.1/bin/mvn -Ddebug=false -Dpassword=admin -DrestartAllModules=false -Denv=u2 -Dapps=esb-legacy:0.0.0.1-SNAPSHOT,prosess-pensjon:0.0.0.1-SNAPSHOT,esb-virksomhet:0.0.0.1-SNAPSHOT -Dusername=admin -U -e no.nav.maven.plugins:aura-maven-bpm-plugin:5.0.23:deploy</command>
+      <command>mvn clean deploy</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
+    <hudson.plugins.postbuildtask.PostbuildTask plugin="test@example.com">
+      <tasks>
+        <hudson.plugins.postbuildtask.TaskProperties>
+          <logTexts/>
+          <EscalateStatus>false</EscalateStatus>
+          <RunIfJobSuccessful>false</RunIfJobSuccessful>
+          <script>svn revert * */*&#xd;
+rm -rf ./pom.xmlr ./*/pom.xmlr</script>
+        </hudson.plugins.postbuildtask.TaskProperties>
+      </tasks>
+    </hudson.plugins.postbuildtask.PostbuildTask>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
-    <hudson.tasks.BuildTrigger>
-      <childProjects>SoapUI-U2-StartStubbing_CI</childProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-        <completeBuild>true</completeBuild>
-      </threshold>
-    </hudson.tasks.BuildTrigger>
   </publishers>
   <buildWrappers/>
 </project>
