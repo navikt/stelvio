@@ -45,7 +45,7 @@
         <hudson.model.StringParameterDefinition>
           <name>policy</name>
           <description>Nexus artifact containing the policy package to deploy</description>
-          <defaultValue></defaultValue>
+          <defaultValue>no.nav.abac.policies:policypackage:0.0.1</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
