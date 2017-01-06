@@ -81,7 +81,7 @@
   <builders>
     <hudson.tasks.Maven>
       <targets>clean 
-no.nav.maven.plugins:aura-maven-plugin:6.1.31:deploy
+no.nav.maven.plugins:aura-maven-plugin:LATEST:deploy
 -U
 -e
 -B
