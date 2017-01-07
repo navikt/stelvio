@@ -75,7 +75,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>Oracle JDK 1.7</jdk>
+  <jdk>OpenJDK 1.8.0</jdk>
   <triggers/>
   <concurrentBuild>true</concurrentBuild>
   <builders>
@@ -85,6 +85,7 @@ no.nav.maven.plugins:aura-maven-plugin:LATEST:deploy
 -U
 -e
 -B
+-X
 -Dapps=$Applications
 -Denv=$Environment
 -Dusername=$Username

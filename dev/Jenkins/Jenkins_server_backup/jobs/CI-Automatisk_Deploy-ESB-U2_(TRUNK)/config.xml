@@ -55,7 +55,7 @@ mvn3 clean deploy -e -X -Denvironment=U2 -DfasitUsername=admin -DfasitPasswordBa
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ..
-/usr/maven/apache-maven-3.3.1/bin/mvn -Ddebug=false -Dpassword=admin -DrestartAllModules=false -Denv=u2 -Dapps=esb-legacy:0.0.0.1-SNAPSHOT,prosess-pensjon:0.0.0.1-SNAPSHOT,esb-virksomhet:0.0.0.1-SNAPSHOT -Dusername=admin -U -e no.nav.maven.plugins:aura-maven-bpm-plugin:5.0.23:deploy</command>
+/usr/maven/apache-maven-3.3.1/bin/mvn -Ddebug=false -Dpassword=admin -DrestartAllModules=false -Denv=u2 -Dapps=esb-legacy:0.0.0.1-SNAPSHOT,prosess-pensjon:0.0.0.1-SNAPSHOT,esb-virksomhet:0.0.0.1-SNAPSHOT -Dusername=admin -U -e no.nav.maven.plugins:aura-maven-bpm-plugin:5.0.25:deploy</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
