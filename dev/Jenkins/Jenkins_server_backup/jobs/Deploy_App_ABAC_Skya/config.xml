@@ -81,11 +81,10 @@
   <builders>
     <hudson.tasks.Maven>
       <targets>clean 
-no.nav.maven.plugins:aura-maven-plugin:LATEST:deploy
+no.nav.maven.plugins:aura-maven-plugin:6.1.56:deploy
 -U
 -e
 -B
--X
 -Dapps=$Applications
 -Denv=$Environment
 -Dusername=$Username
