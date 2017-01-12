@@ -115,7 +115,7 @@ public class ArtifactBuilderMojo extends AbstractMojo {
      * @parameter
      */
     private List<String> globalExcludes;
-    
+
     /**
      * @throws MojoExecutionException
      * @throws MojoFailureException
@@ -177,8 +177,22 @@ public class ArtifactBuilderMojo extends AbstractMojo {
 			}
 			
 			// Attach resulting jar-file to project in order for it to be installed and deployed
-			projectHelper.attachArtifact(project, artifactType, artifactClassifier, archiver.getArchiver().getDestFile());
-			getLog().info("Artifact attached to project as \""+artifactType+"\" with classifier \""+artifactClassifier+"\"");
+			boolean alreadyAttached = false;
+
+			for(Artifact a : (List<Artifact>)project.getAttachedArtifacts()) {
+				if(a.getFile().getName().equals(archiver.getArchiver().getDestFile().getName())) {
+					alreadyAttached = true;
+				}
+			}
+
+			if(!alreadyAttached) {
+				getLog().info("Artifact attached to project as \""+artifactType+"\" with classifier \""+artifactClassifier+"\"");
+				projectHelper.attachArtifact(project, artifactType, artifactClassifier, archiver.getArchiver().getDestFile());
+			}
+			else {
+				getLog().info("Artifact " + artifactType+"\" with classifier \"" + artifactClassifier +  " \"already attached, skipping" );
+			}
+
 		}
 		catch (ArchiverException e) {
 			throw new MojoExecutionException("An error occured creating the artifact.", e);
