@@ -17,7 +17,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/modig-security-3.0.x</name>
+        <name>*/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -55,7 +55,7 @@
   <publishers>
     <hudson.plugins.sonar.SonarPublisher plugin="test@example.com">
       <jdk>(Inherit From Job)</jdk>
-      <branch>modig-security-3.0.x</branch>
+      <branch>master</branch>
       <language></language>
       <mavenOpts></mavenOpts>
       <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/org/json/**/*.java</jobAdditionalProperties>
