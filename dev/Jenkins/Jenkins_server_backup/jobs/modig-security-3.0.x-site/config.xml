@@ -52,18 +52,7 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers>
-    <hudson.plugins.sonar.SonarPublisher plugin="test@example.com">
-      <jdk>(Inherit From Job)</jdk>
-      <branch>master</branch>
-      <language></language>
-      <mavenOpts></mavenOpts>
-      <jobAdditionalProperties>-Dsonar.exclusions=src/main/java/org/json/**/*.java</jobAdditionalProperties>
-      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
-      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
-      <usePrivateRepository>false</usePrivateRepository>
-    </hudson.plugins.sonar.SonarPublisher>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>
