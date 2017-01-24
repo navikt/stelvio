@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Denne jobben bygger en 0.0.2016.4-SNAPSHOT-versjon av bussen i kodestrømmen for 2016HL4, for bruk til automatisk, nattlig deploy.&#xd;
-Kjøres hver dag kl 04.33</description>
+  <description>U3-miljøet blir benyttet til å kjøre automatiske tester for 2017HL1-kodestrømmen.&#xd;
+&#xd;
+---&#xd;
+Jobben kjøres automatisk hver natt kl 04.37.&#xd;
+---</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
-    <numToKeep>5</numToKeep>
+    <numToKeep>20</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -18,7 +21,7 @@ Kjøres hver dag kl 04.33</description>
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_9_0_D20161108_2016HL4/esb-release</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -34,29 +37,25 @@ Kjøres hver dag kl 04.33</description>
     <filterChangelog>false</filterChangelog>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec>33 04 * * *</spec>
+      <spec># 04.37 o&apos;clock in the morning
+37 04 * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>svn revert --recursive .
-svn up
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; ekstern-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; esb-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; nav-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; pensjon-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; pensjon-prosess-modules/pom.xml</command>
+      <command>#Deploy:
+mvn3 clean deploy -e -X -Denvironment=U3 -DfasitUsername=admin -DfasitPasswordBase64=YWRtaW4= -Dbus-configuration-version=0.0.2017.1-SNAPSHOT -Dnav-modules-version=0.0.2017.1-SNAPSHOT -Dpensjon-modules-version=0.0.2017.1-SNAPSHOT -Dekstern-modules-version=0.0.2017.1-SNAPSHOT -Desb-modules-version=0.0.2017.1-SNAPSHOT -DinteractiveMode=false -Dskip=backup-config,create-BLA-groups,bounce-dmgr -Desb-authorization-configuration=0.0.2017.1-SNAPSHOT -Desb-nonenviroment-configuration=0.0.2017.1-SNAPSHOT -Desb-enviroment-configuration=0.0.2017.1-SNAPSHOT -Dlogging.level=DEBUG</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>mvn clean deploy</command>
+      <command>cd ..
+/usr/maven/apache-maven-3.3.1/bin/mvn -Ddebug=false -Dpassword=admin -DrestartAllModules=false -Denv=u3 -Dapps=esb-legacy:0.0.2017.1-SNAPSHOT,prosess-pensjon:0.0.2017.1-SNAPSHOT,esb-virksomhet:0.0.2017.1-SNAPSHOT -Dusername=admin -U -e no.nav.maven.plugins:aura-maven-bpm-plugin:RELEASE:deploy</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
@@ -65,6 +64,15 @@ sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>SoapUI-U4-StartStubbing_CI</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
   </publishers>
   <buildWrappers/>
 </project>

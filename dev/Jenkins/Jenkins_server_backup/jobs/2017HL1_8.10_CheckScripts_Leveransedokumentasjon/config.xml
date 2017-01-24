@@ -17,7 +17,7 @@
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb</remote>
+        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_10_0_D20170123_2017HL1</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>
@@ -45,52 +45,31 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#PK-31605: To moduler fikk ibm-deploy.scaj2ee-filer før man bestemte seg for at rollemapping likevel skulle ligge i aura buss-config.
-#find -name ibm-deploy.scaj2ee -print -exec false {} +
-
-find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
-esb/esb-tools/esb-scripts/bin/cons_xml_check.py esb
-esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
-esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
-esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+      <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name &quot;*WSIMP.import&quot; -exec R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/cons_xml_check.py R_8_10_0_D20170123_2017HL1
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/System.out.print_Search.py
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
 
 # Sjekker om confluence er oppe:
 if ! wget --spider http://confluence.adeo.no 2&gt;/dev/zero; then echo -e &apos;\nConfluence er nede, avslutter!\n&apos; ; exit 0 ;fi
 
 
-#################################################
-# Skript som genererer automatisk dokumentasjon #
-#################################################
-
 # - EJB Avhengigheter:
-esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 202363532
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path R_8_10_0_D20170123_2017HL1/ --page 194017093
 # - Koblinger mot produsenter:
-esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 202363604
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py R_8_10_0_D20170123_2017HL1/ 194017155
 # - Tilgangsstyring:
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path esb/ --page 202363610
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --path R_8_10_0_D20170123_2017HL1/ --page 194017132
 
-svn up /home/ci/svn-repos/TRUNK/tjenester/ --username svnguest --password Subversion01 --no-auth-cache
+## SVN UP: ##
+svn up /home/ci/svn-repos/2017HL1/ --username svnguest --password Subversion01 --no-auth-cache
 # -  Moduloversikt:
-esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 202363607 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path R_8_10_0_D20170123_2017HL1/ --page 194017143 --design &quot;/home/ci/svn-repos/2017HL1/spesifikasjon/implementasjon/&quot;
 # - Tilgangsstyring per samhandler:
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 202363621 --envQ 202363619 --envP 202363616
-
-# Oppdaterer http://confluence.adeo.no/pages/viewpage.action?pageId=161786740:
-esb/esb-tools/esb-scripts/bin/generateScriptDocumentationPage.py esb/esb-tools/esb-scripts/bin/
-
-
-
-
-##############################
-# Oppdaterer UU-sidene også: #
-##############################
-
-# Skript som genererer automatisk dokumentasjon:
-esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
-esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py esb/ 17228157
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py --page 17228160 --path esb/
-esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --path esb/ --page 18190795 --design &quot;/home/ci/svn-repos/TRUNK/tjenester/spesifikasjon/implementasjon/&quot;
-esb/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path esb/ --design &quot;/home/ci/svn-repos/TRUNK/tjenester&quot; --envT 51781169 --envQ 51781166 --envP 51776072</command>
+R_8_10_0_D20170123_2017HL1/esb-tools/esb-scripts/bin/HUDSON-findRolesForSamhandlereOnModules.py --path R_8_10_0_D20170123_2017HL1/ --design &quot;/home/ci/svn-repos/2017HL1&quot; --envT 194017457 --envQ 194017456 --envP 194017455
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

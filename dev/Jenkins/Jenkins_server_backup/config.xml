@@ -447,11 +447,12 @@
         <string>Buss_Deploy_BPM</string>
         <string>CI-Automatisk_Deploy-ESB-U2_(TRUNK)</string>
         <string>CI-Automatisk_Deploy-ESB-U3_(2016HL4)</string>
-        <string>CI-Automatisk_Deploy-ESB-U4_(2016HL3)</string>
-        <string>CI-deploy_2016HL3_bus-config-0.0.2016.3-SNAPSHOT</string>
-        <string>CI-deploy_2016HL3_buss-pom-0.0.2016.3-SNAPSHOT</string>
+        <string>CI-Automatisk_Deploy-ESB-U3_(2017HL1)</string>
         <string>CI-deploy_2016HL4_bus-config-0.0.2016.4-SNAPSHOT</string>
         <string>CI-deploy_2016HL4_buss-pom-0.0.2016.4-SNAPSHOT</string>
+        <string>CI-deploy_2017HL1_aura-pom-0.0.2017.1-SNAPSHOT</string>
+        <string>CI-deploy_2017HL1_bus-config-0.0.2017.1-SNAPSHOT</string>
+        <string>CI-deploy_2017HL1_buss-pom-0.0.2017.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_aura-pom-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_bus-config-0.0.0.1-SNAPSHOT</string>
         <string>CI-deploy_TRUNK_buss-pom-0.0.0.1-SNAPSHOT</string>
@@ -907,7 +908,7 @@
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.10 2017HL1 (Trunk)</name>
+      <name>Status 8.11 2017HL2 (Trunk)</name>
       <description>Jobber som bygger trunk.</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -1100,28 +1101,6 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Status 8.9 2016HL4</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2016HL4_8\.9_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>WSRR</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -1169,28 +1148,6 @@
       <groupingRules/>
       <categorizationCriteria/>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Status 8.11 2017HL2</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>(2017HL2_8\.11_).*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
     <org.jenkinsci.plugins.categorizedview.CategorizedJobsView plugin="test@example.com">
       <owner class="hudson" reference="../../.."/>
       <name>AutoBygg</name>
@@ -1198,7 +1155,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[8]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>abac-alfa-attribute-parser</string>
       </jobNames>
       <jobFilters/>
@@ -1215,6 +1172,28 @@
       <groupingRules/>
       <categorizationCriteria/>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Status 8.10 2017HL1</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../org.jenkinsci.plugins.categorizedview.CategorizedJobsView[6]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>(2017HL1_8\.10_).*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>

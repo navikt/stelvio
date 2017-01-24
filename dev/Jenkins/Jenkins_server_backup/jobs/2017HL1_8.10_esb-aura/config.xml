@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>Denne jobben bygger en 0.0.2016.4-SNAPSHOT-versjon av bussen i kodestrømmen for 2016HL4, for bruk til automatisk, nattlig deploy.&#xd;
-Kjøres hver dag kl 04.33</description>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -18,7 +17,7 @@ Kjøres hver dag kl 04.33</description>
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_9_0_D20161108_2016HL4/esb-release</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_10_0_D20170123_2017HL1/configuration/bpm-skya</remote>
         <local>.</local>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
@@ -33,33 +32,30 @@ Kjøres hver dag kl 04.33</description>
     <ignoreDirPropChanges>false</ignoreDirPropChanges>
     <filterChangelog>false</filterChangelog>
   </scm>
+  <quietPeriod>10</quietPeriod>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
   <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec>33 04 * * *</spec>
-    </hudson.triggers.TimerTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>@monthly</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>svn revert --recursive .
-svn up
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; ekstern-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; esb-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; nav-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; pensjon-modules/pom.xml
-sed -ir &apos;s@&lt;version&gt;[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*-SNAPSHOT&lt;/version&gt;@&lt;version&gt;0.0.2016.4-SNAPSHOT&lt;/version&gt;@&apos; pensjon-prosess-modules/pom.xml</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>mvn clean deploy</command>
-    </hudson.tasks.Shell>
+    <hudson.tasks.Maven>
+      <targets>clean deploy</targets>
+      <mavenName>(Default)</mavenName>
+      <usePrivateRepository>false</usePrivateRepository>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+    </hudson.tasks.Maven>
   </builders>
   <publishers>
+    <hudson.plugins.cigame.GamePublisher plugin="test@example.com"/>
     <hudson.tasks.Mailer plugin="test@example.com">
       <recipients>test@example.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
