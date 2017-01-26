@@ -65,7 +65,7 @@ mvn3 clean deploy -e -X -Denvironment=U3 -DfasitUsername=admin -DfasitPasswordBa
       <sendToIndividuals>true</sendToIndividuals>
     </hudson.tasks.Mailer>
     <hudson.tasks.BuildTrigger>
-      <childProjects>SoapUI-U4-StartStubbing_CI</childProjects>
+      <childProjects>SoapUI-U3-StartStubbing_CI</childProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

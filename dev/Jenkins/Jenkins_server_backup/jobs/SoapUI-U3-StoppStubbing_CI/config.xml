@@ -14,7 +14,7 @@ Deaktivert ettersom U3-miljøet kun blir brukt med stubs (altså ikke mot live b
   <scm class="hudson.scm.SubversionSCM" plugin="test@example.com">
     <locations>
       <hudson.scm.SubversionSCM_-ModuleLocation>
-        <remote>https://versjonskontroll.devillo.no/svn/nav/branches/int/R_8_9_0_D20161108_2016HL4/esb-soap-tests</remote>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/branches/int/R_8_10_0_D20170123_2017HL1/esb-soap-tests</remote>
         <depthOption>infinity</depthOption>
         <ignoreExternalsOption>false</ignoreExternalsOption>
       </hudson.scm.SubversionSCM_-ModuleLocation>

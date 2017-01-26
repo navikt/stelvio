@@ -279,6 +279,7 @@
         <string>SoapUI-U4-NAV-EUInstitusjon_CI</string>
         <string>SoapUI-U4-NAV-Familieforhold_CI</string>
         <string>SoapUI-U4-NAV-Fullmakt_CI</string>
+        <string>SoapUI-U4-NAV-Helsepersonell_CI</string>
         <string>SoapUI-U4-NAV-Henvendelse_CI</string>
         <string>SoapUI-U4-NAV-Henvendelsebehandling_CI</string>
         <string>SoapUI-U4-NAV-HPLIVEJournalbehandling_CI</string>
@@ -431,7 +432,7 @@
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
         <org.jenkinsci.plugins.categorizedview.GroupingRule>
           <groupRegex>^SoapUI-U3</groupRegex>
-          <namingRule>U3_2016HL4</namingRule>
+          <namingRule>U3_2017HL1</namingRule>
         </org.jenkinsci.plugins.categorizedview.GroupingRule>
       </categorizationCriteria>
     </org.jenkinsci.plugins.categorizedview.CategorizedJobsView>
