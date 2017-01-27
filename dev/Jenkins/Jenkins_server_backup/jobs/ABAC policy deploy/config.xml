@@ -64,7 +64,8 @@
 -Dpolicy=$Policy  
 -Dusername=$Username  
 -Dpassword=$Password
--Dmaven.wagon.http.ssl.insecure=true</targets>
+-Dmaven.wagon.http.ssl.insecure=true
+-X</targets>
       <mavenName>Maven 3.3.1</mavenName>
       <usePrivateRepository>false</usePrivateRepository>
       <settings class="jenkins.mvn.DefaultSettingsProvider"/>
