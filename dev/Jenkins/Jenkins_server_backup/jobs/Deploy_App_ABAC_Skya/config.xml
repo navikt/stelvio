@@ -80,7 +80,13 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>clean 
+      <targets>no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:clean 
+-Denv=$Environment
+-Dusername=$Username
+-Dpassword=$Password
+-Dmaven.wagon.http.ssl.insecure=true
+
+clean 
 no.nav.maven.plugins:aura-maven-plugin:LATEST:deploy
 -U
 -e
@@ -89,12 +95,6 @@ no.nav.maven.plugins:aura-maven-plugin:LATEST:deploy
 -Denv=$Environment
 -Dusername=$Username
 -Dpassword=$Password
-
-no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:clean 
--Denv=$Environment
--Dusername=$Username
--Dpassword=$Password
--Dmaven.wagon.http.ssl.insecure=true
 
 no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:setup 
 -Denv=$Environment
