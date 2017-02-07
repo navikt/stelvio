@@ -59,7 +59,7 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:policy
+      <targets>no.nav.maven.plugins:aps-maven-plugin:1.1-SNAPSHOT:policy
 -Denv=$Environment  
 -Dpolicy=$Policy  
 -Dusername=$Username  

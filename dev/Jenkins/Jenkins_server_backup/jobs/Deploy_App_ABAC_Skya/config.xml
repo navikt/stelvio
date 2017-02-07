@@ -80,7 +80,7 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Maven>
-      <targets>no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:clean 
+      <targets>no.nav.maven.plugins:aps-maven-plugin:1.1-SNAPSHOT:clean 
 -Denv=$Environment
 -Dusername=$Username
 -Dpassword=$Password
@@ -96,7 +96,7 @@ no.nav.maven.plugins:aura-maven-plugin:LATEST:deploy
 -Dusername=$Username
 -Dpassword=$Password
 
-no.nav.maven.plugins:aps-maven-plugin:1.0-SNAPSHOT:setup 
+no.nav.maven.plugins:aps-maven-plugin:1.1-SNAPSHOT:setup 
 -Denv=$Environment
 -Dusername=$Username
 -Dpassword=$Password
