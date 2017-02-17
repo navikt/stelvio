@@ -57,6 +57,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Betsam autobygg</string>
         <string>SoapUI-U2-Ekstern-Arbeidsgiver_CI</string>
         <string>SoapUI-U2-Ekstern-NAVYtelsesinfo_CI</string>
         <string>SoapUI-U2-Ekstern-Pensjon-Beregning_CI</string>
