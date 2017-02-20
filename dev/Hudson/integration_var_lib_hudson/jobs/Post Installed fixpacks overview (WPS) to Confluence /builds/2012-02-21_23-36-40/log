@@ -1,7 +1,0 @@
-Started by timer
-[workspace] $ /bin/sh -xe /tmp/hudson1065624387192898605.sh
-+ cd /home/ci/scripts/Confluence/compare
-+ python compareFixpacks.py
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update; build not configured with trigger: Post Installed fixpacks overview (WPS) to Confluence  #1
-Finished: SUCCESS
