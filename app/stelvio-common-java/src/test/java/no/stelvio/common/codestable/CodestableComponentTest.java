@@ -4,7 +4,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -14,21 +13,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
-import no.stelvio.common.codestable.support.DefaultCodesTableManager;
-import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
-
 import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
+import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.StaticMessageSource;
+
+import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
+import no.stelvio.common.codestable.support.DefaultCodesTableManager;
+import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
 
 /**
  * Component test of Codestable. Is kept for historic reasons as this is the original component test.
@@ -36,13 +33,14 @@ import org.springframework.context.support.StaticMessageSource;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-@RunWith(JMock.class)
+
 public class CodestableComponentTest {
+	@Rule
+	public JUnitRuleMockery context = new JUnitRuleMockery();
 	private final TestCtiCode code = TestCti.createCti1().getCode();
 	private final String decode = TestCti.createCti1().getDecode();
 	private final Locale locale = new Locale("nb", "NO");
 	private Date date;
-	private Mockery context = new JUnit4Mockery();
 
 	/**
 	 * Set up.

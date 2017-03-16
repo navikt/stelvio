@@ -1,11 +1,9 @@
 package no.stelvio.common.codestable.factory.adapter;
 
 import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import no.stelvio.common.codestable.TestCti;
 import no.stelvio.common.codestable.TestCtpi;
@@ -16,9 +14,10 @@ import no.stelvio.common.codestable.factory.NoGenericsCodesTableItemsFactory;
  * 
  * @author personf8e9850ed756, Accenture
  */
-@RunWith(JMock.class)
+
 public class NoGenericsCodesTableItemsFactoryAdapterTest {
-	private Mockery context = new JUnit4Mockery();
+	@Rule
+	public JUnitRuleMockery context = new JUnitRuleMockery();
 
 	/**
 	 * Test forwardsCallToInjectedCodesTableItemFactory.
@@ -29,8 +28,8 @@ public class NoGenericsCodesTableItemsFactoryAdapterTest {
 
 		context.checking(new Expectations() {
 			{
-				one(ctif).createCodesTableItems(TestCti.class);
-				one(ctif).createCodesTablePeriodicItems(TestCtpi.class);
+				oneOf(ctif).createCodesTableItems(TestCti.class);
+				oneOf(ctif).createCodesTablePeriodicItems(TestCtpi.class);
 			}
 		});
 

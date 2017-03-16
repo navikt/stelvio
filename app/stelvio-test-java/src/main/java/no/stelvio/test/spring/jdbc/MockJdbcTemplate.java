@@ -4,10 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.jmock.Expectations;
-import org.jmock.Mockery;
+import org.jmock.integration.junit4.JUnit4Mockery;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -20,6 +21,7 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.StatementCallback;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.SQLExceptionTranslator;
@@ -32,7 +34,7 @@ import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
  */
 public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, BuilderNamespace {
 
-	private final Mockery context = new Mockery();
+	private final JUnit4Mockery context = new JUnit4Mockery();
 	private final JdbcTemplate proxyJdbcTemplate = context.mock(JdbcTemplate.class);
 	private final ResultSet proxyResultSet = context.mock(ResultSet.class);
 
@@ -94,7 +96,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 *             if there is any problem issuing an update
 	 * @return Map of extracted out parameters
 	 */
-	public Map call(CallableStatementCreator csc, List declaredParameters) throws DataAccessException {
+	public Map<String, Object> call(CallableStatementCreator csc, List<SqlParameter> declaredParameters) throws DataAccessException {
 		return proxyJdbcTemplate.call(csc, declaredParameters);
 	}
 
@@ -136,7 +138,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if there is any problem
 	 */
-	public Object execute(String callString, CallableStatementCallback action) throws DataAccessException {
+	public <T> T execute(String callString, CallableStatementCallback<T> action) throws DataAccessException {
 		return proxyJdbcTemplate.execute(callString, action);
 	}
 
@@ -156,7 +158,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if there is any problem
 	 */
-	public Object execute(String sql, PreparedStatementCallback action) throws DataAccessException {
+	public <T> T execute(String sql, PreparedStatementCallback<T> action) throws DataAccessException {
 		return proxyJdbcTemplate.execute(sql, action);
 	}
 
@@ -175,7 +177,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if there is any problem
 	 */
-	public Object execute(CallableStatementCreator csc, CallableStatementCallback action) throws DataAccessException {
+	public <T> T execute(CallableStatementCreator csc, CallableStatementCallback<T> action) throws DataAccessException {
 		return proxyJdbcTemplate.execute(csc, action);
 	}
 
@@ -194,7 +196,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if there is any problem
 	 */
-	public Object execute(PreparedStatementCreator psc, PreparedStatementCallback action) throws DataAccessException {
+	public <T> T execute(PreparedStatementCreator psc, PreparedStatementCallback<T> action) throws DataAccessException {
 		return proxyJdbcTemplate.execute(psc, action);
 	}
 
@@ -209,7 +211,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if there is any problem
 	 */
-	public Object execute(StatementCallback action) throws DataAccessException {
+	public <T> T execute(StatementCallback<T> action) throws DataAccessException {
 		return proxyJdbcTemplate.execute(action);
 	}
 
@@ -291,7 +293,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public Object query(String sql, Object[] args, int[] argTypes, ResultSetExtractor rse) throws DataAccessException {
+	public <T> T query(String sql, Object[] args, int[] argTypes, ResultSetExtractor<T> rse) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, args, argTypes, rse);
 	}
 
@@ -336,7 +338,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public List query(String sql, Object[] args, int[] argTypes, RowMapper rowMapper) throws DataAccessException {
+	public <T> List<T> query(String sql, Object[] args, int[] argTypes, RowMapper<T> rowMapper) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, args, argTypes, rowMapper);
 	}
 
@@ -357,7 +359,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public Object query(String sql, Object[] args, ResultSetExtractor rse) throws DataAccessException {
+	public <T> T query(String sql, Object[] args, ResultSetExtractor<T> rse) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, args, rse);
 	}
 
@@ -398,7 +400,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public List query(String sql, Object[] args, RowMapper rowMapper) throws DataAccessException {
+	public <T> List<T> query(String sql, Object[] args, RowMapper<T> rowMapper) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, args, rowMapper);
 	}
 
@@ -420,7 +422,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 *             if the query fails
 	 * @return an arbitrary result object, as returned by the ResultSetExtractor
 	 */
-	public Object query(String sql, PreparedStatementSetter pss, ResultSetExtractor rse) throws DataAccessException {
+	public <T> T query(String sql, PreparedStatementSetter pss, ResultSetExtractor<T> rse) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, pss, rse);
 	}
 
@@ -466,7 +468,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 *             if the query fails
 	 * @return the result List, containing mapped objects
 	 */
-	public List query(String sql, PreparedStatementSetter pss, RowMapper rowMapper) throws DataAccessException {
+	public <T> List<T> query(String sql, PreparedStatementSetter pss, RowMapper<T> rowMapper) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, pss, rowMapper);
 	}
 
@@ -484,7 +486,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public Object query(String sql, ResultSetExtractor rse) throws DataAccessException {
+	public <T> T query(String sql, ResultSetExtractor<T> rse) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, rse);
 	}
 
@@ -519,7 +521,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @return the result List, containing mapped objects
 	 * 
 	 */
-	public List query(String sql, RowMapper rowMapper) throws DataAccessException {
+	public <T> List<T> query(String sql, RowMapper<T> rowMapper) throws DataAccessException {
 		return proxyJdbcTemplate.query(sql, rowMapper);
 	}
 
@@ -538,7 +540,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 *            - object that will extract results
 	 * @return an arbitrary result object, as returned by the ResultSetExtractor
 	 */
-	public Object query(PreparedStatementCreator creator, ResultSetExtractor extractor) throws DataAccessException {
+	public <T> T query(PreparedStatementCreator creator, ResultSetExtractor<T> extractor) throws DataAccessException {
 		try {
 			return extractor.extractData(proxyResultSet);
 		} catch (SQLException sqle) {
@@ -579,7 +581,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public List query(PreparedStatementCreator psc, RowMapper rowMapper) throws DataAccessException {
+	public <T> List<T> query(PreparedStatementCreator psc, RowMapper<T> rowMapper) throws DataAccessException {
 		return proxyJdbcTemplate.query(psc, rowMapper);
 	}
 
@@ -625,7 +627,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public List queryForList(String sql) throws DataAccessException {
+	public List<Map<String, Object>> queryForList(String sql) throws DataAccessException {
 		return proxyJdbcTemplate.queryForList(sql);
 	}
 
@@ -642,7 +644,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public List queryForList(String sql, Object[] args) throws DataAccessException {
+	public List<Map<String, Object>> queryForList(String sql, Object[] args) throws DataAccessException {
 		return proxyJdbcTemplate.queryForList(sql, args);
 	}
 
@@ -690,7 +692,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public Object queryForObject(String sql, Class requiredType) throws DataAccessException {
+	public <T> T queryForObject(String sql, Class<T> requiredType) throws DataAccessException {
 		return proxyJdbcTemplate.queryForObject(sql, requiredType);
 	}
 
@@ -710,7 +712,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @throws DataAccessException
 	 *             if the query fails
 	 */
-	public Object queryForObject(String sql, Object[] args, Class requiredType) throws DataAccessException {
+	public <T> T queryForObject(String sql, Object[] args, Class<T> requiredType) throws DataAccessException {
 		return proxyJdbcTemplate.queryForObject(sql, args, requiredType);
 	}
 

@@ -1,26 +1,36 @@
 package no.stelvio.service.codestable;
 
-import static no.stelvio.common.util.Internal.cast;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Integration test for the codes table support in Stelvio.
  *
  * @author personf8e9850ed756, Accenture
  */
-public class CodesTableIntegrationTest extends AbstractDependencyInjectionSpringContextTests {
-	private ApplicationContext beanFactoryAccessor;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/test-codestable-context.xml"})
+
+public class CodesTableIntegrationTest {
+
+	@Resource(name = "rep.inttest.hibernateTemplate")
+	private HibernateTemplate hibernateTemplate;
 
 	/**
 	 * test of load configs.
 	 */
+	@Test
 	public void testLoadConfigs() {
-		HibernateTemplate hibernateTemplate = (HibernateTemplate)beanFactoryAccessor.getBean("rep.inttest.hibernateTemplate");
+
 
 		hibernateTemplate.save(TestCti.createCti1());
 		hibernateTemplate.save(TestCti.createCti2());
@@ -28,7 +38,7 @@ public class CodesTableIntegrationTest extends AbstractDependencyInjectionSpring
 		hibernateTemplate.save(TestCtpi.createCtpi2());
 		hibernateTemplate.save(TestCtpi.createCtpi3());
 
-		List<TestCti> cts = cast(hibernateTemplate.loadAll(TestCti.class));
+		List<TestCti> cts = hibernateTemplate.loadAll(TestCti.class);
 		hibernateTemplate.loadAll(TestCtpi.class);
 
 		for (TestCti cti : cts) {
@@ -38,23 +48,5 @@ public class CodesTableIntegrationTest extends AbstractDependencyInjectionSpring
 
 		assertEquals("Wrong number of rows in db", 2, cts.size());
 	}
-
-	/**
-	 * on setup.
-	 * 
-	 * @throws Exception if setup fails
-	 */
-	protected void onSetUp() throws Exception {
-		super.onSetUp();
-		beanFactoryAccessor = applicationContext;
-	}
-
-	/**
-	 * Get config locations.
-	 * 
-	 * @return config locations
-	 */
-	protected String[] getConfigLocations() {
-		return new String[]{"test-codestable-context.xml"};
-	}
 }
+

@@ -255,8 +255,8 @@ public class PagedSortableList<T> implements PagedList<T> {
 
 				String methodName = GET + column.substring(0, 1).toUpperCase() + column.substring(1);
 				try {
-					Method m = c1.getClass().getMethod(methodName, null);
-					Method m2 = c2.getClass().getMethod(methodName, null);
+					Method m = c1.getClass().getMethod(methodName, Void.class);
+					Method m2 = c2.getClass().getMethod(methodName, Void.class);
 
 					Comparable res1 = (Comparable) m.invoke(c1);
 					Comparable res2 = (Comparable) m2.invoke(c2);
