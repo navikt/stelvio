@@ -1,7 +1,7 @@
 package no.stelvio.test.spring.transaction;
 
 import org.jmock.Expectations;
-import org.jmock.Mockery;
+import org.jmock.integration.junit4.JUnit4Mockery;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
@@ -23,8 +23,7 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	 * The id used to check version of object when serializing.
 	 */
 	private static final long serialVersionUID = 1207560968402907790L;
-
-	private final transient Mockery context = new Mockery();
+	private final transient JUnit4Mockery context = new JUnit4Mockery();
 	private final transient TransactionStatus proxyTransactionStatus = context.mock(TransactionStatus.class);
 
 	/**
@@ -61,7 +60,7 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	 * @throws TransactionException
 	 *             if the transaction fails
 	 */
-	public Object execute(TransactionCallback action) throws TransactionException {
+	public <T> T execute(TransactionCallback<T> action) throws TransactionException {
 		return action.doInTransaction(proxyTransactionStatus);
 	}
 

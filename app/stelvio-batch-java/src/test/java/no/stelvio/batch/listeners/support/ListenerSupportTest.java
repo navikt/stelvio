@@ -1,7 +1,6 @@
 package no.stelvio.batch.listeners.support;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -17,7 +16,7 @@ public class ListenerSupportTest {
 
 	/**
 	 * Test method for
-	 * {@link no.nav.common.batch.springbatch.listeners.support.ListenerSupport#formatMillisecondsDurationAsHumanReadableString(long)}
+	 * {@link no.stelvio.batch.listeners.support.ListenerSupport#formatMillisecondsDurationAsHumanReadableString(long)}
 	 * .
 	 */
 	@Test

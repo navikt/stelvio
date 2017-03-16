@@ -17,6 +17,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hamcrest.core.IsAnything;
+import org.jmock.Expectations;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.support.StaticApplicationContext;
+
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.NotCodesTableException;
@@ -27,25 +34,15 @@ import no.stelvio.common.codestable.TestIdAsKeyCti;
 import no.stelvio.common.codestable.TestIdAsKeyCtpi;
 import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 
-import org.hamcrest.core.IsAnything;
-import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.context.support.StaticApplicationContext;
-
 /**
  * Unit test for {@link DefaultCodesTableManager}.
  * 
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-@RunWith(JMock.class)
+
 public class DefaultCodesTableManagerTest {
-	private Mockery context = new JUnit4Mockery();
+	public JUnitRuleMockery context = new JUnitRuleMockery();
 
 	private DefaultCodesTableManager dctm;
 

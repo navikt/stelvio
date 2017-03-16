@@ -1,15 +1,14 @@
 package no.stelvio.common.codestable.factory.support;
 
-import java.util.Collections;
 import static java.util.Collections.EMPTY_SET;
+
+import java.util.Collections;
 import java.util.Set;
 
 import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import no.stelvio.common.codestable.CodesTableConfigurationException;
 import no.stelvio.common.codestable.CodesTableItem;
@@ -25,9 +24,10 @@ import no.stelvio.common.codestable.TestCtpi;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-@RunWith(JMock.class)
+
 public class DefaultCodesTableInitializerTest {
-	private Mockery context = new JUnit4Mockery();
+	@Rule
+	public JUnitRuleMockery context = new JUnitRuleMockery();
 
 	/**
 	 * Test codesTableConfigurationExceptionIsThrownWhenNoItemClassesIsSet.
@@ -46,7 +46,7 @@ public class DefaultCodesTableInitializerTest {
 
 		context.checking(new Expectations() {
 			{
-				one(codesTableManager).getCodesTable(TestCti.class);
+				oneOf(codesTableManager).getCodesTable(TestCti.class);
 			}
 		});
 
@@ -65,7 +65,7 @@ public class DefaultCodesTableInitializerTest {
 
 		context.checking(new Expectations() {
 			{
-				one(codesTableManager).getCodesTablePeriodic(with(equal(TestCtpi.class)));
+				oneOf(codesTableManager).getCodesTablePeriodic(with(equal(TestCtpi.class)));
 			}
 		});
 
@@ -84,7 +84,7 @@ public class DefaultCodesTableInitializerTest {
 
 		context.checking(new Expectations() {
 			{
-				one(codesTableManager).getCodesTable(TestCti.class);
+				oneOf(codesTableManager).getCodesTable(TestCti.class);
 				will(returnValue(null));
 			}
 		});
@@ -105,7 +105,7 @@ public class DefaultCodesTableInitializerTest {
 
 		context.checking(new Expectations() {
 			{
-				one(codesTableManager).getCodesTablePeriodic(TestCtpi.class);
+				oneOf(codesTableManager).getCodesTablePeriodic(TestCtpi.class);
 				will(returnValue(null));
 			}
 		});

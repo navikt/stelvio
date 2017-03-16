@@ -1,23 +1,22 @@
 package no.stelvio.batch.controller.client;
 
-
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.isA;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import no.stelvio.batch.BatchStatus;
-import no.stelvio.batch.controller.SpringBatchEnabledBatchControllerServiceBi;
-import no.stelvio.batch.controller.client.BatchControllerClient.SpringBatchLauncher;
-import no.stelvio.batch.controller.client.support.SpringBatchEnabledBatchRunner;
-
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import no.stelvio.batch.BatchStatus;
+import no.stelvio.batch.controller.SpringBatchEnabledBatchControllerServiceBi;
+import no.stelvio.batch.controller.client.BatchControllerClient.SpringBatchLauncher;
+import no.stelvio.batch.controller.client.support.SpringBatchEnabledBatchRunner;
 
 /**
  * Test class for spring batch.
@@ -29,7 +28,6 @@ import org.junit.Test;
  */
 public class SpringBatchEnabledBatchControllerClientTest {
 	private SpringBatchLauncher launcher;
-	private SpringBatchEnabledBatchControllerServiceBi controllerServiceMock;
 	private SpringBatchEnabledBatchRunner batchRunner;
 	private String[] userNameAndPassword = {"-username <username>", "-password <password>"};
 	private String[] stelvioInput = {"BPOPP004", "1"};
@@ -37,6 +35,8 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	private String parameters = "runDate=14.05.2009,stopOnStep=step1";	
 	private String[] springBatchInput = {jobName, parameters};
 	private String stop = "stop";
+	@Mock
+	private SpringBatchEnabledBatchControllerServiceBi controllerServiceMock;
 
 	
 	/**
@@ -44,9 +44,9 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Before
 	public void setUp() {
+		MockitoAnnotations.initMocks(this);
 		launcher = new SpringBatchLauncher();
 		batchRunner = new SpringBatchEnabledBatchRunner();
-		controllerServiceMock = createMock(SpringBatchEnabledBatchControllerServiceBi.class);
 		batchRunner.setControllerService(controllerServiceMock);
 	}
 	
@@ -71,7 +71,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldRecognizeStelvioBatchExecutionInputWithSecurity() {
-		assertFalse(launcher.isSpringBatch((String[]) ArrayUtils.addAll(stelvioInput, userNameAndPassword)));
+		assertFalse(launcher.isSpringBatch(ArrayUtils.addAll(stelvioInput, userNameAndPassword)));
 	}	
 	
 	/**
@@ -79,7 +79,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldRecognizeStelvioBatchStopInput() {
-		assertFalse(launcher.isSpringBatch((String[]) ArrayUtils.add(stelvioInput, stop)));
+		assertFalse(launcher.isSpringBatch(ArrayUtils.add(stelvioInput, stop)));
 	}	
 	
 	/**
@@ -87,7 +87,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldRecognizeStelvioBatchStopInputWithSecurity() {
-		assertFalse(launcher.isSpringBatch((String[]) ArrayUtils.addAll(
+		assertFalse(launcher.isSpringBatch(ArrayUtils.addAll(
 				ArrayUtils.add(stelvioInput, stop), userNameAndPassword)));
 	}	
 	
@@ -104,7 +104,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldRecognizeSpringBatchExecutionInputWithSecurity() {
-		assertTrue(launcher.isSpringBatch((String[]) ArrayUtils.addAll(
+		assertTrue(launcher.isSpringBatch(ArrayUtils.addAll(
 				springBatchInput, userNameAndPassword)));
 	}	
 	
@@ -121,7 +121,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldRecognizeSpringBatchStopInputWithSecurity() {
-		assertTrue(launcher.isSpringBatch((String[]) ArrayUtils.add(ArrayUtils.add(
+		assertTrue(launcher.isSpringBatch(ArrayUtils.add(ArrayUtils.add(
 				new String[] {jobName}, "-username test"), stop)));
 	}		
 	
@@ -138,7 +138,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldCallRunBatchWithJobNameAndParametersWhenSecurityIsEnabled() {
-		executeBatch((String[]) ArrayUtils.addAll(springBatchInput, userNameAndPassword));
+		executeBatch(ArrayUtils.addAll(springBatchInput, userNameAndPassword));
 	}	
 
 	/**
@@ -154,7 +154,7 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldCallStopBatchWithJobNameWhenSecurityIsEnabled() {
-		stopBatch((String[]) ArrayUtils.add(ArrayUtils.add(
+		stopBatch(ArrayUtils.add(ArrayUtils.add(
 				new String[] {jobName}, "-username test"), stop));
 	}		
 	
@@ -163,10 +163,10 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	@Test
 	public void shouldReturnFatalStatusIfStopCallFails() {
-		expect(controllerServiceMock.stopBatch(isA(String.class))).andReturn(false);
-		replay(controllerServiceMock);
+		when(controllerServiceMock.stopBatch(isA(String.class))).thenReturn(false);
+
 		int returnStatus = launcher.runBatch(new String[] {jobName, stop}, batchRunner);
-		verify(controllerServiceMock);
+		verify(controllerServiceMock).stopBatch(isA(String.class));
 		assertEquals(BatchStatus.BATCH_FATAL, returnStatus);
 	}		
 
@@ -177,10 +177,9 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 */
 	private void executeBatch(String[] inputParameters) {
 		int batchStatus = BatchStatus.BATCH_OK;
-		expect(controllerServiceMock.executeBatch(jobName, parameters)).andReturn(batchStatus);
-		replay(controllerServiceMock);
+		when(controllerServiceMock.executeBatch(inputParameters[0], inputParameters[1])).thenReturn(batchStatus);
 		int returnStatus = launcher.runBatch(inputParameters, batchRunner);
-		verify(controllerServiceMock);
+		verify(controllerServiceMock).executeBatch(inputParameters[0], inputParameters[1]);
 		assertEquals(batchStatus, returnStatus);
 	}		
 	
@@ -190,10 +189,10 @@ public class SpringBatchEnabledBatchControllerClientTest {
 	 * @param inputParameters input
 	 */
 	private void stopBatch(String[] inputParameters) {
-		expect(controllerServiceMock.stopBatch(jobName)).andReturn(true);
-		replay(controllerServiceMock);
+		when(controllerServiceMock.stopBatch(inputParameters[0])).thenReturn(true);
+
 		int returnStatus = launcher.runBatch(inputParameters, batchRunner);
-		verify(controllerServiceMock);
+		verify(controllerServiceMock).stopBatch(inputParameters[0]);
 		assertEquals(BatchStatus.BATCH_OK, returnStatus);
 	}		
 }

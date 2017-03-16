@@ -13,15 +13,15 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
-
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.auth.callback.WSCallbackHandlerImpl;
 import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.ws.webservices.engine.encoding.Base64;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.xml.serialize.OutputFormat;
+import org.apache.xml.serialize.XMLSerializer;
 
 /**
  * SecurityHeader.
@@ -316,8 +316,8 @@ public class SecurityHeader {
 				}
 				// Get the first credential
 
-				WSCredential securityCredential = (WSCredential) securityCredentials.iterator().next();
-				String user = (String) securityCredential.getSecurityName();
+				WSCredential securityCredential = securityCredentials.iterator().next();
+				String user = securityCredential.getSecurityName();
 				// Get the security token
 				token = securityCredential.getCredentialToken();
 				if (LOG.isDebugEnabled()) {
@@ -454,7 +454,7 @@ public class SecurityHeader {
 	 * @return a result array
 	 */
 	private static byte[] xor(byte[] abyte0) {
-		byte[] abyte1 = (byte[]) null;
+		byte[] abyte1 = null;
 		if (abyte0 != null) {
 			abyte1 = new byte[abyte0.length];
 			for (int i = 0; i < abyte0.length; i++) {
@@ -472,7 +472,7 @@ public class SecurityHeader {
 	 * @return bytes
 	 */
 	private static byte[] convertViewableToBytes(String s) {
-		byte[] abyte0 = (byte[]) null;
+		byte[] abyte0 = null;
 		if (s != null) {
 			if (s.length() == 0) {
 				abyte0 = EMPTY_BYTE_ARRAY;
@@ -481,7 +481,7 @@ public class SecurityHeader {
 					abyte0 = base64Decode(convertToBytes(s));
 				} catch (Exception ex) {
 					LOG.error("Failed to decode " + s + ".", ex);
-					abyte0 = (byte[]) null;
+					abyte0 = null;
 				}
 			}
 		}
@@ -523,7 +523,7 @@ public class SecurityHeader {
 	 * @return bytes
 	 */
 	private static byte[] convertToBytes(String s) {
-		byte[] abyte0 = (byte[]) null;
+		byte[] abyte0 = null;
 		if (s != null) {
 			if (s.length() == 0) {
 				abyte0 = EMPTY_BYTE_ARRAY;
@@ -533,7 +533,7 @@ public class SecurityHeader {
 					abyte0 = s.getBytes("UTF8");
 				} catch (UnsupportedEncodingException ex) {
 					LOG.error("The UTF8 encoding is not supported.", ex);
-					abyte0 = (byte[]) null;
+					abyte0 = null;
 				}
 			}
 		}
