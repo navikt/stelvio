@@ -8,7 +8,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import junit.framework.Assert;
+import org.apache.commons.logging.Log;
+import org.jmock.Expectations;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.springframework.util.ReflectionUtils;
+
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.error.TestRecoverableException;
 import no.stelvio.common.error.TestUnrecoverableException;
@@ -18,26 +26,16 @@ import no.stelvio.common.error.support.ErrorDefinition;
 import no.stelvio.common.error.support.Severity;
 import no.stelvio.common.util.ReflectUtil;
 
-import org.apache.commons.logging.Log;
-import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.util.ReflectionUtils;
-
 /**
  * Unit test of {@link LoggerExceptionHandlerStrategy}.
  * 
  * @author personcb9a87e24a5f
  * @author person983601e0e117
  */
-@RunWith(JMock.class)
-public class LoggerExceptionHandlerStrategyTest {
-	private final Mockery context = new JUnit4Mockery();
 
+public class LoggerExceptionHandlerStrategyTest {
+	@Rule
+	public final JUnitRuleMockery context = new JUnitRuleMockery();
 	private LoggerExceptionHandlerStrategy leh;
 
 	/**

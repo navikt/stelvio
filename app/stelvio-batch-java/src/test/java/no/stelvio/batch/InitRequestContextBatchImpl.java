@@ -1,9 +1,10 @@
 package no.stelvio.batch;
 
-import static junit.framework.Assert.fail;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.fail;
+
 import no.stelvio.batch.exception.BatchFunctionalException;
 import no.stelvio.batch.exception.BatchSystemException;
 import no.stelvio.common.context.RequestContext;

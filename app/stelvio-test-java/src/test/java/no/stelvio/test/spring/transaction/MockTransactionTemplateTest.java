@@ -1,9 +1,10 @@
 package no.stelvio.test.spring.transaction;
 
-import org.jmock.Expectations;
-import org.junit.After;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import org.jmock.Expectations;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.transaction.TransactionStatus;
@@ -42,7 +43,7 @@ public class MockTransactionTemplateTest {
 	public void shouldWorkWithTransactionStatus() {
 		mockTransactionTemplate.expectsOnTransactionStatus(new Expectations() {
 			{
-				one(mockTransactionTemplate.getProxyTransactionStatus()).setRollbackOnly();
+				oneOf(mockTransactionTemplate.getProxyTransactionStatus()).setRollbackOnly();
 			}
 		});
 

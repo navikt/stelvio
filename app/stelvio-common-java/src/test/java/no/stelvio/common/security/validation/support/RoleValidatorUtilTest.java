@@ -1,7 +1,9 @@
 package no.stelvio.common.security.validation.support;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+
 import org.junit.Test;
 
 import no.stelvio.common.security.validation.ValidRole;
@@ -43,7 +45,7 @@ public class RoleValidatorUtilTest {
 	@Test
 	public void getRolesFromEnum() {
 		ValidRole[] roles = RoleValidatorUtil.getRolesFromEnum(ValidRolesEnum.class);
-		assertEquals("The roles returned should be the same as the roles in the enum.", ValidRolesEnum.values(), roles);
+		assertArrayEquals("The roles returned should be the same as the roles in the enum.", ValidRolesEnum.values(), roles);
 		assertNull("Should return null as the parameter is not a ValidRole implementation.", RoleValidatorUtil
 				.getRolesFromEnum(MockEnum.class));
 	}

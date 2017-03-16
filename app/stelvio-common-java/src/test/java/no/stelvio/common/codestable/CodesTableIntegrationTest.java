@@ -1,21 +1,20 @@
 package no.stelvio.common.codestable;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
 
-import no.stelvio.common.codestable.factory.support.DefaultCodesTableInitializer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.jmock.Expectations;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.junit.Rule;
+import org.junit.Test;
+
 import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
+import no.stelvio.common.codestable.factory.support.DefaultCodesTableInitializer;
 import no.stelvio.common.codestable.support.DefaultCodesTableManager;
 
 /**
@@ -23,9 +22,10 @@ import no.stelvio.common.codestable.support.DefaultCodesTableManager;
  * 
  * @author personf8e9850ed756, Accenture
  */
-@RunWith(JMock.class)
+
 public class CodesTableIntegrationTest {
-	private Mockery context = new JUnit4Mockery();
+	@Rule
+	public JUnitRuleMockery context = new JUnitRuleMockery();
 
 	/**
 	 * Test that manager returns the correct codestable.
@@ -74,9 +74,9 @@ public class CodesTableIntegrationTest {
 
 		context.checking(new Expectations() {
 			{
-				one(codesTableItemsFactory).createCodesTableItems(TestCti.class);
+				oneOf(codesTableItemsFactory).createCodesTableItems(TestCti.class);
 				will(returnValue(createCodesTableItems()));
-				one(codesTableItemsFactory).createCodesTablePeriodicItems(TestCtpi.class);
+				oneOf(codesTableItemsFactory).createCodesTablePeriodicItems(TestCtpi.class);
 				will(returnValue(createCodesTablePeriodicItems()));
 			}
 		});

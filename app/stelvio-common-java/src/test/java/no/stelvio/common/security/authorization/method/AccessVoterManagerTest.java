@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.security.access.AccessDecisionVoter;
@@ -12,12 +15,7 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Test class for AccessVoterManager.
@@ -237,7 +235,7 @@ public class AccessVoterManagerTest {
 		assertEquals(configAttributes.size(), mgr.getDecisionVoters().size());
 		assertEquals(true, mgr.isAllowIfAllAbstainDecisions());
 		assertTrue(mgr.supports(attr));
-		assertTrue(mgr.supports(new Object().getClass()));
+		assertTrue(mgr.supports(Object.class));
 	}
 
 }
