@@ -188,6 +188,12 @@
             </dependency>
 
             <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>1.1</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>${hsqldb.version}</version>
@@ -563,6 +569,18 @@
             </dependency>
             <dependency>
                 <groupId>websphere</groupId>
+                <artifactId>com.ibm.ws.runtime</artifactId>
+                <version>${websphere-runtime.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>websphere</groupId>
+                <artifactId>com.ibm.jaxws.thinclient</artifactId>
+                <version>${websphere-runtime.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>websphere</groupId>
                 <artifactId>com.ibm.ws.webservices.thinclient</artifactId>
                 <version>${websphere-runtime.version}</version>
                 <scope>provided</scope>
@@ -913,7 +931,7 @@
         <spring-security.version>3.2.9.RELEASE</spring-security.version>
         <swf.version>2.3.4.RELEASE</swf.version>
         <tomahawk.version>1.1.14</tomahawk.version>
-        <websphere-runtime.version>8.5.0</websphere-runtime.version>
+        <websphere-runtime.version>9.0.0</websphere-runtime.version>
         <xerces.version>2.4.0</xerces.version>
         <!-- testing dependencies -->
         <junit.version>4.12</junit.version>

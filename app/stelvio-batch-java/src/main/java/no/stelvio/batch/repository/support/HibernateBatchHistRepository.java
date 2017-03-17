@@ -4,11 +4,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.orm.hibernate4.HibernateTemplate;
+
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
 import no.stelvio.batch.repository.BatchHistRepository;
-
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
  * Implementation of the BatchRepository that uses Hibernate to update the

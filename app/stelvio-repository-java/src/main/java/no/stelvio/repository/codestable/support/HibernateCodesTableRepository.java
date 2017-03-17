@@ -1,6 +1,7 @@
 package no.stelvio.repository.codestable.support;
 
 import java.util.List;
+
 import javax.persistence.Entity;
 
 import org.hibernate.FlushMode;
@@ -8,10 +9,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
-import static no.stelvio.common.util.Internal.cast;
 import no.stelvio.repository.codestable.CodesTableRepository;
 
 /**

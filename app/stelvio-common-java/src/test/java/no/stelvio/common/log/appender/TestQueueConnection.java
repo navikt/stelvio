@@ -182,6 +182,11 @@ public class TestQueueConnection implements QueueConnection {
 		return null;
 	}
 
+    @Override
+    public ConnectionConsumer createSharedConnectionConsumer(Topic topic, String s, String s1, ServerSessionPool serverSessionPool, int i) throws JMSException {
+        return null;
+    }
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -190,10 +195,25 @@ public class TestQueueConnection implements QueueConnection {
 		return null;
 	}
 
+    @Override
+    public ConnectionConsumer createSharedDurableConnectionConsumer(Topic topic, String s, String s1, ServerSessionPool serverSessionPool, int i) throws JMSException {
+        return null;
+    }
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public Session createSession(boolean arg0, int arg1) throws JMSException {
-		return null;
+        return null;
+    }
+
+    @Override
+    public Session createSession(int i) throws JMSException {
+        return null;
+    }
+
+    @Override
+    public Session createSession() throws JMSException {
+        return null;
 	}
 }

@@ -12,7 +12,51 @@
 		<property name="timeToRun" value="1" />
 		<property name="exitCode" value="8" />
 	</bean>
+    <bean id="btc.testbatch.sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 
+        <property name="dataSource" ref="btc.testbatch.dataSource"/>
+
+        <property name="annotatedClasses">
+            <list>
+                <value>no.stelvio.batch.domain.BatchDO
+                </value>
+                <value>no.stelvio.batch.domain.BatchHistDO
+                </value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.url">jdbc:hsqldb:mem:mydb</prop>
+                <prop key="hibernate.connection.pool_size">1</prop>
+                <prop key="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</prop>
+                <prop key="hibernate.connection.username">sa</prop>
+                <prop key="hibernate.connection.password"></prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.internal.NoCachingRegionFactory</prop>
+                <prop key="hibernate.transaction.factory_class">org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory</prop>
+                <prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform</prop>
+
+            </props>
+        </property>
+
+    </bean>
+    <!-- Hibernate Template Defintion -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory">
+            <ref bean="btc.testbatch.sessionFactory"/>
+        </property>
+    </bean>
+    <!--  stelvio batch repository -->
+    <bean id="batchHistoryRepository"
+          class="no.stelvio.batch.repository.support.HibernateBatchHistRepository"
+          scope="prototype">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
 	<bean id="btc.testbatch.dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
@@ -51,55 +95,13 @@
 		class="no.stelvio.batch.StelvioBatchParameterReader">
 		<property name="batchRepository" ref="batchRepository" />
 	</bean>
-	
-	<!-- Hibernate Template Defintion -->
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-		<property name="sessionFactory">
-			<ref bean="btc.testbatch.sessionFactory" />
-		</property>
-	</bean>
-	<!--  stelvio batch repository -->
-	<bean id="batchHistoryRepository"
-		class="no.stelvio.batch.repository.support.HibernateBatchHistRepository"
-		scope="prototype">
-		<property name="hibernateTemplate" ref="hibernateTemplate" />
-	</bean>
 
-	<bean id="batchRepository"
-		class="no.stelvio.batch.repository.support.HibernateBatchRepository"
-		scope="prototype">
+
+    <bean id="batchRepository"
+          class="no.stelvio.batch.repository.support.HibernateBatchRepository"
+          scope="prototype">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	
-	<bean id="btc.testbatch.sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
-		<property name="dataSource" ref="btc.testbatch.dataSource" />
-
-		<property name="annotatedClasses">
-			<list>
-				<value>no.stelvio.batch.domain.BatchDO
-				</value>
-				<value>no.stelvio.batch.domain.BatchHistDO
-				</value>
-			</list>
-		</property>
-
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect
-				</prop>
-				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.connection.url">jdbc:hsqldb:mem:mydb</prop>
-				<prop key="hibernate.connection.pool_size">1</prop>
-				<prop key="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</prop>
-				<prop key="hibernate.connection.username">sa</prop>
-				<prop key="hibernate.connection.password"></prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
-				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider
-				</prop>
-			</props>
-		</property>
-	</bean>
 </beans>

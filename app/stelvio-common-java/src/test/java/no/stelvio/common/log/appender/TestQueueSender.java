@@ -1,5 +1,6 @@
 package no.stelvio.common.log.appender;
 
+import javax.jms.CompletionListener;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -160,6 +161,16 @@ public class TestQueueSender implements QueueSender {
 		return 0;
 	}
 
+    @Override
+    public void setDeliveryDelay(long l) throws JMSException {
+
+    }
+
+    @Override
+    public long getDeliveryDelay() throws JMSException {
+        return 0;
+    }
+
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -215,4 +226,23 @@ public class TestQueueSender implements QueueSender {
 	public void send(Destination arg0, Message arg1, int arg2, int arg3, long arg4) throws JMSException {
 	}
 
+    @Override
+    public void send(Message message, CompletionListener completionListener) throws JMSException {
+
+    }
+
+    @Override
+    public void send(Message message, int i, int i1, long l, CompletionListener completionListener) throws JMSException {
+
+    }
+
+    @Override
+    public void send(Destination destination, Message message, CompletionListener completionListener) throws JMSException {
+
+    }
+
+    @Override
+    public void send(Destination destination, Message message, int i, int i1, long l, CompletionListener completionListener) throws JMSException {
+
+    }
 }

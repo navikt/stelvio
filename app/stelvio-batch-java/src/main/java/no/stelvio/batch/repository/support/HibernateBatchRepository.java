@@ -2,11 +2,11 @@ package no.stelvio.batch.repository.support;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate4.HibernateTemplate;
+
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
 import no.stelvio.batch.repository.BatchRepository;
-
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
  * Implementation of the BatchRepository that uses Hibernate to update the BatchDO. A HibernateTemplate should be injected
@@ -37,8 +37,8 @@ public class HibernateBatchRepository implements BatchRepository {
 	 * This version should return first (latest) entrance of batchname and slice
 	 */
 	public BatchDO findByNameAndSlice(String batchName, int slice) throws InvalidBatchEntryException {
-		Object[] arguments = { batchName, Integer.valueOf(slice) };
-		List batchDos = getHibernateTemplate().findByNamedQueryAndNamedParam(NAME_AND_SLICE_QUERY, nameAndSliceParams,
+        Object[] arguments = {batchName, slice};
+        List batchDos = getHibernateTemplate().findByNamedQueryAndNamedParam(NAME_AND_SLICE_QUERY, nameAndSliceParams,
 				arguments);
 
 		// No such batch defined in database
