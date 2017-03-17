@@ -15,6 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.filter.OncePerRequestFilter;
+import org.xml.sax.SAXException;
+
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.RequestContextSetter;
@@ -28,13 +34,6 @@ import no.stelvio.presentation.security.context.parse.SecurityRole;
 import no.stelvio.presentation.security.context.parse.WebAppRoles;
 import no.stelvio.presentation.security.context.parse.WebXmlParser;
 import no.stelvio.presentation.security.page.constants.Constants;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.util.ClassUtils;
-import org.springframework.web.filter.OncePerRequestFilter;
-import org.xml.sax.SAXException;
 
 /**
  * Servlet-filter responsible for populating a <code>SecurityContext</code> and place it in a
@@ -107,7 +106,7 @@ abstract class AbstractSecurityContextFilter extends OncePerRequestFilter {
 			String enumName = getFilterConfig().getInitParameter(VALID_ROLES_ENUM);
 
 			if (enumName != null) {
-				Class<Enum> enumClass = cast(ClassUtils.forName(enumName));
+				Class<Enum> enumClass = cast(Class.forName(enumName));
 				validator = RoleValidatorUtil.createValidatorFromEnum(enumClass);
 			}
 		}

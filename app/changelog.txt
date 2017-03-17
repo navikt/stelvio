@@ -136,8 +136,6 @@ Version 2.1.1 (20.05.2011)
 Module stelvio-presentation:
 * CodesTableItemSelectOneMenu fix - list of items will be filtered even though displayValueOnly is true and false for different items in a table
 
-Module stelvio-batch:
-* Resolved classloading issues for Jamon enabled batch counter when Jamon is not on classpath
 
 Version 2.1.0 (19.04.2011)
 ----------------------------------

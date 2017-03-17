@@ -587,8 +587,8 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 
 	/**
 	 * Mocks the call to <code>org.springframework.jdbc.core.JdbcTemplate#queryForInt(java.lang.String)</code>.
-	 * 
-	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForInt(java.lang.String)
+	 *
+	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForObject(java.lang.String, Class)
 	 * @param sql
 	 *            - SQL query to execute
 	 * @throws DataAccessException
@@ -596,14 +596,14 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * @return the int value, or 0 in case of SQL NULL
 	 */
 	public int queryForInt(String sql) throws DataAccessException {
-		return proxyJdbcTemplate.queryForInt(sql);
+		return proxyJdbcTemplate.queryForObject(sql, Integer.class);
 	}
 
 	/**
 	 * Mocks the call to
 	 * <code>org.springframework.jdbc.core.JdbcTemplate#queryForInt(java.lang.String, java.lang.Object[])</code>.
-	 * 
-	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForInt(java.lang.String, java.lang.Object[])
+	 *
+	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForObject(String, java.lang.Object[], Class)
 	 * @param sql
 	 *            - SQL query to execute
 	 * @param args
@@ -614,7 +614,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 * 
 	 */
 	public int queryForInt(String sql, Object[] args) throws DataAccessException {
-		return proxyJdbcTemplate.queryForInt(sql, args);
+		return proxyJdbcTemplate.queryForObject(sql, args, Integer.class);
 	}
 
 	/**
@@ -650,8 +650,8 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 
 	/**
 	 * Mocks the call to <code>org.springframework.jdbc.core.JdbcTemplate#queryForLong(java.lang.String)</code>.
-	 * 
-	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForLong(java.lang.String)
+	 *
+	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForObject(String, Class)
 	 * @param sql
 	 *            - SQL query to execute
 	 * @return the long value, or 0 in case of SQL NULL
@@ -659,14 +659,14 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 *             if the query fails
 	 */
 	public long queryForLong(String sql) throws DataAccessException {
-		return proxyJdbcTemplate.queryForLong(sql);
+		return proxyJdbcTemplate.queryForObject(sql, Long.class);
 	}
 
 	/**
 	 * Mocks the call to
 	 * <code>org.springframework.jdbc.core.JdbcTemplate#queryForLong(java.lang.String, java.lang.Object[])</code>.
-	 * 
-	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForLong(java.lang.String, java.lang.Object[])
+	 *
+	 * @see org.springframework.jdbc.core.JdbcTemplate#queryForObject(java.lang.String, java.lang.Object[], Class)
 	 * @param sql
 	 *            - SQL query to execute
 	 * @param args
@@ -676,7 +676,7 @@ public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, B
 	 *             if the query fails
 	 */
 	public long queryForLong(String sql, Object[] args) throws DataAccessException {
-		return proxyJdbcTemplate.queryForLong(sql, args);
+		return proxyJdbcTemplate.queryForObject(sql, args, Long.class);
 	}
 
 	/**
