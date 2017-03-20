@@ -1,11 +1,12 @@
 package no.stelvio.batch.support;
 
+import org.springframework.jdbc.UncategorizedSQLException;
+
 import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
 import no.stelvio.domain.time.ChangeStamp;
-import org.springframework.jdbc.UncategorizedSQLException;
 
 /**
  * Class for saving and retrieving history on batches that have been run
@@ -14,12 +15,12 @@ import org.springframework.jdbc.UncategorizedSQLException;
  **/
 public class ControllerServiceHistorySupport {
 
-	BatchHistRepository repository;
-	StelvioBatchParameterReader reader;
 	private final static String BATCH_STATUS_STARTED = "STARTED"; // Corresponds
 	// with
 	// BatchStatus.STARTED
 	private static final String BATCH_STATUS_COMPLETED = "COMPLETED"; // Corresponds
+    BatchHistRepository repository;
+	StelvioBatchParameterReader reader;
 	// with
 	// BatchStatus.COMPLETED
 

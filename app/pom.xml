@@ -569,13 +569,13 @@
             </dependency>
             <dependency>
                 <groupId>websphere</groupId>
-                <artifactId>com.ibm.ws.runtime</artifactId>
+                <artifactId>com.ibm.jaxws.thinclient</artifactId>
                 <version>${websphere-runtime.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>websphere</groupId>
-                <artifactId>com.ibm.jaxws.thinclient</artifactId>
+                <artifactId>com.ibm.ws.ejb.thinclient</artifactId>
                 <version>${websphere-runtime.version}</version>
                 <scope>provided</scope>
             </dependency>
@@ -586,11 +586,12 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-				<groupId>websphere</groupId>
-				<artifactId>com.ibm.ws.ejb.thinclient</artifactId>
-				<version>${websphere-runtime.version}</version>
-				<scope>provided</scope>
-			</dependency>            
+                <groupId>websphere</groupId>
+                <artifactId>com.ibm.ws.runtime</artifactId>
+                <version>${websphere-runtime.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
             <dependency>
                 <groupId>xerces</groupId>
                 <artifactId>xercesImpl</artifactId>

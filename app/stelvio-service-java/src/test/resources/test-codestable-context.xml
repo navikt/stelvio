@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
@@ -11,7 +11,11 @@
 		<property name="codesTableItemsFactory" ref="rep.inttest.codesTableItemsFactory"/>
 	</bean>
 -->
-
+	<!-- Transaction manager for tests -->
+	<bean id="transactionManager"
+		  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="rep.inttest.sessionFactory"/>
+	</bean>
 	<bean id="rep.inttest.hibernateTemplate"
           class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<property name="sessionFactory" ref="rep.inttest.sessionFactory"/>
@@ -32,12 +36,9 @@
 				<prop key="hibernate.query.jpaql_strict_compliance">true</prop>
 				<prop key="hibernate.generate_statistics">true</prop>
 				<prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.internal.NoCachingRegionFactory</prop>
-                <prop key="hibernate.transaction.factory_class">org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory</prop>
-                <prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-		<property name="schemaUpdate" value="true"/>
 	</bean>
 
 	<bean id="rep.inttest.dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

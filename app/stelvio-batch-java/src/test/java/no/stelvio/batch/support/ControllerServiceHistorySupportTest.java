@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import no.stelvio.batch.BatchConfiguration;
 import no.stelvio.batch.BatchStatus;
@@ -27,6 +28,7 @@ import no.stelvio.batch.repository.support.HibernateBatchRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = BatchConfiguration.class)
+@Transactional
 public class ControllerServiceHistorySupportTest {
 
     @Autowired
@@ -43,6 +45,7 @@ public class ControllerServiceHistorySupportTest {
     /**
      *
      */
+
     public ControllerServiceHistorySupportTest() {
     }
 
@@ -87,6 +90,7 @@ public class ControllerServiceHistorySupportTest {
     }
 
     @Test
+
     public void shouldPersistBatchHistoryBeforeStartWithMock() {
 
         batchControllerService.executeBatch("btc.testbatch.dummyBatch", 0);
@@ -103,6 +107,7 @@ public class ControllerServiceHistorySupportTest {
     }
 
     @Test
+
     public void shouldSaveBatchHistToDatabase() {
 
         //This "test" need a more complete case
@@ -120,6 +125,7 @@ public class ControllerServiceHistorySupportTest {
     }
 
     @Test
+
     public void shouldSaveBatchHistToDatabaseBatchWithParams() {
 
         //This "test" need a more complete case
@@ -140,6 +146,7 @@ public class ControllerServiceHistorySupportTest {
     //TODO rename test
     //TODO Mange av disse testene er veldig ad-hoc og bærer preg av å ville teste database og ikke bare metodesignaturer
     @Test
+
     public void endToEndTest() {
         String batchName = "btc.testbatch.dummyBatch";
         Date testDay = new Date();
@@ -157,6 +164,7 @@ public class ControllerServiceHistorySupportTest {
     }
 
     @Test
+
     public void endToEndTestBatchWithParams() {
         String batchName = "btc.testbatch.dummyBatchWithInputParameters";
         Date testDay = new Date();
@@ -174,6 +182,7 @@ public class ControllerServiceHistorySupportTest {
     }
 
     @Test(expected = InvalidBatchEntryException.class)
+
     public void shouldThrowExceptionIfNonexistingBatch() {
 
         histRepository.findByNameAndSlice("non-existing-batch", 1);
@@ -183,6 +192,7 @@ public class ControllerServiceHistorySupportTest {
     }
 
     @Test
+
     public void shouldSaveAdditionalDataToExistingBatchHistoryEntry() {
         int finishedCode = 1;
 

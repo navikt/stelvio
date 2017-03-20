@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -41,7 +42,8 @@ public class AbstractBatchTest {
 	private int desiredStatus = BatchStatus.BATCH_OK;
 
 	@Autowired
-	private AbstractBatch progressReportingAndExceptionThrowingBatch;
+    @Qualifier("btc.testbatch.dummyBatch")
+    private AbstractBatch progressReportingAndExceptionThrowingBatch;
 
 	private String userId = "xxx9999";
 	

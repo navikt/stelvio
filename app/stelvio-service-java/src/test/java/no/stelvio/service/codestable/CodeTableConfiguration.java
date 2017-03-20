@@ -1,9 +1,9 @@
-package no.stelvio.batch;
+package no.stelvio.service.codestable;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ImportResource("btc-testbatch-context.xml")
-public class BatchConfiguration {
+@ImportResource("test-codestable-context.xml")
+public class CodeTableConfiguration {
 }

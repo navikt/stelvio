@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.stelvio.presentation.jsf.validator;
 
 import java.text.ParseException;
@@ -10,13 +7,13 @@ import java.util.Date;
 import javax.faces.component.UIComponent;
 import javax.faces.validator.ValidatorException;
 
-import no.stelvio.presentation.binding.context.MessageContextUtil;
-import no.stelvio.presentation.jsf.mock.SpringDefinition;
-import no.stelvio.presentation.jsf.mock.UIComponentMock;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import no.stelvio.presentation.binding.context.MessageContextUtil;
+import no.stelvio.presentation.jsf.mock.SpringDefinition;
+import no.stelvio.presentation.jsf.mock.UIComponentMock;
 
 /**
  * DateRangeValidatorTest tests DateRangeValidator.
@@ -24,6 +21,7 @@ import org.junit.Test;
  * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
+
 public class DateRangeValidatorTest {
 
 	private static final String DATE_FORMAT = "dd.MM.yyyy";
@@ -61,7 +59,7 @@ public class DateRangeValidatorTest {
 	public void testValidateInvalidObjectType() {
 		DateRangeValidator validator = new DateRangeValidator();
 		try {
-			validator.validate(null, component, Long.valueOf(1L));
+			validator.validate(null, component, 1L);
 			Assert.fail();
 		} catch (ValidatorException e) {
 			Assert.assertEquals(MessageContextUtil.getMessage(DateRangeValidator.TYPE_MESSAGE_ID, null), e.getFacesMessage()

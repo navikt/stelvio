@@ -96,14 +96,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
+
         <dependency>
             <groupId>websphere</groupId>
             <artifactId>com.ibm.ws.runtime</artifactId>
         </dependency>
-        <dependency>
-            <groupId>websphere</groupId>
-            <artifactId>com.ibm.jaxws.thinclient</artifactId>
-        </dependency>
+
+
         <dependency>
             <!-- Framework for AOP (Aspect Oriented Programming), providing method
                 interceptors that for instance is used by Stelvio transfer objects to set
