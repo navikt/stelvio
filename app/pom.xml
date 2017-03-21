@@ -1,12 +1,7 @@
 <!--<?xml version="1.0" encoding="UTF-8"?> -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <parent>
-        <groupId>no.stelvio.maven.poms</groupId>
-        <artifactId>maven-root-pom</artifactId>
-        <version>1.2.5</version>
-    </parent>
 
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio</artifactId>
@@ -15,7 +10,6 @@
     <name>stelvio</name>
 
     <modules>
-        <!-- ========================= -->
         <!-- ========================= -->
         <!-- Stelvio framework modules -->
         <!-- ========================= -->
@@ -33,8 +27,9 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</connection>
-        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</developerConnection>
+        <connection>scm:git:ssh://test@example.com:7999/pen/stelvio.git</connection>
+        <developerConnection>scm:git:ssh://test@example.com:7999/pen/stelvio.git</developerConnection>
+        <url>http://stash.devillo.no/projects/PEN/repos/stelvio/</url>
     </scm>
 
     <dependencyManagement>
@@ -79,13 +74,11 @@
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collections.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>commons-digester</groupId>
                 <artifactId>commons-digester</artifactId>
@@ -124,11 +117,6 @@
                         <artifactId>slf4j-log4j12</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.easymock</groupId>
-                <artifactId>easymock</artifactId>
-                <version>${easymock.version}</version>
             </dependency>
             <dependency>
                 <!-- Cache provider -->
@@ -183,13 +171,11 @@
                 <!-- Kan se ut som det gir problemer å oppgradere denne -->
                 <version>${hibernate-core.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.hibernate.javax.persistence</groupId>
                 <artifactId>hibernate-jpa-2.0-api</artifactId>
                 <version>${hibernate-jpa-2.0-api.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
@@ -243,7 +229,7 @@
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
+                <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
             </dependency>
             <dependency>
@@ -257,7 +243,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
             <dependency>
                 <!-- JPA, for data access using Java Persistence API -->
                 <groupId>javax.persistence</groupId>
@@ -312,7 +297,6 @@
                 <artifactId>spring-batch-core</artifactId>
                 <version>${spring-batch.version}</version>
                 <exclusions>
-
                     <exclusion>
                         <groupId>com.thoughtworks.xstream</groupId>
                         <artifactId>xstream</artifactId>
@@ -592,22 +576,29 @@
                 <version>${log4j.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>${hamcrest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-
         <dependency>
             <!-- JUnit testing is the selected framework for unit testing. -->
             <artifactId>junit</artifactId>
             <groupId>junit</groupId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>            
-            <version>1.3</version>
+            <artifactId>hamcrest-core</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -633,17 +624,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>${surefire.version}</version>
+                <version>${maven-surefire-report.version}</version>
             </plugin>
             <plugin>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>2.9.1</version>
-                    <configuration>
-                        <configLocation>http://sonar.devillo.no/sonar/profiles/export?format=checkstyle&amp;language=java&amp;name=nav-mod</configLocation>
-                        <violationSeverity>warning</violationSeverity>
-                        <aggregate>true</aggregate>
-                    </configuration>
-                </plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <configLocation>http://sonar.devillo.no/sonar/profiles/export?format=checkstyle&amp;language=java&amp;name=nav-mod</configLocation>
+                    <violationSeverity>warning</violationSeverity>
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
 			
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -662,24 +653,33 @@
 			</plugin>
         </plugins>
     </reporting>
+
     <build>
         <plugins>
             <plugin>
-                <!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin
-                    To run: mvn depgraph:fullgraph If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf
-                    - [file.pdf] -->
-                <groupId>ch.elca.el4j.maven.plugins</groupId>
-                <artifactId>maven-depgraph-plugin</artifactId>
-                <version>1.1</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-toolchains-plugin</artifactId>
+                <version>${maven-toolchains.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>toolchain</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <outDir>target/site/graphs</outDir>
-                    <outFile>${project.artifactId}-depgraph.png</outFile>
-                    <dotFile>${project.artifactId}-depgraph.dot</dotFile>
+                    <toolchains>
+                        <jdk>
+                            <version>${project.build.sourceVersion}</version>
+                            <vendor>ibm</vendor>
+                        </jdk>
+                    </toolchains>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source.version}</version>
                 <configuration>
                     <attach>true</attach>
                 </configuration>
@@ -693,17 +693,23 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>${maven-release-plugin.version}</version>
+                <!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin
+                    To run: mvn depgraph:fullgraph If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf
+                    - [file.pdf] -->
+                <groupId>ch.elca.el4j.maven.plugins</groupId>
+                <artifactId>maven-depgraph-plugin</artifactId>
+                <version>${maven-depgraph-plugin.version}</version>
                 <configuration>
-                    <tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
+                    <outDir>target/site/graphs</outDir>
+                    <outFile>${project.artifactId}-depgraph.png</outFile>
+                    <dotFile>${project.artifactId}-depgraph.dot</dotFile>
                 </configuration>
             </plugin>
             <plugin>
                 <!-- This is necessary to exclude running all classes named Test*.java as unit tests -->
                 <artifactId>maven-surefire-plugin</artifactId>
                 <groupId>org.apache.maven.plugins</groupId>
+                <version>${maven-surefire.version}</version>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
@@ -726,9 +732,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler.version}</version>
                     <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
+                        <source>${project.build.sourceVersion}</source>
+                        <target>${project.build.targetVersion}</target>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -747,7 +754,7 @@
 				<plugin>
 	            	<groupId>org.jacoco</groupId>
 	            	<artifactId>jacoco-maven-plugin</artifactId>
-	            	<version>${jacoco.version}</version>
+                    <version>${jacoco-maven.version}</version>
 	            	<executions>
 	            		<execution>
 	            			<id>prepare-unit-test-agent</id>
@@ -763,7 +770,6 @@
 	            		</execution>
 	            	</executions>
 	          	</plugin>
-				                
             </plugins>
         </pluginManagement>
         <extensions>
@@ -792,7 +798,7 @@
                         <!-- Clover unit test coverage -->
                         <groupId>com.atlassian.maven.plugins</groupId>
                         <artifactId>maven-clover2-plugin</artifactId>
-                        <version>${clover.version}</version>
+                        <version>${maven-clover2.version}</version>
                         <configuration>
                             <licenseLocation>${clover.licenseLocation}</licenseLocation>
                         </configuration>
@@ -843,7 +849,7 @@
                         <!-- Clover code coverage site report. Setup the reporting to include Clover -->
                         <groupId>com.atlassian.maven.plugins</groupId>
                         <artifactId>maven-clover2-plugin</artifactId>
-                        <version>${clover.version}</version>
+                        <version>${maven-clover2.version}</version>
                         <configuration>
                             <licenseLocation>${clover.licenseLocation}</licenseLocation>
                             <generateHistorical>true</generateHistorical>
@@ -859,35 +865,29 @@
     </profiles>
 
     <properties>
-
         <!-- java version -->
-        <java.version>1.6</java.version>
-
+        <project.build.sourceVersion>1.6</project.build.sourceVersion>
+        <project.build.targetVersion>${project.build.sourceVersion}</project.build.targetVersion>
         <!-- Application dependencies -->
         <aopalliance.version>1.0</aopalliance.version>
         <aspectjweaver.version>1.5.4</aspectjweaver.version>
         <cglib-nodep.version>3.0</cglib-nodep.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
-        <commons-lang.version>3.1</commons-lang.version>
-        <commons-logging.version>1.1.3</commons-logging.version>
+        <commons-lang.version>3.5</commons-lang.version>
+        <commons-logging.version>1.2</commons-logging.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <commons-digester.version>1.6</commons-digester.version>
-        <dozer.version>5.4.0</dozer.version>
-        <easymock.version>3.2</easymock.version>
-        <ehcache.version>2.6.6</ehcache.version>
+        <dozer.version>5.5.1</dozer.version>
+        <ehcache.version>2.6.11</ehcache.version>
         <hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
         <hibernate-commons-annotations.version>3.2.0.Final</hibernate-commons-annotations.version>
         <hibernate-core.version>3.6.9.Final</hibernate-core.version>
         <hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
         <hsqldb.version>2.3.0</hsqldb.version>
-        <jmock.version>2.6.0</jmock.version>
-        <jamon.version>2.73</jamon.version>
         <javassist.version>3.12.1.GA</javassist.version>
-        <joda-time.version>2.3</joda-time.version>
+        <joda-time.version>2.9.7</joda-time.version>
         <jsf-security.version>1.0</jsf-security.version>
-        <junit.version>4.11</junit.version>
         <log4j.version>1.2.17</log4j.version>
-        <mockito.version>1.9.5</mockito.version>
         <myfaces.version>2.1.12</myfaces.version>
         <persistence-api.version>1.0.2</persistence-api.version>
         <myfaces-test.version>1.0.4</myfaces-test.version>
@@ -899,20 +899,25 @@
         <tomahawk.version>1.1.14</tomahawk.version>
         <websphere-runtime.version>8.5.0</websphere-runtime.version>
         <xerces.version>2.4.0</xerces.version>
-
+        <!-- testing dependencies -->
+        <junit.version>4.11</junit.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <mockito.version>1.9.5</mockito.version>
+        <jmock.version>2.6.0</jmock.version>
+        <jamon.version>2.73</jamon.version>
         <!-- plugins -->
-        <clover.version>3.1.12</clover.version>
-        <doclets.version>1.2b2</doclets.version>
+        <maven-compiler.version>3.6.1</maven-compiler.version>
+        <maven-toolchains.version>1.1</maven-toolchains.version>
+        <maven-clover2.version>3.1.12.1</maven-clover2.version>
         <jackrabbit.version>1.0</jackrabbit.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>
         <maven-javadoc.version>2.9.1</maven-javadoc.version>
-        <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
+        <maven-surefire.version>2.19.1</maven-surefire.version>
+        <maven-surefire-report.version>${maven-surefire.version}</maven-surefire-report.version>
+        <maven-source.version>3.0.1</maven-source.version>
         <sonar-maven.version>2.1</sonar-maven.version>
-        <surefire.version>2.16</surefire.version>
-        <jacoco.version>0.7.2.201409121644</jacoco.version>
-
-
+        <jacoco-maven.version>0.7.2.201409121644</jacoco-maven.version>
     </properties>
 
 </project>

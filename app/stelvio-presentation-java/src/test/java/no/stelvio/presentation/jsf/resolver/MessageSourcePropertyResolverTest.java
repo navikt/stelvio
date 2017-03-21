@@ -21,8 +21,6 @@ import static org.junit.Assert.fail;
 
 import java.util.Locale;
 
-import no.stelvio.presentation.jsf.mock.SpringDefinition;
-
 import org.apache.myfaces.test.mock.MockPropertyResolver;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -31,12 +29,15 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
+import no.stelvio.presentation.jsf.mock.SpringDefinition;
+
 /**
  * This class tests MessageSourcePropertyResolver.
  * 
  * @author Rick Hightower
  * @version $Id$
  */
+@Deprecated
 public class MessageSourcePropertyResolverTest {
 
 	/**

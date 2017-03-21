@@ -2,15 +2,13 @@ package no.stelvio.common.event.support;
 
 import org.apache.commons.logging.Log;
 import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.jmock.integration.junit4.JUnit4Mockery;
+import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.springframework.context.ApplicationEvent;
 
 import no.stelvio.common.error.strategy.support.TestCommonsLoggingFactory;
-import no.stelvio.common.event.ApplicationEvent;
 import no.stelvio.common.event.ApplicationEventListener;
 import no.stelvio.common.event.ApplicationEventListenerTest;
 
@@ -19,10 +17,11 @@ import no.stelvio.common.event.ApplicationEventListenerTest;
  * 
  * @author personf8e9850ed756
  */
-@RunWith(JMock.class)
+
 public class LoggingApplicationEventListenerTest extends ApplicationEventListenerTest {
+	@Rule
+	public JUnitRuleMockery context = new JUnitRuleMockery();
 	private LoggingApplicationEventListener lael;
-	private Mockery context = new JUnit4Mockery();
 
 	/**
 	 * Test if event should be logged.
@@ -39,7 +38,7 @@ public class LoggingApplicationEventListenerTest extends ApplicationEventListene
 
 		context.checking(new Expectations() {
 			{
-				one(log).info(with(an(ApplicationEvent.class)));
+				oneOf(log).info(with(any(ApplicationEvent.class)));
 			}
 		});
 
