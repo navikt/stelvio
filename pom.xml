@@ -755,6 +755,7 @@
                     <configuration>
                         <source>${project.build.sourceVersion}</source>
                         <target>${project.build.targetVersion}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -887,6 +888,8 @@
         <!-- java version -->
         <project.build.sourceVersion>1.8</project.build.sourceVersion>
         <project.build.targetVersion>${project.build.sourceVersion}</project.build.targetVersion>
+        <!-- Encoding -->
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
         <!-- Application dependencies -->
         <aopalliance.version>1.0</aopalliance.version>
         <aspectjweaver.version>1.5.4</aspectjweaver.version>
