@@ -1,17 +1,17 @@
 package no.stelvio.repository.codestable.support;
 
 import java.util.List;
+
 import javax.persistence.Entity;
 
 import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
-import static no.stelvio.common.util.Internal.cast;
 import no.stelvio.repository.codestable.CodesTableRepository;
 
 /**
@@ -23,10 +23,9 @@ import no.stelvio.repository.codestable.CodesTableRepository;
  */
 public class HibernateCodesTableRepository implements CodesTableRepository {
 
-	private HibernateTemplate hibernateTemplate;
-
 	private static final String QUERY_FIND_ALL_CODESTABLEITEMS_START = "SELECT cti FROM ";
 	private static final String QUERY_FIND_ALL_CODESTABLEITEMS_END = " cti";
+	private HibernateTemplate hibernateTemplate;
 
 	/** {@inheritDoc} */
 	public <T extends AbstractCodesTableItem<? extends Enum, V>, V> List<T> findCodesTableItems(Class<T> codestableItem) {
@@ -57,7 +56,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	 * @return query string
 	 */
 	private <T extends AbstractCodesTableItem<? extends Enum, V>, V> String buildQuery(Class<T> codestableItem) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		String entityName = codestableItem.getSimpleName();
 
 		// Check if default entity name has been overridden by setting name in Entity-annotation

@@ -2875,7 +2875,7 @@ Since:</body>
                 <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_6a3ePokmEduZyPOWaV0luw"/>
               </contents>
             </eAnnotations>
-            <packagedElement xmi:type="uml:Class" xmi:id="_BuRhMKFpEdu6bIkZmOEYiw" name="hibernate3.HibernateTemplate"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_BuRhMKFpEdu6bIkZmOEYiw" name="hibernate4.HibernateTemplate"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Component" xmi:id="_6a3eP4kmEduZyPOWaV0luw" name="HibernateTemplate" clientDependency="_6a3eQokmEduZyPOWaV0luw">
             <eAnnotations xmi:id="_WtWcAIknEduZyPOWaV0luw" source="http://www.eclipse.org/uml2/2.0.0/UML">

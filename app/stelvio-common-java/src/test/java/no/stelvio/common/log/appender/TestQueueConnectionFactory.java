@@ -1,6 +1,7 @@
 package no.stelvio.common.log.appender;
 
 import javax.jms.Connection;
+import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
@@ -91,6 +92,26 @@ public class TestQueueConnectionFactory implements QueueConnectionFactory {
 	 * {@inheritDoc}
 	 */
 	public Connection createConnection(String arg0, String arg1) throws JMSException {
-		return null;
+        return null;
+    }
+
+    @Override
+    public JMSContext createContext() {
+        return null;
+    }
+
+    @Override
+    public JMSContext createContext(String s, String s1) {
+        return null;
+    }
+
+    @Override
+    public JMSContext createContext(String s, String s1, int i) {
+        return null;
+    }
+
+    @Override
+    public JMSContext createContext(int i) {
+        return null;
 	}
 }

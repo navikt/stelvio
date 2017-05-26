@@ -1,16 +1,16 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>no.stelvio</groupId>
-		<artifactId>stelvio</artifactId>
-		<version>4.1.9-SNAPSHOT</version>
-	</parent>
-	<groupId>no.stelvio</groupId>
-	<artifactId>stelvio-batch-java</artifactId>
-	<packaging>jar</packaging>
-	<name>stelvio - batch</name>
-	<dependencies>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.stelvio</groupId>
+        <artifactId>stelvio</artifactId>
+        <version>4.1.9-SNAPSHOT</version>
+    </parent>
+    <groupId>no.stelvio</groupId>
+    <artifactId>stelvio-batch-java</artifactId>
+    <packaging>jar</packaging>
+    <name>stelvio - batch</name>
+    <dependencies>
 
         <dependency>
             <groupId>commons-collections</groupId>
@@ -34,6 +34,11 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
         </dependency>
@@ -48,93 +53,95 @@
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
-		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-common-java</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-batch-client-java</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-domain-java</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<!-- spring-beans is a Spring core library used for manipulating Java 
-				beans. This is the most basic Spring library. -->
-			<artifactId>spring-beans</artifactId>
-			<groupId>org.springframework</groupId>
-		</dependency>
-		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and 
-				dependency injection. Builds on the spring-beans library. -->
-			<artifactId>spring-context</artifactId>
-			<groupId>org.springframework</groupId>
-		</dependency>
-		<dependency>
-			<artifactId>spring-core</artifactId>
-			<groupId>org.springframework</groupId>
-		</dependency>
-		<dependency>
-			<artifactId>spring-orm</artifactId>
-			<groupId>org.springframework</groupId>
-		</dependency>
-		<dependency>
-			<artifactId>spring-tx</artifactId>
-			<groupId>org.springframework</groupId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<!-- Framework for AOP (Aspect Oriented Programming), providing method 
-				interceptors that for instance is used by Stelvio transfer objects to set 
-				service context data behind the scene. Also used in Spring-AOP. -->
-			<groupId>aopalliance</groupId>
-			<artifactId>aopalliance</artifactId>
-		</dependency>
-		<dependency>
+        <dependency>
+            <groupId>no.stelvio</groupId>
+            <artifactId>stelvio-common-java</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>no.stelvio</groupId>
+            <artifactId>stelvio-batch-client-java</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>no.stelvio</groupId>
+            <artifactId>stelvio-domain-java</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <!-- spring-beans is a Spring core library used for manipulating Java
+                beans. This is the most basic Spring library. -->
+            <artifactId>spring-beans</artifactId>
+            <groupId>org.springframework</groupId>
+        </dependency>
+        <dependency>
+            <!-- spring-context is a Spring core library used for configuration and
+                dependency injection. Builds on the spring-beans library. -->
+            <artifactId>spring-context</artifactId>
+            <groupId>org.springframework</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>spring-core</artifactId>
+            <groupId>org.springframework</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>spring-orm</artifactId>
+            <groupId>org.springframework</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>spring-tx</artifactId>
+            <groupId>org.springframework</groupId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>websphere</groupId>
+            <artifactId>com.ibm.ws.runtime</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <!-- Framework for AOP (Aspect Oriented Programming), providing method
+                interceptors that for instance is used by Stelvio transfer objects to set
+                service context data behind the scene. Also used in Spring-AOP. -->
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-	    <dependency>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <scope>test</scope>
         </dependency>
-		<dependency>
-			<groupId>com.jamonapi</groupId>
-			<artifactId>jamon</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
+        <dependency>
+            <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-		</dependency>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- Spring Batch dependencies -->
-		<dependency>
-			<groupId>org.springframework.batch</groupId>
-			<artifactId>spring-batch-core</artifactId>
-		</dependency>
+        <!-- Spring Batch dependencies -->
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-infrastructure</artifactId>
         </dependency>
-		<dependency>
-			<groupId>org.springframework.batch</groupId>
-			<artifactId>spring-batch-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

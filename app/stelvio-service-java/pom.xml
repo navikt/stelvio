@@ -11,6 +11,10 @@
 	<name>stelvio - service</name>
 	<dependencies>
 		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-repository-java</artifactId>
 			<version>${project.version}</version>

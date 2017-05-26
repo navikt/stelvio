@@ -1,10 +1,11 @@
 package no.stelvio.repository.menu.support;
 
+import static no.stelvio.common.util.Internal.cast;
+
 import java.util.List;
 
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
-import static no.stelvio.common.util.Internal.cast;
 import no.stelvio.domain.menu.MenuItem;
 import no.stelvio.repository.menu.MenuRepository;
 

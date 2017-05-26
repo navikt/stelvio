@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Integration test for the codes table support in Stelvio.
@@ -18,17 +18,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author personf8e9850ed756, Accenture
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/test-codestable-context.xml"})
+@ContextConfiguration(classes = CodeTableConfiguration.class)
 
 public class CodesTableIntegrationTest {
 
-	@Resource(name = "rep.inttest.hibernateTemplate")
+	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
 	/**
 	 * test of load configs.
 	 */
 	@Test
+	@Transactional
 	public void testLoadConfigs() {
 
 

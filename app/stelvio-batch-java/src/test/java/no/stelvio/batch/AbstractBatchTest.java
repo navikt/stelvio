@@ -7,6 +7,14 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Properties;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.batch.domain.BatchParameter;
 import no.stelvio.batch.exception.NullBatchException;
@@ -14,10 +22,6 @@ import no.stelvio.common.config.MissingPropertyException;
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.domain.time.ChangeStamp;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Super class for unit tests of batch modules.
@@ -29,12 +33,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author person983601e0e117, Accenture
  * @version $Id: AbstractBatchTest.java 1955 2005-02-08 15:43:02Z psa2920 $
  */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = BatchConfiguration.class)
 public class AbstractBatchTest {
 	private AbstractBatch testClass;
 
 	private int desiredStatus = BatchStatus.BATCH_OK;
 
-	private AbstractBatch progressReportingAndExceptionThrowingBatch;
+	@Autowired
+    @Qualifier("btc.testbatch.dummyBatch")
+    private AbstractBatch progressReportingAndExceptionThrowingBatch;
 
 	private String userId = "xxx9999";
 	
@@ -190,8 +199,6 @@ public class AbstractBatchTest {
 
 			}
 		};
-		progressReportingAndExceptionThrowingBatch = (AbstractBatch) new ClassPathXmlApplicationContext(
-				"btc-testbatch-context.xml").getBean("btc.testbatch.dummyBatch");
 		testClass = progressReportingAndExceptionThrowingBatch;
 	}
 }

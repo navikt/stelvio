@@ -1,6 +1,7 @@
 package no.stelvio.common.log.appender;
 
 import java.io.Serializable;
+
 import javax.jms.BytesMessage;
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -298,6 +299,16 @@ public class TestQueueSession implements QueueSession {
 		return null;
 	}
 
+    @Override
+    public MessageConsumer createSharedConsumer(Topic topic, String s) throws JMSException {
+        return null;
+    }
+
+    @Override
+    public MessageConsumer createSharedConsumer(Topic topic, String s, String s1) throws JMSException {
+        return null;
+    }
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -309,7 +320,27 @@ public class TestQueueSession implements QueueSession {
 	 * {@inheritDoc}
 	 */
 	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1, String arg2, boolean arg3) throws JMSException {
-		return null;
+        return null;
+    }
+
+    @Override
+    public MessageConsumer createDurableConsumer(Topic topic, String s) throws JMSException {
+        return null;
+    }
+
+    @Override
+    public MessageConsumer createDurableConsumer(Topic topic, String s, String s1, boolean b) throws JMSException {
+        return null;
+    }
+
+    @Override
+    public MessageConsumer createSharedDurableConsumer(Topic topic, String s) throws JMSException {
+        return null;
+    }
+
+    @Override
+    public MessageConsumer createSharedDurableConsumer(Topic topic, String s, String s1) throws JMSException {
+        return null;
 	}
 
 	/**

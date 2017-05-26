@@ -11,17 +11,18 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.renderkit.html.ext.HtmlGridRenderer;
 import org.apache.myfaces.test.mock.MockApplication20;
+import org.apache.myfaces.test.mock.MockExternalContext20;
 import org.apache.myfaces.test.mock.MockFacesContext20;
 import org.apache.myfaces.test.mock.MockHttpServletRequest;
-import org.apache.myfaces.test.mock.MockHttpServletResponse;
 import org.apache.myfaces.test.mock.MockHttpSession;
 import org.apache.myfaces.test.mock.MockRenderKit;
-import org.apache.myfaces.test.mock.MockServletConfig;
-import org.apache.myfaces.test.mock.MockServletContext;
 import org.springframework.binding.message.DefaultMessageContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockServletConfig;
+import org.springframework.mock.web.MockServletContext;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
@@ -43,12 +44,9 @@ import org.springframework.webflow.test.MockRequestContext;
  */
 public class SpringDefinition {
 	private static ApplicationContext context;
-
-	private final Log log = LogFactory.getLog(this.getClass());
-
 	private static WebApplicationContext ctx;
-
 	private static MockServletConfig config;
+	private final Log log = LogFactory.getLog(this.getClass());
 
 	/**
 	 * Get context.
@@ -126,8 +124,7 @@ public class SpringDefinition {
 				.getFactory(FactoryFinder.APPLICATION_FACTORY);
 		applicationFactory.setApplication(application);
 
-		org.apache.myfaces.test.mock.MockExternalContext20 externalContext = new org.apache.myfaces.test.mock.MockExternalContext20(
-				servletContext, request, response);
+		MockExternalContext20 externalContext = new MockExternalContext20(servletContext, request, response);
 		MockFacesContext20 facesContext = new MockFacesContext20();
 		facesContext.setExternalContext(externalContext);
 		facesContext.setApplication(application);

@@ -1,6 +1,7 @@
 package no.stelvio.common.log.appender;
 
 import java.util.Enumeration;
+
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
@@ -190,6 +191,16 @@ public class TestTextMessage implements TextMessage {
 	public void setJMSExpiration(long arg0) throws JMSException {
 	}
 
+    @Override
+    public long getJMSDeliveryTime() throws JMSException {
+        return 0;
+    }
+
+    @Override
+    public void setJMSDeliveryTime(long l) throws JMSException {
+
+    }
+
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSPriority()
@@ -375,5 +386,15 @@ public class TestTextMessage implements TextMessage {
 	 * @see javax.jms.Message#clearBody()
 	 */
 	public void clearBody() throws JMSException {
-	}
+    }
+
+    @Override
+    public <T> T getBody(Class<T> aClass) throws JMSException {
+        return null;
+    }
+
+    @Override
+    public boolean isBodyAssignableTo(Class aClass) throws JMSException {
+        return false;
+    }
 }

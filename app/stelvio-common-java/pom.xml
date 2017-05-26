@@ -44,6 +44,7 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
 		<dependency>
+
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
 		</dependency>

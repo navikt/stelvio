@@ -1,13 +1,14 @@
 <?xml version="1.0" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util
        http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<bean id="btc.testbatch.dummyBatch" class="no.stelvio.batch.DummyBatchImplementation" />
-	
-	<bean id="btc.testbatch.dummyBatchWithInputParameters"
+    <bean id="btc.testbatch.dummyBatch" class="no.stelvio.batch.DummyBatchImplementation"/>
+
+
+    <bean id="btc.testbatch.dummyBatchWithInputParameters"
 		class="no.stelvio.batch.DummyBatchWithInputParameters">
 		<property name="timeToRun" value="1" />
 		<property name="exitCode" value="8" />
@@ -35,10 +36,10 @@
 		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
 		<property name="batchNameMap" ref="batchNameToBatchClassMapping"/>
 	</bean>
-	
+
 	<util:map id="batchNameToBatchClassMapping">
 		<entry key="btc.testbatch.dummyBatch" value="btc.testbatch.dummyBatch" />
-		<entry key="btc.testbatch.dummyBatchWithInputParameters" value="btc.testbatch.dummyBatchWithInputParameters" />		
+        <entry key="btc.testbatch.dummyBatchWithInputParameters" value="btc.testbatch.dummyBatchWithInputParameters"/>
 	</util:map>
 
 	<bean id="ControllerServiceHistorySupport"
@@ -46,60 +47,64 @@
 		<property name="repository" ref="batchHistoryRepository" />
 		<property name="reader" ref="stelvioBatchParameterReader" />
 	</bean>
-	
+
 	<bean id="stelvioBatchParameterReader"
 		class="no.stelvio.batch.StelvioBatchParameterReader">
 		<property name="batchRepository" ref="batchRepository" />
 	</bean>
-	
-	<!-- Hibernate Template Defintion -->
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-		<property name="sessionFactory">
-			<ref bean="btc.testbatch.sessionFactory" />
-		</property>
-	</bean>
-	<!--  stelvio batch repository -->
-	<bean id="batchHistoryRepository"
-		class="no.stelvio.batch.repository.support.HibernateBatchHistRepository"
-		scope="prototype">
+    <!-- Transaction manager for tests -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="btc.testbatch.sessionFactory"/>
+    </bean>
+    <!-- Hibernate Template Defintion -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory">
+            <ref bean="btc.testbatch.sessionFactory"/>
+        </property>
+    </bean>
+
+    <!--  stelvio batch repository -->
+    <bean id="batchHistoryRepository"
+          class="no.stelvio.batch.repository.support.HibernateBatchHistRepository"
+          scope="prototype">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="batchRepository"
+          class="no.stelvio.batch.repository.support.HibernateBatchRepository"
+          scope="prototype">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 
-	<bean id="batchRepository"
-		class="no.stelvio.batch.repository.support.HibernateBatchRepository"
-		scope="prototype">
-		<property name="hibernateTemplate" ref="hibernateTemplate" />
-	</bean>
-	
-	<bean id="btc.testbatch.sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="btc.testbatch.sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 
-		<property name="dataSource" ref="btc.testbatch.dataSource" />
+        <property name="dataSource" ref="btc.testbatch.dataSource"/>
 
-		<property name="annotatedClasses">
-			<list>
-				<value>no.stelvio.batch.domain.BatchDO
-				</value>
-				<value>no.stelvio.batch.domain.BatchHistDO
-				</value>
-			</list>
-		</property>
+        <property name="annotatedClasses">
+            <list>
+                <value>no.stelvio.batch.domain.BatchDO
+                </value>
+                <value>no.stelvio.batch.domain.BatchHistDO
+                </value>
+            </list>
+        </property>
 
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect
-				</prop>
-				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.connection.url">jdbc:hsqldb:mem:mydb</prop>
-				<prop key="hibernate.connection.pool_size">1</prop>
-				<prop key="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</prop>
-				<prop key="hibernate.connection.username">sa</prop>
-				<prop key="hibernate.connection.password"></prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
-				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider
-				</prop>
-			</props>
-		</property>
-	</bean>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.url">jdbc:hsqldb:mem:mydb</prop>
+                <prop key="hibernate.connection.pool_size">1</prop>
+                <prop key="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</prop>
+                <prop key="hibernate.connection.username">sa</prop>
+                <prop key="hibernate.connection.password"></prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider
+                </prop>
+            </props>
+        </property>
+    </bean>
 </beans>
