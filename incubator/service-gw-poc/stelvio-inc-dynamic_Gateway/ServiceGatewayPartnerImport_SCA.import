@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://www.ibm.com/websphere/sibx/ServiceGateway" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ServiceGatewayPartnerImport_SCA" name="ServiceGatewayPartnerImport_SCA">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:ServiceGateway"/>
-  </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding"/>
-</scdl:import>

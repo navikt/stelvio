@@ -1,5 +1,0 @@
-<dp:request domain="" xmlns:dp='http://www.datapower.com/schemas/management'>	
-	<dp:do-import source-type="" deployment-policy="" dry-run="false" overwrite-files="true" overwrite-objects="true" xmlns:dp="http://www.datapower.com/schemas/management">
-		<dp:input-file xmlns:dp="http://www.datapower.com/schemas/management"></dp:input-file>
-	</dp:do-import>
-</dp:request>

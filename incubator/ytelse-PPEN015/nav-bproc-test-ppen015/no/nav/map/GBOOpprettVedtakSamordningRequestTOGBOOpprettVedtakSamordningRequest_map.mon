@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Monitor xmlns="http://www.ibm.com/xmlns/prod/websphere/monitoring/6.0.0/mon" kind="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0:BusinessObjectMap" name="GBOOpprettVedtakSamordningRequestTOGBOOpprettVedtakSamordningRequest" targetName="GBOOpprettVedtakSamordningRequestTOGBOOpprettVedtakSamordningRequest" targetNamespace="http://nav-bproc-pen-ppen015/no/nav/map:GBOOpprettVedtakSamordningRequestTOGBOOpprettVedtakSamordningRequest">
-  <EnableDefaultEvents>false</EnableDefaultEvents>
-  <Configuration>
-    <Entry key="FULL_MODE" value="FIELDS"/>
-  </Configuration>
-</Monitor>

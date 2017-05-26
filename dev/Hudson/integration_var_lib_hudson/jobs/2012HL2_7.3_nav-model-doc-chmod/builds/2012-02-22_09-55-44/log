@@ -1,6 +1,0 @@
-Started by user anonymous
-[workspace] $ /bin/sh -xe /tmp/hudson2291842452309785723.sh
-+ chmod -R 775 /var/www/html/7.3/site/
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update; build not configured with trigger: 2012HL2_7.3_nav-model-doc-chmod #1
-Finished: SUCCESS

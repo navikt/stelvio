@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.etools.webservice.wscbnd:ClientBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wscbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscbnd.xmi" xmi:id="ClientBinding_1320763263505">
-  <serviceRefs xmi:id="ServiceRef_1320763263505" serviceRefLink="service/MetronomenMetronomenSPSM">
-    <portQnameBindings xmi:id="PortQnameBinding_1320763263505" portQnameNamespaceLink="http://www.ibm.com/websphere/wsn/subscription-manager" portQnameLocalNameLink="SubscriptionManagerPort" overriddenEndpointURI="http://sidu.lan:9080/MetronomenMetronomenSPSM/Service"/>
-  </serviceRefs>
-  <serviceRefs xmi:id="ServiceRef_1320763940056" serviceRefLink="service/MetronomenMetronomenSPNB">
-    <portQnameBindings xmi:id="PortQnameBinding_1320763940056" portQnameNamespaceLink="http://www.ibm.com/websphere/wsn/notification-broker" portQnameLocalNameLink="NotificationBrokerPort" overriddenEndpointURI="http://sidu.lan:9080/MetronomenMetronomenSPNB/Service"/>
-  </serviceRefs>
-</com.ibm.etools.webservice.wscbnd:ClientBinding>

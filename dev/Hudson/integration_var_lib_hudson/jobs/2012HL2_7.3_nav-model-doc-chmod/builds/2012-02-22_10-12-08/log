@@ -1,6 +1,0 @@
-Started by upstream project "[8mha:AAAApx+LCAAAAAAAAABb85aBtbiIQSajNKU4P08vOT+vOD8nVc+jsiC1KCczL9svvyT1dMUiOWdZ/mImBiZPBrac1Lz0kgwfBubSopwSBiGfrMSyRP2cxLx0/eCSosy8dOuKIgYpNOOcITTIMAYIYGRiYKgoADIUSxjU9bPyk/SNDAyNPHyM4s31jOPzEst0c/NTUnN0U/KTdVMyE9OLEnP1Aec1BaGsAAAA[0m2012HL2_7.3_nav-model-doc-diagram" build number [8mha:AAAApx+LCAAAAAAAAABb85aBtbiIQSajNKU4P08vOT+vOD8nVc+jsiC1KCczL9svvyT1dMUiOWdZ/mImBiZPBrac1Lz0kgwfBubSopwSBiGfrMSyRP2cxLx0/eCSosy8dOuKIgYpNOOcITTIMAYIYGRiYKgoADFKGDT0s/KT9I0MDI08fIzizfWM4/MSy3Rz81NSc3RT8pN1UzIT04sSc/WNAMy2x7mtAAAA[0m2
-[workspace] $ /bin/sh -xe /tmp/hudson3065974830626676325.sh
-+ chmod -R 775 /var/www/html/7.3/site/
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update; build not configured with trigger: 2012HL2_7.3_nav-model-doc-chmod #3
-Finished: SUCCESS

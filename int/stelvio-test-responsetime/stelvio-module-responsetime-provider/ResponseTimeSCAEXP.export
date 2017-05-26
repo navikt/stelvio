@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResponseTime="http://nav-lib-responsetime/no/nav/inf/ResponseTime" xmlns:ns1="http://nav-test-reponsetime-provider/no/nav/inf/ResponseTime" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ResponseTimeSCAEXP" name="ResponseTimeSCAEXP" target="returnCall">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ResponseTime:ResponseTime"/>
-  </interfaces>
-</scdl:export>

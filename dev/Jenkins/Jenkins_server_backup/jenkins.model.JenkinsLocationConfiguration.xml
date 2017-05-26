@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<jenkins.model.JenkinsLocationConfiguration>
-  <adminAddress>test@example.com</adminAddress>
-  <jenkinsUrl>http://e34wasl00228.devillo.no/jenkins/</jenkinsUrl>
-</jenkins.model.JenkinsLocationConfiguration>

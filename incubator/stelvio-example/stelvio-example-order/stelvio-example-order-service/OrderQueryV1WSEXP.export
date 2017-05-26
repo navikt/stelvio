@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://www.stelvio.no/example/order/V1/OrderQuery/Binding" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://www.stelvio.no/example/order/V1/OrderQuery" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="OrderQueryV1WSEXP" name="OrderQueryV1WSEXP" target="OrderQueryV1StubFlow">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:OrderQuery"/>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding:OrderQueryV1WSEXP_OrderQueryHttpPort" service="Binding:OrderQueryWSEXP_OrderQueryHttpService"/>
-</scdl:export>

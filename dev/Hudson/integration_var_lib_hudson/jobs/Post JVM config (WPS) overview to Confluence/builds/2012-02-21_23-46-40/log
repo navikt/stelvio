@@ -1,7 +1,0 @@
-Started by timer
-[workspace] $ /bin/sh -xe /tmp/hudson7879441290797714158.sh
-+ cd /home/ci/scripts/Confluence/compare
-+ python compareJVMs.py
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update; build not configured with trigger: Post JVM config (WPS) overview to Confluence #1
-Finished: SUCCESS

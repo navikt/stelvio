@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: copiedjars/stelvio-example-contexthandler-java/stelvio-com
- mons-lib-4.1.5-SNAPSHOT.jar 
- stelvio-commons-lib.jar 
- stelvio-example-contexthandler-provider-lib.jar
-Created-By: 1.5.0 (IBM Corporation)
-

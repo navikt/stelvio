@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding2="http://errorModuleJAXRPC/ErrorIF/Binding2" xmlns:ns1="http://errorModuleJAXRPC/ErrorIF" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ErrorIFCatchEXP" name="ErrorIFCatchEXP" target="CatchRuntimeException">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:ErrorIF"/>
-  </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding2:ErrorIFCatchEXP_ErrorIFHttpPort" service="Binding2:ErrorIFCatchEXP_ErrorIFHttpService"/>
-</scdl:export>

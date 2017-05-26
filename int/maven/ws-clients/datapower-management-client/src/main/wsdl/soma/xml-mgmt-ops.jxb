@@ -1,8 +1,0 @@
-<bindings version="2.0" schemaLocation="xml-mgmt-ops.xsd" node="/xsd:schema" xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<bindings node="//xsd:element[@name='do-import']/xsd:complexType/xsd:attribute[@name='deployment-policy']">
-		<property name="ImportDeploymentPolicy"/>
-	</bindings>
-	<bindings node="//xsd:element[@name='do-restore']/xsd:complexType/xsd:attribute[@name='deployment-policy']">
-		<property name="RestoreDeploymentPolicy"/>
-	</bindings>
-</bindings>

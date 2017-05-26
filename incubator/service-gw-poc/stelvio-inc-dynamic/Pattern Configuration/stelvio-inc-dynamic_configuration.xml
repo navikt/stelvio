@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><p:root xmlns:p="com.ibm.wbit.patterns.gateway.dynamic">
-<instanceName>stelvio-inc-dynamic</instanceName>
-<route>MES</route>
-<log>NONE</log>
-<exportTransportProtocols>WS11</exportTransportProtocols>
-<importTransportProtocols>WS11,WS12</importTransportProtocols>
-<requireHeaderSetter>false</requireHeaderSetter>
-</p:root>

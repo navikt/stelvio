@@ -1,6 +1,0 @@
-#! /bin/bash
-cd $(dirname "${BASH_SOURCE[0]}")
-javaOld -Dlogging.level=EXCEPTION --cp /opt/IBM/WebSphere/ProcServer/optionalLibraries/jython/jython.jar org.python.util.jython runTests.py
-
-echo -e '\nDeleting all *.class files!'
-find . -iname "*.class" -exec rm {} +

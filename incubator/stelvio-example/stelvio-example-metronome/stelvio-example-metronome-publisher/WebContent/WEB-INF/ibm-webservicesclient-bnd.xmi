@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.etools.webservice.wscbnd:ClientBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wscbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscbnd.xmi" xmi:id="ClientBinding_1320308254880">
-  <serviceRefs xmi:id="ServiceRef_1320308254880" serviceRefLink="service/MetronomeWSEXP_MetronomeHttpService">
-    <portQnameBindings xmi:id="PortQnameBinding_1320308254880" portQnameNamespaceLink="http://stelvio" portQnameLocalNameLink="MetronomeWSEXP_MetronomeHttpPort" overriddenEndpointURI="http://localhost:9080/stelvio-example-metronome-static-brokerWeb/sca/MetronomeWSEXP"/>
-  </serviceRefs>
-  <serviceRefs xmi:id="ServiceRef_1320654125875" serviceRefLink="service/MetronomenMetronomenSPNB">
-    <portQnameBindings xmi:id="PortQnameBinding_1320654125876" portQnameNamespaceLink="http://www.ibm.com/websphere/wsn/notification-broker" portQnameLocalNameLink="NotificationBrokerPort" overriddenEndpointURI="http://localhost:9080/MetronomenMetronomenSPNB/Service"/>
-  </serviceRefs>
-</com.ibm.etools.webservice.wscbnd:ClientBinding>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://poc-module1/no/nav/inf/ImportedService/Binding" xmlns:ns1="http://poc-module1/no/nav/inf/ImportedService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ImportedServiceWSIMP" name="ImportedServiceWSIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:ImportedService"/>
-  </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceImportBinding" endpoint="http://localhost:9080/poc-module1Web/sca/ImportedServiceWSEXP" port="Binding:ImportedServiceWSEXP_ImportedServiceHttpPort" service="Binding:ImportedServiceWSEXP_ImportedServiceHttpService"/>
-</scdl:import>

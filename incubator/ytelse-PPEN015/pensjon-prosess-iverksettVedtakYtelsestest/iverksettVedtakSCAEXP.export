@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/IverksettVedtak" xmlns:ns2="http://nav.no/domene/pensjon/tjenester/iverksettVedtak/v1" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="iverksettVedtakSCAEXP" name="iverksettVedtakSCAEXP" target="iverksettVedtakYtelsestest">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="ns2:IverksettVedtak"/>
-  </interfaces>
-</scdl:export>

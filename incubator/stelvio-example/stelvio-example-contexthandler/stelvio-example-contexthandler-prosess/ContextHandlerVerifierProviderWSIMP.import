@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://stelvio-example-contexthandler-provider-lib/no/nav/inf/ContextHandlerVerifier/Binding" xmlns:ns1="http://stelvio-example-contexthandler-provider-lib/no/nav/inf/ContextHandlerVerifier" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ContextHandlerVerifierProviderWSIMP" name="ContextHandlerVerifierProviderWSIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:ContextHandlerVerifierProvider"/>
-  </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceImportBinding" endpoint="http://localhost:9087/stelvio-example-contexthandler-providerWeb/sca/ContextHandlerVerifierProviderWSEXP" port="Binding:ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpPort" service="Binding:ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpService"/>
-</scdl:import>

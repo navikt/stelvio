@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.apache.maven.plugin.dependency.TestCopyDependenciesMojo2
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.266 sec

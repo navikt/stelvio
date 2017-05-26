@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: stelvio-commons-lib.jar 
- stelvio-example-contexthandler-provider-lib.jar
-Created-By: 1.5.0 (IBM Corporation)
-

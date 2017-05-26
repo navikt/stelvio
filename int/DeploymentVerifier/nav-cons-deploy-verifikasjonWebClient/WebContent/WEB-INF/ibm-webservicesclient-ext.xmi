@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.etools.webservice.wscext:WsClientExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wscext="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscext.xmi" xmi:id="WsClientExtension_1219079805296">
-  <serviceRefs xmi:id="ServiceRef_1219080237234" serviceRefLink="service/VerfikasjonWSExp_VerifikasjonHttpService">
-    <portQnameBindings xmi:id="PortQnameBinding_1219080237234" portQnameLocalNameLink="VerfikasjonWSExp_VerifikasjonHttpPort"/>
-  </serviceRefs>
-</com.ibm.etools.webservice.wscext:WsClientExtension>

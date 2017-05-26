@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://nav-test-reponsetime-provider/no/nav/inf/ResponseTime/Binding" xmlns:Binding_1="http://nav-lib-responsetime/no/nav/inf/ResponseTime/Binding" xmlns:ResponseTime="http://nav-lib-responsetime/no/nav/inf/ResponseTime" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://nav-test-reponsetime-provider/no/nav/inf/ResponseTime" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ResponsetimeWSIMP" name="ResponsetimeWSIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ResponseTime:ResponseTime">
-      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
-    </interface>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9080/stelvio-module-responsetime-providerWeb/sca/ResponseTimeWSEXP" port="Binding_1:ResponseTimeWSEXP_ResponseTimeHttpPort" service="Binding_1:ResponseTimeWSEXP_ResponseTimeHttpService"/>
-</scdl:import>

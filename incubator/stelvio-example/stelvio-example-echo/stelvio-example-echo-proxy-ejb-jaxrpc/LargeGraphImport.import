@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ejb="http://www.ibm.com/xmlns/prod/websphere/scdl/ejb/6.0.0" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" displayName="LargeGraphImport" name="LargeGraphImport">
-  <interfaces>
-    <interface xsi:type="java:JavaInterface" interface="ejbs.LargeGraph"/>
-  </interfaces>
-  <esbBinding xsi:type="ejb:SLSBImportBinding" jndiName="ejb/ejbs/LargeGraphHome"/>
-</scdl:import>

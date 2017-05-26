@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<handler:EJBHandlerDD xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:handler="http://www.ibm.com/websphere/appserver/schemas/6.0/handler.xmi" xmi:id="EJBHandlerDD_1211797480218" name="OppdragMediationHandler" description="" critical="true">
-  <lists xmi:id="HandlerListRef_1211797480218" listName="OppdragMediationHandler" description="Default handler list" sequence="1"/>
-  <ejb xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#OppdragMediationHandler"/>
-</handler:EJBHandlerDD>
