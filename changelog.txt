@@ -2,6 +2,11 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 5.0.0
+----------------------------------
+PK-33704:
+- Upgrade of Java from Java 6 to Java 8
+
 Version 4.1.8
 ----------------------------------
 PEN-7860:
