@@ -245,50 +245,48 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	protected final void sort(final String column, final boolean ascending) {
-		Comparator comparator = new Comparator() {
-			public int compare(Object o1, Object o2) {
-				Object c1 = o1;
-				Object c2 = o2;
-				if (column == null) {
-					return 0;
-				}
+		Comparator comparator = (o1, o2) -> {
+            Object c1 = o1;
+            Object c2 = o2;
+            if (column == null) {
+                return 0;
+            }
 
-				String methodName = GET + column.substring(0, 1).toUpperCase() + column.substring(1);
-				try {
-					Method m = c1.getClass().getMethod(methodName, Void.class);
-					Method m2 = c2.getClass().getMethod(methodName, Void.class);
+            String methodName = GET + column.substring(0, 1).toUpperCase() + column.substring(1);
+            try {
+                Method m = c1.getClass().getMethod(methodName);
+                Method m2 = c2.getClass().getMethod(methodName);
 
-					Comparable res1 = (Comparable) m.invoke(c1);
-					Comparable res2 = (Comparable) m2.invoke(c2);
+                Comparable res1 = (Comparable) m.invoke(c1);
+                Comparable res2 = (Comparable) m2.invoke(c2);
 
-					// If tests below are done to make sure that a list is sorted even if it contains null values
-					if (res1 == null) {
-						if (ascending) {
-							return -1;
-						} else {
-							return 1;
-						}
-					}
-					if (res2 == null) {
-						if (ascending) {
-							return 1;
-						} else {
-							return -1;
-						}
-					}
+                // If tests below are done to make sure that a list is sorted even if it contains null values
+                if (res1 == null) {
+                    if (ascending) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                }
+                if (res2 == null) {
+                    if (ascending) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
 
-					return ascending ? res1.compareTo(res2) : res2.compareTo(res1);
+                return ascending ? res1.compareTo(res2) : res2.compareTo(res1);
 
-				} catch (IllegalAccessException illegalAccess) {
-					// do nothing
-				} catch (InvocationTargetException invocTarget) {
-					// do nothing
-				} catch (Exception general) {
-					// do nothing
-				}
-				return 0;
-			}
-		};
+            } catch (IllegalAccessException illegalAccess) {
+                // do nothing
+            } catch (InvocationTargetException invocTarget) {
+                // do nothing
+            } catch (Exception general) {
+                // do nothing
+            }
+            return 0;
+        };
 		Collections.sort(list, comparator);
 
 	}
