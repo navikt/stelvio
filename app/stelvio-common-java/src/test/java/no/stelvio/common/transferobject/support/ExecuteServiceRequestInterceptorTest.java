@@ -11,6 +11,7 @@ import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.log.MdcConstants;
+import no.stelvio.common.transferobject.ServiceRequest;
 import no.stelvio.common.util.ReflectUtil;
 
 import org.junit.After;
@@ -102,7 +103,7 @@ public class ExecuteServiceRequestInterceptorTest {
 	private TestServiceRequest createTestServiceRequest() throws NoSuchFieldException {
 		TestServiceRequest servReq = new TestServiceRequest("Jens-Petrus");
 		RequestContext reqCtx = new SimpleRequestContext("screenId123", "moduleId123", "transactionId123", "componentId123");
-		ReflectUtil.setField(TestServiceRequest.class, servReq, "requestContext", reqCtx);
+		ReflectUtil.setField(ServiceRequest.class, servReq, "requestContext", reqCtx);
 		return servReq;
 	}
 
