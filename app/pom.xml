@@ -662,8 +662,29 @@
 			</plugin>
         </plugins>
     </reporting>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-toolchains-plugin</artifactId>
+                <version>${maven-toolchains-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>toolchain</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <toolchains>
+                        <jdk>
+                            <version>${project.build.sourceVersion}</version>
+                            <vendor>ibm</vendor>
+                        </jdk>
+                    </toolchains>
+                </configuration>
+            </plugin>
             <plugin>
                 <!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin
                     To run: mvn depgraph:fullgraph If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf
@@ -862,6 +883,9 @@
 
         <!-- java version -->
         <java.version>1.6</java.version>
+        <project.build.sourceVersion>${java.version}</project.build.sourceVersion>
+        <project.build.targetVersion>${java.version}</project.build.targetVersion>
+
 
         <!-- Application dependencies -->
         <aopalliance.version>1.0</aopalliance.version>
@@ -904,6 +928,7 @@
         <clover.version>3.1.12</clover.version>
         <doclets.version>1.2b2</doclets.version>
         <jackrabbit.version>1.0</jackrabbit.version>
+        <maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>
         <maven-javadoc.version>2.9.1</maven-javadoc.version>
