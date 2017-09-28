@@ -3,12 +3,6 @@ package no.stelvio.common.transferobject.support;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.context.support.ComponentIdHolder;
-import no.stelvio.common.context.support.RequestContextSetter;
-import no.stelvio.common.context.support.SimpleRequestContext;
-import no.stelvio.common.transferobject.ServiceRequest;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.logging.Log;
@@ -17,6 +11,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.Ordered;
 import org.springframework.util.ReflectionUtils;
+
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.support.ComponentIdHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
+import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.transferobject.ServiceRequest;
 
 /**
  * Interceptor for calls from remote applications that copies RequestContext from the ServiceRequest into the
@@ -68,14 +68,16 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 			}
 			if (arg instanceof ServiceRequest) {
 				if (log.isTraceEnabled()) {
-					log.trace("Argument was of type ServiceRequest");
+					log.trace("Argument was of type ServiceRequest: " + arg.getClass().getSimpleName());
 				}
 
 				RequestContext requestContext = getRequestContext(arg);
 				
 				if (requestContext == null) {
 					if (log.isWarnEnabled()) {
-						log.warn("RequestContext in ServiceRequest was null. Something was likely wrong with the Service call");
+						log.warn(String.format(
+								"RequestContext in ServiceRequest was null. Something was likely wrong with the Service call "
+										+ "[%s:%s]", i.getThis().getClass().getSimpleName(), i.getMethod().getName()));
 					}
 					requestContext = new SimpleRequestContext.Builder()
 											.userId("unknown-userId")
@@ -129,8 +131,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 	private RequestContext getRequestContext(Object serviceRequest) throws NoSuchFieldException, IllegalAccessException {
 		Field requestContextField = ServiceRequest.class.getDeclaredField("requestContext");
 		ReflectionUtils.makeAccessible(requestContextField);
-		RequestContext requestContext = (RequestContext) requestContextField.get(serviceRequest);
-		return requestContext;
+		return (RequestContext) requestContextField.get(serviceRequest);
 	}
 
 	/**
@@ -176,7 +177,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 							+ "Will be using the first entry in the ApplicationContext. "
 							+ "Make sure only one ComponentIdHolder is configured per configuration module");
 				}
-				componentId = (String) ((ComponentIdHolder) beanNameComponentIdHolderPairs.values().iterator().next())
+				componentId = ((ComponentIdHolder) beanNameComponentIdHolderPairs.values().iterator().next())
 						.getComponentId();
 				if (log.isDebugEnabled()) {
 					log.debug("Application Id set to " + componentId);
