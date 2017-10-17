@@ -22,10 +22,10 @@ import no.stelvio.common.transferobject.ServiceRequest;
  * Interceptor for calls from remote applications that copies RequestContext from the ServiceRequest into the
  * ServiceRequestHolder before the method call is executed proceeding.
  * <p/>
- * 
+ *
  * On the remote client an interceptor that copies the RequestContext from the RequestContextHolder to the ServiceRequest should
  * be configured. This can be achieved by applying the {@link PrepareServiceRequestInterceptor} interceptor.
- * 
+ *
  * @author personff564022aedd
  * @author person983601e0e117
  * @version $Id$
@@ -46,7 +46,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Method used to intercept service calls, retrieve RequestContext and set it on thread.
-	 * 
+	 *
 	 * @param i
 	 *            MethodInvocation
 	 * @return the value returned by the method that is intercepted
@@ -72,7 +72,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 				}
 
 				RequestContext requestContext = getRequestContext(arg);
-				
+
 				if (requestContext == null) {
 					if (log.isWarnEnabled()) {
 						log.warn(String.format(
@@ -106,11 +106,13 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 		if (log.isDebugEnabled()) {
 			log.debug("Method invoke is about to proceed on MethodInvocation");
 		}
-		Object ret =  i.proceed();
+		Object ret;
+		try{
+			ret =  i.proceed();
+		}finally{
+			RequestContextSetter.resetRequestContext();
+		}
 
-		/* Should ideally reset context before returning by calling RequestContextSetter.resetRequestContext();
-		 * 
-		 * */
 		if (log.isDebugEnabled()) {
 			log.debug("Method invoke is about to exit from MethodInvocation");
 		}
@@ -119,7 +121,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Method for retrieving a {@link RequestContext} from a {@link ServiceRequest}.
-	 * 
+	 *
 	 * @param serviceRequest
 	 *            a service request
 	 * @return {@link RequestContext}
@@ -137,7 +139,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 	/**
 	 * Method that overrides the ComponentId currently in the RequestContext if one is configured in the ApplicationContext of
 	 * this Interceptor.
-	 * 
+	 *
 	 * @param requestContext
 	 *            a request context
 	 * @return a request context. If the componentId is null then the return context is a new SimpleRequestContext, otherwise
@@ -155,7 +157,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Retrieves the componentId specified in the ApplicationContext.
-	 * 
+	 *
 	 * @return componentId or <code>null</code> if none is configured
 	 */
 	private String retrieveComponentId() {
@@ -166,7 +168,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 			// Get the ComponentId configured somewhere in the applicationContext
 			Map<?, ?> beanNameComponentIdHolderPairs = applicationContext.getBeansOfType(ComponentIdHolder.class, false, true);
 			// ComponentId should ALWAYS be configured
-			if (beanNameComponentIdHolderPairs == null || beanNameComponentIdHolderPairs.values().size() == 0) {
+			if (beanNameComponentIdHolderPairs == null || beanNameComponentIdHolderPairs.values().isEmpty()) {
 				log.error("No ComponentIdHolder bean  defined in the ApplicationContext."
 						+ " The ComponentId hasn't been configured. Value from calling system will be used.");
 			} else {
@@ -189,7 +191,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Gets the order of this interceptor.
-	 * 
+	 *
 	 * @return the order
 	 */
 	public int getOrder() {
@@ -198,7 +200,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Sets the order of this interceptor.
-	 * 
+	 *
 	 * @param order the order
 	 */
 	public void setOrder(int order) {
@@ -207,7 +209,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Sets the application context.
-	 * 
+	 *
 	 * @param applicationContext
 	 *            the application context
 	 */
@@ -219,9 +221,9 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
 	 * Specifies whether this Interceptor should look for a ComponentId in the ApplicationContext and override the one passed
 	 * through the ServiceRequest. Will only override the one in the ServiceRequest if this property is true AND a componentId
 	 * has been set up in the applicationContext.
-	 * 
+	 *
 	 * overrideComponentId defaults to false
-	 * 
+	 *
 	 * @param overideComponentId
 	 *            the override component id
 	 */

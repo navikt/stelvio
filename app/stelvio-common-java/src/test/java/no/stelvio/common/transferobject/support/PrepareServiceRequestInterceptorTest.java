@@ -22,7 +22,7 @@ import org.springframework.util.ReflectionUtils;
 
 /**
  * Tests PrepareServiceRequestInterceptor.
- * 
+ *
  * @author person983601e0e117 (Accenture)
  */
 public class PrepareServiceRequestInterceptorTest {
@@ -33,7 +33,7 @@ public class PrepareServiceRequestInterceptorTest {
 
 	/**
 	 * Set up the test.
-	 * 
+	 *
 	 * @throws NoSuchFieldException no field
 	 */
 	@Before
@@ -47,7 +47,7 @@ public class PrepareServiceRequestInterceptorTest {
 	/**
 	 * Tests that the PrepareServiceRequestInterceptor copies the RequestContext from the RequestContextHolder onto the
 	 * ServiceRequest subclass.
-	 * 
+	 *
 	 * @throws IllegalAccessException illegal access
 	 * @throws InvocationTargetException invocation
 	 * @throws NoSuchMethodException no method
@@ -92,9 +92,9 @@ public class PrepareServiceRequestInterceptorTest {
 
 	/**
 	 * Test implementation of ServiceRequest.
-	 * 
+	 *
 	 * @author person983601e0e117 (Accenture)
-	 * 
+	 *
 	 */
 	public class TestServiceRequest extends ServiceRequest {
 
@@ -106,7 +106,7 @@ public class PrepareServiceRequestInterceptorTest {
 
 		/**
 		 * Get RequestContextByReflection.
-		 * 
+		 *
 		 * @return RequestContextByReflection
 		 */
 		public RequestContext getRequestContextByReflection() {
@@ -130,7 +130,7 @@ public class PrepareServiceRequestInterceptorTest {
 
 		/**
 		 * Returns true if second intercepor is before.
-		 * 
+		 *
 		 * @return secondInterceptorBefore
 		 */
 		public boolean isSecondInterceptorBefore() {
@@ -139,7 +139,7 @@ public class PrepareServiceRequestInterceptorTest {
 
 		/**
 		 * Sets secondInterceptorBefore.
-		 * 
+		 *
 		 * @param interceptedOnce
 		 *            secondInterceptorBefore
 		 */
@@ -149,7 +149,7 @@ public class PrepareServiceRequestInterceptorTest {
 
 		/**
 		 * Returns true if secont interceptor is after.
-		 * 
+		 *
 		 * @return secondInterceptorAfter
 		 */
 		public boolean isSecondInterceptorAfter() {
@@ -158,7 +158,7 @@ public class PrepareServiceRequestInterceptorTest {
 
 		/**
 		 * Sets the secondInterceptorAfter.
-		 * 
+		 *
 		 * @param interceptedTwice
 		 *            secondInterceptorAfter
 		 */

@@ -30,12 +30,12 @@ import org.springframework.core.Ordered;
  * use cases. See <code>{@link #setExecutedInAopContext(boolean)</code>} for a
  * detailed description of the different configurations
  * </p>
- * 
+ *
  * @author person983601e0e117 (Accenture)
- * 
+ *
  * @see RequestContextHolder
  * @see ServiceRequest
- * 
+ *
  */
 public class PrepareServiceRequestInterceptor implements MethodInterceptor, Ordered {
 
@@ -48,12 +48,12 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	/**
 	 * Retrieves the RequestContext from the client's thread and puts it inside
 	 * the <code>{@link ServiceRequest}</code>.
-	 * 
+	 *
 	 * This method will by default return <code>null</code> as it's not part of
 	 * a AOP interceptor chain when used by
 	 * {@link StelvioRemoteStatelessSessionProxyFactoryBean}
-	 * 
-	 * 
+	 *
+	 *
 	 * @param invocation
 	 *            MethodInvocation
 	 * @return value from method <code>{@link #proceed(MethodInvocation)}</code>
@@ -64,16 +64,20 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		Object[] methodArguments = invocation.getArguments();
 
+		ServiceRequest serviceRequest = null;
 		for (Object arg : methodArguments) { // Loop through method arguments
 			if (arg instanceof ServiceRequest) { // Check if argument is of type
-													// ServiceRequest
-				ServiceRequest serviceRequest = (ServiceRequest) arg;
-				setRequestContext(serviceRequest);
+
+				serviceRequest = (ServiceRequest) arg; // ServiceRequest
 				break; // There shouldn't be more than 1 ServiceRequest per call
 			}
 		}
 		// Delegates the return value to hook
-		return proceed(invocation);
+		try{
+			return proceed(invocation);
+		}finally{
+			setRequestContext(serviceRequest);
+		}
 	}
 
 	/**
@@ -83,7 +87,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	 * <p>
 	 * The code sample below shows how code can be added before and after the
 	 * execution of additional aspects/interceptors:
-	 * 
+	 *
 	 * <pre>
 	 * protected Object proceed(MethodInvocation invocation) {
 	 * 	//Custom business logic, before additional interceptors are executed
@@ -91,13 +95,13 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	 * 	//Custom business logic, after additional interceptors are executed
 	 * }
 	 * </pre>
-	 * 
+	 *
 	 * </p>
-	 * 
+	 *
 	 * This method will return the result of invocation.proceed() if
 	 * {@link #isExecutedInAopContext()} is <code>true</code>, otherwise it will
 	 * return <code>null</code>
-	 * 
+	 *
 	 * @param invocation
 	 *            invocation
 	 * @return <code>null</code>
@@ -113,7 +117,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	 * Gets <code>{@link RequestContext}</code> from
 	 * <code>{@link RequestContextHolder}</code> and sets it on the supplied
 	 * <code>{@link ServiceRequest}</code>.
-	 * 
+	 *
 	 * @param serviceRequest
 	 *            to set <code>RequestContext</code> on
 	 */
@@ -130,7 +134,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	/**
 	 * Returns the order of this interceptor when used in an interceptor chain.
 	 * Defaults to Integer.MAX_VALUE.
-	 * 
+	 *
 	 * @return the order
 	 * @see Ordered
 	 */
@@ -140,7 +144,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 
 	/**
 	 * Sets the order of this interceptor when part of an interceptor chain.
-	 * 
+	 *
 	 * @param order
 	 *            int specifying order
 	 * @see Ordered
@@ -152,7 +156,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	/**
 	 * Signals whether this interceptor is called in an AOP context and is part
 	 * of a call chain managed by an AOP framework.
-	 * 
+	 *
 	 * @see #setExecutedInAopContext(boolean)
 	 * @return <code>true</code> if this interceptor is executed by an AOP
 	 *         framework
@@ -174,7 +178,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
 	 * (ie: setup by stelvio-schema</li>
 	 * </ul>
 	 * </p>
-	 * 
+	 *
 	 * @param executedInAopContext
 	 *            <code>true</code> if this interceptor is executed by an AOP
 	 *            framework

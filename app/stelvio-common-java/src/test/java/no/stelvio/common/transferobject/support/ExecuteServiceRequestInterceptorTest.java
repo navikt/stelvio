@@ -24,7 +24,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Test class for ExecuteServiceRequestInterceptor.
- * 
+ *
  * @author MA
  */
 public class ExecuteServiceRequestInterceptorTest {
@@ -34,7 +34,7 @@ public class ExecuteServiceRequestInterceptorTest {
 
 	/**
 	 * Set-up before test.
-	 * 
+	 *
 	 * @throws NoSuchFieldException
 	 *             no field
 	 */
@@ -76,7 +76,7 @@ public class ExecuteServiceRequestInterceptorTest {
 	public void testMDCIsUpdated() {
 
 		// RequestContext should only contain null values before interception
-		RequestContext reqCtxBeforePojoCall = RequestContextHolder.currentRequestContext();		
+		RequestContext reqCtxBeforePojoCall = RequestContextHolder.currentRequestContext();
 		assertThat(reqCtxBeforePojoCall.getScreenId(), not(equalTo("screenId123")));
 
 		// This call should be intercepted
@@ -95,7 +95,7 @@ public class ExecuteServiceRequestInterceptorTest {
 
 	/**
 	 * Create test service request.
-	 * 
+	 *
 	 * @return request
 	 * @throws NoSuchFieldException
 	 *             no field
@@ -107,7 +107,7 @@ public class ExecuteServiceRequestInterceptorTest {
 		return servReq;
 	}
 
-	
+
 	/**
 	 * Clean up after test.
 	 */
@@ -115,10 +115,10 @@ public class ExecuteServiceRequestInterceptorTest {
 	public void tearDown() {
 		RequestContextSetter.resetRequestContext();
 	}
-	
+
 	/**
 	 * Checks whether a call to RequestcontextHolder.currentRequestContext() throws an IllegalStateException.
-	 * 
+	 *
 	 * @return true if exception is thrown, otherwise false
 	 */
 	private boolean callToCurrentRequestContextThrowsException() {
