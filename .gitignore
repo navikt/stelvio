@@ -3181,3 +3181,11 @@ stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-we
 stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-web/.settings
 stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-web/target
 stelvio-example/stelvio-example-jaxws-consumer/target
+
+# IntelliJ #
+############
+*.iml
+*.ipr
+*.iws
+.idea/
+atlassian-ide-plugin.xml
