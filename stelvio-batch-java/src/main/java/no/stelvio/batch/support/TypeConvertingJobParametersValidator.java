@@ -360,7 +360,7 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /** {@inheritDoc} */
     public void beforeJob(JobExecution jobExecution) {
         jobExecutionContext = jobExecution.getExecutionContext();
-        putParametersOnContext(jobExecution.getJobInstance().getJobParameters());
+        putParametersOnContext(jobExecution.getJobParameters());
     }
 
     private void putParametersOnContext(JobParameters jobParameters) {

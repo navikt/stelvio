@@ -33,18 +33,18 @@ public class ProgressNotifierTest {
 	
 	@Test
 	public void shouldNotifyAboutProgressAfterChunkCompletion() {
-		progressNotifier.afterChunk();
+		progressNotifier.afterChunk(null);
 		verify(progressListener).progressed(counter);
 	}
 	
 	@Test
 	public void shouldNotifyAboutProgressAfterConfiguredNumberOfChunkCompletions() {
 		progressNotifier.setProgressInterval(3);
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
 		verify(progressListener).progressed(counter);
 	}
 	
@@ -53,11 +53,11 @@ public class ProgressNotifierTest {
 		JobExecution jobExecution = MetaDataInstanceFactory.createJobExecution();
 		jobExecution.getExecutionContext().put(CommonBatchInputParameters.PROGRESS_INTERVAL_KEY, 2L);
 		progressNotifier.beforeJob(jobExecution);
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
-		progressNotifier.afterChunk();
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
+		progressNotifier.afterChunk(null);
 		verify(progressListener, times(2)).progressed(counter);
 	}		
 	

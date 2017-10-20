@@ -95,7 +95,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         sb.append("=============================================== Spring Job Execution Summary ==========================================\n");
         sb.append("=======================================================================================================================\n");
         sb.append("Job name: ").append(jobExecution.getJobInstance().getJobName()).append("\n");
-        sb.append("Job parameters:").append(jobExecution.getJobInstance().getJobParameters().getParameters().toString());
+        sb.append("Job parameters:").append(jobExecution.getJobParameters().getParameters().toString());
         sb.append("\nTotal execution time: ").append(
                 formatMillisecondsDurationAsHumanReadableString((jobExecution.getEndTime().getTime() - jobExecution
                         .getStartTime().getTime())));
@@ -160,7 +160,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         sb.append(String.format(format, jobName, jobId));
         sb.append("=======================================================================================================================\n");
         sb.append("Start time: " + jobExecution.getStartTime() + "\n");
-        sb.append("Job parameters:").append(jobExecution.getJobInstance().getJobParameters().getParameters().toString() + "\n");
+        sb.append("Job parameters:").append(jobExecution.getJobParameters().getParameters().toString() + "\n");
         sb.append("Host: ").append(getHostNameAndIp() + "\n");
         sb.append("DB2 Schema: ").append(getCurrentSchema() + "\n");
 

@@ -19,6 +19,7 @@ import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringUriJo
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobInstance;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.JobParametersInvalidException;
@@ -34,8 +35,7 @@ public class TypeConvertingJobParametersValidatorTest {
     private SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
 
     private enum ParamValidatorEnum {
-        VALID,
-        NOT_VALID;
+        VALID
     }
 
     @Before
@@ -188,8 +188,8 @@ public class TypeConvertingJobParametersValidatorTest {
 
     private JobExecution validate(JobParameters jobParameters) throws JobParametersInvalidException {
         validator.validate(jobParameters);
-        JobExecution jobExecution = MetaDataInstanceFactory.createJobExecution();
-        jobExecution.setJobInstance(MetaDataInstanceFactory.createJobInstance("test", 1L, jobParameters));
+        JobInstance jobInstance = new JobInstance(1L, "test");
+        JobExecution jobExecution = new JobExecution(jobInstance, jobParameters);
         validator.beforeJob(jobExecution);
         return jobExecution;
     }
