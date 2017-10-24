@@ -13,6 +13,7 @@
 	<%@ page import="com.ibm.websphere.security.auth.*"%>
 	<%@ page import="com.ibm.websphere.security.cred.*"%>
 	<%@ page import="com.ibm.wsspi.security.token.*"%>
+	<%@ page import="no.nav.OIDCUtil"%>
 
 <%
 
@@ -29,10 +30,17 @@ for(int i=0;i < principals.size();i++) {
     principalstring.append("<br>Principal "  + i + " : "+ principals.get(i).getName());
 }
 for(int i=0;i < privcreds.size();i++) {
-    privcredstring.append("<br>Private credential Name"  + i + " : "+ ((Token) privcreds.get(i)).getName());
-    privcredstring.append("<br>Private credential UniqueId"  + i + " : "+ ((Token) privcreds.get(i)).getUniqueID());
-    privcredstring.append("<br>Private credential Principal"  + i + " : "+ ((Token) privcreds.get(i)).getPrincipal());
-    //subjectstring.append("<br>Private credential "  + i + " : "+ privcreds.get(i));
+    if(privcreds.get(i) instanceof Hashtable) {
+    	Set<String> keys = ((Hashtable) privcreds.get(i)).keySet();
+    	for(String key:keys) {
+    		privcredstring.append(key + "=" + ((Hashtable) privcreds.get(i)).get(key) + "<br>");    		
+    	}
+    	
+    } else {
+		privcredstring.append("<br>Private credential Name"  + i + " : "+ ((Token) privcreds.get(i)).getName());
+	    privcredstring.append("<br>Private credential UniqueId"  + i + " : "+ ((Token) privcreds.get(i)).getUniqueID());
+	    privcredstring.append("<br>Private credential Principal"  + i + " : "+ ((Token) privcreds.get(i)).getPrincipal());
+    }
 }
 for(int i=0;i < pubcreds.size();i++) {
     pubcredstring.append("<br>Public credential "  + i + " : "+ pubcreds.get(i));
@@ -60,6 +68,11 @@ for(int i=0;i < pubcreds.size();i++) {
 		<td>Public credentials</td>
 		<td><%= pubcredstring.toString() %></td>
 	</tr>
+	<tr>
+		<td>Access token</td>
+		<td><%= OIDCUtil.getAccessToken() %></td>
+	</tr>
+	
 </table>
 </body>
 </html>
