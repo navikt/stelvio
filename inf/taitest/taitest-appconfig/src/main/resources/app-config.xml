@@ -2,11 +2,16 @@
 <application xmlns="http://appconfig.aura.nav.no" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://appconfig.aura.nav.no http://maven.adeo.no/xsd/appconfig.xsd">
 	<name>taitest</name>
-	<loadBalancer>
-		<contextRoot>taitest</contextRoot>
-		<lbHealthMonitor type="HTTPS"/>
-	</loadBalancer>
 	<artifacts>
 		<ear groupId="no.nav.kes" artifactId="taitest-jee" />
 	</artifacts>
+	<security>
+		<logins>
+			<!-- LoginModule not used when deploying to WAS. Just here to get aura 
+				to create OpenAM config during deploy -->
+			<openIdConnect moduleClass="no.nav.aura.loginModule.JWTLoginModule">
+				<contextRoot>/taitest/taitestsecure</contextRoot>
+			</openIdConnect>
+		</logins>
+	</security>
 </application>

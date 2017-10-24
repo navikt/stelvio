@@ -10,11 +10,10 @@
 		<role-name>ROLE_WITH_ACCESS</role-name>
 	</security-role>
 	
-	<!-- Krev rolle  0000-GA-Hawtio-Operator for tilgang til jolokia -->
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>all</web-resource-name>
-			<url-pattern>/*</url-pattern>
+			<url-pattern>/taitestsecure/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>ROLE_WITH_ACCESS</role-name>
