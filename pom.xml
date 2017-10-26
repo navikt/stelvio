@@ -258,12 +258,6 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <!-- JPA, for data access using Java Persistence API -->
-                <groupId>javax.persistence</groupId>
-                <artifactId>persistence-api</artifactId>
-                <version>${persistence-api.version}</version>
-            </dependency>
-            <dependency>
                 <artifactId>myfaces-test20</artifactId>
                 <groupId>org.apache.myfaces.test</groupId>
                 <version>${myfaces-test.version}</version>
