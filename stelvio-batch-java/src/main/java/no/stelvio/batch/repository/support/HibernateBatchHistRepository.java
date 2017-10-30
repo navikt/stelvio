@@ -116,7 +116,7 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 	 *            the BatchHistDO
 	 */
 	public long setHist(BatchHistDO batchHistDO) {
-		getHibernateTemplate().persist(batchHistDO);
+		getHibernateTemplate().getSessionFactory().getCurrentSession().persist(batchHistDO);
 		return batchHistDO.getBatchHistId();
 	}
 
