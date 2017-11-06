@@ -186,7 +186,7 @@ public class DefaultSpringBatchJobOperator implements SpringBatchJobOperator {
     private Long start(String jobName, String parameters) throws NoSuchJobException, JobInstanceAlreadyCompleteException,
             NoSuchJobExecutionException, JobRestartException, JobParametersInvalidException {
 
-        Long jobExecutionId = null;
+        Long jobExecutionId;
         try {
             String jobParameters = assembleParameters(jobName, parameters);
             jobExecutionId = jobOperator.start(jobName, jobParameters); // synkron ex.

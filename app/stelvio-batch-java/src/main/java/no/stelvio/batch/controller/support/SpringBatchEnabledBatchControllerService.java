@@ -119,7 +119,7 @@ public class SpringBatchEnabledBatchControllerService extends DefaultBatchContro
 							+ "Will be using the first entry in the ApplicationContext. "
 							+ "Make sure only one ComponentIdHolder is configured per configuration module");
 				}
-				componentId = (String) ((ComponentIdHolder) beanNameComponentIdHolderPairs.values().iterator().next())
+				componentId = ((ComponentIdHolder) beanNameComponentIdHolderPairs.values().iterator().next())
 						.getComponentId();
 				LOGGER.debug("Component Id set to " + componentId);
 			}

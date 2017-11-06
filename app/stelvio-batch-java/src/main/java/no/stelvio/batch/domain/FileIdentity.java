@@ -20,7 +20,7 @@ public class FileIdentity implements Serializable {
 	private static final long serialVersionUID = 8945679075174856089L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long fileIdentityId;
 
 	@Column(name = "sti")

@@ -38,11 +38,9 @@ import org.slf4j.LoggerFactory;
 		@NamedQuery(name = "BatchHistDO.findByNameAndTimeInterval", query = "SELECT b FROM BatchHistDO b where b.batchname=:batchname AND b.startTime >= :beginInterval AND b.startTime <= :endInterval"),
 		@NamedQuery(name = "BatchHistDO.findByNameAndStartDay", query = "SELECT b from BatchHistDO b where b.batchname = :batchname AND b.startTime >= :startDay"),
 		@NamedQuery(name = "BatchHistDO.findById", query = "SELECT b FROM BatchHistDO b where b.batchHistId=:batchHistId") })		
-		public class BatchHistDO {
+public class BatchHistDO {
 
-	/** Logger. */
-	protected static final Logger logger = LoggerFactory
-			.getLogger(BatchHistDO.class);
+	protected static final Logger logger = LoggerFactory.getLogger(BatchHistDO.class);
 
 	/**
 	 * identifier field, read only. for a unique identifier of a batch use the
@@ -54,18 +52,18 @@ import org.slf4j.LoggerFactory;
 	private long batchHistId;
 
 	/** batch name, read only. */
-	@Column(name = "BATCH_NAME", insertable = true, updatable = false)
+	@Column(name = "BATCH_NAME", updatable = false)
 	private String batchname;
 
 	/** start criteria (included) for this batch, read only. */
-	@Column(name = "SLICE_START", insertable = true, updatable = false)
+	@Column(name = "SLICE_START", updatable = false)
 	private String sliceStart;
 
 	/** end criteria (included) for this batch, read only. */
-	@Column(name = "SLICE_END", insertable = true, updatable = false)
+	@Column(name = "SLICE_END", updatable = false)
 	private String sliceEnd;
 
-	@Column(name = "SLICE", insertable = true, updatable = false)
+	@Column(name = "SLICE", updatable = false)
 	private int slice;
 	
 	/**
@@ -79,24 +77,24 @@ import org.slf4j.LoggerFactory;
 	private ChangeStamp changeStamp;
 
 	/** Batch start time. Automatically inserted by onCreate() **/
-	@Column(name = "STARTTIME", nullable = true)
+	@Column(name = "STARTTIME")
 	private Date startTime;
 
 	// TODO Should not be nullable!
 	// @Column(name = "ENDTIME", nullable = false)
-	@Column(name = "ENDTIME", nullable = true)
+	@Column(name = "ENDTIME")
 	private Date endTime;
 
 	/** nullable persistent field */
-	@Column(name = "PARAMETERS", insertable = true, updatable = false)
+	@Column(name = "PARAMETERS", updatable = false)
 	private String parameters;
 
 	/** nullable persistent field */
-	@Column(name = "OUTPUT", insertable = true, updatable = true)
+	@Column(name = "OUTPUT")
 	private Clob output;
 
 	/** nullable persistent field, may be updated. */
-	@Column(name = "STATUS", insertable = true)
+	@Column(name = "STATUS")
 	private String status;
 
 	/** Entity listener for persisting start time **/

@@ -41,40 +41,20 @@ public class ControllerServiceHistorySupportTest {
 	public ControllerServiceHistorySupportTest() {
 	}
 
-	public DefaultBatchControllerService getBatchControllerService() {
-		return batchControllerService;
-	}
-
 	public void setBatchControllerService(DefaultBatchControllerService batchControllerService) {
 		this.batchControllerService = batchControllerService;
-	}
-
-	public HibernateBatchHistRepository getHistRepository() {
-		return histRepository;
 	}
 
 	public void setHistRepository(HibernateBatchHistRepository histRepository) {
 		this.histRepository = histRepository;
 	}
 	
-	public ControllerServiceHistorySupport getControllerServiceHistorySupport() {
-		return controllerServiceHistorySupport;
-	}
-
 	public void setControllerServiceHistorySupport(ControllerServiceHistorySupport controllerServiceHistorySupport) {
 		this.controllerServiceHistorySupport = controllerServiceHistorySupport;
 	}
 	
-	public StelvioBatchParameterReader getReader() {
-		return reader;
-	}
-
 	public void setReader(StelvioBatchParameterReader reader) {
 		this.reader = reader;
-	}
-
-	public HibernateBatchRepository getBatchRepo() {
-		return batchRepo;
 	}
 
 	public void setBatchRepo(HibernateBatchRepository batchRepo) {

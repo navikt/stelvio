@@ -37,7 +37,7 @@ public final class DateUtil {
 
 	private static final String SHORT_DATE_FORMAT = "dd.MM.yy";
 
-	private static final String DB2_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	private static final String DB_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
 	private static final String CICS_DATE_FORMAT = "yyyyMMdd";
 
@@ -230,8 +230,8 @@ public final class DateUtil {
 	 * @throws IllegalArgumentException
 	 *             if input is not legal.
 	 */
-	public static Date parseDB2String(final String input, final boolean allowNull) throws IllegalArgumentException {
-		return parseCommon(input, allowNull, DB2_DATE_FORMAT, true, false, false);
+	public static Date parseDBString(final String input, final boolean allowNull) throws IllegalArgumentException {
+		return parseCommon(input, allowNull, DB_DATE_FORMAT, true, false, false);
 	}
 
 	/**
@@ -301,14 +301,14 @@ public final class DateUtil {
 	}
 
 	/**
-	 * Formats a Date into DB2 format (yyyy-MM-dd HH:mm:ss).
+	 * Formats a Date into DB format (yyyy-MM-dd HH:mm:ss).
 	 * 
 	 * @param input
 	 *            the date to format.
 	 * @return the formatted date.
 	 */
-	public static String formatDB2String(final Date input) {
-		return createDateFormat(DB2_DATE_FORMAT).format(input);
+	public static String formatDBString(final Date input) {
+		return createDateFormat(DB_DATE_FORMAT).format(input);
 	}
 
 	/**
@@ -930,7 +930,7 @@ public final class DateUtil {
 	 * @author persone53f7e657aaa
 	 * @author personf8e9850ed756
 	 */
-	public static interface DateCreator {
+	public interface DateCreator {
 
 		/**
 		 * Creates a new Date.

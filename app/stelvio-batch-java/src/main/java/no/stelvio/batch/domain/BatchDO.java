@@ -42,7 +42,7 @@ public class BatchDO {
 
 	/** identifier field, read only. for a unique identifyer of a batch use the batchnam/slice combination */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "BATCH_ID", insertable = false, updatable = false)
 	private long batchId;
 

@@ -2,19 +2,19 @@ package no.stelvio.batch.controller.support;
 
 import java.util.Map;
 
-import no.stelvio.batch.BatchBi;
-import no.stelvio.batch.BatchRegistry;
-import no.stelvio.batch.controller.BatchControllerServiceBi;
-import no.stelvio.batch.support.ControllerServiceHistorySupport;
-import no.stelvio.common.config.InvalidPropertyException;
-import no.stelvio.common.config.MissingPropertyException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import no.stelvio.batch.BatchBi;
+import no.stelvio.batch.BatchRegistry;
+import no.stelvio.batch.controller.BatchControllerServiceBi;
+import no.stelvio.batch.support.ControllerServiceHistorySupport;
+import no.stelvio.common.config.InvalidPropertyException;
+import no.stelvio.common.config.MissingPropertyException;
 
 /**
  * Work controller service for batches. Use the server side batch context configuration which is described in a xml file, for
@@ -43,16 +43,6 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	@SuppressWarnings("unchecked")
 	private Map batchNameMap;
 
-
-	/**
-	 * Default constructor
-	 * TODO Remove binding to test-config
-	 */
-	public DefaultBatchControllerService() {
-//		ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("btc-testbatch-context.xml");
-//		controllerServiceHistorySupport = (ControllerServiceHistorySupport) springContext.getBean("ControllerServiceHistorySupport");
-	}
-
 	private static final String SLICE_STRING = " slice ";
 
 	/** {@inheritDoc} */
@@ -69,38 +59,33 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 					+ batchName, new String[] { "batchBeanId" });
 		}
 
-		BatchBi batch = null;
+		BatchBi batch;
 		try {
-
-			// ApplicationContext apeCont = getApplicationContext();
-			// batch = (BatchBi) getApplicationContext().getBean("btc.testbatch.dummyBatch");
-			batch = (BatchBi) getApplicationContext().getBean(batchBeanId);
+			batch = (BatchBi) applicationContext.getBean(batchBeanId);
 			batch.setBatchName(batchName);
 			batch.setSlice(slice);
 
 			registerBatch(batchName, slice, batch);
 
 			long batchHistoryId = 0;
-			
-			if(controllerServiceHistorySupport != null)
-			{
+
+			if (controllerServiceHistorySupport != null) {
 				batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
 			}
-			
+
 			int result = batch.executeBatch(slice);
-			
-			if(batchHistoryId != 0)
-			{
-				controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);	
+
+			if (batchHistoryId != 0) {
+				controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);
 			}
-			
+
 			return result;
 
 		} catch (BeansException be) {
 			throw new InvalidPropertyException("Could not create batch instance, due to bad configuration",
 					new Object[] { batchBeanId }, be);
 		} finally {
-			unregisterBatch(batchName, slice, batch);
+			unregisterBatch(batchName, slice);
 			MDC.remove(JOB_NAME);
 		}
 	}
@@ -142,7 +127,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	 */
 	@SuppressWarnings("unchecked")
 	private void registerBatch(String batchName, int slice, BatchBi batch) {
-		Map<String, BatchRegistry> registries = getApplicationContext().getBeansOfType(BatchRegistry.class);
+		Map<String, BatchRegistry> registries = applicationContext.getBeansOfType(BatchRegistry.class);
 		if (registries.isEmpty()) {
 			if (LOGGER.isInfoEnabled()) {
 				LOGGER.debug("No BatchRegistry defined in ApplicationContext, batch " + batchName + SLICE_STRING + slice
@@ -166,15 +151,12 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 
 	/**
 	 * Unregister a batch.
-	 * 
-	 * @param batchName
+	 *  @param batchName
 	 *            batch name
 	 * @param slice
 	 *            slice
-	 * @param batch
-	 *            batch
 	 */
-	private void unregisterBatch(String batchName, int slice, BatchBi batch) {
+	private void unregisterBatch(String batchName, int slice) {
 		if (isRegistryConfiguredCorrectly()) {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Batch registry was succesfully retrieved");
@@ -204,7 +186,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	 * @return <code>true</code> if 1 and only 1 is configured in applicationContext, otherwise <code>false</code>
 	 */
 	private boolean isRegistryConfiguredCorrectly() {
-		return (getApplicationContext().getBeansOfType(BatchRegistry.class).values().size() == 1);
+		return (applicationContext.getBeansOfType(BatchRegistry.class).values().size() == 1);
 	}
 
 	/**
@@ -213,7 +195,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	 * @return batch registry
 	 */
 	private BatchRegistry getBatchRegistry() {
-		return (BatchRegistry) getApplicationContext().getBeansOfType(BatchRegistry.class).values().iterator().next();
+		return applicationContext.getBeansOfType(BatchRegistry.class).values().iterator().next();
 	}
 
 	/**
@@ -262,26 +244,16 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	 * 
 	 * @return applicationContext
 	 */
-	public ApplicationContext getApplicationContext() {
+	protected ApplicationContext getApplicationContext() {
 		return this.applicationContext;
 	}
 
-	/**
-	 * Gets the controllerServiceHistorySupport.
-	 * 
-	 * @return controllerServiceHistorySupport
-	 */
-	public ControllerServiceHistorySupport getControllerServiceHistorySupport() {
-			return this.controllerServiceHistorySupport;
-	}
-	
 	/**
 	 * Set the controllerServiceHistorySupport.
 	 * 
 	 * @param controllerServiceHistorySupport
 	 *            - ControllerServiceHistorySupport
 	 */
-	//TODO Should possibly be set in another way
 	public void setControllerServiceHistorySupport(ControllerServiceHistorySupport controllerServiceHistorySupport) {
 		this.controllerServiceHistorySupport = controllerServiceHistorySupport;
 	}

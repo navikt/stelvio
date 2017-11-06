@@ -40,7 +40,7 @@ public class TWSExitCodeMapper implements ExitCodeMapper {
 		}
 		Integer twsCode = null;
 		try {
-			twsCode = (Integer) mapping.get(exitCode);
+			twsCode = mapping.get(exitCode);
 			if (logger.isDebugEnabled()) {
 				logger.debug("twsCode: " + twsCode);
 			}

@@ -21,18 +21,18 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
  */
 public class HibernateBatchHistRepository implements BatchHistRepository {
 
-	private HibernateTemplate hibernateTemplate;
-
 	private final String[] nameAndSliceParams = { "batchname", "slice" };
-	private final String[] nameAndTimeIntervalParams = { "batchname",
-			"beginInterval", "endInterval" };
+	private final String[] nameAndTimeIntervalParams = { "batchname", "beginInterval", "endInterval" };
 	private final String[] nameAndStartDayParams = {"batchname", "startDay"/*, "endDay" */};
-	private static final String idParameter = "batchHistId";
-	
+
+	private static final String ID_PARAMETER = "batchHistId";
+
 	private static final String NAME_AND_STARTDAY_QUERY = "BatchHistDO.findByNameAndStartDay";
 	private static final String NAME_AND_SLICE_QUERY = "BatchHistDO.findByNameAndSlice";
 	private static final String ID_QUERY = "BatchHistDO.findById";
 	private static final String NAME_AND_TIME_INTERVAL_QUERY = "BatchHistDO.findByNameAndTimeInterval";
+
+	private HibernateTemplate hibernateTemplate;
 
 	/**
 	 * {@inheritDoc}
@@ -121,10 +121,8 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 	}
 
 	public BatchHistDO findById(Long batchHistoryID) {
-		// TODO Probably an easier way to query when only using 1 parameter (and
-		// unique)
 		List batchHistDOs = getHibernateTemplate()
-				.findByNamedQueryAndNamedParam(ID_QUERY, idParameter,
+				.findByNamedQueryAndNamedParam(ID_QUERY, ID_PARAMETER,
 						batchHistoryID);
 
 		return (BatchHistDO) batchHistDOs.get(0);

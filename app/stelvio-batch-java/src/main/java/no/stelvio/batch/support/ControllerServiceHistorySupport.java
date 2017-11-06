@@ -1,11 +1,12 @@
 package no.stelvio.batch.support;
 
+import org.springframework.jdbc.UncategorizedSQLException;
+
 import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
 import no.stelvio.domain.time.ChangeStamp;
-import org.springframework.jdbc.UncategorizedSQLException;
 
 /**
  * Class for saving and retrieving history on batches that have been run
@@ -13,40 +14,20 @@ import org.springframework.jdbc.UncategorizedSQLException;
  * @author person5dc3535ea7f4(Accenture)
  **/
 public class ControllerServiceHistorySupport {
-
-	BatchHistRepository repository;
-	StelvioBatchParameterReader reader;
 	private final static String BATCH_STATUS_STARTED = "STARTED"; // Corresponds
-	// with
-	// BatchStatus.STARTED
 	private static final String BATCH_STATUS_COMPLETED = "COMPLETED"; // Corresponds
-	// with
-	// BatchStatus.COMPLETED
 
-	public ControllerServiceHistorySupport() {
-		
-	}
+	private BatchHistRepository repository;
+	private StelvioBatchParameterReader reader;
 
 	public BatchHistRepository getRepository() {
 		return repository;
 	}
 
-	public void setRepository(BatchHistRepository repository) {
-		this.repository = repository;
-	}
-	
-	public StelvioBatchParameterReader getReader() {
-		return reader;
-	}
-
-	public void setReader(StelvioBatchParameterReader reader) {
-		this.reader = reader;
-	}
-	
 	/**
-	 * Saves batch information in T_BATCH_HIST when a (classic) batch is started (when the execute method is called).  
-	 * Used in DefaultBatchControllerService's execute method.  
-	 * 
+	 * Saves batch information in T_BATCH_HIST when a (classic) batch is started (when the execute method is called).
+	 * Used in DefaultBatchControllerService's execute method.
+	 *
 	 * @param batchName
 	 * @param slice
 	 * @return
@@ -65,9 +46,9 @@ public class ControllerServiceHistorySupport {
 	}
 
 	/**
-	 * Saves batch information in T_BATCH_HIST when a spring batch is started (when the execute method is called). 
-	 * Not used yet.  
-	 * 
+	 * Saves batch information in T_BATCH_HIST when a spring batch is started (when the execute method is called).
+	 * Not used yet.
+	 *
 	 * @param jobName
 	 * @param parameters
 	 * @return
@@ -75,28 +56,25 @@ public class ControllerServiceHistorySupport {
 	public long saveInitialBatchInformation(String jobName, String parameters) {
 		BatchHistDO batchHistory = new BatchHistDO();
 		batchHistory.setChangeStamp(new ChangeStamp(jobName));
-		
+
 		if (parameters != null){
-			batchHistory.setParameters(parameters);			
+			batchHistory.setParameters(parameters);
 		}
 		else {
 			batchHistory.setParameters(" ");
 		}
-		
+
 		return saveInitialCommonBatchInformation(batchHistory, jobName);
 	}
 
-	private long saveInitialCommonBatchInformation(BatchHistDO batchHistory,
-			String batchName) {
+	private long saveInitialCommonBatchInformation(BatchHistDO batchHistory, String batchName) {
 		batchHistory.setBatchname(batchName);
 		batchHistory.setStatus(BATCH_STATUS_STARTED);
 		batchHistory.setStartTime();
 		return repository.setHist(batchHistory);
 	}
 
-	public boolean saveAdditionalBatchInformation(long batchHistoryId,
-			int result) {
-
+	public boolean saveAdditionalBatchInformation(long batchHistoryId, int result) {
 		BatchHistDO batchHistory = fetchBatchHistory(batchHistoryId);
 		batchHistory.setEndTime();
 
@@ -107,14 +85,6 @@ public class ControllerServiceHistorySupport {
 		repository.updateBatchHist(batchHistory);
 
 		return true;
-	}
-
-	// Returns last run row matching batchName and slice
-	// TODO Write proper docs
-
-	public void setBatchHistoryRepository(
-			HibernateBatchHistRepository histRepository) {
-		this.repository = histRepository;
 	}
 
 	public BatchHistDO fetchBatchHistory(Long batchHistoryID) {
@@ -132,7 +102,19 @@ public class ControllerServiceHistorySupport {
 				}
 			}
 		}
-		throw new RuntimeException("Can not update batch history.  Check connection to DB2. ");
+		throw new RuntimeException("Can not update batch history. Check connection to database.");
+	}
+
+	public void setRepository(BatchHistRepository repository) {
+		this.repository = repository;
+	}
+
+	public void setReader(StelvioBatchParameterReader reader) {
+		this.reader = reader;
+	}
+
+	public void setBatchHistoryRepository(HibernateBatchHistRepository histRepository) {
+		this.repository = histRepository;
 	}
 
 }

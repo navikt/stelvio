@@ -20,22 +20,19 @@ public interface BatchHistRepository {
 	 * Updates the BatchDO.
 	 * Should not persist a <strong>new</strong> BatchDO.
 	 * New BatchHistDO should be inserted by DBA
-	 * @param batch the BatchHistDO to update
+	 * @param batchHistory the BatchHistDO to update
 	 *
 	 */
 	void updateBatchHist(BatchHistDO batchHistory);
 	
 	/**
-	 * Retrieves a BatchHistDO by the unique combination of name and slice.
+	 * Retrieves available entries of BatchHistDO by the unique combination of name and slice.
 	 * @param batchName the batch name
 	 * @param slice the slice number
-	 * @return the BatchHistDO
+	 * @return the collection of BatchHistDO
 	 * @throws InvalidBatchEntryException if zero, or more than one BatchHistDO is returned from persistence store
 	 */
-	//BatchHistDO findByNameAndSlice(String batchName, int slice) throws InvalidBatchEntryException;
-
-	
-	Collection <BatchHistDO> findByNameAndSlice(String batchName, int slice);
+	Collection<BatchHistDO> findByNameAndSlice(String batchName, int slice);
 	
 	BatchHistDO findLastRunByNameAndSlice(String string, int i);
 
@@ -43,8 +40,7 @@ public interface BatchHistRepository {
 
 	BatchHistDO findById(Long batchHistoryID);
 
-	Collection<BatchHistDO> findByNameAndTimeInterval(String batchName,
-			Date fromDate, Date toDate);
+	Collection<BatchHistDO> findByNameAndTimeInterval(String batchName, Date fromDate, Date toDate);
 
 	Collection<BatchHistDO> findByNameAndDay(String batchName, Date startDay);
 	

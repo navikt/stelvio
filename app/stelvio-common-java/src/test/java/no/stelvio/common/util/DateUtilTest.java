@@ -201,13 +201,13 @@ public class DateUtilTest {
 	}
 
 	/**
-	 * Test formatDB2String.
+	 * Test formatDBString.
 	 */
 	@Test
-	public void formatDb2StringOk() {
+	public void formatDbStringOk() {
 		formatAndTest("2003-07-22 21:45:36", calendar(2003, 7, 22, 21, 45, 36), new DateFormatter() {
 			public String format(final Date date) {
-				return DateUtil.formatDB2String(date);
+				return DateUtil.formatDBString(date);
 			}
 		});
 	}
@@ -696,13 +696,13 @@ public class DateUtilTest {
 	 * Test parsing DB2 string.
 	 */
 	@Test
-	public void parseDB2String() {
+	public void parseDBString() {
 		// TEST CASE 1: Normal operation
-		DateUtil.parseDB2String("2005-02-11 16:00:00", false);
+		DateUtil.parseDBString("2005-02-11 16:00:00", false);
 
 		// TEST CASE 2: Invalid string
 		try {
-			DateUtil.parseDB2String("2005-02-11xxx", false);
+			DateUtil.parseDBString("2005-02-11xxx", false);
 			fail("Test parsing of invalid string should throw a IllegalArgumentException; Not OK!");
 		} catch (Exception e) {
 			assertTrue("Test parsing of 2005-02-11xxx throws IllegalArgumentException", e instanceof IllegalArgumentException);
@@ -710,14 +710,14 @@ public class DateUtilTest {
 
 		// TEST CASE 3: input is null and not allowed
 		try {
-			DateUtil.parseDB2String(null, false);
+			DateUtil.parseDBString(null, false);
 			fail("Should have thrown an IllegalArgumentException");
 		} catch (IllegalArgumentException e) {
 			assertTrue(true);
 		}
 
 		// TEST CASE 4: input is null and is allowed
-		assertNull("Test parsing of NULL and allowed should return NULL", DateUtil.parseDB2String(null, true));
+		assertNull("Test parsing of NULL and allowed should return NULL", DateUtil.parseDBString(null, true));
 	}
 
 	/**
@@ -1234,7 +1234,7 @@ public class DateUtilTest {
 	/**
 	 * Template interface that is implemented with the <code>DateUtil</code> parse method that should be tested.
 	 */
-	private static interface DateParser {
+	private interface DateParser {
 		/**
 		 * Parse a string and find the date.
 		 * 
@@ -1248,7 +1248,7 @@ public class DateUtilTest {
 	/**
 	 * Template interface that is implemented with the <code>DateUtil</code> format method that should be tested.
 	 */
-	private static interface DateFormatter {
+	private interface DateFormatter {
 		/**
 		 * Format a date.
 		 * 

@@ -14,7 +14,7 @@ public class ProgressLoggerListener implements ProgressListener {
 	
 	private ProgressLoggerListener() {
 	}
-	
+
 	public ProgressLoggerListener(InfoLogger logger, EventReportFormatter formatter) {
 		this.logger = logger;
 		this.formatter = formatter;

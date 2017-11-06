@@ -6,7 +6,7 @@ package no.stelvio.batch.listeners.support;
  * @author Jar Jar Binks (Accenture)
  *
  */
-public class ListenerSupport {
+public final class ListenerSupport {
 
 	/**
 	 * Hidden constructor

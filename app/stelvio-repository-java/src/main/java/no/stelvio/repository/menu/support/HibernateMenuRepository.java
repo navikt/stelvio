@@ -17,22 +17,9 @@ import no.stelvio.repository.menu.MenuRepository;
 public class HibernateMenuRepository implements MenuRepository {
 	private HibernateTemplate hibernateTemplate;
 
-	/** Default no-arg constructor. Calls to this constructor must be followed by the injection of hibernateTemplate. */
-	public HibernateMenuRepository() {
-	}
-
 	/** {@inheritDoc} */
 	public List<MenuItem> getParents() {
 		return cast(hibernateTemplate.findByNamedQuery("MenuItem.findParents"));
-	}
-
-	/**
-	 * Gets a HibernateTemplate.
-	 *
-	 * @return hibernateTemplate
-	 */
-	public HibernateTemplate getHibernateTemplate() {
-		return hibernateTemplate;
 	}
 
 	/**

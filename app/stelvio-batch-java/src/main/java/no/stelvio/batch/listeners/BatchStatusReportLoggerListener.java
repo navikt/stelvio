@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import no.stelvio.common.log.InfoLogger;
-
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.Assert;
+
+import no.stelvio.common.log.InfoLogger;
 
 /**
  * Logs a batch job status report after job has been run.
@@ -27,12 +27,13 @@ import org.springframework.util.Assert;
  */
 public final class BatchStatusReportLoggerListener implements JobExecutionListener, InitializingBean {
 
-    public static final String DB2 = "db2";
+    public static final String ORACLE= "oracle";
+
     private Map<String, String> dbTypeToSql = new HashMap<String, String>() {{
-        put(DB2, "SELECT current_schema from SYSIBM.SYSDUMMY1");
+        put(ORACLE, "SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM DUAL");
     }};
 
-    private String databaseType = DB2;
+    private String databaseType = ORACLE;
 
     private String currentSchema;
 
@@ -100,7 +101,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
                 formatMillisecondsDurationAsHumanReadableString((jobExecution.getEndTime().getTime() - jobExecution
                         .getStartTime().getTime())));
         sb.append("\nHost: ").append(getHostNameAndIp());
-        sb.append("\nDB2 Schema: ").append(getCurrentSchema() + "\n");
+        sb.append("\nSchema: ").append(getCurrentSchema() + "\n");
         sb.append("\n");
         sb.append("\n");
         sb.append("+====================================================================== Spring Job Execution Summary ===============================================================================================+\n");
@@ -162,7 +163,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         sb.append("Start time: " + jobExecution.getStartTime() + "\n");
         sb.append("Job parameters:").append(jobExecution.getJobInstance().getJobParameters().getParameters().toString() + "\n");
         sb.append("Host: ").append(getHostNameAndIp() + "\n");
-        sb.append("DB2 Schema: ").append(getCurrentSchema() + "\n");
+        sb.append("Schema: ").append(getCurrentSchema() + "\n");
 
         sb.append("=======================================================================================================================\n");
 
@@ -203,9 +204,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
     }
 
     /**
-     * Get current DB2 Schema.
-     *
-     * @return Current DB2 Schema
+     * @return the current databaseSchema
      */
     private String getCurrentSchema() {
 
@@ -214,7 +213,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
             String currentSchemaSql = dbTypeToSql.get(databaseType);
 
             if(currentSchemaSql != null) {
-                currentSchema = (String) jdbcTemplate.queryForObject(currentSchemaSql, String.class);
+                currentSchema = jdbcTemplate.queryForObject(currentSchemaSql, String.class);
             }
         }
 
