@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="stelvio-example-order-design" default="generate" basedir=".">
-	<target name="generate">
-		<echo>Running transformation 'stelvio-example-order-design/UML2WSDL.tc' ...</echo>
-		<com.ibm.xtools.transform.core.runTransformation transformConfig="stelvio-example-order-design/UML2WSDL.tc" reverse="false" />
-	</target>
-</project>

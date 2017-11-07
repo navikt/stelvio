@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://www.stelvio.no/example/services/V1/EchoService/Binding" xmlns:Binding2="http://www.stelvio.no/example/services/V1/EchoService/Binding2" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://www.stelvio.no/example/services/V1/EchoService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoServiceWSEXP" name="EchoServiceWSEXP" target="stelvio-example-echo-service">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:EchoService"/>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding2:EchoServiceWSEXP_EchoServiceHttpPort" service="Binding2:EchoServiceWSEXP_EchoServiceHttpService"/>
-</scdl:export>

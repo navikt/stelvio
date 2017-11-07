@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.stelvio.no/example/person/provider/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<xsd:complexType name="PersonNotFoundFault">
-		<xsd:sequence>
-			<xsd:element minOccurs="1" name="id" type="xsd:string"/>
-
-			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
-		</xsd:sequence>
-	</xsd:complexType>
-</xsd:schema>

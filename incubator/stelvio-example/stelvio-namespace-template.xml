@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><namespaceTemplates>
-<template description="" name="Stelvio Namespace Template" nsPattern="www.${folder_segment:2}.${folder_segment:1}/${folder_segment:n}" nsPrefix="http://"/>
-</namespaceTemplates>

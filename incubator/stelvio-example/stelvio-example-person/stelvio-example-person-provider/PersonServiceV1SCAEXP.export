@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PersonService="http://www.stelvio.no/example/person/provider/V1/PersonService" xmlns:ns1="http://www.stelvio.no/example/person/V1/PersonService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="PersonServiceV1SCAEXP" name="PersonServiceV1SCAEXP" target="PersonServiceV1Stub">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="PersonService:PersonService"/>
-  </interfaces>
-</scdl:export>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://BpelInvokeTest/Test/Binding" xmlns:ns1="http://BpelInvokeTest/Test" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="BpelInvokeTestWSEXP" name="BpelInvokeTestWSEXP" target="InvokeTest">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Test"/>
-  </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding:BpelInvokeTestWSEXP_TestHttpPort" service="Binding:BpelInvokeTestWSEXP_TestHttpService"/>
-</scdl:export>

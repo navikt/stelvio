@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><mappingRoot domainID="com.ibm.msl.mapping.xml" targetNamespace="http://www.stelvio.no/example/order/V1/CancelOrderStubTransform" version="7.0.101" xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="http://www.stelvio.no/example/order/V1/CancelOrderStubTransform">
-    <input path="smo://smo/name%3Dwsdl-primary/message%3D%257Bhttp%253A%252F%252Fwww.stelvio.no%252Fexample%252Forder%252FV1%252FOrderCommand%257DcancelOrderRequestMsg/xpath%3D%252Fbody/smo.xsd"/>
-    <output path="smo://smo/name%3Dwsdl-primary/message%3D%257Bhttp%253A%252F%252Fwww.stelvio.no%252Fexample%252Forder%252FV1%252FOrderCommand%257DcancelOrderResponseMsg/xpath%3D%252Fbody/smo.xsd"/>
-    <mappingDeclaration name="CancelOrderStubTransform">
-        <input path="body"/>
-        <output path="body"/>
-    </mappingDeclaration>
-</mappingRoot>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mfc:interfaceMediationFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/wbiserver/mfc/6.0.0" xmlns:ns1="http://echoService/Echo" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="EchoService" targetNamespace="http://echoService/EchoService">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Echo"/>
-  </interfaces>
-  <operationFlow medflow="EchoService.medflow"/>
-</mfc:interfaceMediationFlow>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ejb="http://www.ibm.com/xmlns/prod/websphere/scdl/ejb/6.0.0" xmlns:ns1="http://ejbs" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="LargeGraphBinding" name="LargeGraphBinding">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:LargeGraph"/>
-  </interfaces>
-  <esbBinding xsi:type="ejb:SLSBImportBinding" dataHandlerType="com.ibm.wbiserver.datahandler.j2w.JAXWSDataHandler" faultSelector="com.ibm.wbiserver.faults.j2w.EJBFaultSelector" functionSelector="com.ibm.wbiserver.selector.j2w.EJBImportFunctionSelector" jndiName="ejb/ejbs/LargeGraphHome"/>
-</scdl:import>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://nav-module-responsetime/no/nav/inf/ResponseTimeTest/Binding" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://nav-module-responsetime/no/nav/inf/ResponseTimeTest" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ResponseTimeTestWSEXP" name="ResponseTimeTestWSEXP" target="invokeResponseTimeTest">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:ResponseTimeTest"/>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding:ResponseTimeTestWSEXP_ResponseTimeTestHttpPort" service="Binding:ResponseTimeTestWSEXP_ResponseTimeTestHttpService"/>
-</scdl:export>

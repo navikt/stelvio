@@ -1,7 +1,0 @@
-<dp:request domain="" xmlns:dp='http://www.datapower.com/schemas/management'>
-	<dp:set-config>
-		<Domain name="">
-			<NeighborDomain class='Domain'>default</NeighborDomain>
-		</Domain>
-	</dp:set-config>
-</dp:request>

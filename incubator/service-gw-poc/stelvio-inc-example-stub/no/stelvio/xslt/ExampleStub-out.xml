@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><body xmlns:io8="http://www.w3.org/2005/08/addressing" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:io7="wsdl.http://www.stelvio.no/example/ExamplePortType" xmlns:io6="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:io5="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:io4="http://www.stelvio.no/example/ExamplePortType" xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1" xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0" xmlns:io="http://www.w3.org/2003/05/soap-envelope">
-  <io4:echoResponse>
-    <output>input</output>
-  </io4:echoResponse>
-</body>

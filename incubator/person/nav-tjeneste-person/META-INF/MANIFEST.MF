@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: nav-familieforhold-tjenestespesifikasjon.jar 
- nav-lib-frg-tps.jar 
- stelvio-commons-lib.jar 
- nav-lib-frg-sfe.jar 
- nav-person-tjenestespesifikasjon.jar
-

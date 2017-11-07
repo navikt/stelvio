@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://stelvio.no/example/services/V1/Echo/Binding/" xmlns:Binding2="http://www.stelvio.no/example/services/V1/EchoService/Binding2" xmlns:Binding_1="http://stelvio.no/example/services/echo/v1/Binding/" xmlns:ExampleProvider="http://www.stelvio.no/example/services/V1/EchoService/ExampleProvider/" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://www.stelvio.no/example/services/V1/EchoService" xmlns:ns2="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:ns3="http://stelvio.no/example/services/V1/Echo/" xmlns:ns4="http://stelvio.no/example/services/echo/v1/" xmlns:ns5="http://stelvio.no/example/services/echo/" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoWSEXP" name="EchoWSEXP" target="EchoWSIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns5:Echo"/>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding_1:EchoPort" service="Binding_1:Echo">
-    <policySetRef policySetName="SAML20 Bearer"/>
-  </esbBinding>
-</scdl:export>

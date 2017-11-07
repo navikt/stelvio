@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EchoService1="http://poc-module1/no/nav/inf/EchoService1" xmlns:EchoService1_1="http://poc-module2/no/nav/inf/EchoService1" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoService" name="EchoService">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="EchoService1_1:EchoService1"/>
-  </interfaces>
-  <implementation xsi:type="java:JavaImplementation" class="no.nav.java.EchoServiceImpl"/>
-</scdl:component>

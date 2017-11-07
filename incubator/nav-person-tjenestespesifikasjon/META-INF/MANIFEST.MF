@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Build-Jdk: 1.6.0_20
-Built-By: utvikler
-Class-Path: nav-lib-frg.jar
-Archiver-Version: Plexus Archiver
-Created-By: Apache Maven
-

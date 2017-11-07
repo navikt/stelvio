@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<hudson.plugins.clearcase.ClearCaseSCM_-ClearCaseScmDescriptor>
-  <generation>1</generation>
-  <changeLogMergeTimeWindow>5</changeLogMergeTimeWindow>
-  <defaultViewName>${USER_NAME}_${NODE_NAME}_${JOB_NAME}_hudson</defaultViewName>
-  <defaultViewPath>view</defaultViewPath>
-  <defaultWinDynStorageDir>\\e26apvl048.test.local\views\dynamic</defaultWinDynStorageDir>
-  <installations/>
-</hudson.plugins.clearcase.ClearCaseSCM_-ClearCaseScmDescriptor>

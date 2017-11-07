@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://nav-lib-pen/no/nav/lib/pen/inf/IverksettVedtak/Binding" xmlns:Binding_1="http://nav-bproc-test-ppen015/no/nav/inf/IverksettVedtakTest/Binding" xmlns:IverksettVedtakTest="http://nav-bproc-test-ppen015/no/nav/inf/IverksettVedtakTest" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/IverksettVedtak" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="iverksettVedtakSynkronWSEXP" name="iverksettVedtakSynkronWSEXP" target="iverksettVedtakBPSynkron">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="IverksettVedtakTest:IverksettVedtakTest"/>
-  </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding_1:iverksettVedtakSynkronWSEXP_IverksettVedtakTestHttpPort" service="Binding_1:iverksettVedtakSynkronWSEXP_IverksettVedtakTestHttpService"/>
-</scdl:export>

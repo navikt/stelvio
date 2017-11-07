@@ -1,7 +1,0 @@
-Started by timer
-[workspace] $ /bin/sh -xe /tmp/hudson8388188669784376082.sh
-+ cd /home/ci/scripts/Confluence/compare
-+ python compareDataSources.py
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update; build not configured with trigger: Post Data Source config (WPS) overview to Confluence #1
-Finished: SUCCESS

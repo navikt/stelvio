@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- NB! Had to comment out this bean reference as the class it refers to is no longer in Stelvio  -->
+<!--  
+	<bean id="rep.inttest.codesTableManager" class="no.stelvio.common.codestable.support.DefaultCodesTableManager">
+		<property name="codesTableItemsFactory" ref="rep.inttest.codesTableItemsFactory"/>
+	</bean>
+-->
+	<!-- Transaction manager for tests -->
+	<bean id="transactionManager"
+		  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="rep.inttest.sessionFactory"/>
+	</bean>
+	<bean id="rep.inttest.hibernateTemplate"
+          class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="rep.inttest.sessionFactory"/>
+	</bean>
+
+	<bean id="rep.inttest.sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="rep.inttest.dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>no.stelvio.service.codestable.TestCti</value>
+				<value>no.stelvio.service.codestable.TestCtpi</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.query.jpaql_strict_compliance">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="rep.inttest.dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+		<property name="url" value="jdbc:hsqldb:mem:test"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+</beans>

@@ -1,7 +1,0 @@
-<dp:request domain="" xmlns:dp='http://www.datapower.com/schemas/management'>
-	<dp:set-config>
-		<HostAlias name="">
-			<IPAddress></IPAddress>
-		</HostAlias>
-	</dp:set-config>
-</dp:request>

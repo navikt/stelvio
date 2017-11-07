@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: stelvio-commons-lib.jar 
- nav-lib-frg.jar 
- nav-lib-frg-sfe.jar
-

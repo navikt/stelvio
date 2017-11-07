@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ejb="http://www.ibm.com/xmlns/prod/websphere/scdl/ejb/6.0.0" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" displayName="SakServiceBiEJBEXP" name="SakServiceBiEJBEXP" target="SakServiceBiSystemAvailabilityCheck">
-  <interfaces>
-    <interface xsi:type="java:JavaInterface" interface="no.nav.provider.pensjon.sak.SakServiceBi"/>
-  </interfaces>
-  <esbBinding xsi:type="ejb:SLSBExportBinding" dataHandlerType="com.ibm.wbiserver.datahandler.j2w.JAXWSDataHandler" functionSelector="com.ibm.wbiserver.selector.j2w.SLSBExportFunctionSelector" jndiName="ejb/no/nav/provider/pensjon/sak/ejb/SakServiceBi" session=""/>
-</scdl:export>

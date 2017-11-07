@@ -3182,6 +3182,18 @@ stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-we
 stelvio-example/stelvio-example-jaxws-consumer/stelvio-example-jaxws-consumer-web/target
 stelvio-example/stelvio-example-jaxws-consumer/target
 
+# Maven #
+MANIFEST.MF
+
+# IntelliJ #
+.idea
+*.iml
+atlassian-ide-plugin.xml
+
+# Generated sources #
+target/
+trash/
+
 # IntelliJ #
 ############
 *.iml

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<psf version="2.0">
-<provider id="org.tigris.subversion.subclipse.core.svnnature">
-<project reference="0.9.3,https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider,stelvio-example-person-provider"/>
-<project reference="0.9.3,https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib,stelvio-example-person-provider-lib"/>
-<project reference="0.9.3,https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service,stelvio-example-person-service"/>
-</provider>
-</psf>
