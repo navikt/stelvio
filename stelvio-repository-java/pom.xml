@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.0.0-SNAPSHOT-ORACLE-JAVA8</version>
 	</parent>
 	<artifactId>stelvio-repository-java</artifactId>
 	<packaging>jar</packaging>
