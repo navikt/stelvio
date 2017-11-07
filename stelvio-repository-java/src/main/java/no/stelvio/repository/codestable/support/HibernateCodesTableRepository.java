@@ -25,7 +25,6 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 
 	private static final String QUERY_FIND_ALL_CODESTABLEITEMS_START = "SELECT cti FROM ";
 	private static final String QUERY_FIND_ALL_CODESTABLEITEMS_END = " cti";
-	private HibernateTemplate hibernateTemplate;
 
 	private HibernateTemplate hibernateTemplate;
 
