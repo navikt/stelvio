@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>stelvio</artifactId>
 		<groupId>no.stelvio</groupId>
-		<version>5.0.0-SNAPSHOT-ORACLE-JAVA8</version>
+		<version>8.13.14.J8OR.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-provider-java</artifactId>
 	<name>stelvio - provider</name>
