@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.BatchConfiguration;
 import no.stelvio.batch.BatchStatus;
@@ -41,6 +42,8 @@ public class ControllerServiceHistorySupportTest {
     private StelvioBatchParameterReader reader;
     @Autowired
     private HibernateBatchRepository batchRepo;
+    @Autowired
+    private TransactionTemplate transactionTemplate;
 
     /**
      *

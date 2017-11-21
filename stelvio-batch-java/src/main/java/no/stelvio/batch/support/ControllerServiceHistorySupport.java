@@ -1,6 +1,7 @@
 package no.stelvio.batch.support;
 
 import org.springframework.jdbc.UncategorizedSQLException;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.domain.BatchHistDO;
@@ -23,6 +24,7 @@ public class ControllerServiceHistorySupport {
 	StelvioBatchParameterReader reader;
 	// with
 	// BatchStatus.COMPLETED
+	private TransactionTemplate transactionTemplate;
 
 	public ControllerServiceHistorySupport() {
 		
@@ -43,7 +45,11 @@ public class ControllerServiceHistorySupport {
 	public void setReader(StelvioBatchParameterReader reader) {
 		this.reader = reader;
 	}
-	
+
+	public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+		this.transactionTemplate = transactionTemplate;
+	}
+
 	/**
 	 * Saves batch information in T_BATCH_HIST when a (classic) batch is started (when the execute method is called).  
 	 * Used in DefaultBatchControllerService's execute method.  
@@ -89,24 +95,28 @@ public class ControllerServiceHistorySupport {
 
 	private long saveInitialCommonBatchInformation(BatchHistDO batchHistory,
 			String batchName) {
-		batchHistory.setBatchname(batchName);
-		batchHistory.setStatus(BATCH_STATUS_STARTED);
-		batchHistory.setStartTime();
-		return repository.setHist(batchHistory);
+		final long[] id = new long[1];
+		transactionTemplate.execute(status -> {
+			batchHistory.setBatchname(batchName);
+			batchHistory.setStatus(BATCH_STATUS_STARTED);
+			batchHistory.setStartTime();
+			id[0] = repository.setHist(batchHistory);
+			return null;});
+		return id[0];
 	}
 
 	public boolean saveAdditionalBatchInformation(long batchHistoryId,
 			int result) {
+		transactionTemplate.execute(status -> {
+			BatchHistDO batchHistory = fetchBatchHistory(batchHistoryId);
+			batchHistory.setEndTime();
 
-		BatchHistDO batchHistory = fetchBatchHistory(batchHistoryId);
-		batchHistory.setEndTime();
+			// TODO result is returned as int, persisted as String, as of now it's
+			// just casted
+			batchHistory.setStatus(((Integer) result).toString());
 
-		// TODO result is returned as int, persisted as String, as of now it's
-		// just casted
-		batchHistory.setStatus(((Integer) result).toString());
-
-		repository.updateBatchHist(batchHistory);
-
+			repository.updateBatchHist(batchHistory);
+			return null;});
 		return true;
 	}
 
