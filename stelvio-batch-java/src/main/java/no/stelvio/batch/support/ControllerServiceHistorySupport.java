@@ -1,6 +1,7 @@
 package no.stelvio.batch.support;
 
 import org.springframework.jdbc.UncategorizedSQLException;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.domain.BatchHistDO;
@@ -19,6 +20,7 @@ public class ControllerServiceHistorySupport {
 
 	private BatchHistRepository repository;
 	private StelvioBatchParameterReader reader;
+    private TransactionTemplate transactionTemplate;
 
 	public BatchHistRepository getRepository() {
 		return repository;
@@ -67,23 +69,30 @@ public class ControllerServiceHistorySupport {
 		return saveInitialCommonBatchInformation(batchHistory, jobName);
 	}
 
-	private long saveInitialCommonBatchInformation(BatchHistDO batchHistory, String batchName) {
-		batchHistory.setBatchname(batchName);
-		batchHistory.setStatus(BATCH_STATUS_STARTED);
-		batchHistory.setStartTime();
-		return repository.setHist(batchHistory);
+	private long saveInitialCommonBatchInformation(BatchHistDO batchHistory,
+			String batchName) {
+		final long[] id = new long[1];
+		transactionTemplate.execute(status -> {
+			batchHistory.setBatchname(batchName);
+			batchHistory.setStatus(BATCH_STATUS_STARTED);
+			batchHistory.setStartTime();
+			id[0] = repository.setHist(batchHistory);
+			return null;});
+		return id[0];
 	}
 
-	public boolean saveAdditionalBatchInformation(long batchHistoryId, int result) {
-		BatchHistDO batchHistory = fetchBatchHistory(batchHistoryId);
-		batchHistory.setEndTime();
+	public boolean saveAdditionalBatchInformation(long batchHistoryId,
+			int result) {
+		transactionTemplate.execute(status -> {
+			BatchHistDO batchHistory = fetchBatchHistory(batchHistoryId);
+			batchHistory.setEndTime();
 
-		// TODO result is returned as int, persisted as String, as of now it's
-		// just casted
-		batchHistory.setStatus(((Integer) result).toString());
+			// TODO result is returned as int, persisted as String, as of now it's
+			// just casted
+			batchHistory.setStatus(((Integer) result).toString());
 
-		repository.updateBatchHist(batchHistory);
-
+			repository.updateBatchHist(batchHistory);
+			return null;});
 		return true;
 	}
 
@@ -116,5 +125,9 @@ public class ControllerServiceHistorySupport {
 	public void setBatchHistoryRepository(HibernateBatchHistRepository histRepository) {
 		this.repository = histRepository;
 	}
+
+    public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+        this.transactionTemplate = transactionTemplate;
+    }
 
 }
