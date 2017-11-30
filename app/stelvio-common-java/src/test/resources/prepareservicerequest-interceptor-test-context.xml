@@ -21,8 +21,7 @@
 			 more unspecified arguments
 		-->
 		<aop:pointcut id="test.prepareservice.myPojo"
-				expression="execution(public * no.stelvio.common.ejb..*.*(..))
-				and args(no.stelvio.common.transferobject.ServiceRequest, ..)"/>
+				expression="execution(public * no.stelvio.common.ejb..*.*(no.stelvio.common.transferobject.ServiceRequest+, ..))"/>
 		<aop:advisor advice-ref="test.prepareservicerequest.prepareServiceRequestInterceptor" pointcut-ref="test.prepareservice.myPojo"/>
 		<aop:advisor advice-ref="test.prepareservicerequest.secondInterceptor" pointcut-ref="test.prepareservice.myPojo"/>
 		
