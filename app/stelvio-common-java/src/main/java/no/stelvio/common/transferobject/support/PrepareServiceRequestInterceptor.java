@@ -65,7 +65,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
             if (arg instanceof ServiceRequest) { // Check if argument is of type
 
                 ServiceRequest serviceRequest = (ServiceRequest) arg; // ServiceRequest
-                setRequestContext(serviceRequest);
+                setRequestContextOn(serviceRequest);
                 break; // There shouldn't be more than 1 ServiceRequest per call
             }
         }
@@ -112,7 +112,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
      *
      * @param serviceRequest to set <code>RequestContext</code> on
      */
-    protected void setRequestContext(ServiceRequest serviceRequest) {
+    protected void setRequestContextOn(ServiceRequest serviceRequest) {
         if (serviceRequest != null) {
             log.info("RequestContext is being copied from RequestContextHolder to serviceRequest");
             ReflectUtil.setFieldOnInstance(serviceRequest, "requestContext", RequestContextHolder.currentRequestContext());
