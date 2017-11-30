@@ -8,6 +8,7 @@ import org.springframework.core.Ordered;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.ejb.access.StelvioRemoteStatelessSessionProxyFactoryBean;
 import no.stelvio.common.transferobject.ServiceRequest;
 import no.stelvio.common.util.ReflectUtil;
@@ -27,7 +28,7 @@ import no.stelvio.common.util.ReflectUtil;
  * This interceptor can be used both in a true AOP context, and by the stelvio
  * component {@link StelvioRemoteStatelessSessionProxyFactoryBean}. The
  * configuration of this interceptor is however slightly different in the two
- * use cases. See <code>{@link #setExecutedInAopContext(boolean)</code>} for a
+ * use cases. See <code>{@link #setExecutedInAopContext(boolean)}</code>} for a
  * detailed description of the different configurations
  * </p>
  *
@@ -58,11 +59,13 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Object[] methodArguments = invocation.getArguments();
 
-        ServiceRequest serviceRequest = null;
+        RequestContext requestContext = RequestContextHolder.currentRequestContext();
+
         for (Object arg : methodArguments) { // Loop through method arguments
             if (arg instanceof ServiceRequest) { // Check if argument is of type
 
-                serviceRequest = (ServiceRequest) arg; // ServiceRequest
+                ServiceRequest serviceRequest = (ServiceRequest) arg; // ServiceRequest
+                setRequestContext(serviceRequest);
                 break; // There shouldn't be more than 1 ServiceRequest per call
             }
         }
@@ -70,7 +73,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
         try {
             return proceed(invocation);
         } finally {
-            setRequestContext(serviceRequest);
+            RequestContextSetter.setRequestContext(requestContext);
         }
     }
 
