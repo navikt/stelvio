@@ -124,7 +124,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
         ReflectionUtils.makeAccessible(requestContextField);
         RequestContextDto requestContextDto = (RequestContextDto) requestContextField.get(serviceRequest);
 
-        return new SimpleRequestContext.Builder()
+        return requestContextDto == null ? null : new SimpleRequestContext.Builder()
                 .userId(requestContextDto.getUserId())
                 .componentId(requestContextDto.getComponentId())
                 .transactionId(requestContextDto.getTransactionId())
