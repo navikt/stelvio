@@ -60,7 +60,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
             }
             if (arg instanceof ServiceRequestDto) {
                 if (log.isTraceEnabled()) {
-                    log.trace("Argument was of type ServiceRequest: " + arg.getClass().getSimpleName());
+                    log.trace("Argument was of type ServiceRequestDto: " + arg.getClass().getSimpleName());
                 }
 
                 RequestContext requestContext = getRequestContext((ServiceRequestDto) arg);
@@ -112,7 +112,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
     }
 
     /**
-     * Method for retrieving a {@link RequestContext} from a {@link ServiceRequest}.
+     * Method for retrieving a {@link RequestContext} from a {@link ServiceRequestDto}.
      *
      * @param serviceRequest a service request
      * @return {@link RequestContext}
