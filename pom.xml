@@ -628,20 +628,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <!-- JUnit testing is the selected framework for unit testing. -->
-            <artifactId>junit</artifactId>
-            <groupId>junit</groupId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <reporting>
         <plugins>
             <plugin>
@@ -715,6 +701,19 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin
+                    To run: mvn depgraph:fullgraph If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf
+                    - [file.pdf] -->
+                <groupId>ch.elca.el4j.maven.plugins</groupId>
+                <artifactId>maven-depgraph-plugin</artifactId>
+                <version>${maven-depgraph-plugin.version}</version>
+                <configuration>
+                    <outDir>target/site/graphs</outDir>
+                    <outFile>${project.artifactId}-depgraph.png</outFile>
+                    <dotFile>${project.artifactId}-depgraph.dot</dotFile>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source.version}</version>
@@ -731,16 +730,11 @@
                 </executions>
             </plugin>
             <plugin>
-                <!-- You must install Graphviz to use the depgraph plugin. See http://confluence.adeo.no/display/stelvio/Guideline+-+Configure+the+Maven+depgraph+plugin
-                    To run: mvn depgraph:fullgraph If you want a pdf in addition to the generated png file, use dot -Tps2 [file.dot] | ps2pdf
-                    - [file.pdf] -->
-                <groupId>ch.elca.el4j.maven.plugins</groupId>
-                <artifactId>maven-depgraph-plugin</artifactId>
-                <version>${maven-depgraph-plugin.version}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
                 <configuration>
-                    <outDir>target/site/graphs</outDir>
-                    <outFile>${project.artifactId}-depgraph.png</outFile>
-                    <dotFile>${project.artifactId}-depgraph.dot</dotFile>
+                    <tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/</tagBase>
                 </configuration>
             </plugin>
             <plugin>

@@ -43,18 +43,9 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
     @SuppressWarnings("unchecked")
     private Map batchNameMap;
 
-    /**
-     * Default constructor
-     */
-    public DefaultBatchControllerService() {
-
-    }
-
     private static final String SLICE_STRING = " slice ";
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public int executeBatch(String batchName, int slice) {
         if (batchName != null) {
             MDC.put(JOB_NAME, batchName.toLowerCase());
@@ -65,13 +56,12 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
         // batchBeanMap needs to reference map of batch ids
         if (batchBeanId == null) {
             throw new MissingPropertyException("Batch controller configuration missing property in batch name map for batch: "
-                    + batchName, new String[] {"batchBeanId"});
+                    + batchName, new String[] { "batchBeanId" });
         }
 
-        BatchBi batch = null;
+        BatchBi batch;
         try {
-
-            batch = (BatchBi) getApplicationContext().getBean(batchBeanId);
+            batch = (BatchBi) applicationContext.getBean(batchBeanId);
             batch.setBatchName(batchName);
             batch.setSlice(slice);
 
@@ -90,18 +80,17 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
             }
 
             return result;
+
         } catch (BeansException be) {
             throw new InvalidPropertyException("Could not create batch instance, due to bad configuration",
-                    new Object[] {batchBeanId}, be);
+                    new Object[] { batchBeanId }, be);
         } finally {
-            unregisterBatch(batchName, slice, batch);
+            unregisterBatch(batchName, slice);
             MDC.remove(JOB_NAME);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public boolean stopBatch(String batchName, int slice) {
         if (batchName != null) {
             MDC.put(JOB_NAME, batchName.toLowerCase());
@@ -129,13 +118,16 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
     /**
      * Registers a batch execution with the registry configured in the applicatioContext.
      *
-     * @param batchName batch name
-     * @param slice slice
-     * @param batch batch
+     * @param batchName
+     *            batch name
+     * @param slice
+     *            slice
+     * @param batch
+     *            batch
      */
     @SuppressWarnings("unchecked")
     private void registerBatch(String batchName, int slice, BatchBi batch) {
-        Map<String, BatchRegistry> registries = getApplicationContext().getBeansOfType(BatchRegistry.class);
+        Map<String, BatchRegistry> registries = applicationContext.getBeansOfType(BatchRegistry.class);
         if (registries.isEmpty()) {
             if (LOGGER.isInfoEnabled()) {
                 LOGGER.debug("No BatchRegistry defined in ApplicationContext, batch " + batchName + SLICE_STRING + slice
@@ -159,12 +151,12 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 
     /**
      * Unregister a batch.
-     *
-     * @param batchName batch name
-     * @param slice slice
-     * @param batch batch
+     *  @param batchName
+     *            batch name
+     * @param slice
+     *            slice
      */
-    private void unregisterBatch(String batchName, int slice, BatchBi batch) {
+    private void unregisterBatch(String batchName, int slice) {
         if (isRegistryConfiguredCorrectly()) {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("Batch registry was succesfully retrieved");
@@ -180,6 +172,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
                             + " was found, and could thus not be unregistered");
                 }
             }
+
         } else {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("Only 1 BatchRegistry may be configured in an applicationContext. Unable to unregistrer Batch");
@@ -193,7 +186,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
      * @return <code>true</code> if 1 and only 1 is configured in applicationContext, otherwise <code>false</code>
      */
     private boolean isRegistryConfiguredCorrectly() {
-        return (getApplicationContext().getBeansOfType(BatchRegistry.class).values().size() == 1);
+        return (applicationContext.getBeansOfType(BatchRegistry.class).values().size() == 1);
     }
 
     /**
@@ -202,20 +195,21 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
      * @return batch registry
      */
     private BatchRegistry getBatchRegistry() {
-        return getApplicationContext().getBeansOfType(BatchRegistry.class).values().iterator().next();
+        return applicationContext.getBeansOfType(BatchRegistry.class).values().iterator().next();
     }
 
     /**
      * Called by Spring to validate that the required dependency injection is properly configured. The batch controller needs to
      * have configured a batch name map containing the application batches that the controller can execute.
      *
-     * @throws MissingPropertyException If a dependency injection property is missing from the batch controller configuration.
+     * @throws MissingPropertyException
+     *             If a dependency injection property is missing from the batch controller configuration.
      */
     public void performSanityCheck() throws MissingPropertyException {
         if (batchNameMap == null) {
             throw new MissingPropertyException(
                     "The batchNameMap was not set, this may have been caused by a insufficient configuration",
-                    new String[] {"batchNameMap"});
+                    new String[] { "batchNameMap" });
         }
     }
 
@@ -232,16 +226,15 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
     /**
      * Set the batchNameMap.
      *
-     * @param batchNameMap - String
+     * @param batchNameMap
+     *            - String
      */
     @SuppressWarnings("unchecked")
     public void setBatchNameMap(Map batchNameMap) {
         this.batchNameMap = batchNameMap;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.applicationContext = ctx;
     }
@@ -251,25 +244,16 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
      *
      * @return applicationContext
      */
-    public ApplicationContext getApplicationContext() {
+    protected ApplicationContext getApplicationContext() {
         return this.applicationContext;
-    }
-
-    /**
-     * Gets the controllerServiceHistorySupport.
-     *
-     * @return controllerServiceHistorySupport
-     */
-    public ControllerServiceHistorySupport getControllerServiceHistorySupport() {
-        return this.controllerServiceHistorySupport;
     }
 
     /**
      * Set the controllerServiceHistorySupport.
      *
-     * @param controllerServiceHistorySupport - ControllerServiceHistorySupport
+     * @param controllerServiceHistorySupport
+     *            - ControllerServiceHistorySupport
      */
-    //TODO Should possibly be set in another way
     public void setControllerServiceHistorySupport(ControllerServiceHistorySupport controllerServiceHistorySupport) {
         this.controllerServiceHistorySupport = controllerServiceHistorySupport;
     }
