@@ -12,7 +12,7 @@
     </bean>
 
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager"><ref bean="ehcache"/></property>
+        <property name="cacheManager" ref="ehcache"/>
     </bean>
 
     <bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache"/>
