@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>stelvio</artifactId>
 		<groupId>no.stelvio</groupId>
-		<version>8.14.J8OR.2</version>
+		<version>8.14.J8OR.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-consumer-java</artifactId>
 	<packaging>jar</packaging>
