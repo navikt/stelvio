@@ -2,7 +2,6 @@ package no.stelvio.common.cache;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import net.sf.ehcache.CacheManager;
 
 import org.junit.After;
 import org.junit.Test;
@@ -12,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import net.sf.ehcache.CacheManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:common-java_test_cache_beans_cache_annotations.xml" })

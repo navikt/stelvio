@@ -3,21 +3,24 @@ package no.stelvio.common.cache;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Set;
-import javax.annotation.Resource;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.event.CacheEventListener;
-import net.sf.ehcache.event.RegisteredEventListeners;
-import no.stelvio.common.cache.support.DefaultCacheEventListener;
+import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.event.CacheEventListener;
+import net.sf.ehcache.event.RegisteredEventListeners;
+
+import no.stelvio.common.cache.support.DefaultCacheEventListener;
 
 /**
  * The purpose of this test is to verify the configuration of cache interceptors.
@@ -56,8 +59,8 @@ public class CacheListenerTest {
 	 * Also using a counter interceptor to verify that cache is stored (with notifyCacheElementPut()) 
 	 */
 	@Test
+	@DirtiesContext
 	public void cacheIsUsed() {
-
 		String cachedString = testCache.getStringCached();
 		assertEquals("This is a cacheable string", cachedString);
 		assertEquals("Data was cached an unexpected number of times", 1, counterListener.getOnCachingCounter());
