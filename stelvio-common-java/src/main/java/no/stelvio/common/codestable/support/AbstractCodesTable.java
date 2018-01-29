@@ -479,7 +479,6 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	 *             if the codes table item's decode was null.
 	 * @throws InvalidArgumentException
 	 *             if input parameters is invalid.
-	 *             <p/>
 	 */
 	private V decode(Object code, Date... date) 
 			throws ItemNotFoundException, DecodeNotFoundException, InvalidArgumentException {

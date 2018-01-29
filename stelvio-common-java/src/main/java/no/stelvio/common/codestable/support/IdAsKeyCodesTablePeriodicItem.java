@@ -8,10 +8,10 @@ import javax.persistence.MappedSuperclass;
  * Abstract base class for classes representing a codes table's entries, that is, rows in the codes table's
  * corresponding database tables where code is not used as the key in the table, but instead an extra id column is
  * used for this.
- * <p/>
+ * <p>
  * In addition to the capabilities in <code>IdAsKeyCodesTableItem</code>, this also specifies a time period in which
  * the instances are valid.
- * <p/>
+ * <p>
  * This class is a <code>MappedSuperclass</code>, meaning that Entities that inherits from this class must map to a
  * table that defines columns set up by this class
  *

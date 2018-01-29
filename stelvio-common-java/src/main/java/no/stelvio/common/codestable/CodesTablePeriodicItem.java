@@ -8,8 +8,8 @@ import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
 
 /**
  * Abstract base class for classes representing a codes table's entries, that is, rows in the codes table's corresponding
- * database tables where code is used as the key in the table. <p/> In addition to the capabilities in
- * <code>CodesTableItem</code>, this also specifies a time period in which the instances are valid. <p/> This class is a
+ * database tables where code is used as the key in the table. <p> In addition to the capabilities in
+ * <code>CodesTableItem</code>, this also specifies a time period in which the instances are valid. <p> This class is a
  * <code>MappedSuperclass</code>, meaning that Entities that inherits from this class must map to a table that defines
  * columns set up by this class
  * 

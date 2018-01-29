@@ -21,7 +21,7 @@ public class DefaultLocaleStartupHelper {
 	/**
 	 * Sets the specified locale as system default. The language code must be defined in ISO-639, country code defined in
 	 * ISO-3166, and the locale must be installed and available on the operating system.
-	 * <p/>
+	 * <p>
 	 * The security policy file used by the JVM must contain the following lines:
 	 * 
 	 * <pre>

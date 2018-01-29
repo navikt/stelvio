@@ -2,9 +2,9 @@ package no.stelvio.common.context.support;
 
 /**
  * Defines a "pluggable" Context module. 
- * <p/>
+ * <p>
  * This is used to split between Log4jContextImpl and DefaultContext.
- * <p/>
+ * <p>
  * Choice is made in no.stelvio.common.context.support.AbstractContext
  *
  * @author person7553f5959484

@@ -15,10 +15,10 @@ import org.joda.time.PeriodType;
 /**
  * Class represents a personal identification number, that can be persistet into a table. Instances of this object can not exist
  * on it's own, they must exist inside an <code>@Entity</code>-object in order to be persisted.
- * <p/>
+ * <p>
  * There shouldn't exist an instance of this class where <code>getPid</code> doesn't return a valid fnr. Class is final to avoid
  * public implementations of the no-arg constructor.
- * <p/>
+ * <p>
  * 
  * By setting the special circumstances flag in the validation code to <code>true</code> the validation code will accept special
  * circumstances. Special circumstances are where the personnummer (last 5 digit of fnr) does not follow the normal rules, but

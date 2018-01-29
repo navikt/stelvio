@@ -11,7 +11,7 @@ package no.stelvio.common.error.support;
  * <li> <code> DEBUG </code></li>
  * </ol>
  * Another way to se this is how the severity increases from left to right:
- * <p/>
+ * <p>
  * <code>INFO &lt; WARN &lt; ERROR &lt; FATAL</code>
  * 
  * @author person7553f5959484, Accenture

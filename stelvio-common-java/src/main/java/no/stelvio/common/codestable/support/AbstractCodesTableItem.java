@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Abstract base class for classes representing a codes table's entries, that is, rows in the codes table's corresponding
- * database tables. <p/> For internal usage only, containing common code. <p/> This class is a <code>MappedSuperclass</code>,
+ * database tables. <p> For internal usage only, containing common code. <p> This class is a <code>MappedSuperclass</code>,
  * meaning that Entities that inherits from this class must map to a table that defines columns set up by this class
  * 
  * @param <K>
@@ -130,7 +130,7 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 	}
 
 	/**
-	 * Compares this instance with another object. <p/> The method returns true if the other object is not null, is of the same
+	 * Compares this instance with another object. <p> The method returns true if the other object is not null, is of the same
 	 * class as this and <code>other.getCodeAsString()</code> equals <code>this.getCodeAsString()</code>
 	 * 
 	 * <strong>

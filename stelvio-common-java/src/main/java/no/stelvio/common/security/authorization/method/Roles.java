@@ -36,7 +36,7 @@ import java.lang.annotation.Target;
 @Documented
 public @interface Roles {
 	/**
-	 * Returns the list of security configuration attributes. (i.e. ROLE_USER, ROLE_ADMIN etc.)
+	 * @return the list of security configuration attributes. (i.e. ROLE_USER, ROLE_ADMIN etc.)
 	 */
 	String[] value();
 }

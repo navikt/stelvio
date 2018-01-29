@@ -23,14 +23,12 @@ import no.stelvio.common.util.ReflectUtil;
  * ServiceRequest to the RequestContextHolder should be configured. This can be
  * achieved by applying the {@link ExecuteServiceRequestInterceptor}
  * interceptor.
- * </p>
  * <p>
  * This interceptor can be used both in a true AOP context, and by the stelvio
  * component {@link StelvioRemoteStatelessSessionProxyFactoryBean}. The
  * configuration of this interceptor is however slightly different in the two
  * use cases. See <code>{@link #setExecutedInAopContext(boolean)}</code>} for a
  * detailed description of the different configurations
- * </p>
  *
  * @author person983601e0e117 (Accenture)
  * @see RequestContextHolder

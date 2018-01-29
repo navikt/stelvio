@@ -25,7 +25,7 @@ import no.stelvio.domain.time.ChangeStamp;
 
 /**
  * Super class for unit tests of batch modules.
- * <p/>
+ * <p>
  * Has tests that all batch modules should pass in addidtion to helper methods for setting up state before running a test.
  * 
  * @author person356941106810, Accenture

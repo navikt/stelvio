@@ -21,7 +21,6 @@ import no.stelvio.dto.transferobject.ServiceRequestDto;
 /**
  * Interceptor for calls from remote applications that copies RequestContextDto from the ServiceRequestDto into the
  * ServiceRequestHolder before the method call is executed proceeding. This is a higher-level version of the "service-level" ExecuteServiceRequestInterceptor.
- * <p/>
  */
 public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Ordered, ApplicationContextAware {
 

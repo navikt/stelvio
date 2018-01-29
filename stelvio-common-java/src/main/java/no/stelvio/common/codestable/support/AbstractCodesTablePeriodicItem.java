@@ -16,12 +16,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * Abstract base class for classes representing a codes table's entries, that is, rows in the codes table's corresponding
  * database tables.
- * <p/>
+ * <p>
  * In addition to the capabilities in <code>AbstractCodesTableItem</code>, this also specifies a time period in which the
  * instances are valid.
- * <p/>
+ * <p>
  * For internal usage only, containing common code.
- * <p/>
+ * <p>
  * This class is a <code>MappedSuperclass</code>, meaning that Entities that inherits from this class must map to a table that
  * defines columns set up by this class.
  * 
@@ -73,7 +73,7 @@ public abstract class AbstractCodesTablePeriodicItem<K extends Enum, V> extends 
 
 	/**
 	 * Compares this instance with another object.
-	 * <p/>
+	 * <p>
 	 * The method returns true if the other object is not null, is of the same class as this and
 	 * <code>other.getCodeAsString()</code> equals <code>this.getCodeAsString()</code> and the time periods are the same.
 	 * 
@@ -88,7 +88,6 @@ public abstract class AbstractCodesTablePeriodicItem<K extends Enum, V> extends 
 	 * The statements must return the same value, as AbstractCodesTableItem implementations will be added to
 	 * SortedSet/SortedMap. Sorted set (or sorted map) violates the general contract for set (or map), which is defined in terms
 	 * of the equals method.
-	 * </p>
 	 * </strong>
 	 * 
 	 * @param other

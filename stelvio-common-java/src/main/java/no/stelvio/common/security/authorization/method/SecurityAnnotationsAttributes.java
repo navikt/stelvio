@@ -16,13 +16,11 @@ import org.springframework.security.access.annotation.Secured;
  * <code>Secured</code> Java 5 annotation. The security configuration returned is a list of values which are mapped to the
  * annotation attributes through a <code>AnnotationattributesMapping</code>. These values typically represent which providers,
  * i.e. <code>AccessDecisionVoter</code>s and <code>AfterInvocationProvider</code>s, that should be used on a secure object.
- * </p>
- * 
+ *
  * <p>
  * The <code>SecurityAnnotationsAttributes</code> implementation can be used to configure a
  * <code>MethodDefinitionAttributes</code> and <code>MethodSecurityInterceptor</code> bean definition (see below).
- * </p>
- * 
+ *
  * <p>
  * For example:
  * 
@@ -47,16 +45,13 @@ import org.springframework.security.access.annotation.Secured;
  *  &lt;/bean&gt;
  * </pre>
  * 
- * </p>
  * <p>
  * These security annotations are similiar to the Commons Attributes approach, however they are using Java 5 language-level
  * metadata support.
- * </p>
- * 
+ *
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-
 public class SecurityAnnotationsAttributes implements Attributes {
 
 	private AnnotationAttributesMapping annotationMapping;

@@ -12,16 +12,12 @@ import org.springframework.security.access.SecurityConfig;
 import org.springframework.util.StringUtils;
 
 /**
- * Property editor to assist with the setup of a
- * {@link AnnotationAttributesMapping}.
+ * Property editor to assist with the setup of a {@link AnnotationAttributesMapping}.
  * <p>
  * The class creates and populates a {@link AnnotationAttributesMapping}.
- * </p>
- * 
+ *
  * @author persondab2f89862d3, Accenture
- * @version $Id$
  */
-
 public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
 
 	/**

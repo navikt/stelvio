@@ -8,7 +8,7 @@ import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**
  * Abstract base class for classes representing a codes table's entries, that is, rows in the codes table's corresponding
- * database tables where code is used as the key in the table. <p/> This class is a <code>MappedSuperclass</code>, meaning
+ * database tables where code is used as the key in the table. <p> This class is a <code>MappedSuperclass</code>, meaning
  * that Entities that inherits from this class must map to a table that defines columns set up by this class
  * 
  * @author personb66fa0b5ff6e (Accenture)

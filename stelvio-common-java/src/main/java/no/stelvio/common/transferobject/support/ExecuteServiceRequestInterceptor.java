@@ -21,7 +21,7 @@ import no.stelvio.common.transferobject.ServiceRequest;
 /**
  * Interceptor for calls from remote applications that copies RequestContext from the ServiceRequest into the
  * ServiceRequestHolder before the method call is executed proceeding.
- * <p/>
+ * <p>
  * On the remote client an interceptor that copies the RequestContext from the RequestContextHolder to the ServiceRequest should
  * be configured. This can be achieved by applying the {@link PrepareServiceRequestInterceptor} interceptor.
  *

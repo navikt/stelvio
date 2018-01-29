@@ -52,7 +52,7 @@ public class DefaultSpringBatchJobOperator implements SpringBatchJobOperator {
 
     /**
      * {@inheritDoc}
-     * <p/>
+     * <p>
      * Stop batch has also been extended, now handling multiple concurrent instances.
      * 
      * @param jobName name of the batch
