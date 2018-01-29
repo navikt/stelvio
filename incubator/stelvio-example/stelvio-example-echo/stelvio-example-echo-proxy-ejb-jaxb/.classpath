@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry excluding="gen/|gen/src/" kind="src" path=""/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Process Server v7.0-custom JRE"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v70.bi/WebSphere Process Server v7.0-custom"/>
-	<classpathentry kind="lib" path="stelvio-example-echo-provider-ejbClient.jar"/>
-	<classpathentry kind="output" path=""/>
-</classpath>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:moduleAndLibraryAttributes xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" versionValue="1.0.1" versionProvider="IBM_VRM">
-  <boImplementation>
-    <emf/>
-  </boImplementation>
-  <scdl:libraryDependency name="nav-oppgave-tjenestespesifikasjon" version=""/>
-  <scdl:libraryDependency name="nav-lib-frg" version=""/>
-  <scdl:libraryDependency name="stelvio-commons-lib" version=""/>
-</scdl:moduleAndLibraryAttributes>

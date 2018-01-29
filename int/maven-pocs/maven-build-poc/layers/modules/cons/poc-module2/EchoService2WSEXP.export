@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding_1="http://poc-module2/no/nav/inf/EchoService2/Binding" xmlns:EchoService2="http://poc-module2/no/nav/inf/EchoService2" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoService2WSEXP" name="EchoService2WSEXP" target="EchoService2">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="EchoService2:EchoService2"/>
-  </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding_1:EchoService2WSEXP_EchoService2HttpPort" service="Binding_1:EchoService2WSEXP_EchoService2HttpService"/>
-</scdl:export>

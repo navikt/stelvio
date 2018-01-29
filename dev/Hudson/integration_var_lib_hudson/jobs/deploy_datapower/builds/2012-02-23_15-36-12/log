@@ -1,209 +1,0 @@
-Started by user i136181
-[workspace] $ /bin/sh -xe /tmp/hudson5905088477597530760.sh
-+ wget -O pom.xml 'https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/deployer/pom.xml?op=dl&rev=265967'
---2012-02-23 15:36:12--  https://versjonskontroll.adeo.no/wsvn/nav/trunk/int/esb/datapower/deployer/pom.xml?op=dl&rev=265967
-Resolving versjonskontroll.adeo.no... 10.33.43.69
-Connecting to versjonskontroll.adeo.no|10.33.43.69|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 29817 (29K) [application/octetstream]
-Saving to: `pom.xml'
-
-     0K .......... .......... .........                       100% 13,6M=0,002s
-
-2012-02-23 15:36:12 (13,6 MB/s) - `pom.xml' saved [29817/29817]
-
-[workspace] $ /usr/local/apache-maven/apache-maven-2.2.1/bin/mvn -DDataPowerInstance=https://dp-tst-01.adeo.no:5550 -DEnvironment=t2 -DDatapowerPomRevision=265967 -DGateway=partner-gw -DEnvironmentClass=t -DBusConfigVersion=7.4.0.3 clean install -Dgateway-name=partner-gw -Denvclass=t -Denv=t2 -Dbus-configuration-version=7.4.0.3 -Ddatapower.baseurl=https://dp-tst-01.adeo.no:5550
-Warning: JAVA_HOME environment variable is not set.
-[INFO] Scanning for projects...
-[INFO] ------------------------------------------------------------------------
-[INFO] Building Deploy util for Datapower application domains
-[INFO]    task-segment: [clean, install]
-[INFO] ------------------------------------------------------------------------
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/2.5/maven-resources-plugin-2.5.pom
-4/6K6/6K6K downloaded  (maven-resources-plugin-2.5.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/2.5/maven-resources-plugin-2.5.jar
-3/25K7/25K11/25K15/25K19/25K23/25K25/25K25K downloaded  (maven-resources-plugin-2.5.jar)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/2.0/maven-dependency-plugin-2.0.pom
-4/11K8/11K11/11K11K downloaded  (maven-dependency-plugin-2.0.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/2.0/maven-dependency-plugin-2.0.jar
-3/87K7/87K11/87K15/87K19/87K23/87K27/87K31/87K35/87K39/87K43/87K47/87K51/87K55/87K59/87K63/87K67/87K71/87K75/87K79/87K83/87K87/87K87/87K87K downloaded  (maven-dependency-plugin-2.0.jar)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-verifier-plugin/1.0-beta-1/maven-verifier-plugin-1.0-beta-1.pom
-1/1K1K downloaded  (maven-verifier-plugin-1.0-beta-1.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-plugin-parent/2.0-beta-1/maven-plugin-parent-2.0-beta-1.pom
-4/6K6/6K6K downloaded  (maven-plugin-parent-2.0-beta-1.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-verifier-plugin/1.0-beta-1/maven-verifier-plugin-1.0-beta-1.jar
-4/19K8/19K12/19K16/19K19/19K19K downloaded  (maven-verifier-plugin-1.0-beta-1.jar)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/no/nav/maven/plugins/maven-datapower-plugin/1.6/maven-datapower-plugin-1.6.pom
-1/1K1K downloaded  (maven-datapower-plugin-1.6.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/no/nav/maven/plugins/maven-datapower-plugin/1.6/maven-datapower-plugin-1.6.jar
-3/14K7/14K11/14K14/14K14K downloaded  (maven-datapower-plugin-1.6.jar)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/no/nav/maven/plugins/maven-datapower-config-generator-plugin/2.9/maven-datapower-config-generator-plugin-2.9.pom
-2/2K2K downloaded  (maven-datapower-config-generator-plugin-2.9.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/no/nav/maven/plugins/maven-datapower-config-generator-plugin/2.9/maven-datapower-config-generator-plugin-2.9.jar
-3/96K7/96K11/96K15/96K19/96K23/96K27/96K31/96K35/96K39/96K43/96K47/96K48/96K52/96K56/96K60/96K64/96K68/96K72/96K76/96K80/96K84/96K88/96K92/96K96/96K96/96K96K downloaded  (maven-datapower-config-generator-plugin-2.9.jar)
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [clean:clean {execution: default-clean}]
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-install-plugin/2.2/maven-install-plugin-2.2.pom
-2/2K2K downloaded  (maven-install-plugin-2.2.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/plugins/maven-install-plugin/2.2/maven-install-plugin-2.2.jar
-4/15K8/15K12/15K15/15K15K downloaded  (maven-install-plugin-2.2.jar)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/no/nav/maven/support/busconfiguration/7.4.0.3/busconfiguration-7.4.0.3.pom
-1/1K1K downloaded  (busconfiguration-7.4.0.3.pom)
-[8mha:AAAAYx+LCAAAAAAAAABb85aBtbiIQSWjNKU4P0+vJLE4u1gvPjexLDVPzxdEhicW5WXmpfvll6S2fNly5fzGzauYGBgqihikoFqS8/OK83NS9ZwhNEghAwQwghQWAACwxA+XYgAAAA==[0m[WARNING] *** CHECKSUM FAILED - Checksum failed on download: local = '534caca9a1b4eeb0cff334bc85b798ce962880bd'; remote = 'c0f5766bfaaba647b8762bff571c8b2b19214fbf' - RETRYING
-Downloading: http://maven.adeo.no/nexus/content/groups/public/no/nav/maven/support/busconfiguration/7.4.0.3/busconfiguration-7.4.0.3.pom
-1/1K1K downloaded  (busconfiguration-7.4.0.3.pom)
-[8mha:AAAAYx+LCAAAAAAAAABb85aBtbiIQSWjNKU4P0+vJLE4u1gvPjexLDVPzxdEhicW5WXmpfvll6S2fNly5fzGzauYGBgqihikoFqS8/OK83NS9ZwhNEghAwQwghQWAACwxA+XYgAAAA==[0m[WARNING] *** CHECKSUM FAILED - Checksum failed on download: local = '534caca9a1b4eeb0cff334bc85b798ce962880bd'; remote = 'c0f5766bfaaba647b8762bff571c8b2b19214fbf' - IGNORING
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/maven-core/2.0.8/maven-core-2.0.8.pom
-3/6K6/6K6K downloaded  (maven-core-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/maven-plugin-parameter-documenter/2.0.8/maven-plugin-parameter-documenter-2.0.8.pom
-1/1K1K downloaded  (maven-plugin-parameter-documenter-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/reporting/maven-reporting-api/2.0.8/maven-reporting-api-2.0.8.pom
-1/1K1K downloaded  (maven-reporting-api-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/reporting/maven-reporting/2.0.8/maven-reporting-2.0.8.pom
-1/1K1K downloaded  (maven-reporting-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-9/doxia-sink-api-1.0-alpha-9.pom
-1/1K1K downloaded  (doxia-sink-api-1.0-alpha-9.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia/1.0-alpha-9/doxia-1.0-alpha-9.pom
-4/8K8/8K8/8K8K downloaded  (doxia-1.0-alpha-9.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/maven-error-diagnostics/2.0.8/maven-error-diagnostics-2.0.8.pom
-1/1K1K downloaded  (maven-error-diagnostics-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/maven-plugin-descriptor/2.0.8/maven-plugin-descriptor-2.0.8.pom
-2/2K2K downloaded  (maven-plugin-descriptor-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/maven-monitor/2.0.8/maven-monitor-2.0.8.pom
-1/1K1K downloaded  (maven-monitor-2.0.8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.0/maven-dependency-analyzer-1.0.pom
-4/4K4/4K4K downloaded  (maven-dependency-analyzer-1.0.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-tree/1.1/maven-dependency-tree-1.1.pom
-2/2K2K downloaded  (maven-dependency-tree-1.1.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-8/doxia-sink-api-1.0-alpha-8.pom
-424/424b424b downloaded  (doxia-sink-api-1.0-alpha-8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia/1.0-alpha-8/doxia-1.0-alpha-8.pom
-2/2K2K downloaded  (doxia-1.0-alpha-8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/maven-parent/1/maven-parent-1.pom
-4/6K6/6K6K downloaded  (maven-parent-1.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/apache/1/apache-1.pom
-3/3K3K downloaded  (apache-1.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-site-renderer/1.0-alpha-8/doxia-site-renderer-1.0-alpha-8.pom
-1/1K1K downloaded  (doxia-site-renderer-1.0-alpha-8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-core/1.0-alpha-8/doxia-core-1.0-alpha-8.pom
-1/1K1K downloaded  (doxia-core-1.0-alpha-8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.pom
-976/976b976b downloaded  (plexus-velocity-1.1.3.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/codehaus/plexus/plexus-components/1.1.5/plexus-components-1.1.5.pom
-2/2K2K downloaded  (plexus-components-1.1.5.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.pom
-1/1K1K downloaded  (doxia-decoration-model-1.0-alpha-8.pom)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/commons-collections/commons-collections/2.0/commons-collections-2.0.jar
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.0/maven-dependency-analyzer-1.0.jar
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-site-renderer/1.0-alpha-8/doxia-site-renderer-1.0-alpha-8.jar
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/codehaus/plexus/plexus-velocity/1.1.3/plexus-velocity-1.1.3.jar
-3/7K7/7K7K downloaded  (plexus-velocity-1.1.3.jar)
-3/26K7/26K11/26K15/26K19/26K23/26K26/26K26K downloaded  (maven-dependency-analyzer-1.0.jar)
-3/33K7/33K11/33K15/33K19/33K23/33K27/33KDownloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-tree/1.1/maven-dependency-tree-1.1.jar
-31/33K33/33K33K downloaded  (doxia-site-renderer-1.0-alpha-8.jar)
-Downloading: http://maven.adeo.no/nexus/content/groups/public/org/apache/maven/doxia/doxia-decoration-model/1.0-alpha-8/doxia-decoration-model-1.0-alpha-8.jar
-3/33K7/33K11/33K15/33K19/33K23/33K27/33K31/33K33/33K33K downloaded  (maven-dependency-tree-1.1.jar)
-3/39K7/39K11/39K15/39K19/39K23/39K27/39K31/39K35/39K39/39K39K downloaded  (doxia-decoration-model-1.0-alpha-8.jar)
-4/88K8/88K12/88K16/88K20/88K24/88K28/88K32/88K36/88K40/88K44/88K48/88K52/88K56/88K60/88K64/88K68/88K72/88K76/88K80/88K84/88K88/88K88/88K88K downloaded  (commons-collections-2.0.jar)
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [dependency:unpack-dependencies {execution: unpack-configuration}]
-[INFO] Unpacking /home/ci/.m2/repository/no/nav/maven/support/busconfiguration/7.4.0.3/busconfiguration-7.4.0.3.jarto
- /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar
-with Includes null and excludes:null
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [enforcer:enforce {execution: enforce-required-properties-validate}]
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [properties:load-properties {execution: load-property-files}]
-[INFO] Loading property file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/cfg-partner-gw-t2.properties
-[INFO] Ignoring missing properties file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/datapower-cfg-partner-gw.properties
-[INFO] Ignoring missing properties file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/t/esb.properties
-[INFO] Ignoring missing properties file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/t/t2/esb.properties
-[INFO] Loading property file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/t/datapower.properties
-[INFO] Ignoring missing properties file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/t/t2/datapower.properties
-[INFO] Loading property file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/t/datapower-cfg-partner-gw.properties
-[INFO] Ignoring missing properties file: /var/lib/hudson/jobs/deploy_datapower/workspace/target/temp-busconfig/busconfiguration-jar/environments/t/t2/datapower-cfg-partner-gw.properties
-[INFO] Ignoring missing properties file: /home/ci/deploy-keys/t/esb.properties
-[INFO] Ignoring missing properties file: /home/ci/deploy-keys/t/t2/esb.properties
-[INFO] Loading property file: /home/ci/deploy-keys/t/datapower.properties
-[INFO] Ignoring missing properties file: /home/ci/deploy-keys/t/t2/datapower.properties
-[INFO] Loading property file: /home/ci/deploy-keys/t/datapower-cfg-partner-gw.properties
-[INFO] Ignoring missing properties file: /home/ci/deploy-keys/t/t2/datapower-cfg-partner-gw.properties
-[INFO] Loading property file: /home/ci/vault/t/t2/environment.properties
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [enforcer:enforce {execution: enforce-required-properties-initialize}]
-[debug] execute contextualize
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [resources:copy-resources {execution: copy-wps-password}]
-[8mha:AAAAYx+LCAAAAAAAAABb85aBtbiIQSWjNKU4P0+vJLE4u1gvPjexLDVPzxdEhicW5WXmpfvll6S2fNly5fzGzauYGBgqihikoFqS8/OK83NS9ZwhNEghAwQwghQWAACwxA+XYgAAAA==[0m[WARNING] File encoding has not been set, using platform encoding ISO-8859-1, i.e. build is platform dependent!
-[8mha:AAAAYx+LCAAAAAAAAABb85aBtbiIQSWjNKU4P0+vJLE4u1gvPjexLDVPzxdEhicW5WXmpfvll6S2fNly5fzGzauYGBgqihikoFqS8/OK83NS9ZwhNEghAwQwghQWAACwxA+XYgAAAA==[0m[WARNING] Using platform encoding (ISO-8859-1 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 822 resources
-[8mha:AAAAXx+LCAAAAAAAAABb85aBtbiIQTGjNKU4P0+vJLE4u1gvPjexLDVPzxdE+uZn5fvll6T+rlY5WiYVksXEwFBRxCAFVZ+cn1ecn5Oq5wyhQQoZIIARpLAAAFkNeyJfAAAA[0m[INFO] [datapower-config-generator:getVersions {execution: getVersions}]
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] !SESSION 2012-02-23 15:36:26.297 -----------------------------------------------
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] eclipse.buildId=M20060921-0945
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] java.fullversion=JRE 1.6.0 IBM J9 2.4 Linux amd64-64 jvmxa6460sr8ifx-20100923_65174 (JIT enabled, AOT enabled)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] J9VM - 20100923_065174
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] JIT  - r9_20100401_15339ifx6
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] GC   - 20100308_AA
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] BootLoader constants: OS=linux, ARCH=x86_64, WS=motif, NL=no_NO
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] Framework arguments:  -application com.ibm.ws.bootstrap.WSLauncher
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] Command-line arguments:  -application com.ibm.ws.bootstrap.WSLauncher
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] !ENTRY org.eclipse.osgi 4 0 2012-02-23 15:36:26.394
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] !MESSAGE Error reading configuration: /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/configuration/org.eclipse.osgi/.manager/.fileTableLock (Permission denied)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] !STACK 0
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] java.io.FileNotFoundException: /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/configuration/org.eclipse.osgi/.manager/.fileTableLock (Permission denied)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at java.io.RandomAccessFile.open(Native Method)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:218)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.core.runtime.internal.adaptor.Locker_JavaNio.lock(Locker_JavaNio.java:30)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.storagemanager.StorageManager.lock(StorageManager.java:387)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.storagemanager.StorageManager.open(StorageManager.java:694)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.initFileManager(BaseStorage.java:152)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.internal.baseadaptor.BaseStorage.initialize(BaseStorage.java:129)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.baseadaptor.BaseAdaptor.initializeStorage(BaseAdaptor.java:124)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.framework.internal.core.Framework.initialize(Framework.java:138)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.framework.internal.core.Framework.<init>(Framework.java:112)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.framework.internal.core.OSGi.createFramework(OSGi.java:90)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.osgi.framework.internal.core.OSGi.<init>(OSGi.java:31)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.core.runtime.adaptor.EclipseStarter.startup(EclipseStarter.java:286)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:173)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at java.lang.reflect.Method.invoke(Method.java:600)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.core.launcher.Main.invokeFramework(Main.java:336)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.core.launcher.Main.basicRun(Main.java:280)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at org.eclipse.core.launcher.Main.run(Main.java:977)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at com.ibm.wsspi.bootstrap.WSPreLauncher.launchEclipse(WSPreLauncher.java:340)
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] 	at com.ibm.wsspi.bootstrap.WSPreLauncher.main(WSPreLauncher.java:110)
-[INFO] WASX7448E: The trace file cannot be written to location /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/logs/wsadmin.traceout . Please specify a different location with -tracefile option.
-[INFO] ------------------------------------------------------------------------
-[8mha:AAAAYB+LCAAAAAAAAABb85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEuhYV5Rf55ZekOlc7RKnPKH7IxMBQUcQgBdWQnJ9XnJ+TqucMoUEKGSCAEaSwAACsNFCqYAAAAA==[0m[ERROR] FATAL ERROR
-[INFO] ------------------------------------------------------------------------
-[INFO] An error occured during deploy. Stopping deployment. Consult the logs.
-[INFO] ------------------------------------------------------------------------
-[INFO] Trace
-java.lang.RuntimeException: An error occured during deploy. Stopping deployment. Consult the logs.
-	at no.nav.maven.plugins.GetVersionsMojo.execute(GetVersionsMojo.java:126)
-	at org.apache.maven.plugin.DefaultPluginManager.executeMojo(DefaultPluginManager.java:490)
-	at org.apache.maven.lifecycle.DefaultLifecycleExecutor.executeGoals(DefaultLifecycleExecutor.java:694)
-	at org.apache.maven.lifecycle.DefaultLifecycleExecutor.executeGoalWithLifecycle(DefaultLifecycleExecutor.java:556)
-	at org.apache.maven.lifecycle.DefaultLifecycleExecutor.executeGoal(DefaultLifecycleExecutor.java:535)
-	at org.apache.maven.lifecycle.DefaultLifecycleExecutor.executeGoalAndHandleFailures(DefaultLifecycleExecutor.java:387)
-	at org.apache.maven.lifecycle.DefaultLifecycleExecutor.executeTaskSegments(DefaultLifecycleExecutor.java:348)
-	at org.apache.maven.lifecycle.DefaultLifecycleExecutor.execute(DefaultLifecycleExecutor.java:180)
-	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:328)
-	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:138)
-	at org.apache.maven.cli.MavenCli.main(MavenCli.java:362)
-	at org.apache.maven.cli.compat.CompatibleMain.main(CompatibleMain.java:60)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-	at java.lang.reflect.Method.invoke(Method.java:597)
-	at org.codehaus.classworlds.Launcher.launchEnhanced(Launcher.java:315)
-	at org.codehaus.classworlds.Launcher.launch(Launcher.java:255)
-	at org.codehaus.classworlds.Launcher.mainWithExitCode(Launcher.java:430)
-	at org.codehaus.classworlds.Launcher.main(Launcher.java:375)
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 17 seconds
-[INFO] Finished at: Thu Feb 23 15:36:30 CET 2012
-[INFO] Final Memory: 33M/249M
-[INFO] ------------------------------------------------------------------------
-Description set: 
-Sending e-mails to: test@example.com
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update for build: deploy_datapower #1 due to result: FAILURE
-Finished: FAILURE

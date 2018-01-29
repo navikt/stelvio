@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://www.ibm.com/websphere/sibx/ServiceGateway/Binding" xmlns:Binding4="http://www.ibm.com/websphere/sibx/ServiceGateway/Binding4" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://www.ibm.com/websphere/sibx/ServiceGateway" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ServiceGatewayWSIMP" name="ServiceGatewayWSIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:ServiceGateway">
-      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
-    </interface>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsImportBinding" dataHandlerType="com.ibm.wbiserver.datahandler.nativebody.NativeBodyDataHandler" endpoint="http://example.com" port="Binding:ServiceGatewayWSIMP_ServiceGatewayHttpPort" service="Binding:ServiceGatewayWSIMP_ServiceGatewayHttpService"/>
-</scdl:import>

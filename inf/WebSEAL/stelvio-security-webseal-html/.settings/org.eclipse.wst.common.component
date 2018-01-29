@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="stelvio-security-webseal-html">
-        <wb-resource deploy-path="/" source-path="/www-default"/>
-        <property name="context-root" value="stelvio-security-webseal-html"/>
-    </wb-module>
-</project-modules>

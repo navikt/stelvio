@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://www.ibm.com/websphere/sibx/ServiceGateway/Binding" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:src="http://www.ibm.com/websphere/sibx/ServiceGateway" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="stelvio-inc-dynamic_GatewayExport_WS_SOAP11" name="stelvio-inc-dynamic_GatewayExport_WS_SOAP11" target="stelvio-inc-dynamic_Gateway">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="src:ServiceGateway"/>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" dataHandlerType="com.ibm.wbiserver.datahandler.nativebody.NativeBodyDataHandler" port="Binding:stelvio-inc-dynamic_GatewayExport_WS_SOAP11_ServiceGatewayHttpPort" selectorType="com.ibm.websphere.sca.ws.selector.impl.ServiceGatewaySelector" service="Binding:stelvio-inc-dynamic_GatewayExport_WS_SOAP11_ServiceGatewayHttpService"/>
-</scdl:export>

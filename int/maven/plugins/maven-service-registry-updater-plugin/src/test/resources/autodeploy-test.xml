@@ -1,7 +1,0 @@
-    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/" name="ns3:Brukerprofil">
-        <application>autodeploy-test</application>
-        <serviceVersion bindingName="ns3:BrukerprofilBinding">
-            <operation action="http://nav.no/tjeneste/virksomhet/brukerprofil/v1/BrukerprofilPortType/hentKontaktinformasjonOgPreferanserRequest" name="hentKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://e34apsl00120.devillo.no:8443/test/brukerprofil"/>
-        </serviceVersion>
-    </service>

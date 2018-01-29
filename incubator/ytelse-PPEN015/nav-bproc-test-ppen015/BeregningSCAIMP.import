@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/Beregning" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="BeregningSCAIMP" name="BeregningSCAIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Beregning"/>
-  </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-ent-pen-beregning" export="BeregningSCAEXP"/>
-</scdl:import>

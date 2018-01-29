@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://stelvio" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:sf="http://www.ibm.com/xmlns/prod/websphere/wbiserver/storeAndForward/7.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="MetronomeSubscriber" name="MetronomeSubscriber">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:Metronome">
-      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
-    </interface>
-  </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9080/stelvio-example-metronome-subscriber/Metronome" port="ns1:MetronomeSubscriber" service="ns1:Metronome"/>
-</scdl:import>

@@ -1,7 +1,0 @@
-    <service xmlns:ns3="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/" name="ns3:BehandleBrukerprofil">
-        <application>pselv</application>
-        <serviceVersion bindingName="ns3:BehandleBrukerprofilBinding">
-            <operation action="http://nav.no/tjeneste/virksomhet/behandleBrukerprofil/v1/BehandleBrukerprofilPortType/oppdaterKontaktinformasjonOgPreferanser" name="oppdaterKontaktinformasjonOgPreferanser"/>
-            <serviceInstance endpoint="https://hostnavn.test.local:9443/moduleNameWeb/sca/exportName"/>
-        </serviceVersion>
-    </service>

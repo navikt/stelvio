@@ -1,6 +1,0 @@
-x ta i bruk ibmfixes.py i Executor.py
-- forsøk å få lib/stringUtil.py inn i ibmfixes.py
-x Flytt lib/collections.py inn i ibmfixes.py
-x Flytt XmlToUil.blaGroupXmlToStringList() til getConfiguration.py
-- innfør 36 talls systemet på versjonsnr 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
-- muligheten til å legge inn kolonner i tableUtil. For eks en kolonne med nummerering av modulen blir lagt inn etter at tabellen er sortert.

@@ -1,5 +1,0 @@
-[17.08.10 16:08:21:842 CEST] 00000077 SystemOut     O String representation: com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl@71167116 (eClass: BusinessObjectType: echoCall_._type@2f4e2f4e (namespace=wsdl:http://example/stelvio/no, instanceClass=com.ibm.wsspi.sca.multipart.Multipart, schema=jar:file:/C:/IBM/WID7_WTE/runtimes/bi_v7/profiles/wesb/installedApps/utviklerNode02Cell/ejbConsumingModuleApp.ear/ejbConsumingModule.jar!/example/stelvio/no/echoCallElement.xsd))
-[17.08.10 16:08:21:842 CEST] 00000077 SystemOut     O BOXMLSerializer representation: <?xml version="1.0" encoding="UTF-8"?>
-<p:echoCall_._type xsi:type="p:echoCall_._type" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="wsdl:http://example/stelvio/no">
-  <arg0>//@arg0</arg0>
-</p:echoCall_._type>

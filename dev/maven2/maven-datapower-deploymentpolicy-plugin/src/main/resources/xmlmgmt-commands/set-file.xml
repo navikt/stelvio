@@ -1,4 +1,0 @@
-<dp:request domain="" xmlns:dp='http://www.datapower.com/schemas/management'>	
-	<dp:set-file name="" xmlns:dp="http://www.datapower.com/schemas/management">
-	</dp:set-file>
-</dp:request>

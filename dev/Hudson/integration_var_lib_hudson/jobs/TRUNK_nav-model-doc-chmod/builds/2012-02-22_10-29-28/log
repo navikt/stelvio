@@ -1,9 +1,0 @@
-Started by upstream project "[8mha:AAAAoR+LCAAAAAAAAABb85aBtbiIQSajNKU4P08vOT+vOD8nVc+jsiC1KCczL9svvyT1dMUiOWdZ/mImBiZPBrac1Lz0kgwfBubSopwSBiGfrMSyRP2cxLx0/eCSosy8dOuKIgYpNOOcITTIMAYIYGRiYKgoADKkSxgU9bPyk/RDgkL9vOPzEst0c/NTUnN0U/KTdVMyE9OLEnP1AeCpV4amAAAA[0mTRUNK_nav-model-doc-diagram" build number [8mha:AAAAoR+LCAAAAAAAAABb85aBtbiIQSajNKU4P08vOT+vOD8nVc+jsiC1KCczL9svvyT1dMUiOWdZ/mImBiZPBrac1Lz0kgwfBubSopwSBiGfrMSyRP2cxLx0/eCSosy8dOuKIgYpNOOcITTIMAYIYGRiYKgoADFKGJT0s/KT9EOCQv284/MSy3Rz81NSc3RT8pN1UzIT04sSc/WNAS3xPoSnAAAA[0m3
-[workspace] $ /bin/sh -xe /tmp/hudson3577248668704491615.sh
-+ chmod -Rc 775 /var/www/html/site/
-mode of `/var/www/html/site/nav.no/ekstern/pensjon/tjenester/tjenestepensjonSimulering/meldinger/v1/SimulerOffentligTjenestepensjonRequest.html' changed to 0775 (rwxrwxr-x)
-mode of `/var/www/html/site/nav.no/ekstern/pensjon/tjenester/tjenestepensjonSimulering/meldinger/v1/SimulerOffentligTjenestepensjonResponse.html' changed to 0775 (rwxrwxr-x)
-mode of `/var/www/html/site/nav.no/ekstern/pensjon/tjenester/tjenestepensjonSimulering/v1/TjenestepensjonSimulering/simulerOffentligTjenestepensjon.html' changed to 0775 (rwxrwxr-x)
-Notifying upstream projects of job completion
-[DEBUG] Skipping watched dependency update; build not configured with trigger: TRUNK_nav-model-doc-chmod #4
-Finished: SUCCESS

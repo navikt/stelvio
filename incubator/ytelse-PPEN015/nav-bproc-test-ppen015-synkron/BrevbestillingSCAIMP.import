@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://nav-lib-sah/no/nav/lib/sah/inf/Brevbestilling" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="BrevbestillingSCAIMP" name="BrevbestillingSCAIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:Brevbestilling"/>
-  </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-bsrv-sah-brevbestilling" export="BrevbestillingSCAEXP"/>
-</scdl:import>

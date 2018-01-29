@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<psa:PolicySetAttachment xmlns:psa="http://www.ibm.com/xmlns/prod/websphere/200605/policysetattachment" xmlns:ps="http://www.ibm.com/xmlns/prod/websphere/200605/policyset">
-    <psa:PolicySetReference name="LTPA Token" id="com.ibm.ast.ws.local.qos.policyset.id2">
-        <psa:Resource pattern="WebService:/stelvio-example-echo-provider.war:{http://provider.echo.example.stelvio/}EchoLTPAService"/>
-    </psa:PolicySetReference>
-    <psa:PolicySetReference name="SAML20 Bearer" id="com.ibm.ast.ws.local.qos.policyset.id1">
-        <psa:Resource pattern="WebService:/stelvio-example-echo-provider.war:{http://provider.echo.example.stelvio/}EchoSAMLService"/>
-    </psa:PolicySetReference>
-</psa:PolicySetAttachment>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<psf version="2.0">
-<provider id="org.tigris.subversion.subclipse.core.svnnature">
-<project reference="0.9.3,https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib,stelvio-example-order-lib"/>
-<project reference="0.9.3,https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service,stelvio-example-order-service"/>
-</provider>
-</psf>

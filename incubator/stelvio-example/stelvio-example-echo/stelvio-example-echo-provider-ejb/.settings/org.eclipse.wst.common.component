@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="stelvio-example-echo-provider-ejb">
-        <wb-resource deploy-path="/" source-path="/ejbModule"/>
-        <wb-resource deploy-path="/" source-path="/.apt_generated"/>
-        <property name="java-output-path" value="ejbModule"/>
-        <property name="ClientProject" value="stelvio-example-echo-provider-ejbClient"/>
-        <property name="ClientJARURI" value="stelvio-example-echo-provider-ejbClient.jar"/>
-    </wb-module>
-</project-modules>

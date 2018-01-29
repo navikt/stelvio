@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Created-By: 1.5.0 (IBM Corporation)
-Class-Path: copiedjars/stelvio-example-echo-proxy-ejb-jaxrpc/stelvio-e
- xample-echo-provider-ejbClient.jar
-

@@ -1,0 +1,44 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>no.stelvio</groupId>
+		<artifactId>stelvio</artifactId>
+		<version>8.14.J8OR.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>stelvio-batch-client-java</artifactId>
+	<packaging>jar</packaging>
+	<name>stelvio - batch - client</name>
+	<dependencies>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    	<dependency>
+			<!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
+			<artifactId>spring-beans</artifactId>
+			<groupId>org.springframework</groupId>
+		</dependency>
+		<dependency>
+			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
+			<artifactId>spring-context</artifactId>
+			<groupId>org.springframework</groupId>
+		</dependency>
+		<!-- Test dependencies -->
+		<dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+        </dependency>
+		<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+ 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+</project>

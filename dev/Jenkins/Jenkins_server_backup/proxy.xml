@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<proxy>
-  <name>155.55.60.117</name>
-  <port>8088</port>
-  <noProxyHost>*.devillo.no</noProxyHost>
-  <secretPassword>aW8AKugjF7OB3wjiFmcKdcW6gWt1FUSa0vwr42gOpvM=</secretPassword>
-</proxy>

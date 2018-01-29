@@ -1,7 +1,0 @@
-#Tue Apr 12 10:34:13 CEST 2011
-com.ibm.etools.ejbdeploy.rmicSysProperties=
-com.ibm.etools.ejbdeploy.generateUnqualifiedSQL=false
-eclipse.preferences.version=1
-com.ibm.etools.ejbdeploy.generateRefStubs=true
-com.ibm.etools.ejbdeploy.rmicVerboseOutput=false
-com.ibm.etools.ejbdeploy.generationFolder=ejbModule
