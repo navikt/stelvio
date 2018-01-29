@@ -2,6 +2,22 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 4.1.13
+----------------------------------
+PK-46277:
+- Logic fix to ExecuteServiceRequestInterceptor, and a version of it for the DTO layer is added.
+
+Version 4.1.10
+----------------------------------
+PK-46277:
+- ExecuteServiceRequestInterceptor now removes the RequestContext from the thread after the target operation has been completed.
+- PrepareServiceRequestInterceptor collects the RequestContext in advance and re-registers it after the target operation has been completed
+
+Version 4.1.9
+----------------------------------
+PK-46277:
+- ExecuteServiceRequestInterceptor to log which operation is invoked if no RequestContext is provided
+
 Version 4.1.8
 ----------------------------------
 PEN-7860:
