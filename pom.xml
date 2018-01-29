@@ -12,7 +12,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio</artifactId>
     <packaging>pom</packaging>
-    <version>8.14.J8OR.3-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
     <name>stelvio</name>
 
     <modules>
@@ -184,10 +184,8 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <!-- Hibernate is used for Object Relational Mapping -->
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
-                <!-- Kan se ut som det gir problemer å oppgradere denne -->
                 <version>${hibernate-core.version}</version>
                 <exclusions>
                     <exclusion>
@@ -363,7 +361,6 @@
                 <version>${spring-batch.version}</version>
             </dependency>
             <dependency>
-                <!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
                 <version>${spring.version}</version>
@@ -388,7 +385,6 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
@@ -405,7 +401,6 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${spring.version}</version>
@@ -487,7 +482,6 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <!-- Needs spring mock support in order to run tests -->
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
