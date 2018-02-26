@@ -26,7 +26,7 @@ public class NorskKontonummerValidator implements Validator {
 	 * {@inheritDoc}
 	 */
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		if (value != null) {
+		if (value != null && !value.toString().isEmpty()) {
 			if (!isNorskKontonummer(value)) {
 				Object[] args = { value.toString() };
 				throw new ValidatorException(MessageContextUtil.getFacesMessage(INVALID_MESSAGE_ID, args));
