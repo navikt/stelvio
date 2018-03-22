@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>5.0.2-SNAPSHOT</version>
+		<version>5.0.3</version>
 	</parent>
 	<artifactId>stelvio-batch-client-java</artifactId>
 	<packaging>jar</packaging>
