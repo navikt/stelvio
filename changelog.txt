@@ -2,6 +2,11 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Version 5.0.2
+----------------------------------
+PK-52257 PEN-14444:
+- Added check for empty string in NorskKontonummerValidator.validate
+
 Version 5.0.0
 ----------------------------------
 PK-33704:
