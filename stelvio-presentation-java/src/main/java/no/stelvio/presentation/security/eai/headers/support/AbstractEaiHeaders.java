@@ -33,7 +33,7 @@ public abstract class AbstractEaiHeaders implements EaiHeaders {
 	 */
 	protected AbstractEaiHeaders(EaiHeaderConfig config) {
 		this.config = config;
-		this.headers = new HashMap<String, String>();
+		this.headers = new HashMap<>();
 	}
 
 	/**
@@ -47,23 +47,17 @@ public abstract class AbstractEaiHeaders implements EaiHeaders {
 		return headers.get(config.getHeaderName(key));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Set<String> getHeaderNames() {
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Set<String> getHeaderValues() {
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Map<String, String> getHeaders() {
 		return this.headers;
 	}

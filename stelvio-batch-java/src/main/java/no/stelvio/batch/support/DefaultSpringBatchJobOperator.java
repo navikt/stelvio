@@ -39,7 +39,6 @@ public class DefaultSpringBatchJobOperator implements SpringBatchJobOperator {
     private BatchParameterReader parameterReader;
     private JobParametersConverter jobParametersConverter;
 
-    /** {@inheritDoc} */
     @Override
     public int executeBatch(String jobName, String parameters) {
         try {

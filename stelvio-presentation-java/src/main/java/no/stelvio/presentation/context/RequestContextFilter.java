@@ -1,6 +1,5 @@
 package no.stelvio.presentation.context;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,18 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.common.context.support.ComponentIdHolder;
-import no.stelvio.common.context.support.RequestContextSetter;
-import no.stelvio.common.context.support.SimpleRequestContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.ComponentIdHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
+import no.stelvio.common.context.support.SimpleRequestContext;
 
 /**
  * RequestContextFilter is an implementation of the <i>Intercepting Filter</i> pattern that is responsible for constructing and
@@ -67,7 +66,7 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 	 */
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-			throws ServletException, IOException {
+			throws ServletException {
 		try {
 			
 			// get componentId from ApplicationContext
@@ -158,6 +157,7 @@ public class RequestContextFilter extends OncePerRequestFilter implements Applic
 	 * @throws BeansException
 	 *             if a bean exception occurs
 	 */
+	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}

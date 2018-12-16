@@ -27,10 +27,7 @@ public class JsfPage implements Serializable {
 
 	private String concatinationRule = Constants.J2EE_ROLE_CONCATINATION_AND;
 
-	// private JeeRoles roles;
-
-	// private List<JeeRoles> roleSets;
-	private ArrayList<JeeRoles> roleSets;
+	private List<JeeRoles> roleSets;
 
 	/**
 	 * Sets the page to require authentication with boolean parameter.
@@ -137,7 +134,7 @@ public class JsfPage implements Serializable {
 	 */
 	public void addRoles(JeeRoles roles) {
 		if (roleSets == null) {
-			roleSets = new ArrayList<JeeRoles>();
+			roleSets = new ArrayList<>();
 		}
 		roleSets.add(roles);
 		// this.roles = roles;
@@ -150,14 +147,10 @@ public class JsfPage implements Serializable {
 	 */
 	public List<JeeRoles> getRoleSets() {
 		if (roleSets == null) {
-			roleSets = new ArrayList<JeeRoles>();
+			roleSets = new ArrayList<>();
 		}
 		return roleSets;
 	}
-
-	/*
-	 * public JeeRoles getRoles() { if (this.roles == null) { this.roles = new JeeRoles(); } return this.roles; }
-	 */
 
 	/**
 	 * Sets how the J2EE roles should be treated when evaluating this page, i.e. if it is required to have all roles or just one
@@ -220,7 +213,6 @@ public class JsfPage implements Serializable {
 		sb.append(",Requires authorization=").append(this.requiresAuthorization);
 		sb.append(",Requires SSL=").append(this.requiresSSL);
 		sb.append(",Role concatination rule=").append(this.concatinationRule);
-		// sb.append(",Roles=").append(this.roles);
 		sb.append(",RoleSets=").append(this.roleSets);
 		return sb.toString();
 	}

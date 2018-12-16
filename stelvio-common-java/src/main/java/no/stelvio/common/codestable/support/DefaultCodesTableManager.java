@@ -1,16 +1,15 @@
 package no.stelvio.common.codestable.support;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.NotCodesTableException;
 import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 /**
  * Implementation of CodesTableManager used for accessing and caching persistent codes tables.
@@ -27,8 +26,8 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 
 	/** The <code>ApplicationContext</code> this manager is run in. */
 	private ApplicationContext applicationContext;
-	
-	/** {@inheritDoc} */
+
+	@Override
 	public <T extends AbstractCodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> getCodesTable(
 			Class<T> codesTableItemClass) {
 		validate(codesTableItemClass, AbstractCodesTableItem.class);
@@ -37,9 +36,7 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 			log.debug("Creating a normal codes table for " + codesTableItemClass);
 		}
 
-		CodesTable<T, K, V> ct;
-
-		ct = new DefaultCodesTable<T, K, V>(codesTableItemsFactory.createCodesTableItems(codesTableItemClass),
+		CodesTable<T, K, V> ct = new DefaultCodesTable<>(codesTableItemsFactory.createCodesTableItems(codesTableItemClass),
 				codesTableItemClass);
 
 		injectApplicationContextIfPossible(ct);
@@ -47,7 +44,7 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 		return ct;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public <T extends AbstractCodesTablePeriodicItem<K, V>, K extends Enum, V> CodesTablePeriodic<T, K, V> getCodesTablePeriodic(
 			Class<T> codesTablePeriodicItemClass) {
 		validate(codesTablePeriodicItemClass, AbstractCodesTablePeriodicItem.class);
@@ -56,9 +53,7 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 			log.debug("Creating a periodic codes table for " + codesTablePeriodicItemClass);
 		}
 
-		CodesTablePeriodic<T, K, V> ctp;
-
-		ctp = new DefaultCodesTablePeriodic<T, K, V>(codesTableItemsFactory
+		CodesTablePeriodic<T, K, V> ctp = new DefaultCodesTablePeriodic<>(codesTableItemsFactory
 				.createCodesTablePeriodicItems(codesTablePeriodicItemClass), codesTablePeriodicItemClass);
 
 		injectApplicationContextIfPossible(ctp);
@@ -66,7 +61,7 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 		return ctp;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public <T extends AbstractCodesTablePeriodicItem<K, String>, K extends Enum> T getCti(CtiConvertable<T, K> code) {
 		if (code != null) {
 			return this.getCodesTablePeriodic(code.getCti()).getCodesTableItem((K) code);
@@ -119,6 +114,7 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 	 * @param applicationContext
 	 *            the <code>ApplicationContext</code> this instance run in.
 	 */
+	@Override
 	public void setApplicationContext(final ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
 	}

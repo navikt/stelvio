@@ -50,6 +50,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
      * @return the value returned by the method that is intercepted
      * @throws Throwable a throwable exception
      */
+    @Override
     public Object invoke(MethodInvocation i) throws Throwable {
         if (log.isDebugEnabled()) {
             log.debug("Method invoke(MethodInvocation) has been invoced");
@@ -186,6 +187,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
      *
      * @return the order
      */
+    @Override
     public int getOrder() {
         return order;
     }
@@ -204,6 +206,7 @@ public class ExecuteServiceRequestInterceptor implements MethodInterceptor, Orde
      *
      * @param applicationContext the application context
      */
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }

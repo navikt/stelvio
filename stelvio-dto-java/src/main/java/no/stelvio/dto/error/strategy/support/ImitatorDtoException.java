@@ -20,7 +20,7 @@ public class ImitatorDtoException extends RuntimeException {
 		super(throwableToImitate.getMessage());
 
 		throwableToImitateClassName = throwableToImitate.getClass().getName();
-		StackTraceElement[] stackTraceElements = (StackTraceElement[]) throwableToImitate.getStackTrace().clone();
+		StackTraceElement[] stackTraceElements = throwableToImitate.getStackTrace().clone();
 		setStackTrace(stackTraceElements);
 	}
 

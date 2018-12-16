@@ -2,6 +2,7 @@ package no.stelvio.common.security.support;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.util.ReflectionUtils;
@@ -33,12 +34,11 @@ public class SecurityContextSetter {
 	 */
 	public static synchronized void setSecurityContext(SecurityContext securityContext) {
 		if (setSecurityContextMethod == null) {
-			setSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "setSecurityContext",
-					new Class[] { SecurityContext.class });
+			setSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "setSecurityContext", SecurityContext.class);
 			setSecurityContextMethod.setAccessible(true);
 		}
 
-		ReflectionUtils.invokeMethod(setSecurityContextMethod, SecurityContextHolder.class, new Object[] { securityContext });
+		ReflectionUtils.invokeMethod(setSecurityContextMethod, SecurityContextHolder.class, securityContext);
 	}
 
 	/**
@@ -50,11 +50,7 @@ public class SecurityContextSetter {
 	 *            a list of rolenames.
 	 */
 	public static void setSecurityContext(String userId, String... roles) {
-		List<String> roleList = new ArrayList<String>();
-
-		for (String string : roles) {
-			roleList.add(string);
-		}
+		List<String> roleList = new ArrayList<>(Arrays.asList(roles));
 
 		SecurityContext securityContext = new SimpleSecurityContext(userId, userId, roleList);
 		setSecurityContext(securityContext);

@@ -50,6 +50,7 @@ public abstract class AbstractRelationsItem implements Serializable {
 	 * @param other object to compare to
 	 * @return true if objects are equal
 	 */
+	@Override
 	public boolean equals(Object other) {
 		if (other == null || !getClass().equals(other.getClass())){
 			return false;			
@@ -58,20 +59,12 @@ public abstract class AbstractRelationsItem implements Serializable {
 		return getId().equals(((AbstractRelationsItem) other).getId());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#hashCode()
-	 */
+	@Override
 	public int hashCode() {
 		return getId().hashCode();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see java.lang.Object#toString()
-	 */
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this)
 			.append("fromDate", getFromDate())

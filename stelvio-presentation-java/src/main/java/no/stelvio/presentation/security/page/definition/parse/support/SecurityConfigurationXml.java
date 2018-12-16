@@ -105,6 +105,7 @@ public class SecurityConfigurationXml implements SecurityConfiguration {
 	 * 
 	 * @return the jsfApplication
 	 */
+	@Override
 	public JsfApplication getJsfApplication() {
 		return this.jsfApplication;
 	}
@@ -112,11 +113,8 @@ public class SecurityConfigurationXml implements SecurityConfiguration {
 	/**
 	 * Internal class DefineSecurityRuleSet contains the DigesterRules to parse the security config file.
 	 */
-	class DefineSecurityRuleSet extends RuleSetBase {
+	static class DefineSecurityRuleSet extends RuleSetBase {
 
-		/**
-		 * {@inheritDoc}
-		 */
 		@Override
 		public void addRuleInstances(Digester d) {
 

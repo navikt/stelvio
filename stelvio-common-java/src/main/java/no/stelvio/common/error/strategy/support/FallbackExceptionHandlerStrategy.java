@@ -19,6 +19,7 @@ public class FallbackExceptionHandlerStrategy extends AbstractOrderedExceptionHa
 	 * @param throwable an exception
 	 * @return the exception that was passed into the method
 	 */
+	@Override
 	public <T extends Throwable> T handleException(T throwable) {
 		printException(throwable);
 		

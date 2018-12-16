@@ -5,11 +5,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
 
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.util.ReflectUtil;
-
-import org.junit.Test;
 
 /**
  * Test class that aims to test that CodesTable components works with enum codes where enum.getIllegalCode() is the code, and
@@ -71,13 +72,12 @@ public class IllegalEnumCodeTest {
 		PostnrCti jar = new PostnrCti();
 		ReflectUtil.setField(PostnrCti.class, jar, "code", "1358");
 
-		ArrayList<PostnrCti> items = new ArrayList<PostnrCti>();
+		List<PostnrCti> items = new ArrayList<>();
 		items.add(oslo);
 		items.add(hamar);
 		items.add(jar);
 
-		DefaultCodesTable<PostnrCti, PostnrCode, String> table = new DefaultCodesTable<PostnrCti, PostnrCode, String>(items,
-				PostnrCti.class);
+		DefaultCodesTable<PostnrCti, PostnrCode, String> table = new DefaultCodesTable<>(items, PostnrCti.class);
 
 		assertEquals(hamar, table.getCodesTableItem("2300"));
 		assertEquals(oslo, table.getCodesTableItem(PostnrCode.OSLO1));
@@ -93,7 +93,7 @@ public class IllegalEnumCodeTest {
 	 * 
 	 * @author person983601e0e117 (Accenture)
 	 */
-	class PostnrCti extends CodesTableItem<PostnrCode, String> {
+	static class PostnrCti extends CodesTableItem<PostnrCode, String> {
 		private static final long serialVersionUID = 1L;
 	}
 
@@ -107,7 +107,7 @@ public class IllegalEnumCodeTest {
 
 		OSLO1("0116"), HAMAR("2300"), JAR("1358"), STAVANGER("4000");
 
-		private String realCode = "";
+		private String realCode;
 
 		/**
 		 * Creates a new instance of PostnrCode.
@@ -123,6 +123,7 @@ public class IllegalEnumCodeTest {
 		 * 
 		 * @return illegal code
 		 */
+		@Override
 		public String getIllegalCode() {
 			return realCode;
 		}

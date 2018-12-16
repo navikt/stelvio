@@ -13,12 +13,6 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import no.stelvio.common.codestable.CodesTableEmptyException;
-import no.stelvio.common.codestable.DecodeNotFoundException;
-import no.stelvio.common.codestable.DuplicateItemsException;
-import no.stelvio.common.codestable.ItemNotFoundException;
-import no.stelvio.common.error.InvalidArgumentException;
-
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.beans.BeansException;
@@ -27,6 +21,12 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.util.CollectionUtils;
+
+import no.stelvio.common.codestable.CodesTableEmptyException;
+import no.stelvio.common.codestable.DecodeNotFoundException;
+import no.stelvio.common.codestable.DuplicateItemsException;
+import no.stelvio.common.codestable.ItemNotFoundException;
+import no.stelvio.common.error.InvalidArgumentException;
 
 /**
  * Holds common functionality for <code>CodesTable</code> and <code>CodesTablePeriodic</code>.
@@ -64,7 +64,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	/**
 	 * List of predicates to use for filtering the list of <code>AbstractCodesTableItem</code>s.
 	 */
-	private List<Predicate> predicates = new ArrayList<Predicate>();
+	private List<Predicate> predicates = new ArrayList<>();
 
 	/** The item class for this codes table. */
 	private Class<? extends AbstractCodesTableItem> codesTableItemsClass;
@@ -119,8 +119,8 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 
 			// First item with this code, init Set for this code in map
 			if (codeCodesTableItemSetMap.get(codesTableItem.getCodeAsString()) == null) {
-				codeCodesTableItemSetMap.put(codesTableItem.getCodeAsString(), new TreeSet<T>());
-				filteredCodeCodesTableItemSetMap.put(codesTableItem.getCodeAsString(), new TreeSet<T>());
+				codeCodesTableItemSetMap.put(codesTableItem.getCodeAsString(), new TreeSet<>());
+				filteredCodeCodesTableItemSetMap.put(codesTableItem.getCodeAsString(), new TreeSet<>());
 			}
 
 			// Add item to set in map
@@ -302,7 +302,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 				// filter rules
 				for (String code : filteredCodeCodesTableItemSetMap.keySet()) {
 					Set<T> setAtKeyPosition = filteredCodeCodesTableItemSetMap.get(code);
-					Set<T> itemsFilteredOut = new TreeSet<T>();
+					Set<T> itemsFilteredOut = new TreeSet<>();
 
 					// Create a list of Items that are filtered out
 					for (T item : setAtKeyPosition) {
@@ -516,12 +516,12 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	 * @return filtered set
 	 */
 	protected Set<T> filterCodesTableItems(Set<T> codesTableItems) {
-		Set<T> filteredSet = new TreeSet<T>();
+		Set<T> filteredSet = new TreeSet<>();
 		if (codesTableItems != null) {
 			for (T t : codesTableItems) {
 				boolean okToAdd = true;
 				for (Predicate predicate : predicates) {
-					okToAdd = (!predicate.evaluate(t)) ? false : okToAdd;
+					okToAdd = (predicate.evaluate(t)) && okToAdd;
 				}
 				if (okToAdd) {
 					filteredSet.add(t);
@@ -595,7 +595,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 		SortedMap<String, Set<T>> copyMap = new TreeMap<String, Set<T>>(sortedMapComparator);
 		for (String key : mapToCopy.keySet()) {
 			Set<T> setAtKey = copyMap.get(key);
-			Set<T> copyOfSet = new TreeSet<T>(setAtKey);
+			Set<T> copyOfSet = new TreeSet<>(setAtKey);
 			copyMap.put(key, copyOfSet);
 		}
 		return copyMap;

@@ -1,6 +1,5 @@
 package no.stelvio.presentation.util;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,7 +56,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	/**
 	 * The list.
 	 */
-	private List<T> list = new ArrayList<T>();
+	private List<T> list;
 
 	/**
 	 * Holds which column that the list has been sorted by.
@@ -82,7 +81,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	/**
 	 * Holds how many items there are in the list.
 	 */
-	private long numberOfItems = 0;
+	private long numberOfItems;
 
 	/**
 	 * Holds which item that is the last item on the page, starting at 1.
@@ -116,7 +115,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 */
 	public PagedSortableList(List<T> list, int numberOfRowsOnEachPage, String sortColumn) {
 		if (list == null) {
-			this.list = new ArrayList<T>();
+			this.list = new ArrayList<>();
 		} else {
 			this.list = list;
 		}
@@ -152,7 +151,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 */
 	public PagedSortableList(List<T> list, int numberOfRowsOnEachPage, String defaultSortColumn, boolean ascending) {
 		if (list == null) {
-			this.list = new ArrayList<T>();
+			this.list = new ArrayList<>();
 		} else {
 			this.list = list;
 		}
@@ -178,6 +177,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * @param event
 	 *            the event that has occured
 	 */
+	@Override
 	public void pageing(FacesEvent event) {
 		String way = event.getComponent().getId();
 
@@ -245,9 +245,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	protected final void sort(final String column, final boolean ascending) {
-		Comparator comparator = (o1, o2) -> {
-            Object c1 = o1;
-            Object c2 = o2;
+		Comparator comparator = (c1, c2) -> {
             if (column == null) {
                 return 0;
             }
@@ -278,10 +276,6 @@ public class PagedSortableList<T> implements PagedList<T> {
 
                 return ascending ? res1.compareTo(res2) : res2.compareTo(res1);
 
-            } catch (IllegalAccessException illegalAccess) {
-                // do nothing
-            } catch (InvocationTargetException invocTarget) {
-                // do nothing
             } catch (Exception general) {
                 // do nothing
             }
@@ -346,6 +340,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the list
 	 */
+	@Override
 	public List<T> getList() {
 		return list;
 	}
@@ -365,6 +360,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the numberOfItems
 	 */
+	@Override
 	public long getNumberOfItems() {
 		return numberOfItems;
 	}
@@ -384,6 +380,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the numberOfPages
 	 */
+	@Override
 	public long getNumberOfPages() {
 		return numberOfPages;
 	}
@@ -403,6 +400,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the numberOfRowsOnEachPage
 	 */
+	@Override
 	public int getNumberOfRowsOnEachPage() {
 		return numberOfRowsOnEachPage;
 	}
@@ -422,6 +420,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the pageIndex
 	 */
+	@Override
 	public int getPageIndex() {
 		return pageIndex;
 	}
@@ -441,6 +440,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the rowIndex
 	 */
+	@Override
 	public int getRowIndex() {
 		return rowIndex;
 	}
@@ -460,6 +460,7 @@ public class PagedSortableList<T> implements PagedList<T> {
 	 * 
 	 * @return the showEnd
 	 */
+	@Override
 	public int getShowEnd() {
 		return showEnd;
 	}

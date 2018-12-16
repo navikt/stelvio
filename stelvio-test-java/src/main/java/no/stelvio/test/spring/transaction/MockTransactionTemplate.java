@@ -60,6 +60,7 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	 * @throws TransactionException
 	 *             if the transaction fails
 	 */
+	@Override
 	public <T> T execute(TransactionCallback<T> action) throws TransactionException {
 		return action.doInTransaction(proxyTransactionStatus);
 	}
@@ -79,6 +80,7 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	 * 
 	 * @return PlatformTransactionManager
 	 */
+	@Override
 	public PlatformTransactionManager getTransactionManager() {
 		throwUnsupportedOperationException();
 		// Will never get here
@@ -88,6 +90,7 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	/**
 	 * Mocked method, will throw an exception if it is invoked.
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		throwUnsupportedOperationException();
 	}

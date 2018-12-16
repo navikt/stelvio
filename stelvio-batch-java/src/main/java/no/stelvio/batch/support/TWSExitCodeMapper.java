@@ -3,12 +3,12 @@ package no.stelvio.batch.support;
 import java.util.HashMap;
 import java.util.Map;
 
-import no.stelvio.batch.BatchStatus;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.launch.support.ExitCodeMapper;
+
+import no.stelvio.batch.BatchStatus;
 
 /**
  * Maps Stelvio Batch exit codes to Stelvio {@link BatchStatus} codes.
@@ -25,7 +25,7 @@ public class TWSExitCodeMapper implements ExitCodeMapper {
 	 * Constructs a new mapper.
 	 */
 	public TWSExitCodeMapper() {
-		mapping = new HashMap<String, Integer>();
+		mapping = new HashMap<>();
 		mapping.put(ExitStatus.COMPLETED.getExitCode(), BatchStatus.BATCH_OK);
 		mapping.put(ExitStatus.STOPPED.getExitCode(), BatchStatus.BATCH_STOPPED);
 		mapping.put(ExitStatus.FAILED.getExitCode(), BatchStatus.BATCH_FATAL);
@@ -33,7 +33,7 @@ public class TWSExitCodeMapper implements ExitCodeMapper {
 		mapping.put(NavExitStatus.WARNING.getExitCode(), BatchStatus.BATCH_WARNING);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public int intValue(String exitCode) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Mapping exitcode:" + exitCode);

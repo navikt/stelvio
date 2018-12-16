@@ -1,5 +1,7 @@
 package no.stelvio.common.codestable.factory.adapter;
 
+import static no.stelvio.common.util.Internal.cast;
+
 import java.util.List;
 
 import no.stelvio.common.codestable.CodesTableNotFoundException;
@@ -7,7 +9,6 @@ import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 import no.stelvio.common.codestable.factory.NoGenericsCodesTableItemsFactory;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
-import static no.stelvio.common.util.Internal.cast;
 
 /**
  * Adapter to bridge the Generics/NoGenerics ({@link CodesTableItemsFactory}/{@link NoGenericsCodesTableItemsFactory})
@@ -21,18 +22,14 @@ import static no.stelvio.common.util.Internal.cast;
 public class NoGenericsCodesTableItemsFactoryAdapter implements CodesTableItemsFactory {
 	private NoGenericsCodesTableItemsFactory noGenericsCodesTableItemsFactory;
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public <T extends AbstractCodesTableItem<K, V>, K extends Enum, V>
 		List<T> createCodesTableItems(Class<T> codesTableItemClass) throws CodesTableNotFoundException {
 
 		return cast(noGenericsCodesTableItemsFactory.createCodesTableItems(codesTableItemClass));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public <T extends AbstractCodesTablePeriodicItem<K, V>, K extends Enum, V>
 		List<T> createCodesTablePeriodicItems(Class<T> codesTableItemPeriodicClass)
 			throws CodesTableNotFoundException {

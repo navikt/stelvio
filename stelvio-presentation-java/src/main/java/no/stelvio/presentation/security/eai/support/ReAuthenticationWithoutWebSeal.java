@@ -5,10 +5,10 @@ import java.io.IOException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.presentation.security.eai.AuthenticationFailureException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import no.stelvio.presentation.security.eai.AuthenticationFailureException;
 
 /**
  * A class used to reauthenticate the user to act as another user with a certain authorization type when not in an environment
@@ -21,9 +21,6 @@ public class ReAuthenticationWithoutWebSeal extends ReAuthentication {
 
 	private final Log LOGGER = LogFactory.getLog(this.getClass());
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void authenticate() {
 

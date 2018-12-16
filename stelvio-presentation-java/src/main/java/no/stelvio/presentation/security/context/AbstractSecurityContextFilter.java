@@ -154,7 +154,6 @@ abstract class AbstractSecurityContextFilter extends OncePerRequestFilter {
 		}
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException,
 			ServletException {
@@ -232,7 +231,7 @@ abstract class AbstractSecurityContextFilter extends OncePerRequestFilter {
 	 */
 	protected List<String> getUserRoles(HttpServletRequest httpreq) {
 
-		List<String> roleList = new ArrayList<String>();
+		List<String> roleList = new ArrayList<>();
 
 		for (SecurityRole securityRole : securityRoles) {
 			String roleName = securityRole.getRoleName();

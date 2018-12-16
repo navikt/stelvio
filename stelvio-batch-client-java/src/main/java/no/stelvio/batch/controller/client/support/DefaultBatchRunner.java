@@ -1,13 +1,13 @@
 package no.stelvio.batch.controller.client.support;
 
-import no.stelvio.batch.BatchStatus;
-import no.stelvio.batch.controller.BatchControllerServiceBi;
-import no.stelvio.batch.controller.client.BatchRunner;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import no.stelvio.batch.BatchStatus;
+import no.stelvio.batch.controller.BatchControllerServiceBi;
+import no.stelvio.batch.controller.client.BatchRunner;
 
 /**
  * Generic class for reading the controllerclient configuration and starting the batch Use <code>BatchControllerServiceBi</code>
@@ -41,7 +41,7 @@ public class DefaultBatchRunner implements BatchRunner {
 		return userId;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public int runBatch(String batchName, int slice) {
 		int result = -1;
 		long time1 = System.currentTimeMillis();
@@ -72,9 +72,9 @@ public class DefaultBatchRunner implements BatchRunner {
 		return result;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean stopBatch(String batchName, int slice) {
-		boolean result = false;
+		boolean result;
 		try {
 			BatchControllerServiceBi controller = getControllerService();
 			if (log.isInfoEnabled()) {
@@ -91,7 +91,7 @@ public class DefaultBatchRunner implements BatchRunner {
 		return result;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public BatchControllerServiceBi getControllerService() {
 
 		if (controllerService == null) {
@@ -112,7 +112,7 @@ public class DefaultBatchRunner implements BatchRunner {
 		return controllerService;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void setControllerService(BatchControllerServiceBi controllerService) {
 		this.controllerService = controllerService;
 	}

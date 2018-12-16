@@ -15,10 +15,8 @@ public final class SecurityContextHolder {
 	 * 
 	 * Use RedeployableThreadLocalSubstitute to avoid memory leak when application is stopped.
 	 */
-	// private static final ThreadLocal<SecurityContext> SECURITY_CONTEXT_HOLDER = new
-	// InheritableThreadLocal<SecurityContext>();
-	private static final RedeployableThreadLocalSubstitute<SecurityContext> SECURITY_CONTEXT_HOLDER = 
-		new RedeployableThreadLocalSubstitute<SecurityContext>();
+	private static final RedeployableThreadLocalSubstitute<SecurityContext> SECURITY_CONTEXT_HOLDER =
+		new RedeployableThreadLocalSubstitute<>();
 
 	/** Should not be instantiated. */
 	private SecurityContextHolder() {

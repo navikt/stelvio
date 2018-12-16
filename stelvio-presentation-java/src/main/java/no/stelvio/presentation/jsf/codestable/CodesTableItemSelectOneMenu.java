@@ -15,17 +15,17 @@ import javax.faces.component.UISelectItems;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
+import org.springframework.web.jsf.FacesContextUtils;
+
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
 import no.stelvio.common.codestable.support.DecodeComparator;
 import no.stelvio.common.error.InvalidArgumentException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.myfaces.component.html.ext.HtmlSelectOneMenu;
-import org.springframework.web.jsf.FacesContextUtils;
 
 /**
  * Custom component for populating dropdown lists with elements from a specific codestable class. The codetable items are
@@ -192,13 +192,10 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 			return new DecodeComparator();
 		}
 		Class comparatorClass = resolveClass(getComparator(), ATTRIBUTE_COMPARATOR);
-		Comparator comparator = null;
+		Comparator comparator;
 		try {
 			comparator = (Comparator) comparatorClass.newInstance();
-		} catch (IllegalAccessException e) {
-			log.info("Error creating comparator for class " + getComparator());
-			comparator = new DecodeComparator();
-		} catch (InstantiationException e) {
+		} catch (IllegalAccessException | InstantiationException e) {
 			log.info("Error creating comparator for class " + getComparator());
 			comparator = new DecodeComparator();
 		}
@@ -216,7 +213,7 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 	 * @return the Class object of the classname specified as an attribute of this component.
 	 */
 	private Class resolveClass(String className, String attribute) {
-		Class clazz = null;
+		Class clazz;
 		try {
 			clazz = Class.forName(className);
 		} catch (ClassNotFoundException cnfe) {
@@ -237,7 +234,7 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 
 		Set<? extends AbstractCodesTableItem> codesTableItems = sortItems(retrieveCodesTableItems());
 
-		List<SelectItem> selectItems = new ArrayList<SelectItem>();
+		List<SelectItem> selectItems = new ArrayList<>();
 
 		if (getDefaultValue() != null && !"".equals(getDefaultValue())) {
 			SelectItem item = new SelectItem("", getDefaultValue());
@@ -282,7 +279,7 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 	 * @return koder
 	 */
 	private Set<? extends AbstractCodesTableItem> retrieveCodesTableItems() {
-		Set<? extends CodesTableItem> koder = null;
+		Set<? extends CodesTableItem> koder;
 		if (AbstractCodesTablePeriodicItem.class.isAssignableFrom(resolveCtiClass())) {
 
 			if (getValidOnDate() != null && !isDisplayValueOnly()) {

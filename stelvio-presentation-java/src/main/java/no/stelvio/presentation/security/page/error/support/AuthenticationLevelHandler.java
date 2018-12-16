@@ -10,14 +10,14 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.presentation.security.page.PageAccessDeniedException;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
 import no.stelvio.presentation.security.session.SecuritySessionAttribute;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Authentication level handler.
@@ -62,9 +62,8 @@ public class AuthenticationLevelHandler {
 	public int getRequiredPageAuthenticationLevel(JsfPage page) {
 		int level = NO_AUTHENTICATION_LEVEL_REQUIRED;
 		List<JeeRoles> roleSets = page.getRoleSets();
-		for (JeeRoles roleSet : roleSets) {
+		for (JeeRoles jeeroles : roleSets) {
 
-			JeeRoles jeeroles = roleSet;
 			if (jeeroles != null) {
 				List<JeeRole> roles = jeeroles.getRoles();
 				for (JeeRole role : roles) {
@@ -187,7 +186,7 @@ public class AuthenticationLevelHandler {
 			if (elements.length > 3) {
 				String context = elements[3];
 				if (!requestedPage.startsWith("/" + context)) {
-					url.append("/" + context + requestedPage);
+					url.append("/").append(context).append(requestedPage);
 				} else {
 					url.append(requestedPage);
 				}

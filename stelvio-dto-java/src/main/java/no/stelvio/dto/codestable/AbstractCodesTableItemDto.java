@@ -29,7 +29,7 @@ public abstract class AbstractCodesTableItemDto implements Serializable {
 		this.code = code;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("code", code).toString();
 	}

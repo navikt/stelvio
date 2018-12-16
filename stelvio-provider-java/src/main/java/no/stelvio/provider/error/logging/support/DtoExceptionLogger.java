@@ -17,10 +17,6 @@ import no.stelvio.dto.exception.SystemUnrecoverableDtoException;
  */
 public class DtoExceptionLogger extends DefaultExceptionLogger {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 */
 	@Override
 	protected boolean shouldExtractProperties(Class declaringClass) {
 		boolean shouldExtract = super.shouldExtractProperties(declaringClass);
@@ -32,10 +28,6 @@ public class DtoExceptionLogger extends DefaultExceptionLogger {
 		return shouldExtract || isADtoExceptionSubclass;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 */
 	@Override
 	protected boolean shouldFieldBeAppended(Field field) {
 
@@ -70,9 +62,6 @@ public class DtoExceptionLogger extends DefaultExceptionLogger {
 				|| t instanceof FunctionalUnrecoverableDtoException || t instanceof FunctionalRecoverableDtoException;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected boolean isExceptionWithErrorCode(Throwable t) {
 		return super.isExceptionWithErrorCode(t) || (t instanceof SystemUnrecoverableDtoException);

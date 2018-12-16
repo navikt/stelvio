@@ -152,6 +152,7 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 	 * @return true if equal, false otherwise.
 	 * @see Comparable
 	 */
+	@Override
 	public boolean equals(Object other) {
 		if (null == other) {
 			return false;
@@ -174,6 +175,7 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 	 * 
 	 * @return the computed hash code.
 	 */
+	@Override
 	public int hashCode() {
 		return new HashCodeBuilder().append(getCodeAsString()).toHashCode();
 	}
@@ -183,6 +185,7 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 	 * 
 	 * @return a <Code>String</code> representation of this object.
 	 */
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("code", getCodeAsString()).append("decode", getDecode()).append("isValid",
 				isValid()).toString();
@@ -208,6 +211,7 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 	 * 
 	 * @see Comparable
 	 */
+	@Override
 	public int compareTo(Object o) {
 
 		AbstractCodesTableItem cti = (AbstractCodesTableItem) o;

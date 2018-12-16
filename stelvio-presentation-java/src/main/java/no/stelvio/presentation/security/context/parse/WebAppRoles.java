@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class WebAppRoles {
 
-	private List<SecurityRole> securityRoles = new ArrayList<SecurityRole>();
+	private List<SecurityRole> securityRoles = new ArrayList<>();
 
 	/**
 	 * Adds a SecurityRole to the collection.

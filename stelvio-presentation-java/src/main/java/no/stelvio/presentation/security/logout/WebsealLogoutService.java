@@ -36,12 +36,8 @@ public class WebsealLogoutService extends WasLogoutService implements Initializi
 	private boolean logoutFromWebSeal = true;
 	private String pointOfContactHostAddress;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-	 */
-	public void afterPropertiesSet() throws Exception {
+	@Override
+	public void afterPropertiesSet() {
 		Assert.notNull(this.pointOfContactHostAddress, "A point of contact hostaddress must be specified. "
 				+ " Please set the pointOfContactHostAddress property.");
 		if (this.pointOfContactHostAddress != null) {
@@ -94,7 +90,7 @@ public class WebsealLogoutService extends WasLogoutService implements Initializi
 		url.append(pointOfContactHostAddress);
 
 		if (websealLogoutFilename != null) {
-			url.append(websealLogoutAction + "?filename=" + websealLogoutFilename);
+			url.append(websealLogoutAction).append("?filename=").append(websealLogoutFilename);
 		} else {
 			url.append(websealLogoutAction);
 		}

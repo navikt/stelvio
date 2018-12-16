@@ -2,11 +2,11 @@ package no.stelvio.consumer.ws;
 
 import java.lang.reflect.InvocationTargetException;
 
-import no.stelvio.common.error.FunctionalUnrecoverableException;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import no.stelvio.common.error.FunctionalUnrecoverableException;
 
 /**
  * Local implementation of consumer exception GBOStelvioFault and stelvio FunctionalUnrecoverableException.
@@ -25,7 +25,7 @@ public abstract class FaultUnrecoverableException extends FunctionalUnrecoverabl
 
 	private static final long serialVersionUID = 1L;
 
-	private final Log log = LogFactory.getLog(FaultUnrecoverableException.class);
+	private static final Log LOG = LogFactory.getLog(FaultUnrecoverableException.class);
 
 	private String errorMessage;
 
@@ -47,12 +47,9 @@ public abstract class FaultUnrecoverableException extends FunctionalUnrecoverabl
 		super(message, cause);
 		try {
 			BeanUtils.copyProperties(this, cause);
-		} catch (IllegalAccessException e) {
-			log.error(e.getMessage(), e);
-		} catch (InvocationTargetException e) {
-			log.error(e.getMessage(), e);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			LOG.error(e.getMessage(), e);
 		}
-
 	}
 
 	/**

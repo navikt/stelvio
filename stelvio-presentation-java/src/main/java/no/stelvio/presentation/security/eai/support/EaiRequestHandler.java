@@ -1,15 +1,12 @@
 package no.stelvio.presentation.security.eai.support;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.presentation.security.eai.Authentication;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.HttpRequestHandler;
+
+import no.stelvio.presentation.security.eai.Authentication;
 
 /**
  * Handles requests to the Eai.
@@ -23,12 +20,8 @@ public class EaiRequestHandler implements HttpRequestHandler, InitializingBean {
 
 	private Authentication authMethod;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-	 */
-	public void afterPropertiesSet() throws Exception {
+	@Override
+	public void afterPropertiesSet() {
 		if (authMethod == null) {
 			throw new IllegalArgumentException("An authentication method must be set.");
 		}
@@ -41,10 +34,9 @@ public class EaiRequestHandler implements HttpRequestHandler, InitializingBean {
 	 *            the HttpServletRequest
 	 * @param response
 	 *            the HttpServletResponse
-	 * @throws ServletException servlet exception
-	 * @throws IOException ioexception
 	 */
-	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		authMethod.setRequest(request);
 		authMethod.setResponse(response);
 		authMethod.authenticate();

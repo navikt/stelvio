@@ -55,7 +55,7 @@ public class MenuItem implements Serializable, Comparable {
 	 * List of child MenuItem objects.
 	 */
 	@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
-	private Set<MenuItem> children = new TreeSet<MenuItem>();
+	private Set<MenuItem> children = new TreeSet<>();
 
 	/**
 	 * List of menuItemPermissions this menu is a part of.
@@ -63,7 +63,7 @@ public class MenuItem implements Serializable, Comparable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "T_MNYVLG_TILGNG", joinColumns = @JoinColumn(name = "MENYVALG_ID"), 
 			inverseJoinColumns = @JoinColumn(name = "TILGANG_ID"))
-	private Set<MenuItemPermission> menuItemPermissions = new TreeSet<MenuItemPermission>();
+	private Set<MenuItemPermission> menuItemPermissions = new TreeSet<>();
 
 	/**
 	 * List of menuItemScreens this menu is a part of.
@@ -71,7 +71,7 @@ public class MenuItem implements Serializable, Comparable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "T_MNYVLG_SKJMBD", joinColumns = @JoinColumn(name = "MENYVALG_ID"), 
 			inverseJoinColumns = @JoinColumn(name = "SKJERMBILDE_ID"))
-	private Set<MenuItemScreen> menuItemScreens = new TreeSet<MenuItemScreen>();
+	private Set<MenuItemScreen> menuItemScreens = new TreeSet<>();
 
 	/**
 	 * The name of the flow to execute when clicking the menuitem.
@@ -137,6 +137,7 @@ public class MenuItem implements Serializable, Comparable {
 	 *            The menu item to compare this menu item with
 	 * @return an integer representing the ordering of the two menu items.
 	 */
+	@Override
 	public int compareTo(Object item) {
 		if (item != null && item instanceof MenuItem) {
 			return this.order - ((MenuItem) item).getOrder();
@@ -144,10 +145,6 @@ public class MenuItem implements Serializable, Comparable {
 		return -1;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -163,10 +160,6 @@ public class MenuItem implements Serializable, Comparable {
 		return result;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object item) {
 		if (item == null || !(item instanceof MenuItem)) {

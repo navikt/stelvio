@@ -1,6 +1,7 @@
 package no.stelvio.presentation.security.resolver;
 
 import java.util.List;
+
 import javax.faces.context.FacesContext;
 
 import com.groundside.jsf.securityresolver.adapter.AbstractAttributeResolver;
@@ -24,6 +25,7 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 	 *            to check for support as defined by a constant in the <code>AttributeResolver</code>
 	 * @return true if this implementation supports this function
 	 */
+	@Override
 	public boolean isSupported(int function) {
 		boolean supported = false;
 
@@ -49,6 +51,7 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 	 *            FacesContext, currently not used but is required by the <code>AttributeResolver</code> interface.
 	 * @return true if userId is not null, false otherwise
 	 */
+	@Override
 	public boolean isSecurityEnabled(FacesContext ctx) {
 		return (SecurityContextHolder.currentSecurityContext().getUserId() != null);
 	}
@@ -60,6 +63,7 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 	 *            FacesContext, currently not used but is required by the <code>AttributeResolver</code> interface.
 	 * @return userid as string
 	 */
+	@Override
 	public String getPrincipalName(FacesContext ctx) {
 		return SecurityContextHolder.currentSecurityContext().getUserId();
 	}
@@ -71,6 +75,7 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 	 *            FacesContext, currently not used but is required by the <code>AttributeResolver</code> interface.
 	 * @return the authorization type, for this class, not supported.
 	 */
+	@Override
 	public String getAuthenticationType(FacesContext ctx) {
 		return "Not supported.";
 	}
@@ -84,6 +89,7 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 	 *            the list of roles to check.
 	 * @return <code>true</code> if the user is a member of all the supplied roles, <code>false</code> otherwise.
 	 */
+	@Override
 	public boolean isUserInAllRoles(FacesContext ctx, List roleDefinitions) {
 		return SecurityContextHolder.currentSecurityContext().isUserInAllRoles(roleDefinitions);
 	}
@@ -97,6 +103,7 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver {
 	 *            the list of roles to check.
 	 * @return <code>true</code> if the user is a member of all the supplied roles, <code>false</code> otherwise.
 	 */
+	@Override
 	public boolean isUserInRole(FacesContext ctx, List roleDefinitions) {
 		return SecurityContextHolder.currentSecurityContext().isUserInRoles(roleDefinitions);
 	}

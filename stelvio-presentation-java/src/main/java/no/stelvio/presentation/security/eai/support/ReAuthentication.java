@@ -7,10 +7,10 @@ import java.util.Map.Entry;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.presentation.security.eai.AuthenticationFailureException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import no.stelvio.presentation.security.eai.AuthenticationFailureException;
 
 /**
  * A class used to set the neccessary HTTP headers on the HttpServletResponse in order to reauthenticate with IBM Tivoli Access
@@ -26,9 +26,6 @@ public class ReAuthentication extends AbstractAuthentication {
 
 	private boolean insertJunctionInRedirUrl = true;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void authenticate() {
 
@@ -95,7 +92,7 @@ public class ReAuthentication extends AbstractAuthentication {
 
 		Object sessionMap = session.getAttribute(StelvioSecurityEaiSessionMap.SESSIONMAP_KEY);
 		StelvioSecurityEaiSessionMap securityMap = null;
-		if (sessionMap != null && sessionMap instanceof StelvioSecurityEaiSessionMap) {
+		if (sessionMap instanceof StelvioSecurityEaiSessionMap) {
 			securityMap = (StelvioSecurityEaiSessionMap) sessionMap;
 		}
 		return securityMap;
@@ -124,7 +121,7 @@ public class ReAuthentication extends AbstractAuthentication {
 					Entry entry = (Entry) iter.next();
 
 					if (log.isDebugEnabled()) {
-						log.debug("Adding header to response: " + (String) entry.getKey() + " - " + (String) entry.getValue());
+						log.debug("Adding header to response: " + entry.getKey() + " - " + entry.getValue());
 					}
 
 					response.setHeader((String) entry.getKey(), (String) entry.getValue());

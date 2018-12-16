@@ -1,12 +1,12 @@
 package no.stelvio.provider.error.strategy.support;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.error.strategy.support.AbstractOrderedExceptionHandlerStrategy;
 import no.stelvio.dto.error.strategy.support.ImitatorDtoException;
 import no.stelvio.dto.exception.RecoverableDtoException;
 import no.stelvio.dto.exception.UnrecoverableDtoException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Morpher for use in the provider layer to convert from Java 5.0 SE code to Java 1.4 SE.
@@ -16,11 +16,9 @@ import org.apache.commons.logging.LogFactory;
  */
 public class MorphToSdk14ExceptionHandlerStrategy extends AbstractOrderedExceptionHandlerStrategy {
 
-	private static Log log = LogFactory.getLog(MorphToSdk14ExceptionHandlerStrategy.class);
+	private static final Log LOG = LogFactory.getLog(MorphToSdk14ExceptionHandlerStrategy.class);
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public <T extends Throwable> T handleException(T exception) {
 
@@ -33,8 +31,8 @@ public class MorphToSdk14ExceptionHandlerStrategy extends AbstractOrderedExcepti
 			return exception;
 		}
 
-		if (log.isDebugEnabled()) {
-			log.debug("About to start imitating Throwable " + exception.getClass().getName() + ".");
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("About to start imitating Throwable " + exception.getClass().getName() + ".");
 		}
 
 		T copy = (T) new ImitatorDtoException(exception);
@@ -48,8 +46,8 @@ public class MorphToSdk14ExceptionHandlerStrategy extends AbstractOrderedExcepti
 			origCopy = imitator;
 		}
 
-		if (log.isDebugEnabled()) {
-			log.debug(exception.getClass().getName() + " was imitated. "
+		if (LOG.isDebugEnabled()) {
+			LOG.debug(exception.getClass().getName() + " was imitated. "
 					+ "Will be returned as an instance of ImitatorDtoException same stacktrace as original.");
 		}
 

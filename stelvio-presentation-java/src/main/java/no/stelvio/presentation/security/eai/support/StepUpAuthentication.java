@@ -2,10 +2,10 @@ package no.stelvio.presentation.security.eai.support;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.InitializingBean;
+
 import no.stelvio.presentation.security.eai.AuthenticationFailureException;
 import no.stelvio.presentation.security.session.SecuritySessionAttribute;
-
-import org.springframework.beans.factory.InitializingBean;
 
 /**
  * Authenticates a user when a step up is performed.
@@ -15,11 +15,7 @@ import org.springframework.beans.factory.InitializingBean;
  */
 public class StepUpAuthentication extends AbstractAuthentication implements InitializingBean {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-	 */
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		if (isNull(this.getConfig(), this.getEaiHeaderType(), this.getAccessManagerUser())) {
 
@@ -44,9 +40,6 @@ public class StepUpAuthentication extends AbstractAuthentication implements Init
 		return false;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void authenticate() {
 

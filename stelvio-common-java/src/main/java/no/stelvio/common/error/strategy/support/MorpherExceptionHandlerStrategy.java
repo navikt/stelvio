@@ -12,9 +12,7 @@ import java.lang.reflect.Field;
  * @see ImitatorException
  */
 public class MorpherExceptionHandlerStrategy extends AbstractOrderedExceptionHandlerStrategy {
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public <T extends Throwable> T handleException(T exception) {
 		T copy;
 		Throwable cause = exception.getCause();

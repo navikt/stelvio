@@ -34,12 +34,12 @@ public enum PoststedCodeMock implements IllegalCodeEnum {
 	 * @param value
 	 *            the illegal value
 	 */
-	private PoststedCodeMock(String value) {
+	PoststedCodeMock(String value) {
 		this.value = value;
 	}
 
 	/** Default constructor. */
-	private PoststedCodeMock() {
+	PoststedCodeMock() {
 	}
 
 	/** 
@@ -47,6 +47,7 @@ public enum PoststedCodeMock implements IllegalCodeEnum {
 	 * 
 	 * @return enum value 
 	 */
+	@Override
 	public String getIllegalCode() {
 		return (value == null) ? name() : value;
 	}

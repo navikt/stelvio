@@ -1,6 +1,7 @@
 package no.stelvio.presentation.security.eai.support;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import no.stelvio.presentation.security.session.StelvioSecuritySessionMap;
 
@@ -29,13 +30,13 @@ class StelvioSecurityEaiSessionMap implements StelvioSecuritySessionMap {
 		}
 	}
 
-	private HashMap<String, Object> map;
+	private Map<String, Object> map;
 
 	/**
 	 * Constructor which creates a new HashMap.
 	 */
 	public StelvioSecurityEaiSessionMap() {
-		this.map = new HashMap<String, Object>();
+		this.map = new HashMap<>();
 	}
 
 	/**
@@ -46,10 +47,9 @@ class StelvioSecurityEaiSessionMap implements StelvioSecuritySessionMap {
 	 *            the key whose associated value is to be returned.
 	 * @return the value to which this map maps the specified key, or null if the map contains no mapping for this key.
 	 */
+	@Override
 	public Object get(String key) {
-		// String strKey = key.getName();
-		Object value = map.get(key);
-		return value;
+		return map.get(key);
 	}
 
 	/**
@@ -62,13 +62,9 @@ class StelvioSecurityEaiSessionMap implements StelvioSecuritySessionMap {
 	 *            value to be associated with the specified key.
 	 */
 	public void put(String key, Object value) {
-		// String strKey = key.getName();
 		map.put(key, value);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String toString() {
 

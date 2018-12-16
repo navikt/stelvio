@@ -4,7 +4,7 @@ import no.stelvio.common.security.definition.Role;
 
 /**
  * Default implementation of a Role which simply contains the name of the role.
- * 
+ *
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see Role
@@ -15,7 +15,7 @@ public class DefaultRole implements Role {
 
 	/**
 	 * Constructs a role with the given rolename.
-	 * 
+	 *
 	 * @param roleName
 	 *            the name of the role.
 	 */
@@ -23,9 +23,7 @@ public class DefaultRole implements Role {
 		this.roleName = roleName;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public String getRoleName() {
 		return this.roleName;
 	}

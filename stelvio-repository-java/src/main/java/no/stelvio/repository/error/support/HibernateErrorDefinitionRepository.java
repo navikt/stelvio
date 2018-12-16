@@ -16,9 +16,9 @@ import no.stelvio.repository.error.ErrorDefinitionRepository;
 public class HibernateErrorDefinitionRepository implements ErrorDefinitionRepository {
 	private HibernateTemplate hibernateTemplate;
 
-	/** {@inheritDoc} */
+	@Override
 	public Set<ErrorDefinition> findErrorDefinitions() {
-		return new HashSet<ErrorDefinition>(hibernateTemplate.loadAll(ErrorDefinition.class));
+		return new HashSet<>(hibernateTemplate.loadAll(ErrorDefinition.class));
 	}
 
 	/**

@@ -31,8 +31,8 @@ public class BatchParameterValidator {
 	 * Gathers the input parameters for the validation.
 	 */
 	public void validate() {
-		HashSet<String> requiredParameters = new HashSet<String>();
-		HashSet<String> optionalParameters = new HashSet<String>();
+		HashSet<String> requiredParameters = new HashSet<>();
+		HashSet<String> optionalParameters = new HashSet<>();
 
 		if (batch.getRequiredParameters() != null) {
 			requiredParameters.addAll(batch.getRequiredParameters());
@@ -55,8 +55,7 @@ public class BatchParameterValidator {
 		BatchDO batchDO = batch.readBatchParameters(batch.getBatchName(), batch.getSlice());
 		Properties props = batch.fetchBatchProperties(batchDO);
 		System.out.println(props);
-		Set<String> set = (Set) props.keySet();
-		return set;
+		return (Set<String>) (Set) props.keySet();
 	}
 
 	/**
@@ -71,29 +70,29 @@ public class BatchParameterValidator {
 	 */
 	void validate(Set<String> actualParameters, HashSet<String> requiredParameters, HashSet<String> optionalParameters) {
 
-		Set<String> allDefinedParameters = new HashSet<String>();
+		Set<String> allDefinedParameters = new HashSet<>();
 		allDefinedParameters.addAll(requiredParameters);
 		allDefinedParameters.addAll(optionalParameters);
 
-		StringBuffer errorMessage = new StringBuffer("");
+		StringBuffer errorMessage = new StringBuffer();
 
 		for (String parameter : actualParameters) {
 			if (!allDefinedParameters.contains(parameter)) {
-				errorMessage.append("The parameter: " + parameter + " is not a defined parameter for this batch. ");
+				errorMessage.append("The parameter: ").append(parameter).append(" is not a defined parameter for this batch. ");
 			}
 		}
 
 		if (errorMessage.length() > 0) {
 			errorMessage.append("List of defined parameters: ");
 			for (String parameter : allDefinedParameters) {
-				errorMessage.append(parameter + ", ");
+				errorMessage.append(parameter).append(", ");
 			}
 			errorMessage.append(". ");
 		}
 
 		for (String parameter : requiredParameters) {
 			if (!actualParameters.contains(parameter)) {
-				errorMessage.append("The parameter: " + parameter + " is a required parameter for this batch. ");
+				errorMessage.append("The parameter: ").append(parameter).append(" is a required parameter for this batch. ");
 			}
 		}
 

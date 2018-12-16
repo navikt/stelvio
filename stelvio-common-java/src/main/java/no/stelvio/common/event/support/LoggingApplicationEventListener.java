@@ -17,6 +17,7 @@ public class LoggingApplicationEventListener implements ApplicationEventListener
 	 * 
 	 * @param event an applicationEvent
 	 */
+	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (null == event) {
 			throw new IllegalArgumentException("event cannot be null");

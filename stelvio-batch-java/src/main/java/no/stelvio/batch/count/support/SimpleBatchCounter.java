@@ -3,8 +3,8 @@ package no.stelvio.batch.count.support;
 import java.lang.reflect.Constructor;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -17,7 +17,7 @@ import org.springframework.util.Assert;
  * @author person95f6f76be33a, Sirius IT
  */
 public class SimpleBatchCounter implements BatchCounter {
-	private ConcurrentMap<CounterEvent, SimpleEventCounter> events = new ConcurrentHashMap<CounterEvent, SimpleEventCounter>();
+	private ConcurrentMap<CounterEvent, SimpleEventCounter> events = new ConcurrentHashMap<>();
 
 	/**
 	 * Used by framework for AOP proxy creation
@@ -83,20 +83,20 @@ public class SimpleBatchCounter implements BatchCounter {
 		return eventCounter != null ? eventCounter : events.get(event);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void resetCounter() {
 		for (Entry<CounterEvent, SimpleEventCounter> eventEntry : events.entrySet()) {
 			eventEntry.setValue(new SimpleEventCounter(0, 0));
 		}
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void addEvents(CounterEvent event, long count) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
 		counter.addCount(count);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void addEvents(CounterEvent event, long count, long ms) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
 		counter.addCount(count);
@@ -107,32 +107,32 @@ public class SimpleBatchCounter implements BatchCounter {
 		return Collections.unmodifiableMap(events);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void incrementEvent(CounterEvent event) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
 		counter.addCount(1);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void incrementEvent(CounterEvent event, long ms) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
 		counter.addCount(1);
 		counter.addTime(ms);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void start(CounterEvent event) {
 		SimpleEventCounter e = getEventOrPutIfAbsent(event);
 		e.setStartTime(System.currentTimeMillis());
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void stop(CounterEvent event) {
 		SimpleEventCounter e = addTime(event);
 		e.addCount(1);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void stop(CounterEvent event, int count) {
 		SimpleEventCounter e = addTime(event);
 		e.addCount(count);

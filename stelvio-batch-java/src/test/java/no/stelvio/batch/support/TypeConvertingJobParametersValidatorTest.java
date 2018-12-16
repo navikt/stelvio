@@ -9,13 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringBooleanJobParameter;
-import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringDateJobParameter;
-import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringEnumJobParameter;
-import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringLongJobParameter;
-import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringShortJobParameter;
-import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringUriJobParameter;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.JobExecution;
@@ -23,7 +16,13 @@ import org.springframework.batch.core.JobInstance;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.JobParametersInvalidException;
-import org.springframework.batch.test.MetaDataInstanceFactory;
+
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringBooleanJobParameter;
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringDateJobParameter;
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringEnumJobParameter;
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringLongJobParameter;
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringShortJobParameter;
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringUriJobParameter;
 
 /**
  * @author person47c121e3ccb5, BEKK
@@ -44,7 +43,7 @@ public class TypeConvertingJobParametersValidatorTest {
     }
 
     @Test
-    public void shouldValidateRequiredParameters() throws Exception {
+    public void shouldValidateRequiredParameters() {
         String requiredKey = "test";
         validator.setRequiredParameters(Arrays.asList(new StringLongJobParameter(requiredKey)));
         validator.afterPropertiesSet();
@@ -52,7 +51,7 @@ public class TypeConvertingJobParametersValidatorTest {
     }
 
     @Test
-    public void shouldRequireStringType() throws Exception {
+    public void shouldRequireStringType() {
         String key = "key";
         validator.setRequiredParameters(Arrays.asList(new StringLongJobParameter(key )));
         validator.afterPropertiesSet();
@@ -65,7 +64,7 @@ public class TypeConvertingJobParametersValidatorTest {
     }
 
     @Test
-    public void shouldValidateTypeConversionOfDateParameters() throws Exception {
+    public void shouldValidateTypeConversionOfDateParameters() {
         String key = "date";
         validator.setOptionalParameters(Arrays.asList(new StringDateJobParameter(key, datePattern)));
         validator.afterPropertiesSet();
@@ -76,7 +75,7 @@ public class TypeConvertingJobParametersValidatorTest {
     }
 
     @Test
-    public void shouldValidateTypeConversionOfLongParameters() throws Exception {
+    public void shouldValidateTypeConversionOfLongParameters() {
         String key = "long";
         validator.setOptionalParameters(Arrays.asList(new StringLongJobParameter(key)));
         validator.afterPropertiesSet();
@@ -84,7 +83,7 @@ public class TypeConvertingJobParametersValidatorTest {
     }
 
     @Test
-    public void shouldValidateTypeConversionOfShortParameters() throws Exception {
+    public void shouldValidateTypeConversionOfShortParameters() {
         String key = "short";
         validator.setOptionalParameters(Arrays.asList(new StringShortJobParameter(key)));
         validator.afterPropertiesSet();
@@ -112,13 +111,13 @@ public class TypeConvertingJobParametersValidatorTest {
                 .addString(requiredLongKey, longValue.toString())
                 .toJobParameters());
 
-        assertEquals(dateValue, (Date) jobExecution.getExecutionContext().get(optionalDateKey));
-        assertEquals(longValue, (Long) jobExecution.getExecutionContext().get(requiredLongKey));
-        assertEquals(null, (Long) jobExecution.getExecutionContext().get(optionalLongKey));
+        assertEquals(dateValue, jobExecution.getExecutionContext().get(optionalDateKey));
+        assertEquals(longValue, jobExecution.getExecutionContext().get(requiredLongKey));
+        assertEquals(null, jobExecution.getExecutionContext().get(optionalLongKey));
     }
 
     @Test
-    public void shouldValidateTypeConversionOfEnumParameters() throws Exception {
+    public void shouldValidateTypeConversionOfEnumParameters() {
         String key = "enum";
         validator.setOptionalParameters(Arrays.asList(new StringEnumJobParameter(key, ParamValidatorEnum.class)));
         validator.afterPropertiesSet();
@@ -134,11 +133,11 @@ public class TypeConvertingJobParametersValidatorTest {
         JobExecution jobExecution = validate(new JobParametersBuilder()
                 .addString(key, value.name()).toJobParameters());
 
-        assertEquals(value, (ParamValidatorEnum) jobExecution.getExecutionContext().get(key));
+        assertEquals(value, jobExecution.getExecutionContext().get(key));
     }
 
     @Test
-    public void shouldValidateTypeConversionOfUriParameters() throws Exception {
+    public void shouldValidateTypeConversionOfUriParameters() {
         String key = "uri";
         validator.setOptionalParameters(Arrays.asList(new StringUriJobParameter(key)));
         validator.afterPropertiesSet();
@@ -152,12 +151,12 @@ public class TypeConvertingJobParametersValidatorTest {
         validator.afterPropertiesSet();
 
         String value = "/test/";
-        JobExecution jobExecution = validate(new JobParametersBuilder().addString(key, value.toString()).toJobParameters());
+        JobExecution jobExecution = validate(new JobParametersBuilder().addString(key, value).toJobParameters());
         assertEquals(value, jobExecution.getExecutionContext().getString(key));
     }
 
     @Test
-    public void shouldValidateTypeConversionOfBooleanParameters() throws Exception {
+    public void shouldValidateTypeConversionOfBooleanParameters() {
         String key = "boolean";
         validator.setOptionalParameters(Arrays.asList(new StringBooleanJobParameter(key)));
         validator.afterPropertiesSet();

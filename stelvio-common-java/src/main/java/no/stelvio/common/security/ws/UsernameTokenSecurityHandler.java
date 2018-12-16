@@ -27,16 +27,12 @@ public class UsernameTokenSecurityHandler extends GenericHandler {
 	private String serviceUsername = null;
 	private String servicePassword = null;
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public QName[] getHeaders() {
 		return info.getHeaders();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void init(HandlerInfo arg) {
 		info = arg;
 		System.out.println("UsernameSecurityHandler INIT");
@@ -47,9 +43,7 @@ public class UsernameTokenSecurityHandler extends GenericHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public boolean handleRequest(MessageContext context) {
 		try {
 			SOAPMessageContext smc = (SOAPMessageContext) context;

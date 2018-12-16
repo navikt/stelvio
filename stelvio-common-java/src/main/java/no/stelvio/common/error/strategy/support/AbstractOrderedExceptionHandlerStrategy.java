@@ -1,8 +1,8 @@
 package no.stelvio.common.error.strategy.support;
 
-import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
-
 import org.springframework.core.Ordered;
+
+import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 
 /**
  * Abstract class subclassed by all <code>{@link ExceptionHandlerStrategy}</code> that should support being
@@ -22,6 +22,7 @@ public abstract class AbstractOrderedExceptionHandlerStrategy implements
 	 * 
 	 * @return the order
 	 */
+	@Override
 	public int getOrder() {
 		return order;
 	}

@@ -50,6 +50,7 @@ public class MethodWrapperInterceptorAdvisor extends AdvisedSupport
 	 * @return an new proxy
 	 * @throws Throwable a throwable exception
 	 */
+	@Override
 	public Object invoke(MethodInvocation methodInvocation) throws Throwable {
 		final Object result = methodInvocation.proceed();
 		final ProxyFactory proxyFactory = new ProxyFactory(result);

@@ -1,5 +1,7 @@
 package no.stelvio.batch.support;
 
+import static java.util.stream.Collectors.toMap;
+
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -7,20 +9,20 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-import org.apache.commons.collections.ListUtils;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.JobParameter;
+import org.springframework.batch.core.JobParameter.ParameterType;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.JobParametersValidator;
-import org.springframework.batch.core.JobParameter.ParameterType;
 import org.springframework.batch.core.job.DefaultJobParametersValidator;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.batch.item.ExecutionContext;
@@ -37,12 +39,12 @@ import org.springframework.beans.factory.InitializingBean;
 public class TypeConvertingJobParametersValidator extends JobExecutionListenerSupport implements JobParametersValidator,
         InitializingBean {
     private DefaultJobParametersValidator defaultValidator;
-    private List<? extends StringJobParameter> requiredParameters = new ArrayList<StringJobParameter>();
-    private List<? extends StringJobParameter> optionalParameters = new ArrayList<StringJobParameter>();
+    private List<? extends StringJobParameter> requiredParameters = new ArrayList<>();
+    private List<? extends StringJobParameter> optionalParameters = new ArrayList<>();
     private Map<String, StringJobParameter> allParameters;
     private ExecutionContext jobExecutionContext;
 
-    /** {@inheritDoc} */
+    @Override
     public void validate(JobParameters parameters) throws JobParametersInvalidException {
         defaultValidator.validate(parameters);
         validateTypeConversions(parameters);
@@ -318,20 +320,17 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
         }
     }
 
-    /** {@inheritDoc} */
-    public void afterPropertiesSet() throws Exception {
+    @Override
+    public void afterPropertiesSet() {
         createDefaultValidator();
         createAllParameters();
 
     }
 
-    @SuppressWarnings("unchecked")
     private void createAllParameters() {
-        allParameters = new HashMap<String, StringJobParameter>();
-        for (StringJobParameter parameter : (List<? extends StringJobParameter>) ListUtils.union(requiredParameters,
-                optionalParameters)) {
-            allParameters.put(parameter.getKey(), parameter);
-        }
+        allParameters = Stream.of(requiredParameters, optionalParameters)
+                .flatMap(Collection::stream)
+                .collect(toMap(StringJobParameter::getKey, p -> p));
     }
 
     private void createDefaultValidator() {
@@ -357,7 +356,7 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
         return keys;
     }
 
-    /** {@inheritDoc} */
+    @Override
     public void beforeJob(JobExecution jobExecution) {
         jobExecutionContext = jobExecution.getExecutionContext();
         putParametersOnContext(jobExecution.getJobParameters());
