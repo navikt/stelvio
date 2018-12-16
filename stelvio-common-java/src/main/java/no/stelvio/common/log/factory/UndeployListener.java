@@ -16,9 +16,7 @@ import org.springframework.context.event.ContextClosedEvent;
  * 
  */
 public class UndeployListener implements ApplicationListener {
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof ContextClosedEvent) {
 			LogFactory.release(getClass().getClassLoader());

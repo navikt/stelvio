@@ -45,7 +45,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 
     private static final String SLICE_STRING = " slice ";
 
-    /** {@inheritDoc} */
+    @Override
     public int executeBatch(String batchName, int slice) {
         if (batchName != null) {
             MDC.put(JOB_NAME, batchName.toLowerCase());
@@ -90,7 +90,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
         }
     }
 
-    /** {@inheritDoc} */
+    @Override
     public boolean stopBatch(String batchName, int slice) {
         if (batchName != null) {
             MDC.put(JOB_NAME, batchName.toLowerCase());
@@ -234,7 +234,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
         this.batchNameMap = batchNameMap;
     }
 
-    /** {@inheritDoc} */
+    @Override
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.applicationContext = ctx;
     }

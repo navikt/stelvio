@@ -22,6 +22,7 @@ public class CeiApplicationEventListener implements ApplicationEventListener {
 	 * @param event
 	 *            a CEI application event
 	 */
+	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 	}
 }

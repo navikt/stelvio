@@ -35,12 +35,10 @@ public class CollectionFilterer implements DataFilterer {
 		// to the method may not necessarily be re-constructable (as
 		// the Collection(collection) constructor is not guaranteed and
 		// manually adding may lose sort order or other capabilities)
-		removeList = new HashSet<Object>();
+		removeList = new HashSet<>();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Object getFilteredObject() {
 		// Now the Iterator has ended, remove Objects from Collection
 		Iterator<Object> removeIter = removeList.iterator();
@@ -50,24 +48,18 @@ public class CollectionFilterer implements DataFilterer {
 		return collection;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Iterator iterator() {
 		collectionIter = collection.iterator();
 		return collectionIter;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void remove(Object object) {
 		removeList.add(object);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void clear() {
 		collection.clear();
 	}

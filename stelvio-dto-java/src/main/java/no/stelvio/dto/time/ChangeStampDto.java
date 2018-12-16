@@ -56,6 +56,7 @@ public class ChangeStampDto implements Serializable {
 	 * 
 	 * @return a String representation of the object
 	 */
+	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("createdBy", createdBy).append("createdDate", createdDate).append("updatedBy",
 				updatedBy).append("updatedDate", updatedDate).toString();

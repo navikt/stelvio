@@ -17,6 +17,7 @@ public class SecurityRole implements Role {
 	 *
 	 * @return the roleName.
 	 */
+	@Override
 	public String getRoleName() {
 		return roleName;
 	}

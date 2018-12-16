@@ -1,6 +1,7 @@
 package no.stelvio.common.security.validation.support;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import no.stelvio.common.security.definition.Role;
@@ -39,28 +40,20 @@ public class DefaultRoleValidator implements RoleValidator {
 		setValidRoles(roles);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public List<ValidRole> getValidRoles() {
 		return this.roles;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public final void setValidRoles(List<ValidRole> roles) {
 		this.roles = roles;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public final void setValidRoles(ValidRole... roles) {
-		this.roles = new ArrayList<ValidRole>();
-		for (ValidRole role : roles) {
-			this.roles.add(role);
-		}
+		this.roles = new ArrayList<>();
+		this.roles.addAll(Arrays.asList(roles));
 	}
 
 	/**
@@ -71,6 +64,7 @@ public class DefaultRoleValidator implements RoleValidator {
 	 *            the role to check.
 	 * @return <code>true</code> if the role is valid, <code>false</code> otherwise.
 	 */
+	@Override
 	public boolean isValid(Object role) {
 		if (role instanceof String) {
 			return isValid((String) role);

@@ -5,12 +5,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.support.SimpleSecurityContext;
 import no.stelvio.common.security.ws.WSCustomSubject;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * {@inheritDoc}
@@ -27,7 +27,6 @@ public class WSCustomSecurityContextFilter extends AbstractSecurityContextFilter
 
 	private static final Log LOGGER = LogFactory.getLog(WSCustomSecurityContextFilter.class);
 
-	/** {@inheritDoc} */
 	@Override
 	public SecurityContext populateSecurityContext(HttpServletRequest req) {
 		HttpSession session = req.getSession();

@@ -69,8 +69,9 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * 
 	 * @see Attributes#getAttributes
 	 */
+	@Override
 	public Collection<ConfigAttribute> getAttributes(Class target) {
-		Collection<ConfigAttribute> attributes = new ArrayList<ConfigAttribute>();
+		Collection<ConfigAttribute> attributes = new ArrayList<>();
 		for (Annotation annotation : target.getAnnotations()) {
 			// check for Secured annotations
 			if (annotation instanceof Secured) {
@@ -103,8 +104,8 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * @param filter
 	 *            the filter to process on
 	 * @return null
-	 * @throws UnsupportedOperationException
 	*/
+	@Override
 	public Collection getAttributes(Class clazz, Class filter) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + clazz + " " + filter);
 	}
@@ -120,8 +121,9 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * 
 	 * @see Attributes#getAttributes
 	 */
+	@Override
 	public Collection<ConfigAttribute> getAttributes(Method method) {
-		Collection<ConfigAttribute> attributes = new ArrayList<ConfigAttribute>();
+		Collection<ConfigAttribute> attributes = new ArrayList<>();
 
 		for (Annotation annotation : method.getAnnotations()) {
 			// check for Secured annotations
@@ -151,8 +153,8 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * @param clazz
 	 *            the class to process
 	 * @return null
-	 * @throws UnsupportedOperationException
 	 */
+	@Override
 	public Collection getAttributes(Method method, Class clazz) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + method + " " + clazz);
 	}
@@ -163,8 +165,8 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * @param field
 	 *            the field the retrieve
 	 * @return null
-	 * @throws UnsupportedOperationException
 	 */
+	@Override
 	public Collection getAttributes(Field field) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + field);
 	}
@@ -177,8 +179,8 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * @param clazz
 	 *            the class to process
 	 * @return null
-	 * @throws UnsupportedOperationException
 	 */
+	@Override
 	public Collection getAttributes(Field field, Class clazz) {
 		throw new UnsupportedOperationException(UNSUPPORTED_OPERATION + " " + field + " " + clazz);
 	}

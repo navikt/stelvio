@@ -36,22 +36,16 @@ public class LTPASecurityHandler extends GenericHandler {
 	private String serviceUsername = null;
 	private String servicePassword = null;
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public QName[] getHeaders() {
 		return info.getHeaders();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void init(HandlerInfo arg) {
 		info = arg;
-		// System.out.println("LTPASecurityhandler INIT");
 		if (arg.getHandlerConfig().get(USERNAME_CONFIG_STRING) != null) {
 			serviceUsername = (String) arg.getHandlerConfig().get(USERNAME_CONFIG_STRING);
-			// System.out.println("LTPASecurityhandler using username "+serviceUsername);
 			servicePassword = (String) arg.getHandlerConfig().get(PASSWORD_CONFIG_STRING);
 			if (LOG.isDebugEnabled()) {
 				LOG.debug("Initialize LTPASecurityhandler username and password: " + serviceUsername);
@@ -63,9 +57,7 @@ public class LTPASecurityHandler extends GenericHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public boolean handleRequest(MessageContext context) {
 		try {
 			if (LOG.isDebugEnabled()) {

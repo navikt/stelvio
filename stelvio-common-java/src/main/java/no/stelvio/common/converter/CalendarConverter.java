@@ -17,10 +17,8 @@ public class CalendarConverter implements Converter {
 
 	/**
 	 * Converts a Date object to a Calendar object.
-	 * 
-	 * {@inheritDoc}
-	 * @see org.apache.commons.beanutils.Converter#convert(java.lang.Class, java.lang.Object)
 	 */
+	@Override
 	public Object convert(Class clazz, Object object) {
 		if (null == object) {
 			return null;

@@ -1,6 +1,6 @@
 package no.stelvio.common.config;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Exception thrown if one or more required properties are not set by configuration.
@@ -21,7 +21,7 @@ public class MissingPropertyException extends ConfigurationException {
 	 * @param missingProperties
 	 *            - the names of the missing properties.
 	 */
-	public MissingPropertyException(String message, ArrayList<String> missingProperties) {
+	public MissingPropertyException(String message, List<String> missingProperties) {
 		this(message, missingProperties, null);
 	}
 
@@ -47,10 +47,10 @@ public class MissingPropertyException extends ConfigurationException {
 	 * @param cause
 	 *            - the throwable that caused the exception to be raised.
 	 */
-	public MissingPropertyException(String message, ArrayList<String> missingProperties, Throwable cause) {
+	public MissingPropertyException(String message, List<String> missingProperties, Throwable cause) {
 		super(message + ". " + createMissingPropertiesString(missingProperties), cause);
 		if (missingProperties != null) {
-			this.missingProperties = (String[]) missingProperties.toArray(new String[missingProperties.size()]);
+			this.missingProperties = missingProperties.toArray(new String[missingProperties.size()]);
 		}
 	}
 
@@ -92,11 +92,11 @@ public class MissingPropertyException extends ConfigurationException {
 	 *            missing properties
 	 * @return properties string
 	 */
-	private static String createMissingPropertiesString(ArrayList<String> missingProperties) {
+	private static String createMissingPropertiesString(List<String> missingProperties) {
 		StringBuilder sb = new StringBuilder();
 		if (missingProperties != null) {
-			sb.append(createMissingPropertiesString((String[]) missingProperties.toArray(new String[missingProperties
-					.size()])));
+			sb.append(createMissingPropertiesString((missingProperties.toArray(new String[missingProperties
+					.size()]))));
 		}
 
 		return sb.toString();

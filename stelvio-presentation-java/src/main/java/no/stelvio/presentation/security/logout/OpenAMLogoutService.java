@@ -35,12 +35,8 @@ public class OpenAMLogoutService extends WasLogoutService implements Initializin
 	private boolean logoutFromOpenAM = true;
 	private String pointOfContactHostAddress;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-	 */
-	public void afterPropertiesSet() throws Exception {
+	@Override
+	public void afterPropertiesSet() {
 		Assert.notNull(this.pointOfContactHostAddress, "A point of contact hostaddress must be specified. "
 				+ " Please set the pointOfContactHostAddress property.");
 		if (this.pointOfContactHostAddress != null) {

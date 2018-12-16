@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
  */
 public class WebXmlParser {
 
-	private WebAppRoles webAppRoles = null;
+	private WebAppRoles webAppRoles;
 
 	/**
 	 * Constructs a WebXmlParser object and parses web.xml represented by the url argument.
@@ -74,7 +74,7 @@ public class WebXmlParser {
 	/**
 	 * Internal class DefineSecurityRuleSet contains the DigesterRules to parse the web.xml file.
 	 */
-	class DefineSecurityRuleSet extends RuleSetBase {
+	static class DefineSecurityRuleSet extends RuleSetBase {
 
 		/**
 		 * {@inheritDoc}

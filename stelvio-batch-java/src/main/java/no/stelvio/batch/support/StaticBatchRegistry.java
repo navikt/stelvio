@@ -3,11 +3,11 @@ package no.stelvio.batch.support;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import no.stelvio.batch.BatchBi;
 import no.stelvio.batch.BatchRegistry;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
-
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Thread safe BatchRegistry using a final HashMap to hold running batch instances. The HashMap may only be accessed by
@@ -18,9 +18,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 public class StaticBatchRegistry implements BatchRegistry {
 
-	private final Map<String, BatchBi> batches = new HashMap<String, BatchBi>();
+	private final Map<String, BatchBi> batches = new HashMap<>();
 
-	/** {@inheritDoc} */
+	@Override
 	public synchronized void registerBatch(String batchName, int slice, BatchBi batch) {
 		if (isBatchRegistered(batchName, slice)) {
 			throw new InvalidBatchEntryException("The batch " + batchName + " with slice " + slice + " is already running!");
@@ -28,17 +28,17 @@ public class StaticBatchRegistry implements BatchRegistry {
 		batches.put(getHashCode(batchName, slice), batch);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public synchronized boolean unregisterBatch(String batchName, int slice) {
 		return (batches.remove(getHashCode(batchName, slice))) != null;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public synchronized boolean isBatchRegistered(String batchName, int slice) {
 		return batches.containsKey(getHashCode(batchName, slice));
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public synchronized BatchBi getBatch(String batchName, int slice) {
 		return batches.get(getHashCode(batchName, slice));
 	}

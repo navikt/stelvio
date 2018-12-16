@@ -7,13 +7,7 @@ package no.stelvio.batch.count.support;
 public class SimpleEventCounter implements EventCounter {
 	private long count;
 	private long time;
-	private ThreadLocal<Long> startTime = new ThreadLocal<Long>() {
-		/** {@inheritDoc} */
-		@Override
-		protected Long initialValue() {
-			return new Long(0);
-		}
-	};
+	private ThreadLocal<Long> startTime = ThreadLocal.withInitial(() -> 0L);
 
 	/**
 	 * Creates a new counter
@@ -43,18 +37,18 @@ public class SimpleEventCounter implements EventCounter {
 	public synchronized long getStartTime() {
 		return startTime.get();
 	}
-	
-	/** {@inheritDoc} */
+
+	@Override
 	public synchronized long getCount() {
 		return count;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public synchronized long getTime() {
 		return time;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public synchronized long getAvg() {
 		if (count == 0) {
 			return 0;
@@ -62,7 +56,6 @@ public class SimpleEventCounter implements EventCounter {
 		return time / count;
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "count=" + count + ", time=" + time + ", avg=" + getAvg();

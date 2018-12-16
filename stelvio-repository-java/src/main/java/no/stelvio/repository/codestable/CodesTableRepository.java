@@ -9,8 +9,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTableItem;
  * 
  * @author person983601e0e117 (Accenture)
  * 
- * @see HibernateCodesTableRepository
- * 
  */
 public interface CodesTableRepository {
 

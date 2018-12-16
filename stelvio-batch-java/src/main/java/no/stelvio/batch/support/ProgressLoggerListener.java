@@ -19,18 +19,21 @@ public class ProgressLoggerListener implements ProgressListener {
 		this.logger = logger;
 		this.formatter = formatter;
 	}
-	
+
+	@Override
 	public void finished(BatchCounter counter) {
 		logger.info("Batch ended with progress counter status:");
 		logCounters(counter);
 	}
 
+	@Override
 	public void progressed(BatchCounter counter) {
 		logger.info("Batch progress status:");
 		logCounters(counter);
 		
 	}
 
+	@Override
 	public void started(BatchCounter counter) {
 		logger.info("Batch started with following progress counters active:");
 		logCounters(counter);

@@ -10,8 +10,6 @@ import no.stelvio.common.security.support.SimpleSecurityContext;
 
 
 /**
- * {@inheritDoc}
- * 
  * A servlet filter which inherits the AbstractSecurityContextFilter and implements
  * the populateSecurityContext() method. The SecurityContext is populated with
  * attributes from the HttpServletRequest. 
@@ -22,7 +20,6 @@ import no.stelvio.common.security.support.SimpleSecurityContext;
  */
 public class SecurityContextFilter extends AbstractSecurityContextFilter {
 	
-	/** {@inheritDoc} */
 	@Override
 	SecurityContext populateSecurityContext(HttpServletRequest req) {
 		HttpSession session = req.getSession();

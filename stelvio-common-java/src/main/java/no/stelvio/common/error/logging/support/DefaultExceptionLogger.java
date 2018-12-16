@@ -2,6 +2,16 @@ package no.stelvio.common.error.logging.support;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.MDC;
+import org.springframework.context.MessageSource;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.util.ReflectionUtils.FieldCallback;
+import org.springframework.util.ReflectionUtils.FieldFilter;
+
 import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.FunctionalRecoverableException;
 import no.stelvio.common.error.FunctionalUnrecoverableException;
@@ -13,16 +23,6 @@ import no.stelvio.common.log.MDCLogger;
 import no.stelvio.common.log.MdcConstants;
 import no.stelvio.common.util.ReflectUtil;
 import no.stelvio.common.util.ReflectionException;
-
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.slf4j.MDC;
-import org.springframework.context.MessageSource;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.util.ReflectionUtils.FieldCallback;
-import org.springframework.util.ReflectionUtils.FieldFilter;
 
 /**
  * Default exceptionlogger implementation used to log exceptions based on the log4j log framework.
@@ -61,12 +61,12 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 
 	private Severity fallbackLogLevel = Severity.ERROR;
 
-	/** {@inheritDoc} */
+	@Override
 	public Log getLog() {
 		return (log == null) ? DEFAULT_LOG : this.log;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void setLog(Log log) {
 		this.log = log;
 	}
@@ -81,7 +81,7 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 		this.log = LogFactory.getLog(name);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void log(Throwable t) {
 		if (isFunctionalException(t)) {
 			logFunctional(t);
@@ -90,7 +90,7 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 		}
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void log(String message, Throwable t) {
 		if (isFunctionalException(t)) {
 			logFunctional(message, t);
@@ -99,23 +99,23 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 		}
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void logFunctional(Throwable t) {
 		logFunctional("", t);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void logFunctional(String message, Throwable t) {
 		MDC.put(MdcConstants.MDC_ERROR_TYPE, MdcConstants.MDC_ERROR_TYPE_FUNCTIONAL_VALUE);
 		doLog(message, t);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void logTechnical(Throwable t) {
 		logTechnical("", t);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void logTechnical(String message, Throwable t) {
 		MDC.put(MdcConstants.MDC_ERROR_TYPE, MdcConstants.MDC_ERROR_TYPE_TECHNICAL_VALUE);
 		doLog(message, t);
@@ -416,7 +416,7 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 		String errorCodeString = null;
 		if (isExceptionWithErrorCode(t)) {
 			try {
-				ErrorCode errorCode = (ErrorCode) ReflectUtil.getPropertyFromClass(t, "errorCode");
+				ErrorCode errorCode = ReflectUtil.getPropertyFromClass(t, "errorCode");
 				errorCodeString = errorCode == null ? "null" : errorCode.getErrorCode();
 			} catch (ReflectionException e) {
 				errorCodeString = null;
@@ -541,13 +541,11 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 	 * @return arguments
 	 */
 	private Object[] getTemplateArgument(Throwable t) {
-		Object[] fieldValue = null;
 		Class<?> clazz = t.getClass();
 		TemplateArgumentFieldCallback callback = new TemplateArgumentFieldCallback();
 		callback.throwableInstance = t;
 		ReflectionUtils.doWithFields(clazz, callback, new TemplateArgumentFieldFilter());
-		fieldValue = callback.templateArguments;
-		return fieldValue;
+		return callback.templateArguments;
 	}
 
 	/**

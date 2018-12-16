@@ -16,8 +16,7 @@ public class JeeRoles implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	//private List<JeeRole> roles = null;
-	private ArrayList<JeeRole> roles = null;
+	private List<JeeRole> roles = null;
 
 	private String roleConcatinationType = Constants.J2EE_ROLE_CONCATINATION_AND;
 
@@ -29,7 +28,7 @@ public class JeeRoles implements Serializable {
 	 */
 	public void addRole(JeeRole role) {
 		if (this.roles == null) {
-			this.roles = new ArrayList<JeeRole>();
+			this.roles = new ArrayList<>();
 		}
 		// add role name to list of roles
 		this.roles.add(role);
@@ -43,7 +42,7 @@ public class JeeRoles implements Serializable {
 	 */
 	public void setRoles(List<JeeRole> roles) {
 		if (this.roles == null) {
-			this.roles = new ArrayList<JeeRole>();
+			this.roles = new ArrayList<>();
 		}
 		// add all roles from the input List "roles"
 		this.roles.addAll(roles);

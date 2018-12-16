@@ -147,9 +147,7 @@ public class ChangeStamp implements Serializable {
 		return updatedBy;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public String toString() {
 		ToStringBuilder builder = new ToStringBuilder(this);
 		builder.append("createdBy", createdBy);

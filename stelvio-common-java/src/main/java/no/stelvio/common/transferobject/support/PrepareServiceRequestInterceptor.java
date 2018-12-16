@@ -54,6 +54,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
      * @throws Throwable a throwable exception
      * @see #proceed(MethodInvocation)
      */
+    @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Object[] methodArguments = invocation.getArguments();
 
@@ -127,6 +128,7 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
      * @return the order
      * @see Ordered
      */
+    @Override
     public int getOrder() {
         return order;
     }

@@ -29,6 +29,7 @@ public class MessagesFixSourcePhaseListener implements PhaseListener {
 	 * 
 	 * @param event the event
 	 */
+	@Override
 	public void afterPhase(PhaseEvent event) {
 		// do nothing
 	}
@@ -38,6 +39,7 @@ public class MessagesFixSourcePhaseListener implements PhaseListener {
 	 * 
 	 * @param event the event
 	 */
+	@Override
 	public void beforePhase(PhaseEvent event) {
 		if (PhaseId.RENDER_RESPONSE.equals(event.getPhaseId())) {
 
@@ -58,7 +60,7 @@ public class MessagesFixSourcePhaseListener implements PhaseListener {
 
 					UIComponent component = findComponent(facesContext.getViewRoot(), trimmedClientId);
 					if (component != null) {
-						String componentId = null;
+						String componentId;
 						if (prefix != null) {
 							StringBuffer fullComponentId = new StringBuffer(component.getClientId(facesContext));
 							int indexOfFieldId = fullComponentId.lastIndexOf(trimmedClientId);
@@ -143,6 +145,7 @@ public class MessagesFixSourcePhaseListener implements PhaseListener {
 	 * 
 	 * @return phase id
 	 */
+	@Override
 	public PhaseId getPhaseId() {
 		return PhaseId.RENDER_RESPONSE;
 	}

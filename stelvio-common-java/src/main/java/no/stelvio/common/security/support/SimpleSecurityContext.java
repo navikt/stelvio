@@ -1,8 +1,8 @@
 package no.stelvio.common.security.support;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.definition.Role;
@@ -120,34 +120,34 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		}
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public String getUserId() {
 		return userId;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public String getAutorizedAs() {
 		return authorizedAs;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public List<String> getRoles() {
-		return new ArrayList<String>(roles);
+		return new ArrayList<>(roles);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInRole(String role) {
 		validateRole(role);
 
 		return (null != roles) && roles.contains(role);
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInRole(Role role) {
 		return isUserInRole(role.getRoleName());
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInAllRoles(List<String> roleList) {
 		boolean foundInAll = true;
 		for (String role : roleList) {
@@ -160,7 +160,7 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		return foundInAll;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInAllRoles(String... roles) {
 		boolean foundInAll = true;
 		for (String role : roles) {
@@ -173,7 +173,7 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		return foundInAll;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInAllRoles(Role... roles) {
 		boolean foundInAll = true;
 		for (Role role : roles) {
@@ -186,7 +186,7 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		return foundInAll;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInRoles(List<String> roles) {
 		boolean foundInOne = false;
 		for (String role : roles) {
@@ -199,7 +199,7 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		return foundInOne;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInRoles(String... roles) {
 		boolean foundInOne = false;
 		for (String role : roles) {
@@ -212,7 +212,7 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		return foundInOne;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isUserInRoles(Role... roles) {
 		boolean foundInOne = false;
 		for (Role role : roles) {

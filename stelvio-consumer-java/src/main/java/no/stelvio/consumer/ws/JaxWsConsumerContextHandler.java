@@ -8,8 +8,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPEnvelope;
-import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPHeader;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
@@ -46,7 +46,7 @@ public class JaxWsConsumerContextHandler implements SOAPHandler<SOAPMessageConte
 		}
 	}
 	
-	/** {@inheritDoc} */
+	@Override
 	public boolean handleMessage(SOAPMessageContext context) {
 		final Boolean outbound = (Boolean) context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
 		if (outbound) {
@@ -76,16 +76,16 @@ public class JaxWsConsumerContextHandler implements SOAPHandler<SOAPMessageConte
 		return stelvioContextData;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean handleFault(SOAPMessageContext context) {
 		return true;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void close(MessageContext context) {
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public Set<QName> getHeaders() {
 		return PROCESSED_HEADERS_QNAME;
 	}

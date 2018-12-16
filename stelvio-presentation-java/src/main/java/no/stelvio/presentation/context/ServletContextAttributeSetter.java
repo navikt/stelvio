@@ -2,6 +2,7 @@ package no.stelvio.presentation.context;
 
 import java.util.Enumeration;
 import java.util.Properties;
+
 import javax.servlet.ServletContext;
 
 import org.apache.commons.logging.Log;
@@ -29,6 +30,7 @@ public class ServletContextAttributeSetter implements ServletContextAware, Initi
 	 * This method allows the bean instance to perform initialization only possible when all bean properties have been set and
 	 * to throw an exception in the event of misconfiguration.
 	 */
+	@Override
 	public void afterPropertiesSet() {
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Setting attributes on servlet context: " + attributes);
@@ -59,6 +61,7 @@ public class ServletContextAttributeSetter implements ServletContextAware, Initi
 	 *
 	 * @param servletContext ServletContext object to be used by this object
 	 */
+	@Override
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}

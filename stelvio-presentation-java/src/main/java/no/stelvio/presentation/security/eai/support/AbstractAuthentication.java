@@ -7,13 +7,13 @@ import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.presentation.security.eai.Authentication;
 import no.stelvio.presentation.security.eai.headers.EaiHeaders;
 import no.stelvio.presentation.security.eai.headers.config.EaiHeaderConfig;
 import no.stelvio.presentation.security.eai.headers.support.EaiHeaderType;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * AbstractAuthentication.
@@ -44,6 +44,7 @@ public abstract class AbstractAuthentication implements Authentication {
 	/**
 	 * Put EAI header on response.
 	 */
+	@Override
 	public void putEaiHeadersOnResponse() {
 		EaiHeaders eai = buildEaiHeaders();
 
@@ -61,7 +62,7 @@ public abstract class AbstractAuthentication implements Authentication {
 					Entry entry = (Entry) iter.next();
 
 					if (log.isDebugEnabled()) {
-						log.debug("Adding header to response: " + (String) entry.getKey() + " - " + (String) entry.getValue());
+						log.debug("Adding header to response: " + entry.getKey() + " - " + entry.getValue());
 					}
 
 					response.setHeader((String) entry.getKey(), (String) entry.getValue());
@@ -94,6 +95,7 @@ public abstract class AbstractAuthentication implements Authentication {
 	/**
 	 * authenticate.
 	 */
+	@Override
 	public abstract void authenticate();
 
 	/**
@@ -159,6 +161,7 @@ public abstract class AbstractAuthentication implements Authentication {
 	 * @param request
 	 *            the request to set
 	 */
+	@Override
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;
 	}
@@ -169,6 +172,7 @@ public abstract class AbstractAuthentication implements Authentication {
 	 * @param response
 	 *            the response to set
 	 */
+	@Override
 	public void setResponse(HttpServletResponse response) {
 		this.response = response;
 	}
@@ -178,6 +182,7 @@ public abstract class AbstractAuthentication implements Authentication {
 	 * 
 	 * @return request
 	 */
+	@Override
 	public HttpServletRequest getRequest() {
 		return request;
 	}
@@ -187,6 +192,7 @@ public abstract class AbstractAuthentication implements Authentication {
 	 * 
 	 * @return response
 	 */
+	@Override
 	public HttpServletResponse getResponse() {
 		return response;
 	}

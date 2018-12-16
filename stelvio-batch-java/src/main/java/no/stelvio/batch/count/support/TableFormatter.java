@@ -20,6 +20,7 @@ public class TableFormatter implements EventReportFormatter {
 	 * @param eventReport Report to format
 	 * @return Tabular string representation
 	 */
+	@Override
 	public String format(Map<CounterEvent, ? extends EventCounter> eventReport) {
 		List<Entry<CounterEvent, ? extends EventCounter>> events = sortEvents(eventReport);
 		StringBuilder sb = new StringBuilder();
@@ -42,8 +43,8 @@ public class TableFormatter implements EventReportFormatter {
 	}
 
 	private List<Entry<CounterEvent, ? extends EventCounter>> sortEvents(Map<CounterEvent, ? extends EventCounter> eventReport) {
-		List<Entry<CounterEvent, ? extends EventCounter>> events = 
-			new ArrayList<Entry<CounterEvent, ? extends EventCounter>>(eventReport.entrySet());
+		List<Entry<CounterEvent, ? extends EventCounter>> events = new ArrayList<>(eventReport.entrySet());
+
 		Collections.sort(events, new Comparator<Entry<CounterEvent, ? extends EventCounter>>() {
 					public int compare(
 							Entry<CounterEvent, ? extends EventCounter> o1,

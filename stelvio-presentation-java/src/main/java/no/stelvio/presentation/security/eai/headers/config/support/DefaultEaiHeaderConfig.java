@@ -37,16 +37,12 @@ public class DefaultEaiHeaderConfig implements EaiHeaderConfig {
 		return this.config;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public String getHeaderName(ConfigEntry entry) {
 		return config.getProperty(entry.getName());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public boolean containsConfigEntry(ConfigEntry entry) {
 		return config.containsKey(entry.getName());
 	}

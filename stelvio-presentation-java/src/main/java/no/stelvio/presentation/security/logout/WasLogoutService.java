@@ -38,23 +38,17 @@ public class WasLogoutService implements LogoutService {
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void logout() throws IOException {
 		logoutToUrl(null);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logoutToUrl(null, request, response);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void logoutToUrl(String destinationUrl) throws IOException {
 
 		if (LOG.isDebugEnabled()) {
@@ -66,9 +60,7 @@ public class WasLogoutService implements LogoutService {
 		this.getExternalContext().redirect(url);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void logoutToUrl(String destinationUrl, HttpServletRequest request, HttpServletResponse response) 
 			throws IOException {
 		if (LOG.isDebugEnabled()) {
@@ -91,10 +83,10 @@ public class WasLogoutService implements LogoutService {
 	 * @return the URL used to log out from the current session.
 	 */
 	protected String buildRedirectUrl(String destinationUrl) {
-		StringBuilder logout = new StringBuilder(logoutAction + "?" + logoutExitPageParamName + "=");
+		StringBuilder logout = new StringBuilder(logoutAction).append('?').append(logoutExitPageParamName).append('=');
 
 		if (useLogoutHandler()) {
-			logout.append(this.logoutHandlerUrl + "?" + DESTINATION_PARAM_NAME + "=");
+			logout.append(this.logoutHandlerUrl).append('?').append(DESTINATION_PARAM_NAME).append('=');
 		}
 
 		String destination = destinationUrl != null ? destinationUrl : defaultStartPage;

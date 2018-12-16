@@ -36,9 +36,7 @@ public abstract class CodesTableItem<K extends Enum, V> extends AbstractCodesTab
 	protected CodesTableItem() {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public String getCodeAsString() {
 		return code;
 	}
