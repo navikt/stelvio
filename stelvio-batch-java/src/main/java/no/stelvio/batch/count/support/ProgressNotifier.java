@@ -3,14 +3,14 @@ package no.stelvio.batch.count.support;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.batch.support.CommonBatchInputParameters;
-import no.stelvio.batch.support.ProgressListener;
-import no.stelvio.batch.support.ProgressLoggerListener;
-
 import org.springframework.batch.core.ChunkListener;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.scope.context.ChunkContext;
+
+import no.stelvio.batch.support.CommonBatchInputParameters;
+import no.stelvio.batch.support.ProgressListener;
+import no.stelvio.batch.support.ProgressLoggerListener;
 
 /**
  * Logs batch progress by use of a {@link BatchCounter} and a optionally configured {@link #progressInterval}, default value is 1.
@@ -22,7 +22,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
  */
 public class ProgressNotifier implements ChunkListener, JobExecutionListener{
     private BatchCounter counter;
-    private List<ProgressListener> progressListeners = new ArrayList<ProgressListener>();
+    private List<ProgressListener> progressListeners = new ArrayList<>();
     private Integer progressInterval = 1;
     private int chunkCounter;
 
@@ -34,7 +34,7 @@ public class ProgressNotifier implements ChunkListener, JobExecutionListener{
         this.counter = counter;
     }
 
-    /** {@inheritDoc} */
+    @Override
     public void afterJob(JobExecution jobExecution) {
         counter.stop(CommonBatchEvents.JOB_EVENT);
         notifyListenersAboutFinish();
@@ -54,7 +54,7 @@ public class ProgressNotifier implements ChunkListener, JobExecutionListener{
         beforeJob(null);
     }
 
-    /** {@inheritDoc} */
+    @Override
     public void beforeJob(JobExecution jobExecution) {
         setProgressIntervalFromJobParameters(jobExecution);
         counter.resetCounter();

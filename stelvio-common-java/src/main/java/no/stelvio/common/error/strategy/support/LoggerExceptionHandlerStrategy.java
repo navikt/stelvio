@@ -3,15 +3,15 @@ package no.stelvio.common.error.strategy.support;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.error.message.Extractor;
 import no.stelvio.common.error.message.support.FromDatabaseExtractor;
 import no.stelvio.common.error.message.support.FromExceptionExtractor;
 import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
 import no.stelvio.common.error.support.ErrorDefinition;
 import no.stelvio.common.error.support.Severity;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * ExceptionHandlerStrategy that logs expceptions. The name of the Log may be specified by the
@@ -30,7 +30,7 @@ public class LoggerExceptionHandlerStrategy extends AbstractOrderedExceptionHand
 	private static Log internalLogger = LogFactory.getLog(LoggerExceptionHandlerStrategy.class);
 
 	/** Maps of logs used to log the exceptions passed to {@link #handleException(Throwable)}. */
-	private static Map<String, Log> loggers = new HashMap<String, Log>();
+	private static Map<String, Log> loggers = new HashMap<>();
 
 	/**
 	 * Holds the default severity, used to set internalLogger level for exceptions that don't have a specified internalLogger
@@ -56,9 +56,8 @@ public class LoggerExceptionHandlerStrategy extends AbstractOrderedExceptionHand
 	 * Logs the exception. For Stelvio exceptions, it will only be logged if that is not done already.
 	 * 
 	 * what about the properties from StelvioException like errorId, userId, etc?
-	 * 
-	 * {@inheritDoc}
 	 */
+	@Override
 	public <T extends Throwable> T handleException(T throwable) {
 		logMessage(throwable);
 		return throwable;

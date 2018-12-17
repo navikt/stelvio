@@ -1,8 +1,5 @@
 package no.stelvio.presentation.error;
 
-import no.stelvio.presentation.security.page.PageAccessDeniedException;
-import no.stelvio.presentation.security.page.PageAuthenticationRequiredException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.webflow.core.collection.LocalAttributeMap;
@@ -10,6 +7,9 @@ import org.springframework.webflow.core.collection.MutableAttributeMap;
 import org.springframework.webflow.engine.FlowExecutionExceptionHandler;
 import org.springframework.webflow.engine.RequestControlContext;
 import org.springframework.webflow.execution.FlowExecutionException;
+
+import no.stelvio.presentation.security.page.PageAccessDeniedException;
+import no.stelvio.presentation.security.page.PageAuthenticationRequiredException;
 
 /**
  * Strategy for handling exceptions that occurs at runtime during the execution of a flow definition. The Spring Web Flow
@@ -57,6 +57,7 @@ public class ErrorPageExceptionHandler implements FlowExecutionExceptionHandler 
 	 *            null if the handler chooses not to select a view, in which case other exception handlers may be given a chance
 	 *            to handle the exception)
 	 */
+	@Override
 	public void handle(FlowExecutionException exception, RequestControlContext ctx) {
 
 		// Expose exception
@@ -96,7 +97,7 @@ public class ErrorPageExceptionHandler implements FlowExecutionExceptionHandler 
 		}
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean canHandle(FlowExecutionException arg0) {
 		return true;
 	}

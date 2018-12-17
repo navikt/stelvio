@@ -14,7 +14,7 @@ import no.stelvio.repository.error.ErrorDefinitionRepository;
 public class RepositoryErrorDefinitionRetriever implements ErrorDefinitionRetriever {
 	private ErrorDefinitionRepository errorDefinitionRepository;
 
-	/** {@inheritDoc} */
+	@Override
 	public Set<ErrorDefinition> retrieveAll() {
 		return errorDefinitionRepository.findErrorDefinitions();
 	}

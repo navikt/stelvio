@@ -35,6 +35,7 @@ public enum StanzaEntryEnum implements ConfigEntry {
 	 * 
 	 * @return name
 	 */
+	@Override
 	public String getName() {
 		return name();
 	}

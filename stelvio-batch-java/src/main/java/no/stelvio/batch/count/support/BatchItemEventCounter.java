@@ -19,47 +19,42 @@ public class BatchItemEventCounter<I, O> extends ItemListenerSupport<I, O>{
 	private CounterEvent processEvent;
 	private CounterEvent writeEvent;
 
-	/** {@inheritDoc} */
+	@Override
 	public void afterRead(I item) {
 		if(readEvent != null){
 			counter.stop(readEvent);
 		}
 	}
 
-
-	/** {@inheritDoc} */
+	@Override
 	public void beforeRead() {
 		if (readEvent != null) {
 			counter.start(readEvent);
 		}
 	}
-	
 
-	/** {@inheritDoc} */
+	@Override
 	public void afterProcess(I item, O result) {
 		if(processEvent != null){
 			counter.stop(processEvent);
 		}
 	}
 
-
-	/** {@inheritDoc} */
+	@Override
 	public void beforeProcess(I item) {
 		if(processEvent != null){
 			counter.start(processEvent);
 		}
 	}
-	
 
-	/** {@inheritDoc} */
+	@Override
 	public void afterWrite(List<? extends O> item) {
 		if(writeEvent != null){
 			counter.stop(writeEvent, item.size());
 		}
 	}
 
-
-	/** {@inheritDoc} */
+	@Override
 	public void beforeWrite(List<? extends O> item) {
 		if(writeEvent != null){
 			counter.start(writeEvent);

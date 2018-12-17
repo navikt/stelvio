@@ -42,27 +42,22 @@ public abstract class RecoverableException extends Exception {
 		super(message);
 	}
 
-	/** {@inheritDoc} */
 	public final boolean isLogged() {
 		return logged;
 	}
 
-	/** {@inheritDoc} */
 	public final void setLogged() {
 		logged = true;
 	}
 
-	/** {@inheritDoc} */
 	public final long getErrorId() {
 		return errorId;
 	}
 
-	/** {@inheritDoc} */
 	public boolean isHandled() {
 		return handled;
 	}
 
-	/** {@inheritDoc} */
 	public void setHandled() {
 		handled = true;
 	}

@@ -33,6 +33,7 @@ public class DecodeNumericComparator extends AbstractCodesTableItemComparator {
 	 *         if the natural ordering of item1s decode value is greater than the one for item2, and zero if the natural odering
 	 *         of decode value of the two items are the same
 	 */
+	@Override
 	protected int compareItem(AbstractCodesTableItem item1, AbstractCodesTableItem item2) {
 		Integer decode1Numeric;
 		Integer decode2Numeric;
@@ -60,6 +61,7 @@ public class DecodeNumericComparator extends AbstractCodesTableItemComparator {
 	 *         if the natural ordering of item1s decode value is greater than the one for item2, and zero if the natural odering
 	 *         of decode value of the two items are the same
 	 */
+	@Override
 	protected int comparePeriodicItem(AbstractCodesTablePeriodicItem periodicItem1, 
 			AbstractCodesTablePeriodicItem periodicItem2) {
 		return (compareItem(periodicItem1, periodicItem2) != 0) ? compareItem(periodicItem1, periodicItem2) : periodicItem1

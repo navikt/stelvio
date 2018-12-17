@@ -2,8 +2,6 @@ package no.stelvio.common.ejb.config;
 
 import java.util.List;
 
-import no.stelvio.common.ejb.access.StelvioRemoteStatelessSessionProxyFactoryBean;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -13,6 +11,8 @@ import org.springframework.util.xml.DomUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import no.stelvio.common.ejb.access.StelvioRemoteStatelessSessionProxyFactoryBean;
 
 /**
  * 
@@ -64,6 +64,7 @@ public class StelvioRemoteStatelessSessionBeanDefinitionParser extends AbstractS
 	 * @param element
 	 *            the XML element process
 	 */
+	@Override
 	protected void postProcess(BeanDefinitionBuilder definitionBuilder, Element element) {
 		NodeList childNodes = element.getChildNodes();
 		for (int i = 0; i < childNodes.getLength(); i++) {
@@ -74,9 +75,6 @@ public class StelvioRemoteStatelessSessionBeanDefinitionParser extends AbstractS
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
 		super.doParse(element, parserContext, builder);

@@ -8,6 +8,10 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.transaction.support.TransactionTemplate;
+
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.batch.domain.BatchParameter;
 import no.stelvio.batch.exception.BatchFunctionalException;
@@ -20,10 +24,6 @@ import no.stelvio.batch.repository.BatchRepository;
 import no.stelvio.common.config.MissingPropertyException;
 import no.stelvio.common.error.logging.ExceptionLogger;
 import no.stelvio.common.log.InfoLogger;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * Abstract class for classes implementing scheduled batch logic.
@@ -84,16 +84,15 @@ public abstract class AbstractBatch implements BatchBi {
 	protected AbstractBatch() {
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public String getBatchName() {
 		return batchName;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void setBatchName(String batchName) {
 		this.batchName = batchName;
 	}
-
 
 	
 	/**
@@ -171,27 +170,27 @@ public abstract class AbstractBatch implements BatchBi {
 		this.flushSize = flushSize;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public int getSlice() {
 		return slice;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void setSlice(int slice) {
 		this.slice = slice;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isStopRequested() {
 		return stopRequested;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public Date getTimeStamp() {
 		return timeStamp;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
 	}
@@ -236,8 +235,6 @@ public abstract class AbstractBatch implements BatchBi {
 	}
 
 	/** 
-	 * {@inheritDoc}
-	 *  
 	 * @throws BatchFunctionalException
 	 *             if batch execution fails due to functional failures/shortcomings
 	 * @throws BatchSystemException
@@ -245,7 +242,7 @@ public abstract class AbstractBatch implements BatchBi {
 	 */
 	public abstract int executeBatch(int slice) throws BatchSystemException, BatchFunctionalException;
 
-	/** {@inheritDoc} */
+	@Override
 	public void stopBatch() {
 		stopRequested = true;
 	}
@@ -266,9 +263,7 @@ public abstract class AbstractBatch implements BatchBi {
 		return getBatchRepository().findByNameAndSlice(batchName, slice);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Properties fetchBatchProperties(BatchDO batchDO) throws NullBatchException, InvalidParameterFormatException {
 		if (batchDO == null) {
 			throw new NullBatchException("Null was passed as param to getBatchProperties");
@@ -435,7 +430,7 @@ public abstract class AbstractBatch implements BatchBi {
 	 * </ul>
 	 */
 	public void performSanityCheck() {
-		ArrayList<String> propertyList = new ArrayList<String>();
+		List<String> propertyList = new ArrayList<>();
 		if (getBatchRepository() == null) {
 			propertyList.add("batchRepository");
 		}
@@ -446,9 +441,7 @@ public abstract class AbstractBatch implements BatchBi {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public List<String> getOptionalParameters() {
 		return optionalParameters;
 	}
@@ -462,9 +455,7 @@ public abstract class AbstractBatch implements BatchBi {
 		this.optionalParameters = optionalParameters;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public List<String> getRequiredParameters() {
 		return requiredParameters;
 	}

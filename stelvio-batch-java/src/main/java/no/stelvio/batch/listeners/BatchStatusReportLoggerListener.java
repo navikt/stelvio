@@ -46,7 +46,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
     /** Spring injected. */
     private JdbcTemplate jdbcTemplate;
 
-    /** {@inheritDoc} */
+    @Override
     public void afterJob(JobExecution jobExecution) {
 
         infoLogger.info(formatJobExecution(jobExecution) + formatStepExecution(jobExecution.getStepExecutions()));
@@ -101,7 +101,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
                 formatMillisecondsDurationAsHumanReadableString((jobExecution.getEndTime().getTime() - jobExecution
                         .getStartTime().getTime())));
         sb.append("\nHost: ").append(getHostNameAndIp());
-        sb.append("\nSchema: ").append(getCurrentSchema() + "\n");
+        sb.append("\nSchema: ").append(getCurrentSchema()).append("\n");
         sb.append("\n");
         sb.append("\n");
         sb.append("+====================================================================== Spring Job Execution Summary ===============================================================================================+\n");
@@ -147,7 +147,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    @Override
     public void beforeJob(JobExecution jobExecution) {
 
         String jobName = jobExecution.getJobInstance().getJobName();
@@ -160,10 +160,10 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         sb.append("=======================================================================================================================\n");
         sb.append(String.format(format, jobName, jobId));
         sb.append("=======================================================================================================================\n");
-        sb.append("Start time: " + jobExecution.getStartTime() + "\n");
-        sb.append("Job parameters:").append(jobExecution.getJobParameters().getParameters().toString() + "\n");
-        sb.append("Host: ").append(getHostNameAndIp() + "\n");
-        sb.append("Schema: ").append(getCurrentSchema() + "\n");
+        sb.append("Start time: ").append(jobExecution.getStartTime()).append("\n");
+        sb.append("Job parameters:").append(jobExecution.getJobParameters().getParameters().toString()).append("\n");
+        sb.append("Host: ").append(getHostNameAndIp()).append("\n");
+        sb.append("Schema: ").append(getCurrentSchema()).append("\n");
 
         sb.append("=======================================================================================================================\n");
 
@@ -183,11 +183,8 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
     private String getHostNameAndIp() {
         String myIp = "UNKNOWN";
         try {
-            String hostName = null;
-            hostName = InetAddress.getLocalHost().getHostName();
-
-            InetAddress addrs[] = null;
-            addrs = InetAddress.getAllByName(hostName);
+            String hostName = InetAddress.getLocalHost().getHostName();
+            InetAddress addrs[] = InetAddress.getAllByName(hostName);
 
             for (InetAddress addr : addrs) {
                 if (!addr.isLoopbackAddress() && addr.isSiteLocalAddress()) {
@@ -248,8 +245,8 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    /** {@inheritDoc} */
-    public void afterPropertiesSet() throws Exception {
+    @Override
+    public void afterPropertiesSet() {
         Assert.notNull(infoLogger, "BatchStatusReportLoggerListener requires a InfoLogger");
         Assert.notNull(jdbcTemplate, "BatchStatusReportLoggerListener requires a JdbcTemplate");
     }

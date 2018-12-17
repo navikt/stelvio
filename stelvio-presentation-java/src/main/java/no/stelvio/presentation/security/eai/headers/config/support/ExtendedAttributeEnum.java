@@ -28,6 +28,7 @@ public enum ExtendedAttributeEnum implements ConfigEntry {
 	 * 
 	 * @return name
 	 */
+	@Override
 	public String getName() {
 		return name();
 	}

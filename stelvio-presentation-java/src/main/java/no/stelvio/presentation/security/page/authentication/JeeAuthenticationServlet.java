@@ -2,7 +2,6 @@ package no.stelvio.presentation.security.page.authentication;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -72,18 +71,15 @@ public class JeeAuthenticationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static String defaultSecurityMessage 
+	private static final String DEFAULT_SECURITY_MESSAGE
 			= "An error occured after attempting to log in. You are not authorized to view this page.";
 
 	/**
 	 * Redirects the response to the page stored in the session attribute
 	 * specified by the constant <code>JSFPAGE_TOGO_AFTER_AUTHENTICATION</code>.
-	 * 
-	 * {@inheritDoc}
 	 */
 	@Override
-	public void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// Check if the user has logged in.
 		if (SecurityContextHolder.currentSecurityContext().getUserId() != null) {
 			String root = request.getContextPath();
@@ -93,7 +89,7 @@ public class JeeAuthenticationServlet extends HttpServlet {
 			response.sendRedirect(root + url);
 		} else {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN,
-					defaultSecurityMessage);
+					DEFAULT_SECURITY_MESSAGE);
 		}
 	}
 }

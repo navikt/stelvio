@@ -40,6 +40,7 @@ class ImitatorException extends RuntimeException {
 	 *
 	 * @return a string representation of the object.
 	 */
+	@Override
 	public String toString() {
 		String name = throwableToImitateClassName + " (imitated)";
 		String message = getLocalizedMessage();

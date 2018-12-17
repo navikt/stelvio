@@ -4,6 +4,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.mapping.AbstractDozerMapper;
 import no.stelvio.domain.time.ChangeStamp;
 import no.stelvio.dto.exception.mapping.MappingDtoException;
@@ -16,6 +19,7 @@ import no.stelvio.dto.time.ChangeStampDto;
  * @author person983601e0e117 (Accenture)
  */
 public class ChangeStampMapper extends AbstractDozerMapper {
+	private static final Log LOG = LogFactory.getLog(ChangeStampMapper.class);
 
 	private static final String CREATED_BY = "createdBy";
 	private static final String UPDATED_BY = "updatedBy";
@@ -63,7 +67,6 @@ public class ChangeStampMapper extends AbstractDozerMapper {
 	/**
 	 * Instantiates a ChangeStamp.
 	 * 
-	 * @param changeStampReference
 	 * @return a new ChangeStamp
 	 */
 	private ChangeStamp instansiateChangeStamp() {
@@ -72,19 +75,9 @@ public class ChangeStampMapper extends AbstractDozerMapper {
 			ChangeStamp cs;
 			csConstructor = ChangeStamp.class.getDeclaredConstructor();
 			csConstructor.setAccessible(true);
-			cs = (ChangeStamp) csConstructor.newInstance();
+			cs = csConstructor.newInstance();
 			return cs;
-		} catch (SecurityException e) {
-			throw createMappingDtoException(e);
-		} catch (NoSuchMethodException e) {
-			throw createMappingDtoException(e);
-		} catch (IllegalArgumentException e) {
-			throw createMappingDtoException(e);
-		} catch (InstantiationException e) {
-			throw createMappingDtoException(e);
-		} catch (IllegalAccessException e) {
-			throw createMappingDtoException(e);
-		} catch (InvocationTargetException e) {
+		} catch (SecurityException | InvocationTargetException | IllegalAccessException | InstantiationException | IllegalArgumentException | NoSuchMethodException e) {
 			throw createMappingDtoException(e);
 		}
 	}
@@ -116,16 +109,9 @@ public class ChangeStampMapper extends AbstractDozerMapper {
 			Field field = ChangeStamp.class.getDeclaredField(fieldName);
 			field.setAccessible(true);
 			field.set(changeStampInstance, value);
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | NoSuchFieldException e) {
+			LOG.warn(e);
 		}
-
 	}
 
 }

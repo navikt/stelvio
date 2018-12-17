@@ -18,7 +18,7 @@ import no.stelvio.repository.menu.MenuRepository;
 public class HibernateMenuRepository implements MenuRepository {
 	private HibernateTemplate hibernateTemplate;
 
-	/** {@inheritDoc} */
+	@Override
 	public List<MenuItem> getParents() {
 		return cast(hibernateTemplate.findByNamedQuery("MenuItem.findParents"));
 	}

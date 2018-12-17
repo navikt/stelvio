@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 public final class CounterEvent {
 	private static ConcurrentHashMap<Class<?>, Set<CounterEvent>> registeredEvents = 
-		new ConcurrentHashMap<Class<?>, Set<CounterEvent>>();
+		new ConcurrentHashMap<>();
 
 	/**
 	 * Defines different types of {@link CounterEvent}.
@@ -58,7 +58,7 @@ public final class CounterEvent {
 		CounterEvent event = new CounterEvent(name, description, type);
 		Set<CounterEvent> events = registeredEvents.get(eventClass);
 		if (events == null) {
-			Set<CounterEvent> newEventSet = new HashSet<CounterEvent>();
+			Set<CounterEvent> newEventSet = new HashSet<>();
 			events = registeredEvents.putIfAbsent(eventClass, newEventSet);
 			if (events == null) {
 				events = newEventSet;
@@ -75,7 +75,6 @@ public final class CounterEvent {
 		return registeredEvents;
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -89,7 +88,6 @@ public final class CounterEvent {
 				.isEquals();
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder(7, 13).append(name).append(description).append(type).toHashCode();
@@ -116,7 +114,6 @@ public final class CounterEvent {
 		return type;
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "name=" + name + ", description=" + description + ", type=" + type;

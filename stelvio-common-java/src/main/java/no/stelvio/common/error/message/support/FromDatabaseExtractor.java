@@ -39,8 +39,8 @@ public class FromDatabaseExtractor implements Extractor {
 	 * @param throwable
 	 *            an exception
 	 * @return the message 
-	 * 
 	 */
+	@Override
 	public String messageFor(Throwable throwable) {
 		ErrorDefinition errorDefinition = errorDefinitionResolver.resolve(throwable);
 

@@ -46,7 +46,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	 */
 	public void addProviders( Collection<ConfigAttribute> configAttributes) throws AfterInvocationProviderNotFoundException {
 
-		this.providers = new ArrayList<AfterInvocationProvider>();
+		this.providers = new ArrayList<>();
 		Iterator<?> iterator = configAttributes.iterator();
 		ConfigAttribute configAttribute = null;
 		try {
@@ -110,7 +110,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	 * @return <code>true</code> if the class is an <code>AfterInvocationProvider</code>, <code>false</code> otherwise.
 	 */
 	public boolean isAfterInvocationProvider(Class clazz) {
-		return AfterInvocationProvider.class.isAssignableFrom(clazz) ? true : false;
+		return AfterInvocationProvider.class.isAssignableFrom(clazz);
 	}
 
 	/**
@@ -125,6 +125,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	 * @return if the <code>AfterInvocationProviderManager</code> can support the secure object class, which requires every one
 	 *         of its <code>AfterInvocationProvider</code>s to support the secure object class
 	 */
+	@Override
 	public boolean supports(Class clazz) {
 		boolean canSupport = true;
 		if (this.providers != null) {
@@ -140,9 +141,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 		return canSupport;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public boolean supports(ConfigAttribute attribute) {
 		boolean canSupport = false;
 		if (this.providers != null) {

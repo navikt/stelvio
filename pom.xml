@@ -16,13 +16,13 @@
         <module>stelvio-batch-client-java</module>
         <module>stelvio-batch-java</module>
         <module>stelvio-common-java</module>
-        <module>stelvio-consumer-java</module>
         <module>stelvio-domain-java</module>
-        <module>stelvio-dto-java</module>
-        <module>stelvio-presentation-java</module>
-        <module>stelvio-provider-java</module>
+        <module>stelvio-consumer-java</module>
         <module>stelvio-repository-java</module>
         <module>stelvio-service-java</module>
+        <module>stelvio-dto-java</module>
+        <module>stelvio-provider-java</module>
+        <module>stelvio-presentation-java</module>
         <module>stelvio-test-java</module>
     </modules>
 

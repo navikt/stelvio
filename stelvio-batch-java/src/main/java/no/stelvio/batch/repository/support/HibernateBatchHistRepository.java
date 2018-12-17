@@ -34,9 +34,7 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 
 	private HibernateTemplate hibernateTemplate;
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void updateBatchHist(BatchHistDO batch) {
 		if (batch.getBatchname() != null
 				&& !batch.getBatchname().trim().equals("")) {
@@ -57,8 +55,9 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 	}
 
 	/**
-	 * {@inheritDoc} This version should return all matching history rows
+	 * This version should return all matching history rows
 	 */
+	@Override
 	public Collection<BatchHistDO> findByNameAndSlice(String batchName,
 			int slice) throws InvalidBatchEntryException {
 		Object[] arguments = { batchName, Integer.valueOf(slice) };
@@ -104,6 +103,7 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
+	@Override
 	public BatchHistDO findLastRunByNameAndSlice(String string, int i) {
 		// TODO Auto-generated method stub
 		return null;

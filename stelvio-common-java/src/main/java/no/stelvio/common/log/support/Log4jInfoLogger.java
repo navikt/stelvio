@@ -1,10 +1,10 @@
 package no.stelvio.common.log.support;
 
-import no.stelvio.common.log.InfoLogger;
-import no.stelvio.common.log.MDCLogger;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import no.stelvio.common.log.InfoLogger;
+import no.stelvio.common.log.MDCLogger;
 
 /**
  * Information logger based on Log4J.
@@ -24,24 +24,24 @@ public class Log4jInfoLogger extends MDCLogger implements InfoLogger {
 	private static final Log DEFAULT_LOG = LogFactory.getLog(InfoLogger.class);
 	private Log log;
 
-	/** {@inheritDoc} */
+	@Override
 	public void debug(Object message) {
 		this.debug(message, new Object[] {});
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void debug(Object message, Object... attributes) {
 		setMdcProperties();
 		getLog().debug(formatMessage(message, attributes));
 		resetMdcProperties();
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void info(Object message) {
 		this.info(message, new Object[] {});
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void info(Object message, Object... attributes) {
 		setMdcProperties();
 		getLog().info(formatMessage(message, attributes));
@@ -49,39 +49,39 @@ public class Log4jInfoLogger extends MDCLogger implements InfoLogger {
 
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void trace(Object message) {
 		this.trace(message, new Object[] {});
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void trace(Object message, Object... attributes) {
 		setMdcProperties();
 		getLog().trace(formatMessage(message, attributes));
 		resetMdcProperties();
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isDebugEnabled() {
 		return getLog().isDebugEnabled();
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isInfoEnabled() {
 		return getLog().isInfoEnabled();
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean isTraceEnabled() {
 		return getLog().isTraceEnabled();
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public Log getLog() {
 		return (log == null) ? DEFAULT_LOG : this.log;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void setLog(Log log) {
 		this.log = log;
 	}

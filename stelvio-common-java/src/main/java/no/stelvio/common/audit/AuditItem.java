@@ -32,7 +32,7 @@ public class AuditItem {
 
 	private ProtectionLevel protectionLevel;
 
-	private Map<String, String> customInfo = new HashMap<String, String>();
+	private Map<String, String> customInfo = new HashMap<>();
 
 	/**
 	 * Constructor that creates an <code>{@link AuditItem}</code> Setting userId and transactionId from RequestContext if
@@ -352,7 +352,7 @@ public class AuditItem {
 		/**
 		 * Data is being created, updated or deleted.
 		 */
-		AUDIT_WRITE;
+		AUDIT_WRITE
 	}
 
 }

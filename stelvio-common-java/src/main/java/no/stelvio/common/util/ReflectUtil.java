@@ -40,10 +40,8 @@ public final class ReflectUtil {
 	public static <T> T createNewInstance(Class<T> clazz) throws ReflectionException {
 		try {
 			return clazz.newInstance();
-		} catch (InstantiationException ie) {
+		} catch (InstantiationException | IllegalAccessException ie) {
 			throw createReflectionException(clazz.getName(), ie);
-		} catch (IllegalAccessException iae) {
-			throw createReflectionException(clazz.getName(), iae);
 		}
 	}
 
@@ -64,11 +62,7 @@ public final class ReflectUtil {
 	public static <T> T getPropertyFromClass(Object instance, String property) throws ReflectionException {
 		try {
 			return (T) PropertyUtils.getSimpleProperty(instance, property);
-		} catch (IllegalAccessException e) {
-			throw createReflectionException(property, instance.getClass().getName(), e);
-		} catch (InvocationTargetException e) {
-			throw createReflectionException(property, instance.getClass().getName(), e);
-		} catch (NoSuchMethodException e) {
+		} catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 			throw createReflectionException(property, instance.getClass().getName(), e);
 		}
 	}
@@ -102,11 +96,7 @@ public final class ReflectUtil {
 			}
 
 			PropertyUtils.setSimpleProperty(instance, property, valueToSet);
-		} catch (IllegalAccessException e) {
-			throw createReflectionException(property, instance.getClass().getName(), e);
-		} catch (InvocationTargetException e) {
-			throw createReflectionException(property, instance.getClass().getName(), e);
-		} catch (NoSuchMethodException e) {
+		} catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 			throw createReflectionException(property, instance.getClass().getName(), e);
 		}
 	}
@@ -169,12 +159,8 @@ public final class ReflectUtil {
 		try {
 			Method method = object.getClass().getMethod(methodName);
 			return method.invoke(object);
-		} catch (NoSuchMethodException nsme) {
+		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException nsme) {
 			throw createReflectionException(methodName, nsme);
-		} catch (IllegalAccessException iae) {
-			throw createReflectionException(methodName, iae);
-		} catch (InvocationTargetException ite) {
-			throw createReflectionException(methodName, ite);
 		}
 	}
 

@@ -23,9 +23,7 @@ public class HibernateBatchRepository implements BatchRepository {
 	private final String[] nameAndSliceParams = { "batchname", "slice" };
 	private static final String NAME_AND_SLICE_QUERY = "BatchDO.findByNameAndSlice";
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void updateBatch(BatchDO batch) {
 		if (batch.getBatchname() != null && !batch.getBatchname().trim().equals("")) {
 			getHibernateTemplate().merge(batch);
@@ -33,9 +31,9 @@ public class HibernateBatchRepository implements BatchRepository {
 	}
 
 	/**
-	 * {@inheritDoc}
 	 * This version should return first (latest) entrance of batchname and slice
 	 */
+	@Override
 	public BatchDO findByNameAndSlice(String batchName, int slice) throws InvalidBatchEntryException {
         Object[] arguments = {batchName, slice};
         List batchDos = getHibernateTemplate().findByNamedQueryAndNamedParam(NAME_AND_SLICE_QUERY, nameAndSliceParams,

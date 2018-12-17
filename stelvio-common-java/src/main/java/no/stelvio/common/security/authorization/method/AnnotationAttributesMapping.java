@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.access.ConfigAttribute;
 
@@ -25,7 +26,7 @@ import org.springframework.security.access.ConfigAttribute;
  */
 public class AnnotationAttributesMapping {
 
-	private HashMap<String, Collection<ConfigAttribute>> providerMap = new HashMap<String, Collection<ConfigAttribute>>();
+	private Map<String, Collection<ConfigAttribute>> providerMap = new HashMap<>();
 
 	/**
 	 * Adds a list of providers to the HashMap with the annotationAttribute as
@@ -72,7 +73,7 @@ public class AnnotationAttributesMapping {
 	 * 
 	 * @return the mappings.
 	 */
-	public HashMap<String, Collection<ConfigAttribute>> getProviderMap() {
+	public Map<String, Collection<ConfigAttribute>> getProviderMap() {
 		return providerMap;
 	}
 

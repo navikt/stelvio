@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -137,7 +138,7 @@ public class EnvironmentAwareResource implements Resource, ResourceLoaderAware {
 	 *             If a dependency injection property is missing from the configuration.
 	 */
 	public void init() throws MissingPropertyException {
-		ArrayList<String> propertyList = new ArrayList<String>();
+		List<String> propertyList = new ArrayList<>();
 		if (location == null) {
 			propertyList.add("location");
 		}

@@ -32,6 +32,7 @@ public class DecodeComparator implements Comparator<AbstractCodesTableItem> {
 	 *            the second AbstractCodesTableItem item
 	 * @return 0 if equal,
 	 */
+	@Override
 	public int compare(AbstractCodesTableItem item1, AbstractCodesTableItem item2) {
 		if (item1 instanceof AbstractCodesTablePeriodicItem && item2 instanceof AbstractCodesTablePeriodicItem) {
 			AbstractCodesTablePeriodicItem periodicItem1 = (AbstractCodesTablePeriodicItem) item1;
@@ -79,8 +80,9 @@ public class DecodeComparator implements Comparator<AbstractCodesTableItem> {
 	 *            an object
 	 * @return true if the object is of type DecodeComparator, else false
 	 */
+	@Override
 	public boolean equals(Object o) {
-		return (o != null && o instanceof DecodeComparator);
+		return o instanceof DecodeComparator;
 	}
 
 	/**

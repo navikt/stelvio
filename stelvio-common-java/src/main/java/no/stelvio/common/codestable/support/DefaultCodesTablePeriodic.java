@@ -62,6 +62,7 @@ public class DefaultCodesTablePeriodic<T extends AbstractCodesTablePeriodicItem<
 	 *            the date determining which period to retrieve the <code>CodesTablePeriodicItem</code>.
 	 * @return the <code>CodesTablePeriodicItem</code> that corresponds to the given code.
 	 */
+	@Override
 	public T getCodesTableItem(K code, Date date) {
 		return getCodesTableItem(getStringCodeFromEnumCode(code), date);
 	}
@@ -78,6 +79,7 @@ public class DefaultCodesTablePeriodic<T extends AbstractCodesTablePeriodicItem<
 	 *            the date determining which period to retrieve the <code>CodesTablePeriodicItem</code>.
 	 * @return the <code>CodesTablePeriodicItem</code> that corresponds to the given code.
 	 */
+	@Override
 	public T getCodesTableItem(String code, Date date) {
 
 		Set<T> itemsForCode = getCodesTableItems(code);
@@ -139,9 +141,6 @@ public class DefaultCodesTablePeriodic<T extends AbstractCodesTablePeriodicItem<
 		return (true);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected T findCodesTableItemForDate(Set<T> codesTableItems, Date... date) {
 
@@ -182,7 +181,7 @@ public class DefaultCodesTablePeriodic<T extends AbstractCodesTablePeriodicItem<
 		Date transformedDate = tranformValidDateToBeUsedInComparison(date);
 
 		Set<T> allCodesTableItems = getCodesTableItems();
-		Set<T> returnSet = new TreeSet<T>();
+		Set<T> returnSet = new TreeSet<>();
 		for (T t : allCodesTableItems) {
 			Date fromDate = t.getFromDate();
 			Date toDate = transformToDateToBeUsedInComparison(t.getToDate());

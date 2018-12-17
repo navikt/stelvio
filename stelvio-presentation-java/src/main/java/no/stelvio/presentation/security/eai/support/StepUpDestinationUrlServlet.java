@@ -2,16 +2,15 @@ package no.stelvio.presentation.security.eai.support;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.HttpRequestHandler;
+
+import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 
 /**
  * StepUpDestinationUrlServlet.
@@ -25,21 +24,15 @@ public class StepUpDestinationUrlServlet implements HttpRequestHandler, Initiali
 	private String destinationParamName = DESTINATION_PARAM_NAME;
 	private String logonPage;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-	 */
-	public void afterPropertiesSet() throws Exception {
+	@Override
+	public void afterPropertiesSet() {
 		if (destinationParamName == null || logonPage == null) {
 			throw new IllegalArgumentException("You must specify the beanproperties: destinationParamName, logonPage.");
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Handling logout request. Checking for parameters..");

@@ -1,12 +1,11 @@
-/**
- * 
- */
 package no.stelvio.common.cache.support;
 
-import net.sf.ehcache.CacheManager;
-import no.stelvio.common.cache.CacheManagement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.ehcache.CacheManager;
+
+import no.stelvio.common.cache.CacheManagement;
 
 /**
  * CacheManagement component for stelvio.
@@ -20,10 +19,8 @@ import org.slf4j.LoggerFactory;
 public class DefaultCacheManagement implements CacheManagement {
 	private Logger log = LoggerFactory.getLogger(DefaultCacheManagement.class);
 	private CacheManager cacheManager;
-	
-	/**
-	 * {@inheritDoc CacheManagement#clearAll()}.
-	 */
+
+	@Override
 	public void flushCache() {
 		if (log.isDebugEnabled()) {
 			log.debug("Flushing all elements in " + getCacheManager().getCacheNames().length + " configured cache(s).");
@@ -32,9 +29,7 @@ public class DefaultCacheManagement implements CacheManagement {
 		cacheManager.clearAll();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public CacheManager getCacheManager() {
 		return cacheManager;
 	}

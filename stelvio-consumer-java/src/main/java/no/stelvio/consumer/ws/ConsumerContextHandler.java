@@ -11,11 +11,11 @@ import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPHeaderElement;
 
-import no.stelvio.common.context.RequestContextHolder;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.i18n.LocaleContextHolder;
+
+import no.stelvio.common.context.RequestContextHolder;
 
 /**
  * Handler for the ConsumerContext when working with JAX-RPC. For JAX-WS, see JaxWsConsumerContextHandler.
@@ -36,11 +36,7 @@ public class ConsumerContextHandler extends GenericHandler {
 	public ConsumerContextHandler() {
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see javax.xml.rpc.handler.Handler#getHeaders()
-	 */
+	@Override
 	public QName[] getHeaders() {
 		return info.getHeaders();
 	}
@@ -50,6 +46,7 @@ public class ConsumerContextHandler extends GenericHandler {
 	 * 
 	 * @param arg the HandlerInfo
 	 */
+	@Override
 	public void init(HandlerInfo arg) {
 		info = arg;
 	}
@@ -71,6 +68,7 @@ public class ConsumerContextHandler extends GenericHandler {
 	 * @param context the MessageContext
 	 * @return true Always returns true
 	 */
+	@Override
 	public boolean handleRequest(MessageContext context) {
 		try {
 

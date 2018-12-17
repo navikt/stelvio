@@ -30,12 +30,12 @@ public class PagedTabbedList<T> extends PagedSortableList<T> {
 	/**
 	 * The map holds a list of row objects per tab key.
 	 */
-	private Map<String, List<Object>> indexSortColumnMap = new HashMap<String, List<Object>>();
+	private Map<String, List<Object>> indexSortColumnMap = new HashMap<>();
 
 	/**
 	 * List of tab keys.
 	 */
-	private List<String> keys = new ArrayList<String>();
+	private List<String> keys = new ArrayList<>();
 
 	/**
 	 * Constructor, creating a tabbed and paged list to display with JSF datatable tag.
@@ -72,7 +72,7 @@ public class PagedTabbedList<T> extends PagedSortableList<T> {
 				// Find this tab in the list of all tabs. If it does not exist, add it to list of tabs.
 				List<Object> subList = indexSortColumnMap.get(tabId);
 				if (subList == null) {
-					subList = new ArrayList<Object>();
+					subList = new ArrayList<>();
 					keys.add(tabId);
 				}
 				// The class holds a map of tabs, each with a list of objects found related to tab
@@ -107,6 +107,7 @@ public class PagedTabbedList<T> extends PagedSortableList<T> {
 	 * @param event
 	 *            JSF FacesEvent
 	 */
+	@Override
 	public void pageing(FacesEvent event) {
 		// jac2812: Changed this method due to SIR #63580. The paging does not work correctly in view SIS002 Opptjening
 		// folketrygden if the view contains two lists. Therefore, the id's of the tab elements must be generated differently

@@ -1,12 +1,12 @@
 package no.stelvio.provider.codestable.map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodicItem;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
 import no.stelvio.dto.codestable.AbstractCodesTablePeriodicItemDto;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Custom converter implementation for converting <code>CodesPeriodicTableItem</code>s.
@@ -18,7 +18,7 @@ public class CodesTablePeriodicItemConverter extends AbstractCodesTableItemConve
 
 	private final Log log = LogFactory.getLog(CodesTablePeriodicItemConverter.class);
 
-	/** {@inheritDoc} */
+	@Override
 	public Object convert(Object destination, Object source, Class<?> destClass, Class<?> sourceClass) {
 		if (log.isDebugEnabled()) {
 			log.debug("CodesTablePeriodicItemConverter convert called with : destination=" + destination + ", source=" + source
@@ -39,10 +39,7 @@ public class CodesTablePeriodicItemConverter extends AbstractCodesTableItemConve
 				dto = (AbstractCodesTablePeriodicItemDto) destClass.newInstance();
 				dto.setCode(item.getCodeAsString());
 				return dto;
-			} catch (IllegalAccessException e) {
-				return null;
-
-			} catch (InstantiationException e) {
+			} catch (IllegalAccessException | InstantiationException e) {
 				return null;
 			}
 		} else {

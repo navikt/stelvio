@@ -28,11 +28,9 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	private CodesTableManager codesTableManager;
 
 	/** A set of codestableclasses - defined in the application context. */
-	private Set<Class<? extends CodesTableItem<? extends Enum, ?>>> codesTableItemClasses = 
-		new HashSet<Class<? extends CodesTableItem<? extends Enum, ?>>>();
+	private Set<Class<? extends CodesTableItem<? extends Enum, ?>>> codesTableItemClasses = new HashSet<>();
 	/** A set of codestableperiodicclasses - defined in the application context. */
-	private Set<Class<? extends CodesTablePeriodicItem<? extends Enum, ?>>> codesTablePeriodicItemClasses = 
-		new HashSet<Class<? extends CodesTablePeriodicItem<? extends Enum, ?>>>();
+	private Set<Class<? extends CodesTablePeriodicItem<? extends Enum, ?>>> codesTablePeriodicItemClasses = new HashSet<>();
 
 	/**
 	 * Uses <code>CodesTableManager</code> to load all of the <code>CodesTable</code>s and <code>CodesTablePeriodic</code>s from
@@ -44,6 +42,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	 *             if no <code>CodesTableItem</code>'s or <code>CodesTablePeriodicItem</code>'s has been defined in the
 	 *             configuration.
 	 */
+	@Override
 	public void afterPropertiesSet() throws CodesTableNotFoundException, CodesTableConfigurationException {
 		if (codesTableItemClasses.isEmpty() && codesTablePeriodicItemClasses.isEmpty()) {
 			throw new CodesTableConfigurationException("No CodesTables or CodesTablePeriodics to load have been set");

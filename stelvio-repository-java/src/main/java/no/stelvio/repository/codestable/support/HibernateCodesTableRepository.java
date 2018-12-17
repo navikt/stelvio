@@ -28,7 +28,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 
 	private HibernateTemplate hibernateTemplate;
 
-	/** {@inheritDoc} */
+	@Override
 	public <T extends AbstractCodesTableItem<? extends Enum, V>, V> List<T> findCodesTableItems(Class<T> codestableItem) {
 		final String queryString = buildQuery(codestableItem);
 

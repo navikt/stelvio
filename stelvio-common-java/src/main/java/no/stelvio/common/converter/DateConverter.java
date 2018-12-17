@@ -21,8 +21,8 @@ public class DateConverter implements Converter {
 	 * @param type - Type to convert to
 	 * @param value - Object of given type
 	 * @return object - Date object.
-	 * @see Converter#convert(Class, Object)
 	 */
+	@Override
 	public Object convert(Class type, Object value) {
 		if (null == value) {
 			return null;

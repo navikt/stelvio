@@ -25,7 +25,7 @@ public class MenuItemServiceResponse extends ServiceResponse {
 	 */
 	public MenuItemServiceResponse() {
 		super();
-		this.menuItemList = new ArrayList<MenuItem>();
+		this.menuItemList = new ArrayList<>();
 	}
 
 	/**

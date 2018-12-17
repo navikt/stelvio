@@ -1,11 +1,11 @@
 package no.stelvio.batch;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
 import no.stelvio.batch.repository.BatchRepository;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Reads parameters from Stelvio batch table.
@@ -18,8 +18,8 @@ public class StelvioBatchParameterReader implements BatchParameterReader {
 
 	/**  
 	 * Reads parameters from T_BATCH for given batch name and slice 0.
-	 * {@inheritDoc}
 	 */
+	@Override
 	public String getBatchParameters(String batchName) {
 		return this.getBatchParameters(batchName, 0);		
 	}

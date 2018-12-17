@@ -3,17 +3,17 @@ package no.stelvio.batch.controller.support;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.MDC;
+import org.springframework.context.ApplicationContext;
+
 import no.stelvio.batch.controller.SpringBatchEnabledBatchControllerServiceBi;
 import no.stelvio.batch.controller.SpringBatchJobOperator;
 import no.stelvio.common.context.support.ComponentIdHolder;
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.context.support.SimpleRequestContext.Builder;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.slf4j.MDC;
-import org.springframework.context.ApplicationContext;
 
 /**
  * Extension of {@link DefaultBatchControllerService} in order to handle execution of Spring Batches.
@@ -28,8 +28,8 @@ public class SpringBatchEnabledBatchControllerService extends DefaultBatchContro
 	private static final Log LOGGER = LogFactory.getLog(SpringBatchEnabledBatchControllerService.class);
 
 	private SpringBatchJobOperator springBatchOperator;
-	
-	/** {@inheritDoc} */
+
+	@Override
 	public int executeBatch(String jobName, String parameters) {
 
 		Builder contextBuilder = new SimpleRequestContext.Builder();
@@ -61,7 +61,7 @@ public class SpringBatchEnabledBatchControllerService extends DefaultBatchContro
 		return twsCode;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public boolean stopBatch(String jobName) {
 		if (jobName != null) {
 			MDC.put(JOB_NAME, jobName.toLowerCase());

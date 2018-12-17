@@ -1,6 +1,5 @@
 package no.stelvio.presentation.jsf.codestable;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -8,15 +7,15 @@ import java.util.Set;
 import javax.faces.component.html.HtmlOutputText;
 import javax.faces.context.FacesContext;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.jsf.FacesContextUtils;
+
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
 import no.stelvio.common.error.InvalidArgumentException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.web.jsf.FacesContextUtils;
 
 /**
  * Custom component for translating a code value belong to a CodesTableItem to the correct decode value.The codetable items are
@@ -58,11 +57,9 @@ public class CodesTableItemOutputText extends HtmlOutputText {
 	 * 
 	 * @param facesContext
 	 *            the current facesContext instance
-	 * @throws IOException
-	 *             IO exception
 	 */
 	@Override
-	public void encodeBegin(FacesContext facesContext) throws IOException {
+	public void encodeBegin(FacesContext facesContext) {
 		Set<? extends AbstractCodesTableItem> codesTableItems = retrieveCodesTableItems();
 
 		AbstractCodesTableItem chosenCti = null;
@@ -79,20 +76,16 @@ public class CodesTableItemOutputText extends HtmlOutputText {
 		this.setValue(chosenCti.getDecode());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public Object saveState(FacesContext context) {
 		Object[] values = new Object[3];
 		values[0] = super.saveState(context);
 		values[1] = getCtiClass();
 		values[2] = getCodeValue();
-		return ((Object) (values));
+		return values;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void restoreState(FacesContext context, Object state) {
 		Object[] values = (Object[]) state;
 		super.restoreState(context, values[0]);
@@ -106,7 +99,7 @@ public class CodesTableItemOutputText extends HtmlOutputText {
 	 * @return a set of CodesTableItems
 	 */
 	private Set<? extends AbstractCodesTableItem> retrieveCodesTableItems() {
-		Set<? extends CodesTableItem> ctiSet = null;
+		Set<? extends CodesTableItem> ctiSet;
 		if (AbstractCodesTablePeriodicItem.class.isAssignableFrom(resolveCtiClass())) {
 			ctiSet = getCodesTableManager().getCodesTablePeriodic(resolveCtiClass()).getCodesTableItems();
 		} else {
@@ -135,7 +128,7 @@ public class CodesTableItemOutputText extends HtmlOutputText {
 	 * @return the Class object of the classname specified as an attribute of this component.
 	 */
 	private Class resolveClass(String className, String attribute) {
-		Class clazz = null;
+		Class clazz;
 		try {
 			clazz = Class.forName(className);
 		} catch (ClassNotFoundException cnfe) {

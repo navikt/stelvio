@@ -1,10 +1,10 @@
 package no.stelvio.batch.validation.support;
 
-import no.stelvio.batch.BatchBi;
-import no.stelvio.batch.exception.BatchFunctionalException;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+
+import no.stelvio.batch.BatchBi;
+import no.stelvio.batch.exception.BatchFunctionalException;
 
 /**
  * Validated batches before they start executing.
@@ -28,6 +28,7 @@ public class BatchParameterValidatorInterceptor implements MethodInterceptor {
 	 * @return object
 	 * @throws Throwable if invocation fails
 	 */
+	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		Object obj = invocation.getThis();
 		if (obj instanceof BatchBi) {

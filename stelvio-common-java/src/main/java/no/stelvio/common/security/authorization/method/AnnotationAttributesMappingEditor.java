@@ -45,6 +45,7 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
 	 * {@inheritDoc}
 	 * @see java.beans.PropertyEditorSupport#setAsText(java.lang.String)
 	 */
+	@Override
 	public void setAsText(String s) throws IllegalArgumentException {
 		AnnotationAttributesMapping source = new AnnotationAttributesMapping();
 
@@ -58,7 +59,7 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
 			for (Object o : props.keySet()) {
 				String name = (String) o;
 				String value = props.getProperty(name);
-				List<ConfigAttribute> providers = new ArrayList<ConfigAttribute>();
+				List<ConfigAttribute> providers = new ArrayList<>();
 
 				// The following format is allowed:
 				// letters.another.etc,moreletters.etc

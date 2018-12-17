@@ -41,10 +41,10 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 */
 	public DefaultCodesTablePeriodicMock(List<T> codesTableItems) {
 		this.codesTableItems = codesTableItems;
-		this.codesTableItemsHash = new HashMap<String, T>();
-		this.codesTableItemsSet = new HashSet<T>();
+		this.codesTableItemsHash = new HashMap<>();
+		this.codesTableItemsSet = new HashSet<>();
 		for (T t : this.codesTableItems) {
-			this.codesTableItemsHash.put(t.getCodeAsString(), (T) t);
+			this.codesTableItemsHash.put(t.getCodeAsString(), t);
 			this.codesTableItemsSet.add(t);
 		}
 
@@ -68,7 +68,7 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 		// (String) decode(code, locale, date)
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void addPredicate(Predicate predicate) {
 		
 
@@ -79,7 +79,7 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 		return this.codesTableItemsSet;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public Set<T> getCodesTableItems() {
 		return this.codesTableItemsSet;
 	}
@@ -95,72 +95,62 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 		return this.codesTableItems;
 	}
 
-	/** {@inheritDoc} */
+	@Override
 	public void resetPredicates() {
-		
 
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public boolean validateCode(Enum code) {
-		
 		return false;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public boolean validateCode(String code) {
-		
 		return false;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public T getCodesTableItem(String code) throws ItemNotFoundException {
 		return this.codesTableItemsHash.get(code);
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(K code) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(String code) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(K code, Locale locale) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(String code, Locale locale) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(K code, Date date) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(K code, Locale locale, Date date) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public V getDecode(String code, Locale locale, Date date) throws ItemNotFoundException, DecodeNotFoundException {
-		
 		return null;
 	}
 
-	/** {@inheritDoc} */
+    @Override
 	public Iterator<T> iterator() {
 		return codesTableItems.iterator();
 	}
@@ -200,6 +190,7 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 * 
 	 * @return items
 	 */
+	@Override
 	public Set<T> getCodesTableItemsValidToday() {
 		return this.codesTableItemsSet;
 	}
@@ -212,10 +203,10 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 *            An AbstractCodesTablePeriodicItem.
 	 * @throws ItemNotFoundException exception.
 	 */
+	@Override
 	public T getCodesTableItem(K code) throws ItemNotFoundException {
-		
 		if (code instanceof Enum) {
-			return this.codesTableItemsHash.get(((Enum) code).name());
+			return this.codesTableItemsHash.get(code.name());
 		} else {
 			return null;
 		}
@@ -227,8 +218,8 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 *            An AbstractCodesTablePeriodicItem.
 	 * @return set &lt;T&gt;
 	 */
+	@Override
 	public Set<T> getCodesTableItemsValidForDate(Date date) {
-		
 		return null;
 	}
 
@@ -239,8 +230,8 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 * @param date date.
 	 * @return &lt;T&gt;
 	 */
+	@Override
 	public T getCodesTableItem(K code, Date date) {
-		
 		return null;
 	}
 	/**
@@ -250,8 +241,8 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 * @param date date.
 	 * @return &lt;T&gt;
 	 */
+	@Override
 	public T getCodesTableItem(String code, Date date) {
-		
 		return null;
 	}
 	/**
@@ -260,8 +251,8 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 * @param code Code.
 	 * @return Set&lt;T&gt;
 	 */
+	@Override
 	public Set<T> getCodesTableItems(K code) {
-		
 		return null;
 	}
 	/**
@@ -270,8 +261,8 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	 * @param code Code.
 	 * @return Set&lt;T&gt;
 	 */
+	@Override
 	public Set<T> getCodesTableItems(String code) {
-		
 		return null;
 	}
 }

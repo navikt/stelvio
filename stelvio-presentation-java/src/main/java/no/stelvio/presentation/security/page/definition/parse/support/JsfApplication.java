@@ -1,6 +1,7 @@
 package no.stelvio.presentation.security.page.definition.parse.support;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Object to hold all JSF page security definitions for the application.
@@ -10,7 +11,7 @@ import java.util.HashMap;
  */
 public class JsfApplication {
 
-	private HashMap<String, JsfPage> allJsfPages = new HashMap<String, JsfPage>();
+	private Map<String, JsfPage> allJsfPages = new HashMap<>();
 
 	private SslConfig sslConfig;
 
@@ -26,7 +27,7 @@ public class JsfApplication {
 	 * @param jsfPages
 	 *            the JSF pages with the page name as key.
 	 */
-	public void setAllJsfPages(HashMap<String, JsfPage> jsfPages) {
+	public void setAllJsfPages(Map<String, JsfPage> jsfPages) {
 		this.allJsfPages = jsfPages;
 	}
 
@@ -35,7 +36,7 @@ public class JsfApplication {
 	 * 
 	 * @return the secured JSF pages.
 	 */
-	public HashMap<String, JsfPage> getAllJsfPages() {
+	public Map<String, JsfPage> getAllJsfPages() {
 		return this.allJsfPages;
 	}
 

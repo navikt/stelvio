@@ -30,6 +30,7 @@ public class RethrowExceptionHandlingAdvice implements ThrowsAdvice, Ordered {
 	 * 
 	 * @return the priority of the advice in relation to other advice.
 	 */
+	@Override
 	public int getOrder() {
 		return order;
 	}

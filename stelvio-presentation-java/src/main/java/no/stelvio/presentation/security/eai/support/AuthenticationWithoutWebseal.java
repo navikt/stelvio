@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.presentation.security.eai.AuthenticationFailureException;
-import no.stelvio.presentation.security.session.SecuritySessionAttribute;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import no.stelvio.presentation.security.eai.AuthenticationFailureException;
+import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 
 /**
  * AuthenticationWithoutWebseal.
@@ -28,9 +28,6 @@ public class AuthenticationWithoutWebseal extends StepUpAuthentication {
 	private String securedUrlPattern = "/jsfauthentication";
 	private String defaultUrlUponSuccessfulStepup = "/";
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void authenticate() {
 

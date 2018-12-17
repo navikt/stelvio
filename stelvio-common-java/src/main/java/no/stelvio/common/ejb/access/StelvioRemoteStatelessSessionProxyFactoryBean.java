@@ -18,13 +18,11 @@ import org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBe
  */
 public class StelvioRemoteStatelessSessionProxyFactoryBean extends SimpleRemoteStatelessSessionProxyFactoryBean {
 
-	private List<MethodInterceptor> methodInterceptors = new ArrayList<MethodInterceptor>();
+	private List<MethodInterceptor> methodInterceptors = new ArrayList<>();
 
 	/**
 	 * Executes the invoke-method on all interceptors set by <code>{@link #setMethodInterceptors(List)}</code>, then delegates
 	 * call to Spring EJB proxy to perform actual EJB call.
-	 * 
-	 * {@inheritDoc}
 	 */
 	@Override
 	public Object doInvoke(MethodInvocation invocation) throws Throwable {
@@ -48,9 +46,6 @@ public class StelvioRemoteStatelessSessionProxyFactoryBean extends SimpleRemoteS
 		this.methodInterceptors = methodInterceptors;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void afterPropertiesSet() throws NamingException {
 		super.afterPropertiesSet();

@@ -3,12 +3,12 @@ package no.stelvio.common.security.ws;
 import javax.security.auth.Subject;
 import javax.security.auth.login.CredentialExpiredException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.ibm.websphere.security.WSSecurityException;
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * A static wrapper class used to retrieve attributes from a custom Subject created on an IBM Websphere server.
@@ -69,11 +69,8 @@ public final class WSCustomSubject {
 			if (subject != null) {
 				Object[] creds = subject.getPublicCredentials().toArray();
 				if (LOGGER.isDebugEnabled()) {
-					// Testlogging
-					// int i = 0;
 					for (Object object : creds) {
 						LOGGER.debug("Getting the WSCredential: " + object.toString());
-						// i++;
 					}
 				}
 				WSCredential cred = getWSCredential();
@@ -105,7 +102,7 @@ public final class WSCustomSubject {
 		Subject subject = WSSubject.getCallerSubject();
 		WSCredential credential;
 		if (subject != null) {
-			credential = (WSCredential) subject.getPublicCredentials(WSCredential.class).iterator().next();
+			credential = subject.getPublicCredentials(WSCredential.class).iterator().next();
 			return credential;
 		} else {
 			return null;

@@ -28,6 +28,7 @@ public abstract class AbstractCodesTableItemComparator implements Comparator<Abs
 	 * @return a negative value if item1 is less than item2, a positive value if item1 is greater than item 2, zero if the two
 	 *         items ordering is equal.
 	 */
+	@Override
 	public int compare(AbstractCodesTableItem item1, AbstractCodesTableItem item2) {
 		if (item1 instanceof AbstractCodesTablePeriodicItem && item2 instanceof AbstractCodesTablePeriodicItem) {
 			AbstractCodesTablePeriodicItem periodicItem1 = (AbstractCodesTablePeriodicItem) item1;
