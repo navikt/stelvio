@@ -7,7 +7,7 @@ import no.stelvio.domain.person.Pid;
 
 /**
  * An extension of the ConsumerFacadeBase that will check if the logged-on user (the WAS security subject) is an external user, i.e. identified by FNR instead of saksbehandler
- * ID/service user. LTPA tkoens do not support users that are not in AD, so in this case it is required to use provided service user credentials.
+ * ID/service user. LTPA tokens do not support users that are not in AD, so in this case it is required to use provided service user credentials.
  */
 public class ServiceUserFallbackConsumerFacadeBase<T> extends ConsumerFacadeBase<T> {
 
