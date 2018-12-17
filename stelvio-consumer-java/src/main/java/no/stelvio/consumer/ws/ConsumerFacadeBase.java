@@ -5,18 +5,20 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
+import javax.xml.rpc.handler.GenericHandler;
 import javax.xml.rpc.handler.HandlerInfo;
 
-import no.stelvio.common.security.ws.LTPASecurityHandler;
-import no.stelvio.common.security.ws.UsernameTokenSecurityHandler;
+import com.ibm.ws.webservices.multiprotocol.AgnosticService;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.ibm.ws.webservices.multiprotocol.AgnosticService;
+import no.stelvio.common.security.ws.LTPASecurityHandler;
+import no.stelvio.common.security.ws.UsernameTokenSecurityHandler;
 
 /**
  * The Consumer Facade Base class.
@@ -54,10 +56,10 @@ public abstract class ConsumerFacadeBase<T> {
 	public ConsumerFacadeBase(Class<? extends AgnosticService> serviceLocatorClass) {
 		this.serviceLocatorClass = serviceLocatorClass;
 		if (serviceLocatorClass == null) {
-			NullPointerException npe = new NullPointerException(
+			IllegalArgumentException exception = new IllegalArgumentException(
 					"serviceLocatorClass must be specified, null is not an acceptable value here.");
-			log.error(npe.getMessage(), npe);
-			throw npe;
+			log.error(exception.getMessage(), exception);
+			throw exception;
 		}
 	}
 
@@ -94,7 +96,7 @@ public abstract class ConsumerFacadeBase<T> {
 					+ " does not have the 'ServiceLocator' suffix, so its not usable for reflecting purposes");
 		}
 		String serviceName = serviceLocatorName.substring(0, serviceLocatorName.length() - 14); // Length of "ServiceLocator"+1
-		// System.out.println(serviceName);
+
 		if (portFullAddress == null) {
 			String portAddress;
 			try {
@@ -114,10 +116,8 @@ public abstract class ConsumerFacadeBase<T> {
 				throw new RuntimeException("Did not find additional occurences of / separator (after http://..) "
 						+ "in the string '" + portAddress + "'. Unable to continue");
 			}
-			// String defaultServerAddress=portAddress.substring(0,
-			// urlSeparator);
+
 			String defaultLocalURL = portAddress.substring(urlSeparator + 1, portAddress.length());
-			// System.out.println(defaultServerAddress+" "+defaultLocalURL);
 			if (portServerAddress == null) {
 				throw new RuntimeException("portServerAddress or portFullAddress not injected");
 			}
@@ -134,7 +134,6 @@ public abstract class ConsumerFacadeBase<T> {
 			}
 			return res;
 		} catch (Exception e) {
-			// log.error("",e);
 			throw new RuntimeException("Error while getting service port using service locator class "
 					+ serviceLocatorClass.getName() + " and port address " + portFullAddress, e);
 		}
@@ -148,9 +147,8 @@ public abstract class ConsumerFacadeBase<T> {
 	private void initServiceLocator() {
 		try {
 			serviceLocator = serviceLocatorClass.newInstance();
-			// PSELVPersonWSEXP_PSELVPersonHttpServiceLocator loc=new
-			// PSELVPersonWSEXP_PSELVPersonHttpServiceLocator();
-			ArrayList<HandlerInfo> handlerList = new ArrayList<HandlerInfo>();
+
+			List<HandlerInfo> handlerList = new ArrayList<>();
 			if (isContextEnabled()) {
 				HandlerInfo navContextHInfo = new HandlerInfo(ConsumerContextHandler.class, null, null);
 				handlerList.add(navContextHInfo);
@@ -162,7 +160,6 @@ public abstract class ConsumerFacadeBase<T> {
 
 			Iterator portIterator = serviceLocator.getPorts();
 			while (portIterator.hasNext()) {
-				// System.out.println("Adding handlerlist");
 				QName portName = ((QName) portIterator.next());
 				serviceLocator.getHandlerRegistry().setHandlerChain(portName, handlerList); 
 				// An improvement could be to check if already present
@@ -177,7 +174,7 @@ public abstract class ConsumerFacadeBase<T> {
 	 * 
 	 * @return the handler info
 	 */
-	private HandlerInfo createSecurityHandlerInfo() {
+	protected HandlerInfo createSecurityHandlerInfo() {
 		if (log.isDebugEnabled()) {
 			log.debug("Creates handlerinfo in " + serviceLocatorClass.getSimpleName() + " with username and password: " + serviceUsername);
 		}
@@ -193,11 +190,11 @@ public abstract class ConsumerFacadeBase<T> {
 	 * 
 	 * @return security handler
 	 */
-	private HandlerInfo createLTPASecurityHandler() {
-		Map<String, String> config = new HashMap<String, String>();
+	protected HandlerInfo createLTPASecurityHandler() {
+		Map<String, String> config = new HashMap<>();
 		config.put(LTPASecurityHandler.USERNAME_CONFIG_STRING, this.serviceUsername);
 		config.put(LTPASecurityHandler.PASSWORD_CONFIG_STRING, this.servicePassword);
-		HandlerInfo securityHInfo = new HandlerInfo(LTPASecurityHandler.class, config, null);
+		HandlerInfo securityHInfo = new HandlerInfo(getLTPASecurityHandlerClass(), config, null);
 		if (log.isDebugEnabled()) {
 			log.debug("Config for LTPASecurityHandler contains username and password: " + config.get(LTPASecurityHandler.USERNAME_CONFIG_STRING));
 		}
@@ -205,16 +202,29 @@ public abstract class ConsumerFacadeBase<T> {
 	}
 
 	/**
+	 * Override this to provide more specific handler subclass
+	 */
+	protected Class<? extends GenericHandler> getLTPASecurityHandlerClass() {
+		return LTPASecurityHandler.class;
+	}
+
+	/**
 	 * Creates the username security handler.
 	 * 
 	 * @return security handler
 	 */
-	private HandlerInfo createUsernameTokenSecurityHandler() {
-		Map<String, String> config = new HashMap<String, String>();
+	protected HandlerInfo createUsernameTokenSecurityHandler() {
+		Map<String, String> config = new HashMap<>();
 		config.put(UsernameTokenSecurityHandler.USERNAME_CONFIG_STRING, this.serviceUsername);
 		config.put(UsernameTokenSecurityHandler.PASSWORD_CONFIG_STRING, this.servicePassword);
-		HandlerInfo securityHInfo = new HandlerInfo(UsernameTokenSecurityHandler.class, config, null);
-		return securityHInfo;
+		return new HandlerInfo(getUsernameTokenSecurityHandlerClass(), config, null);
+	}
+
+	/**
+	 * Override this to provide more specific handler subclass
+	 */
+	protected Class<? extends GenericHandler> getUsernameTokenSecurityHandlerClass() {
+		return UsernameTokenSecurityHandler.class;
 	}
 
 	/**

@@ -22,6 +22,17 @@
             </exclusions>
 		</dependency>
 		<dependency>
+			<groupId>no.stelvio</groupId>
+			<artifactId>stelvio-domain-java</artifactId>
+			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>jcl-over-slf4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>
