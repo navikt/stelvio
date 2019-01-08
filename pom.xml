@@ -65,6 +65,11 @@
                 <version>${aspectjweaver.version}</version>
             </dependency>
             <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib-nodep</artifactId>
+                <version>${cglib-nodep.version}</version>
+            </dependency>
+            <dependency>
                 <!-- Apache commons-beanutils library provides classes that support easy-to-use wrappers for dynamic access of standard
                     JavaBean classes properties. -->
                 <groupId>commons-beanutils</groupId>
@@ -194,7 +199,7 @@
                 <version>${hsqldb.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.javassist</groupId>
+                <groupId>javassist</groupId>
                 <artifactId>javassist</artifactId>
                 <version>${javassist.version}</version>
             </dependency>
@@ -463,6 +468,10 @@
                     <exclusion>
                         <groupId>asm</groupId>
                         <artifactId>asm-attrs</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>cglib</groupId>
+                        <artifactId>cglib</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -923,7 +932,8 @@
 
         <!-- Application dependencies -->
         <aopalliance.version>1.0</aopalliance.version>
-        <aspectjweaver.version>1.8.0</aspectjweaver.version>
+        <aspectjweaver.version>1.5.4</aspectjweaver.version>
+        <cglib-nodep.version>3.0</cglib-nodep.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <commons-lang.version>3.5</commons-lang.version>
         <commons-logging.version>1.2</commons-logging.version>
@@ -936,7 +946,7 @@
         <hibernate-core.version>4.2.21.Final</hibernate-core.version>
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <hsqldb.version>2.3.0</hsqldb.version>
-        <javassist.version>3.23.1-GA</javassist.version>
+        <javassist.version>3.12.1.GA</javassist.version>
         <joda-time.version>2.9.7</joda-time.version>
         <jsf-security.version>1.0</jsf-security.version>
         <log4j.version>1.2.17</log4j.version>
@@ -955,7 +965,7 @@
         <!-- testing dependencies -->
         <junit.version>4.12</junit.version>
         <hamcrest.version>1.3</hamcrest.version>
-        <mockito.version>2.8.9</mockito.version>
+        <mockito.version>1.9.5</mockito.version>
         <jmock.version>2.6.0</jmock.version>
         <javax.transaction.version>1.1</javax.transaction.version>
 

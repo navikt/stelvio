@@ -2,23 +2,6 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
-Version 5.0.5
-----------------------------------
-PK-55549: Enabled ConsumerFacadeBase to be a bit more extensible.
-- Maintenance
----- StelvioContextHandler sets a transaction-id in case no context is received
----- Added @Override where applicable
----- Migrated to diamond-operator
----- Removed redundant null-initializers
-
-Version 5.0.4
-----------------------------------
-PK-50808: Revert
-
-Version 5.0.3
-----------------------------------
-PK-52257, PEN-14444, PK-50808: Endret logout-funksjonalitet
-
 Version 5.0.2
 ----------------------------------
 PK-52257 PEN-14444:
