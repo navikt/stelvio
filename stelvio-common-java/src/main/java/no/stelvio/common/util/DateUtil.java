@@ -551,8 +551,8 @@ public final class DateUtil {
 			throw createNullDateIsIllegalArgumentException();
 		}
 
-		List<Date> sortedDates = new ArrayList<Date>(dates);
-		Collections.sort(sortedDates, Collections.reverseOrder()); // The newest date becomes the first
+		List<Date> sortedDates = new ArrayList<>(dates);
+		sortedDates.sort(Collections.reverseOrder()); // The newest date becomes the first
 
 		return sortedDates;
 	}
@@ -617,7 +617,7 @@ public final class DateUtil {
 	 * @param date
 	 *            Datoen
 	 * @param months
-	 *            Måender fremover / bakover
+	 *            Måneder fremover / bakover
 	 * @return Datoen X måneder fremover/tilbake
 	 */
 	public static Date getRelativeDateByMonth(Date date, int months) {
@@ -626,6 +626,17 @@ public final class DateUtil {
 
 		return calendar.getTime();
 	}
+
+	/**
+	 * Metode for å finne første dagen i måneden etter en gitt dato
+	 *
+	 * @param date
+	 * 			Datoen
+	 * @return
+	 * 			Første dagen i måneden etter datoen
+	 */
+
+	public static Date getFirstDayOfNextMonth(Date date) { return getFirstDayOfMonth(getRelativeDateByMonth(date, 1)); }
 
 	/**
 	 * Metode for å finne datoer X dager frem / tilbake i tid.
@@ -1019,7 +1030,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * {@see DateUtil.intersects} Removes the values for HOUR_OF_DAY, MINUTES, SECONDS and MILLISECONDS before the compare such
+	 * Removes the values for HOUR_OF_DAY, MINUTES, SECONDS and MILLISECONDS before the compare such
 	 * that same day is regarded as intersection if <code>considerContactByDayAsIntersection</code> is true.
 	 * 
 	 * @param o1Start
@@ -1051,7 +1062,7 @@ public final class DateUtil {
 	 * reasonably close to infinity.
 	 * 
 	 * @author person7c5197dbb870 (Capgemini)
-	 * @see DateUtil.intersects
+	 * @see #intersects
 	 * 
 	 * @param o1Start
 	 *            The start date of the first period
@@ -1370,13 +1381,10 @@ public final class DateUtil {
 		Calendar cal = Calendar.getInstance();
 		if (date == null) {
 			cal.clear();
-			cal.set(0, 0, 0, 0, 0, 0);
+			cal.set(0, Calendar.JANUARY, 0, 0, 0, 0);
 		} else {
 			cal.setTime(date);
-			cal.set(Calendar.HOUR_OF_DAY, 0);
-			cal.set(Calendar.MINUTE, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MILLISECOND, 0);
+			clearTimeFields(cal);
 		}
 		return cal;
 	}

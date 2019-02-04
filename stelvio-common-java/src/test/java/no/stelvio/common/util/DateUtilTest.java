@@ -1,8 +1,10 @@
 package no.stelvio.common.util;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -1129,6 +1131,15 @@ public class DateUtilTest {
 		assertEquals(0, cal.get(Calendar.SECOND));
 		assertEquals(0, cal.get(Calendar.MILLISECOND));
 
+	}
+
+	@Test
+	public void shouldReturnTheFirstOfFebruaryWhenGetFirstDayOfNextMonthIsCalledWithAnyDateInJanuary() {
+
+		Date dateInJanuary = DateUtil.createDate(2018, 1, 17);
+		Date firstOfFebruary = DateUtil.createDate(2018, 2,1);
+
+		assertThat(DateUtil.getFirstDayOfNextMonth(dateInJanuary), is(firstOfFebruary));
 	}
 
 	/**
