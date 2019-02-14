@@ -27,22 +27,37 @@ import org.junit.Test;
  * @version $Revision: 2833 $ $Author: skb2930 $ $Date: 2006-03-10 10:50:32 +0100 (Fri, 10 Mar 2006) $
  */
 public class DateUtilTest {
-    private Date early;
-
-    private Date late;
-
-    /** Used for comparing dates. */
+    /**
+     * Used for comparing dates.
+     */
     private static final SimpleDateFormat THE_DATE_FORMAT;
-
-    /** Instance of calendar to use. */
+    /**
+     * Instance of calendar to use.
+     */
     private static final Calendar CALENDAR = Calendar.getInstance();
 
-    private TimeZone jdkDefaultTimeZone;
     static {
         // Initialize the date format
         THE_DATE_FORMAT = (SimpleDateFormat) DateFormat.getDateInstance();
         THE_DATE_FORMAT.setLenient(false);
         THE_DATE_FORMAT.applyLocalizedPattern("dd.MM.yyyy");
+    }
+
+    private Date early;
+    private Date late;
+    private TimeZone jdkDefaultTimeZone;
+
+    /**
+     * Create calendar.
+     *
+     * @param now now
+     * @return calendar
+     */
+    private static Calendar createCalendar(final Date now) {
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+
+        return calendar;
     }
 
     /**
@@ -57,7 +72,7 @@ public class DateUtilTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1980, Calendar.FEBRUARY, 10);
         early = cal.getTime();
-        cal.set(2000, 10, 10);
+        cal.set(2000, Calendar.NOVEMBER, 10);
         late = cal.getTime();
     }
 
@@ -329,10 +344,10 @@ public class DateUtilTest {
         assertNull("Test parsing of an empty String", DateUtil.parse(""));
 
         // Note! Months 0-11
-        CALENDAR.set(1973, 0, 14);
+        CALENDAR.set(1973, Calendar.JANUARY, 14);
         assertTrue("Test parsing of a date in last century", isSameDay(DateUtil.parse("14.01.1973"), CALENDAR.getTime()));
 
-        CALENDAR.set(2003, 6, 22);
+        CALENDAR.set(2003, Calendar.JULY, 22);
         assertTrue("Test parsing of today's date", isSameDay(DateUtil.parse("22.07.2003"), CALENDAR.getTime()));
     }
 
@@ -365,11 +380,11 @@ public class DateUtilTest {
     @Test
     public void parseTps() {
         // TEST CASE 1: NORMAL VALID DATE IN LAST CENTURY
-        CALENDAR.set(1973, 0, 14);
+        CALENDAR.set(1973, Calendar.JANUARY, 14);
         assertTrue("Test parsing of a date in last century", isSameDay(DateUtil.parseTpsDate("1973-01-14"), CALENDAR.getTime()));
 
         // TEST CASE 2: NORMAL VALID DATE
-        CALENDAR.set(2005, 0, 1);
+        CALENDAR.set(2005, Calendar.JANUARY, 1);
         assertTrue("Test parsing of a date in this century", isSameDay(DateUtil.parseTpsDate("2005-01-01"), CALENDAR.getTime()));
 
         // TEST CASE 3: INPUT IS NULL
@@ -395,7 +410,7 @@ public class DateUtilTest {
     @Test
     public void parseInput() {
         // TEST CASE 1: NORMAL VALID DATE IN LAST CENTURY
-        CALENDAR.set(1973, 0, 14);
+        CALENDAR.set(1973, Calendar.JANUARY, 14);
         assertTrue("Test parsing of a date in last century: 14-01-1973", isSameDay(DateUtil.parseInputString("14-01-1973",
                 false), CALENDAR.getTime()));
         assertTrue("Test parsing of a date in last century 14.01.1973", isSameDay(DateUtil
@@ -408,7 +423,7 @@ public class DateUtilTest {
                 CALENDAR.getTime()));
 
         // TEST CASE 2: NORMAL VALID DATE
-        CALENDAR.set(2005, 0, 1);
+        CALENDAR.set(2005, Calendar.JANUARY, 1);
         assertTrue("Test parsing of a date in last century: 01-01-2005", isSameDay(DateUtil.parseInputString("01-01-2005",
                 false), CALENDAR.getTime()));
         assertTrue("Test parsing of a date in last century 01.01.2005", isSameDay(DateUtil
@@ -508,7 +523,7 @@ public class DateUtilTest {
         assertEquals("Test formatting of null", "", DateUtil.format(null));
 
         // Note! Months 0-11
-        CALENDAR.set(1973, 0, 14);
+        CALENDAR.set(1973, Calendar.JANUARY, 14);
         assertEquals("Test formatting of a valid date", "14.01.1973", DateUtil.format(CALENDAR.getTime()));
     }
 
@@ -530,7 +545,7 @@ public class DateUtilTest {
         assertEquals("Test formatting of null", "", DateUtil.formatMonthlyPeriod(null));
 
         // Note! Months 0-11
-        CALENDAR.set(1973, 0, 14);
+        CALENDAR.set(1973, Calendar.JANUARY, 14);
         assertEquals("Test formatting of a valid date", "01.1973", DateUtil.formatMonthlyPeriod(CALENDAR.getTime()));
     }
 
@@ -577,20 +592,6 @@ public class DateUtilTest {
     }
 
     /**
-     * Create calendar.
-     *
-     * @param now
-     *            now
-     * @return calendar
-     */
-    private static Calendar createCalendar(final Date now) {
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-
-        return calendar;
-    }
-
-    /**
      * Test isBeforeDay.
      */
     @Test
@@ -629,15 +630,14 @@ public class DateUtilTest {
     public void dateShouldBecomeFirstDayInMonthBefore() {
         CALENDAR.setLenient(false);
         // This is 1. november 2004
-        CALENDAR.set(2004, 10, 1);
+        CALENDAR.set(2004, Calendar.NOVEMBER, 1);
 
         // Run
         Date actualDate = DateUtil.findLastDayInMonthBefore(CALENDAR.getTime());
 
         // Check that it is 31. october 2004
-        CALENDAR.set(2004, 9, 31);
+        CALENDAR.set(2004, Calendar.OCTOBER, 31);
         assertEquals("Not the correct date;", CALENDAR.getTime(), actualDate);
-
     }
 
     /**
@@ -656,7 +656,7 @@ public class DateUtilTest {
         // Test with date
         CALENDAR.setLenient(false);
         // This is 1. september 2004
-        CALENDAR.set(2004, 8, 1);
+        CALENDAR.set(2004, Calendar.SEPTEMBER, 1);
 
         assertEquals("200409", DateUtil.formatBatchMonthString(CALENDAR.getTime()));
     }
@@ -675,7 +675,7 @@ public class DateUtilTest {
         }
 
         // With null return null
-        assertEquals(DateUtil.parseBatchMonth(null, true), null);
+        assertNull(DateUtil.parseBatchMonth(null, true));
 
         // With bad date string
         try {
@@ -688,7 +688,7 @@ public class DateUtilTest {
         // With good date string
         CALENDAR.setLenient(false);
         // This is 1. september 2004
-        CALENDAR.set(2004, 8, 1);
+        CALENDAR.set(2004, Calendar.SEPTEMBER, 1);
         Date returnDate = DateUtil.parseBatchMonth("200409", false);
 
         assertTrue("Test with good date string not the same", isSameDay(returnDate, CALENDAR.getTime()));
@@ -743,11 +743,11 @@ public class DateUtilTest {
     public void getRelativeDateByMonth() {
         Date testDate = DateUtil.parse("01.01.2000");
 
-        Date nextMonth = DateUtil.getRelativeDateByMonth(testDate, +1);
         Date prevMonth = DateUtil.getRelativeDateByMonth(testDate, -1);
+        Date nextMonth = DateUtil.getRelativeDateByMonth(testDate, +1);
 
-        assertEquals("nextMonth er feil", DateUtil.format(nextMonth), "01.02.2000");
-        assertEquals("prevMonth er feil", DateUtil.format(prevMonth), "01.12.1999");
+        assertEquals("prevMonth er feil", "01.12.1999", DateUtil.format(prevMonth));
+        assertEquals("nextMonth er feil", "01.02.2000", DateUtil.format(nextMonth));
     }
 
     /**
@@ -778,18 +778,20 @@ public class DateUtilTest {
         assertFalse("Skal ikke v�re ikke dagens dato", DateUtil.isToday(CALENDAR.getTime()));
     }
 
-    /** Sjekker en dato som er siste i måneden. */
+    /**
+     * Sjekker en dato som er siste i m�neden.
+     */
     @Test
     public void isLastDayOfMonthTrue() {
         CALENDAR.set(GregorianCalendar.YEAR, 2005);
         CALENDAR.set(GregorianCalendar.MONTH, 0);
         CALENDAR.set(GregorianCalendar.DAY_OF_MONTH, 31);
 
-        assertTrue("Forventet siste i måneden.", DateUtil.isLastDayOfMonth(CALENDAR.getTime()));
+        assertTrue("Forventet siste i m�neden.", DateUtil.isLastDayOfMonth(CALENDAR.getTime()));
     }
 
     /**
-     * Sjekker en dato som ikke er siste i måneden.
+     * Sjekker en dato som ikke er siste i m�neden.
      */
     @Test
     public void isLastDayOfMonthFalse() {
@@ -797,40 +799,42 @@ public class DateUtilTest {
         CALENDAR.set(GregorianCalendar.MONTH, 0);
         CALENDAR.set(GregorianCalendar.DAY_OF_MONTH, 30);
 
-        assertFalse("Forventet ikke siste i måneden.", DateUtil.isLastDayOfMonth(CALENDAR.getTime()));
+        assertFalse("Forventet ikke siste i m�neden.", DateUtil.isLastDayOfMonth(CALENDAR.getTime()));
     }
 
-    /** Sjekker en dato som er første i måneden. */
+    /**
+     * Sjekker en dato som er første i m�neden.
+     */
     @Test
     public void isLastDayOfMonthFirst() {
         CALENDAR.set(GregorianCalendar.YEAR, 2005);
         CALENDAR.set(GregorianCalendar.MONTH, 0);
         CALENDAR.set(GregorianCalendar.DAY_OF_MONTH, 1);
 
-        assertFalse("Forventet ikke siste i måneden.", DateUtil.isLastDayOfMonth(CALENDAR.getTime()));
+        assertFalse("Forventet ikke siste i m�neden.", DateUtil.isLastDayOfMonth(CALENDAR.getTime()));
     }
 
     /**
-     * Sjekker at vi får IllegalArgumentException dersom vi sender inn null.
+     * Sjekker at vi f�r IllegalArgumentException dersom vi sender inn null.
      */
     @Test
     public void lastDayOfMonthThrowsException() {
         try {
             DateUtil.isLastDayOfMonth(null);
-            fail("Skulle fått IllegalArgumentException");
+            fail("Skulle f�tt IllegalArgumentException");
         } catch (IllegalArgumentException ie) {
             assertTrue(true);
         }
     }
 
     /**
-     * Sjekker at vi får IllegalArgumentException dersom vi sender inn null.
+     * Sjekker at vi f�r IllegalArgumentException dersom vi sender inn null.
      */
     @Test
     public void firstDayOfMonthThrowsException() {
         try {
             DateUtil.isFirstDayOfMonth(null);
-            fail("Skulle fått IllegalArgumentException");
+            fail("Skulle f�tt IllegalArgumentException");
         } catch (IllegalArgumentException ie) {
             assertTrue(true);
         }
@@ -872,7 +876,7 @@ public class DateUtilTest {
     @Test
     public void formatTpsBornDate() {
         // Note! Months 0-11
-        CALENDAR.set(1956, 0, 1);
+        CALENDAR.set(1956, Calendar.JANUARY, 1);
         assertEquals("010156", DateUtil.formatTpsBornDateString(CALENDAR.getTime()));
     }
 
@@ -953,36 +957,36 @@ public class DateUtilTest {
     @Test
     public final void getMonthBetween() {
         CALENDAR.clear();
-        CALENDAR.set(2004, 0, 1);
+        CALENDAR.set(2004, Calendar.JANUARY, 1);
         Date from = CALENDAR.getTime();
-        CALENDAR.set(2004, 2, 1);
+        CALENDAR.set(2004, Calendar.MARCH, 1);
         Date to = CALENDAR.getTime();
-        assertEquals("Should be 2 month differnece.", 2, DateUtil.getMonthBetween(from, to));
+        assertEquals("Should be 2 month difference.", 2, DateUtil.getMonthBetween(from, to));
 
-        CALENDAR.set(2004, 10, 1);
+        CALENDAR.set(2004, Calendar.NOVEMBER, 1);
         from = CALENDAR.getTime();
-        CALENDAR.set(2005, 0, 1);
+        CALENDAR.set(2005, Calendar.JANUARY, 1);
         to = CALENDAR.getTime();
-        assertEquals("Should be 2 month differnece.", 2, DateUtil.getMonthBetween(from, to));
+        assertEquals("Should be 2 month difference.", 2, DateUtil.getMonthBetween(from, to));
 
-        CALENDAR.set(2004, 10, 1);
+        CALENDAR.set(2004, Calendar.NOVEMBER, 1);
         from = CALENDAR.getTime();
-        CALENDAR.set(2006, 0, 1);
+        CALENDAR.set(2006, Calendar.JANUARY, 1);
         to = CALENDAR.getTime();
-        assertEquals("Should be 14 month differnece.", 14, DateUtil.getMonthBetween(from, to));
+        assertEquals("Should be 14 month difference.", 14, DateUtil.getMonthBetween(from, to));
 
-        CALENDAR.set(2004, 0, 1);
+        CALENDAR.set(2004, Calendar.JANUARY, 1);
         from = CALENDAR.getTime();
-        CALENDAR.set(2004, 0, 1);
+        CALENDAR.set(2004, Calendar.JANUARY, 1);
         to = CALENDAR.getTime();
-        assertEquals("Should be 0 month differnece.", 0, DateUtil.getMonthBetween(from, to));
+        assertEquals("Should be 0 month difference.", 0, DateUtil.getMonthBetween(from, to));
 
         // Changed from and to
-        CALENDAR.set(2005, 0, 1);
+        CALENDAR.set(2005, Calendar.JANUARY, 1);
         from = CALENDAR.getTime();
-        CALENDAR.set(2004, 0, 1);
+        CALENDAR.set(2004, Calendar.JANUARY, 1);
         to = CALENDAR.getTime();
-        assertEquals("Should be 12 month differnece.", 12, DateUtil.getMonthBetween(from, to));
+        assertEquals("Should be 12 month difference.", 12, DateUtil.getMonthBetween(from, to));
     }
 
     /**
@@ -1060,20 +1064,18 @@ public class DateUtilTest {
 
         assertTrue(DateUtil.isBeforeByDay(null, null, true));
         assertFalse(DateUtil.isBeforeByDay(null, null, false));
-
     }
 
     /**
      * Test parse date.
      *
-     * @throws ParseException
-     *             parsing date failed
+     * @throws ParseException parsing date failed
      */
     @Test
     public void parseDate() throws ParseException {
         String illegalDate = "2000-13-12";
         boolean gotException = false;
-        Date date = null;
+        Date date;
         try {
             date = DateUtil.parseISOString(illegalDate);
         } catch (ParseException e) {
@@ -1130,14 +1132,13 @@ public class DateUtilTest {
         assertEquals(0, cal.get(Calendar.MINUTE));
         assertEquals(0, cal.get(Calendar.SECOND));
         assertEquals(0, cal.get(Calendar.MILLISECOND));
-
     }
 
     @Test
     public void shouldReturnTheFirstOfFebruaryWhenGetFirstDayOfNextMonthIsCalledWithAnyDateInJanuary() {
 
-        Date dateInJanuary = DateUtil.createDate(2018, 1, 17);
-        Date firstOfFebruary = DateUtil.createDate(2018, 2,1);
+        Date dateInJanuary = DateUtil.createDate(2018, 0, 17);
+        Date firstOfFebruary = DateUtil.createDate(2018, 1, 1);
 
         assertThat(DateUtil.getFirstDayOfNextMonth(dateInJanuary), is(firstOfFebruary));
     }
@@ -1145,10 +1146,8 @@ public class DateUtilTest {
     /**
      * Is two dates the same date.
      *
-     * @param date1
-     *            first date
-     * @param date2
-     *            second date
+     * @param date1 first date
+     * @param date2 second date
      * @return true if date1 and date2 is the same date
      */
     private boolean isSameDay(final Date date1, final Date date2) {
@@ -1169,12 +1168,9 @@ public class DateUtilTest {
     /**
      * Creates a calendar with the specified year, month and day of month. The time fields is cleared.
      *
-     * @param year
-     *            the year to create the calendar with.
-     * @param month
-     *            the month to create the calendar with.
-     * @param dayOfMonth
-     *            the day of month to create the calendar with.
+     * @param year the year to create the calendar with.
+     * @param month the month to create the calendar with.
+     * @param dayOfMonth the day of month to create the calendar with.
      * @return a calendar.
      */
     private Calendar calendar(int year, int month, int dayOfMonth) {
@@ -1184,18 +1180,12 @@ public class DateUtilTest {
     /**
      * Creates a calendar with the specified year, month, day of month, hour, minute and second.
      *
-     * @param year
-     *            the year to create the calendar with.
-     * @param month
-     *            the month to create the calendar with.
-     * @param dayOfMonth
-     *            the day of month to create the calendar with.
-     * @param hour
-     *            the hour to create the calendar with.
-     * @param minute
-     *            the minute to create the calendar with.
-     * @param second
-     *            the second to create the calendar with.
+     * @param year the year to create the calendar with.
+     * @param month the month to create the calendar with.
+     * @param dayOfMonth the day of month to create the calendar with.
+     * @param hour the hour to create the calendar with.
+     * @param minute the minute to create the calendar with.
+     * @param second the second to create the calendar with.
      * @return a calendar.
      */
     private Calendar calendar(int year, int month, int dayOfMonth, int hour, int minute, int second) {
@@ -1206,12 +1196,9 @@ public class DateUtilTest {
     /**
      * Common code for parsing a date string and testing the result.
      *
-     * @param date
-     *            the date as a string which should be parsed.
-     * @param expected
-     *            holds the expected values from parsing as a Calendar.
-     * @param dateParser
-     *            the parser to use, that is, the code that should be tested.
+     * @param date the date as a string which should be parsed.
+     * @param expected holds the expected values from parsing as a Calendar.
+     * @param dateParser the parser to use, that is, the code that should be tested.
      */
     private void parseAndTest(final String date, final Calendar expected, final DateParser dateParser) {
         final Calendar actual = Calendar.getInstance();
@@ -1231,12 +1218,9 @@ public class DateUtilTest {
     /**
      * Common code for formatting a date and testing the result.
      *
-     * @param expected
-     *            the expected result from the formatting.
-     * @param calendar
-     *            the <code>Calendar</code> holding the date to test formatting on.
-     * @param dateFormatter
-     *            the formatter to use, that is, the code that should be tested.
+     * @param expected the expected result from the formatting.
+     * @param calendar the <code>Calendar</code> holding the date to test formatting on.
+     * @param dateFormatter the formatter to use, that is, the code that should be tested.
      */
     private void formatAndTest(String expected, final Calendar calendar, final DateFormatter dateFormatter) {
         assertEquals("Not the correct format;", expected, dateFormatter.format(calendar.getTime()));
@@ -1249,8 +1233,7 @@ public class DateUtilTest {
         /**
          * Parse a string and find the date.
          *
-         * @param date
-         *            date as a string
+         * @param date date as a string
          * @return date
          */
         Date parse(final String date);
@@ -1263,8 +1246,7 @@ public class DateUtilTest {
         /**
          * Format a date.
          *
-         * @param date
-         *            date
+         * @param date date
          * @return date as a string
          */
         String format(final Date date);
