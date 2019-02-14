@@ -88,7 +88,7 @@ public final class DateUtil {
      * @return a Date or null if input is null and it is allowed.
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseInputString(final String input, final boolean allowNull) throws IllegalArgumentException {
+    public static Date parseInputString(final String input, final boolean allowNull){
         if (StringUtils.isBlank(input)) {
             if (allowNull) {
                 return null;
@@ -115,7 +115,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseCompactDate(final String input) throws IllegalArgumentException {
+    public static Date parseCompactDate(final String input) {
         return parseCommon(input, false, COMPACT_DATE_FORMAT, true, false, false);
     }
 
@@ -126,7 +126,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parse(final String input) throws IllegalArgumentException {
+    public static Date parse(final String input) {
         return parse(input, true);
     }
 
@@ -138,7 +138,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parse(final String input, final boolean allowNull) throws IllegalArgumentException {
+    public static Date parse(final String input, final boolean allowNull) {
         return parseCommon(input, allowNull, DATE_FORMAT, true, true, false);
     }
 
@@ -149,7 +149,7 @@ public final class DateUtil {
      * @return Date objekt som er parset fra strengen
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseTpsDate(final String input) throws IllegalArgumentException {
+    public static Date parseTpsDate(final String input) {
         return parseCommon(input, false, TPS_DATE_FORMAT, false, true, false);
     }
 
@@ -160,7 +160,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String.
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseCicsDate(final String input) throws IllegalArgumentException {
+    public static Date parseCicsDate(final String input) {
         return parseCommon(input, false, CICS_DATE_FORMAT, true, false, false);
     }
 
@@ -171,7 +171,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String.
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseTSSDate(final String input) throws IllegalArgumentException {
+    public static Date parseTSSDate(final String input) {
         return parseCommon(input, true, TSS_DATE_FORMAT, true, false, false);
     }
 
@@ -182,7 +182,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String.
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseTSSTidReg(final String input) throws IllegalArgumentException {
+    public static Date parseTSSTidReg(final String input) {
         return parseCommon(input, true, TSS_TID_REG_FORMAT, true, false, false);
     }
 
@@ -194,7 +194,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseBatchMonth(final String input, final boolean allowNull) throws IllegalArgumentException {
+    public static Date parseBatchMonth(final String input, final boolean allowNull) {
         return parseCommon(input, allowNull, BATCH_MONTH_FORMAT, true, true, true);
     }
 
@@ -206,7 +206,7 @@ public final class DateUtil {
      * @return a Date, null if input is null or an empty String
      * @throws IllegalArgumentException if input is not legal.
      */
-    public static Date parseDBString(final String input, final boolean allowNull) throws IllegalArgumentException {
+    public static Date parseDBString(final String input, final boolean allowNull) {
         return parseCommon(input, allowNull, DB_DATE_FORMAT, true, false, false);
     }
 
@@ -718,7 +718,7 @@ public final class DateUtil {
      * @throws IllegalArgumentException if input is not legal.
      */
     private static Date parseCommon(final String input, final boolean allowNull, String dateFormat, boolean noEarlyDates,
-            boolean resetTimePart, boolean resetDayOfMonth) throws IllegalArgumentException {
+            boolean resetTimePart, boolean resetDayOfMonth) {
         Date output = null;
 
         if (StringUtils.isBlank(input)) {
