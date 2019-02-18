@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>stelvio</artifactId>
 		<groupId>no.stelvio</groupId>
-		<version>5.0.8</version>
+		<version>5.0.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-service-java</artifactId>
 	<packaging>jar</packaging>
