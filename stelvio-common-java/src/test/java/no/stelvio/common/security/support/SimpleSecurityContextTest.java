@@ -4,7 +4,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.definition.support.DefaultRole;
@@ -254,4 +256,38 @@ public class SimpleSecurityContextTest {
 		ctx.isUserInRoles(invalidRoles.get(0), invalidRoles.get(1));
 	}
 
+	/**
+	 * Test of AttributeMap not present
+	 */
+	@Test
+	public void shouldReturnNullWhenAttributemapIsNotCreated() {
+		SimpleSecurityContext simpleSecurityContext = new SimpleSecurityContext("User", new ArrayList<>());
+
+		assertTrue(simpleSecurityContext.getAttribute("DummyValue") == null);
+	}
+
+	/**
+	 * Test of Attribute not present in map
+	 */
+	@Test
+	public void shouldReturnNullWhenAttributeDoesNotExistInMap() {
+		SimpleSecurityContext simpleSecurityContext = new SimpleSecurityContext("User", new ArrayList<>(), new HashMap<>());
+
+		assertTrue(simpleSecurityContext.getAttribute("DummyValue") == null);
+	}
+
+	/**
+	 * Test of retrieving Attribute
+	 */
+	@Test
+	public void shouldReturnAttributeWhenAttributeExistInAttributemap() {
+		Map<String, String> attributes = new HashMap<>();
+		String tokenOIDC = "dummyAlgorithm.body.signature";
+		String key = "DummyKey";
+
+		attributes.put(key, tokenOIDC);
+		SimpleSecurityContext simpleSecurityContext = new SimpleSecurityContext("User", new ArrayList<>(), attributes);
+
+		assertTrue(simpleSecurityContext.getAttribute(key) == tokenOIDC);
+	}
 }
