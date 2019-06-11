@@ -101,4 +101,9 @@ public interface SecurityContext {
 	 * @return true if the user has one of the roles, false otherwise.
 	 */
 	boolean isUserInRoles(Role... roleparams);
+
+	/**
+	 * Return an attribute defined in the attributeMap or null
+	 */
+	public String getAttribute(String key);
 }

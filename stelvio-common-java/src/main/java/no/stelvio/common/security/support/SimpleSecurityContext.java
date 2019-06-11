@@ -3,6 +3,7 @@ package no.stelvio.common.security.support;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.definition.Role;
@@ -29,6 +30,7 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 	private String authorizedAs;
 	private List<String> roles;
 	private transient RoleValidator roleValidator;
+	private Map<String,String> attributes;
 
 	/**
 	 * Constructs an instance with the given user id and list of roles.
@@ -42,6 +44,20 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		this.userId = userId;
 		this.authorizedAs = userId;
 		this.roles = roles;
+	}
+
+	/**
+	 * Constructs an instance with user id, list of roles and custom attributes.
+	 *
+	 * @param userId the logged in user's id.
+	 * @param roles the logged in user's roles.
+	 * @param attributes custom attributes
+	 */
+	public SimpleSecurityContext(String userId, List<String> roles, Map<String,String> attributes) {
+		this.userId = userId;
+		this.authorizedAs = userId;
+		this.roles = roles;
+		this.attributes = attributes;
 	}
 
 	/**
@@ -223,5 +239,10 @@ public final class SimpleSecurityContext implements SecurityContext, Serializabl
 		}
 
 		return foundInOne;
+	}
+
+	@Override
+	public String getAttribute(String key) {
+		return attributes == null ? null : (attributes.getOrDefault(key, null));
 	}
 }
