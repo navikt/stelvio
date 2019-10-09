@@ -28,7 +28,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#lookup(javax.naming.Name)
 	 */
-	public Object lookup(Name name) throws NamingException {
+	public Object lookup(Name name) {
 		return null;
 	}
 
@@ -55,63 +55,63 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#bind(javax.naming.Name, java.lang.Object)
 	 */
-	public void bind(Name name, Object obj) throws NamingException {
+	public void bind(Name name, Object obj) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#bind(java.lang.String, java.lang.Object)
 	 */
-	public void bind(String name, Object obj) throws NamingException {
+	public void bind(String name, Object obj) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#rebind(javax.naming.Name, java.lang.Object)
 	 */
-	public void rebind(Name name, Object obj) throws NamingException {
+	public void rebind(Name name, Object obj) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#rebind(java.lang.String, java.lang.Object)
 	 */
-	public void rebind(String name, Object obj) throws NamingException {
+	public void rebind(String name, Object obj) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#unbind(javax.naming.Name)
 	 */
-	public void unbind(Name name) throws NamingException {
+	public void unbind(Name name) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#unbind(java.lang.String)
 	 */
-	public void unbind(String name) throws NamingException {
+	public void unbind(String name) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#rename(javax.naming.Name, javax.naming.Name)
 	 */
-	public void rename(Name oldName, Name newName) throws NamingException {
+	public void rename(Name oldName, Name newName) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#rename(java.lang.String, java.lang.String)
 	 */
-	public void rename(String oldName, String newName) throws NamingException {
+	public void rename(String oldName, String newName) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#list(javax.naming.Name)
 	 */
-	public NamingEnumeration<NameClassPair> list(Name name) throws NamingException {
+	public NamingEnumeration<NameClassPair> list(Name name) {
 		return null;
 	}
 
@@ -119,7 +119,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#list(java.lang.String)
 	 */
-	public NamingEnumeration<NameClassPair> list(String name) throws NamingException {
+	public NamingEnumeration<NameClassPair> list(String name) {
 		return null;
 	}
 
@@ -127,7 +127,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#listBindings(javax.naming.Name)
 	 */
-	public NamingEnumeration<Binding> listBindings(Name name) throws NamingException {
+	public NamingEnumeration<Binding> listBindings(Name name) {
 		return null;
 	}
 
@@ -135,7 +135,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#listBindings(java.lang.String)
 	 */
-	public NamingEnumeration<Binding> listBindings(String name) throws NamingException {
+	public NamingEnumeration<Binding> listBindings(String name) {
 		return null;
 	}
 
@@ -143,21 +143,21 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#destroySubcontext(javax.naming.Name)
 	 */
-	public void destroySubcontext(Name name) throws NamingException {
+	public void destroySubcontext(Name name) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#destroySubcontext(java.lang.String)
 	 */
-	public void destroySubcontext(String name) throws NamingException {
+	public void destroySubcontext(String name) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#createSubcontext(javax.naming.Name)
 	 */
-	public Context createSubcontext(Name name) throws NamingException {
+	public Context createSubcontext(Name name) {
 		return null;
 	}
 
@@ -165,7 +165,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#createSubcontext(java.lang.String)
 	 */
-	public Context createSubcontext(String name) throws NamingException {
+	public Context createSubcontext(String name) {
 		return null;
 	}
 
@@ -173,7 +173,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#lookupLink(javax.naming.Name)
 	 */
-	public Object lookupLink(Name name) throws NamingException {
+	public Object lookupLink(Name name) {
 		return null;
 	}
 
@@ -181,7 +181,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#lookupLink(java.lang.String)
 	 */
-	public Object lookupLink(String name) throws NamingException {
+	public Object lookupLink(String name) {
 		return null;
 	}
 
@@ -189,7 +189,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#getNameParser(javax.naming.Name)
 	 */
-	public NameParser getNameParser(Name name) throws NamingException {
+	public NameParser getNameParser(Name name) {
 		return null;
 	}
 
@@ -197,7 +197,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#getNameParser(java.lang.String)
 	 */
-	public NameParser getNameParser(String name) throws NamingException {
+	public NameParser getNameParser(String name) {
 		return null;
 	}
 
@@ -205,7 +205,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#composeName(javax.naming.Name, javax.naming.Name)
 	 */
-	public Name composeName(Name name, Name prefix) throws NamingException {
+	public Name composeName(Name name, Name prefix) {
 		return null;
 	}
 
@@ -213,7 +213,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#composeName(java.lang.String, java.lang.String)
 	 */
-	public String composeName(String name, String prefix) throws NamingException {
+	public String composeName(String name, String prefix) {
 		return null;
 	}
 
@@ -221,7 +221,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#addToEnvironment(java.lang.String, java.lang.Object)
 	 */
-	public Object addToEnvironment(String propName, Object propVal) throws NamingException {
+	public Object addToEnvironment(String propName, Object propVal) {
 		return null;
 	}
 
@@ -229,7 +229,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#removeFromEnvironment(java.lang.String)
 	 */
-	public Object removeFromEnvironment(String propName) throws NamingException {
+	public Object removeFromEnvironment(String propName) {
 		return null;
 	}
 
@@ -237,7 +237,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#getEnvironment()
 	 */
-	public Hashtable<?, ?> getEnvironment() throws NamingException {
+	public Hashtable<?, ?> getEnvironment() {
 		return null;
 	}
 
@@ -255,7 +255,7 @@ public class TestInitialContext implements Context {
 	 * {@inheritDoc}
 	 * @see javax.naming.Context#getNameInNamespace()
 	 */
-	public String getNameInNamespace() throws NamingException {
+	public String getNameInNamespace() {
 		return null;
 	}
 

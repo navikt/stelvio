@@ -111,12 +111,10 @@ public abstract class AbstractPhaselistenerTestCase {
 
 	/**
 	 * Setup before test.
-	 * 
-	 * @throws Exception
-	 *             exception
-	 */
+	 *
+     */
 	@Before
-	public final void setUp() throws Exception {
+	public final void setUp() {
 		// Set up a new thread context class loader
 		threadContextClassLoader = Thread.currentThread().getContextClassLoader();
 		Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[0], this.getClass().getClassLoader()));
@@ -181,12 +179,10 @@ public abstract class AbstractPhaselistenerTestCase {
 
 	/**
 	 * Cleanup after test.
-	 * 
-	 * @throws Exception
-	 *             exception
-	 */
+	 *
+     */
 	@After
-	public final void tearDown() throws Exception {
+	public final void tearDown() {
 		this.onTearDown();
 		application = null;
 		config = null;

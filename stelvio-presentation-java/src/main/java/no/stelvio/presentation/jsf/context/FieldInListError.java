@@ -89,7 +89,7 @@ public class FieldInListError extends FieldError {
 	 */
 	@Override
 	public boolean equals(Object other) {
-		return this == other ? true : super.equals(other);
+		return this == other || super.equals(other);
 	}
 
 	/**

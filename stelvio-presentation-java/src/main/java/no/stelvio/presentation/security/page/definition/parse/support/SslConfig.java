@@ -74,7 +74,6 @@ public class SslConfig {
 	 *         <code>false</code> otherwise.
 	 */
 	public boolean isKeepSslMode() {
-		boolean retVal = (this.keepSsl.equalsIgnoreCase("TRUE")) ? true : false;
-		return retVal;
+		return this.keepSsl.equalsIgnoreCase("TRUE");
 	}
 }

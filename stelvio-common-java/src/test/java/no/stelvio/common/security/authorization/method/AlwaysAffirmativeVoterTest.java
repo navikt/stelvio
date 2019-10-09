@@ -22,12 +22,10 @@ public class AlwaysAffirmativeVoterTest {
 
 	/**
 	 * Set up voter.
-	 * 
-	 * @throws Exception
-	 *             if error
+	 *
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		this.voter = new AlwaysAffirmativeVoter();
 	}
 
@@ -52,7 +50,7 @@ public class AlwaysAffirmativeVoterTest {
 	 */
 	@Test
 	public void testVote() {
-		assertEquals(AccessDecisionVoter.ACCESS_GRANTED, voter.vote(null, new Object(), new ArrayList<ConfigAttribute>()));
+		assertEquals(AccessDecisionVoter.ACCESS_GRANTED, voter.vote(null, new Object(), new ArrayList<>()));
 	}
 
 }

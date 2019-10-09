@@ -105,5 +105,5 @@ public interface SecurityContext {
 	/**
 	 * Return an attribute defined in the attributeMap or null
 	 */
-	public String getAttribute(String key);
+	String getAttribute(String key);
 }

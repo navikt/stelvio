@@ -4,12 +4,7 @@ import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.when;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.namespace.QName;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
-
-import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.common.context.support.RequestContextSetter;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -18,6 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StelvioContextHandlerTest {

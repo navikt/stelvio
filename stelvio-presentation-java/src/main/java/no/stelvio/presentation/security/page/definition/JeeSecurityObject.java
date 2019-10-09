@@ -324,8 +324,7 @@ public class JeeSecurityObject {
 			JeeRoles j2eeRoles = roles;
 			Iterator<JeeRole> rolesIterator = j2eeRoles.getRoles() != null ? j2eeRoles.getRoles().iterator() : null;
 
-			boolean concatenateRolesWithOR = j2eeRoles.getRoleConcatenationType() != Constants.J2EE_ROLE_CONCATINATION_AND ? true
-					: false;
+			boolean concatenateRolesWithOR = !Constants.J2EE_ROLE_CONCATINATION_AND.equals(j2eeRoles.getRoleConcatenationType());
 			SecurityContext context = SecurityContextHolder.currentSecurityContext();
 
 			while (rolesIterator != null && rolesIterator.hasNext()) {

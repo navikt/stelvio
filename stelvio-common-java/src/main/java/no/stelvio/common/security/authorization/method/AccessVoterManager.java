@@ -45,7 +45,7 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
 	 * 
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
-	public void afterPropertiesSet() throws Exception {
+	public void afterPropertiesSet() {
 		Assert.notNull(this.messages, "A message source must be set");
 	}
 
@@ -121,7 +121,7 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
 	 * @return <code>true</code> if the class is an <code>AccessDecisionVoter</code>.
 	 */
 	public boolean isAccessDecisionVoter(Class clazz) {
-		return AccessDecisionVoter.class.isAssignableFrom(clazz) ? true : false;
+		return AccessDecisionVoter.class.isAssignableFrom(clazz);
 	}
 
 	/**

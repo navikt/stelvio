@@ -163,11 +163,7 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 		}
 
 		AbstractCodesTableItem<K, V> castOther = cast(other);
-		if ((new EqualsBuilder().append(getCodeAsString(), castOther.getCodeAsString()).isEquals())) {
-			return (true);
-		}
-
-		return (false);
+		return (new EqualsBuilder().append(getCodeAsString(), castOther.getCodeAsString()).isEquals());
 	}
 
 	/**

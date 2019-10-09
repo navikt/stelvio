@@ -21,12 +21,10 @@ public class RolesUtilTest {
 
 	/**
 	 * Nothing to set up.
-	 * 
-	 * @throws Exception
-	 *             exception
-	 */
+	 *
+     */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 	}
 
 	/**

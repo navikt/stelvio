@@ -25,7 +25,7 @@ public enum TestCtiCode {
 	/** Test code for EMPTY_DECODE. */
 	EMPTY_DECODE,
 	/** Test code for OVERLAP_WITH_NULL. */
-	OVERLAP_WITH_NULL;
+	OVERLAP_WITH_NULL
 
 	// do someting like this to support lookup values as numbers or other illegal java variable names
 	// public TestCtiCode valueOf(String s) {

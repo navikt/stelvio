@@ -114,7 +114,7 @@ public class IllegalEnumCodeTest {
 		 *
 		 * @param realCode code
 		 */
-		private PostnrCode(String realCode) {
+		PostnrCode(String realCode) {
 			this.realCode = realCode;
 		}
 

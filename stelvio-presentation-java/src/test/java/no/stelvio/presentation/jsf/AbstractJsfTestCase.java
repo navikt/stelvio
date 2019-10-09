@@ -141,12 +141,10 @@ public abstract class AbstractJsfTestCase {
 
 	/**
 	 * Tear down instance variables required by this test case.
-	 * 
-	 * @throws Exception
-	 *             if an unexpected error occurs
+	 *
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 
 		application = null;
 		config = null;

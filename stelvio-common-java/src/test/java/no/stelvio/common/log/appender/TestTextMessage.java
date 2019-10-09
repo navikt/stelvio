@@ -14,7 +14,7 @@ import javax.jms.TextMessage;
  */
 public class TestTextMessage implements TextMessage {
 
-	private String text = null;
+	private String text;
 
 	/**
 	 * Constructs a TestTextMessage using the provided message.
@@ -29,7 +29,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.TextMessage#setText(java.lang.String)
 	 */
-	public void setText(String message) throws JMSException {
+	public void setText(String message) {
 		text = message;
 	}
 
@@ -37,7 +37,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.TextMessage#getText()
 	 */
-	public String getText() throws JMSException {
+	public String getText() {
 		return text;
 	}
 
@@ -45,7 +45,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSMessageID()
 	 */
-	public String getJMSMessageID() throws JMSException {
+	public String getJMSMessageID() {
 		return null;
 	}
 
@@ -53,14 +53,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSMessageID(java.lang.String)
 	 */
-	public void setJMSMessageID(String arg0) throws JMSException {
+	public void setJMSMessageID(String arg0) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSTimestamp()
 	 */
-	public long getJMSTimestamp() throws JMSException {
+	public long getJMSTimestamp() {
 		return 0;
 	}
 
@@ -68,14 +68,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSTimestamp(long)
 	 */
-	public void setJMSTimestamp(long arg0) throws JMSException {
+	public void setJMSTimestamp(long arg0) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSCorrelationIDAsBytes()
 	 */
-	public byte[] getJMSCorrelationIDAsBytes() throws JMSException {
+	public byte[] getJMSCorrelationIDAsBytes() {
 		return null;
 	}
 
@@ -83,21 +83,21 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSCorrelationIDAsBytes(byte[])
 	 */
-	public void setJMSCorrelationIDAsBytes(byte[] arg0) throws JMSException {
+	public void setJMSCorrelationIDAsBytes(byte[] arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSCorrelationID(java.lang.String)
 	 */
-	public void setJMSCorrelationID(String arg0) throws JMSException {
+	public void setJMSCorrelationID(String arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSCorrelationID()
 	 */
-	public String getJMSCorrelationID() throws JMSException {
+	public String getJMSCorrelationID() {
 		return null;
 	}
 
@@ -105,7 +105,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSReplyTo()
 	 */
-	public Destination getJMSReplyTo() throws JMSException {
+	public Destination getJMSReplyTo() {
 		return null;
 	}
 
@@ -113,14 +113,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSReplyTo(javax.jms.Destination)
 	 */
-	public void setJMSReplyTo(Destination arg0) throws JMSException {
+	public void setJMSReplyTo(Destination arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSDestination()
 	 */
-	public Destination getJMSDestination() throws JMSException {
+	public Destination getJMSDestination() {
 		return null;
 	}
 
@@ -128,14 +128,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSDestination(javax.jms.Destination)
 	 */
-	public void setJMSDestination(Destination arg0) throws JMSException {
+	public void setJMSDestination(Destination arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSDeliveryMode()
 	 */
-	public int getJMSDeliveryMode() throws JMSException {
+	public int getJMSDeliveryMode() {
 		return 0;
 	}
 
@@ -143,14 +143,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSDeliveryMode(int)
 	 */
-	public void setJMSDeliveryMode(int arg0) throws JMSException {
+	public void setJMSDeliveryMode(int arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSRedelivered()
 	 */
-	public boolean getJMSRedelivered() throws JMSException {
+	public boolean getJMSRedelivered() {
 		return false;
 	}
 
@@ -158,14 +158,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSRedelivered(boolean)
 	 */
-	public void setJMSRedelivered(boolean arg0) throws JMSException {
+	public void setJMSRedelivered(boolean arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSType()
 	 */
-	public String getJMSType() throws JMSException {
+	public String getJMSType() {
 		return null;
 	}
 
@@ -173,14 +173,14 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSType(java.lang.String)
 	 */
-	public void setJMSType(String arg0) throws JMSException {
+	public void setJMSType(String arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSExpiration()
 	 */
-	public long getJMSExpiration() throws JMSException {
+	public long getJMSExpiration() {
 		return 0;
 	}
 
@@ -188,16 +188,16 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSExpiration(long)
 	 */
-	public void setJMSExpiration(long arg0) throws JMSException {
+	public void setJMSExpiration(long arg0) {
 	}
 
     @Override
-    public long getJMSDeliveryTime() throws JMSException {
+    public long getJMSDeliveryTime() {
         return 0;
     }
 
     @Override
-    public void setJMSDeliveryTime(long l) throws JMSException {
+    public void setJMSDeliveryTime(long l) {
 
     }
 
@@ -205,7 +205,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getJMSPriority()
 	 */
-	public int getJMSPriority() throws JMSException {
+	public int getJMSPriority() {
 		return 0;
 	}
 
@@ -213,21 +213,21 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setJMSPriority(int)
 	 */
-	public void setJMSPriority(int arg0) throws JMSException {
+	public void setJMSPriority(int arg0) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#clearProperties()
 	 */
-	public void clearProperties() throws JMSException {
+	public void clearProperties() {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#propertyExists(java.lang.String)
 	 */
-	public boolean propertyExists(String arg0) throws JMSException {
+	public boolean propertyExists(String arg0) {
 		return false;
 	}
 
@@ -235,7 +235,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getBooleanProperty(java.lang.String)
 	 */
-	public boolean getBooleanProperty(String arg0) throws JMSException {
+	public boolean getBooleanProperty(String arg0) {
 		return false;
 	}
 
@@ -243,7 +243,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getByteProperty(java.lang.String)
 	 */
-	public byte getByteProperty(String arg0) throws JMSException {
+	public byte getByteProperty(String arg0) {
 		return 0;
 	}
 
@@ -251,7 +251,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getShortProperty(java.lang.String)
 	 */
-	public short getShortProperty(String arg0) throws JMSException {
+	public short getShortProperty(String arg0) {
 		return 0;
 	}
 
@@ -259,7 +259,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getIntProperty(java.lang.String)
 	 */
-	public int getIntProperty(String arg0) throws JMSException {
+	public int getIntProperty(String arg0) {
 		return 0;
 	}
 
@@ -267,7 +267,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getLongProperty(java.lang.String)
 	 */
-	public long getLongProperty(String arg0) throws JMSException {
+	public long getLongProperty(String arg0) {
 		return 0;
 	}
 
@@ -275,7 +275,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getFloatProperty(java.lang.String)
 	 */
-	public float getFloatProperty(String arg0) throws JMSException {
+	public float getFloatProperty(String arg0) {
 		return 0;
 	}
 
@@ -283,7 +283,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getDoubleProperty(java.lang.String)
 	 */
-	public double getDoubleProperty(String arg0) throws JMSException {
+	public double getDoubleProperty(String arg0) {
 		return 0;
 	}
 
@@ -291,7 +291,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getStringProperty(java.lang.String)
 	 */
-	public String getStringProperty(String arg0) throws JMSException {
+	public String getStringProperty(String arg0) {
 		return null;
 	}
 
@@ -299,7 +299,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getObjectProperty(java.lang.String)
 	 */
-	public Object getObjectProperty(String arg0) throws JMSException {
+	public Object getObjectProperty(String arg0) {
 		return null;
 	}
 
@@ -307,7 +307,7 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#getPropertyNames()
 	 */
-	public Enumeration getPropertyNames() throws JMSException {
+	public Enumeration getPropertyNames() {
 		return null;
 	}
 
@@ -315,86 +315,86 @@ public class TestTextMessage implements TextMessage {
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setBooleanProperty(java.lang.String, boolean)
 	 */
-	public void setBooleanProperty(String arg0, boolean arg1) throws JMSException {
+	public void setBooleanProperty(String arg0, boolean arg1) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setByteProperty(java.lang.String, byte)
 	 */
-	public void setByteProperty(String arg0, byte arg1) throws JMSException {
+	public void setByteProperty(String arg0, byte arg1) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setShortProperty(java.lang.String, short)
 	 */
-	public void setShortProperty(String arg0, short arg1) throws JMSException {
+	public void setShortProperty(String arg0, short arg1) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setIntProperty(java.lang.String, int)
 	 */
-	public void setIntProperty(String arg0, int arg1) throws JMSException {
+	public void setIntProperty(String arg0, int arg1) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setLongProperty(java.lang.String, long)
 	 */
-	public void setLongProperty(String arg0, long arg1) throws JMSException {
+	public void setLongProperty(String arg0, long arg1) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setFloatProperty(java.lang.String, float)
 	 */
-	public void setFloatProperty(String arg0, float arg1) throws JMSException {
+	public void setFloatProperty(String arg0, float arg1) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setDoubleProperty(java.lang.String, double)
 	 */
-	public void setDoubleProperty(String arg0, double arg1) throws JMSException {
+	public void setDoubleProperty(String arg0, double arg1) {
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setStringProperty(java.lang.String, java.lang.String)
 	 */
-	public void setStringProperty(String arg0, String arg1) throws JMSException {
+	public void setStringProperty(String arg0, String arg1) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#setObjectProperty(java.lang.String, java.lang.Object)
 	 */
-	public void setObjectProperty(String arg0, Object arg1) throws JMSException {
+	public void setObjectProperty(String arg0, Object arg1) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#acknowledge()
 	 */
-	public void acknowledge() throws JMSException {
+	public void acknowledge() {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.jms.Message#clearBody()
 	 */
-	public void clearBody() throws JMSException {
+	public void clearBody() {
     }
 
     @Override
-    public <T> T getBody(Class<T> aClass) throws JMSException {
+    public <T> T getBody(Class<T> aClass) {
         return null;
     }
 
     @Override
-    public boolean isBodyAssignableTo(Class aClass) throws JMSException {
+    public boolean isBodyAssignableTo(Class aClass) {
         return false;
     }
 }

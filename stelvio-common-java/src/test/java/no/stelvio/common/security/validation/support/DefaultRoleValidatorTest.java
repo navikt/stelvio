@@ -38,7 +38,7 @@ public class DefaultRoleValidatorTest {
 		public String getRoleName() {
 			return name();
 		}
-	};
+	}
 
 	/**
 	 * Roles for the test.
@@ -54,16 +54,14 @@ public class DefaultRoleValidatorTest {
 		public String getRoleName() {
 			return name();
 		}
-	};
+	}
 
 	/**
 	 * Set up validators for the tests.
-	 * 
-	 * @throws Exception
-	 *             exception
+	 *
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		validator = new DefaultRoleValidator(DefaultRoles.ROLE1, DefaultRoles.ROLE2);
 	}
 
@@ -86,7 +84,7 @@ public class DefaultRoleValidatorTest {
 	 */
 	@Test
 	public void setValidRolesListOfValidRole() {
-		List<ValidRole> validRoles = new ArrayList<ValidRole>();
+		List<ValidRole> validRoles = new ArrayList<>();
 		validRoles.add(DefaultRoles2.ROLE3);
 		validRoles.add(DefaultRoles2.ROLE4);
 		validator.setValidRoles(validRoles);

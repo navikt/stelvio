@@ -11,7 +11,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UISelectMany;
 import javax.faces.component.UISelectOne;
 import javax.faces.component.behavior.ClientBehavior;
-import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
@@ -19,14 +18,14 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
 
-import no.stelvio.presentation.jsf.model.SelectItemExtended;
-
 import org.apache.myfaces.renderkit.html.ext.HtmlMenuRenderer;
 import org.apache.myfaces.shared_tomahawk.component.EscapeCapable;
 import org.apache.myfaces.shared_tomahawk.renderkit.JSFAttr;
 import org.apache.myfaces.shared_tomahawk.renderkit.RendererUtils;
 import org.apache.myfaces.shared_tomahawk.renderkit.html.HTML;
 import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
+
+import no.stelvio.presentation.jsf.model.SelectItemExtended;
 
 /**
  * Renderer for SelectItemExtended

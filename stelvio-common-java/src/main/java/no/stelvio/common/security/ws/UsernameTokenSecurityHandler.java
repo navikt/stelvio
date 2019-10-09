@@ -9,6 +9,9 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPHeader;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * The UsernameSecurityHandler class extends the GenericHandler class to support Username token Security.
  * 
@@ -16,6 +19,7 @@ import javax.xml.soap.SOAPHeader;
  * @version $Id$
  */
 public class UsernameTokenSecurityHandler extends GenericHandler {
+	private static final Log LOG = LogFactory.getLog(UsernameTokenSecurityHandler.class);
 
 	/** Username configuration string. */
 	public static final String USERNAME_CONFIG_STRING = "userName";
@@ -35,10 +39,10 @@ public class UsernameTokenSecurityHandler extends GenericHandler {
 	@Override
 	public void init(HandlerInfo arg) {
 		info = arg;
-		System.out.println("UsernameSecurityHandler INIT");
+		LOG.debug("UsernameSecurityHandler INIT");
 		if (arg.getHandlerConfig().get(USERNAME_CONFIG_STRING) != null) {
 			serviceUsername = (String) arg.getHandlerConfig().get(USERNAME_CONFIG_STRING);
-			System.out.println("UsernameSecurityHandler using username " + serviceUsername);
+			LOG.debug("UsernameSecurityHandler using username " + serviceUsername);
 			servicePassword = (String) arg.getHandlerConfig().get(PASSWORD_CONFIG_STRING);
 		}
 	}

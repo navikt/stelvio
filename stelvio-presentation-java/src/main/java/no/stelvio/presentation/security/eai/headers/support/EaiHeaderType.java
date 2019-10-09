@@ -13,5 +13,5 @@ public enum EaiHeaderType {
 	/** PAC headers. */
 	PAC_HEADERS,
 	/** User identity headers. */
-	USER_IDENTITY_HEADERS;
+	USER_IDENTITY_HEADERS
 }

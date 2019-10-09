@@ -70,21 +70,19 @@ public class MockTransactionTemplateTest {
 
 	/**
 	 * Set up transaction template.
-	 * 
-	 * @throws Exception if creating template fails.
-	 */
+	 *
+     */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		mockTransactionTemplate = new MockTransactionTemplate();
 	}
 
 	/**
 	 * Verify template on tear down.
-	 * 
-	 * @throws Exception if something is wrong with template.
-	 */
+	 *
+     */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		mockTransactionTemplate.verify();
 	}
 }

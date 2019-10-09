@@ -46,7 +46,7 @@ public abstract class AbstractMockFilterChain implements FilterChain {
 	 * @throws ServletException
 	 *             servlet exception
 	 */
-	public void doFilter(ServletRequest arg0, ServletResponse arg1) throws IOException, ServletException {
+	public void doFilter(ServletRequest arg0, ServletResponse arg1) {
 		this.request = arg0;
 		this.response = arg1;
 		assertion();

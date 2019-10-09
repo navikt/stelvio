@@ -23,7 +23,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.QueueSender#getQueue()
 	 */
-	public Queue getQueue() throws JMSException {
+	public Queue getQueue() {
 		return null;
 	}
 
@@ -81,7 +81,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#setDisableMessageID(boolean)
 	 */
-	public void setDisableMessageID(boolean arg0) throws JMSException {
+	public void setDisableMessageID(boolean arg0) {
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#getDisableMessageID()
 	 */
-	public boolean getDisableMessageID() throws JMSException {
+	public boolean getDisableMessageID() {
 		return false;
 	}
 
@@ -98,7 +98,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#setDisableMessageTimestamp(boolean)
 	 */
-	public void setDisableMessageTimestamp(boolean arg0) throws JMSException {
+	public void setDisableMessageTimestamp(boolean arg0) {
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#getDisableMessageTimestamp()
 	 */
-	public boolean getDisableMessageTimestamp() throws JMSException {
+	public boolean getDisableMessageTimestamp() {
 		return false;
 	}
 
@@ -115,7 +115,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#setDeliveryMode(int)
 	 */
-	public void setDeliveryMode(int arg0) throws JMSException {
+	public void setDeliveryMode(int arg0) {
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#getDeliveryMode()
 	 */
-	public int getDeliveryMode() throws JMSException {
+	public int getDeliveryMode() {
 		return 0;
 	}
 
@@ -132,7 +132,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#setPriority(int)
 	 */
-	public void setPriority(int arg0) throws JMSException {
+	public void setPriority(int arg0) {
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#getPriority()
 	 */
-	public int getPriority() throws JMSException {
+	public int getPriority() {
 		return 0;
 	}
 
@@ -149,7 +149,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#setTimeToLive(long)
 	 */
-	public void setTimeToLive(long arg0) throws JMSException {
+	public void setTimeToLive(long arg0) {
 	}
 
 	/**
@@ -157,17 +157,17 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#getTimeToLive()
 	 */
-	public long getTimeToLive() throws JMSException {
+	public long getTimeToLive() {
 		return 0;
 	}
 
     @Override
-    public void setDeliveryDelay(long l) throws JMSException {
+    public void setDeliveryDelay(long l) {
 
     }
 
     @Override
-    public long getDeliveryDelay() throws JMSException {
+    public long getDeliveryDelay() {
         return 0;
     }
 
@@ -176,7 +176,7 @@ public class TestQueueSender implements QueueSender {
 	 * 
 	 * @see javax.jms.MessageProducer#close()
 	 */
-	public void close() throws JMSException {
+	public void close() {
 	}
 
 	/**
@@ -210,39 +210,39 @@ public class TestQueueSender implements QueueSender {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Destination getDestination() throws JMSException {
+	public Destination getDestination() {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void send(Destination arg0, Message arg1) throws JMSException {
+	public void send(Destination arg0, Message arg1) {
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void send(Destination arg0, Message arg1, int arg2, int arg3, long arg4) throws JMSException {
+	public void send(Destination arg0, Message arg1, int arg2, int arg3, long arg4) {
 	}
 
     @Override
-    public void send(Message message, CompletionListener completionListener) throws JMSException {
+    public void send(Message message, CompletionListener completionListener) {
 
     }
 
     @Override
-    public void send(Message message, int i, int i1, long l, CompletionListener completionListener) throws JMSException {
+    public void send(Message message, int i, int i1, long l, CompletionListener completionListener) {
 
     }
 
     @Override
-    public void send(Destination destination, Message message, CompletionListener completionListener) throws JMSException {
+    public void send(Destination destination, Message message, CompletionListener completionListener) {
 
     }
 
     @Override
-    public void send(Destination destination, Message message, int i, int i1, long l, CompletionListener completionListener) throws JMSException {
+    public void send(Destination destination, Message message, int i, int i1, long l, CompletionListener completionListener) {
 
     }
 }

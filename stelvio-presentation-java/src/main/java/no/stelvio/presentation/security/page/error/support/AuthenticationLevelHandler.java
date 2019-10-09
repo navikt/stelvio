@@ -89,7 +89,7 @@ public class AuthenticationLevelHandler {
 
 		for (int i = endIndex; i > 0; i--) {
 			String levelRole = authenticationLevels.getProperty(i + "");
-			if (levelRole != null && role.equalsIgnoreCase(levelRole)) {
+			if (role.equalsIgnoreCase(levelRole)) {
 				return i;
 			}
 		}
