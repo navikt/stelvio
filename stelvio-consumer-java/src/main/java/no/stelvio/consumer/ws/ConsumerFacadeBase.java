@@ -26,7 +26,10 @@ import no.stelvio.common.security.ws.UsernameTokenSecurityHandler;
  * @author $Author$
  * @version $Id$
  * @param <T> The service type
+ *
+ * @deprecated Use plain CXF, Spring or the like instead (non-IBM specific).
  */
+@Deprecated
 public abstract class ConsumerFacadeBase<T> {
 
 	private Class<? extends AgnosticService> serviceLocatorClass;
