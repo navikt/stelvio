@@ -21,7 +21,10 @@ import no.stelvio.common.context.RequestContextHolder;
  * Handler for the ConsumerContext when working with JAX-RPC. For JAX-WS, see JaxWsConsumerContextHandler.
  * 
  * @author lschnell
+ *
+ * @deprecated see {@link ConsumerFacadeBase}
  */
+@Deprecated
 public class ConsumerContextHandler extends GenericHandler {
 
 	/** Logger for this class. */
