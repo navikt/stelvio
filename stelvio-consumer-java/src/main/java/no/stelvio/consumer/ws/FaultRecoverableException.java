@@ -3,8 +3,8 @@ package no.stelvio.consumer.ws;
 import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import no.stelvio.common.error.FunctionalRecoverableException;
 
@@ -26,7 +26,7 @@ public abstract class FaultRecoverableException extends FunctionalRecoverableExc
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Log LOG = LogFactory.getLog(FaultRecoverableException.class);
+	private static final Logger LOG = LoggerFactory.getLogger(FaultRecoverableException.class);
 
 	private String errorMessage;
 

@@ -420,7 +420,7 @@ public class SecurityHeader {
 	public static String decode(String password) {
 		String crypt = password.substring(1, 4);
 		if (crypt.equalsIgnoreCase("xor")) {
-			String codedPass = password.substring(5, password.length());
+			String codedPass = password.substring(5);
 			byte[] decryptedBytes = xor(convertViewableToBytes(codedPass));
 			return convertToString(decryptedBytes);
 		} else {

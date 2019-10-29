@@ -4,6 +4,7 @@ import javax.security.auth.Subject;
 import javax.security.auth.login.CredentialExpiredException;
 
 import com.ibm.websphere.security.WSSecurityException;
+import com.ibm.websphere.security.auth.CredentialDestroyedException;
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
 
@@ -52,6 +53,8 @@ public final class WSCustomSubject {
 		} catch (CredentialExpiredException e) {
 			throw new WSSubjectSecurityException(
 					"A CredentialExpiredException occurred when getting the securityname from the WSCredential.", e);
+		} catch (CredentialDestroyedException e) {
+			throw new WSSubjectSecurityException("A CredentialDestroyedException occurred when getting the WSCredential.", e);
 		} catch (WSSecurityException e) {
 			throw new WSSubjectSecurityException("A WSSecurityException occurred when getting the WSCredential.", e);
 		}
@@ -87,6 +90,9 @@ public final class WSCustomSubject {
 			throw new WSSubjectSecurityException("A WSSecurityException occurred when getting the Subject from WSSubject.", e);
 		} catch (CredentialExpiredException e) {
 			throw new WSSubjectSecurityException("A CredentialExpiredException occurred when getting the" + AUTHORIZED_AS
+					+ " attribute from the WSCredential.", e);
+		} catch (CredentialDestroyedException e) {
+			throw new WSSubjectSecurityException("A CredentialDestroyedException occurred when getting the" + AUTHORIZED_AS
 					+ " attribute from the WSCredential.", e);
 		}
 	}

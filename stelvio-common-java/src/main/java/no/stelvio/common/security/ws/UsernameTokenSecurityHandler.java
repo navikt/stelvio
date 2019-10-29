@@ -1,65 +1,65 @@
 package no.stelvio.common.security.ws;
 
+import java.util.Collections;
+import java.util.Set;
+
 import javax.xml.namespace.QName;
-import javax.xml.rpc.handler.GenericHandler;
-import javax.xml.rpc.handler.HandlerInfo;
-import javax.xml.rpc.handler.MessageContext;
-import javax.xml.rpc.handler.soap.SOAPMessageContext;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
+import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPHeader;
+import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.handler.soap.SOAPHandler;
+import javax.xml.ws.handler.soap.SOAPMessageContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * The UsernameSecurityHandler class extends the GenericHandler class to support Username token Security.
- * 
- * @author $Author$
- * @version $Id$
+ * The UsernameSecurityHandler class extends the SOAPHandler class to support Username token Security.
  */
-public class UsernameTokenSecurityHandler extends GenericHandler {
+public class UsernameTokenSecurityHandler implements SOAPHandler<SOAPMessageContext> {
 	private static final Log LOG = LogFactory.getLog(UsernameTokenSecurityHandler.class);
 
-	/** Username configuration string. */
-	public static final String USERNAME_CONFIG_STRING = "userName";
+	private static final Set<QName> PROCESSED_HEADERS_QNAME = Collections.unmodifiableSet(
+			Collections.singleton(new QName("http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd", "Security")));
 
-	/** Password configuration string. */
-	public static final String PASSWORD_CONFIG_STRING = "password";
+	private final String serviceUsername;
+	private final String servicePassword;
 
-	private HandlerInfo info = null;
-	private String serviceUsername = null;
-	private String servicePassword = null;
-
-	@Override
-	public QName[] getHeaders() {
-		return info.getHeaders();
+	public UsernameTokenSecurityHandler(String serviceUsername, String servicePassword) {
+		this.serviceUsername = serviceUsername;
+		this.servicePassword = servicePassword;
 	}
 
 	@Override
-	public void init(HandlerInfo arg) {
-		info = arg;
-		LOG.debug("UsernameSecurityHandler INIT");
-		if (arg.getHandlerConfig().get(USERNAME_CONFIG_STRING) != null) {
-			serviceUsername = (String) arg.getHandlerConfig().get(USERNAME_CONFIG_STRING);
-			LOG.debug("UsernameSecurityHandler using username " + serviceUsername);
-			servicePassword = (String) arg.getHandlerConfig().get(PASSWORD_CONFIG_STRING);
-		}
+	public Set<QName> getHeaders() {
+		return PROCESSED_HEADERS_QNAME;
 	}
 
 	@Override
-	public boolean handleRequest(MessageContext context) {
+	public boolean handleMessage(SOAPMessageContext smc) {
 		try {
-			SOAPMessageContext smc = (SOAPMessageContext) context;
 			SOAPEnvelope se = smc.getMessage().getSOAPPart().getEnvelope();
 			SOAPHeader sh = se.getHeader();
 			SOAPElement usernameHeader = SecurityHeader.createBasicAuth(serviceUsername, servicePassword);
 			if (usernameHeader != null) {
 				sh.addChildElement(usernameHeader);
 			}
-		} catch (Exception x) {
+		} catch (SOAPException x) {
+			LOG.error("Error creating basic auth SOAP header");
 			throw new RuntimeException("Error while adding Username Token header " + x.getMessage(), x);
 		}
 		return true;
+	}
+
+	@Override
+	public boolean handleFault(SOAPMessageContext smc) {
+		return false;
+	}
+
+	@Override
+	public void close(MessageContext context) {
+		// NOOP
 	}
 }
