@@ -1,7 +1,6 @@
 package no.stelvio.common.security.ws;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Iterator;
 import java.util.Set;
@@ -16,7 +15,7 @@ import javax.xml.soap.SOAPFactory;
 
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.auth.callback.WSCallbackHandlerImpl;
-import com.ibm.websphere.security.cred.WSCredential;
+import com.ibm.wsspi.security.token.SingleSignonToken;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -93,6 +92,7 @@ public class SecurityHeader {
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Creates LPTA header with no username and password arguments");
 		}
+
 		byte[] token = getSecurityToken();
 		if (token == null) {
 			return null;
@@ -111,7 +111,7 @@ public class SecurityHeader {
 	private static SOAPElement createLTPAHeaderFromToken(byte[] token) {
 		// Now try to build the header
 
-		SOAPElement header = null;
+		SOAPElement header;
 		try {
 			SOAPFactory sFactory = SOAPFactory.newInstance();
 
@@ -122,7 +122,6 @@ public class SecurityHeader {
 			Name binaryTokenName = sFactory.createName("BinarySecurityToken", WSSE, SECURITY_URL);
 
 			SOAPElement binaryToken = sFactory.createElement(binaryTokenName);
-			header.addChildElement(binaryToken);
 
 			// Populate token
 			binaryToken.addNamespaceDeclaration(LTPA_NS, LTPA_URL);
@@ -131,6 +130,7 @@ public class SecurityHeader {
 			String stoken = Base64.getEncoder().encodeToString(token);
 			binaryToken.addTextNode(stoken);
 
+			header.addChildElement(binaryToken);
 		} catch (Exception e) {
 			throw new RuntimeException("Error building LTPA security header", e);
 		}
@@ -286,24 +286,24 @@ public class SecurityHeader {
 	 */
 	public static byte[] getSecurityToken() {
 		byte[] token = null;
+
 		try {
 			// Get current security subject
 			Subject securitySubject = WSSubject.getRunAsSubject();
 			if (securitySubject != null) {
-				// Get all security credentials from the security subject
-				Set<WSCredential> securityCredentials = securitySubject.getPublicCredentials(WSCredential.class);
-				
+				Set<SingleSignonToken> ssoTokens = securitySubject.getPrivateCredentials(SingleSignonToken.class);
+
 				if (LOG.isDebugEnabled()) {
-					LOG.debug("Number of securityCredentials: " + securityCredentials.size());
+					LOG.debug("Number of ssoTokens: " + ssoTokens.size());
 				}
 				// Get the first credential
+                SingleSignonToken ssoToken = ssoTokens.stream()
+                                .filter(t -> "LtpaToken".equals(t.getName()))
+                                .findFirst()
+                                .orElseThrow(() -> new IllegalArgumentException("No LtpaToken found!"));
+				token = ssoToken.getBytes();
 
-				WSCredential securityCredential = securityCredentials.iterator().next();
-				String user = securityCredential.getSecurityName();
-				// Get the security token
-				token = securityCredential.getCredentialToken();
 				if (LOG.isDebugEnabled()) {
-					LOG.debug("Security name: " + user + " Token: " + Arrays.toString(token));
 					if (token != null ) {
 						if (token.length == 0) {
 							LOG.debug("The token byte array is empty");
