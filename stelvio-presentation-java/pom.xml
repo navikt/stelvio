@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 	<name>stelvio - presentation</name>
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>
