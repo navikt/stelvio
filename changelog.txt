@@ -2,6 +2,10 @@ STELVIO CHANGELOG
 =================
 https://confluence.adeo.no/display/stelvio/Application+Framework+-+Change+Log
 
+Version 5.0.11
+----------------------------------
+PL-1005: Updated Spring Batch to 3.0.10
+
 Version 5.0.10
 ----------------------------------
 PL-997: Updated Spring to 4.3.25
