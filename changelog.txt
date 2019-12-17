@@ -2,6 +2,10 @@ STELVIO CHANGELOG
 =================
 https://confluence.adeo.no/display/stelvio/Application+Framework+-+Change+Log
 
+Version 5.0.10
+----------------------------------
+PL-997: Updated Spring to 4.3.25
+
 Version 5.0.7
 ----------------------------------
 PEN-16617: Revert
