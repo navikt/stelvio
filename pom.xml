@@ -883,7 +883,7 @@
         <spring.version>4.3.25.RELEASE</spring.version>
         <spring-batch.version>3.0.10.RELEASE</spring-batch.version>
         <spring-security.version>3.2.9.RELEASE</spring-security.version>
-        <swf.version>2.3.4.RELEASE</swf.version>
+        <swf.version>2.4.8.RELEASE</swf.version>
         <tomahawk.version>1.1.14</tomahawk.version>
         <openliberty.version>19.0.0.10</openliberty.version>
         <xerces.version>2.6.0</xerces.version>
