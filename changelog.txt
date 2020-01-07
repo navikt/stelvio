@@ -2,6 +2,10 @@ STELVIO CHANGELOG
 =================
 https://confluence.adeo.no/display/stelvio/Application+Framework+-+Change+Log
 
+Version 5.0.12
+----------------------------------
+PL-1012: Updated Spring Web Flow to 2.4.8
+
 Version 5.0.11
 ----------------------------------
 PL-1005: Updated Spring Batch to 3.0.10
