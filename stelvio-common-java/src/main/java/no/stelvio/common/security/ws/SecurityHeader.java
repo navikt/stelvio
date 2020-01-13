@@ -168,7 +168,6 @@ public class SecurityHeader {
 			// Create and add userName token Element
 			Name userTokenName = sFactory.createName("UsernameToken", WSSE, SECURITY_URL);
 			SOAPElement userToken = sFactory.createElement(userTokenName);
-			header.addChildElement(userToken);
 
 			// Populate token
 
@@ -184,6 +183,8 @@ public class SecurityHeader {
 
 			userToken.addChildElement(userElement);
 			userToken.addChildElement(passwordElement);
+
+			header.addChildElement(userToken);
 		} catch (Exception e) {
 			LOG.error("Error building Basic Auth security header", e);
 		}
