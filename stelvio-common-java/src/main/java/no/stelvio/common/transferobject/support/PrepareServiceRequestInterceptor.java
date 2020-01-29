@@ -113,11 +113,11 @@ public class PrepareServiceRequestInterceptor implements MethodInterceptor, Orde
      */
     protected void setRequestContextOn(ServiceRequest serviceRequest) {
         if (serviceRequest != null) {
-            log.info("RequestContext is being copied from RequestContextHolder to serviceRequest");
+            log.debug("RequestContext is being copied from RequestContextHolder to serviceRequest");
             ReflectUtil.setFieldOnInstance(serviceRequest, "requestContext", RequestContextHolder.currentRequestContext());
-            log.info("RequestContext was successfully copied onto ServiceRequest");
+            log.debug("RequestContext was successfully copied onto ServiceRequest");
         } else {
-            log.info("ServiceRequest is null, nothing to copy RequestContext to");
+            log.debug("ServiceRequest is null, nothing to copy RequestContext to");
         }
     }
 
