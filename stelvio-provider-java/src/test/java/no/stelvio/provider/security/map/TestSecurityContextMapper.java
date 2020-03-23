@@ -19,7 +19,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Test class for SecurityContextMapper.
  * 
- * @author MA
  */
 public class TestSecurityContextMapper {
 

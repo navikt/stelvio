@@ -8,7 +8,6 @@ import org.springframework.mock.web.MockServletContext;
 /**
  * Unit test for {@link ServletContextAttributeSetter}.
  *
- * @author personf8e9850ed756
  * @version $Id$
  */
 public class ServletContextAttributeSetterTest extends TestCase {

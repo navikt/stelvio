@@ -38,8 +38,7 @@ import org.springframework.context.ApplicationContextAware;
  * @see no.stelvio.presentation.context.RequestContextFilter sets the requestcontext for web applications
  * @see no.stelvio.batch.context.support.BatchInitRequestContextInterceptor
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public abstract class AbstractInitRequestContextInterceptor implements MethodInterceptor, ApplicationContextAware {
 

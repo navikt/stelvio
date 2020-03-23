@@ -9,8 +9,7 @@ import org.junit.Test;
 /**
  * Test is placed in provider layer, as it must be run in a Java 5.0 VM.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class ImitatorDtoExceptionTest {
 

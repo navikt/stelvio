@@ -17,7 +17,6 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.test.MetaDataInstanceFactory;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class ProgressNotifierTest {

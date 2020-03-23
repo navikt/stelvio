@@ -17,8 +17,7 @@ import java.util.Collection;
 /**
  * Test class for AfterInvocationProviderManager.
  * 
- * @author ??
- * 
+ *
  */
 public class AfterInvocationProviderManagerTest {
 

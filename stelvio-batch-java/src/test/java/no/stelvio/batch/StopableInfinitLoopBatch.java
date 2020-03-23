@@ -9,7 +9,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Implements a stopable infinit loop batch.
  * 
- * @author MA
  *
  */
 public class StopableInfinitLoopBatch extends AbstractBatch {

@@ -3,7 +3,6 @@ package no.stelvio.common.dummy;
 /**
  * Dummy bean for testing.
  * 
- * @author persone5d69f3729a8, Accenture
  * @version $Id: BeanOther.java 2361 2005-06-23 12:39:43Z jrd2920 $
  */
 public class BeanOther {

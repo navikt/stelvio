@@ -15,9 +15,6 @@ import no.stelvio.common.util.DateUtil;
 /**
  * Implementation of CodesTablePeriodic for retrieving <code>CodesTable</code>s that has defined a period of validity.
  * 
- * @author personb66fa0b5ff6e, Accenture
- * @author person983601e0e117, Accenture
- * @author person19fa65691a36, Accenture
  * @version $Id$
  * 
  * @param <T>

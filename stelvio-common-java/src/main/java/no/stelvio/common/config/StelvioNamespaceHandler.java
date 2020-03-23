@@ -7,7 +7,6 @@ import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 /**
  * Stelvio namespace handler.
  * 
- * @author person983601e0e117 (Accenture)
  */
 public class StelvioNamespaceHandler extends NamespaceHandlerSupport {
 

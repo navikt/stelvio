@@ -7,7 +7,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * Abstract base class for <code>CodeTableItemDto</code>.
  * 
- * @author person47c121e3ccb5, BEKK
  * @version $Id$
  */
 public abstract class AbstractCodesTableItemDto implements Serializable {

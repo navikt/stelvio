@@ -10,7 +10,6 @@ import no.stelvio.presentation.binding.context.MessageContextUtil;
  * DoubleRangeValidator validates whether the specified parameter is a valid number range If invalid sets an error message on
  * FacesContext. DoubleRangeValidator is a modified copy of javax.faces.validator.DoubleRangeValidator
  * 
- * @author person10cbe95feeae (Bouvet)
  * @version $Id$
  */
 public class DoubleRangeValidator extends AbstractFieldNameValidator {

@@ -12,7 +12,6 @@ import org.apache.commons.collections.Predicate;
  * Interface defining functionality for retrieving a codetable's items or an item's decode. It is also possible to add
  * predicates to filter the items in the codestable.
  * 
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  * @param <T>
  *            <code>AbstractCodesTableItem</code>'s or subclasses of <code>AbstractCodesTableItem</code> that the

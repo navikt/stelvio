@@ -26,7 +26,6 @@ import org.apache.commons.logging.LogFactory;
  * 
  * In code uniquely identified by the combination of batchname and slice.
  * 
- * @author person356941106810 (Accenture)
  * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $
  */
 @Entity

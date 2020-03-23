@@ -16,7 +16,6 @@ import org.junit.Test;
 /**
  * Class CodesTableItemOutputTextTest tests the CodesTableItemOutputText.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class CodesTableItemOutputTextTest {

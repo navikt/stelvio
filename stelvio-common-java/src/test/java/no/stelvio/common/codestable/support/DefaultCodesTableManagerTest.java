@@ -37,7 +37,6 @@ import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 /**
  * Unit test for {@link DefaultCodesTableManager}.
  * 
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 

@@ -14,7 +14,6 @@ import org.junit.Test;
 /**
  * OrganisasjonsnummerValidatorTest.
  * 
- * @author person37c6059e407e (Capgemini)
  * @version $Id$
  * 
  */

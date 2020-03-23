@@ -5,7 +5,6 @@ import java.io.Serializable;
 /**
  * Authentication level change request.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class AuthenticationLevelChangeRequest implements Serializable {

@@ -17,7 +17,6 @@ import org.jmock.integration.junit4.JUnit4Mockery;
  * This class is not a test of {@link AbstractCodesTableItemConverter}, but rather contains common test facilities for its
  * subclasses.
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public abstract class AbstractCodesTableItemConverterTest {
 

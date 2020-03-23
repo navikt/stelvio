@@ -16,8 +16,7 @@ import no.stelvio.common.ejb.access.StelvioRemoteStatelessSessionProxyFactoryBea
 
 /**
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class StelvioRemoteStatelessSessionBeanDefinitionParser extends AbstractSimpleBeanDefinitionParser {
 

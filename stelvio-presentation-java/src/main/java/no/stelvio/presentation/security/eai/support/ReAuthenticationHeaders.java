@@ -9,7 +9,6 @@ import no.stelvio.presentation.security.eai.headers.support.UserIdentityHeaders;
  * A class representing the headers that should be sent to IBM Tivoli Access Manager Webseal when reauthenticating as another
  * user with a certain authorization type.
  * 
- * @author persondab2f89862d3, Accenture
  * @see UserIdentityHeaders
  */
 public class ReAuthenticationHeaders extends UserIdentityHeaders {

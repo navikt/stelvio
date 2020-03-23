@@ -10,7 +10,6 @@ import javax.faces.convert.ConverterException;
 /**
  * Calendar converter.
  * 
- * @author persond3cb2ee15f42
  */
 public class CalendarConverter implements Converter {
 

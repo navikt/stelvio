@@ -5,8 +5,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * Thrown to indicate that a method has been passed an invalid/illegal or inappropriate argument.
  * 
- * @author personf8e9850ed756
- * @author person6045563b8dec
  */
 public class InvalidArgumentException extends FunctionalUnrecoverableException {
 	private static final long serialVersionUID = 123345612346L;

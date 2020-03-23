@@ -8,7 +8,6 @@ import no.stelvio.common.util.ReflectUtil;
 /**
  * CodesTableItems for testing.
  * 
- * @author personb66fa0b5ff6e 
  * @version $Id$
  */
 @Entity

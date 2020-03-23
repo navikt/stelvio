@@ -15,7 +15,6 @@ import org.junit.Test;
 /**
  * MessagesFixSourcePhaseListenerTest.
  * 
- * @author AW
  *
  */
 public class MessagesFixSourcePhaseListenerTest {

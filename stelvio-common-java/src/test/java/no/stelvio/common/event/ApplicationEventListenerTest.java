@@ -5,7 +5,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link ApplicationEventListener}.
  *
- * @author personf8e9850ed756
  */
 public abstract class ApplicationEventListenerTest {
 	/**

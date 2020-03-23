@@ -14,8 +14,6 @@ import org.junit.Test;
 /**
  * Test for configuration exceptions. Tests configurations exceptions in common config.
  * 
- * @author person983601e0e117
- * @author person15754a4522e7
  */
 public class ConfigurationExceptionsTest {
 

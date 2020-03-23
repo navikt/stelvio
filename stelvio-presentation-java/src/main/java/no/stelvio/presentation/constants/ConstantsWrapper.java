@@ -6,7 +6,6 @@ import java.util.Map;
  * Wrapper class for handling constants in the presentation layer. Provides
  * functionality to extract constants from a given class as a map.
  * 
- * @author person6045563b8dec, Accenture
  * @version $Id$
  *
  */

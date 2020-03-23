@@ -17,8 +17,7 @@ import org.junit.Test;
 /**
  * Test class for CodeNumericComparator, a comparator for sorting CodesTableItems with numeric code values.
  * 
- * @author person6045563b8dec, Accenture
- * 
+ *
  */
 public class CodeNumericComparatorTest {
 

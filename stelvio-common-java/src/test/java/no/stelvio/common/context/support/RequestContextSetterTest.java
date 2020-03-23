@@ -9,8 +9,7 @@ import org.junit.Test;
 /**
  * Test class for RequestContextSetter.
  * 
- * @author ??
- * 
+ *
  */
 public class RequestContextSetterTest {
 

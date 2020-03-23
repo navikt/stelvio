@@ -5,7 +5,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link CodesTableNotFoundException}.
  *
- * @author personf8e9850ed756
  */
 public class CodesTableNotFoundExceptionTest {
     

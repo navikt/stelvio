@@ -8,7 +8,6 @@ import org.apache.commons.beanutils.Converter;
 /**
  * This class will be configured to load all nessesary Converter classes to be used with Apache BeanUtils.
  * 
- * @author person5b7fd84b3197, Accenture
  */
 public class ConverterLoader {
 

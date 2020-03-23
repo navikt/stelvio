@@ -12,7 +12,6 @@ public class DummyBatchWithInputParameters extends AbstractBatch{
 	 * Implements a batch that can take input parameters to specify how long the batch should run, and 
 	 * which exit code should be returned.  The timeToRun is approximate.  
 	 * 
-	 * @author person4fdbf4cece95
 	 *
 	 */
 

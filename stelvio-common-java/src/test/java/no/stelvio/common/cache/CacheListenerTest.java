@@ -26,8 +26,6 @@ import no.stelvio.common.cache.support.DefaultCacheEventListener;
  * The purpose of this test is to verify the configuration of cache interceptors.
  * The test class also uses this interceptor to verify the general cache configuration
  * 
- * @author person983601e0e117 (Accenture)
- * @author person5dc3535ea7f4 (Accenture)
  */
 @ContextConfiguration(locations = { "classpath:test-cachelistener-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)

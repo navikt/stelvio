@@ -5,8 +5,7 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * To be wrapped by AOP in unittest.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class ExceptionThrower {
 

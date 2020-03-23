@@ -16,8 +16,6 @@ import org.springframework.beans.factory.InitializingBean;
  * Simple factory for an error resolver. Allows for the the classes needing the error resolver not having to worry about
  * creating it; they just need to setup a dependency to a definition of this class.
  * 
- * @author personf8e9850ed756
- * @author person983601e0e117
  */
 public class ErrorDefinitionResolverFactoryBean implements FactoryBean, InitializingBean {
 	private ErrorDefinitionRetriever errorDefinitionRetriever;

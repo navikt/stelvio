@@ -7,7 +7,6 @@ import no.stelvio.domain.time.ChangeStamp;
 /**
  * A dummy batch implementation.
  * 
- * @author MA
  *
  */
 public class DummyBatchImplementation extends AbstractBatch {

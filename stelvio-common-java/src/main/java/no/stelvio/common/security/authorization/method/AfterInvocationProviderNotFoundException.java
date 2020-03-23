@@ -5,7 +5,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Exception thrown if creating an <code>AfterInvocationProvider</code> from a configuration attribute fails.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class AfterInvocationProviderNotFoundException extends SecurityException {
 

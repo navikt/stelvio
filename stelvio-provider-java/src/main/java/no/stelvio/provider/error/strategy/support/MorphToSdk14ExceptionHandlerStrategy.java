@@ -11,8 +11,7 @@ import no.stelvio.dto.exception.UnrecoverableDtoException;
 /**
  * Morpher for use in the provider layer to convert from Java 5.0 SE code to Java 1.4 SE.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class MorphToSdk14ExceptionHandlerStrategy extends AbstractOrderedExceptionHandlerStrategy {
 

@@ -6,7 +6,6 @@ import no.stelvio.common.error.SystemUnrecoverableException;
  * Thrown to indicate that an error has occurred when invoking the com.ibm.websphere.security.auth.WSSubject class from a
  * Stelvio component.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class WSSubjectSecurityException extends SystemUnrecoverableException {
 

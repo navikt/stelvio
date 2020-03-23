@@ -18,7 +18,6 @@ import no.stelvio.common.security.ws.WSCustomSubject;
  * A servlet filter which inherits the AbstractSecurityContextFilter and implements the populateSecurityContext() method. The
  * SecurityContext is populated with attributes from the <code>WSCustomSubject</code> class.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id: WSCustomSecurityContextFilter.java $
  * @see AbstractSecurityContextFilter
  * @see WSCustomSubject

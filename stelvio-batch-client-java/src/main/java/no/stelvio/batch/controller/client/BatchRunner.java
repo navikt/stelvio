@@ -5,8 +5,7 @@ import no.stelvio.batch.controller.BatchControllerServiceBi;
 /**
  * Interface for starting standalone batch.
  * 
- * @author persond9e847e67144, NAV
- * 
+ *
  * @version $Id$
  */
 public interface BatchRunner {

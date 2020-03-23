@@ -10,7 +10,6 @@ import no.stelvio.presentation.binding.context.MessageContextUtil;
  * OrganisasjonsnummerValidator validates whether the specified parameter is a valid organization number, and if invalid sets an
  * error message on FacesContext.
  * 
- * @author person37c6059e407e (Capgmeini)
  * @version $Id$
  * 
  */

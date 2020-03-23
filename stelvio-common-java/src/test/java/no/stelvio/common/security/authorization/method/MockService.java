@@ -5,8 +5,7 @@ import org.springframework.security.access.annotation.Secured;
 /**
  * Mock service.
  * 
- * @author ??
- * 
+ *
  */
 @Secured({ "Id1" })
 @Roles({ "ROLE_ALL" })

@@ -14,7 +14,6 @@ import no.stelvio.presentation.security.eai.AuthenticationFailureException;
  * A class used to reauthenticate the user to act as another user with a certain authorization type when not in an environment
  * with IBM Tivoli Access Manager Webseal.
  * 
- * @author persondab2f89862d3, Accenture
  * @see ReAuthentication
  */
 public class ReAuthenticationWithoutWebSeal extends ReAuthentication {

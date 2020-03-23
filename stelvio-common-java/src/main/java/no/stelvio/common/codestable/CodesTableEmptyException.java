@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown to indicate that a codes table has no items.
  * 
- * @author personf8e9850ed756, Accenture
  */
 public class CodesTableEmptyException extends FunctionalUnrecoverableException {
 

@@ -10,7 +10,6 @@ import javax.faces.convert.ConverterException;
 /**
  * <code>CalendarToTimeConverter</code> gets the time (hh.mm.ss) from a <code>Calendar</code> instance.
  * 
- * @author personedfee2afc85c
  */
 public class CalendarToTimeConverter implements Converter {
 

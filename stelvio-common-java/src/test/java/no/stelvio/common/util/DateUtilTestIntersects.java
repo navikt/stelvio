@@ -27,8 +27,7 @@ import org.junit.Test;
  *               |------| 7 Special case, begins when period 1 ends
  * </pre>
  * 
- * @author person7c5197dbb870 (Capgemini)
- * 
+ *
  */
 public class DateUtilTestIntersects {
 

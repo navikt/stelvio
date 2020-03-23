@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Data Transfer Object representation of <code>no.stelvio.common.transferobject.SerciceResponse</code>.
  * 
  * This object must always be WS-I and Java 1.4 compliant
- * @author person983601e0e117 (Accenture)
  *
  */
 public class ServiceResponseDto implements Serializable {

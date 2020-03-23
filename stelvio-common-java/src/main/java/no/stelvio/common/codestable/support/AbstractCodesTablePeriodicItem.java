@@ -25,7 +25,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * This class is a <code>MappedSuperclass</code>, meaning that Entities that inherits from this class must map to a table that
  * defines columns set up by this class.
  * 
- * @author person4cea34ac1157, Accenture
  * @version $Id$
  * @see AbstractCodesTableItem
  * 

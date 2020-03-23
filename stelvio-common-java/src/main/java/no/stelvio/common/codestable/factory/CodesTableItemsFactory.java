@@ -10,7 +10,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
  * Interface defining functionality for creating codes table items. Must be implemented by the project using the codes
  * table API.
  *
- * @author personf8e9850ed756, Accenture
  */
 public interface CodesTableItemsFactory {
 

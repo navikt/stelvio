@@ -8,7 +8,6 @@ import javax.faces.event.FacesEvent;
 /**
  * This interface indicates requirements for drawing a standard h:dataTable with nav:pageingFooter for navigation.
  * 
- * @author persone8306a256e67
  * @version $Id$
  * @param <T>
  *            The type for the list

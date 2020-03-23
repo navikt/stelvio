@@ -14,7 +14,6 @@ import org.junit.Test;
 /**
  * Test class for BatchValidator.
  * 
- * @author PC
  */
 public class BatchParameterValidatorTest {
 

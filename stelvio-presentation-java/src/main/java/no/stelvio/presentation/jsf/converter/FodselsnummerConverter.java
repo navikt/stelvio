@@ -8,8 +8,6 @@ import javax.faces.convert.ConverterException;
 /**
  * Adds or removes a space in fodselsnummer.
  * 
- * @author persond3cb2ee15f42
- * @author personff564022aedd
  */
 public class FodselsnummerConverter implements Converter {
 

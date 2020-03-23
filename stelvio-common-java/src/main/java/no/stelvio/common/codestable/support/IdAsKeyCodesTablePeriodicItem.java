@@ -15,7 +15,6 @@ import javax.persistence.MappedSuperclass;
  * This class is a <code>MappedSuperclass</code>, meaning that Entities that inherits from this class must map to a
  * table that defines columns set up by this class
  *
- * @author person4cea34ac1157n (Accenture)
  * @version $Id$
  * @see IdAsKeyCodesTableItem
  * 

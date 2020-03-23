@@ -13,8 +13,7 @@ import java.util.ArrayList;
 /**
  * Test class for AlwaysAffirmativeVoter.
  * 
- * @author ??
- * 
+ *
  */
 public class AlwaysAffirmativeVoterTest {
 

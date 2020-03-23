@@ -11,8 +11,7 @@ import org.springframework.security.access.SecurityConfig;
 /**
  * AnnotationAttributesMappingTest.
  * 
- * @author ??
- * 
+ *
  */
 public class AnnotationAttributesMappingTest {
 

@@ -13,7 +13,6 @@ import org.apache.commons.lang3.StringUtils;
  * NorskKontonummerValidator validates whether the specified parameter is a valid norsk kontonummer, and if invalid sets an
  * error message on FacesContext.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class NorskKontonummerValidator implements Validator {

@@ -6,7 +6,6 @@ import java.util.Map;
 /**
  * Object to hold all JSF page security definitions for the application.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public class JsfApplication {

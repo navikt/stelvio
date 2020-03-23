@@ -17,7 +17,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Tests mapping between <code>ChangeStamp</code> and <code>ChangeStampDto</code>.
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public class ChangeStampMapperTest extends TestCase {
 

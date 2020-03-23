@@ -17,7 +17,6 @@ import org.springframework.security.access.SecurityConfig;
 /**
  * Test class for the RoleAccessDecisionVoter.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class RoleAccessDecisionVoterTest {

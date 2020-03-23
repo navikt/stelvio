@@ -20,8 +20,7 @@ import org.apache.commons.logging.LogFactory;
  * This implementation should never be used if the collection of ErrorDefinitions passed through the constructor contains more
  * than one ErrorDefinition per exception class name.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class ClassNameErrorDefinitionResolver implements ErrorDefinitionResolver {
 

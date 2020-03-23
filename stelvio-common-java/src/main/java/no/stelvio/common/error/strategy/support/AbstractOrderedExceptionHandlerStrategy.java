@@ -9,7 +9,6 @@ import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
  * executed in an order dictated by a developer. Especially useful when strategy is configured as part of 
  * a {@link ExceptionHandlerStrategyChain}.
  * 
- * @author person983601e0e117 (Accenture)
  *
  */
 public abstract class AbstractOrderedExceptionHandlerStrategy implements

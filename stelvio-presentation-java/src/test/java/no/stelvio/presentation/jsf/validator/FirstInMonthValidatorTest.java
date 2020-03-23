@@ -18,7 +18,6 @@ import no.stelvio.presentation.jsf.mock.UIComponentMock;
 /**
  * FirstInMonthValidatorTest tests FirstInMonthValidator.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class FirstInMonthValidatorTest {

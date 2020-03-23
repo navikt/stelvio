@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown when a codes table class does not extend the correct class.
  * 
- * @author personf8e9850ed756
  */
 public class NotCodesTableException extends FunctionalUnrecoverableException {
 

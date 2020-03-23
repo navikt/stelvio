@@ -5,7 +5,6 @@ import no.stelvio.batch.BatchStatus;
 
 /**
  * Interface for executing Spring batch jobs.
- * @author person47c121e3ccb5, BEKK
  *
  */
 public interface SpringBatchJobOperator {

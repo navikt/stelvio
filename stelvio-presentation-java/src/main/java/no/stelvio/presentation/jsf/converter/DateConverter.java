@@ -41,7 +41,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
  * </p>
  * The MessageSource will be retrieved from the application context if not defined.
  * 
- * @author persone38597605f58 (NAV)
  * @version $Id$
  */
 public class DateConverter implements Converter {

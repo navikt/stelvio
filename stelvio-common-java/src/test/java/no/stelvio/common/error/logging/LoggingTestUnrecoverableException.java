@@ -6,7 +6,6 @@ import no.stelvio.common.error.SystemUnrecoverableException;
 /**
  * LoggingTestUnrecoverableException.
  * 
- * @author MA
  *
  */
 public class LoggingTestUnrecoverableException extends SystemUnrecoverableException {

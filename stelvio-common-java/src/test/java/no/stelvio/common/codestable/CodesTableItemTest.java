@@ -12,7 +12,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTableItemTest;
 /**
  * Unit test of {@link CodesTableItem}.
  * 
- * @author personb66fa0b5ff6e
  * @version $Id$
  */
 public class CodesTableItemTest extends AbstractCodesTableItemTest {

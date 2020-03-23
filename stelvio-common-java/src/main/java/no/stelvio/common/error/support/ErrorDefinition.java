@@ -12,7 +12,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 /**
  * Should this have more logic? Should it implement Comparable based on Severity
  * 
- * @author personf8e9850ed756
  */
 @Entity
 public class ErrorDefinition implements Serializable {
@@ -162,7 +161,6 @@ public class ErrorDefinition implements Serializable {
 	/**
 	 * should this be here? test this
 	 * 
-	 * @author personf8e9850ed756
 	 */
 	public static class Builder {
 		private ErrorDefinition errorDefinition;

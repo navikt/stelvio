@@ -16,8 +16,6 @@ import javax.persistence.Table;
  * Class represent a MenuItemPermission. Instances of this class are Java Persistence API Entities, and may be persisted by any
  * ORM product that support JPA Annotations table mapping.
  * 
- * @author person4f9bc5bd17cc (Accenture)
- * @author person983601e0e117 (Accenture)
  */
 @Entity
 @Table(name = "T_TILGANG")

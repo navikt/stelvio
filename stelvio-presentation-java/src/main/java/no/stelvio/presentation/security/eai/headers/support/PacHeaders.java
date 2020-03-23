@@ -6,7 +6,6 @@ import no.stelvio.presentation.security.eai.headers.config.support.StanzaEntryEn
 /**
  * PacHeaders.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see AbstractEaiHeaders
  * @see EaiHeaderConfig

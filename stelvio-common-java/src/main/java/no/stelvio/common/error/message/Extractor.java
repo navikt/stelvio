@@ -3,7 +3,6 @@ package no.stelvio.common.error.message;
 /**
  * Used to extract a message which is used to describe an exception.
  *
- * @author personf8e9850ed756
  */
 public interface Extractor {
 	/**

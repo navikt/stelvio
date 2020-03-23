@@ -15,7 +15,6 @@ import no.stelvio.batch.repository.BatchHistRepository;
  * BatchHistDO. A HibernateTemplate should be injected before this
  * implementation is exposed to a client.
  * 
- * @author person5dc3535ea7f4(Accenture)
  * @see BatchHistDO
  * 
  */

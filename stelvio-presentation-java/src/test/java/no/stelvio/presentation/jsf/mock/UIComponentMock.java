@@ -16,7 +16,6 @@ import javax.faces.render.Renderer;
 /**
  * UIComponentMock.
  * 
- * @author AW
  * @version $Id$
  */
 public class UIComponentMock extends UIComponent {

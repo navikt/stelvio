@@ -9,7 +9,6 @@ import javax.faces.convert.ConverterException;
  * Converts a large number to thousand shorthand forma, i.e, the 
  * number 355 000 gets converted to the format 355'.
  * 
- * @author person7c5197dbb870 (Capgemini)
  */
 public class ThousandConverter implements Converter {
 	/**

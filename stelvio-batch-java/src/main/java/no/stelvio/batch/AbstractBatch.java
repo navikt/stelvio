@@ -33,11 +33,6 @@ import no.stelvio.common.log.InfoLogger;
  * variable used by {@link #isStopRequested()}
  * </p>
  * 
- * @author person356941106810, Accenture
- * @author person1f201b37d484, Accenture
- * @author personf8e9850ed756, Accenture
- * @author person983601e0e117 (Accenture)
- * @author person6045563b8dec (Accenture)
  */
 public abstract class AbstractBatch implements BatchBi {
 	/** Default flush size. Default value (0) means flush size hint will be ignored and default value will be used */

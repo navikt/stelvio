@@ -26,8 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * 
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public abstract class AbstractMockFilterChain implements FilterChain {
 

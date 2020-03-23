@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.Cacheable;
 /**
  * Implements services for accessing data related to TestCache.
  * 
- * @author person4f9bc5bd17cc, Accenture
  */
 public class DefaultTestCache implements TestCache {
 	private static final String INITIAL_STRING = "This is a cacheable string";

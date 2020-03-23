@@ -6,7 +6,6 @@ import java.util.Set;
 /**
  * Interface for retrieval of EAI headers.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * 
  */

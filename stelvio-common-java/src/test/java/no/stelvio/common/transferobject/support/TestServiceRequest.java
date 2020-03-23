@@ -5,8 +5,7 @@ import no.stelvio.common.transferobject.ServiceRequest;
 /**
  * Test class for ServiceRequest.
  * 
- * @author MA
- * 
+ *
  */
 public class TestServiceRequest extends ServiceRequest {
 

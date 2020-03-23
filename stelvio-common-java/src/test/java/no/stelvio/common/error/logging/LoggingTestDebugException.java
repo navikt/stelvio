@@ -5,7 +5,6 @@ import no.stelvio.common.error.SystemUnrecoverableException;
 /**
  * LoggingTestDebugException.
  * 
- * @author person08f1a7c6db2c, Accenture
  *
  */
 public class LoggingTestDebugException extends SystemUnrecoverableException {

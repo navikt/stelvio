@@ -7,7 +7,6 @@ import org.springframework.batch.core.listener.ItemListenerSupport;
 /**
  * A Spring Batch item listener that counts the events with a {@link BatchCounter}.
  * 
- * @author person47c121e3ccb5, BEKK
  *
  * @param <I> Type read.
  * @param <O> Type written.

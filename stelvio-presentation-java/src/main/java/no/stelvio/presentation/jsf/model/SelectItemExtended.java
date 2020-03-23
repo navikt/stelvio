@@ -5,7 +5,6 @@ import javax.faces.model.SelectItem;
 /**
  * Extended {@link SelectItem} component, with style class added
  * 
- * @author persone38597605f58
  *
  */
 public class SelectItemExtended extends SelectItem {

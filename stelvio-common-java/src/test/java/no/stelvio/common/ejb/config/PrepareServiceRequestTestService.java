@@ -5,8 +5,7 @@ import no.stelvio.common.transferobject.ServiceRequest;
 /**
  * Dummy class for use by test.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class PrepareServiceRequestTestService {
 

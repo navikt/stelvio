@@ -8,7 +8,6 @@ import no.stelvio.common.codestable.support.CtiConvertable;
  * Interface defining functionality for accessing and caching persistent codes tables. The class is not implemented as a
  * Singleton, but should be externally managed as a singleton, e.g. by using Spring Framework.
  *
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id $
  */
 @SuppressWarnings("unchecked")

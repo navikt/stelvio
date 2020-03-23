@@ -9,7 +9,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link no.stelvio.common.converter.ConverterLoader}.
  * 
- * @author person5b7fd84b3197, Accenture
  */
 public class ConverterLoaderTest {
 	private ConverterLoader loader = null;

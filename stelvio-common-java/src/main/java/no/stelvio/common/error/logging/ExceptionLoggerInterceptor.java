@@ -12,8 +12,7 @@ import org.springframework.aop.ThrowsAdvice;
  * 
  * Wraps the {@link ExceptionLogger} to enable logging by using AOP.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class ExceptionLoggerInterceptor implements ThrowsAdvice {
 

@@ -16,7 +16,6 @@ import org.springframework.webflow.test.MockRequestContext;
 /**
  * Test to test the ExceptionHandlerFlowExecutionListener class.
  * 
- * @author person2f8774420f39 (Accenture)
  * @version $Id$
  * 
  */

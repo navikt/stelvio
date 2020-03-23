@@ -14,7 +14,6 @@ import no.stelvio.common.codestable.TestCti;
  * Unit test for {@link AbstractCodesTableItem}. All classes extending <code>AbstractCodesTableItem</code> should have their
  * test classes extend this class.
  * 
- * @author person66cdf88a8f67, Accenture
  */
 public abstract class AbstractCodesTableItemTest {
 	/**

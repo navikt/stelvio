@@ -16,7 +16,6 @@ import org.springframework.util.StringUtils;
  * <p>
  * The class creates and populates a {@link AnnotationAttributesMapping}.
  *
- * @author persondab2f89862d3, Accenture
  */
 public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
 

@@ -4,7 +4,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @author test@example.com
  */
 @XmlRootElement(name = "StelvioContext", namespace = "http://www.nav.no/StelvioContextPropagation")
 public class StelvioContextData {

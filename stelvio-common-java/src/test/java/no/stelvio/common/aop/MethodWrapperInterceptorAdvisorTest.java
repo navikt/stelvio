@@ -24,7 +24,6 @@ import org.springframework.beans.factory.support.StaticListableBeanFactory;
 /**
  * Unit test for {@link no.stelvio.common.aop.MethodWrapperInterceptorAdvisor}.
  *
- * @author personf8e9850ed756
  * @since 24.05.2005
  */
 public class MethodWrapperInterceptorAdvisorTest {

@@ -6,7 +6,6 @@ import org.apache.log4j.varia.FallbackErrorHandler;
 /**
  * FallbackErrorHandler implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestErrorhandler.java 2193 2005-04-06 08:01:35Z psa2920 $
  */
 public class TestErrorhandler extends FallbackErrorHandler {

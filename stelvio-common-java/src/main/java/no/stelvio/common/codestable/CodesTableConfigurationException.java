@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown when there are problems configuring the codestable module.
  * 
- * @author personf8e9850ed756, Accenture
  */
 public class CodesTableConfigurationException extends FunctionalUnrecoverableException {
 

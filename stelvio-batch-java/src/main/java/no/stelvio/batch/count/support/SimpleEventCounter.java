@@ -1,8 +1,7 @@
 package no.stelvio.batch.count.support;
 
 /**
- * @author person47c121e3ccb5, BEKK
- * 
+ *
  */
 public class SimpleEventCounter implements EventCounter {
 	private long count;

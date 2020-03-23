@@ -18,7 +18,6 @@ import no.stelvio.presentation.security.eai.headers.support.EaiHeaderType;
 /**
  * AbstractAuthentication.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see Authentication
  * @see HeaderData

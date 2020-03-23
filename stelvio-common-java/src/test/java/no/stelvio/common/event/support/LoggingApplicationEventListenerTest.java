@@ -15,7 +15,6 @@ import no.stelvio.common.event.ApplicationEventListenerTest;
 /**
  * Unit test for {@link LoggingApplicationEventListener}.
  * 
- * @author personf8e9850ed756
  */
 
 public class LoggingApplicationEventListenerTest extends ApplicationEventListenerTest {

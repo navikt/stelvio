@@ -8,7 +8,6 @@ import no.stelvio.common.codestable.CodesTableNotFoundException;
  * Business interface for EJB that can't handle Generics in interface.
  * Components that can handle Generics in interface should use {@link CodesTableItemsFactory}
  *
- * @author person983601e0e117(Accenture)
  */
 public interface NoGenericsCodesTableItemsFactory {
 	/**

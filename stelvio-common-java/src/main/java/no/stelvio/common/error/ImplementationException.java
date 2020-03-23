@@ -9,7 +9,6 @@ package no.stelvio.common.error;
  * This wrapper should be preferred over its counterpart <code>OperationalException</code> when wrapping an exception
  * considered an implementation (programming) error.
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public class ImplementationException extends FunctionalUnrecoverableException {
 

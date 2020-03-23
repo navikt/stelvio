@@ -31,8 +31,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
  *
  * Adapted to retrieve the locale from Spring's <code>LocaleContextHolder</code>.
  *
- * @author Rick Hightower
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 public class MessageSourcePropertyResolver extends PropertyResolver {

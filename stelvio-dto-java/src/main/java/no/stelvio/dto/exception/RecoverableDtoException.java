@@ -3,8 +3,7 @@ package no.stelvio.dto.exception;
 /**
  * Signals that a recoverable DTO exception has occurred. Exception that is Java SE 1.4 and WS-I compliant.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public abstract class RecoverableDtoException extends Exception {
 

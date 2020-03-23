@@ -9,7 +9,6 @@ import java.io.IOException;
  * Utility for exporting error codes from java class files,
  * for easy synchronization with persistent storage.
  * 
- * @author person7553f5959484, Accenture
  * @version $Revision: 2570 $ $Author: psa2920 $ $Date: 2005-10-19 18:07:03 +0200 (Wed, 19 Oct 2005) $
  */
 public final class ErrorCodesUtil {

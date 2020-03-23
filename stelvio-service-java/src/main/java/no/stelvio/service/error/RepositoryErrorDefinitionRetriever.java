@@ -9,7 +9,6 @@ import no.stelvio.repository.error.ErrorDefinitionRepository;
 /**
  * Forwards retrieval of error definitions to a repository class.
  * 
- * @author personf8e9850ed756, Accenture
  */
 public class RepositoryErrorDefinitionRetriever implements ErrorDefinitionRetriever {
 	private ErrorDefinitionRepository errorDefinitionRepository;

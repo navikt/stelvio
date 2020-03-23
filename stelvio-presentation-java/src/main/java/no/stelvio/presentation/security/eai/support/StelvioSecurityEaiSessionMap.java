@@ -8,7 +8,6 @@ import no.stelvio.presentation.security.session.StelvioSecuritySessionMap;
 /**
  * A package private map for security related attributes which should be stored in the HttpSession.
  * 
- * @author persondab2f89862d3, Accenture
  */
 class StelvioSecurityEaiSessionMap implements StelvioSecuritySessionMap {
 

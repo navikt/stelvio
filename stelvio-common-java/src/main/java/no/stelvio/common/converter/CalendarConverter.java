@@ -10,7 +10,6 @@ import org.apache.commons.beanutils.Converter;
  * 
  * Converter for calendar objects.
  * 
- * @author person5b7fd84b3197, Accenture
  * @version $Id: CalendarConverter.java 2572 2005-10-19 16:13:41Z psa2920 $
  */
 public class CalendarConverter implements Converter {

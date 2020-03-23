@@ -34,7 +34,6 @@ import no.stelvio.presentation.jsf.mock.SpringDefinition;
 /**
  * This class tests MessageSourcePropertyResolver.
  * 
- * @author Rick Hightower
  * @version $Id$
  */
 @Deprecated

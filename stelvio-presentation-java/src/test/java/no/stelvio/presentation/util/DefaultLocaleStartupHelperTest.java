@@ -10,7 +10,6 @@ import junit.framework.TestCase;
  * 
  * Will not work until DefaultLocaleStartupHelper is finished.
  * 
- * @author person7553f5959484, Accenture
  * @version $Id$
  */
 public class DefaultLocaleStartupHelperTest extends TestCase {

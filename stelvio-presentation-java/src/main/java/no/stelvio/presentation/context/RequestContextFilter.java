@@ -39,8 +39,6 @@ import no.stelvio.common.context.support.SimpleRequestContext;
  * 
  * </pre>
  * 
- * @author person7553f5959484, Accenture
- * @author person983601e0e117, Accenture
  * @version $Id: RequestContextFilter.java 2574 2005-10-20 08:04:22Z psa2920 $
  */
 public class RequestContextFilter extends OncePerRequestFilter implements ApplicationContextAware {

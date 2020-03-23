@@ -14,8 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Test class for DozerMapper.
  * 
- * @author CW
- * 
+ *
  */
 public class TestDozerMapper {
 

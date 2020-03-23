@@ -6,9 +6,6 @@ import java.io.Serializable;
 /**
  * The base class for all service responses, which are serializable.
  * 
- * @author personff564022aedd
- * @author person15754a4522e7
- * @author personf8e9850ed756
  * @version $Id$
  */
 public abstract class ServiceResponse implements Serializable {

@@ -15,7 +15,6 @@ import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 /**
  * StepUpDestinationUrlServlet.
  * 
- * @author TS
  */
 public class StepUpDestinationUrlServlet implements HttpRequestHandler, InitializingBean {
 

@@ -11,8 +11,7 @@ import java.util.Collection;
 /**
  * Mocks AfterInvocationProviderDeniesAccess.
  * 
- * @author ??
- * 
+ *
  */
 public class MockAfterInvocationProviderDeniesAccess implements AfterInvocationProvider {
 

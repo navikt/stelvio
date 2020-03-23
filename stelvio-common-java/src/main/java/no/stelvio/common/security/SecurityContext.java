@@ -9,9 +9,6 @@ import no.stelvio.common.security.definition.Role;
  * Context that has security information about the logged on user. Implementations decide how to get to/store the
  * information necessary for providing this functionality.
  *
- * @author personbf936f5cae20, Accenture
- * @author personf8e9850ed756, Accenture
- * @author persondab2f89862d3, Accenture
  * @version $Id: SecurityContext.java $
  * @see Role
  */

@@ -23,7 +23,6 @@ import org.junit.Test;
 /**
  * Test the DateDateUtil class.
  *
- * @author person7553f5959484, Accenture
  * @version $Revision: 2833 $ $Author: skb2930 $ $Date: 2006-03-10 10:50:32 +0100 (Fri, 10 Mar 2006) $
  */
 public class DateUtilTest {

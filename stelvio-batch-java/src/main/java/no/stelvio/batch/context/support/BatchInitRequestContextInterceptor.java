@@ -14,7 +14,6 @@ import org.aopalliance.intercept.MethodInvocation;
  * This implementation sets up the batchName available through {@link BatchBi#getBatchName()} as userId
  * 
  * @see AbstractInitRequestContextInterceptor
- * @author person983601e0e117 (Accenture)
  */
 public class BatchInitRequestContextInterceptor extends AbstractInitRequestContextInterceptor {
 

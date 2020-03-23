@@ -3,7 +3,6 @@ package no.stelvio.batch.exception;
 /**
  * Exception thrown when a specified Batch is null.
  * 
- * @author person983601e0e117 (Accenture)
  *
  */
 public class NullBatchException extends BatchSystemException {

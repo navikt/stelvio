@@ -8,7 +8,6 @@ import java.util.List;
  * This class represent a collection of security roles from web.xml.
  * 
  * @see SecurityRole
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class WebAppRoles {

@@ -9,7 +9,6 @@ import no.stelvio.presentation.security.page.constants.Constants;
 /**
  * Object representing a list of J2EE roles required for a page authorization.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public class JeeRoles implements Serializable {

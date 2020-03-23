@@ -13,7 +13,6 @@ import no.stelvio.common.cache.CacheManagement;
  * This class makes cache-administration accessible as a
  * JMX-component using Spring configuration.
  * 
- * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
 public class DefaultCacheManagement implements CacheManagement {

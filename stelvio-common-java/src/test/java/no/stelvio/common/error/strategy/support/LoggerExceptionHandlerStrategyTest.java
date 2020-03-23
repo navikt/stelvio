@@ -29,8 +29,6 @@ import no.stelvio.common.util.ReflectUtil;
 /**
  * Unit test of {@link LoggerExceptionHandlerStrategy}.
  * 
- * @author personcb9a87e24a5f
- * @author person983601e0e117
  */
 
 public class LoggerExceptionHandlerStrategyTest {

@@ -18,7 +18,6 @@ import org.junit.Test;
 /**
  * Test class for DefaultRoleValidator.
  * 
- * @author ??
  */
 public class DefaultRoleValidatorTest {
 

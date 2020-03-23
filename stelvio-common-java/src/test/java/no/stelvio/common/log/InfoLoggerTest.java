@@ -22,7 +22,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * configured with INFO loglevel.
  * </ul>
  * 
- * @author person15754a4522e7
  */
 public class InfoLoggerTest {
 

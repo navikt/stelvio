@@ -17,7 +17,6 @@ import no.stelvio.batch.support.ProgressLoggerListener;
  * ProgressInterval can be set using {@link #setProgressInterval(Integer)} or by starting batch with a job parameter with 
  * name {@link CommonBatchInputParameters#PROGRESS_INTERVAL_KEY} and a long value.
  *
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class ProgressNotifier implements ChunkListener, JobExecutionListener{

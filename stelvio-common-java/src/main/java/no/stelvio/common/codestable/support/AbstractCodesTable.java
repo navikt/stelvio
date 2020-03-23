@@ -31,9 +31,7 @@ import no.stelvio.common.error.InvalidArgumentException;
 /**
  * Holds common functionality for <code>CodesTable</code> and <code>CodesTablePeriodic</code>.
  * 
- * @author personf8e9850ed756, Accenture
- * @author person983601e0e117 (Accenture)
- * 
+ *
  * @param <T>
  *            <code>AbstractCodesTableItem</code>'s or subclasses of <code>AbstractCodesTableItem</code> that the
  *            <code>AbstractCodesTable</code> can hold values of.

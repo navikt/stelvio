@@ -15,7 +15,6 @@ import no.stelvio.common.log.MDCLogger;
  * </p>
  * 
  * @see no.stelvio.common.log.InfoLogger
- * @author person15754a4522e7 (ex-coder)
  * @since Stelvio 1.0.6.3
  */
 public class Log4jInfoLogger extends MDCLogger implements InfoLogger {

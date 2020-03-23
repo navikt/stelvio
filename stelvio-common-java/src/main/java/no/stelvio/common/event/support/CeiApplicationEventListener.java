@@ -11,7 +11,6 @@ import no.stelvio.common.event.ApplicationEventListener;
  * Is this a god name? Should call IBMs Common Event Infrastructure. Will be
  * implemented when we know more about how to use CEI.
  * 
- * @author personf8e9850ed756
  */
 public class CeiApplicationEventListener implements ApplicationEventListener {
 

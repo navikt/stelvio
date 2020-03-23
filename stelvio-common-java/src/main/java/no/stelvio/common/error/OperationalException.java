@@ -9,7 +9,6 @@ package no.stelvio.common.error;
  * This wrapper should be preferred over its counterpart <code>ImplementationException</code> when wrapping an exception
  * considered to be operational (outside application boundaries).
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public class OperationalException extends SystemUnrecoverableException {
 

@@ -25,7 +25,6 @@ import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringShort
 import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringUriJobParameter;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class TypeConvertingJobParametersValidatorTest {

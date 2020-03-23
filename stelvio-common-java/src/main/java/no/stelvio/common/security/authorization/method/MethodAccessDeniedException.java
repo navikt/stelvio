@@ -7,7 +7,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Exception thrown if access to a method should be denied.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class MethodAccessDeniedException extends SecurityException {
 

@@ -13,7 +13,6 @@ import no.stelvio.presentation.binding.context.MessageContextUtil;
  * TextValidator validates whether the specified parameter consists of only text If invalid sets an error message on
  * FacesContext.
  * 
- * @author person10cbe95feeae (Bouvet)
  * @version $Id$
  */
 public class TextValidator extends AbstractFieldNameValidator {

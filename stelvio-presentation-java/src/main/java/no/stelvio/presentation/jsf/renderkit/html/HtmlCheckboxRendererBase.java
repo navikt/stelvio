@@ -34,8 +34,6 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HTML;
 import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
 
 /**
- * @author personc7e15cb5f7a6 (latest modification by $Author: lu4242 $)
- * @author person2f6eb49b5744
  * @version $Revision: 684924 $ $Date: 2008-08-11 15:59:26 -0500 (Mon, 11 Aug 2008) $
  */
 public class HtmlCheckboxRendererBase extends org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlCheckboxRendererBase {

@@ -7,8 +7,7 @@ import java.lang.reflect.Field;
  * classpath problems when an exception travels from one layer to another with different classpath. For example when an
  * Hibernate exception makes it way to the web application, which probably won't have Hibernate on its classpath.
  * 
- * @author personf8e9850ed756
- * 
+ *
  * @see ImitatorException
  */
 public class MorpherExceptionHandlerStrategy extends AbstractOrderedExceptionHandlerStrategy {

@@ -24,7 +24,6 @@ import org.springframework.util.Assert;
  * a chain of proxy servers and load balancers. This is necessary so that WebSEAL can interpret the logout command correctly.
  * 
  * @see WasLogoutService
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * */
 public class WebsealLogoutService extends WasLogoutService implements InitializingBean {

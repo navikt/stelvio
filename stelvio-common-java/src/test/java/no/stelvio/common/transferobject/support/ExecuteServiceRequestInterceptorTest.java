@@ -21,7 +21,6 @@ import no.stelvio.common.util.ReflectUtil;
 /**
  * Test class for ExecuteServiceRequestInterceptor.
  *
- * @author MA
  */
 public class ExecuteServiceRequestInterceptorTest {
 

@@ -22,8 +22,6 @@ import org.springframework.webflow.execution.RequestContext;
  * in the application.
  * <p>
  * 
- * @author person6045563b8dec (Accenture)
- * @author person9ea7150f0ee5 (Capgemini)
  * @since 1.0.5.4
  */
 public class ExceptionHandlerFlowExecutionListener extends FlowExecutionListenerAdapter {

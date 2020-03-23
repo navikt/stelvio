@@ -22,7 +22,6 @@ import org.junit.Test;
 /**
  * DoubleRangeValidatorTest tests DoubleRangeValidator.
  * 
- * @author person10cbe95feeae (Bouvet)
  * @version $Id$
  */
 public class DoubleRangeValidatorTest {

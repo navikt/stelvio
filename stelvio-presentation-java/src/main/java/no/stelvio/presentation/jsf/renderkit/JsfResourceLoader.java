@@ -26,8 +26,6 @@ import java.net.URLConnection;
  * implementation is based on the myfaces tomahawk MyFacesResourceLoader
  * implementation
  * 
- * @author personf0169700350c, myfaces
- * @author person6045563b8dec, Accenture
  * @version $Id$
  */
 public class JsfResourceLoader implements ResourceLoader {

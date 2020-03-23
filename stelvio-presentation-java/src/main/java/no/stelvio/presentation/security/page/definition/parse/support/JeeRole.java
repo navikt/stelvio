@@ -5,7 +5,6 @@ import java.io.Serializable;
 /**
  * Object representing one J2EE role.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public class JeeRole implements Serializable {

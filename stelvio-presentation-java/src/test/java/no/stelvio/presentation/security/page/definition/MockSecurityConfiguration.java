@@ -6,8 +6,7 @@ import no.stelvio.presentation.security.page.definition.parse.support.JsfApplica
 /**
  * MockSecurityConfiguration.
  * 
- * @author ??
- * 
+ *
  */
 public class MockSecurityConfiguration implements SecurityConfiguration {
 

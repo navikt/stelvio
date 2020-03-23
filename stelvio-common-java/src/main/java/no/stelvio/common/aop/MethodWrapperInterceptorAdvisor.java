@@ -31,7 +31,6 @@ import org.springframework.beans.factory.BeanFactoryAware;
  * - have a setter for advisorAdapterRegistry
  * - use AopProxyFactory().createAopProxy(this); for creating the proxy
  *
- * @author personf8e9850ed756
  * @version $Revision: 2788 $, $Date: 2006-02-28 15:41:06 +0100 (Tue, 28 Feb 2006) $
  * @see org.springframework.aop.framework.ProxyFactoryBean
  */

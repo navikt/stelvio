@@ -5,7 +5,6 @@ import no.stelvio.batch.count.support.EventReportFormatter;
 import no.stelvio.common.log.InfoLogger;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class ProgressLoggerListener implements ProgressListener {

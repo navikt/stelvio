@@ -13,8 +13,7 @@ import org.apache.myfaces.test.mock.MockFacesContextFactory;
 /**
  * MockFacesContextFactoryExtended.
  * 
- * @author ??
- * 
+ *
  */
 public class MockFacesContextFactoryExtended extends MockFacesContextFactory {
 

@@ -9,9 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * 
  * This object must always be WS-I and Java 1.4 compliant
  * 
- * @author person983601e0e117 (Accenture)
- * @author person6045563b8dec (Accenture)
- * 
+ *
  */
 public class RequestContextDto implements Serializable {
 

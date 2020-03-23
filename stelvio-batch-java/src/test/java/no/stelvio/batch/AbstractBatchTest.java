@@ -28,9 +28,6 @@ import no.stelvio.domain.time.ChangeStamp;
  * <p>
  * Has tests that all batch modules should pass in addidtion to helper methods for setting up state before running a test.
  * 
- * @author person356941106810, Accenture
- * @author personf8e9850ed756, Accenture
- * @author person983601e0e117, Accenture
  * @version $Id: AbstractBatchTest.java 1955 2005-02-08 15:43:02Z psa2920 $
  */
 

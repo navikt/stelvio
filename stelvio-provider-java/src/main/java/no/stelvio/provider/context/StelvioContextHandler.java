@@ -21,8 +21,6 @@ import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
 
 /**
- * @author test@example.com
- * @author person5dc3535ea7f4
  */
 public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 

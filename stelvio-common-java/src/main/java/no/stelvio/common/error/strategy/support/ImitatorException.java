@@ -9,7 +9,6 @@ package no.stelvio.common.error.strategy.support;
  * If logging is done too, the stack trace will be filled in anyway (see over)
  * should it extend SystemUnrecoverableException?
  *  
- * @author personf8e9850ed756
  * @see MorpherExceptionHandlerStrategy
  */
 class ImitatorException extends RuntimeException {

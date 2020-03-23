@@ -9,7 +9,6 @@ package no.stelvio.presentation.security.page;
  * 
  * @see JeeSecurityPhaseListener
  * @see PhaseListenerManager
- * @author persondab2f89862d3, Accenture
  */
 public class IgnoreSubsequentPhaselisteners extends RuntimeException {
 

@@ -19,7 +19,6 @@ import org.springframework.webflow.test.MockRequestControlContext;
 /**
  * Test to test the ErrorPageException class.
  * 
- * @author person2f8774420f39 (Accenture)
  * @version $Id$
  * 
  */

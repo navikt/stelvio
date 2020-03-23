@@ -29,7 +29,6 @@ import org.junit.Test;
 /**
  * CodesTableItemSelectOneMenuTest.
  * 
- * @author ML
  */
 public class CodesTableItemSelectOneMenuTest {
 

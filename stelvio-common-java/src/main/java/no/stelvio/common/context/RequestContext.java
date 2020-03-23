@@ -4,8 +4,6 @@ package no.stelvio.common.context;
  * Has information that should be accessible anywhere in the system for a single request. Implementations decide how to
  * get to/store the information necessary for providing this functionality.
  *
- * @author personf8e9850ed756, Accenture
- * @author person983601e0e117, Accenture
  */
 public interface RequestContext {
 

@@ -25,8 +25,6 @@ import org.springframework.webflow.execution.RequestContextHolder;
 /**
  * MessageUtil to simplify setting messages on the context.
  * 
- * @author persone38597605f58 (Capgemini)
- * @author person1721e6840801 (Bouvet)
  * @version $Id$
  */
 public final class MessageContextUtil {

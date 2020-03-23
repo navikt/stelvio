@@ -28,7 +28,6 @@ import org.springframework.util.Assert;
  * from a <code>ObjectDefinitionSource</code>. The <code>ObjectDefinitionSource</code> is defined in a bean context and injected
  * into a security interceptor.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
 
  */

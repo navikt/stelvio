@@ -35,7 +35,6 @@ import org.springframework.jndi.JndiTemplate;
  * 
  * @see org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
  * 
- * @author person727e2beea31f, Sirius IT
  * @version $Id $
  */
 public class EnvironmentAwareResource implements Resource, ResourceLoaderAware {

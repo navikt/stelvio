@@ -7,7 +7,6 @@ import java.io.StringWriter;
  * maybe have its own subinterface taking both errors, that is, the original and the one thrown when trying to
  * log, etc. the original.
  * 
- * @author personf8e9850ed756
  */
 public class FallbackExceptionHandlerStrategy extends AbstractOrderedExceptionHandlerStrategy {
 

@@ -9,8 +9,7 @@ import no.stelvio.domain.menu.MenuItem;
 /**
  * Serializable Response object returned from the MenuItemService.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class MenuItemServiceResponse extends ServiceResponse {
 

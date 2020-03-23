@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Integration test for the codes table support in Stelvio.
  *
- * @author personf8e9850ed756, Accenture
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CodeTableConfiguration.class)

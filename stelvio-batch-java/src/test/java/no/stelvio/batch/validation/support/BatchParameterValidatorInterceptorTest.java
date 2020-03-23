@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Testing the configuration of the interceptor batch parameter validator.
  * 
- * @author persondfa1fa919e87(Accenture)
  */
 public class BatchParameterValidatorInterceptorTest {
 

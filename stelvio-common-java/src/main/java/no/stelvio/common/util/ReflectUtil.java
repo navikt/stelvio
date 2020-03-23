@@ -14,7 +14,6 @@ import org.springframework.util.StringUtils;
 /**
  * This is a helper class for reflection tasks.
  * 
- * @author person5b7fd84b3197, Accenture
  */
 public final class ReflectUtil {
 	

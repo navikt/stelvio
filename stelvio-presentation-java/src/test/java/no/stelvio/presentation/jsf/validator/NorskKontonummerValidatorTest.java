@@ -15,7 +15,6 @@ import org.junit.Test;
 /**
  * IbanValidatorTest tests IbanValidator.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class NorskKontonummerValidatorTest {

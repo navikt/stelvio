@@ -13,7 +13,6 @@ import org.springframework.transaction.support.TransactionTemplate;
  * typically implemented as anonymous classes for the execute method also will be run when unit testing. When using a regular
  * mock for TransactionTemplate this code will not be run.
  * 
- * @author personf8e9850ed756
  * @version $Revision: 2709 $, $Date: 2005-12-13 15:04:27 +0100 (Tue, 13 Dec 2005) $
  * @see org.springframework.transaction.support.TransactionTemplate
  * @see org.springframework.transaction.support.TransactionTemplate#execute(org.springframework.transaction.support.TransactionCallback)

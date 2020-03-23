@@ -15,7 +15,6 @@ import org.springframework.webflow.context.ExternalContextHolder;
  * A utility class for setting authentication attributes in a StelvioSecurityEaiSessionMap in the HttpSession and redirecting to
  * an authentication url.
  * 
- * @author persondab2f89862d3, Accenture
  * @see StelvioSecurityEaiSessionMap
  */
 public class AuthenticationService {

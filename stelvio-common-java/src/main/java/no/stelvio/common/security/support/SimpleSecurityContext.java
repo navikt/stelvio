@@ -15,9 +15,6 @@ import no.stelvio.common.security.validation.RoleValidator;
  * constructor parameters. An optional constructor also offers the possibility to validate the roles which are sent in as input
  * parameters to the class' methods.
  * 
- * @author personbf936f5cae20, Accenture
- * @author persondab2f89862d3, Accenture
- * @author personf8e9850ed756, Accenture
  * @version $Id: SimpleSecurityContext.java $
  * @see SecurityContext
  * @see RoleValidator

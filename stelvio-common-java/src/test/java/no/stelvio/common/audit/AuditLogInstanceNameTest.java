@@ -13,8 +13,7 @@ import no.stelvio.common.util.ReflectUtil;
 /**
  * Test class for AuditLogInstanceName.
  * 
- * @author MA
- * 
+ *
  */
 public class AuditLogInstanceNameTest {
 

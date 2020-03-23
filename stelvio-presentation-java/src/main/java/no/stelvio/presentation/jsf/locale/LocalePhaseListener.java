@@ -14,7 +14,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
  * Phaselistener for setting the current locale from FacesContext in the Spring LocaleContextHolder. This phaselistener
  * is invoked before the <code>INVOKE_APPLICATION</code> phase.
  * 
- * @author person6045563b8dec, Accenture
  * @version $Id$
  */
 public class LocalePhaseListener implements PhaseListener {

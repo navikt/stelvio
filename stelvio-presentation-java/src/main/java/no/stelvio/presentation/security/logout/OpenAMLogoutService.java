@@ -24,7 +24,6 @@ import org.springframework.util.Assert;
  * a chain of proxy servers and load balancers. This is necessary so that OpenAM can interpret the logout command correctly.
  * 
  * @see no.stelvio.presentation.security.logout.WasLogoutService
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * */
 public class OpenAMLogoutService extends WasLogoutService implements InitializingBean {

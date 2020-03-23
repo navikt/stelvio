@@ -10,7 +10,6 @@ import java.util.Collection;
  * Implementation of a <code>AccessDecisionVoter</code> that always grants
  * access to a secure object.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class AlwaysAffirmativeVoter implements AccessDecisionVoter<Object> {

@@ -1,7 +1,6 @@
 package no.stelvio.common.error;
 
 /**
- * @author personf8e9850ed756
  */
 public class TestRecoverableException extends FunctionalRecoverableException {
 

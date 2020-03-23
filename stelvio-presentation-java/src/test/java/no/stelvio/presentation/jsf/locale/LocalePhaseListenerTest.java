@@ -14,7 +14,6 @@ import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
  * Test class for the LocalePhaseListener, which sets the locale from
  * faces context in Spring LocaleContextHolder.
  *  
- * @author person6045563b8dec
  * @version $Id$
  */
 public class LocalePhaseListenerTest extends AbstractPhaselistenerTestCase {

@@ -10,7 +10,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link ReflectUtil}.
  * 
- * @author person5b7fd84b3197, Accenture
  */
 public class ReflectUtilTest {
 	private DummyBean bean;

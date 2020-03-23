@@ -11,7 +11,6 @@ import no.stelvio.common.util.DateUtil;
 /**
  * Converter for calendar objects.
  * 
- * @author person5b7fd84b3197, Accenture
  * @version $Id: DateConverter.java 2565 2005-10-19 15:19:43Z psa2920 $
  */
 public class DateConverter implements Converter {

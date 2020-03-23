@@ -16,7 +16,6 @@ import no.stelvio.presentation.security.eai.AuthenticationFailureException;
  * A class used to set the neccessary HTTP headers on the HttpServletResponse in order to reauthenticate with IBM Tivoli Access
  * Manager Webseal. Primarily used to reauthenticate the user to act as another user with a certain authorization type.
  * 
- * @author persondab2f89862d3, Accenture
  * @see ReAuthenticationHeaders
  * @see AbstractAuthentication
  */

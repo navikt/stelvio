@@ -8,8 +8,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * This is the base exception that all unrecoverable exceptions must extend. Applications will typically not handle recovery
  * from exceptions of this type.
  * 
- * @author person19fa65691a36 (Accenture)
- * @author person7553f5959484
  */
 public abstract class UnrecoverableException extends RuntimeException {
 

@@ -8,8 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Test class for BatchInitRequestContextInterceptor.
  * 
- * @author MA
- * 
+ *
  */
 public class BatchInitRequestContextInterceptorTest {
 

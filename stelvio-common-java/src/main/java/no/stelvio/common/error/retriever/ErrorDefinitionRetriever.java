@@ -7,7 +7,6 @@ import no.stelvio.common.error.support.ErrorDefinition;
 /**
  * Defines the interfaces to be implemented for retrieving error definitions.
  * 
- * @author personf8e9850ed756
  */
 public interface ErrorDefinitionRetriever {
 	/**

@@ -3,8 +3,7 @@ package no.stelvio.batch.exception;
 /**
  * Thrown when batch parameters for a BatchDO isn't configured properly.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class InvalidParameterFormatException extends BatchSystemException {
 

@@ -6,8 +6,7 @@ import org.apache.commons.lang3.StringUtils;
  * Class used to validate BBAN. (Basic Bank Account Number: used by financial institutions in individual countries as part of a
  * National Account Numbering Scheme which uniquely identifies an account of a customer at a financial institution.)
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class BbanValidator {
 

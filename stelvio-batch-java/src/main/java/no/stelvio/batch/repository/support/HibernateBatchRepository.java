@@ -12,7 +12,6 @@ import no.stelvio.batch.repository.BatchRepository;
  * Implementation of the BatchRepository that uses Hibernate to update the BatchDO. A HibernateTemplate should be injected
  * before this implementation is exposed to a client.
  * 
- * @author person983601e0e117 (Accenture)
  * @see BatchDO
  * 
  */

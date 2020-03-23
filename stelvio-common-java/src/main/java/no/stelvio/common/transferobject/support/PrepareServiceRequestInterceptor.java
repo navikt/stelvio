@@ -30,7 +30,6 @@ import no.stelvio.common.util.ReflectUtil;
  * use cases. See <code>{@link #setExecutedInAopContext(boolean)}</code>} for a
  * detailed description of the different configurations
  *
- * @author person983601e0e117 (Accenture)
  * @see RequestContextHolder
  * @see ServiceRequest
  */

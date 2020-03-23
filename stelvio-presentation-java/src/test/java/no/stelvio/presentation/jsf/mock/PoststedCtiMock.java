@@ -4,7 +4,6 @@ import no.stelvio.common.codestable.support.IdAsKeyCodesTablePeriodicItem;
 
 /**
  * 
- * @author person37c6059e407e (Capgemini)
  * @version $Id$
  * 
  */

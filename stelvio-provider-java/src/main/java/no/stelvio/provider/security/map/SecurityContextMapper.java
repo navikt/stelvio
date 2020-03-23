@@ -11,8 +11,7 @@ import no.stelvio.dto.security.SecurityContextDto;
  * Mapper used to map between the rich domain object {@link SecurityContext} and the Data Transfer Object
  * {@link SecurityContext}.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class SecurityContextMapper extends AbstractDozerMapper {
 

@@ -63,7 +63,6 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * authorization decision is performed in the J2EE Secure View Handler. <br>
  * <br>
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 

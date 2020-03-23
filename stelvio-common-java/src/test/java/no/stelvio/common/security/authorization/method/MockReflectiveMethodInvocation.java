@@ -8,8 +8,7 @@ import org.springframework.aop.framework.ReflectiveMethodInvocation;
 /**
  * Mock class for testing in order to call the constructor in ReflectiveMethodInvocation.
  * 
- * @author person6045563b8dec
- * 
+ *
  */
 public class MockReflectiveMethodInvocation extends ReflectiveMethodInvocation {
 

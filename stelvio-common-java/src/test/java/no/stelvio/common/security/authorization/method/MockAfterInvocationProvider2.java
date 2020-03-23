@@ -11,8 +11,7 @@ import java.util.Collection;
 /**
  * Mocks AfterInvocationProvider2.
  * 
- * @author ??
- * 
+ *
  */
 public class MockAfterInvocationProvider2 implements AfterInvocationProvider {
 

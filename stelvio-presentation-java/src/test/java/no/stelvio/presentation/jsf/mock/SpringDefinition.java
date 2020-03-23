@@ -37,8 +37,6 @@ import org.springframework.webflow.test.MockRequestContext;
 /**
  * SpringDefinition.java.
  * 
- * @author persone38597605f58 (Capgemini)
- * @author person37c6059e407e (Capgemini)
  * @version $Id$
  * 
  */

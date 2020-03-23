@@ -15,7 +15,6 @@ import javax.faces.render.RenderKit;
 /**
  * FacesContextMock.
  * 
- * @author person096a015479bb, Capgemini
  * Just a mock.
  *
  */

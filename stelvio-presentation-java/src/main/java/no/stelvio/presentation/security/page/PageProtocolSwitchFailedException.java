@@ -5,7 +5,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Thrown when an attempt to redirect from http to https and vice versa fails.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class PageProtocolSwitchFailedException extends SecurityException {
 

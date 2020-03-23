@@ -20,8 +20,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 /**
  * Test class for AccessVoterManager.
  * 
- * @author person08f1a7c6db2c, Accenture
- * 
+ *
  */
 public class AccessVoterManagerTest {
 	/**

@@ -13,10 +13,7 @@ import org.apache.commons.logging.LogFactory;
  * Generic client for execution of java ejb batches. Use <code>DefaultBatchRunner</code> for reading the client configuration
  * and to start the batch.
  * 
- * @author persond9e847e67144, NAV
- * @author person47c121e3ccb5, BEKK
- * @author person6045563b8dec, Accenture
- * 
+ *
  * @version $Id$
  * 
  */
@@ -119,7 +116,6 @@ public final class BatchControllerClient {
 	
 	/**
 	 * 
-	 * @author person47c121e3ccb5, BEKK
 	 *
 	 */
 	static class SpringBatchLauncher {

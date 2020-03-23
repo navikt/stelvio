@@ -5,8 +5,6 @@ import org.springframework.validation.FieldError;
 /**
  * FieldInListError handles Field errors when occuring in for instance a data table.
  * 
- * @author persone38597605f58 (Capgemini)
- * @author person7c5197dbb870 (Capgemini)
  */
 public class FieldInListError extends FieldError {
 

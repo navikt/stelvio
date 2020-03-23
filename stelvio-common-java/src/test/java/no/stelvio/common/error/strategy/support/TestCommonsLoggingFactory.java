@@ -9,7 +9,6 @@ import java.lang.reflect.Field;
 /**
  * A Commons logging log factory to be used when testing that a component logs correctly.
  *
- * @author personf8e9850ed756, Accenture
 */
 public class TestCommonsLoggingFactory extends LogFactoryImpl {
 	private Log log;

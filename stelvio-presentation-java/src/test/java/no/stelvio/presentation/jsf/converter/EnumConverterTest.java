@@ -15,7 +15,6 @@ import org.junit.Test;
 /**
  * Tests the EnumConverter class.
  * 
- * @author persond3cb2ee15f42
  * @version $Id$
  */
 public class EnumConverterTest {

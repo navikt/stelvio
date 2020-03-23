@@ -5,9 +5,7 @@ import no.stelvio.batch.domain.BatchDO;
 /**
  * Exception thrown when a batch parameter can't be found in the database.
  * 
- * @author person983601e0e117 (Accenture)
- * @author person6045563b8dec (Accenture)
- * 
+ *
  */
 public class NoSuchParameterException extends BatchSystemException {
 

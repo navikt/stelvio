@@ -13,7 +13,6 @@ import org.apache.commons.lang3.StringUtils;
  * PidValidator validates whether the specified parameter is a valid Personal Identification number (fodselsnummer), and if
  * invalid; sets an error message on FacesContext.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class PidValidator extends AbstractFieldNameValidator {

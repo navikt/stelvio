@@ -14,7 +14,6 @@ import no.stelvio.common.security.support.SimpleSecurityContext;
  * the populateSecurityContext() method. The SecurityContext is populated with
  * attributes from the HttpServletRequest. 
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id: SecurityContextFilter.java $
  * @see AbstractSecurityContextFilter
  */

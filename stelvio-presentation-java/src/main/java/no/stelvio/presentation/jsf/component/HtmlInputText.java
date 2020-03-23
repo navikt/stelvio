@@ -9,7 +9,6 @@ import org.apache.myfaces.shared_tomahawk.renderkit.JSFAttr;
 /**
  * Custom component for escaping illegal characters.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class HtmlInputText extends org.apache.myfaces.component.html.ext.HtmlInputText {

@@ -26,7 +26,6 @@ import javax.jms.TopicSubscriber;
 /**
  * QueueSession implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestQueueSession.java 2189 2005-04-06 07:37:28Z psa2920 $
  */
 public class TestQueueSession implements QueueSession {

@@ -16,10 +16,6 @@ import org.joda.time.Period;
 /**
  * Utility for localized parsing and formatting of dates.
  *
- * @author person7553f5959484, Accenture
- * @author persone5d69f3729a8, Accenture
- * @author persond56073296bff Røren, Accenture
- * @author person68b1d6b96576, Accenture
  * @version $Id: DateUtil.java 2833 2006-03-10 09:50:32Z skb2930 $
  */
 public final class DateUtil {
@@ -874,7 +870,6 @@ public final class DateUtil {
      * @param o2End The end date of the second period
      * @param considerContactAsIntersection If cases 6 and 7 should be regarded as a intersection, set this flag to true.
      * @return true if the periods do intersect by , false otherwise
-     * @author person7c5197dbb870 (Capgemini)
      */
     public static boolean intersectsByMilliseconds(Date o1Start, Date o1End, Date o2Start, Date o2End,
             boolean considerContactAsIntersection) {
@@ -925,7 +920,6 @@ public final class DateUtil {
      * @param o2Start The start date of the second period
      * @param considerContactAsIntersection If cases 6 and 7 should be regarded as a intersection, set this flag to true.
      * @return true if the periods do intersect, false otherwise
-     * @author person7c5197dbb870 (Capgemini)
      * @see #intersects
      */
     public static boolean intersectsWithOpenEnd(Date o1Start, Date o1End, Date o2Start, boolean considerContactAsIntersection) {
@@ -966,7 +960,6 @@ public final class DateUtil {
      * @param considerContactByDayAsIntersection If cases 6 and 7 should be regarded as a intersection, set this flag to true. Typically, this should be set to
      * true if the end date is a TOM-date, meaning that it is regarded as part of the period.
      * @return duration as an array of {years, months, days}
-     * @author person082681bfb6fd (Capgemini)
      */
     public static int[] getIntersectionDuration(Date o1Start, Date o1End, Date o2Start, Date o2End,
             boolean considerContactByDayAsIntersection) {
@@ -1231,8 +1224,6 @@ public final class DateUtil {
     /**
      * Interface for creating dates.
      *
-     * @author persone53f7e657aaa
-     * @author personf8e9850ed756
      */
     public interface DateCreator {
 
@@ -1247,8 +1238,6 @@ public final class DateUtil {
     /**
      * Utility for creating dates.
      *
-     * @author persone53f7e657aaa
-     * @author personf8e9850ed756
      */
     public static class DefaultDateCreator implements DateCreator {
 

@@ -3,8 +3,7 @@ package no.stelvio.batch.controller;
 /**
  * Work controller interface for all batches.
  * 
- * @author persond9e847e67144, NAV
- * 
+ *
  * @version $Id$
  */
 

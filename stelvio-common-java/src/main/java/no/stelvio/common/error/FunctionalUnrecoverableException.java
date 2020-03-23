@@ -4,8 +4,6 @@ package no.stelvio.common.error;
  * Base exception for exceptions considered functional and unrecoverable. Should be inherited by application exceptions in this
  * category.
  * 
- * @author person19fa65691a36 (Accenture)
- * @author personf8e9850ed756
  */
 public abstract class FunctionalUnrecoverableException extends UnrecoverableException {
 

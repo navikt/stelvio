@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown when <code>CodesTable</code> or a <code>CodesTablePeriodic</code> doesn't hold a requested item.
  * 
- * @author personf8e9850ed756
  */
 public class ItemNotFoundException extends FunctionalUnrecoverableException {
 

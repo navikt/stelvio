@@ -7,7 +7,6 @@ import no.stelvio.service.menu.to.MenuItemServiceResponse;
 /**
  * Menu service implementation of the {@link MenuService} business interface.
  * 
- * @author person4f9bc5bd17cc, Accenture
  * @version $Id$
  */
 public class DefaultMenuService implements MenuService {

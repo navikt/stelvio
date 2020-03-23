@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 /**
  * Test class for IbanValidator.
  * 
- * @author ??
  */
 public class TestIbanValidator extends TestCase {
 

@@ -14,7 +14,6 @@ import org.springframework.util.StopWatch;
 /**
  * Test class for stopping batch.
  * 
- * @author MA
  *
  */
 public class StopBatchTest {

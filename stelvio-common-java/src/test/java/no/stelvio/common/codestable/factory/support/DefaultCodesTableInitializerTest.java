@@ -21,7 +21,6 @@ import no.stelvio.common.codestable.TestCtpi;
 /**
  * Unit test of {@link DefaultCodesTableInitializer}.
  * 
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 

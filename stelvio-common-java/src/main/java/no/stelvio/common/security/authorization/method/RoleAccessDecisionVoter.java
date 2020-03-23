@@ -19,7 +19,6 @@ import org.springframework.security.core.Authentication;
  * based on the roles found in the Roles annotation for the current intercepted method. If no such annotation is found the class
  * simply abstains from voting, i.e its vote method returns <code>AccessDecisionVoter.ACCESS_ABSTAIN</code>.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class RoleAccessDecisionVoter implements AccessDecisionVoter<ReflectiveMethodInvocation> {

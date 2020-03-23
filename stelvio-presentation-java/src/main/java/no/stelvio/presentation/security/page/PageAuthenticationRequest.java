@@ -14,7 +14,6 @@ import org.springframework.webflow.execution.RequestContextHolder;
 /**
  * PageAuthenticationRequest.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class PageAuthenticationRequest {

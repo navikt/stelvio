@@ -11,7 +11,6 @@ import net.sf.ehcache.CacheManager;
  * Interface that defines the management operations on the system cache services.
  * Implementations are standard POJO's that can be JMX-enabled using Spring configuration.
  * 
- * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
 public interface CacheManagement {

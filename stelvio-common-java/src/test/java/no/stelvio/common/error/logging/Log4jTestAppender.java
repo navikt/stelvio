@@ -15,8 +15,7 @@ import org.apache.log4j.spi.LoggingEvent;
 /**
  * Appender used to test components logging capabilities.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class Log4jTestAppender extends ConsoleAppender {
 

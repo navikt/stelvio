@@ -36,8 +36,7 @@ import no.stelvio.common.log.MdcConstants;
  * The private method <code>{@link #executeFilterSimulator(Filter, ServletRequest, boolean)} </code> is used to simulate a
  * filter being run in a Servlet container.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class RequestContextFilterTest extends AbstractFilterTest {
 

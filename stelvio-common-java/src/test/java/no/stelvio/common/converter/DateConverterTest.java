@@ -9,7 +9,6 @@ import org.apache.commons.beanutils.ConversionException;
 /**
  * Test class for DateConverter.
  * 
- * @author person5b7fd84b3197, Accenture
  */
 public class DateConverterTest extends TestCase {
 

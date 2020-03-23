@@ -9,8 +9,7 @@ import java.util.Collection;
 /**
  * Mocks AccessGrantedVoter.
  * 
- * @author ??
- * 
+ *
  */
 public class MockAccessGrantedVoter implements AccessDecisionVoter<Object> {
 

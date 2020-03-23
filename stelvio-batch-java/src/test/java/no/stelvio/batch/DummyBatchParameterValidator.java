@@ -8,8 +8,7 @@ import no.stelvio.batch.exception.InvalidBatchEntryException;
 /**
  * AbstractBatch implementation used to test the BatchValidatorInterceptor.
  * 
- * @author persondfa1fa919e87 (Accenture)
- * 
+ *
  */
 public class DummyBatchParameterValidator extends AbstractBatch {
 

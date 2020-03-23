@@ -3,8 +3,7 @@ package no.stelvio.dto.error.strategy.support;
 /**
  * Imitates a dto exception.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class ImitatorDtoException extends RuntimeException {
 

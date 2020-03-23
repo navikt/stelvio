@@ -17,7 +17,6 @@ import no.stelvio.common.codestable.TestCtpi;
 /**
  * Test class for the DecodeNumericComparator class.
  * 
- * @author person6045563b8dec, Accenture
  * @version $revision$
  * 
  */

@@ -35,7 +35,6 @@ import no.stelvio.common.error.InvalidArgumentException;
  * The faces-config configuration for this component is provided with the framework, and no further configuration of this
  * component is required in the application specific faces-context configuration.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 @SuppressWarnings("unchecked")

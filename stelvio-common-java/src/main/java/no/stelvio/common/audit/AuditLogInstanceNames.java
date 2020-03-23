@@ -3,8 +3,7 @@ package no.stelvio.common.audit;
 /**
  * AuditLogInstanceNames.
  * 
- * @author MA
- * 
+ *
  */
 public interface AuditLogInstanceNames {
 

@@ -21,8 +21,7 @@ package no.stelvio.common.context.support;
  * &lt;/bean&gt;
  * </pre>
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class ComponentIdHolder {
 

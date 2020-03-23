@@ -33,8 +33,6 @@ import org.springframework.beans.factory.InitializingBean;
  * required and optional parameters to {@link DefaultJobParametersValidator}. Implements
  * {@link JobExecutionListener#beforeJob(JobExecution)} in order to put validated parameters on the job execution context.
  *
- * @author person47c121e3ccb5, BEKK
- * @author person9e646d794356, BEKK
  */
 public class TypeConvertingJobParametersValidator extends JobExecutionListenerSupport implements JobParametersValidator,
         InitializingBean {
@@ -68,7 +66,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /**
      * Base class for type conversion validation.
      *
-     * @author person47c121e3ccb5, BEKK
      *
      */
     public static abstract class StringJobParameter {
@@ -93,7 +90,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /**
      * Defines type conversion from string to string for a job parameter.
      *
-     * @author person47c121e3ccb5, BEKK
      *
      */
     public static class StringStringJobParameter extends StringJobParameter {
@@ -118,7 +114,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
      * Defines type conversion from string to File for a job parameter.
      * Checks if inputString is a file, if not throws {@link JobParametersInvalidException}
      *
-     * @author person4d574139349f, BEKK
      *
      */
     public static class StringFileJobParameter extends StringJobParameter {
@@ -147,7 +142,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /**
      * Defines type conversion from string to date for a job parameter.
      *
-     * @author person47c121e3ccb5, BEKK
      *
      */
     public static class StringDateJobParameter extends StringJobParameter {
@@ -186,7 +180,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /**
      * Defines type conversion from string to long for a job parameter.
      *
-     * @author person47c121e3ccb5, BEKK
      *
      */
     public static class StringLongJobParameter extends StringJobParameter {
@@ -236,7 +229,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /**
      * Defines type conversion from string to boolean for a job parameter.
      *
-     * @author person9e646d794356, BEKK
      *
      */
     public static class StringBooleanJobParameter extends StringJobParameter {
@@ -293,7 +285,6 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
     /**
      * Defines type conversion from string to URI for a job parameter. Note that the URI is set as a String on the jobContext.
      *
-     * @author person437b20f9889b, Sirius IT
      *
      */
     public static class StringUriJobParameter extends StringJobParameter {

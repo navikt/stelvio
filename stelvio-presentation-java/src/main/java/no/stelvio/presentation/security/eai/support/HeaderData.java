@@ -7,7 +7,6 @@ import no.stelvio.presentation.security.eai.headers.support.UserIdentityHeaders;
 /**
  * A builder that builds PacHeaders and UserIdentityHeaders.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see EaiHeaderConfig
  * @see PacHeaders

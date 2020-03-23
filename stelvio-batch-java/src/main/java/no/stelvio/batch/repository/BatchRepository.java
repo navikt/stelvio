@@ -7,7 +7,6 @@ import no.stelvio.batch.exception.InvalidBatchEntryException;
  * The BatchRepository is used by batch jobs to update the BatchDO.
  * The BatchDO holds that status for a batch and parameters used during execution of the batch.
  * 
- * @author person983601e0e117 (Accenture)
  *
  */
 public interface BatchRepository {

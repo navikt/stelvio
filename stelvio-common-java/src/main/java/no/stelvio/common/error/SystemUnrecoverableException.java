@@ -6,9 +6,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * Base exception for exceptions considered system and unrecoverable. Should be inherited by application exceptions in this
  * category.
  * 
- * @author person983601e0e117
- * @author person19fa65691a36 (Accenture)
- * @author personf8e9850ed756
  */
 public abstract class SystemUnrecoverableException extends UnrecoverableException {
 

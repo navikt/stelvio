@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalRecoverableException;
 /**
  * Super class for exceptions thrown when handling codes tables.
  * 
- * @author personf8e9850ed756
  */
 abstract class CodesTableException extends FunctionalRecoverableException {
 

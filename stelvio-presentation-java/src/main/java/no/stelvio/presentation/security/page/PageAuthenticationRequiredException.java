@@ -7,7 +7,6 @@ import no.stelvio.common.security.SecurityException;
  * rethrown within the PhaseListener, and out into the PhaseListenerManager so that any PhaseListeners scheduled to run after
  * the SecurityPhaseListener will be aborted.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class PageAuthenticationRequiredException extends SecurityException {
 

@@ -10,8 +10,7 @@ import org.apache.myfaces.test.mock.MockExternalContext20;
 /**
  * MockExternalContextExtended.
  * 
- * @author ??
- * 
+ *
  */
 public class MockExternalContextExtended extends MockExternalContext20 {
 

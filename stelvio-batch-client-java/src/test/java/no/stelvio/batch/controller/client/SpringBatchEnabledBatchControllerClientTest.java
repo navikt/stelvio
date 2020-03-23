@@ -23,7 +23,6 @@ import no.stelvio.batch.controller.client.support.SpringBatchEnabledBatchRunner;
  * 
  * startBatch.sh - no.stelvio.batch.controller.client.BatchControllerClient $*
  * stopBatch.sh -  no.stelvio.batch.controller.client.BatchControllerClient $1 $2 stop
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class SpringBatchEnabledBatchControllerClientTest {

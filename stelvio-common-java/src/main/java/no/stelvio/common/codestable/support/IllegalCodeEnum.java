@@ -11,7 +11,6 @@ package no.stelvio.common.codestable.support;
  * Enum instance can be anything. (IE: Postnr.P0116)
  * </p>
  * 
- * @author person983601e0e117 (Accenture)
  *
  */
 public interface IllegalCodeEnum {

@@ -8,8 +8,7 @@ import no.stelvio.common.util.DateUtil.DateCreator;
 /**
  * This class simulates the role of an EJB in a batch execution environment.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class FakeBatchExecutorEJB {
 

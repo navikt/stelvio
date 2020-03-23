@@ -6,7 +6,6 @@ import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
 /**
  * Thrown when an attempt to authenticate the user fails.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class PageAuthenticationFailedException extends SecurityException {
 

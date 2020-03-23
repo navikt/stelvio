@@ -16,8 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Simple test for caching using JDK 1.5 annotations.
  * Should test that management interface is in place with an http get or something
  * 
- * @author person4f9bc5bd17cc, Accenture 
- * @author person5dc3535ea7f4, Accenture
  */
 @ContextConfiguration(locations = { "classpath:common-java_test_cache_beans_cache_annotations.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)

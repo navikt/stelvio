@@ -4,7 +4,6 @@ package no.stelvio.dto.codestable;
  * 
  * This object must always be WS-I and Java 1.4 compliant
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public class CodesTablePeriodicItemDto extends AbstractCodesTablePeriodicItemDto {
 	

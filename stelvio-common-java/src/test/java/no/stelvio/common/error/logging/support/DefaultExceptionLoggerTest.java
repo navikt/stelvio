@@ -25,7 +25,6 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 /**
  * DefaultExceptionLoggerTest.
  * 
- * @author MA
  *
  */
 public class DefaultExceptionLoggerTest {

@@ -16,7 +16,6 @@ import org.apache.commons.logging.LogFactory;
  * The WasLogoutService builds an IBM specific URI to log the current user out from the WAS server, and specifies which response
  * page to use after a successful logout.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * */
 public class WasLogoutService implements LogoutService {

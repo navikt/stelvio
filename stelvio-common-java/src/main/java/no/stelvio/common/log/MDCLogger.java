@@ -26,8 +26,6 @@ package no.stelvio.common.log;
  * @see RequestContext Used to retrieve context data
  * @see MdcConstants Defines MDC fields
  * 
- * @author person15754a4522e7
- * @author person983601e0e117
  */
 public abstract class MDCLogger {
 	

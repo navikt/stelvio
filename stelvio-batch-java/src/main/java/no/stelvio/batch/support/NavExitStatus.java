@@ -5,7 +5,6 @@ import org.springframework.batch.core.ExitStatus;
 /**
  * Simple wrapper to hold custom NAV {@link ExitStatus}'s.
  *
- * @author person95f6f76be33a, Sirius IT
  */
 public final class NavExitStatus {
 	

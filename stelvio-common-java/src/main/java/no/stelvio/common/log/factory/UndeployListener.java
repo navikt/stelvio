@@ -12,8 +12,7 @@ import org.springframework.context.event.ContextClosedEvent;
  * Note that we use getClass().getClassLoader() to identify the classloader, so this class MUST be deployed in the application
  * container!
  * 
- * @author persone3e6ada23d17, Accenture
- * 
+ *
  */
 public class UndeployListener implements ApplicationListener {
 	@Override

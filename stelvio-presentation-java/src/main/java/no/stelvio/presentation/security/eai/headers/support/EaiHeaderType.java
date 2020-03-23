@@ -4,7 +4,6 @@ package no.stelvio.presentation.security.eai.headers.support;
 /**
  * EaiHeaderType.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  *
  */

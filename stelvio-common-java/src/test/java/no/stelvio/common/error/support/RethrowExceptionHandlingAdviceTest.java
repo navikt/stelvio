@@ -10,7 +10,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link RethrowExceptionHandlingAdvice}.
  * 
- * @author personf8e9850ed756
  */
 public class RethrowExceptionHandlingAdviceTest {
 	private final Mockery context = new JUnit4Mockery();

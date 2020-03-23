@@ -12,7 +12,6 @@ import no.stelvio.domain.time.ChangeStamp;
 /**
  * Class for saving and retrieving history on batches that have been run
  * 
- * @author person5dc3535ea7f4(Accenture)
  **/
 public class ControllerServiceHistorySupport {
 	private final static String BATCH_STATUS_STARTED = "STARTED"; // Corresponds

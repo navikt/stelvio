@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Thrown when a mapping fails.
  * 
- * @author person47c121e3ccb5, BEKK
  */
 public class MappingException extends FunctionalUnrecoverableException {
 

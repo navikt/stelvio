@@ -8,7 +8,6 @@ import java.util.Set;
 /**
  * A filter used to filter Collections.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class CollectionFilterer implements DataFilterer {

@@ -11,7 +11,6 @@ import org.junit.Test;
 /**
  * Test class for MenuItem.
  * 
- * @author person6045563b8dec, Accenture
  * @version $Id$
  * 
  */

@@ -27,8 +27,6 @@ import org.apache.commons.lang3.StringUtils;
  * 
  * @see no.stelvio.common.validation.BbanValidator
  * 
- * @author persone38597605f58 (Capgemini)
- * @author person6045563b8dec (Accenture)
  * @version $Id$
  */
 public class BbanValidator implements Validator {

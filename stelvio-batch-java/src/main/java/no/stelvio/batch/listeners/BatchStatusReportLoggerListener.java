@@ -20,9 +20,6 @@ import no.stelvio.common.log.InfoLogger;
 /**
  * Logs a batch job status report after job has been run.
  *
- * @author person47fb8408b8e4 (Accenture)
- * @author Jar Jar Binks (Accenture)
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public final class BatchStatusReportLoggerListener implements JobExecutionListener, InitializingBean {

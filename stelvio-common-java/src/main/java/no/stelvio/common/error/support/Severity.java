@@ -14,7 +14,6 @@ package no.stelvio.common.error.support;
  * <p>
  * <code>INFO &lt; WARN &lt; ERROR &lt; FATAL</code>
  * 
- * @author person7553f5959484, Accenture
  * @version $Id: Severity.java 1954 2005-02-08 13:35:42Z psa2920 $
  */
 public enum Severity {

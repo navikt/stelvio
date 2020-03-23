@@ -9,7 +9,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * SuccessfulBatch defines a successful batch for test purposes.
  * 
- * @author person08f1a7c6db2c, Accenture
  *
  */
 public class SuccessfulBatch extends AbstractBatch {

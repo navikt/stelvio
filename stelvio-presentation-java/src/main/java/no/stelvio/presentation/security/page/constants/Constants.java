@@ -5,7 +5,6 @@ import java.io.Serializable;
 /**
  * Constants used by the phaselistener module.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public final class Constants implements Serializable {

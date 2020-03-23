@@ -20,9 +20,7 @@ import no.stelvio.common.error.support.Severity;
  * should we use internalLogger to specific logs? Like ENTERPRISE_LOG / SYSTEM_LOG as were done in previous version -> use a
  *       internalLogger resolver maybe? Share with event logging
  * 
- * @author personf8e9850ed756
- * @author person983601e0e117
- * 
+ *
  */
 public class LoggerExceptionHandlerStrategy extends AbstractOrderedExceptionHandlerStrategy {
 

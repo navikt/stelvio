@@ -10,8 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  * 
  * Class used to validate IBANs.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class IbanValidator {
 

@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Subclasses of this exception is used to signal erroneous configuration.
  * 
- * @author person983601e0e117, Accenture
  */
 public abstract class ConfigurationException extends FunctionalUnrecoverableException {
 

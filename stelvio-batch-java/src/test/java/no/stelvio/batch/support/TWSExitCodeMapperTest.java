@@ -11,7 +11,6 @@ import org.springframework.batch.core.ExitStatus;
 /**
  * Test for testing the mapping between Spring Batch exit codes and Stelvio Batch status
  * codes.
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class TWSExitCodeMapperTest {

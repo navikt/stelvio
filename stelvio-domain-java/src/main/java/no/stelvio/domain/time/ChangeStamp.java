@@ -35,8 +35,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * </ul>
  * 
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 @Embeddable
 public class ChangeStamp implements Serializable {

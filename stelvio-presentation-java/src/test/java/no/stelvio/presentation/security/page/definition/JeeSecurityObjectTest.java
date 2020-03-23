@@ -31,8 +31,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 /**
  * JeeSecurityObjectTest.
  * 
- * @author ??
- * 
+ *
  */
 public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase {
 	private JeeSecurityObject secObject;

@@ -20,7 +20,6 @@ import org.junit.Test;
 /**
  * Test class for the SimpleSecurityContext class.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class SimpleSecurityContextTest {

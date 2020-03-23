@@ -7,9 +7,6 @@ import no.stelvio.common.context.RequestContext;
 /**
  * The base class for all service requests, which are serializable and may contain a <code>RequestContext</code>.
  * 
- * @author personff564022aedd
- * @author person15754a4522e7
- * @author personf8e9850ed756
  * @see RequestContext
  * @version $Id$
  */

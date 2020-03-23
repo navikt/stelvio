@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Authentication.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public interface Authentication {

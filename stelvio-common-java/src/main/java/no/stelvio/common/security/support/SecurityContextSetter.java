@@ -13,7 +13,6 @@ import no.stelvio.common.security.SecurityContextHolder;
 /**
  * Utility class to set and reset the SecurityContext. Should only be used by the framework or when unit testing.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class SecurityContextSetter {

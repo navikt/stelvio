@@ -20,7 +20,6 @@ import org.junit.Test;
 /**
  * Unit tests for JaxWsConsumerContextHandler
  * 
- * @author person727e2beea31f, Visma Sirius
  *
  */
 public class JaxWsConsumerContextHandlerTest {

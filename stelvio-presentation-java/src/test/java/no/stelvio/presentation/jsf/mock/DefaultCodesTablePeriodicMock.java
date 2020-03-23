@@ -16,7 +16,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
 import org.apache.commons.collections.Predicate;
 
 /**
- * @author ???
  * @version $Id$
  * 
  * @param <T>

@@ -10,7 +10,6 @@ import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 /**
  * Authenticates a user when a step up is performed.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class StepUpAuthentication extends AbstractAuthentication implements InitializingBean {

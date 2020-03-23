@@ -8,9 +8,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * This is the base exception that all recoverable application specific exceptions must extend. That is, all clients that can
  * receive this type of exception should be able to recover from or at least handle it in a meaningful way.
  * 
- * @author person983601e0e117
- * @author person19fa65691a36 (Accenture)
- * @author person7553f5959484, Accenture
  */
 public abstract class RecoverableException extends Exception {
 

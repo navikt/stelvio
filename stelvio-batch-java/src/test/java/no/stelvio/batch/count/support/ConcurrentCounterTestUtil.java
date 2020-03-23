@@ -8,7 +8,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class ConcurrentCounterTestUtil {

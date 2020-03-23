@@ -5,7 +5,6 @@ import no.stelvio.batch.exception.BatchSystemException;
 /**
  * Batch test exception.
  * 
- * @author MA
  *
  */
 public class BatchTestException extends BatchSystemException {

@@ -14,7 +14,6 @@ import org.junit.Test;
 /**
  * Test class for AbstractException. Didn't run as JUnit 4.x test case. Don't know why; could be my test runner.
  * 
- * @author personf8e9850ed756
  */
 public abstract class AbstractExceptionTest<T extends RuntimeException> {
 

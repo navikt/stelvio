@@ -23,7 +23,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * <code>SecurityContextHolder</code> is set up with a <code>SecurityContext</code> in order to perform its intended
  * operation.
  *
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class SpringSecurityContextFilter extends OncePerRequestFilter {

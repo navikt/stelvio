@@ -46,7 +46,6 @@ import org.junit.Before;
  * This class is based on the implementation of <code>org.apache.myfaces.test.base.AbstractJsfTestCase</code> but does not extend
  * <code>junit.framework.TestCase</code>.
  * 
- * @author person6045563b8dec
  * @version $Id$
  * 
  */

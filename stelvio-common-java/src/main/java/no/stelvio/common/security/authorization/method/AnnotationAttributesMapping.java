@@ -21,7 +21,6 @@ import org.springframework.security.access.ConfigAttribute;
  * If a method is annoted with <code>@Secured({"Id1"})</code>, Id1 can be mapped against a collection of
  *                   providers.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class AnnotationAttributesMapping {

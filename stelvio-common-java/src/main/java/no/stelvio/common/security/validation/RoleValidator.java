@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * Interface for defining functionality to check if a security role is valid.
  *  
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see ValidRole
  */

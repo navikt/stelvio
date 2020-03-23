@@ -3,7 +3,6 @@ package no.stelvio.common.util;
 /**
  * Internal helper class to be used only by Stelvio.
  * 
- * @author personf8e9850ed756, Accenture
  */
 public class Internal {
 

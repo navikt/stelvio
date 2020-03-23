@@ -10,7 +10,6 @@ import java.util.List;
  * A utility class used to retrieve the annotation attributes(i.e. role names) for the Roles annotation from the methods or
  * classes where it is used.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 final class RolesUtil {

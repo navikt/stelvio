@@ -24,8 +24,6 @@ import no.stelvio.common.context.RequestContextHolder;
 /**
  * SOAPHandler that adds Stelvio Context to the SOAP header, for use by all JAX-WS clients on the Stelvio platform.
  * 
- * @author person727e2beea31f, Visma Sirius
- * @author personce50574b42d2, Accenture
  */
 public class JaxWsConsumerContextHandler implements SOAPHandler<SOAPMessageContext> {
 

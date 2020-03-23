@@ -6,7 +6,6 @@ import org.dozer.Mapper;
  * Parent class for dozer mappers. Holds the reference to the actual
  * mapper implementation, normally injected. 
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public abstract class AbstractDozerMapper {
 

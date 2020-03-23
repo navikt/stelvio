@@ -28,7 +28,6 @@ import org.springframework.webflow.execution.RequestContextHolder;
  * authenticate. If a view does not require authentication or if the user already is authenticated, the FlowNavigationHandler is
  * allowed to resume control of the navigation.
  * 
- * @author person9ea7150f0ee5
  * @version $Id$
  */
 public class SecurityFlowNavigationHandler extends FlowExecutionListenerAdapter {

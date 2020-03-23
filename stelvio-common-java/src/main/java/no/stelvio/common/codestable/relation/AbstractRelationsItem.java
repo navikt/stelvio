@@ -15,7 +15,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * Base class for mapping relations. Mapping relations are used to map between legal combinations of CodeTableItems.
  * Such relations typically represents a many-to-many relation, thus, it can't be created as a CodesTableItem.
  * 
- * @author personec2cedb8e118 (Bouvet)
  * @version $Id$
  */
 @MappedSuperclass

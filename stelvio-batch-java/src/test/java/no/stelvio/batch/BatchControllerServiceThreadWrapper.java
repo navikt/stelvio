@@ -5,8 +5,7 @@ import no.stelvio.batch.controller.BatchControllerServiceBi;
 /**
  * A BatchControllerServiceThreadWrapper for test.
  * 
- * @author person08f1a7c6db2c (Accenture)
- * 
+ *
  */
 class BatchControllerServiceThreadWrapper extends Thread {
 	private BatchControllerServiceBi controller;

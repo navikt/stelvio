@@ -16,8 +16,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 /**
  * Abstract class for unit tests of ServletFilters.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public abstract class AbstractFilterTest {
 

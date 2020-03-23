@@ -11,8 +11,7 @@ import javax.persistence.Id;
 /**
  * Object used to identify a file that has been used by a batch.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 @Entity
 public class FileIdentity implements Serializable {

@@ -9,7 +9,6 @@ import javax.faces.validator.ValidatorException;
 /**
  * AbstractFieldNameValidator abstract class implementing mandatory fields on validators with field names.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public abstract class AbstractFieldNameValidator implements Validator, StateHolder {

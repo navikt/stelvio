@@ -59,7 +59,6 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * set into the SecurityContext. Value: fully qualified classname to a ValidRole enumeration.</li>
  * </ul>
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id: AbstractSecurityContextFilter.java $
  * @see SecurityContext
  * @see RoleValidator

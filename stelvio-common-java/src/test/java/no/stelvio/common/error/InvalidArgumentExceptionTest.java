@@ -9,8 +9,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link InvalidArgumentException}.
  * 
- * @author personf8e9850ed756, Accenture
- * @author person6045563b8dec, Accenture
  */
 public class InvalidArgumentExceptionTest {
 	

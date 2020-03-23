@@ -18,8 +18,6 @@ import no.stelvio.common.context.support.SimpleRequestContext.Builder;
 /**
  * Extension of {@link DefaultBatchControllerService} in order to handle execution of Spring Batches.
  * 
- * @author person47c121e3ccb5, BEKK
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class SpringBatchEnabledBatchControllerService extends DefaultBatchControllerService implements

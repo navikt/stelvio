@@ -16,8 +16,7 @@ import no.stelvio.common.util.ReflectUtil;
  * Test class that aims to test that CodesTable components works with enum codes where enum.getIllegalCode() is the code, and
  * not enum.name().
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class IllegalEnumCodeTest {
 
@@ -91,7 +90,6 @@ public class IllegalEnumCodeTest {
 	/**
 	 * Postnr test class.
 	 * 
-	 * @author person983601e0e117 (Accenture)
 	 */
 	static class PostnrCti extends CodesTableItem<PostnrCode, String> {
 		private static final long serialVersionUID = 1L;
@@ -100,8 +98,7 @@ public class IllegalEnumCodeTest {
 	/**
 	 * PostnrCode that has "illegal" Enum codes.
 	 * 
-	 * @author person983601e0e117 (Accenture)
-	 * 
+	 *
 	 */
 	enum PostnrCode implements IllegalCodeEnum {
 

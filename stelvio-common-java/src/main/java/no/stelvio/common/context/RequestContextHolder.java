@@ -5,7 +5,6 @@ import no.stelvio.common.util.RedeployableThreadLocalSubstitute;
 /**
  * Helper class to manage a thread-bound instance of the <code>RequestContext</code> class.
  * 
- * @author personf8e9850ed756
  * @see RequestContext
  */
 public final class RequestContextHolder {

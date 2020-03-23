@@ -3,7 +3,6 @@ package no.stelvio.dto.exception.mapping;
 /**
  * Signals that a mapping DTO exception has occurred.
  * 
- * @author person983601e0e117, Accenture
  */
 public class MappingDtoException extends AbstractMappingDtoException {
 

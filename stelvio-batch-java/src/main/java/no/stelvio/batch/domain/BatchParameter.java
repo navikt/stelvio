@@ -3,8 +3,7 @@ package no.stelvio.batch.domain;
 /**
  * Enumerator for the batch parameter.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public enum BatchParameter {
 

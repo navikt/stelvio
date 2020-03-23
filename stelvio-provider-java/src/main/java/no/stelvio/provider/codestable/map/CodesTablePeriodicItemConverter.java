@@ -11,7 +11,6 @@ import no.stelvio.dto.codestable.AbstractCodesTablePeriodicItemDto;
 /**
  * Custom converter implementation for converting <code>CodesPeriodicTableItem</code>s.
  * 
- * @author person19fa65691a36
  * @version $Id$
  */
 public class CodesTablePeriodicItemConverter extends AbstractCodesTableItemConverter {

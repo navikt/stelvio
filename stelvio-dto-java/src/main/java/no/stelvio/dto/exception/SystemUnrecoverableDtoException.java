@@ -3,7 +3,6 @@ package no.stelvio.dto.exception;
 /**
  * Signals that a system unrecoverable DTO exception has occurred. 
  * 
- * @author person983601e0e117, Accenture
  *
  */
 public abstract class SystemUnrecoverableDtoException extends UnrecoverableDtoException {

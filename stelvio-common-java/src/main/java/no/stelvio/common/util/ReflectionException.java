@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown when working with reflection fails.
  * 
- * @author personf8e9850ed756
  */
 public class ReflectionException extends FunctionalUnrecoverableException {
 

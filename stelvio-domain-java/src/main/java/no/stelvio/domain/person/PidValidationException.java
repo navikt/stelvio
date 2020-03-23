@@ -5,8 +5,7 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown as a result of Pid validation failure.
  * 
- * @author person983601e0e117, Accenture
- * 
+ *
  * @see Pid
  */
 public class PidValidationException extends FunctionalUnrecoverableException {

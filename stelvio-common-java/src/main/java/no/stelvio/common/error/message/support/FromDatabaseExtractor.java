@@ -9,7 +9,6 @@ import no.stelvio.common.error.support.ErrorDefinition;
  * provided list of <code>ErrorDefinition</code>s. If the exception is not found
  * in the list, use a fallback <code>Extractor</code>.
  * 
- * @author personf8e9850ed756
  * @see ErrorDefinition
  * @see Extractor
  */

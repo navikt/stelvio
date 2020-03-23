@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class ProgressLoggerListenerTest {

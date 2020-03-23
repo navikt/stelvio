@@ -9,7 +9,6 @@ import javax.jms.TextMessage;
 /**
  * TextMessage implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestTextMessage.java 2187 2005-04-06 07:05:45Z psa2920 $
  */
 public class TestTextMessage implements TextMessage {

@@ -19,7 +19,6 @@ import org.junit.Test;
 /**
  * Test class for DecodeComparator.
  * 
- * @author MA
  */
 public class DecodeComparatorTest {
 

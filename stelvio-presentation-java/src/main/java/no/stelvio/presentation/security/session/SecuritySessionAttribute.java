@@ -5,7 +5,6 @@ import no.stelvio.presentation.security.page.constants.Constants;
 /**
  * The security session attributes.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public enum SecuritySessionAttribute {

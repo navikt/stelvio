@@ -23,9 +23,6 @@ import no.stelvio.common.config.MissingPropertyException;
  * for each batch. - batchNameMap is used by DefaultBatchControllerService to get id's for prottoype batch-object beans to run.
  * Map key is batchName
  *
- * @author persond9e847e67144 (NAV)
- * @author persondfa1fa919e87 (Accenture)
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class DefaultBatchControllerService implements BatchControllerServiceBi, ApplicationContextAware {

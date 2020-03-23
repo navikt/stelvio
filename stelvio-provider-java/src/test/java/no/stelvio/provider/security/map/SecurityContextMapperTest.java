@@ -17,7 +17,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Tests mapping between <code>SecurityContext</code> and <code>SecurityContextDto</code>.
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public class SecurityContextMapperTest extends TestCase {
 

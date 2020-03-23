@@ -15,8 +15,7 @@ import no.stelvio.batch.controller.client.BatchRunner;
  * file. This file is using the btc-controllerclient.properties file which contains the spesific variables for the batch Use
  * Log4j for loging
  * 
- * @author persond9e847e67144, NAV
- * 
+ *
  * @version $Id$
  */
 public class DefaultBatchRunner implements BatchRunner {

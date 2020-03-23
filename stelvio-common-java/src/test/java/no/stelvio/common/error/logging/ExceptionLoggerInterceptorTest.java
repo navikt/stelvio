@@ -15,8 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Test class for ExceptionLoggerInterceptor.
  * 
- * @author MA
- * 
+ *
  */
 public class ExceptionLoggerInterceptorTest {
 

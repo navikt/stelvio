@@ -6,8 +6,7 @@ import no.stelvio.dto.person.PidDto;
 /**
  * Mapper used to map between the rich domain object {@link Pid} and the Data Transfer Object {@link PidDto}.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class PidMapper {
 

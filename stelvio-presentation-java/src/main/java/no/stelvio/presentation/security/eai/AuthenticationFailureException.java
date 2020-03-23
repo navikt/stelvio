@@ -5,7 +5,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Thrown to indicate that an authentication failure has occurred.
  * 
- * @author persondab2f89862d3, Accenture
  * @see SecurityException
  */
 public class AuthenticationFailureException extends SecurityException {

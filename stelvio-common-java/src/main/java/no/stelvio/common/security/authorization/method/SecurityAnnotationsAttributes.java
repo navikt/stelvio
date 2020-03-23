@@ -49,7 +49,6 @@ import org.springframework.security.access.annotation.Secured;
  * These security annotations are similiar to the Commons Attributes approach, however they are using Java 5 language-level
  * metadata support.
  *
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class SecurityAnnotationsAttributes implements Attributes {

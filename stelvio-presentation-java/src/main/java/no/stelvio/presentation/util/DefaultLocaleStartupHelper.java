@@ -13,7 +13,6 @@ import org.apache.commons.logging.LogFactory;
  * This class is not in use and are not finished. It should have its own exception class and messageTemplate should be
  * implemented.
  * 
- * @author person7553f5959484, Accenture
  * @version $Id$
  */
 public class DefaultLocaleStartupHelper {

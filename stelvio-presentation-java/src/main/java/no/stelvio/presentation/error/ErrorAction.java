@@ -10,9 +10,6 @@ import org.springframework.webflow.execution.RequestContextHolder;
 /**
  * Class with convienient methods for extracting content from {@link FlowExecutionException}.
  * 
- * @author persone38597605f58 (Capgemini)
- * @author person9ea7150f0ee5 (Capgemini)
- * @author person6045563b8dec (Accenture)
  * @version $Id$
  */
 public class ErrorAction {

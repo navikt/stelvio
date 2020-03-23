@@ -21,8 +21,6 @@ import org.springframework.util.Assert;
  * Returns the <code>ErrorDefinition</code> corresponding to the given class or
  * one of its superclasses or superinterfaces.
  * 
- * @author personf8e9850ed756
- * @author person983601e0e117 
  */
 public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
 	private static final Log LOG = LogFactory.getLog(StaticErrorDefinitionResolver.class);

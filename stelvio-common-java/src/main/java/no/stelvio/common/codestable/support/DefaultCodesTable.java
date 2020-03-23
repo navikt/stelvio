@@ -11,7 +11,6 @@ import no.stelvio.common.codestable.DuplicateItemsException;
  * Implementation of CodesTable used to handle a codestable, its belonging values and predicates for filtering the items
  * in the codestable.
  *
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  *
  *@param <T> a Throwable type variable

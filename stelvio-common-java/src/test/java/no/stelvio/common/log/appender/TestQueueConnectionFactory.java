@@ -9,7 +9,6 @@ import javax.jms.QueueConnectionFactory;
 /**
  * QueueConnectionFactory implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestQueueConnectionFactory.java 2191 2005-04-06 07:45:10Z
  *          psa2920 $
  */

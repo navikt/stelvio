@@ -14,8 +14,7 @@ import org.springframework.web.context.ServletContextAware;
  * Inserts the specified key-value pairs into its servlet context so these key-value pairs can be used from for example a JSP 
  * or servlet.
  *
- * @author personf8e9850ed756
- * 
+ *
  * @version $Id$
  */
 public class ServletContextAttributeSetter implements ServletContextAware, InitializingBean {

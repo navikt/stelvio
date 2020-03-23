@@ -13,7 +13,6 @@ import org.apache.commons.lang3.StringUtils;
  * IbanValidator validates whether the specified parameter is a valid IBAN, and if invalid sets an error message on
  * FacesContext.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class IbanValidator implements Validator {

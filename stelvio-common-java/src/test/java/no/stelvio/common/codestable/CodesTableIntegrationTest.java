@@ -20,7 +20,6 @@ import no.stelvio.common.codestable.support.DefaultCodesTableManager;
 /**
  * Integration test for the codes table support in Stelvio.
  * 
- * @author personf8e9850ed756, Accenture
  */
 
 public class CodesTableIntegrationTest {

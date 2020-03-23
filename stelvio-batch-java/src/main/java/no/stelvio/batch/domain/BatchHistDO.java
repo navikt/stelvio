@@ -29,7 +29,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Representation of batch history. *
  * 
- * @author person5dc3535ea7f4 (Accenture)
  */
 @Entity
 @Table(name = "T_BATCH_HIST")

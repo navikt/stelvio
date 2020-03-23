@@ -30,7 +30,6 @@ import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
 /**
  * Component test of Codestable. Is kept for historic reasons as this is the original component test.
  * 
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 

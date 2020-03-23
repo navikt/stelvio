@@ -26,7 +26,6 @@ import no.stelvio.presentation.security.page.definition.parse.SecurityConfigurat
  * faces-security-config.xsd.
  * </p>
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public class SecurityConfigurationXml implements SecurityConfiguration {

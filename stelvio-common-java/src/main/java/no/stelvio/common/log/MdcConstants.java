@@ -13,7 +13,6 @@ import org.slf4j.MDC;
  * <code>[appender].layout.ConversionPattern=... %X{user}... </code>
  * </p>
  * 
- * @author person15754a4522e7
  * @see RequestContext Contains most of the context data applicable to MDC logging.
  */
 public class MdcConstants {

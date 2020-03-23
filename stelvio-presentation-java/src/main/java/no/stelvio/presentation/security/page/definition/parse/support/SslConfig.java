@@ -4,7 +4,6 @@ package no.stelvio.presentation.security.page.definition.parse.support;
  * Object to hold the SSL port and SSL definitions defined in the security
  * configuration file.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class SslConfig {

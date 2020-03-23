@@ -20,7 +20,6 @@ import no.stelvio.common.error.FunctionalRecoverableException;
  * 
  * @see FunctionalRecoverableException
  * 
- * @author person983601e0e117
  */
 public abstract class FaultRecoverableException extends FunctionalRecoverableException {
 

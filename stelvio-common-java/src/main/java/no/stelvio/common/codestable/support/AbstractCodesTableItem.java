@@ -23,9 +23,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @param <V>
  *            an object
  * 
- * @author personb66fa0b5ff6e (Accenture)
- * @author person983601e0e117 (Accenture)
- * @author personf8e9850ed756 (Accenture)
  * @version $Id$
  */
 @MappedSuperclass

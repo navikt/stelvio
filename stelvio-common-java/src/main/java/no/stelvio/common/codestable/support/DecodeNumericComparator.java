@@ -13,7 +13,6 @@ import no.stelvio.common.codestable.AbstractCodesTableItemComparator;
  * The comparator assumes that the decode values are convertable to Integers. If not, an exception will be thrown when trying to
  * convert the decode values.
  * 
- * @author person6045563b8dec, Accenture
  * @since 1.0.6
  * 
  */

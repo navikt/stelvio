@@ -15,7 +15,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Tests that a batch can started and run successfully. Additionally verifies that only one unique instance of a batch can be
  * running at a given time (i.e name and slice makes a batch unique).
  * 
- * @author person08f1a7c6db2c
  */
 public class StartBatchTest {
 

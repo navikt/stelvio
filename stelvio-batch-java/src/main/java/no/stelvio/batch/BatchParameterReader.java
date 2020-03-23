@@ -4,7 +4,6 @@ package no.stelvio.batch;
 /**
  * Can be used to get additional job parameters for Spring Batches.
  * 
- * @author person47c121e3ccb5, BEKK
  *
  */
 public interface BatchParameterReader {

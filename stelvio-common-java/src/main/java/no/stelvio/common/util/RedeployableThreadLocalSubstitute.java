@@ -7,8 +7,7 @@ import java.util.Map;
 /**
  * Defines a RedeployableThreadLocalSubstitute.
  * 
- * @author PC
- * 
+ *
  * @param <T>
  *            value type
  */

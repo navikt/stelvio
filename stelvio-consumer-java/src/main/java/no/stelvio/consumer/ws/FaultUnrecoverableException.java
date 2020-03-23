@@ -19,7 +19,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
  * 
  * @see FunctionalUnrecoverableException
  * 
- * @author person983601e0e117
  */
 public abstract class FaultUnrecoverableException extends FunctionalUnrecoverableException {
 

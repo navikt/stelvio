@@ -5,7 +5,6 @@ import java.util.Iterator;
 /**
  * Filter strategy interface.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public interface DataFilterer {

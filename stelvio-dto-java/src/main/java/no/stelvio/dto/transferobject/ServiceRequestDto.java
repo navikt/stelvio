@@ -10,8 +10,6 @@ import no.stelvio.dto.context.RequestContextDto;
  * Data Transfer Object representation of <code>no.stelvio.common.transferobject.SerciceRequest</code>.
  * 
  * This object must always be WS-I and Java 1.4 compliant
- * @author person983601e0e117 (Accenture)
- * @author person6045563b8dec (Accenture)
  */
 public class ServiceRequestDto implements Serializable {
 

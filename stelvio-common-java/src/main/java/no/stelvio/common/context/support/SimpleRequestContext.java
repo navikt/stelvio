@@ -17,8 +17,6 @@ import no.stelvio.common.context.RequestContext;
  * While working on different tiers, the RequestContext must be exported in one tier, and then imported back again on the other
  * tier.
  * 
- * @author person7553f5959484, Accenture
- * @author personf8e9850ed756, Accenture
  * @version $Id: RequestContext.java 1979 2005-02-16 16:34:40Z psa2920 $
  */
 public final class SimpleRequestContext implements RequestContext, Serializable {

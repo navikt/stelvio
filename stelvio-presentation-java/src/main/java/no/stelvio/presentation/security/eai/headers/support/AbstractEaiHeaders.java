@@ -12,7 +12,6 @@ import no.stelvio.presentation.security.eai.headers.config.support.StanzaEntryEn
 /**
  * Abstract class for retieval of EaiHeaders.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see EaiHeaders
  * @see EaiHeaderConfig

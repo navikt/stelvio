@@ -12,7 +12,6 @@ import no.stelvio.common.security.SecurityContextHolder;
  * Implementation of a security resolver that hooks into JEE Container Managed Security using the Stelvio SecurityContext. Used
  * in conjunction with the JSF security EL-extensions (com.groundside) package.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see no.stelvio.common.security.SecurityContext
  */

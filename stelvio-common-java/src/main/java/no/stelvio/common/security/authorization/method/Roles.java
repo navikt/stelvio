@@ -27,7 +27,6 @@ import java.lang.annotation.Target;
  * public void delete(Contact contact);
  * </pre>
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 @Target({ ElementType.METHOD, ElementType.TYPE })

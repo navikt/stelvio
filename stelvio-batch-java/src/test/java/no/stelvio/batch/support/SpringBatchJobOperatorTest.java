@@ -27,7 +27,6 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.support.PropertiesConverter;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class SpringBatchJobOperatorTest {

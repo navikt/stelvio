@@ -14,8 +14,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * A static wrapper class used to retrieve attributes from a custom Subject created on an IBM Websphere server.
  * 
- * @author personb66fa0b5ff6e, Accenture
- * @author persondab2f89862d3, Accenture
  * @version $Id: WSCustomSubject.java $
  */
 public final class WSCustomSubject {

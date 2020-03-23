@@ -35,8 +35,6 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
 /**
  * Added a fix for styleClass on radio buttons spread layout.
  * 
- * @author person055361994206 (latest modification by $Author: lu4242 $)
- * @author personc7e15cb5f7a6
  * @version $Revision: 684924 $ $Date: 2008-08-11 15:59:26 -0500 (Mon, 11 Aug 2008) $
  */
 public class HtmlRadioRendererBase

@@ -18,8 +18,6 @@ import org.junit.Test;
  *
  * @see BatchDO
  * 
- * @author person356941106810, Accenture
- * @author person33547658e552, Accenture
  */
 public class BatchDOTest {
 

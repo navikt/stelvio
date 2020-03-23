@@ -5,7 +5,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Thrown if the parsing of the security definitions from the configuration file fails.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class PageSecurityFileParseException extends SecurityException {
 

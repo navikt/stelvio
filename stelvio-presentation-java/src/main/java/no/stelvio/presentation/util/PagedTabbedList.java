@@ -14,8 +14,6 @@ import javax.faces.event.FacesEvent;
  * 
  * @param <T>
  *            Inncomming element type that list containes.
- * @author persone8306a256e67
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class PagedTabbedList<T> extends PagedSortableList<T> {

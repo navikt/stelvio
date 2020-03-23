@@ -10,7 +10,6 @@ import org.springframework.security.access.annotation.Secured;
  * Exception thrown if the attribute of a <code>Secured</code> annotation is not present in a
  * <code>AnnotationAttributesMapping</code>.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class SecureAnnotationNotInMappingException extends SecurityException {
 

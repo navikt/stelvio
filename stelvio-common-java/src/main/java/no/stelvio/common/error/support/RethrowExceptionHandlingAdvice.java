@@ -6,7 +6,6 @@ import org.springframework.core.Ordered;
 /**
  * Advice that handles exceptions by rethrowing them. Is setup with Spring's <code>ThrowsAdviceInterceptor</code>.
  * 
- * @author personf8e9850ed756, Accenture
  */
 public class RethrowExceptionHandlingAdvice implements ThrowsAdvice, Ordered {
 

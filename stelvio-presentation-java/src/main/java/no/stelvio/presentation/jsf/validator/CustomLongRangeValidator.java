@@ -14,7 +14,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
 /**
  * CustomLongRangeValidator.
  * 
- * @author person096a015479bb, capgemini
  */
 public class CustomLongRangeValidator extends LongRangeValidator implements Validator, StateHolder {
 

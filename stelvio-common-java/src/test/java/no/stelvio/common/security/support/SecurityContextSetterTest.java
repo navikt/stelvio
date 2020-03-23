@@ -13,8 +13,7 @@ import org.junit.Test;
 /**
  * Test class for SecurityContextSetter.
  * 
- * @author ??
- * 
+ *
  */
 public class SecurityContextSetterTest {
 

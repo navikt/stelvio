@@ -14,7 +14,6 @@ import javax.naming.NamingException;
 /**
  * Context implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestInitialContext.java 2192 2005-04-06 07:53:20Z psa2920 $
  */
 public class TestInitialContext implements Context {

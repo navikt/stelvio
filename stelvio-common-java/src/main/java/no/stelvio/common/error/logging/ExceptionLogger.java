@@ -7,7 +7,6 @@ import org.apache.commons.logging.Log;
  * 
  * Interface for components used to log Exceptions in Stelvio.
  * 
- * @author person983601e0e117 (Accenture)
  *
  */
 public interface ExceptionLogger {

@@ -13,7 +13,6 @@ import org.apache.commons.logging.Log;
  * <li>Inject a logger with a specified logger name, that the logger should use (otherwise default logger is used). 
  * <li>Always check if the wanted log-level is enabled before calling any of the log-methods.
  * </ul>
- * @author person15754a4522e7 (ex-coder)
  * @since Stelvio 1.0.6.3
  */
 public interface InfoLogger {

@@ -3,7 +3,6 @@ package no.stelvio.batch.listeners.support;
 /**
  * Utility class for Spring batch listeners
  * 
- * @author Jar Jar Binks (Accenture)
  *
  */
 public final class ListenerSupport {

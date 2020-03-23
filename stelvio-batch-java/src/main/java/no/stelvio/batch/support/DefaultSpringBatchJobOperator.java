@@ -27,8 +27,6 @@ import no.stelvio.batch.controller.SpringBatchJobOperator;
  * Class that acts as glue between Spring Batch and Stelvio Batch execution semantics. Uses {@link JobOperator}, {@link JobExplorer} and {@link JobRepository} to interact with
  * Spring Batch framework.
  * 
- * @author person47c121e3ccb5, BEKK
- * @author person539d774f12ae (Teltek AS) - PK-16186
  */
 public class DefaultSpringBatchJobOperator implements SpringBatchJobOperator {
     private final Log logger = LogFactory.getLog(getClass());

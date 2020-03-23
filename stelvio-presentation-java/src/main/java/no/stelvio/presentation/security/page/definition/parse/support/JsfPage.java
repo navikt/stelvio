@@ -10,7 +10,6 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * 
  * Object representing one JSF page. Holds the parsed page security definitions obtained from <code>SecurityConfig</code>.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public class JsfPage implements Serializable {

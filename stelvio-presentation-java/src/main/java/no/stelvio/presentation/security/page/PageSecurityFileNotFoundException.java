@@ -5,7 +5,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Thrown when the configuration file containing the security definitions cannot be found.
  * 
- * @author persondab2f89862d3, Accenture
  */
 public class PageSecurityFileNotFoundException extends SecurityException {
 

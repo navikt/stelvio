@@ -16,7 +16,6 @@ import org.junit.Test;
 /**
  * CodesTableItemExistValidatorTest tests CodesTableItemExistValidator.
  * 
- * @author person37c6059e407e (Capgemini)
  * @version $Id$
  */
 public class CodesTableItemExistValidatorTest {

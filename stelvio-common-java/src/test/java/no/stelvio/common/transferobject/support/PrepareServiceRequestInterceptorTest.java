@@ -23,7 +23,6 @@ import no.stelvio.common.util.ReflectionException;
 /**
  * Tests PrepareServiceRequestInterceptor.
  *
- * @author person983601e0e117 (Accenture)
  */
 public class PrepareServiceRequestInterceptorTest {
 
@@ -92,7 +91,6 @@ public class PrepareServiceRequestInterceptorTest {
     /**
      * Test implementation of ServiceRequest.
      *
-     * @author person983601e0e117 (Accenture)
      */
     public class TestServiceRequest extends ServiceRequest {
 

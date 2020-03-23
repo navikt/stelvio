@@ -9,7 +9,6 @@ import no.stelvio.batch.repository.BatchRepository;
 
 /**
  * Reads parameters from Stelvio batch table.
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class StelvioBatchParameterReader implements BatchParameterReader {

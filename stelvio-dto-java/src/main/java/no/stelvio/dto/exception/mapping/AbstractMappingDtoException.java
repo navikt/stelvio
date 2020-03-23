@@ -5,7 +5,6 @@ import no.stelvio.dto.exception.FunctionalUnrecoverableDtoException;
 /**
  * Signals that an abstract mapping DTO exception has occurred. 
  * 
- * @author person983601e0e117, Accenture
  */
 public abstract class AbstractMappingDtoException extends FunctionalUnrecoverableDtoException {
 	

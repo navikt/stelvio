@@ -15,7 +15,6 @@ import no.stelvio.common.codestable.TestIdAsKeyCtpi;
 /**
  * Unit test of {@link IdAsKeyCodesTablePeriodicItem}.
  *
- * @author person66cdf88a8f67 (Accenture)
  * @version $Id$
  */
 public class IdAsKeyCodesTablePeriodicItemTest extends AbstractCodesTableItemTest {

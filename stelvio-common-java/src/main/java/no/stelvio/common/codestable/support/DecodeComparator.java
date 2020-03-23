@@ -16,7 +16,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * Be aware that it should never be passed to an {@link AbstractCodesTable} implementation as it's ordering is inconsistent with
  * <code>equals</code>. Meaning that <code>(o1.compareTo(o2)==0)</code> doesn't mean that <code>o1.equals(o2)</code>
  * 
- * @author person983601e0e117 (Accenture)
  * @since 1.0.5
  * 
  */

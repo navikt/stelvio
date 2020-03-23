@@ -54,7 +54,6 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
  * @JSFRenderer renderKitId = "HTML_BASIC" family = "javax.faces.SelectMany"
  *              type = "org.apache.myfaces.Checkbox"
  * 
- * @author person055361994206 (latest modification by $Author: lu4242 $)
  * @version $Revision: 784968 $ $Date: 2009-06-15 15:39:15 -0500 (Mon, 15 Jun
  *          2009) $
  */

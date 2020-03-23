@@ -5,7 +5,6 @@ import no.stelvio.common.security.definition.Role;
 /**
  * Default implementation of a Role which simply contains the name of the role.
  *
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see Role
  */

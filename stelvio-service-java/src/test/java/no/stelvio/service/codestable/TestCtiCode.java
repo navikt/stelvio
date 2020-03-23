@@ -3,7 +3,6 @@ package no.stelvio.service.codestable;
 /**
  * Enum to use for testing the codes table API.
  *
- * @author personf8e9850ed756, Accenture
  */
 public enum TestCtiCode {
 	/** Test code for EXISTS_1. */

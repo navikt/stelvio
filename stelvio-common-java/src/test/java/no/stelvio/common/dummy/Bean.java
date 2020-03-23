@@ -2,7 +2,6 @@ package no.stelvio.common.dummy;
 
 /**
  * Dummy test bean.
- * @author person5b7fd84b3197
  */
 public class Bean {
 	private String property1 = null;

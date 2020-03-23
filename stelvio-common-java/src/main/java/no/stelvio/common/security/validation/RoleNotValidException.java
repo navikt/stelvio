@@ -7,7 +7,6 @@ import no.stelvio.common.security.SecurityException;
 /**
  * Exception thrown if the validation of a rolename using a list of <code>ValidRole</code>s fails.
  * 
- * @author persondab2f89862d3, Accenture
  * @see ValidRole
  */
 public class RoleNotValidException extends SecurityException {

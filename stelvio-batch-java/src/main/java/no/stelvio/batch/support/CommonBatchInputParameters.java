@@ -2,7 +2,6 @@ package no.stelvio.batch.support;
 
 /**
  * Contains common input parameter keys for batch.
- * @author person47c121e3ccb5, BEKK
  *
  */
 public final class CommonBatchInputParameters {

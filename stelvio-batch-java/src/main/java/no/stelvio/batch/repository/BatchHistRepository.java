@@ -10,8 +10,6 @@ import no.stelvio.batch.exception.InvalidBatchEntryException;
  * The BatchHistRepository is used by batch jobs to update the BatchHistDO.
  * The BatchHistDO holds that status for a batch and parameters used during execution of the batch.
  * 
- * @author person5dc3535ea7f4 (Accenture)
- * @author person983601e0e117 (Accenture)
  *
  */
 public interface BatchHistRepository {

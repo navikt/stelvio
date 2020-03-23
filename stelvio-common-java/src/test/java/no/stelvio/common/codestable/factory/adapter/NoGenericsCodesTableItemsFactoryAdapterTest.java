@@ -12,7 +12,6 @@ import no.stelvio.common.codestable.factory.NoGenericsCodesTableItemsFactory;
 /**
  * Unit test for {@link NoGenericsCodesTableItemsFactoryAdapter}.
  * 
- * @author personf8e9850ed756, Accenture
  */
 
 public class NoGenericsCodesTableItemsFactoryAdapterTest {

@@ -10,7 +10,6 @@ import no.stelvio.domain.menu.MenuItem;
  * Implementations might used different strategies to implement the CRUD operations. 
  * The strategy used is given by the implementations prefix (ie: Jpa, Jdbc, Hibernate).
  * 
- * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
 public interface MenuRepository {

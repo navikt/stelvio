@@ -5,8 +5,7 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Superclass for exceptions thrown from a batch when a batch can't be processed due to functional failures or shortcomings.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class BatchFunctionalException extends FunctionalUnrecoverableException {
 

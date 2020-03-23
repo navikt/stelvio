@@ -13,7 +13,6 @@ import org.xml.sax.SAXException;
  * 
  * @see WebAppRoles
  * @see org.apache.commons.digester.Digester
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class WebXmlParser {

@@ -3,8 +3,7 @@ package no.stelvio.batch;
 /**
  * Class that will wait (to let client code start the batch first) then attempt to stop batch.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class BatchStopper {
 

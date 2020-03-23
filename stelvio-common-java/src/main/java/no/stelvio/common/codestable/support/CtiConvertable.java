@@ -3,7 +3,6 @@ package no.stelvio.common.codestable.support;
 /**
  * Interface for used for getting Cti class for enum classes.
  * 
- * @author personf4fa79ebc3ad (Capgemini) - Horisonten
  * @version $Id$
  * 
  * @param <T> The code's corresponding Cti 

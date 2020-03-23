@@ -17,7 +17,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
  * This is an implementation of the Object Adapter pattern. It becomes obsolete once EJB handles generics in method
  * signatures.
  *
- * @author person983601e0e117 (Accenture)
  */
 public class NoGenericsCodesTableItemsFactoryAdapter implements CodesTableItemsFactory {
 	private NoGenericsCodesTableItemsFactory noGenericsCodesTableItemsFactory;

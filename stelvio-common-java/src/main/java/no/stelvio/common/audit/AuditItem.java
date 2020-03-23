@@ -12,7 +12,6 @@ import no.stelvio.common.util.DateUtil;
 /**
  * AuditItem holds information that should be logged when a system that is subject to audit is accessed.
  * 
- * @author person983601e0e117 (Accenture)
  */
 public class AuditItem {
 
@@ -275,8 +274,7 @@ public class AuditItem {
 	/**
 	 * Enum which holds the different protection level values that can be set on an {@link AuditItem}.
 	 * 
-	 * @author person983601e0e117 (Accenture)
-	 * 
+	 *
 	 */
 	public enum ProtectionLevel {
 
@@ -340,8 +338,7 @@ public class AuditItem {
 	/**
 	 * Enum which holds the different protection level values that can be set on an {@link AuditItem}.
 	 * 
-	 * @author person983601e0e117 (Accenture)
-	 * 
+	 *
 	 */
 	public enum AccessType {
 		/**

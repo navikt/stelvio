@@ -4,7 +4,6 @@ package no.stelvio.common.config;
  * Exception used when a property in a component has been configured with values that are not within the allowable limits. These
  * limits are defined by the components' business rules, and the components validation method throws this exception.
  * 
- * @author person983601e0e117 (Accenture)
  */
 public class PropertyExceedsLimitException extends ConfigurationException {
 

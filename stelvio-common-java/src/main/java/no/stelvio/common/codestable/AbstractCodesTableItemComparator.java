@@ -12,7 +12,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
  * 
  * Classes extending this class must implement methods for comparing periodic and non-periodic codes table items.
  * 
- * @author person6045563b8dec, Accenture
  * @since 1.0.6
  * 
  */

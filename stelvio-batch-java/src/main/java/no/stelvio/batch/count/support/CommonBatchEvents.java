@@ -6,7 +6,6 @@ import no.stelvio.batch.count.support.CounterEvent.EventType;
 /**
  * Contains common batch events, see {@link CounterEvent}.
  * 
- * @author person47c121e3ccb5, BEKK
  *
  */
 public final class CommonBatchEvents {

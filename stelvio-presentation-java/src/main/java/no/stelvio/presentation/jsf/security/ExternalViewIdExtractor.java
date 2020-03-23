@@ -5,7 +5,6 @@ import javax.faces.context.FacesContext;
 /**
  * ExternalViewIdExtractor.
  * 
- * @author TS
  *
  */
 public interface ExternalViewIdExtractor {

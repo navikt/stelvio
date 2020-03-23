@@ -12,8 +12,6 @@ import no.stelvio.service.menu.to.MenuItemServiceResponse;
  * application would be to create a custom menu taglib that is responsible for
  * rendering the menu.
  * 
- * @author person4f9bc5bd17cc, Accenture
- * @author person15754a4522e7, Accenture
  * @version $Id$
  */
 public interface MenuService {

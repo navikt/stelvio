@@ -6,7 +6,6 @@ import no.stelvio.common.codestable.CodesTableManager;
 /**
  * Simple utility class for getting the Cti from the corresponding Code.
  * 
- * @author personf4fa79ebc3ad (Capgemini) - HORISONTEN
  * @version $Id$
  */
 public class CodeToCtiConverter {

@@ -3,7 +3,6 @@ package no.stelvio.common.error;
 /**
  * A test thrower.
  * 
- * @author personf8e9850ed756
  */
 public class TestThrower {
 	/**

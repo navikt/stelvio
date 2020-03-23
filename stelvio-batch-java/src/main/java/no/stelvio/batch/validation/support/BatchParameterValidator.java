@@ -11,7 +11,6 @@ import no.stelvio.common.error.InvalidArgumentException;
 /**
  * Validation logic class.
  * 
- * @author persondfa1fa919e87(Accenture)
  */
 public class BatchParameterValidator {
 

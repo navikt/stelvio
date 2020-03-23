@@ -7,7 +7,6 @@ package no.stelvio.common.error;
  * that is toString would produce the same result (+ some extra info, which are in our exceptions).
  * Use Throwable.setStackTrace 
  * 
- * @author person7553f5959484, Accenture
  * @version $Id: ExceptionWrapper.java 2265 2005-05-24 08:08:38Z psa2920 $
  */
 public interface ExceptionWrapper {

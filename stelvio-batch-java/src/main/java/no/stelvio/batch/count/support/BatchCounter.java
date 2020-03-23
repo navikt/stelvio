@@ -6,7 +6,6 @@ import java.util.Map;
 /**
  * Defines counting operations.
  * 
- * @author person47c121e3ccb5, BEKK
  *
  */
 public interface BatchCounter {

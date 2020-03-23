@@ -7,7 +7,6 @@ package no.stelvio.common.context.support;
  * <p>
  * Choice is made in no.stelvio.common.context.support.AbstractContext
  *
- * @author person7553f5959484
  * @version $Revision: 1975 $ $Date: 2005-02-16 16:57:06 +0100 (Wed, 16 Feb 2005) $
  * 
  * @param <T> a type variable

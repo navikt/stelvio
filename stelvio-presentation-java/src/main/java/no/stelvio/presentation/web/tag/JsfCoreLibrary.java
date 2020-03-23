@@ -8,7 +8,6 @@ import java.lang.reflect.Modifier;
 /**
  * JsfCoreLibrary is an example for IBM developerWorks (c).
  * 
- * @author Rick Hightower from ArcMind Inc. http://www.arc-mind.com
  */
 public final class JsfCoreLibrary extends AbstractTagLibrary {
 	/** Namespace used to import this library in Facelets pages. */

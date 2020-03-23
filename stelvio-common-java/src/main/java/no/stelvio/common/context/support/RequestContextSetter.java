@@ -13,7 +13,6 @@ import org.springframework.util.ReflectionUtils;
 /**
  * Utility class to set and reset the RequestContext. Should only be used by the framework or when unit testing.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class RequestContextSetter {

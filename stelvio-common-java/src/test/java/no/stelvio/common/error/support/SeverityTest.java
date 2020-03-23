@@ -6,7 +6,6 @@ import org.junit.Test;
 /**
  * Unit test of Severity.
  * 
- * @author person7553f5959484, Accenture
  * @version $Revision: 1954 $ $Author: psa2920 $ $Date: 2005-02-08 14:35:42 +0100 (Tue, 08 Feb 2005) $
  */
 public class SeverityTest {

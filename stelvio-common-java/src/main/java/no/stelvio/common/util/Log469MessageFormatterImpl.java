@@ -8,7 +8,6 @@ import no.stelvio.common.error.support.Severity;
 /**
  * Formats messages for the 469 Log System.
  * 
- * @author person356941106810, Accenture
  * @version $Id: Log469MessageFormatterImpl.java 2817 2006-03-02 11:59:19Z skb2930 $
  */
 public class Log469MessageFormatterImpl implements MessageFormatter {

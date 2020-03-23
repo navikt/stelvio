@@ -28,7 +28,6 @@ import org.springframework.context.support.ResourceBundleMessageSource;
  * 	</h:inputText>
  * </pre></blockquote></p>
  *
- * @author persone8306a256e67
  * @version $Id$
  * @see no.stelvio.common.util.DateUtil
  */

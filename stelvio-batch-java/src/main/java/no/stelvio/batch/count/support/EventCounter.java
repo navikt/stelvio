@@ -3,7 +3,6 @@ package no.stelvio.batch.count.support;
 
 /**
  * Represents a counter to be used by a {@link BatchCounter}.
- * @author person47c121e3ccb5, BEKK
  *
  */
 public interface EventCounter {

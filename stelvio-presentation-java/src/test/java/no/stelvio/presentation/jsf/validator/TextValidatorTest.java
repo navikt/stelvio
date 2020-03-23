@@ -22,7 +22,6 @@ import org.junit.Test;
 /**
  * BokstavValidatorTest tests BokstavValidator.
  * 
- * @author person10cbe95feeae (Bouvet)
  * @version $Id$
  */
 public class TextValidatorTest {

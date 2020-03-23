@@ -11,8 +11,7 @@ import no.stelvio.common.security.validation.ValidRole;
 /**
  * Test class for RoleValidatorUtil.
  * 
- * @author ??
- * 
+ *
  */
 public class RoleValidatorUtilTest {
 

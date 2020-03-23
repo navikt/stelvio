@@ -3,7 +3,6 @@ package no.stelvio.common.error.strategy;
 /**
  * refactor common tests inta an abstract test class for the interface.
  * 
- * @author personf8e9850ed756
  */
 public interface ExceptionHandlerStrategy {
 	/**

@@ -7,7 +7,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Test class for NewExceptionFramework.
  * 
- * @author MA
  *
  */
 public class NewExceptionFrameworkTest {

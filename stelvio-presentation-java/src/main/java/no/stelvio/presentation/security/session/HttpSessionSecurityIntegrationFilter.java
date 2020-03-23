@@ -20,7 +20,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * The filter's purpose is to help prevent HttpSession hijacking and should be mapped to all requests in applications that have
  * security requirements.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id: HttpSessionSecurityIntegrationFilter.java $
  */
 public class HttpSessionSecurityIntegrationFilter extends OncePerRequestFilter {

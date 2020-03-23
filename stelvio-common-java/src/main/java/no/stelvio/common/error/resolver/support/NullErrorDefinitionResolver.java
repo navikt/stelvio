@@ -10,8 +10,7 @@ import no.stelvio.common.error.support.ErrorDefinition;
  * 
  * This implementation will always return null
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class NullErrorDefinitionResolver implements ErrorDefinitionResolver {
 

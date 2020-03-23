@@ -23,7 +23,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * SecurityHeader.
  * 
- * @author MA
  */
 public class SecurityHeader {
 

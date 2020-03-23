@@ -41,9 +41,6 @@ import no.stelvio.common.util.ReflectionException;
  * <li>If all fails, uses {@link #getFallbackLogLevel()}</li>
  * </ul>
  * 
- * @author person983601e0e117 (Accenture)
- * @author person6045563b8dec (Accenture)
- * @author person15754a4522e7 (ex-coder)
  */
 public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger {
 
@@ -562,7 +559,6 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 	/**
 	 * FieldFilter used to filter out the templateArgument field when performing reflection.
 	 * 
-	 * @author person983601e0e117
 	 */
 	class TemplateArgumentFieldFilter implements FieldFilter {
 		/**
@@ -581,8 +577,7 @@ public class DefaultExceptionLogger extends MDCLogger implements ExceptionLogger
 	/**
 	 * Field callback for the template argument field. Executed on the template argument field
 	 * 
-	 * @author person983601e0e117 (Accenture)
-	 * 
+	 *
 	 */
 	class TemplateArgumentFieldCallback implements FieldCallback {
 

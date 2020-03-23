@@ -19,7 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * Simple test for CacheManagement.
  * 
- * @author person4f9bc5bd17cc, Accenture
  */
 @ContextConfiguration(locations = { "classpath:common-java_test_cache_beans.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)

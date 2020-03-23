@@ -9,8 +9,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Extension of {@link DefaultBatchRunner} to support execution/launching of spring batches.
  * 
- * @author person47c121e3ccb5, BEKK
- * @author person6045563b8dec, Accenture
  */
 public class SpringBatchEnabledBatchRunner extends DefaultBatchRunner {
 

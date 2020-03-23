@@ -21,7 +21,6 @@ import org.junit.Test;
 /**
  * LastInMonthValidatorTest tests LastInMonthValidator.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class LastInMonthValidatorTest {

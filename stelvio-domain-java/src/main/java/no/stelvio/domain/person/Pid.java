@@ -26,9 +26,6 @@ import org.joda.time.PeriodType;
  * 
  * NB! Pid is and should always be immutable.
  * 
- * @author person983601e0e117 (Accenture)
- * @author person15754a4522e7
- * @author person84799d90409b
  * @see Embeddable
  */
 @Embeddable

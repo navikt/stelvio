@@ -9,8 +9,7 @@ import org.aopalliance.intercept.MethodInvocation;
 /**
  * SecondPrepareServiceRequestInterceptor.
  * 
- * @author MA
- * 
+ *
  */
 public class SecondPrepareServiceRequestInterceptor implements MethodInterceptor {
 

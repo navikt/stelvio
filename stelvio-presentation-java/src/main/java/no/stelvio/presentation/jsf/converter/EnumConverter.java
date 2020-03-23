@@ -8,7 +8,6 @@ import javax.faces.convert.ConverterException;
 /**
  * Used to convert enums to strings and back again. Used in dropdownlists that contains enums.
  * 
- * @author persond3cb2ee15f42
  * @version $Id$
  */
 public class EnumConverter implements Converter {

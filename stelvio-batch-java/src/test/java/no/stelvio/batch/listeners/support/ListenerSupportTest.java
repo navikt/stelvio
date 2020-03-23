@@ -6,8 +6,7 @@ import org.junit.Test;
 /**
  * Test for {@link ListenerSupport}
  * 
- * @author Jar Jar Binks (Accenture)
- * 
+ *
  */
 public class ListenerSupportTest {
 

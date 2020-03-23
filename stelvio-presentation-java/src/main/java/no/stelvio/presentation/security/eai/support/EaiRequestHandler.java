@@ -11,7 +11,6 @@ import no.stelvio.presentation.security.eai.Authentication;
 /**
  * Handles requests to the Eai.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see Authentication
  * 

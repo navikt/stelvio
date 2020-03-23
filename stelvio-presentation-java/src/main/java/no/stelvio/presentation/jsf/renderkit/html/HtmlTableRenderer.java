@@ -19,7 +19,6 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
 /**
  * HtmlTableRenderer to avoid a row to be rendered when the table is empty.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class HtmlTableRenderer extends org.apache.myfaces.renderkit.html.ext.HtmlTableRenderer {

@@ -5,7 +5,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 /**
  * Exception thrown when a <code>CodesTable</code> or <code>CodesTablePeriodic</code> cannot be retrieved.
  * 
- * @author personf8e9850ed756
  */
 public class CodesTableNotFoundException extends FunctionalUnrecoverableException {
 

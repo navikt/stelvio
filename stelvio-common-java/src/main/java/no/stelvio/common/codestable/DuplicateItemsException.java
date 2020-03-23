@@ -6,7 +6,6 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
  * Exception thrown when a <code>List</code> with <code>CodesTableItem</code>s or <code>CodesTablePeriodicItem</code>s
  * used for creating a <code>CodesTable</code> or <code>CodesTablePeriodic</code> respectively has duplicate entries.
  * 
- * @author personf8e9850ed756, Accenture
  */
 public class DuplicateItemsException extends FunctionalUnrecoverableException {
 

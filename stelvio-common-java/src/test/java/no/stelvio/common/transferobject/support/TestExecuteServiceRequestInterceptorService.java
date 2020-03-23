@@ -3,8 +3,7 @@ package no.stelvio.common.transferobject.support;
 /**
  * Pojo used for testing the {@link ExecuteServiceRequestInterceptor}.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class TestExecuteServiceRequestInterceptorService {
 

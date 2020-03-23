@@ -16,7 +16,6 @@ import no.stelvio.presentation.jsf.context.FieldInListError;
 /**
  * Defines a MessagesFixSourcePhaseListener.
  * 
- * @author AW
  */
 public class MessagesFixSourcePhaseListener implements PhaseListener {
 

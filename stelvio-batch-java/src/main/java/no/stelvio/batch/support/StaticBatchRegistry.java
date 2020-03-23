@@ -13,8 +13,7 @@ import no.stelvio.batch.exception.InvalidBatchEntryException;
  * Thread safe BatchRegistry using a final HashMap to hold running batch instances. The HashMap may only be accessed by
  * synchronized methods, hence all threads should be able to read up-to-date data.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class StaticBatchRegistry implements BatchRegistry {
 

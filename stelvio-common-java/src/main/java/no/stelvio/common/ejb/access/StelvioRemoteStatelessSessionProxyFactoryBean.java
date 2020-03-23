@@ -13,8 +13,7 @@ import org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBe
  * Extension of Spring Framework's <code>{@link SimpleRemoteStatelessSessionProxyFactoryBean}</code>. Extends by adding the
  * possibility to have interceptors that are called prior to the EJB proxy.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class StelvioRemoteStatelessSessionProxyFactoryBean extends SimpleRemoteStatelessSessionProxyFactoryBean {
 

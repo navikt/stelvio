@@ -9,7 +9,6 @@ import javax.faces.convert.ConverterException;
  * Pid Converter.
  * 
  * @see javax.faces.convert.Converter
- * @author REA2812
  * @version $Id$
  */
 public class PidConverter implements Converter {

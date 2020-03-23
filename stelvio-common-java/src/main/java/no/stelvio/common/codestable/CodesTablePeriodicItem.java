@@ -13,8 +13,6 @@ import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
  * <code>MappedSuperclass</code>, meaning that Entities that inherits from this class must map to a table that defines
  * columns set up by this class
  * 
- * @author personb66fa0b5ff6e (Accenture)
- * @author person66cdf88a8f67 (Accenture)
  * @version $Id$
  * @see CodesTableItem
  * 

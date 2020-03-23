@@ -5,8 +5,7 @@ import junit.framework.TestCase;
 /**
  * Test class for UnrevocerableDtoException.
  * 
- * @author MA
- * 
+ *
  */
 public class TestUnrevocerableDtoException extends TestCase {
 

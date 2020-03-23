@@ -13,7 +13,6 @@ import no.stelvio.repository.menu.MenuRepository;
  * Implementation of MenuRepository interface that uses Hibernate to perform CRUD operations. Class contains a
  * HibernateTemplate reference that must be injected.
  *
- * @author person983601e0e117 (Accenture)
  */
 public class HibernateMenuRepository implements MenuRepository {
 	private HibernateTemplate hibernateTemplate;

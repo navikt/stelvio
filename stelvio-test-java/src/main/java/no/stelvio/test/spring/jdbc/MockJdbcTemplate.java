@@ -30,7 +30,6 @@ import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
 /**
  * A mocked version of {@link JdbcTemplate} that should be used in unit tests.
  * 
- * @author person02f3de2754b4, Accenture
  */
 public class MockJdbcTemplate extends JdbcTemplate { // implements Verifiable, BuilderNamespace {
 

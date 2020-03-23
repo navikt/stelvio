@@ -13,7 +13,6 @@ import org.springframework.transaction.support.TransactionCallback;
 /**
  * Unit test for {@link MockTransactionTemplate}.
  * 
- * @author personf8e9850ed756
  * @version $Revision: 1525 $, $Date: 2004-11-10 16:45:37 +0100 (Wed, 10 Nov 2004) $
  */
 public class MockTransactionTemplateTest {

@@ -14,9 +14,6 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Class to handle pageable lists.
  * 
- * @author persond3cb2ee15f42, Accenture
- * @author persone8306a256e67
- * @author persone38597605f58 (Capgemini)
  * @param <T>
  *            Inncomming element type that list containes.
  * @version $Id$

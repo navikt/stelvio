@@ -32,7 +32,6 @@ import org.junit.Test;
 /**
  * CodesTablePeriodicItemSelectOneMenuTest.  Tests filtering codeitems based on a given date.  
  * 
- * @author ML
  */
 public class CodesTablePeriodicItemSelectOneMenuTest {
 

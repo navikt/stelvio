@@ -13,7 +13,6 @@ import no.stelvio.presentation.binding.context.MessageContextUtil;
 /**
  * PidValidator validates whether the date is the last day of month, and if invalid; sets an error message on FacesContext.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class LastInMonthValidator extends AbstractFieldNameValidator {

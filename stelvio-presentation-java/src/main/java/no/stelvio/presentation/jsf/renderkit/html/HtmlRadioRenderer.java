@@ -48,8 +48,6 @@ import org.apache.myfaces.shared_tomahawk.renderkit.html.HtmlRendererUtils;
  *   family = "javax.faces.SelectOne"
  *   type = "org.apache.myfaces.Radio"
  * 
- * @author person055361994206 (latest modification by $Author: lu4242 $)
- * @author personc7e15cb5f7a6
  * @version $Revision: 685654 $ $Date: 2008-08-13 14:57:50 -0500 (Wed, 13 Aug 2008) $
  */
 public class HtmlRadioRenderer

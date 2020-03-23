@@ -5,7 +5,6 @@ import java.util.Calendar;
 /**
  * Test bean for calendar.
  * 
- * @author persone5d69f3729a8, Accenture
  * @version $Id: CalendarBean.java 2408 2005-07-27 13:50:18Z jrd2920 $
  */
 public class CalendarBean {

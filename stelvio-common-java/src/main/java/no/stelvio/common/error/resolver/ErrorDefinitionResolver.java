@@ -6,7 +6,6 @@ import no.stelvio.common.error.support.ErrorDefinition;
  * Interface defining the contract for a class capable of resolving an <code>ErrorDefinition</code> from a
  * <code>Throwable</code>.
  *
- * @author personf8e9850ed756
  */
 public interface ErrorDefinitionResolver {
 	

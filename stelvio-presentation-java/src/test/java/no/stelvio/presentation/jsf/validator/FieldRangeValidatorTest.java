@@ -14,7 +14,6 @@ import org.junit.Test;
 /**
  * FieldRangeValidatorTest.
  * 
- * @author person37c6059e407e (Capgemini)
  * @version $Id$
  * 
  */

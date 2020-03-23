@@ -7,7 +7,6 @@ import no.stelvio.presentation.security.page.definition.parse.support.JsfApplica
  * for JSF pages and stores them in an internal <code>JsfApplication</code>
  * object.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public interface SecurityConfiguration {

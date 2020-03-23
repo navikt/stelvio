@@ -12,7 +12,6 @@ import org.aopalliance.intercept.MethodInvocation;
  * initialize the thread-bound RequestContext.
  * 
  * @see AbstractInitRequestContextInterceptor
- * @author person4fdbf4cece95 (Accenture)
  */
 public class BatchControllerServiceInitRequestContextInterceptor extends AbstractInitRequestContextInterceptor {
 

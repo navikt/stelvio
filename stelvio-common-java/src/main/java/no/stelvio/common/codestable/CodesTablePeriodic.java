@@ -15,8 +15,6 @@ import org.apache.commons.collections.Predicate;
  * predicates to filter the items in the codestable. A <code>CodesTablePeriodic</code> is a <code>CodesTable</code> that has a
  * defined period of validity.
  * 
- * @author personb66fa0b5ff6e, Accenture
- * @author person19fa65691a36, Accenture
  * @version $Id$
  * @param <T>
  *            <code>AbstractCodesTablePeriodicItem</code>'s or subclasses of <code>CodesTablePeriodicItem</code> that the

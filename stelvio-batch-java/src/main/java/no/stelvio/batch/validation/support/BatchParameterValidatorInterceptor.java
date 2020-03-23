@@ -9,7 +9,6 @@ import no.stelvio.batch.exception.BatchFunctionalException;
 /**
  * Validated batches before they start executing.
  * 
- * @author persondfa1fa919e87(Accenture)
  */
 public class BatchParameterValidatorInterceptor implements MethodInterceptor {
 

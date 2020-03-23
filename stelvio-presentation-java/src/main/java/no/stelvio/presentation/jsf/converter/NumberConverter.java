@@ -49,8 +49,6 @@ import org.apache.commons.logging.LogFactory;
  * 
  * @see DateConverter
  * 
- * @author personec2cedb8e118 (NAV)
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class NumberConverter implements Converter {

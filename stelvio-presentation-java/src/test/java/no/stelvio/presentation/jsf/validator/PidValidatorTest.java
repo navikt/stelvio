@@ -17,7 +17,6 @@ import org.junit.Test;
 /**
  * PidValidatorTest tests PidValidator.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class PidValidatorTest {

@@ -9,8 +9,6 @@ import org.apache.myfaces.renderkit.html.util.ResourceHandler;
  * jarfile which a custom component needs to tell a browser to fetch. This
  * implementation is based on the tomahawk MyFacesResourceHandler implementation
  * 
- * @author personf0169700350c,
- * @author person6045563b8dec, Accenture
  */
 public class JsfResourceHandler implements ResourceHandler {
 	private final Class customComponent;

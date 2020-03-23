@@ -3,7 +3,6 @@ package no.stelvio.common.error.logging;
 /**
  * Class that throws exception. Can be configured in Spring and thus set up
  * to be intercepted through Spring AOP
- * @author person983601e0e117 (Accenture)
  *
  */
 public class ExceptionThrower {

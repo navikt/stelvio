@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * Exception thrown if one or more required properties are not set by configuration.
  * 
- * @author person983601e0e117, Accenture
  */
 public class MissingPropertyException extends ConfigurationException {
 

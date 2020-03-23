@@ -5,8 +5,7 @@ import org.springframework.security.access.annotation.Secured;
 /**
  * Mock service.
  * 
- * @author ??
- * 
+ *
  */
 @Secured({ "IdThatDoesNotExistInMapping" })
 public interface MockService2 {

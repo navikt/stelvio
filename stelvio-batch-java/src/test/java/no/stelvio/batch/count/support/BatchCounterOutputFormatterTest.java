@@ -10,7 +10,6 @@ import no.stelvio.batch.count.support.CounterEvent.EventType;
 import org.junit.Test;
 
 /**
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class BatchCounterOutputFormatterTest {

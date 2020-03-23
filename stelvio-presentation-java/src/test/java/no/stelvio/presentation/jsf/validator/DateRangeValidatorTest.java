@@ -18,7 +18,6 @@ import no.stelvio.presentation.jsf.mock.UIComponentMock;
 /**
  * DateRangeValidatorTest tests DateRangeValidator.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 

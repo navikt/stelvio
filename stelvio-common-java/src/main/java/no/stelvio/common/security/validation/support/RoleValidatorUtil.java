@@ -7,7 +7,6 @@ import no.stelvio.common.security.validation.ValidRole;
  * Utility class for extracting valid roles from enums implementing the <code>ValidRole</code> interface and for creating
  * <code>RoleValidator</code>s with these roles.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see RoleValidator
  * @see DefaultRoleValidator

@@ -13,7 +13,6 @@ import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 /**
  * AuthenticationWithoutWebseal.
  * 
- * @author persondab2f89862d3, Accenture
  * @see StepUpAuthentication
  */
 public class AuthenticationWithoutWebseal extends StepUpAuthentication {

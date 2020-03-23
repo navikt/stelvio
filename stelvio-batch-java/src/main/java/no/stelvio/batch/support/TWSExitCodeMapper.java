@@ -13,8 +13,6 @@ import no.stelvio.batch.BatchStatus;
 /**
  * Maps Stelvio Batch exit codes to Stelvio {@link BatchStatus} codes.
  * 
- * @author person47c121e3ccb5, BEKK
- * @author person95f6f76be33a, Sirius IT
  */
 public class TWSExitCodeMapper implements ExitCodeMapper {
 	protected Log logger = LogFactory.getLog(getClass());

@@ -18,7 +18,6 @@
 // *
 // * @see BatchHistDO
 // * 
-// * @author person5dc3535ea7f4 
 // */
 //public class BatchHistDOTest {
 //

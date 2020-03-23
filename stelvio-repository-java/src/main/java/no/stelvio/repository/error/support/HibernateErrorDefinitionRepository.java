@@ -11,7 +11,6 @@ import no.stelvio.repository.error.ErrorDefinitionRepository;
 /**
  * Hibernate implementation of repository for retrieving all error definitions from the error definition table.
  *
- * @author personf8e9850ed756, Accenture
  */
 public class HibernateErrorDefinitionRepository implements ErrorDefinitionRepository {
 	private HibernateTemplate hibernateTemplate;

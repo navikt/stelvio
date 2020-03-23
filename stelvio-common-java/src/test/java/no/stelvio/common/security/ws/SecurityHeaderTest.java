@@ -12,8 +12,7 @@ import org.junit.Test;
 /**
  * Test class for SecurityHeader.
  * 
- * @author person08f1a7c6db2c, Accenture
- * 
+ *
  */
 @Ignore("Liberty: can not find dependencies necessary to run PasswordUtil")  // FIXME PL-712
 public class SecurityHeaderTest {

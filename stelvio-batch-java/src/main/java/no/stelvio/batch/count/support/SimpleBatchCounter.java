@@ -13,8 +13,6 @@ import org.springframework.util.Assert;
 /**
  * Simple map based implementation of {@link BatchCounter}.
  * 
- * @author person47c121e3ccb5, BEKK
- * @author person95f6f76be33a, Sirius IT
  */
 public class SimpleBatchCounter implements BatchCounter {
 	private ConcurrentMap<CounterEvent, SimpleEventCounter> events = new ConcurrentHashMap<>();

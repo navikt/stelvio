@@ -8,8 +8,7 @@ import org.junit.Test;
 /**
  * Test class for AnnotationAttributesMappingEditor.
  * 
- * @author ??
- * 
+ *
  */
 public class AnnotationAttributesMappingEditorTest {
 

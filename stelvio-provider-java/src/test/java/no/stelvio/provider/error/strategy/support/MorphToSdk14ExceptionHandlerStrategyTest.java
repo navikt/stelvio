@@ -15,7 +15,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Test class for testing MorphToSdk14ExceptionHandlerStrategy.
  * 
- * @author MA
  */
 public class MorphToSdk14ExceptionHandlerStrategyTest {
 

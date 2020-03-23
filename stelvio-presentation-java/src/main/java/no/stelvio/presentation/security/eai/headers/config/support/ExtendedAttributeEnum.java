@@ -5,7 +5,6 @@ import no.stelvio.presentation.security.eai.headers.config.ConfigEntry;
 /**
  * An enum that contains keys for extracting the IBM Webseal EAI extended attribute header names from a configuration map.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see ConfigEntry
  * 

@@ -3,7 +3,6 @@ package no.stelvio.common.error;
 /**
  * Test bean.
  * 
- * @author personf8e9850ed756
  */
 public class TestBean {
 	private TestThrower testThrower;

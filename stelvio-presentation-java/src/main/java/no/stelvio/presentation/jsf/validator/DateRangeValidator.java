@@ -13,7 +13,6 @@ import no.stelvio.presentation.binding.context.MessageContextUtil;
  * DateRangeValidator validates whether the specified parameter is a date in a
  * range, and if invalid sets an error message on FacesContext.
  * 
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 public class DateRangeValidator extends AbstractFieldNameValidator {

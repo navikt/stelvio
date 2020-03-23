@@ -18,7 +18,6 @@ import org.springframework.security.access.SecurityConfig;
 /**
  * Test class for SecurityAnnotationsAttributes.
  * 
- * @author ??
  */
 public class SecurityAnnotationsAttributesTest {
 

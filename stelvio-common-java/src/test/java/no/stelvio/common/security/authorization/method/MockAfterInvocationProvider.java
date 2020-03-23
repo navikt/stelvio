@@ -10,8 +10,7 @@ import java.util.Collection;
 /**
  * Mocks AfterInvocationProvider.
  * 
- * @author ??
- * 
+ *
  */
 public class MockAfterInvocationProvider implements AfterInvocationProvider {
 

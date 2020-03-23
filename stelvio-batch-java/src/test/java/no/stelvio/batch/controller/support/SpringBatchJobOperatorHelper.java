@@ -11,7 +11,6 @@ import no.stelvio.common.context.RequestContextHolder;
  * Simple JobOperator used by SpringBatchEnabledBatchControllerServiceTest.java to 
  * test that the RequestContext contains the expected values  
  * 
- * @author persone0853a2f3fda (Accenture)
  *
  */
 class SpringBatchJobOperatorHelper implements SpringBatchJobOperator {

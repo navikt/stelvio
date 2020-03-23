@@ -3,7 +3,6 @@ package no.stelvio.presentation.security.eai.support;
  * The names of the headers sent from WebSEAL to the application server during 
  * authentication or reauthentication.
  * 
- * @author persondab2f89862d3, Accenture
  *
  */
 public final class WebsealHeaderNames {

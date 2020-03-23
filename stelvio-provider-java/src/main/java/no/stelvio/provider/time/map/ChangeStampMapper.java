@@ -16,7 +16,6 @@ import no.stelvio.dto.time.ChangeStampDto;
  * Mapper used to map between the rich domain object {@link ChangeStamp} and the
  * Data Transfer Object {@link ChangeStampDto}.
  * 
- * @author person983601e0e117 (Accenture)
  */
 public class ChangeStampMapper extends AbstractDozerMapper {
 	private static final Log LOG = LogFactory.getLog(ChangeStampMapper.class);

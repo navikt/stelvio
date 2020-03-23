@@ -4,7 +4,6 @@ package no.stelvio.common.config;
  * 
  * Exception thrown if one or more properties have invalid values.
  * 
- * @author SKA2812
  */
 public class InvalidPropertyException extends ConfigurationException {
 

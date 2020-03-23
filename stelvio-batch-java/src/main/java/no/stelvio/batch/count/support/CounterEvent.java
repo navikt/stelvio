@@ -11,8 +11,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 /**
  * A batch event that can be counted by a {@link BatchCounter}.
  * 
- * @author person47c121e3ccb5, BEKK
- * 
+ *
  */
 public final class CounterEvent {
 	private static ConcurrentHashMap<Class<?>, Set<CounterEvent>> registeredEvents = 
@@ -21,8 +20,7 @@ public final class CounterEvent {
 	/**
 	 * Defines different types of {@link CounterEvent}.
 	 * 
-	 * @author person47c121e3ccb5, BEKK
-	 * 
+	 *
 	 */
 	public enum EventType {
 		/** */

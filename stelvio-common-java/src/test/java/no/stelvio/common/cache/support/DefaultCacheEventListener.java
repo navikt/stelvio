@@ -10,7 +10,6 @@ import net.sf.ehcache.event.CacheEventListener;
 
 /**
  * 
- * @author person5dc3535ea7f4
  */
 public class DefaultCacheEventListener implements CacheEventListener{
 

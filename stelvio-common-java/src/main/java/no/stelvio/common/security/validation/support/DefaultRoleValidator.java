@@ -12,7 +12,6 @@ import no.stelvio.common.security.validation.ValidRole;
  * Default implementation of the RoleValidator. Offers the <code>isValid(Object role)</code> role check for the types String and
  * Role.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  * @see RoleValidator
  */

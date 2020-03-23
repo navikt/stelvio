@@ -7,8 +7,7 @@ import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 /**
  * Interface for the repository used to retrieve codestable items.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public interface CodesTableRepository {
 

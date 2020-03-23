@@ -3,7 +3,6 @@ package no.stelvio.common.config;
 /**
  * Thrown if two or more properties set up by configuration are in conflict with each other.
  * 
- * @author person983601e0e117, Accenture
  */
 public class ConflictingPropertiesException extends ConfigurationException {
 

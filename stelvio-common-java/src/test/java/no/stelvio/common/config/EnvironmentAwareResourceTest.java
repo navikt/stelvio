@@ -7,7 +7,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Automatic unit test of the class EnvironmentAwareResource.
  * 
- * @author person727e2beea31f, Sirius IT
  * @version $Id$
  */
 public class EnvironmentAwareResourceTest {

@@ -7,7 +7,6 @@ import org.dozer.CustomConverter;
  * Base class for code table item converters. Common properties for concrete converter implementations like
  * <code>CodesTableItemConverter</code> and <code>CodesTablePeriodicItem</code> resides here.
  * 
- * @author person19fa65691a36
  * @version $Id$
  */
 public abstract class AbstractCodesTableItemConverter implements CustomConverter {

@@ -10,7 +10,6 @@ import java.util.Map.Entry;
 
 /**
  * Formats batch counting info, input data is {@link BatchCounter#getEventReport()}.
- * @author person47c121e3ccb5, BEKK
  *
  */
 public class TableFormatter implements EventReportFormatter {

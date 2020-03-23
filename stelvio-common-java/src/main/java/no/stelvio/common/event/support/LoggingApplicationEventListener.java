@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationEvent;
 import no.stelvio.common.event.ApplicationEventListener;
 
 /**
- * @author personf8e9850ed756
  */
 public class LoggingApplicationEventListener implements ApplicationEventListener {
 	private static Log log = LogFactory.getLog(LoggingApplicationEventListener.class);

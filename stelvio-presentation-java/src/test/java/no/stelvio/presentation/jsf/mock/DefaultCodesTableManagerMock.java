@@ -19,7 +19,6 @@ import no.stelvio.presentation.jsf.codestable.KravStatusCti;
 /**
  * DefaultCodesTableManagerMock.
  * 
- * @author person37c6059e407e (Capgemini)
  * @version $Id$
  */
 @SuppressWarnings("unchecked")

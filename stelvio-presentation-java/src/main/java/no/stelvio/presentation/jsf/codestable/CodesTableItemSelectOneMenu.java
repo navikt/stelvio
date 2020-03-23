@@ -57,9 +57,6 @@ import no.stelvio.common.error.InvalidArgumentException;
  * getCodesTableItemsValidForDate will be used in retrieveCodesTableItems to get the Ctpi elements that are valid 
  * on that particular date.  
  * 
- * @author person082681bfb6fd (Capgemini)
- * @author person6045563b8dec
- * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
 @SuppressWarnings("unchecked")

@@ -18,7 +18,6 @@ import org.junit.Test;
 /**
  * Unit test for {@link CodesTablePeriodicItemConverter}.
  * 
- * @author person19fa65691a36 (Accenture)
  */
 public class CodesTablePeriodicItemConverterTest extends AbstractCodesTableItemConverterTest {
 

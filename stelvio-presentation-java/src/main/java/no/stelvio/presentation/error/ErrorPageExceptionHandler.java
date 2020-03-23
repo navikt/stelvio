@@ -22,8 +22,6 @@ import no.stelvio.presentation.security.page.PageAuthenticationRequiredException
  * to handle the type of exception that has occured. The path to the error page to use, and which exceptions to handle should
  * both be configured in the Spring configuration of the presenation layer.
  * 
- * @author person6045563b8dec (Accenture)
- * @author person9ea7150f0ee5 (Capgemini)
  * @since 1.0.5.4
  */
 public class ErrorPageExceptionHandler implements FlowExecutionExceptionHandler {

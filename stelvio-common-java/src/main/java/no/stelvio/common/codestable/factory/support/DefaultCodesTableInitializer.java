@@ -18,7 +18,6 @@ import no.stelvio.common.codestable.CodesTablePeriodicItem;
 /**
  * Initializes the specified codes tables and loads them into their cache.
  * 
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 public class DefaultCodesTableInitializer implements InitializingBean {

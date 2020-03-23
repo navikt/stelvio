@@ -23,9 +23,6 @@ import javax.persistence.Table;
  * Class represent a MenuItem. Instances of this class are Java Persistence API Entities, and may be persisted by any ORM
  * product that support JPA Annotations table mapping.
  * 
- * @author person4f9bc5bd17cc (Accenture)
- * @author person983601e0e117 (Accenture)
- * @author person6045563b8dec (Accenture)
  * @version $id$
  */
 @NamedQueries({ @NamedQuery(name = "MenuItem.findParents", 

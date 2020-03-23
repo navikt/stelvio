@@ -13,8 +13,7 @@ import no.stelvio.common.context.RequestContextHolder;
 /**
  * AbstractBatch implementation used to test the InitRequestContextInterceptor.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class InitRequestContextBatchImpl extends AbstractBatch {
 

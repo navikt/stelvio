@@ -14,7 +14,6 @@ import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 /**
  * Implementation of CodesTableManager used for accessing and caching persistent codes tables.
  * 
- * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 @SuppressWarnings("unchecked")

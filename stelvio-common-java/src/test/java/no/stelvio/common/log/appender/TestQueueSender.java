@@ -10,7 +10,6 @@ import javax.jms.QueueSender;
 /**
  * QueueSender implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestQueueSender.java 2189 2005-04-06 07:37:28Z psa2920 $
  */
 public class TestQueueSender implements QueueSender {

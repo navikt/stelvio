@@ -12,8 +12,7 @@ import no.stelvio.dto.exception.SystemUnrecoverableDtoException;
  * Logging class that is adapted to handle DTO exceptions. Uses default behavior in {@link ExceptionLogger} where no special
  * adaptions are needed.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public class DtoExceptionLogger extends DefaultExceptionLogger {
 

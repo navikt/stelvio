@@ -6,7 +6,6 @@ import no.stelvio.common.util.RedeployableThreadLocalSubstitute;
 /**
  * Helper class to manage a thread-bound instance of the <code>SecurityContext</code> class.
  * 
- * @author persondab2f89862d3
  * @see SimpleSecurityContext
  */
 public final class SecurityContextHolder {

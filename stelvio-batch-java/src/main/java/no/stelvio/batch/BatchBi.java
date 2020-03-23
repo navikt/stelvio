@@ -14,7 +14,6 @@ import no.stelvio.common.log.InfoLogger;
 /**
  * Interface for classes implementing scheduled batch logic.
  * 
- * @author persond9e847e67144, NAV
  */
 public interface BatchBi {
 

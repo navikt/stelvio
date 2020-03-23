@@ -14,8 +14,7 @@ import org.junit.Test;
 /**
  * Test class for RolesUtil.
  * 
- * @author ??
- * 
+ *
  */
 public class RolesUtilTest {
 

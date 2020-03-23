@@ -15,7 +15,6 @@ import javax.jms.Topic;
 /**
  * QueueConnection implementation for unit testing.
  * 
- * @author person356941106810, Accenture
  * @version $Id: TestQueueConnection.java 2190 2005-04-06 07:44:39Z psa2920 $
  */
 public class TestQueueConnection implements QueueConnection {

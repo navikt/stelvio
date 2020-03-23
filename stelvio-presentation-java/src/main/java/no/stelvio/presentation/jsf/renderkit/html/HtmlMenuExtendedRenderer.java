@@ -30,7 +30,6 @@ import no.stelvio.presentation.jsf.model.SelectItemExtended;
 /**
  * Renderer for SelectItemExtended
  * 
- * @author persone38597605f58
  *
  */
 @SuppressWarnings("unchecked")

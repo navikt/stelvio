@@ -18,7 +18,6 @@ import no.stelvio.repository.codestable.CodesTableRepository;
  * Hibernate implementation of the CodesTableRepository. A HibernateTemplate must be injected into this class before an instance
  * can be passed to a client.
  * 
- * @author person983601e0e117 (Accenture)
  * @see CodesTableRepository
  */
 public class HibernateCodesTableRepository implements CodesTableRepository {

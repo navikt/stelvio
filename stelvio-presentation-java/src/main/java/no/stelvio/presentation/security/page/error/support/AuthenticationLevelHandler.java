@@ -22,7 +22,6 @@ import no.stelvio.presentation.security.session.SecuritySessionAttribute;
 /**
  * Authentication level handler.
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class AuthenticationLevelHandler {

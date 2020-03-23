@@ -11,8 +11,7 @@ import org.junit.Test;
 /**
  * Test class for AuditItem.
  * 
- * @author MA
- * 
+ *
  */
 public class AuditItemTest {
 

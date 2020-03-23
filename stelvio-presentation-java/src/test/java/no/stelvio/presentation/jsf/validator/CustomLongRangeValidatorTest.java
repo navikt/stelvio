@@ -15,8 +15,7 @@ import org.junit.Test;
 /**
  * CustomLongRangeValidatorTest.
  * 
- * @author ??
- * 
+ *
  */
 public class CustomLongRangeValidatorTest {
 

@@ -28,7 +28,6 @@ import org.springframework.security.core.Authentication;
  * decision.
  * </p>
  * 
- * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class AfterInvocationProviderManager implements AfterInvocationManager {

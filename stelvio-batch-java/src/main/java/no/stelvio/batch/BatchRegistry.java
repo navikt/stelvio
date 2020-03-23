@@ -15,8 +15,7 @@ import no.stelvio.batch.support.StaticBatchRegistry;
  * clustered environment a registry using MBeans might be more appropriate, if the application server supports using MBeans
  * across nodes in a cluster.
  * 
- * @author person983601e0e117 (Accenture)
- * 
+ *
  */
 public interface BatchRegistry {
 

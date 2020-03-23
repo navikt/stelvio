@@ -42,7 +42,6 @@ import org.springframework.webflow.execution.RequestContextHolder;
  * provides methods which can handle authorization of these security constraints against JEE-security and methods which can
  * handle a protocol switch for secure channel communication.
  * 
- * @author persondab2f89862d3
  * @version $Id$
  */
 public class JeeSecurityObject {
