@@ -27,8 +27,8 @@
     </modules>
 
     <scm>
-        <connection>scm:git:ssh://test@example.com:7999/pen/stelvio.git</connection>
-        <developerConnection>scm:git:ssh://test@example.com:7999/pen/stelvio.git</developerConnection>
+        <connection>scm:git:ssh://git@stash.devillo.no:7999/pen/stelvio.git</connection>
+        <developerConnection>scm:git:ssh://git@stash.devillo.no:7999/pen/stelvio.git</developerConnection>
         <url>http://stash.devillo.no/projects/PEN/repos/stelvio/</url>
     </scm>
 

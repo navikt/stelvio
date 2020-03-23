@@ -95,7 +95,7 @@ public class PidValidatorTest {
 		UIComponent component = new UIComponentMock();
 		component.setId(COMPONENT_ID);
 		try {
-			validator.validate(null, component, "12345678901");
+			validator.validate(null, component, "03102942719");
 			Assert.assertTrue(true);
 		} catch (ValidatorException e) {
 			Assert.fail(e.getFacesMessage().getSummary());

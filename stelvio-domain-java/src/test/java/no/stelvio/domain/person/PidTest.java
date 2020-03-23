@@ -20,7 +20,7 @@ import org.junit.Test;
 public class PidTest {
 	private String monthAbove9BostNr = "01327200336";
 	private String monthBelow10BostNr = "04250100286";
-	private String normalFnr = "12345678901";
+	private String normalFnr = "26067637924";
 
 	// Pids with legal whitespace
 	private String monthAbove9BostNrWs = "013272 00336";
@@ -33,17 +33,17 @@ public class PidTest {
 	private String normalFnrIWs = "260 67637924";
 
 	// Pids with special Fnr
-	private String specialFnr0 = "12345678901";
-	private String specialFnr1 = "12345678901";
-	private String specialFnr2 = "12345678901";
-	private String specialFnr29Feb = "12345678901";
-	private String specialFnr30Feb = "12345678901";
+	private String specialFnr0 = "26067300000";
+	private String specialFnr1 = "26067300001";
+	private String specialFnr2 = "26067300002";
+	private String specialFnr29Feb = "29027300000";
+	private String specialFnr30Feb = "30027300000";
 	private String specialFnr61May = "61057300000";
 	private String specialFnr21XXX = "21257300000";
-	private String specialFnrZero = "12345678901";
-	private String specialFnr03Jan76 = "12345678901";
-	private String specialFnr03Jan73 = "12345678901"; // Passes the mod11 check, but not the special circumstance check
-	private String specialFnr08Jun57 = "12345678901";
+	private String specialFnrZero = "00000000000";
+	private String specialFnr03Jan76 = "03017600000";
+	private String specialFnr03Jan73 = "03017300000"; // Passes the mod11 check, but not the special circumstance check
+	private String specialFnr08Jun57 = "08065700000";
 
 	// D-numbers
 	private String dnummerValid0 = "55125501493";
@@ -373,10 +373,10 @@ public class PidTest {
 	public void calculateAge() {
 
 		/* DOB: 1976.06.26 */
-		Pid pid = new Pid("12345678901");
+		Pid pid = new Pid("26067637924");
 
 		/* DOB: 1944.02.29 */
-		Pid pidSkuddar = new Pid("12345678901");
+		Pid pidSkuddar = new Pid("29024400040");
 		
 		GregorianCalendar greg = new GregorianCalendar();
 		int age;
@@ -498,7 +498,7 @@ public class PidTest {
 	 */
 	@Test
 	public void calculateAgeThrowsExceptionOnInvalidPid() {
-		Pid pidSpecial = new Pid("12345678901", true);
+		Pid pidSpecial = new Pid("26067600001", true);
 
 		/* 31 years */
 		GregorianCalendar greg = new GregorianCalendar();

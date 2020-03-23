@@ -1395,3 +1395,4 @@ Star example
 * Added integration test of CodesTable APIs
 * Use saksbehandling as the package name, not psak; moved all code used in psak over til saksbehandling
 
+
