@@ -9,6 +9,9 @@
     <version>6.0.0-beta-6-SNAPSHOT</version>
     <name>stelvio</name>
 
+    <description>Stelvio Enterprise Platform</description>
+    <url>https://github.com/navikt/stelvio</url>
+
     <modules>
         <!-- ========================= -->
         <!-- Stelvio framework modules -->
@@ -26,23 +29,30 @@
         <module>stelvio-test-java</module>
     </modules>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <organization>NAV (Arbeids- og velferdsdirektoratet) - The Norwegian Labour and Welfare Administration</organization>
+            <organizationUrl>https://www.nav.no</organizationUrl>
+        </developer>
+    </developers>
+
     <scm>
-        <connection>scm:git:ssh://git@stash.devillo.no:7999/pen/stelvio.git</connection>
-        <developerConnection>scm:git:ssh://git@stash.devillo.no:7999/pen/stelvio.git</developerConnection>
-        <url>http://stash.devillo.no/projects/PEN/repos/stelvio/</url>
+        <connection>scm:git:ssh://git@github.com:navikt/stelvio.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:navikt/stelvio.git</developerConnection>
+        <url>https://github.com/navikt/stelvio</url>
     </scm>
 
     <distributionManagement>
         <repository>
-            <id>m2internal</id>
-            <name>NAV Maven2 Internal Repository</name>
-            <url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/navikt/stelvio</url>
         </repository>
-        <snapshotRepository>
-            <id>m2snapshot</id>
-            <name>NAV Maven2 Snapshot Repository</name>
-            <url>http://maven.adeo.no/nexus/content/repositories/m2snapshot</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <dependencyManagement>
