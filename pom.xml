@@ -251,11 +251,6 @@
                 <version>${joda-time.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.groundside</groupId>
-                <artifactId>jsf-security</artifactId>
-                <version>${jsf-security.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
@@ -884,7 +879,6 @@
         <hsqldb.version>2.3.0</hsqldb.version>
         <javassist.version>3.12.1.GA</javassist.version>
         <joda-time.version>2.9.7</joda-time.version>
-        <jsf-security.version>1.0</jsf-security.version>
         <log4j.version>1.2.17</log4j.version>
         <myfaces.version>2.1.12</myfaces.version>
         <persistence-api.version>1.0.2</persistence-api.version>

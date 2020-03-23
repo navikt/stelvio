@@ -59,10 +59,6 @@
 			<artifactId>spring-security-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.groundside</groupId>
-			<artifactId>jsf-security</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-bundle</artifactId>
 		</dependency>

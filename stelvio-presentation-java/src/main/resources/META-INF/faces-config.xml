@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
- 
- 	<render-kit>
+	<render-kit>
 		<renderer> 
 			<component-family>javax.faces.SelectOne</component-family>
             <renderer-type>no.stelvio.Menu</renderer-type> 
@@ -138,4 +137,9 @@
 		<converter-class>no.stelvio.presentation.jsf.converter.ThousandConverter</converter-class>
 	</converter>
 
+	<!-- Inlined from JSF Security -->
+	<application>
+		<property-resolver>com.groundside.jsf.securityresolver.SecurityPropertyResolver</property-resolver>
+		<variable-resolver>com.groundside.jsf.securityresolver.SecurityVariableResolver</variable-resolver>
+	</application>
 </faces-config>
