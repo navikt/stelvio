@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Run tests
-        run: mvn -B --settings maven-settings.xml test
+        run: mvn -B --settings maven-settings.xml  -Dsurefire.rerunFailingTestsCount=3 test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Maven release
