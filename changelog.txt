@@ -2,6 +2,12 @@ STELVIO CHANGELOG
 =================
 https://confluence.adeo.no/display/stelvio/Application+Framework+-+Change+Log
 
+Version 6.0.0
+----------------------------------
+- Migrate to OpenLiberty/OpenJDK
+-- Replaced WAS thinclients with Liberty APIs etc
+-- Removed ConsumerFacadeBase (JAX-RPC)
+
 Version 5.0.12
 ----------------------------------
 PL-1012: Updated Spring Web Flow to 2.4.8

@@ -32,11 +32,10 @@ public class InfoLoggerTest {
 
 	/**
 	 * Setup default logger and test logger using Spring test config file.
-	 * 
-	 * @throws Exception exception
-	 */
+	 *
+     */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		ctx = new ClassPathXmlApplicationContext("tst-log-infologger-context.xml");
 
 		//Loggers: default->TRACE, test->INFO

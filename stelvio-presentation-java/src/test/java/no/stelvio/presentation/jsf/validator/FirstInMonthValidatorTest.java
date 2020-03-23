@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.stelvio.presentation.jsf.validator;
 
 import java.text.ParseException;
@@ -10,13 +7,13 @@ import java.util.Date;
 import javax.faces.component.UIComponent;
 import javax.faces.validator.ValidatorException;
 
-import no.stelvio.presentation.binding.context.MessageContextUtil;
-import no.stelvio.presentation.jsf.mock.SpringDefinition;
-import no.stelvio.presentation.jsf.mock.UIComponentMock;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import no.stelvio.presentation.binding.context.MessageContextUtil;
+import no.stelvio.presentation.jsf.mock.SpringDefinition;
+import no.stelvio.presentation.jsf.mock.UIComponentMock;
 
 /**
  * FirstInMonthValidatorTest tests FirstInMonthValidator.
@@ -67,7 +64,7 @@ public class FirstInMonthValidatorTest {
 	 *             exception
 	 */
 	@Test
-	public void testValidateFailEmptyString() throws ParseException {
+	public void testValidateFailEmptyString() {
 		FirstInMonthValidator validator = new FirstInMonthValidator();
 		UIComponent component = new UIComponentMock();
 		component.setId(COMPONENT_ID);
@@ -84,12 +81,10 @@ public class FirstInMonthValidatorTest {
 
 	/**
 	 * testValidateSuccessNullInput.
-	 * 
-	 * @throws ParseException
-	 *             exception
-	 */
+	 *
+     */
 	@Test
-	public void testValidateSuccessNullInput() throws ParseException {
+	public void testValidateSuccessNullInput() {
 		FirstInMonthValidator validator = new FirstInMonthValidator();
 		UIComponent component = new UIComponentMock();
 		component.setId(COMPONENT_ID);

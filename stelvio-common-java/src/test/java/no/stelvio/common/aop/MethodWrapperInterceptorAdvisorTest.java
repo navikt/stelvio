@@ -34,11 +34,10 @@ public class MethodWrapperInterceptorAdvisorTest {
 
 	/**
 	 * Set up before test.
-	 * 
-	 * @throws Exception exception
-	 */
+	 *
+     */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		ia = new MethodWrapperInterceptorAdvisor();
 		methodInvocation = new SimpleMethodInvocation();
 		beanFactory = createBeanFactory();
@@ -186,9 +185,8 @@ public class MethodWrapperInterceptorAdvisorTest {
 		 * Proceed.
 		 * 
 		 * @return test bean
-		 * @throws Throwable exception
-		 */
-		public Object proceed() throws Throwable {
+         */
+		public Object proceed() {
 			return new TestBean();
 		}
 

@@ -9,17 +9,16 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.common.security.ws.WSCustomSubject;
-import no.stelvio.presentation.security.logout.LogoutService;
+import com.ibm.websphere.security.WSSecurityException;
+import com.ibm.websphere.security.auth.WSSubject;
+import com.ibm.websphere.security.cred.WSCredential;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.ibm.websphere.security.WSSecurityException;
-import com.ibm.websphere.security.WSSecurityHelper;
-import com.ibm.websphere.security.auth.WSSubject;
-import com.ibm.websphere.security.cred.WSCredential;
+import no.stelvio.common.security.ws.WSCustomSubject;
+import no.stelvio.presentation.security.logout.LogoutService;
 
 /**
  * Servlet filter which checks the SSO token in the request against the token stored in the current Subject.
@@ -66,7 +65,7 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
 		    if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("Revoking LTPA cookie to prevent hijacking: " + ltpaRequestCookie);
             }
-		    WSSecurityHelper.revokeSSOCookies(req, res);
+		    req.logout();
 		}
 
 		if (ssoRequestCookie != null) {
@@ -74,9 +73,7 @@ public class OpenAMSessionFilter extends OncePerRequestFilter {
                 Subject subject = WSSubject.getCallerSubject();
                 String ssoSubjectCookie = getSubjectEksternSsoToken(subject);
                 if (ssoSubjectCookie != null && !ssoRequestCookie.equals(ssoSubjectCookie)) {
-                	// Additional step to revoke SSOcookie because ibm_security_logout did not work properly anymore.
-                	// Should really be replaced with HttpServletRequest.logout()
-                	WSSecurityHelper.revokeSSOCookies(req, res);
+					req.logout();
                 	// invalidate session, ltpa and logout subject                	
                     logoutService.logout(req, res);
                     return;

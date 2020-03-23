@@ -39,7 +39,7 @@ public class SimpleSecurityContextTest {
 		public String getRoleName() {
 			return name();
 		}
-	};
+	}
 
 	/**
 	 * Get security context.

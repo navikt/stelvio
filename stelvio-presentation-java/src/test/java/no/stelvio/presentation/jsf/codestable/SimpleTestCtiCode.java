@@ -31,7 +31,7 @@ public enum SimpleTestCtiCode {
 	/** Test code NUMERIC. */
 	NUMERIC_2,
 	/** Test code NUMERIC. */
-	NUMERIC_10;
+	NUMERIC_10
 
 	// do someting like this to support lookup values as numbers or other illegal java variable names
 	// public TestCtiCode valueOf(String s) {

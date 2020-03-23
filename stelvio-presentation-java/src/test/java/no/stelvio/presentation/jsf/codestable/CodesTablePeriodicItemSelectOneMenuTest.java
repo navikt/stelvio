@@ -42,7 +42,7 @@ public class CodesTablePeriodicItemSelectOneMenuTest {
 
 	private static DefaultCodesTableManager ctm;
 
-	private static CodesTableItemsFactory codesTableItemsFactory = context.mock(CodesTableItemsFactory.class);;
+	private static CodesTableItemsFactory codesTableItemsFactory = context.mock(CodesTableItemsFactory.class);
 
 	/**
 	 * Set up before class.

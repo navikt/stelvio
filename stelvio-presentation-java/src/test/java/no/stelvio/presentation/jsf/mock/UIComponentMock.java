@@ -70,7 +70,7 @@ public class UIComponentMock extends UIComponent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void encodeBegin(FacesContext context) throws IOException {
+	public void encodeBegin(FacesContext context) {
 
 	}
 
@@ -78,7 +78,7 @@ public class UIComponentMock extends UIComponent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void encodeChildren(FacesContext context) throws IOException {
+	public void encodeChildren(FacesContext context) {
 
 	}
 
@@ -86,7 +86,7 @@ public class UIComponentMock extends UIComponent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void encodeEnd(FacesContext context) throws IOException {
+	public void encodeEnd(FacesContext context) {
 
 	}
 

@@ -1,7 +1,6 @@
 package no.stelvio.common.util;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -59,8 +58,6 @@ public final class ErrorCodesUtil {
 
 			System.out.println("Found " + constantCount + " error codes in " + className);
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

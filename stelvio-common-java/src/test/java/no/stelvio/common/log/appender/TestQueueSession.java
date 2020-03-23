@@ -39,7 +39,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.QueueSession#createQueue(java.lang.String)
 	 */
-	public Queue createQueue(String arg0) throws JMSException {
+	public Queue createQueue(String arg0) {
 		return null;
 	}
 
@@ -48,7 +48,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.QueueSession#createReceiver(javax.jms.Queue)
 	 */
-	public QueueReceiver createReceiver(Queue arg0) throws JMSException {
+	public QueueReceiver createReceiver(Queue arg0) {
 		return null;
 	}
 
@@ -58,7 +58,7 @@ public class TestQueueSession implements QueueSession {
 	 * @see javax.jms.QueueSession#createReceiver(javax.jms.Queue,
 	 *      java.lang.String)
 	 */
-	public QueueReceiver createReceiver(Queue arg0, String arg1) throws JMSException {
+	public QueueReceiver createReceiver(Queue arg0, String arg1) {
 		return null;
 	}
 
@@ -79,7 +79,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.QueueSession#createBrowser(javax.jms.Queue)
 	 */
-	public QueueBrowser createBrowser(Queue arg0) throws JMSException {
+	public QueueBrowser createBrowser(Queue arg0) {
 		return null;
 	}
 
@@ -89,7 +89,7 @@ public class TestQueueSession implements QueueSession {
 	 * @see javax.jms.QueueSession#createBrowser(javax.jms.Queue,
 	 *      java.lang.String)
 	 */
-	public QueueBrowser createBrowser(Queue arg0, String arg1) throws JMSException {
+	public QueueBrowser createBrowser(Queue arg0, String arg1) {
 		return null;
 	}
 
@@ -98,7 +98,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.QueueSession#createTemporaryQueue()
 	 */
-	public TemporaryQueue createTemporaryQueue() throws JMSException {
+	public TemporaryQueue createTemporaryQueue() {
 		return null;
 	}
 
@@ -107,7 +107,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createBytesMessage()
 	 */
-	public BytesMessage createBytesMessage() throws JMSException {
+	public BytesMessage createBytesMessage() {
 		return null;
 	}
 
@@ -116,7 +116,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createMapMessage()
 	 */
-	public MapMessage createMapMessage() throws JMSException {
+	public MapMessage createMapMessage() {
 		return null;
 	}
 
@@ -125,7 +125,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createMessage()
 	 */
-	public Message createMessage() throws JMSException {
+	public Message createMessage() {
 		return null;
 	}
 
@@ -134,7 +134,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createObjectMessage()
 	 */
-	public ObjectMessage createObjectMessage() throws JMSException {
+	public ObjectMessage createObjectMessage() {
 		return null;
 	}
 
@@ -143,7 +143,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createObjectMessage(java.io.Serializable)
 	 */
-	public ObjectMessage createObjectMessage(Serializable arg0) throws JMSException {
+	public ObjectMessage createObjectMessage(Serializable arg0) {
 		return null;
 	}
 
@@ -152,7 +152,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createStreamMessage()
 	 */
-	public StreamMessage createStreamMessage() throws JMSException {
+	public StreamMessage createStreamMessage() {
 		return null;
 	}
 
@@ -161,7 +161,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createTextMessage()
 	 */
-	public TextMessage createTextMessage() throws JMSException {
+	public TextMessage createTextMessage() {
 		return null;
 	}
 
@@ -170,7 +170,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#createTextMessage(java.lang.String)
 	 */
-	public TextMessage createTextMessage(String arg0) throws JMSException {
+	public TextMessage createTextMessage(String arg0) {
 		return new TestTextMessage(arg0);
 	}
 
@@ -179,7 +179,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#getTransacted()
 	 */
-	public boolean getTransacted() throws JMSException {
+	public boolean getTransacted() {
 		return false;
 	}
 
@@ -188,7 +188,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#commit()
 	 */
-	public void commit() throws JMSException {
+	public void commit() {
 	}
 
 	/**
@@ -196,7 +196,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#rollback()
 	 */
-	public void rollback() throws JMSException {
+	public void rollback() {
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#close()
 	 */
-	public void close() throws JMSException {
+	public void close() {
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#recover()
 	 */
-	public void recover() throws JMSException {
+	public void recover() {
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#getMessageListener()
 	 */
-	public MessageListener getMessageListener() throws JMSException {
+	public MessageListener getMessageListener() {
 		return null;
 	}
 
@@ -229,7 +229,7 @@ public class TestQueueSession implements QueueSession {
 	 * 
 	 * @see javax.jms.Session#setMessageListener(javax.jms.MessageListener)
 	 */
-	public void setMessageListener(MessageListener arg0) throws JMSException {
+	public void setMessageListener(MessageListener arg0) {
 	}
 
 	/**
@@ -281,100 +281,100 @@ public class TestQueueSession implements QueueSession {
 	/**
 	 * {@inheritDoc}
 	 */
-	public MessageConsumer createConsumer(Destination arg0) throws JMSException {
+	public MessageConsumer createConsumer(Destination arg0) {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public MessageConsumer createConsumer(Destination arg0, String arg1) throws JMSException {
+	public MessageConsumer createConsumer(Destination arg0, String arg1) {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public MessageConsumer createConsumer(Destination arg0, String arg1, boolean arg2) throws JMSException {
+	public MessageConsumer createConsumer(Destination arg0, String arg1, boolean arg2) {
 		return null;
 	}
 
     @Override
-    public MessageConsumer createSharedConsumer(Topic topic, String s) throws JMSException {
+    public MessageConsumer createSharedConsumer(Topic topic, String s) {
         return null;
     }
 
     @Override
-    public MessageConsumer createSharedConsumer(Topic topic, String s, String s1) throws JMSException {
+    public MessageConsumer createSharedConsumer(Topic topic, String s, String s1) {
         return null;
     }
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1) throws JMSException {
+	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1) {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1, String arg2, boolean arg3) throws JMSException {
+	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1, String arg2, boolean arg3) {
         return null;
     }
 
     @Override
-    public MessageConsumer createDurableConsumer(Topic topic, String s) throws JMSException {
+    public MessageConsumer createDurableConsumer(Topic topic, String s) {
         return null;
     }
 
     @Override
-    public MessageConsumer createDurableConsumer(Topic topic, String s, String s1, boolean b) throws JMSException {
+    public MessageConsumer createDurableConsumer(Topic topic, String s, String s1, boolean b) {
         return null;
     }
 
     @Override
-    public MessageConsumer createSharedDurableConsumer(Topic topic, String s) throws JMSException {
+    public MessageConsumer createSharedDurableConsumer(Topic topic, String s) {
         return null;
     }
 
     @Override
-    public MessageConsumer createSharedDurableConsumer(Topic topic, String s, String s1) throws JMSException {
+    public MessageConsumer createSharedDurableConsumer(Topic topic, String s, String s1) {
         return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public MessageProducer createProducer(Destination arg0) throws JMSException {
+	public MessageProducer createProducer(Destination arg0) {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public TemporaryTopic createTemporaryTopic() throws JMSException {
+	public TemporaryTopic createTemporaryTopic() {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public Topic createTopic(String arg0) throws JMSException {
+	public Topic createTopic(String arg0) {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public int getAcknowledgeMode() throws JMSException {
+	public int getAcknowledgeMode() {
 		return 0;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void unsubscribe(String arg0) throws JMSException {
+	public void unsubscribe(String arg0) {
 
 	}
 

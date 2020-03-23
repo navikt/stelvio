@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class OpenAMLogoutServiceTest {
 
     @Test
-    public void withoutOpenAM() throws Exception {
+    public void withoutOpenAM() {
 
         OpenAMLogoutService openAMLogoutService = new OpenAMLogoutService();
         openAMLogoutService.setLogoutFromOpenAM(false);
@@ -22,7 +22,7 @@ public class OpenAMLogoutServiceTest {
     }
 
     @Test
-    public void withOpenAM() throws Exception {
+    public void withOpenAM() {
 
         OpenAMLogoutService openAMLogoutService = new OpenAMLogoutService();
         openAMLogoutService.setLogoutFromOpenAM(true);
@@ -35,13 +35,13 @@ public class OpenAMLogoutServiceTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void missingProperty() throws Exception {
+    public void missingProperty() {
         OpenAMLogoutService openAMLogoutService = new OpenAMLogoutService();
         openAMLogoutService.afterPropertiesSet();
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void wrongPropertyValue() throws Exception {
+    public void wrongPropertyValue() {
         OpenAMLogoutService openAMLogoutService = new OpenAMLogoutService();
         openAMLogoutService.setPointOfContactHostAddress("addressWithoutHttpFirst");
         openAMLogoutService.setLogoutAction("testaction");
@@ -49,7 +49,7 @@ public class OpenAMLogoutServiceTest {
     }
 
     @Test
-    public void removeUnwantedSlash() throws Exception {
+    public void removeUnwantedSlash() {
         OpenAMLogoutService openAMLogoutService = new OpenAMLogoutService();
         openAMLogoutService.setLogoutFromOpenAM(true);
         openAMLogoutService.setPointOfContactHostAddress("http://testaddress/");

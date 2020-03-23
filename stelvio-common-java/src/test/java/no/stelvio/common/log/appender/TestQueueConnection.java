@@ -42,8 +42,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * @see javax.jms.QueueConnection#createConnectionConsumer(javax.jms.Queue,
 	 *      java.lang.String, javax.jms.ServerSessionPool, int)
 	 */
-	public ConnectionConsumer createConnectionConsumer(Queue arg0, String arg1, ServerSessionPool arg2, int arg3)
-			throws JMSException {
+	public ConnectionConsumer createConnectionConsumer(Queue arg0, String arg1, ServerSessionPool arg2, int arg3) {
 		return null;
 	}
 
@@ -52,7 +51,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#getClientID()
 	 */
-	public String getClientID() throws JMSException {
+	public String getClientID() {
 		return null;
 	}
 
@@ -61,7 +60,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#setClientID(java.lang.String)
 	 */
-	public void setClientID(String arg0) throws JMSException {
+	public void setClientID(String arg0) {
 	}
 
 	/**
@@ -69,7 +68,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#getMetaData()
 	 */
-	public ConnectionMetaData getMetaData() throws JMSException {
+	public ConnectionMetaData getMetaData() {
 		return null;
 	}
 
@@ -78,7 +77,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#getExceptionListener()
 	 */
-	public ExceptionListener getExceptionListener() throws JMSException {
+	public ExceptionListener getExceptionListener() {
 		return null;
 	}
 
@@ -87,7 +86,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#setExceptionListener(javax.jms.ExceptionListener)
 	 */
-	public void setExceptionListener(ExceptionListener arg0) throws JMSException {
+	public void setExceptionListener(ExceptionListener arg0) {
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#stop()
 	 */
-	public void stop() throws JMSException {
+	public void stop() {
 	}
 
 	/**
@@ -114,7 +113,7 @@ public class TestQueueConnection implements QueueConnection {
 	 * 
 	 * @see javax.jms.Connection#close()
 	 */
-	public void close() throws JMSException {
+	public void close() {
 	}
 
 	/**
@@ -177,13 +176,12 @@ public class TestQueueConnection implements QueueConnection {
 	/**
 	 * {@inheritDoc}
 	 */
-	public ConnectionConsumer createConnectionConsumer(Destination arg0, String arg1, ServerSessionPool arg2, int arg3)
-			throws JMSException {
+	public ConnectionConsumer createConnectionConsumer(Destination arg0, String arg1, ServerSessionPool arg2, int arg3) {
 		return null;
 	}
 
     @Override
-    public ConnectionConsumer createSharedConnectionConsumer(Topic topic, String s, String s1, ServerSessionPool serverSessionPool, int i) throws JMSException {
+    public ConnectionConsumer createSharedConnectionConsumer(Topic topic, String s, String s1, ServerSessionPool serverSessionPool, int i) {
         return null;
     }
 
@@ -191,29 +189,29 @@ public class TestQueueConnection implements QueueConnection {
 	 * {@inheritDoc}
 	 */
 	public ConnectionConsumer createDurableConnectionConsumer(Topic arg0, String arg1, String arg2, ServerSessionPool arg3,
-			int arg4) throws JMSException {
+			int arg4) {
 		return null;
 	}
 
     @Override
-    public ConnectionConsumer createSharedDurableConnectionConsumer(Topic topic, String s, String s1, ServerSessionPool serverSessionPool, int i) throws JMSException {
+    public ConnectionConsumer createSharedDurableConnectionConsumer(Topic topic, String s, String s1, ServerSessionPool serverSessionPool, int i) {
         return null;
     }
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public Session createSession(boolean arg0, int arg1) throws JMSException {
+	public Session createSession(boolean arg0, int arg1) {
         return null;
     }
 
     @Override
-    public Session createSession(int i) throws JMSException {
+    public Session createSession(int i) {
         return null;
     }
 
     @Override
-    public Session createSession() throws JMSException {
+    public Session createSession() {
         return null;
 	}
 }

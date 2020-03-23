@@ -68,5 +68,5 @@ public final class Constants implements Serializable {
 	public static final String SECURITY_CONFIG_FILE = "no.stelvio.web.security.page.security_config_file";
 	/** Should not be able to create an instance of this class. */
 	private Constants() {
-	};
+	}
 }

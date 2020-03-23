@@ -83,11 +83,9 @@ public class PageAuthenticationRequest {
 
 	/**
 	 * Send response.
-	 * 
-	 * @throws IOException
-	 *             ioexception
-	 */
-	public void sendRequest() throws IOException {
+	 *
+     */
+	public void sendRequest() {
 
 		ExternalContext ctx = RequestContextHolder.getRequestContext().getExternalContext();
 		HttpServletRequest request = (HttpServletRequest) ctx.getNativeRequest();

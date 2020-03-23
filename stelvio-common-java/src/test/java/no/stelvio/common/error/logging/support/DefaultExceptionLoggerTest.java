@@ -240,7 +240,7 @@ public class DefaultExceptionLoggerTest {
 		 *
 		 * @param errorCode error code
 		 */
-		private MyErrorCodes(String errorCode) {
+		MyErrorCodes(String errorCode) {
 			this.errorCode = errorCode;
 		}
 

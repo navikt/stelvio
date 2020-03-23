@@ -8,19 +8,11 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
-
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.common.context.support.RequestContextSetter;
-import no.stelvio.common.context.support.SimpleRequestContext;
-import no.stelvio.common.log.MDCOperations;
-import no.stelvio.common.log.MdcConstants;
 
 import org.junit.After;
 import org.junit.Before;
@@ -30,6 +22,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
+
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
+import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.log.MDCOperations;
+import no.stelvio.common.log.MdcConstants;
 
 /**
  * Test class for testing the capabilities of the RequestContextFilter

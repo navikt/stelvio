@@ -84,14 +84,14 @@ public class TestQueueConnectionFactory implements QueueConnectionFactory {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Connection createConnection() throws JMSException {
+	public Connection createConnection() {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public Connection createConnection(String arg0, String arg1) throws JMSException {
+	public Connection createConnection(String arg0, String arg1) {
         return null;
     }
 

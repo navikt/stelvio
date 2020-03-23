@@ -1,7 +1,7 @@
 package no.stelvio.common.security.ws;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -15,13 +15,10 @@ import javax.xml.soap.SOAPFactory;
 
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.auth.callback.WSCallbackHandlerImpl;
-import com.ibm.websphere.security.cred.WSCredential;
-import com.ibm.ws.webservices.engine.encoding.Base64;
+import com.ibm.wsspi.security.token.SingleSignonToken;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
 
 /**
  * SecurityHeader.
@@ -30,16 +27,15 @@ import org.apache.xml.serialize.XMLSerializer;
  */
 public class SecurityHeader {
 
-	private static String ltpAns = "wsst";
-	private static String ltpAid = ":LTPA";
-	private static String ltpAURL = "http://www.ibm.com/websphere/appserver/tokentype/5.0.2";
-	private static String 
-			passwordType = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText";
-	private static String securityURL = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
-	private static String soapEncURL = "http://schemas.xmlsoap.org/soap/encoding/";
-	private static String soapEnvURL = "http://schemas.xmlsoap.org/soap/envelope/";
-	private static String xmlSchemaURL = "http://www.w3.org/2001/XMLSchema";
-	private static String xmlSchemaInsURL = "http://www.w3.org/2001/XMLSchema-instance";
+	private static final String LTPA_NS = "wsst";
+	private static final String LTPA_ID = ":LTPA";
+	private static final String LTPA_URL = "http://www.ibm.com/websphere/appserver/tokentype/5.0.2";
+	private static final String PASSWORD_TYPE = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText";
+	private static final String SECURITY_URL = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
+	private static final String SOAP_ENC_URL = "http://schemas.xmlsoap.org/soap/encoding/";
+	private static final String SOAP_ENV_URL = "http://schemas.xmlsoap.org/soap/envelope/";
+	private static final String XML_SCHEMA_URL = "http://www.w3.org/2001/XMLSchema";
+	private static final String XML_SCHEMA_INS_URL = "http://www.w3.org/2001/XMLSchema-instance";
 
 	private static final Log LOG = LogFactory.getLog(SecurityHeader.class);
 
@@ -96,6 +92,7 @@ public class SecurityHeader {
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Creates LPTA header with no username and password arguments");
 		}
+
 		byte[] token = getSecurityToken();
 		if (token == null) {
 			return null;
@@ -114,7 +111,7 @@ public class SecurityHeader {
 	private static SOAPElement createLTPAHeaderFromToken(byte[] token) {
 		// Now try to build the header
 
-		SOAPElement header = null;
+		SOAPElement header;
 		try {
 			SOAPFactory sFactory = SOAPFactory.newInstance();
 
@@ -122,18 +119,18 @@ public class SecurityHeader {
 			header = createHeaderElement(sFactory);
 
 			// Create and add binary token Element
-			Name binaryTokenName = sFactory.createName("BinarySecurityToken", WSSE, securityURL);
+			Name binaryTokenName = sFactory.createName("BinarySecurityToken", WSSE, SECURITY_URL);
 
 			SOAPElement binaryToken = sFactory.createElement(binaryTokenName);
-			header.addChildElement(binaryToken);
 
 			// Populate token
-			binaryToken.addNamespaceDeclaration(ltpAns, ltpAURL);
+			binaryToken.addNamespaceDeclaration(LTPA_NS, LTPA_URL);
 			Name attrName = sFactory.createName("ValueType");
-			binaryToken.addAttribute(attrName, ltpAns + ltpAid);
-			String stoken = Base64.encode(token);
+			binaryToken.addAttribute(attrName, LTPA_NS + LTPA_ID);
+			String stoken = Base64.getEncoder().encodeToString(token);
 			binaryToken.addTextNode(stoken);
 
+			header.addChildElement(binaryToken);
 		} catch (Exception e) {
 			throw new RuntimeException("Error building LTPA security header", e);
 		}
@@ -169,24 +166,25 @@ public class SecurityHeader {
 			header = createHeaderElement(sFactory);
 
 			// Create and add userName token Element
-			Name userTokenName = sFactory.createName("UsernameToken", WSSE, securityURL);
+			Name userTokenName = sFactory.createName("UsernameToken", WSSE, SECURITY_URL);
 			SOAPElement userToken = sFactory.createElement(userTokenName);
-			header.addChildElement(userToken);
 
 			// Populate token
 
-			Name userElementName = sFactory.createName("Username", WSSE, securityURL);
-			Name passwordElementName = sFactory.createName("Password", WSSE, securityURL);
+			Name userElementName = sFactory.createName("Username", WSSE, SECURITY_URL);
+			Name passwordElementName = sFactory.createName("Password", WSSE, SECURITY_URL);
 
 			SOAPElement userElement = sFactory.createElement(userElementName);
 			userElement.addTextNode(user);
 			SOAPElement passwordElement = sFactory.createElement(passwordElementName);
 			Name attrName = sFactory.createName("Type");
-			passwordElement.addAttribute(attrName, passwordType);
+			passwordElement.addAttribute(attrName, PASSWORD_TYPE);
 			passwordElement.addTextNode(password);
 
 			userToken.addChildElement(userElement);
 			userToken.addChildElement(passwordElement);
+
+			header.addChildElement(userToken);
 		} catch (Exception e) {
 			LOG.error("Error building Basic Auth security header", e);
 		}
@@ -201,14 +199,12 @@ public class SecurityHeader {
 	 *             Soap exception
 	 */
 	private static SOAPElement createHeaderElement(SOAPFactory sFactory) throws SOAPException {
-		SOAPElement header = null;
-
-		Name headerName = sFactory.createName("Security", WSSE, securityURL);
-		header = sFactory.createElement(headerName);
-		header.addNamespaceDeclaration("soapenc", soapEncURL);
-		header.addNamespaceDeclaration("xsd", xmlSchemaURL);
-		header.addNamespaceDeclaration("xsi", xmlSchemaInsURL);
-		Name mustName = sFactory.createName("mustUnderstand", "soapenv", soapEnvURL);
+		Name headerName = sFactory.createName("Security", WSSE, SECURITY_URL);
+		SOAPElement header = sFactory.createElement(headerName);
+		header.addNamespaceDeclaration("soapenc", SOAP_ENC_URL);
+		header.addNamespaceDeclaration("xsd", XML_SCHEMA_URL);
+		header.addNamespaceDeclaration("xsi", XML_SCHEMA_INS_URL);
+		Name mustName = sFactory.createName("mustUnderstand", "soapenv", SOAP_ENV_URL);
 		header.addAttribute(mustName, "1");
 
 		return header;
@@ -229,23 +225,11 @@ public class SecurityHeader {
 			LOG.debug("processHeader is started");
 		}
 		try {
-			// Print it first
-
-			try {
-				OutputFormat ouf = new OutputFormat();
-				ouf.setIndenting(true);
-				XMLSerializer serializer = new XMLSerializer(System.out, ouf);
-				serializer.serialize(header);
-				System.out.println(" ");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
 			// Check for the token type
 
 			SOAPFactory sFactory = SOAPFactory.newInstance();
-			Name binaryTokenName = sFactory.createName("BinarySecurityToken", WSSE, securityURL);
-			Name userTokenName = sFactory.createName("UsernameToken", WSSE, securityURL);
+			Name binaryTokenName = sFactory.createName("BinarySecurityToken", WSSE, SECURITY_URL);
+			Name userTokenName = sFactory.createName("UsernameToken", WSSE, SECURITY_URL);
 
 			// Is it an binary token ?
 			Iterator<?> tokens = header.getChildElements(binaryTokenName);
@@ -256,12 +240,12 @@ public class SecurityHeader {
 
 					// Make sure it is LTPA
 
-					String tType = binaryToken.getAttribute("ValueType");
-					if ((tType == null) || !tType.endsWith(ltpAid)) {
+					String valueType = binaryToken.getAttribute("ValueType");
+					if ((valueType == null) || !valueType.endsWith(LTPA_ID)) {
 						continue;
 					}
 					String stoken = binaryToken.getValue();
-					byte[] token = Base64.decode(stoken);
+					byte[] token = Base64.getDecoder().decode(stoken);
 					setSecurityContext(token);
 					return;
 				}
@@ -276,8 +260,8 @@ public class SecurityHeader {
 				SOAPElement userToken = (SOAPElement) tokens.next();
 
 				// Get name and password
-				Name userElementName = sFactory.createName("Username", WSSE, securityURL);
-				Name passwordElementName = sFactory.createName("Password", WSSE, securityURL);
+				Name userElementName = sFactory.createName("Username", WSSE, SECURITY_URL);
+				Name passwordElementName = sFactory.createName("Password", WSSE, SECURITY_URL);
 
 				Iterator<?> users = userToken.getChildElements(userElementName);
 				Iterator<?> passwords = userToken.getChildElements(passwordElementName);
@@ -292,8 +276,7 @@ public class SecurityHeader {
 
 			// Unknown security token, ignore
 		} catch (Exception e) {
-			System.out.println("Error processing security header");
-			e.printStackTrace();
+			LOG.warn("Error processing security header");
 		}
 	}
 
@@ -304,24 +287,24 @@ public class SecurityHeader {
 	 */
 	public static byte[] getSecurityToken() {
 		byte[] token = null;
+
 		try {
 			// Get current security subject
 			Subject securitySubject = WSSubject.getRunAsSubject();
 			if (securitySubject != null) {
-				// Get all security credentials from the security subject
-				Set<WSCredential> securityCredentials = securitySubject.getPublicCredentials(WSCredential.class);
-				
+				Set<SingleSignonToken> ssoTokens = securitySubject.getPrivateCredentials(SingleSignonToken.class);
+
 				if (LOG.isDebugEnabled()) {
-					LOG.debug("Number of securityCredentials: " + securityCredentials.size());
+					LOG.debug("Number of ssoTokens: " + ssoTokens.size());
 				}
 				// Get the first credential
+                SingleSignonToken ssoToken = ssoTokens.stream()
+                                .filter(t -> "LtpaToken".equals(t.getName()))
+                                .findFirst()
+                                .orElseThrow(() -> new IllegalArgumentException("No LtpaToken found!"));
+				token = ssoToken.getBytes();
 
-				WSCredential securityCredential = securityCredentials.iterator().next();
-				String user = securityCredential.getSecurityName();
-				// Get the security token
-				token = securityCredential.getCredentialToken();
 				if (LOG.isDebugEnabled()) {
-					LOG.debug("Security name: " + user + " Token: " + Arrays.toString(token));
 					if (token != null ) {
 						if (token.length == 0) {
 							LOG.debug("The token byte array is empty");
@@ -399,7 +382,7 @@ public class SecurityHeader {
 		if ((user == null) || (password == null)) {
 			throw new RuntimeException("Cannot create LoginContext. No token");
 		}
-		LoginContext lc = null;
+		LoginContext lc;
 
 		// Create new login context
 		try {
@@ -438,7 +421,7 @@ public class SecurityHeader {
 	public static String decode(String password) {
 		String crypt = password.substring(1, 4);
 		if (crypt.equalsIgnoreCase("xor")) {
-			String codedPass = password.substring(5, password.length());
+			String codedPass = password.substring(5);
 			byte[] decryptedBytes = xor(convertViewableToBytes(codedPass));
 			return convertToString(decryptedBytes);
 		} else {

@@ -38,15 +38,11 @@ public class CacheManagementTest {
 	
 	/**
 	 * Test-method that test functionality in the <code>CacheManagment</code>-class.
-	 * 
-	 * @throws BeansException
-	 *             beans exception
-	 * @throws Exception
-	 *             exception
-	 */
+	 *
+     */
 	@DirtiesContext
 	@Test
-	public void testCacheManagement() throws BeansException, Exception {
+	public void testCacheManagement() {
 		log.debug("DEBUG: Entering testCacheManagement()...");
 
 		// Add cache to CacheManager

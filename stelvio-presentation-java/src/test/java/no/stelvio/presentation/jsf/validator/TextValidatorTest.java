@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.stelvio.presentation.jsf.validator;
 
 import static org.junit.Assert.assertTrue;
@@ -69,11 +66,10 @@ public class TextValidatorTest {
 
 	/**
 	 * testValidateBogusInput.
-	 * 
-	 * @throws ParseException exception
-	 */
+	 *
+     */
 	@Test
-	public void testValidateBogusInput() throws ParseException {
+	public void testValidateBogusInput() {
 		validateTestThatFails("Bogus!123", TextValidator.TYPE_MESSAGE_ID);
 	}
 
@@ -82,7 +78,7 @@ public class TextValidatorTest {
 	 */
 	@Test
 	public void testValidateInvalidObjectType() {
-		validateTestThatFails(new ArrayList<Object>(), TextValidator.TYPE_MESSAGE_ID);
+		validateTestThatFails(new ArrayList<>(), TextValidator.TYPE_MESSAGE_ID);
 	}
 
 	/**

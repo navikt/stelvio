@@ -54,7 +54,6 @@ public class BatchParameterValidator {
 	Set<String> getActualParameters() {
 		BatchDO batchDO = batch.readBatchParameters(batch.getBatchName(), batch.getSlice());
 		Properties props = batch.fetchBatchProperties(batchDO);
-		System.out.println(props);
 		return (Set<String>) (Set) props.keySet();
 	}
 

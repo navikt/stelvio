@@ -237,13 +237,13 @@ abstract class AbstractSecurityContextFilter extends OncePerRequestFilter {
 			String roleName = securityRole.getRoleName();
 
 			if (httpreq.isUserInRole(roleName)) {
-				if (LOGGER.isDebugEnabled()) {
-					LOGGER.debug("Adding role: " + roleName);
-				}
-
 				roleList.add(roleName);
 			}
 		}
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Added role(s): " + String.join(", ", roleList));
+		}
+
 		return roleList;
 	}
 }

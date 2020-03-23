@@ -184,7 +184,7 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
         String myIp = "UNKNOWN";
         try {
             String hostName = InetAddress.getLocalHost().getHostName();
-            InetAddress addrs[] = InetAddress.getAllByName(hostName);
+            InetAddress[] addrs = InetAddress.getAllByName(hostName);
 
             for (InetAddress addr : addrs) {
                 if (!addr.isLoopbackAddress() && addr.isSiteLocalAddress()) {

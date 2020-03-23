@@ -1,15 +1,14 @@
 package no.stelvio.common.audit;
 
 import static org.junit.Assert.assertTrue;
-import no.stelvio.common.util.ReflectUtil;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.commons.logging.impl.SLF4JLocationAwareLog;
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.slf4j.impl.Log4jLoggerAdapter;
+
+import no.stelvio.common.util.ReflectUtil;
 
 /**
  * Test class for AuditLogInstanceName.

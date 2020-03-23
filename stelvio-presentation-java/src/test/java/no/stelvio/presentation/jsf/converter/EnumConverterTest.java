@@ -26,21 +26,19 @@ public class EnumConverterTest {
 
 	/**
 	 * Set up before class.
-	 * 
-	 * @throws Exception exception
+	 *
 	 */
 	@BeforeClass
-	public static void setUpOnce() throws Exception {
+	public static void setUpOnce() {
 		SpringDefinition.getContext();
 	}
 
 	/**
 	 * Set up before test.
-	 * 
-	 * @throws Exception exception
+	 *
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		selectOneMenu = new HtmlSelectOneMenu();
 
 		this.enumConverter = new EnumConverter();
@@ -78,6 +76,6 @@ public class EnumConverterTest {
 	 * An enum for test.
 	 */
 	enum JustSomeEnum {
-		ONE, TWO, THREE;
+		ONE, TWO, THREE
 	}
 }
