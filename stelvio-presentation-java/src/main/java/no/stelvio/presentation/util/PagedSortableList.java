@@ -2,7 +2,6 @@ package no.stelvio.presentation.util;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -255,6 +254,10 @@ public class PagedSortableList<T> implements PagedList<T> {
                 Comparable res1 = (Comparable) m.invoke(c1);
                 Comparable res2 = (Comparable) m2.invoke(c2);
 
+                if (res1 == null && res2 == null) {
+                	return 0;
+				}
+
                 // If tests below are done to make sure that a list is sorted even if it contains null values
                 if (res1 == null) {
                     if (ascending) {
@@ -278,7 +281,7 @@ public class PagedSortableList<T> implements PagedList<T> {
             }
             return 0;
         };
-		Collections.sort(list, comparator);
+		list.sort(comparator);
 
 	}
 

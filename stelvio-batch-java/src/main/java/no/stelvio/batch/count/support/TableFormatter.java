@@ -1,8 +1,6 @@
 package no.stelvio.batch.count.support;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -44,13 +42,7 @@ public class TableFormatter implements EventReportFormatter {
 	private List<Entry<CounterEvent, ? extends EventCounter>> sortEvents(Map<CounterEvent, ? extends EventCounter> eventReport) {
 		List<Entry<CounterEvent, ? extends EventCounter>> events = new ArrayList<>(eventReport.entrySet());
 
-		Collections.sort(events, new Comparator<Entry<CounterEvent, ? extends EventCounter>>() {
-					public int compare(
-							Entry<CounterEvent, ? extends EventCounter> o1,
-							Entry<CounterEvent, ? extends EventCounter> o2) {
-						return o1.getKey().getName().compareToIgnoreCase(o2.getKey().getName());
-					}
-				});
+		events.sort((o1, o2) -> o1.getKey().getName().compareToIgnoreCase(o2.getKey().getName()));
 		return events;
 	}
 
