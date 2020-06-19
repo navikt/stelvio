@@ -890,7 +890,7 @@
         <swf.version>2.4.8.RELEASE</swf.version>
         <tomahawk.version>1.1.14</tomahawk.version>
         <openliberty.version>19.0.0.10</openliberty.version>
-        <xerces.version>2.6.0</xerces.version>
+        <xerces.version>2.12.0</xerces.version>
 
         <!-- testing dependencies -->
         <junit.version>4.12</junit.version>
