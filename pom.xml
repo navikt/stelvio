@@ -868,7 +868,7 @@
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <commons-lang.version>3.5</commons-lang.version>
         <commons-logging.version>1.2</commons-logging.version>
-        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
         <commons-digester.version>1.6</commons-digester.version>
         <dozer.version>5.5.1</dozer.version>
         <ehcache.version>2.6.11</ehcache.version>
