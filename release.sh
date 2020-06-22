@@ -3,7 +3,8 @@ set -e
 
 TIME=$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M)
 COMMIT=$(git rev-parse --short=12 HEAD)
-VERSION="6.0.0-beta-6-$COMMIT"
+BASEVERSION=`mvn org.apache.maven.plugins:maven-help-plugin:3.1.1:evaluate -Dexpression=project.version -q -DforceStdout | sed 's/-SNAPSHOT//g'`
+VERSION="$BASEVERSION-$COMMIT"
 echo "Setting version $VERSION"
 
 mvn -B versions:set -DnewVersion="$VERSION"

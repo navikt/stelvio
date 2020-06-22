@@ -40,11 +40,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>websphere</groupId>-->
-<!--			<artifactId>com.ibm.ws.webservices.thinclient</artifactId>-->
-<!--			<scope>provided</scope>-->
-<!--		</dependency>-->
 
 		<!-- Test -->
 		<dependency>
