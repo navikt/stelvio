@@ -3,10 +3,9 @@ package no.stelvio.common.codestable;
 import java.io.Serializable;
 import java.util.Locale;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
-
-import org.apache.commons.collections.Predicate;
 
 /**
  * Interface defining functionality for retrieving a codetable's items or an item's decode. It is also possible to add
@@ -62,7 +61,7 @@ public interface CodesTable<T extends AbstractCodesTableItem<K, V>, K extends En
 	 * @param predicate
 	 *            the <code>Predicate</code> to filter the items in the <code>CodesTable</code> with.
 	 */
-	void addPredicate(Predicate predicate);
+	void addPredicate(Predicate<T> predicate);
 
 	/** Removes all of the predicates on the <code>CodesTable</code>. */
 	void resetPredicates();

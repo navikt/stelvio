@@ -99,11 +99,6 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>commons-collections</groupId>
-                <artifactId>commons-collections</artifactId>
-                <version>${commons-collections.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang.version}</version>
@@ -156,10 +151,6 @@
                     <exclusion>
                         <groupId>commons-logging</groupId>
                         <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>commons-collections</groupId>
-                        <artifactId>commons-collections</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -868,7 +859,6 @@
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-lang.version>3.5</commons-lang.version>
         <commons-logging.version>1.2</commons-logging.version>
-        <commons-collections.version>3.2.2</commons-collections.version>
         <commons-digester.version>1.6</commons-digester.version>
         <dozer.version>5.5.1</dozer.version>
         <ehcache.version>2.6.11</ehcache.version>

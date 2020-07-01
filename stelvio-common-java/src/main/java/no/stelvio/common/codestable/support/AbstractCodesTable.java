@@ -12,8 +12,8 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.function.Predicate;
 
-import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -62,7 +62,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	/**
 	 * List of predicates to use for filtering the list of <code>AbstractCodesTableItem</code>s.
 	 */
-	private List<Predicate> predicates = new ArrayList<>();
+	private final List<Predicate<T>> predicates = new ArrayList<>();
 
 	/** The item class for this codes table. */
 	private Class<? extends AbstractCodesTableItem> codesTableItemsClass;
@@ -282,7 +282,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addPredicate(Predicate predicate) {
+	public void addPredicate(Predicate<T> predicate) {
 
 		predicates.add(predicate);
 
@@ -306,7 +306,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 					for (T item : setAtKeyPosition) {
 						// If CodesTableItem doesn't evaluate according to
 						// predicate, remove from filtered list
-						if (!predicate.evaluate(item)) {
+						if (!predicate.test(item)) {
 							itemsFilteredOut.add(item);
 						}
 					}
@@ -518,8 +518,8 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 		if (codesTableItems != null) {
 			for (T t : codesTableItems) {
 				boolean okToAdd = true;
-				for (Predicate predicate : predicates) {
-					okToAdd = (predicate.evaluate(t)) && okToAdd;
+				for (Predicate<T> predicate : predicates) {
+					okToAdd = (predicate.test(t)) && okToAdd;
 				}
 				if (okToAdd) {
 					filteredSet.add(t);

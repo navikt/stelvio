@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
-
-import org.apache.commons.collections.Predicate;
 
 /**
  * Interface defining functionality for retrieving a codetableperiodic's items or an item's decode. It is also possible to add
@@ -115,7 +114,7 @@ public interface CodesTablePeriodic<T extends AbstractCodesTablePeriodicItem<K, 
 	 * @param predicate
 	 *            the <code>Predicate</code> to filter the items in a <code>CodesTablePeriodic</code> with.
 	 */
-	void addPredicate(Predicate predicate);
+	void addPredicate(Predicate<T> predicate);
 
 	/** Removes all of the predicates on the <code>CodesTablePeriodic</code>. */
 	void resetPredicates();

@@ -7,13 +7,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
 import no.stelvio.common.codestable.support.AbstractCodesTablePeriodicItem;
-
-import org.apache.commons.collections.Predicate;
 
 /**
  * @version $Id$
@@ -68,7 +67,7 @@ public class DefaultCodesTablePeriodicMock<T extends AbstractCodesTablePeriodicI
 	}
 
 	@Override
-	public void addPredicate(Predicate predicate) {
+	public void addPredicate(Predicate<T> predicate) {
 		
 
 	}
