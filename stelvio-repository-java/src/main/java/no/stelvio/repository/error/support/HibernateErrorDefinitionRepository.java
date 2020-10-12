@@ -3,7 +3,7 @@ package no.stelvio.repository.error.support;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import no.stelvio.common.error.support.ErrorDefinition;
 import no.stelvio.repository.error.ErrorDefinitionRepository;

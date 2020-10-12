@@ -4,7 +4,7 @@ import static no.stelvio.common.util.Internal.cast;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import no.stelvio.domain.menu.MenuItem;
 import no.stelvio.repository.menu.MenuRepository;
