@@ -2,7 +2,7 @@ STELVIO CHANGELOG
 =================
 https://confluence.adeo.no/display/stelvio/Application+Framework+-+Change+Log
 
-Version 6.1.0
+Version 7.0.0
 ----------------------------------
 - Migrated to Hibernate 5.3.18.Final
 
