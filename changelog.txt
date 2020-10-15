@@ -6,6 +6,13 @@ Version 7.0.0
 ----------------------------------
 - Migrated to Hibernate 5.3.18.Final
 
+Version 6.1.0
+- Bump Spring Framework to 4.3.29
+- Bump Sprint Security to 4.2.19
+- Bump Slf4j to 1.7.25
+- Changed scope of slf4j bridge and implementation to test
+- Remove unused javassist:javassist
+
 Version 6.0.0
 ----------------------------------
 - Migrate to OpenLiberty/OpenJDK
