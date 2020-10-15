@@ -166,11 +166,6 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.hibernate.javax.persistence</groupId>
-                <artifactId>hibernate-jpa-2.1-api</artifactId>
-                <version>${hibernate-jpa-2.1-api.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>${hsqldb.version}</version>
@@ -783,7 +778,6 @@
         <dozer.version>5.5.1</dozer.version>
         <ehcache.version>2.6.11</ehcache.version>
         <hibernate-core.version>5.3.18.Final</hibernate-core.version>
-        <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <hsqldb.version>2.3.0</hsqldb.version>
         <javassist.version>3.12.1.GA</javassist.version>
         <joda-time.version>2.9.7</joda-time.version>
