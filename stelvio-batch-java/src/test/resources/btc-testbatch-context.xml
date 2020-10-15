@@ -59,14 +59,12 @@
 	</bean>
     <!-- Transaction manager for tests -->
     <bean id="transactionManager"
-          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="btc.testbatch.sessionFactory"/>
     </bean>
     <!-- Hibernate Template Defintion -->
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
-        <property name="sessionFactory">
-            <ref bean="btc.testbatch.sessionFactory"/>
-        </property>
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="btc.testbatch.sessionFactory"/>
     </bean>
 
     <!--  stelvio batch repository -->
@@ -83,7 +81,7 @@
 	</bean>
 
     <bean id="btc.testbatch.sessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 
         <property name="dataSource" ref="btc.testbatch.dataSource"/>
 

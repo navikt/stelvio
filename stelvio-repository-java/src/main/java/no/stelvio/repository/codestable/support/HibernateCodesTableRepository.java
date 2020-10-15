@@ -6,10 +6,10 @@ import javax.persistence.Entity;
 
 import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.springframework.orm.hibernate4.HibernateCallback;
-import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.hibernate.query.Query;
+import org.springframework.orm.hibernate5.HibernateCallback;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.repository.codestable.CodesTableRepository;
@@ -37,7 +37,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 		return hibernateTemplate.execute(new HibernateCallback<List<T>>() {
 			public List<T> doInHibernate(Session session) throws HibernateException {
 				Query queryObject = session.createQuery(queryString);
-				queryObject.setFlushMode(FlushMode.MANUAL);
+				queryObject.setHibernateFlushMode(FlushMode.MANUAL);
 				return queryObject.list();
 			}
 		});

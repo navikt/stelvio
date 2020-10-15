@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -46,7 +47,8 @@ public class BatchHistDO {
 	 * batchname/slice combination
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN_BATCH_HIST")
+	@SequenceGenerator(name = "SEQ_GEN_BATCH_HIST", sequenceName = "S_BATCH_HIST", allocationSize = 1)
 	@Column(name = "BATCH_HIST_ID", insertable = false, updatable = false)
 	private long batchHistId;
 

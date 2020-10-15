@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;

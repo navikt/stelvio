@@ -3,16 +3,12 @@
 	<parent>
 		<groupId>no.stelvio</groupId>
 		<artifactId>stelvio</artifactId>
-		<version>6.1.0-SNAPSHOT</version>
+		<version>7.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-repository-java</artifactId>
 	<packaging>jar</packaging>
 	<name>stelvio - repository</name>
 	<dependencies>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-        </dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-domain-java</artifactId>

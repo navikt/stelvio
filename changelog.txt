@@ -2,6 +2,10 @@ STELVIO CHANGELOG
 =================
 https://confluence.adeo.no/display/stelvio/Application+Framework+-+Change+Log
 
+Version 7.0.0
+----------------------------------
+- Migrated to Hibernate 5.3.18.Final
+
 Version 6.1.0
 - Bump Spring Framework to 4.3.29
 - Bump Sprint Security to 4.2.19

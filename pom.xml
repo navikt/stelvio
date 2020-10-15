@@ -6,7 +6,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio</artifactId>
     <packaging>pom</packaging>
-    <version>6.1.0-SNAPSHOT</version>
+    <version>7.0.0-SNAPSHOT</version>
     <name>stelvio</name>
 
     <description>Stelvio Enterprise Platform</description>
@@ -165,49 +165,14 @@
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-annotations</artifactId>
-                <version>${hibernate-annotations.version}</version>
-                <exclusions>
-                    <!-- Hibernate is already included, we do not want to duplicate exclusions
-                        defined for hibernate -->
-                    <exclusion>
-                        <groupId>org.hibernate</groupId>
-                        <artifactId>hibernate-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.hibernate</groupId>
-                        <artifactId>hibernate-commons-annotations</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-commons-annotations</artifactId>
-                <version>${hibernate-commons-annotations.version}</version>
-                <exclusions>
-                    <!-- Hibernate is already included, we do not want to duplicate exclusions
-                        defined for hibernate -->
-                    <exclusion>
-                        <groupId>org.hibernate</groupId>
-                        <artifactId>hibernate</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate-core.version}</version>
                 <exclusions>
                     <exclusion>
-                        <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+                        <artifactId>jboss-transaction-api_1.2_spec</artifactId>
                         <groupId>org.jboss.spec.javax.transaction</groupId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate.javax.persistence</groupId>
-                <artifactId>hibernate-jpa-2.1-api</artifactId>
-                <version>${hibernate-jpa-2.1-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hsqldb</groupId>
@@ -816,10 +781,7 @@
         <commons-digester.version>1.6</commons-digester.version>
         <dozer.version>5.5.1</dozer.version>
         <ehcache.version>2.6.11</ehcache.version>
-        <hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
-        <hibernate-commons-annotations.version>3.2.0.Final</hibernate-commons-annotations.version>
-        <hibernate-core.version>4.2.21.Final</hibernate-core.version>
-        <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
+        <hibernate-core.version>5.3.18.Final</hibernate-core.version>
         <hsqldb.version>2.3.0</hsqldb.version>
         <joda-time.version>2.9.7</joda-time.version>
         <log4j.version>1.2.17</log4j.version>

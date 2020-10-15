@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -41,7 +42,8 @@ public class BatchDO {
 
 	/** identifier field, read only. for a unique identifyer of a batch use the batchnam/slice combination */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN_BATCH")
+	@SequenceGenerator(name = "SEQ_GEN_BATCH", sequenceName = "S_BATCH", allocationSize = 1)
 	@Column(name = "BATCH_ID", insertable = false, updatable = false)
 	private long batchId;
 
