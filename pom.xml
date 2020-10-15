@@ -215,11 +215,6 @@
                 <version>${hsqldb.version}</version>
             </dependency>
             <dependency>
-                <groupId>javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>${javassist.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jmock</groupId>
                 <artifactId>jmock</artifactId>
                 <version>${jmock.version}</version>
@@ -826,7 +821,6 @@
         <hibernate-core.version>4.2.21.Final</hibernate-core.version>
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <hsqldb.version>2.3.0</hsqldb.version>
-        <javassist.version>3.12.1.GA</javassist.version>
         <joda-time.version>2.9.7</joda-time.version>
         <log4j.version>1.2.17</log4j.version>
         <myfaces.version>2.1.12</myfaces.version>
