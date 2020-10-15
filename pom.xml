@@ -6,7 +6,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio</artifactId>
     <packaging>pom</packaging>
-    <version>6.0.1-SNAPSHOT</version>
+    <version>6.1.0-SNAPSHOT</version>
     <name>stelvio</name>
 
     <description>Stelvio Enterprise Platform</description>
@@ -64,9 +64,18 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-core</artifactId>
+                <artifactId>spring-security-bom</artifactId>
                 <version>${spring-security.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <!-- Framework for AOP (Aspect Oriented Programming), providing method interceptors that for instance is used by Stelvio
@@ -204,11 +213,6 @@
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>${hsqldb.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>${javassist.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jmock</groupId>
@@ -817,16 +821,15 @@
         <hibernate-core.version>4.2.21.Final</hibernate-core.version>
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <hsqldb.version>2.3.0</hsqldb.version>
-        <javassist.version>3.12.1.GA</javassist.version>
         <joda-time.version>2.9.7</joda-time.version>
         <log4j.version>1.2.17</log4j.version>
         <myfaces.version>2.1.12</myfaces.version>
         <persistence-api.version>1.0.2</persistence-api.version>
         <myfaces-test.version>1.0.8</myfaces-test.version>
-        <slf4j.version>1.7.5</slf4j.version>
-        <spring.version>4.3.25.RELEASE</spring.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <spring.version>4.3.29.RELEASE</spring.version>
         <spring-batch.version>3.0.10.RELEASE</spring-batch.version>
-        <spring-security.version>4.2.17.RELEASE</spring-security.version>
+        <spring-security.version>4.2.19.RELEASE</spring-security.version>
         <swf.version>2.4.8.RELEASE</swf.version>
         <tomahawk.version>1.1.14</tomahawk.version>
         <openliberty.version>19.0.0.10</openliberty.version>
