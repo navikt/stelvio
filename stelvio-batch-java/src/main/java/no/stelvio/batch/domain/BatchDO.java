@@ -26,8 +26,6 @@ import org.apache.commons.logging.LogFactory;
  * Representation of a batch.
  * 
  * In code uniquely identified by the combination of batchname and slice.
- * 
- * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $
  */
 @Entity
 @Table(name = "T_BATCH")
@@ -43,7 +41,7 @@ public class BatchDO {
 	/** identifier field, read only. for a unique identifyer of a batch use the batchnam/slice combination */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN_BATCH")
-	@SequenceGenerator(name = "SEQ_GEN_BATCH", sequenceName = "S_BATCH", allocationSize = 1)
+	@SequenceGenerator(name = "SEQ_GEN_BATCH", sequenceName = "S_BATCH")
 	@Column(name = "BATCH_ID", insertable = false, updatable = false)
 	private long batchId;
 

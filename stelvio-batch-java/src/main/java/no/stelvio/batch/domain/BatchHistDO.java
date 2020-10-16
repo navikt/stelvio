@@ -48,7 +48,7 @@ public class BatchHistDO {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN_BATCH_HIST")
-	@SequenceGenerator(name = "SEQ_GEN_BATCH_HIST", sequenceName = "S_BATCH_HIST", allocationSize = 1)
+	@SequenceGenerator(name = "SEQ_GEN_BATCH_HIST", sequenceName = "S_BATCH_HIST")
 	@Column(name = "BATCH_HIST_ID", insertable = false, updatable = false)
 	private long batchHistId;
 
