@@ -9,19 +9,12 @@ import java.util.List;
 
 import no.stelvio.consumer.exception.ConsumerSystemException;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.webflow.engine.Flow;
 import org.springframework.webflow.execution.FlowExecutionException;
 import org.springframework.webflow.test.MockRequestControlContext;
 
-/**
- * Test to test the ErrorPageException class.
- * 
- * @version $Id$
- * 
- */
 public class ErrorPageExceptionHandlerTest {
 
 	private ErrorPageExceptionHandler errorPageExceptionHandler;
@@ -30,8 +23,6 @@ public class ErrorPageExceptionHandlerTest {
 
 	private MockRequestControlContext requestControlContext;
 
-	private Flow flow;
-
 	/**
 	 * Sets up mock objects needed to perform test.
 	 */
@@ -39,24 +30,17 @@ public class ErrorPageExceptionHandlerTest {
 	public void setUp() {
 		errorPageExceptionHandler = new ErrorPageExceptionHandler();
 
-		flow = new Flow("myFlow");
+		Flow flow = new Flow("myFlow");
 		flowExecutionException = new FlowExecutionException("flowId", "stateId", "message", new ConsumerSystemException(
 				"Technical error while invoking service", new Throwable()));
 		requestControlContext = new MockRequestControlContext(flow);
 
-		List<String> exceptions = new ArrayList<String>();
+		List<String> exceptions = new ArrayList<>();
 		exceptions.add("no.stelvio.consumer.exception.ConsumerSystemException");
 		exceptions.add("org.springframework.webflow.core.FlowException");
 
 		errorPageExceptionHandler.setErrorPage("myErrorPage");
 
-	}
-
-	/**
-	 * Clean up.
-	 */
-	@After
-	public void tearDown() {
 	}
 
 	/**
