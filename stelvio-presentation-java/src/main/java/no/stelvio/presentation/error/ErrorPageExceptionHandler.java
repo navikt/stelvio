@@ -73,15 +73,15 @@ public class ErrorPageExceptionHandler implements FlowExecutionExceptionHandler 
 			}
 			ctx.getExternalContext().requestFlowDefinitionRedirect(loginPage, map);
 		} else {
-			if (LOGGER.isErrorEnabled()) {
-				LOGGER.error("", exception);
-			}
 			if (errorPage == null && LOGGER.isWarnEnabled()) {
 				LOGGER.warn("An error page should be configured for this exception handler");
 			}
 
 			if (exception.getCause() instanceof PageAccessDeniedException) {
 				if (accessDeniedPage != null) {
+					if (LOGGER.isDebugEnabled()) {
+						LOGGER.debug("", exception);
+					}
 					ctx.getExternalContext().requestFlowDefinitionRedirect(accessDeniedPage, map);
 				} else {
 					if (LOGGER.isDebugEnabled()) {
@@ -90,6 +90,9 @@ public class ErrorPageExceptionHandler implements FlowExecutionExceptionHandler 
 					ctx.getExternalContext().requestFlowDefinitionRedirect(errorPage, map);
 				}
 			} else {
+				if (LOGGER.isErrorEnabled()) {
+					LOGGER.error("", exception);
+				}
 				ctx.getExternalContext().requestFlowDefinitionRedirect(errorPage, map);
 			}
 		}
