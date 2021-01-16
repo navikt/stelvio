@@ -41,7 +41,7 @@ public class BatchDO {
 	/** identifier field, read only. for a unique identifyer of a batch use the batchnam/slice combination */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN_BATCH")
-	@SequenceGenerator(name = "SEQ_GEN_BATCH", sequenceName = "S_BATCH")
+	@SequenceGenerator(name = "SEQ_GEN_BATCH", sequenceName = "S_BATCH", allocationSize = 1)
 	@Column(name = "BATCH_ID", insertable = false, updatable = false)
 	private long batchId;
 
