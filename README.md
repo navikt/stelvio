@@ -8,8 +8,8 @@ I dag har verden beveget seg videre, og NAV bruker ikke lenger Stelvio
 til nye applikasjoner. Men det finnes fortsatt noen legacy-applikasjoner
 som bruker Stelvio.
 
-Dette repoet vedlikeholdes ikke lengre. Trekk inn Stelvio i applikasjonen
-om applikasjonen benytter det som et biblioek.
+***Dette repoet vedlikeholdes ikke lengre. Trekk inn Stelvio i applikasjonen
+om applikasjonen benytter det som et biblioek.***
 
 ## Dokumentasjon, guidelines
 
